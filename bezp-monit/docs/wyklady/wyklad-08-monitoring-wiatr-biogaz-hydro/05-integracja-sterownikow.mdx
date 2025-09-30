@@ -1,0 +1,69 @@
+title: "Integracja różnorodnych sterowników"
+sidebar_position: 5
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🔌 Heterogeniczność i strategie" type="info">
+
+<KeyPoints title="📋 Źródła danych">
+- Sterowniki turbin, PLC biogazu, regulatory hydro; różne protokoły/częstotliwości
+</KeyPoints>
+
+<SupportingDetails title="🔧 Integracja">
+- Bramy OPC UA/MQTT, mapowanie tagów, normalizacja jednostek
+</SupportingDetails>
+
+<InstructorNotes>
+Wskaż potrzebę słownika tagów i standardów nazw.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🗄️ Buforowanie i SOE" type="tip">
+
+<KeyPoints title="📋 Niezawodność">
+- Store‑and‑forward, synchronizacja czasu, SOE
+</KeyPoints>
+
+<SupportingDetails title="🧰 Bezpieczeństwo">
+- TLS, RBAC, audyt dla bram i brokerów
+</SupportingDetails>
+
+<InstructorNotes>
+Omów projekt SLO pipeline i recovery po awarii łącza.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład integracji" type="success">
+
+<KeyPoints title="📋 Case">
+- PLC (Modbus) + sterownik turbiny (→ OPC UA) + IIoT (MQTT) → wspólna TSDB
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Przekrojowe analizy i wspólny alerting
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do rozrysowania przepływu danych i punktów normalizacji.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

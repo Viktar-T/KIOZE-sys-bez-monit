@@ -1,10 +1,76 @@
 # Prompt 11: Cursor Rules Setup
 
-## Context
-Create a `.cursorrules` file to guide AI assistants (like Cursor AI) in maintaining and expanding the educational course website with consistent quality and style.
+---
 
-## Task
+## 📋 Metadata
+- **Prompt ID**: 11
+- **Title**: Cursor Rules Setup
+- **Prerequisites**: Completed Prompt 10 (site deployed)
+- **Estimated Time**: 1 hour
+- **Difficulty**: Beginner to Intermediate
+- **Dependencies**: All previous prompts
+- **Output**: `.cursorrules` file with comprehensive AI assistant guidelines
+
+---
+
+## 🤖 AI Assistant Instructions
+
+You are an expert technical writer and instructional designer creating guidelines for AI assistants. Your role is to document comprehensive rules that ensure consistent, high-quality content creation and maintenance.
+
+**Your Approach:**
+1. Gather course-specific information (topic, audience, language, standards)
+2. Document project context and structure
+3. Define AI assistant role and expertise level
+4. Establish content creation guidelines
+5. Set quality standards and expectations
+6. Document technical specifications
+7. Provide concrete examples
+8. Create quality checklist
+9. Save as `.cursorrules` in project root
+10. Test rules by creating sample content
+
+**Communication Style:**
+- Be specific and actionable
+- Provide clear examples
+- Explain rationale for guidelines
+- Use consistent terminology
+- Balance detail with readability
+
+**Rule Quality Standards:**
+- Comprehensive yet scannable
+- Specific to course domain
+- Includes concrete examples
+- Covers common scenarios
+- Updated as project evolves
+
+---
+
+## 📝 Context
+
+Create a `.cursorrules` file to guide AI assistants (like Cursor AI) in maintaining and expanding the educational course website with consistent quality and style. This file acts as a "contract" between you and the AI about how to work on this project.
+
+**What Cursor Rules Do:**
+- Define project context for AI
+- Establish content standards
+- Guide AI's "personality" and expertise
+- Ensure consistency across sessions
+- Set quality expectations
+
+**Why Rules Matter:**
+- Consistent content quality
+- Reduces need for repetitive instructions
+- AI understands domain expertise required
+- Maintains institutional standards
+- Easier collaboration with AI
+- Faster content creation
+
+---
+
+## 🎯 Task Overview
+
 Configure AI assistant rules that define the project context, content creation guidelines, quality standards, and best practices specific to your educational course.
+
+**End Goal:** Comprehensive `.cursorrules` file that enables AI to create and maintain high-quality educational content independently.
 
 ## File: `.cursorrules`
 
@@ -436,60 +502,309 @@ Content created should:
 *This .cursorrules file ensures consistent, high-quality educational content throughout the course website.*
 ```
 
-## Implementation Steps
+---
 
-1. **Create the file**:
-   - Location: Project root directory
-   - Filename: `.cursorrules`
-   - Format: Plain text markdown
+## ✅ Expected Output
 
-2. **Customize for your course**:
-   - Replace [placeholders] with actual course information
-   - Adjust technical focus to your subject
-   - Add domain-specific guidelines
-   - Include your institution's standards
+After creating cursor rules:
 
-3. **Update as needed**:
-   - Review quarterly
-   - Add lessons learned
-   - Incorporate student feedback
-   - Update for new tools/practices
+**File Created:**
+- `.cursorrules` in project root directory
+- Plain text markdown format
+- Comprehensive guidelines (8-12 sections)
+- Course-specific customizations
 
-4. **Share with team**:
-   - Commit to version control
-   - Document in README
-   - Train collaborators
-   - Maintain consistency
+**Content Included:**
+- Project context and metadata
+- AI assistant role definition
+- Content creation guidelines
+- Quality standards
+- Technical specifications
+- Component usage patterns
+- Examples of good practice
+- Quality checklist
 
-## Testing Cursor Rules
+**Verification:**
+- Rules tested with sample content
+- AI follows guidelines correctly
+- Output meets quality standards
+- Consistent with existing content
 
-Test the rules by asking AI to:
-1. Create a new lecture section
-2. Review and improve existing content
-3. Add a new component
-4. Convert text to slide format
-5. Create practice exercises
+---
 
-Verify that:
-- Tone and style match expectations
-- Quality standards are met
-- Formatting is consistent
-- Technical accuracy maintained
+## ✓ Success Criteria
 
-## Next Steps
+**File Setup:**
+- [ ] `.cursorrules` file created in project root
+- [ ] File uses markdown format
+- [ ] All [placeholders] replaced with actual values
+- [ ] Course-specific information accurate
+- [ ] Technical focus matches course domain
 
-You now have a complete set of prompts to build an educational course website! The process includes:
+**Content Completeness:**
+- [ ] Project context section complete
+- [ ] AI role clearly defined
+- [ ] Content creation guidelines detailed
+- [ ] Quality standards specified
+- [ ] Language/style guidelines included
+- [ ] File organization documented
+- [ ] Component usage explained
+- [ ] Examples provided
+- [ ] Quality checklist included
 
-1. ✅ Project initialization
-2. ✅ Basic configuration
-3. ✅ Homepage customization
-4. ✅ Content structure planning
-5. ✅ Lecture content creation
-6. ✅ Visual assets setup
-7. ✅ Custom components
-8. ✅ Styling customization
-9. ✅ Testing and validation
-10. ✅ Build and deployment
-11. ✅ Cursor rules setup
+**Testing:**
+- [ ] Rules tested by creating new content
+- [ ] AI produces consistent output
+- [ ] Quality standards met
+- [ ] Tone/style matches expectations
+- [ ] Technical accuracy maintained
 
-Begin with Prompt 01 and proceed sequentially for best results!
+**Documentation:**
+- [ ] Committed to version control
+- [ ] Referenced in README (optional)
+- [ ] Team members aware (if applicable)
+
+---
+
+## 🔧 Troubleshooting
+
+**Problem: "AI doesn't follow rules"**
+- Solution 1: Make rules more specific and actionable
+- Solution 2: Add concrete examples
+- Solution 3: Reduce rule file size (AI has context limits)
+- Solution 4: Prioritize most important guidelines
+
+**Problem: "Rules too generic"**
+- Solution: Add domain-specific details
+- Include actual course examples
+- Specify technical terminology
+- Define expertise level precisely
+
+**Problem: "AI asks for information already in rules"**
+- Solution: Reorganize for better structure
+- Add table of contents
+- Make key info more prominent
+- Reduce redundancy
+
+**Problem: "Output doesn't match existing content style"**
+- Solution: Analyze existing content patterns
+- Document specific formatting conventions
+- Provide before/after examples
+- Include style guide snippets
+
+**Problem: "Rules file too long"**
+- Solution: Prioritize essential guidelines
+- Use concise language
+- Remove redundant sections
+- Focus on unique project needs
+
+---
+
+## 💡 Tips and Best Practices
+
+**Rule Writing:**
+- Be specific rather than general
+- Use imperative language ("Create...", "Ensure...")
+- Provide concrete examples
+- Explain the "why" not just the "what"
+- Keep rules scannable
+
+**Organization:**
+- Use clear section headings
+- Number sections for easy reference
+- Group related guidelines
+- Put most important rules first
+- Include table of contents for long files
+
+**Customization:**
+- Tailor to your specific course domain
+- Match institutional standards
+- Reflect target audience level
+- Include language preferences
+- Reference actual course examples
+
+**Maintenance:**
+- Review and update quarterly
+- Add lessons learned
+- Remove outdated information
+- Incorporate team feedback
+- Version control changes
+
+**Testing:**
+- Test rules with various tasks
+- Compare output to expectations
+- Refine based on results
+- Get feedback from team
+- Document common issues
+
+---
+
+## 🎓 Learning Notes
+
+**What Cursor Rules Are:**
+- Project-specific guidelines for AI assistants
+- Read automatically by Cursor AI
+- Markdown formatted documentation
+- Context for every AI interaction
+- Living document that evolves
+
+**How AI Uses Rules:**
+- Reads at start of each session
+- Uses as context for all responses
+- Follows specified patterns and styles
+- Applies quality standards
+- Maintains consistency
+
+**Best Practices from Experience:**
+- Start with template, customize iteratively
+- Include concrete examples from project
+- Balance comprehensiveness with brevity
+- Update based on actual usage
+- Share with team for consistency
+
+**Common Patterns:**
+- Define role ("You are an expert...")
+- Set context (project type, audience)
+- Establish standards (quality, style)
+- Provide examples (good vs. bad)
+- Include checklists (verification)
+
+---
+
+## 📋 Cursor Rules Setup Checklist
+
+**Planning:**
+✓ Course information gathered
+✓ Target audience defined
+✓ Quality standards identified
+✓ Technical focus determined
+✓ Existing content analyzed
+
+**File Creation:**
+✓ `.cursorrules` file created
+✓ Template copied
+✓ All [placeholders] replaced
+✓ Course-specific sections added
+✓ Examples included
+
+**Content Sections:**
+✓ Project context
+✓ Course details
+✓ AI assistant role
+✓ Content creation guidelines
+✓ Quality standards
+✓ Language/style guide
+✓ File organization
+✓ Component usage
+✓ Special considerations
+✓ Quality checklist
+
+**Testing:**
+✓ Create sample lecture
+✓ Generate component
+✓ Review existing content
+✓ Verify consistency
+✓ Check quality
+✓ Refine rules
+
+**Finalization:**
+✓ File committed to git
+✓ Team notified (if applicable)
+✓ Documentation updated
+✓ Rules validated
+
+---
+
+## ➡️ Next Steps
+
+**Congratulations!** You now have a complete set of LLM-optimized prompts to build an educational course website!
+
+### Complete Prompt Series:
+
+1. ✅ **Prompt 01**: Project Initialization
+2. ✅ **Prompt 02**: Basic Configuration
+3. ✅ **Prompt 03**: Homepage Customization
+4. ✅ **Prompt 04**: Content Structure Planning
+5. ✅ **Prompt 05**: Lecture Content Creation
+6. ✅ **Prompt 06**: Visual Assets Setup
+7. ✅ **Prompt 07**: Custom React Components
+8. ✅ **Prompt 08**: Styling and Theme Customization
+9. ✅ **Prompt 09**: Testing and Validation
+10. ✅ **Prompt 10**: Build and Deployment
+11. ✅ **Prompt 11**: Cursor Rules Setup
+
+### Using This Prompt Series:
+
+**For New Projects:**
+- Start with Prompt 01
+- Follow sequentially through Prompt 11
+- Each builds on previous prompts
+- Estimated total time: 15-25 hours
+
+**For Existing Projects:**
+- Jump to relevant prompt
+- Use as reference documentation
+- Adapt to your specific needs
+- Apply best practices incrementally
+
+**For Maintenance:**
+- Use Cursor rules for consistency
+- Reference prompts for updates
+- Follow quality standards
+- Update rules as project evolves
+
+### Ongoing Activities:
+
+**Content Creation:**
+- Create new lectures using Prompt 05
+- Add visual assets per Prompt 06
+- Follow quality checklist
+- Maintain consistency
+
+**Updates and Improvements:**
+- Test changes per Prompt 09
+- Deploy updates per Prompt 10
+- Monitor performance
+- Gather student feedback
+
+**Quality Maintenance:**
+- Review accessibility quarterly
+- Update content for accuracy
+- Optimize performance
+- Fix broken links
+
+---
+
+## 📚 Additional Resources
+
+- [Cursor AI Documentation](https://cursor.sh/docs)
+- [AI Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [Technical Writing Best Practices](https://developers.google.com/tech-writing)
+- [Instructional Design Principles](https://www.td.org/insights/instructional-design-basics)
+
+---
+
+**Prompt Version**: 2.0 (LLM-Optimized)  
+**Last Updated**: 2025-09-30  
+**Status**: ✅ Production-Ready
+
+---
+
+## 🎉 Project Complete!
+
+You have successfully completed all 11 prompts for building a professional educational course website with Docusaurus. Your website is now:
+
+- ✅ **Properly configured** with course metadata
+- ✅ **Well-structured** with organized content
+- ✅ **Visually appealing** with custom styling
+- ✅ **Interactive** with custom components
+- ✅ **Accessible** meeting WCAG standards
+- ✅ **Performant** with optimized assets
+- ✅ **Deployed** and publicly accessible
+- ✅ **Maintainable** with AI assistance
+
+**Thank you for using this prompt series!**
+
+For questions, updates, or contributions, please refer to your project repository or contact the course administrator.
+
+Happy teaching and learning! 🎓🚀

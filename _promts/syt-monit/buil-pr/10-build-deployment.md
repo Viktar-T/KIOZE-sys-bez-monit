@@ -1,10 +1,81 @@
 # Prompt 10: Build and Deployment
 
-## Context
-After testing is complete, build the production version and deploy the educational website to a hosting platform.
+---
 
-## Task
-Create a production-ready build and deploy to hosting services like GitHub Pages, Netlify, or Vercel.
+## 📋 Metadata
+- **Prompt ID**: 10
+- **Title**: Build and Deployment
+- **Prerequisites**: Completed Prompt 09 (testing complete)
+- **Estimated Time**: 1-2 hours
+- **Difficulty**: Intermediate to Advanced
+- **Dependencies**: Prompt 09, hosting account setup
+- **Output**: Live, publicly accessible course website
+
+---
+
+## 🤖 AI Assistant Instructions
+
+You are an expert DevOps engineer and deployment specialist helping deploy an educational website to production. Your role is to guide the build process, hosting setup, and deployment workflow.
+
+**Your Approach:**
+1. Guide pre-build checks and preparation
+2. Help create production build
+3. Test production build locally
+4. Recommend appropriate hosting platform
+5. Configure deployment settings
+6. Set up continuous deployment (CI/CD)
+7. Configure custom domain (if needed)
+8. Set up monitoring and analytics
+9. Document deployment process
+10. Create update workflow
+
+**Communication Style:**
+- Explain deployment options and trade-offs
+- Provide step-by-step deployment instructions
+- Offer troubleshooting for common deployment issues
+- Recommend best practices for updates
+- Emphasize security and performance
+
+**Deployment Standards:**
+- Production build succeeds without errors
+- All assets load correctly
+- HTTPS enabled
+- Custom domain configured (if applicable)
+- Analytics integrated
+- Automated deployment pipeline
+
+---
+
+## 📝 Context
+
+After testing is complete, build the production version and deploy the educational website to a hosting platform. Deployment makes your course website accessible to students worldwide.
+
+**What You're Deploying:**
+- Optimized production build
+- Static HTML, CSS, JavaScript files
+- Images and assets
+- Sitemap and robots.txt
+
+**Hosting Options:**
+- **GitHub Pages**: Free, integrated with GitHub
+- **Netlify**: Free tier, excellent features
+- **Vercel**: Free tier, optimized for modern frameworks
+- **Custom Server**: Full control, requires setup
+
+**Why Proper Deployment Matters:**
+- Makes content accessible to students
+- Ensures fast, reliable access
+- Enables easy updates
+- Provides professional web presence
+- Supports analytics and monitoring
+
+---
+
+## 🎯 Task Overview
+
+Create a production-ready build and deploy to hosting services like GitHub Pages, Netlify, or Vercel with automated deployment pipeline.
+
+**End Goal:** Live, publicly accessible course website with automated updates from git repository.
 
 ## Production Build Process
 
@@ -426,5 +497,250 @@ npm run build
 - [ ] Mobile performance verified
 - [ ] Backup strategy in place
 
-## Next Steps
-Proceed to Prompt 11 to set up Cursor rules for AI-assisted content management.
+---
+
+## ✅ Expected Output
+
+After successful deployment:
+
+**Live Website:**
+- Publicly accessible at production URL
+- All pages load correctly
+- Images and assets working
+- HTTPS enabled
+- Fast loading times
+
+**Deployment Pipeline:**
+- Automated deployment configured
+- Deploys on git push to main branch
+- Build status visible
+- Deploy previews for PRs (Netlify/Vercel)
+
+**Configuration:**
+- Custom domain (if applicable)
+- SSL certificate active
+- Analytics tracking (if configured)
+- Sitemap submitted to search engines
+
+**Documentation:**
+- Deployment process documented
+- Update workflow established
+- Access credentials secured
+- Backup strategy in place
+
+---
+
+## ✓ Success Criteria
+
+**Build:**
+- [ ] `npm run build` completes successfully
+- [ ] No build errors or warnings
+- [ ] `build/` directory created
+- [ ] All assets included in build
+- [ ] Sitemap.xml generated
+- [ ] Production build tested locally
+
+**Deployment:**
+- [ ] Site deployed to hosting platform
+- [ ] Website accessible at production URL
+- [ ] All pages load correctly
+- [ ] Images and assets load
+- [ ] Links work (internal and external)
+- [ ] HTTPS enabled (SSL certificate)
+- [ ] Custom domain configured (if applicable)
+
+**Automation:**
+- [ ] CI/CD pipeline configured
+- [ ] Auto-deploys on push to main
+- [ ] Build status notifications
+- [ ] Deploy previews enabled (if supported)
+
+**Post-Deployment:**
+- [ ] Analytics integrated (if desired)
+- [ ] Sitemap submitted to Google
+- [ ] Site indexed by search engines
+- [ ] Backup/export completed
+- [ ] Update workflow documented
+
+---
+
+## 🔧 Troubleshooting
+
+**Problem: "Build fails"**
+- Solution 1: Clear cache: `npm run clear`
+- Solution 2: Reinstall dependencies: `rm -rf node_modules && npm install`
+- Solution 3: Check Node version matches requirements
+- Solution 4: Review error messages carefully
+- Solution 5: Verify all files saved properly
+
+**Problem: "404 errors after deployment"**
+- Solution 1: Check `baseUrl` in docusaurus.config.js
+- Solution 2: Verify `trailingSlash` setting
+- Solution 3: Ensure routing configured correctly
+- Solution 4: Check hosting platform serves SPAs correctly
+
+**Problem: "Assets not loading"**
+- Solution 1: Verify asset paths are relative, not absolute
+- Solution 2: Check build output includes all assets
+- Solution 3: Ensure hosting serves static files
+- Solution 4: Check CORS settings if assets on CDN
+
+**Problem: "Custom domain not working"**
+- Solution 1: Verify DNS records configured correctly
+- Solution 2: Wait 24-48 hours for DNS propagation
+- Solution 3: Check CNAME/A records point to correct IPs
+- Solution 4: Ensure SSL certificate provisioned
+
+**Problem: "Slow performance"**
+- Solution 1: Optimize images (compress, resize)
+- Solution 2: Enable caching headers
+- Solution 3: Use CDN for static assets
+- Solution 4: Minimize JavaScript bundle size
+- Solution 5: Enable HTTP/2
+
+**Problem: "Deployment not auto-triggering"**
+- Solution 1: Check webhook configured
+- Solution 2: Verify GitHub Actions workflow file
+- Solution 3: Check deployment service connected to repo
+- Solution 4: Review build logs for errors
+
+---
+
+## 💡 Tips and Best Practices
+
+**Before Deployment:**
+- Test production build locally first
+- Verify all environment variables set
+- Check no sensitive data in code
+- Ensure `.gitignore` configured properly
+- Document deployment process
+
+**Deployment Strategy:**
+- Use automated deployment (CI/CD)
+- Enable deploy previews for testing
+- Set up staging environment if needed
+- Monitor deployment status
+- Keep rollback option available
+
+**Domain Configuration:**
+- Use HTTPS always (required by modern browsers)
+- Configure www and non-www versions
+- Set up proper redirects
+- Enable HSTS for security
+- Renew SSL certificates before expiry
+
+**Monitoring:**
+- Set up uptime monitoring
+- Configure error tracking
+- Enable analytics
+- Monitor performance metrics
+- Check broken links periodically
+
+**Updates:**
+- Test changes locally first
+- Use git branches for features
+- Review changes before merging
+- Monitor deployment after updates
+- Keep backup of working version
+
+---
+
+## 🎓 Learning Notes
+
+**Static Site Generation:**
+- Docusaurus generates static HTML files
+- No server-side processing needed
+- Fast, secure, scalable
+- Easy to host and cache
+- SEO-friendly
+
+**CI/CD Benefits:**
+- Automates deployment process
+- Reduces human error
+- Faster updates
+- Consistent deployment
+- Easy rollbacks
+
+**Hosting Comparison:**
+
+| Platform | Free Tier | CI/CD | Custom Domain | Analytics | Best For |
+|----------|-----------|-------|---------------|-----------|----------|
+| GitHub Pages | Yes (1 GB) | GitHub Actions | Yes | Via GA | Open source, simple |
+| Netlify | Yes (100 GB/mo) | Built-in | Yes | Built-in | Full features, easy |
+| Vercel | Yes (100 GB/mo) | Built-in | Yes | Built-in | Modern, fast deploys |
+| Custom Server | Depends | Manual | Yes | Manual | Full control needed |
+
+---
+
+## 📋 Deployment Checklist
+
+**Pre-Deployment:**
+✓ All testing complete
+✓ Content finalized
+✓ Configuration verified
+✓ Hosting account created
+✓ Repository pushed to GitHub
+
+**Build Process:**
+✓ npm run clear executed
+✓ npm run build succeeded
+✓ No build errors
+✓ Build tested locally
+✓ All assets present
+
+**Deployment Setup:**
+✓ Hosting platform configured
+✓ Repository connected
+✓ Build settings correct
+✓ Environment variables set
+✓ First deployment successful
+
+**Post-Deployment:**
+✓ Website accessible
+✓ All pages load
+✓ Assets working
+✓ HTTPS enabled
+✓ Custom domain configured
+✓ Analytics integrated
+✓ Sitemap submitted
+
+**Automation:**
+✓ CI/CD pipeline active
+✓ Auto-deploy enabled
+✓ Build notifications setup
+✓ Deployment documented
+
+---
+
+## ➡️ Next Steps
+
+After successful deployment, proceed to:
+- **Prompt 11**: Cursor Rules Setup
+- Configure AI assistant guidelines
+- Set up content creation rules
+- Document quality standards
+- Enable AI-assisted maintenance
+
+**Status Check Before Proceeding:**
+- ✅ Website deployed and live
+- ✅ Automated deployment working
+- ✅ All functionality verified
+- ✅ Documentation complete
+- ✅ Ready to set up AI assistance
+
+---
+
+## 📚 Additional Resources
+
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [Netlify Documentation](https://docs.netlify.com/)
+- [Vercel Documentation](https://vercel.com/docs)
+- [Docusaurus Deployment Guide](https://docusaurus.io/docs/deployment)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [DNS Configuration Guide](https://www.cloudflare.com/learning/dns/dns-records/)
+
+---
+
+**Prompt Version**: 2.0 (LLM-Optimized)  
+**Last Updated**: 2025-09-30  
+**Status**: ✅ Production-Ready

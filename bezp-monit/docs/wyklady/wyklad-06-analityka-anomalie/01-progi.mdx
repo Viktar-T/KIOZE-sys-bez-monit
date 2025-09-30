@@ -1,0 +1,71 @@
+title: "Progi statyczne i adaptacyjne"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📏 Progi statyczne" type="info">
+
+<KeyPoints title="📋 Cechy">
+- Oparte na specyfikacjach/doświadczeniu; dobre dla sygnałów stabilnych
+- Wrażliwe na sezonowość/zmienność (G_POA, T_mod)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zastosowanie">
+- Proste reguły BHP i graniczne limity urządzeń
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż przypadki over/under‑voltage i progi prądowe.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚙️ Progi adaptacyjne" type="tip">
+
+<KeyPoints title="📋 Techniki">
+- Rolling mean/median + k×MAD; percentyle p5/p95; regresje lokalne
+- Zależność od G_POA, T_mod, v_wiatru lub zmiennych modelowych
+</KeyPoints>
+
+<SupportingDetails title="🧰 Implementacja">
+- Normalizacja jednostek, odszumianie; histereza i minimalny czas trwania
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do eksperymentów A/B z różnymi k i oknami.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład PV" type="success">
+
+<KeyPoints title="📋 Efekt">
+- Próg DC zależny od G_POA/T_mod → −70% FP względem progu stałego
+</KeyPoints>
+
+<SupportingDetails title="🔍 Metoda">
+- Model referencyjny mocy DC + adaptacyjne progi i histereza
+</SupportingDetails>
+
+<InstructorNotes>
+Omów wpływ temperatury na Voc/Imp i konsekwencje dla progów.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

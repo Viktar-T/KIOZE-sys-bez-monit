@@ -16,11 +16,21 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        
+        {/* Course Format Information */}
+        <div className="hero__info">
+          <p>
+            <strong>Format kursu:</strong> 
+            Wykłady (20h) • Zajęcia audytoryjne (10h)
+          </p>
+        </div>
+        
+        {/* Call to Action Button */}
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Rozpocznij naukę 📚
           </Link>
         </div>
       </div>
@@ -32,8 +42,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="Kompleksowy kurs systemów monitorowania i bezpieczeństwa dla instalacji OZE, obejmujący technologie SCADA, IIoT, analitykę danych oraz praktyczne zastosowania dla fotowoltaiki, energii wiatrowej i magazynów energii.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

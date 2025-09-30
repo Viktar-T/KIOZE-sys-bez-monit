@@ -1,0 +1,70 @@
+title: "Prognoza degradacji i ścieżki starzenia"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧬 Mechanizmy degradacji" type="info">
+
+<KeyPoints title="📋 Czynniki">
+- Cykliczne (DoD, C‑rate), kalendarzowe (T, SoC), wzrost R_int
+</KeyPoints>
+
+<SupportingDetails title="🔧 Obserwable">
+- R_int, ΔV na impulsach, histogramy DoD, T
+</SupportingDetails>
+
+<InstructorNotes>
+Omów zależności termiczne i wpływ profilu użytkowania.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📈 Modele prognozowania" type="tip">
+
+<KeyPoints title="📋 Metody">
+- GBDT/RF, modele stanu (Kalman/Particle), proste modele fizyczne
+- Walidacja krocząca, RMSE/MAE, niepewność
+</KeyPoints>
+
+<SupportingDetails title="🧰 Dane">
+- EIS/surrogate jeśli dostępne; cechy trendów R_int i profilu DoD
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż learning curve i znaczenie feature drift monitoring.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🔍 Przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- GBDT na [DoD_avg, T_avg, #cykli, R_int_trend] → spadek SoH 5±1 pp / 6 mies.
+</KeyPoints>
+
+<SupportingDetails title="🔧 Efekt">
+- Plan serwisu skrócił przestoje o 30%
+</SupportingDetails>
+
+<InstructorNotes>
+Poproś o dyskusję wpływu niepewności na decyzje serwisowe.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

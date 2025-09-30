@@ -1,0 +1,70 @@
+title: "Bazy czasoszeregowe (TSDB)"
+sidebar_position: 3
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🗃️ TSDB — silniki i modele" type="info">
+
+<KeyPoints title="📋 Silniki">
+- InfluxDB (TSM/TSI), TimescaleDB (hypertables), VictoriaMetrics
+</KeyPoints>
+
+<SupportingDetails title="🔧 Wybór">
+- Kryteria: obciążenie zapisu/odczytu, kardynalność, ekosystem narzędzi
+</SupportingDetails>
+
+<InstructorNotes>
+Wyjaśnij różnice: storage‑engine vs. rozszerzenie SQL.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚙️ Parametry i kardynalność" type="tip">
+
+<KeyPoints title="📋 Konfiguracja">
+- Retencje, continuous tasks, indeksowanie po tagach
+- Projekt tagów vs. pól — minimalizacja kardynalności
+</KeyPoints>
+
+<SupportingDetails title="🧰 Praktyka">
+- Monitoring kardynalności i kosztów; rotacja shardów
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż metryki cardinality i ich wpływ na koszty.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="💰 Wydajność i koszty — przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- 500k tagów; raw 7 dni, 1‑min 6 mies., 15‑min 3 lata
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Refaktoryzacja tagów −35% kardynalności i niższe koszty storage
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj zadanie: przeprojektować schemat tagów pod niższą kardynalność.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

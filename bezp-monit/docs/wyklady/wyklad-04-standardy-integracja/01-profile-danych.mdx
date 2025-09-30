@@ -1,0 +1,74 @@
+title: "Profile danych dla PV, wiatru i BESS"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🗂️ Profile danych — przegląd" type="info">
+
+<KeyPoints title="📋 Standardy domenowe">
+- PV: SunSpec/Modbus dla inwerterów, liczników, trackerów
+- Wiatr: IEC 61400‑25, modele Logical Nodes
+- BESS: profile BMS + SunSpec (PCS), Modbus/OPC UA
+</KeyPoints>
+
+<SupportingDetails title="🔧 Kluczowe tagi">
+- PV: P_AC, P_DC, V/I_DC (string), E_total, G_POA, T_mod
+- Wiatr: v_wiatru, kierunek, P_AC, yaw/pitch, T_przekładni/łożysk
+- BESS: SoC/SoH, V_cell_min/max, ΔT, I_chg/dis, statusy kontaktorów
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do zbudowania „słownika tagów” na repo, z jednostkami i jakością.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧱 Minimalny wspólny model" type="tip">
+
+<KeyPoints title="📋 Normalizacja">
+- Jednostki, nazewnictwo, znaczniki jakości (valid/invalid)
+- Metadata: kalibracje, źródła braków, czas i strefy
+</KeyPoints>
+
+<SupportingDetails title="🧩 Cel">
+- Umożliwić wspólne KPI, porównania między obiektami i raporty
+</SupportingDetails>
+
+<InstructorNotes>
+Przykład: harmonizacja P_AC i E_total między różnymi producentami inwerterów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📈 Przykład zastosowania" type="success">
+
+<KeyPoints title="📋 Case: PV + BESS">
+- Wspólne KPI (PR, Availability) i zharmonizowane tagi czasowe
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Rozliczanie usług elastyczności (peak shaving, time‑shift) w raportach
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj studentom mini‑ćwiczenie: mapowanie tagów dla hybrydy PV+BESS.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

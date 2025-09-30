@@ -1,0 +1,73 @@
+---
+title: "Podsumowanie W2"
+sidebar_position: 10
+---
+
+# Podsumowanie W2
+
+## Kluczowe wnioski
+
+### Typy czujników
+- **Elektryczne**: Shunt, Hall effect, Rogowski
+- **Środowiskowe**: Pyranometry, anemometry, termometry
+- **Mechaniczne**: Akcelerometry, tensometry
+
+### Kondycjonowanie sygnałów
+- **Filtracja**: Low-pass, anti-aliasing
+- **Wzmacnianie**: Instrumentation amplifiers
+- **Izolacja**: Galvanic isolation, opto-couplers
+
+### Protokoły komunikacyjne
+- **Modbus**: RTU/TCP, RS-485/Ethernet
+- **OPC UA**: Secure, platform-independent
+- **MQTT**: Lightweight, IoT-friendly
+
+## Praktyczne zastosowania
+
+### Farma PV
+- Pyranometry: Irradiancja
+- Termometry: Temperatura modułów
+- String monitors: Prąd/napięcie
+
+### Elektrownia wiatrowa
+- Anemometry: Prędkość/kierunek wiatru
+- Akcelerometry: Wibracje łożysk
+- Encoders: Pozycja gondoli
+
+## Jakość danych
+
+### Metrologia
+- **Kalibracja**: Regularna, dokumentowana
+- **Traceability**: Ślad do wzorców
+- **Uncertainty**: Niepewność pomiarowa
+
+### Sampling
+- **Nyquist**: f_s ≥ 2 × f_max
+- **Anti-aliasing**: Filtry przed ADC
+- **Synchronizacja**: PTP/NTP
+
+## Zalecenia wdrożeniowe
+
+- Ustal politykę kalibracji i prowadź rejestry oraz wersjonowanie konfiguracji.
+- Stosuj PTP dla aplikacji wymagających korelacji zdarzeń ≤ 1 ms; NTP w pozostałych.
+- Dokumentuj parametry akwizycji (f_s, rozdzielczość ADC, filtry) wraz z danymi.
+
+## Mini‑ćwiczenie
+
+Zaprojektuj łańcuch pomiarowy dla: PV string (prąd/napięcie), pyranometr, czujnik temp. modułu oraz anemometr. Zdefiniuj: czujniki, kondycjonowanie, f_s, synchronizację i plan kalibracji.
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 10-15 minut
+
+**Punkty kluczowe**:
+- Synteza wiedzy o czujnikach
+- Praktyczne przykłady
+- Przygotowanie do W3
+
+**Q&A**: Odpowiedzi na pytania studentów.
+
+</details>
+
+

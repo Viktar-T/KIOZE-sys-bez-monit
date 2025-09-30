@@ -1,0 +1,70 @@
+title: "Mismatch, PID i hot‑spoty"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="⚠️ Mismatch" type="info">
+
+<KeyPoints title="📋 Objawy i powody">
+- Zabrudzenie, degradacja, cieniowanie → rozjazd I/V stringów
+</KeyPoints>
+
+<SupportingDetails title="🔧 Diagnostyka">
+- Porównania między‑stringowe, rozkłady, outliery
+</SupportingDetails>
+
+<InstructorNotes>
+Zwróć uwagę na sezonowość zabrudzeń i zacienień.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧪 PID" type="tip">
+
+<KeyPoints title="📋 Objawy i testy">
+- Spadek Voc/FF; zależność od polaryzacji i środowiska
+- Testy nocne, odwrócenie polaryzacji; monitoring trendów
+</KeyPoints>
+
+<SupportingDetails title="🧰 Wnioski">
+- Wczesna detekcja ogranicza degradację mocy
+</SupportingDetails>
+
+<InstructorNotes>
+Podkreśl wpływ wilgotności/temperatury na PID.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🔥 Hot‑spoty" type="success">
+
+<KeyPoints title="📋 Przyczyny i ryzyko">
+- Uszkodzone ogniwa/diody, punktowe zacienienie; ryzyko termiczne
+</KeyPoints>
+
+<SupportingDetails title="🔍 Diagnostyka">
+- Termowizja, analiza I–V, asymetrie prądu
+</SupportingDetails>
+
+<InstructorNotes>
+Zalecaj inspekcje IR i kontrolę złącz/połączeń.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

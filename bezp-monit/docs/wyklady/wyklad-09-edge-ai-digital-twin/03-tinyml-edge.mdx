@@ -1,0 +1,70 @@
+title: "TinyML na brzegu: klasyfikacja anomalii"
+sidebar_position: 3
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧠 TinyML — motywacja" type="info">
+
+<KeyPoints title="📋 Po co?">
+- Niskie opóźnienia, praca offline, mniejszy strumień danych
+</KeyPoints>
+
+<SupportingDetails title="🔧 Ograniczenia">
+- Pamięć/CPU, energia, prostota modeli
+</SupportingDetails>
+
+<InstructorNotes>
+Porównaj architekturę edge vs. cloud dla alarmów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚙️ Pipeline i wdrożenie" type="tip">
+
+<KeyPoints title="📋 Kroki">
+- Cechy (MFCC/statystyki), normalizacja, model (SVM/mała sieć)
+- Kwantyzacja int8, TFLite Micro, test na MCU
+</KeyPoints>
+
+<SupportingDetails title="🧰 Utrzymanie">
+- OTA update, monitoring dryftu cech
+</SupportingDetails>
+
+<InstructorNotes>
+Zwróć uwagę na walidację na urządzeniu (on‑device testing).
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- MCU Cortex‑M4 (128 kB RAM): F1=0.9, CPU ≤ 20%, 30 ms latency
+</KeyPoints>
+
+<SupportingDetails title="🔧 Kontekst">
+- Klasyfikator anomalii wibracyjnych
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproś do analizy kompromisów: dokładność vs. koszty.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,27 @@
+---
+title: "Synchronizacja czasu: NTP/PTP"
+sidebar_position: 9
+---
+
+# Synchronizacja czasu: NTP/PTP
+
+## Znaczenie synchronizacji
+
+- Porównywalność i korelacja zdarzeń między systemami (SCADA, BMS, czujniki IIoT).
+- SOE i analiza przyczynowa wymagają precyzyjnego i spójnego czasu.
+
+## Technologie
+
+- NTP: wystarczające dla trendów (ms–dziesiątki ms), prostsza implementacja.
+- PTP (IEEE 1588): precyzja sub‑ms/µs, wymagania dla sieci (switch’e PTP‑aware).
+
+## Praktyka
+
+- Jedna domena czasu; serwery czasu referencyjne; logi dryftu.
+- Znaczniki czasu w źródle akwizycji; unikanie re‑timestampingu w chmurze.
+
+## Przykład
+
+Analiza zdarzeń wyłączeń inwerterów i przekroczeń H₂S w biogazowni wymagała korelacji do ±100 ms. Migracja z NTP do PTP zredukowała błąd korelacji do ±5 ms.
+
+

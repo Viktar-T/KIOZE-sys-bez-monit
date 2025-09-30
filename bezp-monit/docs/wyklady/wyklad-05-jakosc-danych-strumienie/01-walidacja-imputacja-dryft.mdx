@@ -1,0 +1,74 @@
+title: "Walidacja, imputacja, dryft czujników"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧪 Walidacja danych" type="info">
+
+<KeyPoints title="📋 Reguły walidacji">
+- Zakresy (min/max) i reguły fizyczne (np. P_AC ≤ P_nom × f(G_POA,T))
+- Spójność międzykanałowa (∑I_string ≈ I_DC_inwertera)
+- Znaczniki jakości: good/bad/uncertain; jednoznaczna obsługa braków
+</KeyPoints>
+
+<SupportingDetails title="🔧 Implementacja">
+- Walidacja on‑ingest (edge/fog) i batch (cloud)
+- Logowanie odrzuceń i statystyki jakości danych
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż przykład walidacji PR z filtracją nocy i zer G_POA.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧩 Imputacja braków" type="tip">
+
+<KeyPoints title="📋 Zasady imputacji">
+- Krótkie przerwy: interpolacja liniowa; dłuższe: forward‑fill z flagą
+- Brak imputacji dla zdarzeń krytycznych i SOE
+</KeyPoints>
+
+<SupportingDetails title="🧰 Transparentność">
+- Oznaczaj dane imputowane; przechowuj oryginał i maskę jakości
+</SupportingDetails>
+
+<InstructorNotes>
+Podkreśl wpływ imputacji na KPI i alarmy — konieczna flagizacja.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📈 Dryft czujników" type="warning">
+
+<KeyPoints title="📋 Detekcja dryftu">
+- Porównanie do referencji, testy długookresowe
+- MAD/CUSUM do wykrywania zmian poziomu
+</KeyPoints>
+
+<SupportingDetails title="🔍 Przykład">
+- Pyranometr First Class: spadek 3–4%/półrocze → kalibracja → zgodność ±1%
+</SupportingDetails>
+
+<InstructorNotes>
+Zaplanuj harmonogram kalibracji i monitoruj wskaźniki jakości czujników.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

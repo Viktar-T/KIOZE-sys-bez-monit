@@ -1,0 +1,69 @@
+title: "Wersjonowanie konfiguracji i dashboardów"
+sidebar_position: 5
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧾 Dlaczego wersjonować" type="info">
+
+<KeyPoints title="📋 Cele">
+- Reproducowalność, audyt zmian, szybkie przywracanie
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zakres">
+- Źródła, dashboardy, alerty, provisioning, skrypty migracji
+</SupportingDetails>
+
+<InstructorNotes>
+Podkreśl kulturę „config as code” i przeglądy zmian (PR/CR).
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🛠️ Praktyki i narzędzia" type="tip">
+
+<KeyPoints title="📋 Techniki">
+- JSON + CLI/API, tagowanie i release’y, testy regresji paneli/KPI
+</KeyPoints>
+
+<SupportingDetails title="🧰 Repozytorium">
+- Struktura katalogów, templaty, skrypty CI do walidacji
+</SupportingDetails>
+
+<InstructorNotes>
+Zaprezentuj pipeline CI, który waliduje JSON dashboardów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład odtworzenia" type="success">
+
+<KeyPoints title="📋 Case">
+- Odtworzenie konfiguracji po awarii w 30 min; utrata danych ≤ 15 min
+</KeyPoints>
+
+<SupportingDetails title="🔍 Jak osiągnięto">
+- Retencje + replikacja + provisioning z repo
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproś do dyskusji o RPO/RTO i ich wpływie na projekt retencji/backupów.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,71 @@
+title: "LOTO i matryce Cause‑&‑Effect"
+sidebar_position: 4
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🔒 LOTO" type="info">
+
+<KeyPoints title="📋 Procedury">
+- Odłączanie źródeł energii (elektryczna, hydrauliczna, pneumatyczna) i blokady
+- Tagowanie, weryfikacja braku napięcia/ciśnienia, szkolenia i rejestry
+</KeyPoints>
+
+<SupportingDetails title="🔧 Wdrożenie">
+- Standardowe formularze i audyty; role i odpowiedzialności
+</SupportingDetails>
+
+<InstructorNotes>
+Omów typowe błędy w LOTO i sposoby ich unikania.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧮 Matryce Cause‑&‑Effect" type="tip">
+
+<KeyPoints title="📋 Zasady">
+- Mapowanie przyczyn (czujniki/stany) → efekty (akcje/odcięcia/powiadomienia)
+- Priorytety P1–P4, redundancja, czasy odpowiedzi
+</KeyPoints>
+
+<SupportingDetails title="🧰 Dokumentacja">
+- Wersjonowanie i przeglądy; testy funkcjonalne
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż przykład tabeli C&E i procedur testowych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład BESS" type="success">
+
+<KeyPoints title="📋 Case">
+- Dym + ΔT > próg → stop ładowania, otwarcie kontaktorów, wentylacja, powiadomienia
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Spójne i szybkie reakcje na zagrożenia
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do opracowania własnej matrycy C&E dla wybranego scenariusza.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

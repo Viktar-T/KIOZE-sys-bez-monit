@@ -1,0 +1,9 @@
+{
+  "label": "Projekty",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Projekty praktyczne i zadania do samodzielnej pracy"
+  },
+  "collapsed": false
+}

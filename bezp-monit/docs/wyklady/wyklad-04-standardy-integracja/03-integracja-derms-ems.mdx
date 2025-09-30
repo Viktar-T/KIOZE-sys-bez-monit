@@ -1,0 +1,27 @@
+---
+title: "Integracja z EMS/DERMS i VPP"
+sidebar_position: 3
+---
+
+# Integracja z EMS/DERMS i VPP
+
+## Definicje
+
+- EMS (Energy Management System): optymalizacja lokalna (bilansowanie, profile ładowania, koszty).
+- DERMS (Distributed Energy Resource Management System): koordynacja rozproszonych zasobów (portfel, ograniczenia sieciowe).
+- VPP (Virtual Power Plant): agregacja rozproszonych źródeł dla usług systemowych.
+
+## Wymagania integracyjne
+
+- Interfejsy: REST/GraphQL dla konfiguracji i raportów; MQTT/AMQP dla telemetrii.
+- Przepływy: setpointy mocy, ograniczenia ramp, statusy dostępności, raporty KPI.
+
+## Zasady bezpieczeństwa
+
+- Uwierzytelnianie i autoryzacja (role‑based); segmentacja sieci, TLS, audyt API.
+
+## Przykład
+
+Hybryda PV+BESS: DERMS wysyła setpointy na moc ładowania/rozładowania, EMS lokalnie realizuje ograniczenia, a telemetryczne KPI trafiają do raportów VPP tygodniowych.
+
+

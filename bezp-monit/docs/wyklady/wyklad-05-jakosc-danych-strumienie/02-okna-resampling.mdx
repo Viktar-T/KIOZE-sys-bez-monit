@@ -1,0 +1,72 @@
+title: "Okna czasowe, resampling, downsampling"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🪟 Okna czasowe" type="info">
+
+<KeyPoints title="📋 Wygładzanie">
+- Średnie/mediany kroczące; okna Hanning/Hamming
+- Rozmiar okna vs. dynamika procesu (PV ≠ wibracje)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Praktyka">
+- Oddzielne okna dla KPI i detektorów zdarzeń
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż wpływ długości okna na T_detect i FP.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⏱️ Resampling i synchronizacja" type="tip">
+
+<KeyPoints title="📋 Wspólna siatka czasu">
+- Agregacje: mean/max/p95; strefy czasowe i DST
+- Alignowanie strumieni (1 s/10 s/1 min)
+</KeyPoints>
+
+<SupportingDetails title="🧰 Implementacja">
+- Ustal źródło prawdy czasu; unikaj wielokrotnego timestampingu
+</SupportingDetails>
+
+<InstructorNotes>
+Zwróć uwagę na jitter zegarów i NTP/PTP.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🗜️ Downsampling i retencja" type="warning">
+
+<KeyPoints title="📋 Kaskady retencji">
+- Raw → 1‑min → 15‑min → godzinowe
+- Stabilność KPI vs. utrata detali
+</KeyPoints>
+
+<SupportingDetails title="📈 Przykład">
+- PR: przejście z 1 s → 1 min: −60% FP, bez utraty czułości na trendy
+</SupportingDetails>
+
+<InstructorNotes>
+Omów kompromisy i wpływ na analitykę anomalii krótkotrwałych.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

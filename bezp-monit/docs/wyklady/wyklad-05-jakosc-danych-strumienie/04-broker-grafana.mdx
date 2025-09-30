@@ -1,0 +1,71 @@
+title: "Brokerzy i wizualizacja (MQTT, Grafana)"
+sidebar_position: 4
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📡 MQTT — QoS i bezpieczeństwo" type="info">
+
+<KeyPoints title="📋 Zasady MQTT">
+- QoS 0/1/2, retained, projekt topiców (namespace, wildcardy)
+- TLS, uwierzytelnianie, ACL; store‑and‑forward na edge
+</KeyPoints>
+
+<SupportingDetails title="🔧 Niezawodność">
+- Retry/backoff, monitoring opóźnień i strat pakietów
+</SupportingDetails>
+
+<InstructorNotes>
+Omów różnice QoS pod kątem alarmów vs. telemetry.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📊 Grafana 10+ — provisioning i alerting" type="tip">
+
+<KeyPoints title="📋 Konfiguracja jako kod">
+- Provisioning źródeł, dashboard as code, contact points
+- Panele: time series, heatmap, adnotacje SOE
+</KeyPoints>
+
+<SupportingDetails title="🧰 Utrzymanie">
+- Szablony i foldery; prawa dostępu; wersjonowanie
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj demo: import dashboardu z repo i konfiguracja alertu.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔗 Integracja strumieni — przykład" type="success">
+
+<KeyPoints title="📋 Mosty i sanity checks">
+- MQTT→TSDB, TSDB→Grafana; check completeness i latency
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Onboarding nowej farmy PV: 2 dni → 4 godz. dzięki provisioningowi i templatom
+</SupportingDetails>
+
+<InstructorNotes>
+Porusz temat metryk SLO dla pipeline (opóźnienie, utrata, kompletność).
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

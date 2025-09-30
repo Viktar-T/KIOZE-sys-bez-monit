@@ -1,0 +1,52 @@
+title: "Korelacje wielowymiarowe"
+sidebar_position: 4
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🔗 Korelacje — analiza" type="info">
+
+<KeyPoints title="📋 Narzędzia">
+- Macierze korelacji, heatmapy; korelacje pozorne vs. przyczynowe
+- Metody robust: Spearman/Kendall przy outlierach
+</KeyPoints>
+
+<SupportingDetails title="🔧 Praktyka">
+- Segmentacja wg warunków (pora dnia, temp., prędkość wiatru)
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż różnice Pearson vs. Spearman na przykładowych danych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧭 Anomalie relacyjne" type="tip">
+
+<KeyPoints title="📋 Przykłady relacji">
+- PV: P_DC ↔ G_POA; Wiatr: T_łożyska ↔ vibr; BESS: SoC ↔ ΔT
+</KeyPoints>
+
+<SupportingDetails title="🔍 Interpretacja">
+- Zmiana relacji sugeruje inny mechanizm: np. chłodzenie vs. uszkodzenie łożyska
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj wykresy rozrzutu dla różnych segmentów warunków.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

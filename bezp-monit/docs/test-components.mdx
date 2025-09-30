@@ -1,0 +1,137 @@
+---
+title: "Test komponentów"
+sidebar_position: 99
+---
+
+# Test Custom Components
+
+:::info
+Ta strona testuje niestandardowe komponenty React. Usuń ją przed publikacją produkcyjną.
+:::
+
+## 1. Slide Components
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎓 Test Slide Info" type="info">
+
+<KeyPoints title="🌱 Testowe punkty kluczowe">
+
+- **Punkt 1** - Testowy opis
+- **Punkt 2** - Kolejny test
+- **Punkt 3** - Trzeci punkt testowy
+
+</KeyPoints>
+
+<InstructorNotes>
+**Testowe notatki wykładowcy:**
+
+To są notatki dla instruktora. Powinny być zwijane.
+
+**Kluczowe punkty:**
+- Test 1
+- Test 2
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="💡 Test Slide Tip" type="tip">
+
+<SupportingDetails title="🔍 Testowe szczegóły">
+
+To jest test komponentu SupportingDetails.
+
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚠️ Test Slide Warning" type="warning">
+
+<WarningBox title="🚨 Testowe ostrzeżenie">
+
+To jest test komponentu WarningBox.
+
+</WarningBox>
+
+</Slide>
+
+</SlideContainer>
+
+## 2. Quiz Component
+
+import { MultipleChoiceQuiz } from '@site/src/components/InteractiveQuiz';
+
+<MultipleChoiceQuiz
+  question="Testowe pytanie: Która odpowiedź jest prawidłowa?"
+  options={[
+    "Odpowiedź A (nieprawidłowa)",
+    "Odpowiedź B (PRAWIDŁOWA)",
+    "Odpowiedź C (nieprawidłowa)",
+    "Odpowiedź D (nieprawidłowa)"
+  ]}
+  correctAnswer={1}
+  explanation="Odpowiedź B jest prawidłowa, ponieważ jest to test komponentu Quiz."
+/>
+
+## 3. Literature List
+
+import LiteratureList from '@site/src/components/LiteratureList';
+
+<LiteratureList 
+  topic="monitoring"
+  title="📚 Testowa lista literatury - Monitoring"
+/>
+
+<LiteratureList 
+  topic="security"
+  title="🔒 Testowa lista literatury - Bezpieczeństwo"
+/>
+
+## 4. Info Boxes
+
+<InfoBox title="ℹ️ Test InfoBox">
+
+To jest test komponentu InfoBox. Powinien mieć fioletowe tło.
+
+</InfoBox>
+
+<SuccessBox title="✅ Test SuccessBox">
+
+To jest test komponentu SuccessBox. Powinien mieć zielone tło.
+
+</SuccessBox>
+
+---
+
+## ✅ Weryfikacja
+
+Jeśli widzisz tę stronę i wszystkie komponenty się wyświetlają (nawet bez stylowania), oznacza to, że komponenty działają poprawnie!
+
+**Oczekiwane rezultaty:**
+- ✅ Slide containers są widoczne
+- ✅ Notatki wykładowcy są zwijane/rozwijane
+- ✅ Quiz można wypełnić i sprawdzić
+- ✅ Lista literatury się wyświetla
+- ✅ Separatory są widoczne
+- ⚠️ Stylowanie będzie dodane w Prompt 08
+
+**Aby usunąć tę stronę:**
+```bash
+rm docs/test-components.mdx
+```

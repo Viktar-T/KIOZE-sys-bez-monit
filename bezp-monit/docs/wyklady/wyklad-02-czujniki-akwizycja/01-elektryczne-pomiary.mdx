@@ -1,0 +1,76 @@
+title: "Pomiary elektryczne: DC/AC, poziom stringów PV"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="⚡ Pomiary elektryczne: zakres i cel" type="info">
+
+<KeyPoints title="📋 Co mierzymy?">
+- Prądy i napięcia w torach DC (PV, BESS) i AC (po stronie inwerterów)
+- Poziom stringów PV dla diagnostyki mismatch/zabrudzeń
+- Bezpieczne i wiarygodne torowanie pomiarowe
+</KeyPoints>
+
+<SupportingDetails title="🔧 Techniczny kontekst">
+- Cel: wiarygodne KPI i szybka diagnostyka
+- Integracja z BMS/SCADA, zgodność z kategoriami pomiarowymi CAT
+</SupportingDetails>
+
+<InstructorNotes>
+Podkreśl związek jakości pomiarów z wiarygodnością KPI (PR, Availability).
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔌 Czujniki i metody" type="tip">
+
+<KeyPoints title="📋 Dobór czujników">
+- DC: boczniki precyzyjne, przetworniki Halla, przekładniki DC
+- AC: CT i cęgi Rogowskiego (szerokie pasmo, łatwy montaż)
+- Napięcie: dzielniki rezystancyjne, izolowane przetworniki różnicowe
+</KeyPoints>
+
+<SupportingDetails title="🧪 Wymagania i BHP">
+- Pasmo i klasa; izolacja, EMC; dryft temperaturowy i kalibracja
+- P‑poż. w DC: wyłączniki, SPD, separacja tras kablowych
+</SupportingDetails>
+
+<InstructorNotes>
+Zwróć uwagę na błędy montażowe złącz DC jako częste źródło strat i ryzyk p‑poż.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📈 Przykład diagnostyczny" type="success">
+
+<KeyPoints title="📋 Studium przypadku">
+- 24 stringi PV: pomiary DC (±1%) ujawniły 3 outliery −18–25%
+- Diagnoza: zabrudzenie/zacienienie → interwencja serwisowa
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Wzrost produkcji ~4% po czyszczeniu i korekcie zieleni
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj studentom schemat decyzji: detekcja outlierów → weryfikacja wizyjna → działania.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

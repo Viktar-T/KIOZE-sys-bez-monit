@@ -1,0 +1,69 @@
+title: "Scenariusze what‑if i testy alarmów"
+sidebar_position: 5
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧪 Scenariusze what‑if" type="info">
+
+<KeyPoints title="📋 Zakres">
+- Zacienienie (−15% G_POA), awaria stringu, ograniczenie OSD, spadek SoH 10 pp
+</KeyPoints>
+
+<SupportingDetails title="🔧 Ustawienia">
+- Parametry scenariuszy i warunki początkowe
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do zdefiniowania metryk sukcesu dla każdego scenariusza.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔔 Testy alarmów" type="tip">
+
+<KeyPoints title="📋 Walidacja">
+- Progi i reguły korelacyjne na danych twin; F1/T_detect bez ryzyka
+</KeyPoints>
+
+<SupportingDetails title="🧰 Wnioski">
+- Dostosuj progi do warunków (np. T_mod) by ograniczyć FP
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż raport porównujący wersje reguł i wyniki metryk.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład korekty" type="success">
+
+<KeyPoints title="📋 Case">
+- Zbyt restrykcyjny próg PR w wysokiej T → korekta o T_mod → −40% FP
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Mniej fałszywych alarmów przy zachowaniu czułości
+</SupportingDetails>
+
+<InstructorNotes>
+Omów wpływ temperatury na PR i konieczność adaptacji reguł.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

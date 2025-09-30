@@ -1,0 +1,9 @@
+{
+  "label": "Literatura",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Literatura przedmiotu, referencje i dodatkowe materiały"
+  },
+  "collapsed": true
+}

@@ -1,0 +1,31 @@
+---
+title: "Typy danych i źródła"
+sidebar_position: 3
+---
+
+# Typy danych i źródła
+
+## Typy danych
+
+- Dane ciągłe (czasoszeregowe): prądy, napięcia, temperatury, wibracje, przepływy.
+- Zdarzenia i stany: alarmy, potwierdzenia, przełączenia, SOE (Sequence of Events).
+- Metadane: konfiguracje, wersje oprogramowania, kalibracje czujników.
+
+## Źródła danych
+
+- Inwertery (PV): moc AC/DC, napięcia/string-level, błędy, temperatury radiatorów.
+- BMS (BESS): SoC/SoH, napięcia cel, ΔT pakietów, prądy ładowania/rozładowania.
+- SCADA/PLC: tagi procesowe, stany układów, logika alarmów, liczniki.
+- Czujniki IIoT: pyranometry, anemometry, czujniki gazów (CH₄, H₂, H₂S), czujniki poziomu i ciśnienia.
+
+## Jakość i spójność
+
+- Synchronizacja czasu (NTP/PTP), spójne strefy czasowe i odstępy próbkowania.
+- Normalizacja jednostek (np. W/m² → kW/m²), walidacja zakresów, obsługa braków danych.
+- Ślad metrologiczny: kalibracje, niepewność pomiarowa, dryft.
+
+## Przykład
+
+Farma wiatrowa: z turbin SCADA eksportuje prędkość wiatru, moc, kierunek, temperatury przekładni; dodatkowe czujniki drganiowe dostarczają widma w paśmie 10 Hz–10 kHz. Integracja obu strumieni umożliwia wczesną detekcję uszkodzeń łożysk.
+
+

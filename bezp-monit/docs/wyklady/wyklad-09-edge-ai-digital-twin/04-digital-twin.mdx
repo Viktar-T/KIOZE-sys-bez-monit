@@ -1,0 +1,71 @@
+title: "Prosty digital twin: PV–inwerter–BESS"
+sidebar_position: 4
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🧩 Digital twin — cel" type="info">
+
+<KeyPoints title="📋 Zakres">
+- Uproszczona symulacja przepływu mocy; testy alarmów bez ryzyka
+</KeyPoints>
+
+<SupportingDetails title="🔧 Interfejs">
+- Symulowane MQTT/REST publikujące dane jak urządzenia
+</SupportingDetails>
+
+<InstructorNotes>
+Wytłumacz, jak twin wspiera testy konfiguracji alertów i sterowania.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚙️ Składniki modelu" type="tip">
+
+<KeyPoints title="📋 Elementy">
+- PV: model mocy (G_POA, T_mod)
+- Inwerter: sprawność vs. obciążenie/T
+- BESS: Thevenin + strategie (time‑shift, peak‑shaving)
+</KeyPoints>
+
+<SupportingDetails title="🧰 Zasilanie danymi">
+- Profil irradiancji/obciążenia, parametry temperaturowe
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do walidacji modelu na krótkich oknach danych rzeczywistych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład what‑if" type="success">
+
+<KeyPoints title="📋 Case">
+- Ograniczenie mocy OSD −20%: BESS kompensuje 30 min przy limitach prądów
+</KeyPoints>
+
+<SupportingDetails title="🔍 Wniosek">
+- Test potwierdza skuteczność strategii sterowania
+</SupportingDetails>
+
+<InstructorNotes>
+Omów ograniczenia modelu i potrzebę kalibracji.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,25 @@
+---
+title: "Telemetria do OSD/agregatorów i VPP"
+sidebar_position: 4
+---
+
+# Telemetria do OSD/agregatorów i VPP
+
+## Zakres danych
+
+- Moce czynne/bierne, napięcia, prądy, stany rozdzielni; sygnały dostępności.
+- Zdarzenia SOE, ograniczenia sieciowe, polecenia redukcji mocy (curtailment).
+
+## Interfejsy
+
+- IEC 60870‑5‑104, czasem DNP3; kanały zapasowe, QoS i SLA dla łączy.
+
+## Praktyka raportowa
+
+- Okna czasowe (1 min/15 min), agregacje, znaczniki jakości, kompletność.
+
+## Przykład
+
+Farma wiatrowa: raporty 15‑min do OSD z CF i dostępnością; w sytuacjach przeciążenia sieci OSD wysyła polecenie ograniczenia mocy o 20% — realizowane przez EMS, potwierdzane telemetrią.
+
+

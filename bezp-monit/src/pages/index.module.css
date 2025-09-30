@@ -16,8 +16,25 @@
   }
 }
 
+.hero__info {
+  margin: 2rem 0;
+  font-size: 1.1rem;
+}
+
+.hero__info strong {
+  color: var(--ifm-color-primary-lightest);
+}
+
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero__info {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
 }

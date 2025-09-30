@@ -1,0 +1,71 @@
+title: "CMS: widma drgań turbin wiatrowych"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎛️ CMS — czujniki i lokalizacje" type="info">
+
+<KeyPoints title="📋 Gdzie mierzyć?">
+- Akcelerometry: łożyska główne, przekładnia, generator
+- Czujniki prędkości drgań: gondola
+</KeyPoints>
+
+<SupportingDetails title="🔧 Montaż">
+- Kierunki osi pomiaru, mocowanie, ekranowanie przewodów
+</SupportingDetails>
+
+<InstructorNotes>
+Omów kompromis między liczbą czujników a pokryciem diagnostycznym.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📈 Analiza widmowa" type="tip">
+
+<KeyPoints title="📋 Metody">
+- FFT, cepstrum, obwiednia
+- Pasma: BPFO/BPFI (łożyska), mesh (przekładnia), harmoniczne
+</KeyPoints>
+
+<SupportingDetails title="🔍 Wskaźniki">
+- Trendy RMS/crest factor; wskaźniki obwiedni dla wczesnych uszkodzeń
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż przykładowe widmo i identyfikację side‑bands.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🧩 Przykład diagnostyczny" type="success">
+
+<KeyPoints title="📋 Case">
+- Wzrost mesh + side‑bands → zużycie zębów przekładni
+</KeyPoints>
+
+<SupportingDetails title="🔧 Efekt">
+- Wymiana planowa uniknęła uszkodzeń wtórnych generatora i przestoju
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj analizę trendów z progami adaptacyjnymi dla RMS.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,71 @@
+title: "BESS: thermal runaway i sekwencje wyłączeń"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="⚠️ Thermal runaway — mechanizm" type="danger">
+
+<KeyPoints title="📋 Czynniki">
+- Przeładowanie, uszkodzenia mechaniczne, defekty, wysoka temperatura
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zjawisko">
+- Niekontrolowana reakcja egzotermiczna i kaskada
+</SupportingDetails>
+
+<InstructorNotes>
+Omów różnice chemii ogniw i profil ryzyka.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🛡️ Detekcja, prewencja i sekwencje" type="tip">
+
+<KeyPoints title="📋 Zasady">
+- Monitoruj ΔT, gazy (H₂, CO), dym; czujniki w modułach/szafach
+- Ograniczenia C‑rate, okna SoC, balansowanie; HVAC/wentylacja
+- Sekwencja: zatrzymanie I → kontaktory → wentylacja/gaśnice → powiadomienie/ewakuacja
+</KeyPoints>
+
+<SupportingDetails title="🔍 Integracja">
+- BMS/EMS + p‑poż.; matryce Cause‑&‑Effect
+</SupportingDetails>
+
+<InstructorNotes>
+Zaprezentuj schemat C&E dla dwóch scenariuszy.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- ΔT 12°C/min przy stałym ładowaniu → sekwencja zatrzymania i otwarcia kontaktorów
+</KeyPoints>
+
+<SupportingDetails title="🔧 Efekt">
+- Brak eskalacji do pożaru
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do omówienia DPIA ryzyk i planów ewakuacyjnych.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

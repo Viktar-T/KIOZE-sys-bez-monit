@@ -1,0 +1,70 @@
+title: "Prognoza krótkoterminowa produkcji"
+sidebar_position: 5
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📈 Metody prognozy krótkoterminowej" type="info">
+
+<KeyPoints title="📋 Metody">
+- Persistencja + korekty meteo (nowcasting chmur, NWP)
+- ARIMA, regresje, GBDT; wejścia: GHI/POA, T, wiatr
+</KeyPoints>
+
+<SupportingDetails title="🔧 Dane">
+- Jakość i synchronizacja danych wejściowych kluczowa
+</SupportingDetails>
+
+<InstructorNotes>
+Porównaj proste modele vs. ML na krótkich horyzontach.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧪 Walidacja i metryki" type="tip">
+
+<KeyPoints title="📋 Ocena">
+- MAE, RMSE, MAPE; walidacja krocząca; sezonowe retrainy
+</KeyPoints>
+
+<SupportingDetails title="🧰 Praktyka">
+- Utrzymuj zestaw walidacyjny i monitoruj dryft danych
+</SupportingDetails>
+
+<InstructorNotes>
+Wyjaśnij różnice interpretacyjne MAPE vs. RMSE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🔍 Zastosowania i przykład" type="success">
+
+<KeyPoints title="📋 Use‑cases">
+- Operacje, bidding, sterowanie BESS (time‑shift/peak‑shaving)
+</KeyPoints>
+
+<SupportingDetails title="🧩 Case">
+- Nowcasting z kamer nieba: −20–25% MAPE (horyzont 15‑min) dla farmy 5 MW
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do oceny opłacalności integracji nowcastingu.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

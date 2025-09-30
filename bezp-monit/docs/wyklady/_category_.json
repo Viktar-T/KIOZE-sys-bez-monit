@@ -1,0 +1,9 @@
+{
+  "label": "Wykłady",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Wykłady kursowe uporządkowane według tematów - 10 wykładów, 20 godzin"
+  },
+  "collapsed": false
+}

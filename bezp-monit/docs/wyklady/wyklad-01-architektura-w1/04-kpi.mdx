@@ -1,0 +1,47 @@
+---
+title: "KPI: PR, Availability, CF, SoH/SoC, OEE"
+sidebar_position: 4
+---
+
+# KPI: PR, Availability, CF, SoH/SoC, OEE
+
+## PV — Performance Ratio (PR)
+
+**Definicja**: PR = E_rzecz / E_teor, gdzie E_teor uwzględnia irradiancję, temperaturę modułów i parametry instalacji.
+
+**Wskazówki praktyczne**:
+- Wykorzystuj pyranometr referencyjny i kompensację temperaturową.
+- Analizuj PR w oknach ruchomych (np. doba/tydzień) i segmentuj wg pory dnia.
+
+## Wiatrowe — Capacity Factor (CF)
+
+CF = E_rzecz / (P_nominalna × czas). Wartość zależy od klas wiatru i dostępności.
+
+**Analiza**: Porównuj CF między turbinami oraz względem rozkładu wiatrów (róże wiatru). 
+
+## BESS — SoC i SoH
+
+- SoC: estymacja przez bilans ładunku (Coulomb counting) skorygowany modelem (np. Thevenin). 
+- SoH: degradacja pojemności i wzrost rezystancji wewnętrznej w czasie.
+
+**Praktyka**: Monitoruj różnice temperatur ΔT i balansowanie cel; odchylenia sygnalizują degradację lub usterki.
+
+## Biogaz — OEE i kluczowe wskaźniki procesu
+
+- OEE = Dostępność × Wydajność × Jakość (dopasowane do procesu).
+- Wskaźniki: stężenie CH₄, H₂S, przepływ i efektywność pochodni, stabilność fermentacji.
+
+## Dostępność (Availability)
+
+Definicja operacyjna: czas pracy / (czas pracy + przestoje planowane i nieplanowane). 
+
+**Eskalacja**: Spadek dostępności poniżej progu SLA powinien inicjować przegląd przyczyn i plan poprawy.
+
+## Przykład zbiorczy
+
+Instalacja hybrydowa PV + BESS: 
+- PR spada o 4 pp w godzinach południowych → podejrzenie soilingu.
+- SoC wykonuje głębokie cykle >80% DOD → korekta strategii ładowania.
+- Availability spada z 99% do 97.5% przez powtarzające się alarmy inwertera → przegląd firmware i okablowania DC.
+
+

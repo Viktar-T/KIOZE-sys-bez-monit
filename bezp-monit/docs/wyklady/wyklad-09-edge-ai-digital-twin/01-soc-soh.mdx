@@ -1,0 +1,71 @@
+title: "Estymacja SoC/SoH: Rint, Thevenin i bilans ładunku"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🔌 Modele elektryczne" type="info">
+
+<KeyPoints title="📋 Rint vs. Thevenin">
+- Rint: E + R_int — prosty, szybki, gorsza dynamika
+- Thevenin: E + R₀ + RC — lepsze transjenty
+</KeyPoints>
+
+<SupportingDetails title="🔧 Dobór">
+- Wybór modelu vs. wymagania estymacji i zasoby obliczeniowe
+</SupportingDetails>
+
+<InstructorNotes>
+Porównaj błędy rekonstrukcji napięcia na sekwencji impulsów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔋 SoC i SoH" type="tip">
+
+<KeyPoints title="📋 Estymacja">
+- SoC: Coulomb counting + OCV + filtry (Kalman)
+- SoH: spadek C_nom i wzrost R_int; testy impulsowe i dopasowanie
+</KeyPoints>
+
+<SupportingDetails title="🧰 Korekcje">
+- Temperatura, starzenie; walidacja na cyklach dynamicznych
+</SupportingDetails>
+
+<InstructorNotes>
+Wspomnij o balansowaniu i wpływie na obserwowalność.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- Li‑ion 100 kWh: EKF (Thevenin) ↓ błąd SoC z 4.5% → 1.8%
+</KeyPoints>
+
+<SupportingDetails title="🔍 Warunki">
+- Cykl dynamiczny WLTP‑like; kalibracja modelu RC
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do eksperymentu na danych laboratoryjnych.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,72 @@
+title: "Studia przypadków: PV, wiatr, BESS"
+sidebar_position: 6
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="☀️ PV: PR i soiling" type="info">
+
+<KeyPoints title="📋 Objawy i metoda">
+- Spadek PR w południe przy wysokim G_POA
+- Progi adaptacyjne PR(G_POA,T_mod) + CUSUM; weryfikacja IR
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- +6 pp PR po myciu/przycinaniu drzew
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj analizę przed/po z wykresami.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="💨 Wiatr: łożyska nacelle" type="tip">
+
+<KeyPoints title="📋 Objawy i metoda">
+- Wzrost BPFI/BPFO; nieznaczny wzrost T
+- FFT i trend RMS; reguła vibr + T
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Wymiana planowa → brak uszkodzeń wtórnych przekładni
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż widma i lokalizację pasm łożyskowych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🔋 BESS: nagrzewanie ogniw" type="success">
+
+<KeyPoints title="📋 Objawy i metoda">
+- Lokalny wzrost ΔT i rozjazd V_cell przy stałym obciążeniu
+- Progi ΔT(SoC,I) + PCA na [V_cell,T_cell,R_est]
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Wyłączenie segmentu; ochrona sąsiednich cel
+</SupportingDetails>
+
+<InstructorNotes>
+Omów znaczenie mapy cieplnej pakietu i korelacji z prądem.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

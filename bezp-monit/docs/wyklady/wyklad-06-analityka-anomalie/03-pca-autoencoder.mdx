@@ -1,0 +1,71 @@
+title: "PCA i autoenkoder — koncepcje"
+sidebar_position: 3
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📊 PCA — redukcja wymiarowości" type="info">
+
+<KeyPoints title="📋 Zasada">
+- Projekcja na składowe główne; błąd rekonstrukcji jako wskaźnik anomalii
+- Wymaga standaryzacji cech i interpretacji składowych
+</KeyPoints>
+
+<SupportingDetails title="🔧 Użycie">
+- Odkrywanie struktur i outlierów w danych procesowych
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż wykres PC1 vs PC2 z oznaczeniem outlierów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧠 Autoenkoder — rekonstrukcja" type="tip">
+
+<KeyPoints title="📋 Koncepcja">
+- Sieć ucząca się rekonstrukcji; anomalia = wysoki błąd
+- Ryzyko przeuczenia; walidacja out‑of‑sample i monitoring dryftu
+</KeyPoints>
+
+<SupportingDetails title="🧰 Wdrożenie">
+- Małe modele (TinyML) dla edge; kwantyzacja i ograniczenia pamięci
+</SupportingDetails>
+
+<InstructorNotes>
+Porównaj AE z PCA: koszty, złożoność, interpretowalność.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🔍 Praktyka flotowa" type="success">
+
+<KeyPoints title="📋 Wektor cech PV">
+- [G_POA, T_mod, P_AC, P_DC, PR] → PCA/AE wykrywa outliery stringów/inwerterów
+</KeyPoints>
+
+<SupportingDetails title="🔧 Notatki">
+- Walidacja krzyżowa; unikanie data leakage; aktualizacja modeli
+</SupportingDetails>
+
+<InstructorNotes>
+Zaproponuj mini‑ćwiczenie na danych z W5/C3.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

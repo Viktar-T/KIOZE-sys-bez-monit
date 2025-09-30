@@ -1,0 +1,112 @@
+{
+  "monitoring": [
+    {
+      "authors": "Borlase, S. G.",
+      "year": "2017",
+      "title": "Smart Grids: Advanced Technologies and Solutions",
+      "source": "CRC Press",
+      "link": "https://www.crcpress.com/Smart-Grids-Advanced-Technologies-and-Solutions-Second-Edition/Borlase/p/book/9781498772068"
+    },
+    {
+      "authors": "Masters, G. M.",
+      "year": "2013",
+      "title": "Renewable and Efficient Electric Power Systems",
+      "source": "Wiley-IEEE Press",
+      "link": "https://ieeexplore.ieee.org/book/6267346"
+    },
+    {
+      "authors": "IEC",
+      "year": "2023",
+      "title": "IEC 61850 - Communication networks and systems for power utility automation",
+      "source": "International Electrotechnical Commission",
+      "link": "https://webstore.iec.ch/publication/6028"
+    }
+  ],
+  "scada": [
+    {
+      "authors": "Boyer, S. A.",
+      "year": "2010",
+      "title": "SCADA: Supervisory Control and Data Acquisition",
+      "source": "ISA - The Instrumentation, Systems and Automation Society",
+      "link": "https://www.isa.org/"
+    },
+    {
+      "authors": "Clarke, G., Reynders, D., Wright, E.",
+      "year": "2004",
+      "title": "Practical Modern SCADA Protocols: DNP3, 60870.5 and Related Systems",
+      "source": "Newnes",
+      "link": ""
+    }
+  ],
+  "security": [
+    {
+      "authors": "IEC",
+      "year": "2021",
+      "title": "IEC 62443 - Security for industrial automation and control systems",
+      "source": "International Electrotechnical Commission",
+      "link": "https://webstore.iec.ch/publication/33615"
+    },
+    {
+      "authors": "Stouffer, K., Falco, J., Scarfone, K.",
+      "year": "2011",
+      "title": "Guide to Industrial Control Systems (ICS) Security",
+      "source": "NIST Special Publication 800-82",
+      "link": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r2.pdf"
+    }
+  ],
+  "solar": [
+    {
+      "authors": "Messenger, R. A., Abtahi, A.",
+      "year": "2017",
+      "title": "Photovoltaic Systems Engineering",
+      "source": "CRC Press",
+      "link": "https://www.crcpress.com/Photovoltaic-Systems-Engineering-Fourth-Edition/Messenger-Abtahi/p/book/9781498772778"
+    },
+    {
+      "authors": "Teodorczyk, A.",
+      "year": "2020",
+      "title": "Odnawialne źródła energii",
+      "source": "Oficyna Wydawnicza Politechniki Warszawskiej",
+      "link": ""
+    }
+  ],
+  "analytics": [
+    {
+      "authors": "McKinney, W.",
+      "year": "2022",
+      "title": "Python for Data Analysis: Data Wrangling with pandas, NumPy, and Jupyter",
+      "source": "O'Reilly Media",
+      "link": "https://wesmckinney.com/book/"
+    },
+    {
+      "authors": "Géron, A.",
+      "year": "2022",
+      "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow",
+      "source": "O'Reilly Media",
+      "link": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"
+    }
+  ],
+  "databases": [
+    {
+      "authors": "InfluxData",
+      "year": "2024",
+      "title": "InfluxDB Documentation",
+      "source": "Official Documentation",
+      "link": "https://docs.influxdata.com/"
+    },
+    {
+      "authors": "Timescale Inc.",
+      "year": "2024",
+      "title": "TimescaleDB Documentation",
+      "source": "Official Documentation",
+      "link": "https://docs.timescale.com/"
+    },
+    {
+      "authors": "Grafana Labs",
+      "year": "2024",
+      "title": "Grafana Documentation",
+      "source": "Official Documentation",
+      "link": "https://grafana.com/docs/"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+title: "Irradiancja i temperatura modułów"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="☀️ Irradiancja — pomiar i standardy" type="info">
+
+<KeyPoints title="📋 ISO 9060 i montaż">
+- Klasy: Secondary Standard, First/Second Class
+- Montaż: POA vs. płaszczyzna pozioma; zacienienia i odbicia
+- Kalibracja i korekcje kątowe
+</KeyPoints>
+
+<SupportingDetails title="🔧 Dobre praktyki">
+- Czyszczenie i inspekcje; rejestr kalibracji
+- Ekranowanie przewodów, testy spójności z referencją
+</SupportingDetails>
+
+<InstructorNotes>
+Przypomnij o wpływie zabrudzeń pyranometru na zawyżanie SI i zaniżanie PR.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🌡️ Temperatura modułów i KPI" type="tip">
+
+<KeyPoints title="📋 Pomiar T_mod">
+- PT100/1000 lub NTC na tylnej ściance; klejenie/taśma przewodząca ciepło
+- Kompensacja temperaturowa mocy, uśrednianie 1–5 min
+</KeyPoints>
+
+<SupportingDetails title="📈 Integracja do PR">
+- PR wymaga zgrania G_POA i T_mod z produkcją inwerterów
+- Synchronizacja czasu, te same okna agregacji
+</SupportingDetails>
+
+<InstructorNotes>
+Zaznacz znaczenie spójności stref czasowych i opóźnień akwizycji.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔍 Przykład diagnostyczny" type="success">
+
+<KeyPoints title="📋 Case">
+- Spadek PR ~10% w południe przy wysokim G_POA
+- Termowizja: przegrzewanie złączek MC4 (rezystancja styków)
+</KeyPoints>
+
+<SupportingDetails title="🛠️ Działanie">
+- Wymiana złącz, przegląd połączeń DC; powrót PR do normy
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do zaplanowania cyklicznych inspekcji IR w harmonogramie M&R.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

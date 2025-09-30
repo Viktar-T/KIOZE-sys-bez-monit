@@ -1,0 +1,72 @@
+title: "Podstawy IEC 61850 i IEC 60870‑5‑104"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📡 IEC 61850 — przegląd" type="info">
+
+<KeyPoints title="📋 Model i usługi">
+- Logical Nodes (LN) → DO → DA: warstwowy model informacji
+- Usługi: GOOSE (wydarzeniowe, niskie opóźnienia), MMS, Sampled Values
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zastosowania">
+- Stacje elektroenergetyczne, integracja urządzeń polowych, automatyka
+</SupportingDetails>
+
+<InstructorNotes>
+Wytłumacz różnice GOOSE vs. MMS i kiedy które stosować.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🌐 IEC 60870‑5‑104 — telemechanika" type="tip">
+
+<KeyPoints title="📋 Charakterystyka">
+- TCP/IP, ramki monitorujące/sterujące, ASDU i IOA
+- Szeroko używany przez OSD/TSO, prosty model danych
+</KeyPoints>
+
+<SupportingDetails title="🧰 Integracja">
+- Bramy: mapowanie OPC UA/MQTT ↔ 61850/104
+- SOE, synchronizacja czasu, redundancja łączy
+</SupportingDetails>
+
+<InstructorNotes>
+Zaznacz wymagania czasowe SOE i znaczenie PTP/NTP.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔌 Przykład integracji" type="success">
+
+<KeyPoints title="📋 Case: farma PV 20 MW">
+- Do OSD: IEC‑104 statusy i moce; wewnętrznie: OPC UA
+</KeyPoints>
+
+<SupportingDetails title="🔍 SOE">
+- Zdarzenia krytyczne rejestrowane z precyzyjną synchronizacją
+</SupportingDetails>
+
+<InstructorNotes>
+Omów ścieżkę danych i punkty normalizacji.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

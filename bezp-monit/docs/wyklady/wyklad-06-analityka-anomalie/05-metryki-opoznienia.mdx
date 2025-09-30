@@ -1,0 +1,70 @@
+title: "Metryki alarmów i opóźnienia detekcji"
+sidebar_position: 5
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📏 Metryki jakości alarmów" type="info">
+
+<KeyPoints title="📋 Definicje">
+- Precision, Recall, F1; krzywe PR/ROC
+- Koszt FP vs. koszt opóźnień
+</KeyPoints>
+
+<SupportingDetails title="🔧 Mierzenie">
+- Walidacja na danych etykietowanych; raporty okresowe
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż macierz pomyłek i wpływ progów na F1.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⏳ Opóźnienia i metryki operacyjne" type="tip">
+
+<KeyPoints title="📋 Definicje">
+- T_detect = t_alarm − t_start; MTTA, MTTR
+</KeyPoints>
+
+<SupportingDetails title="🧰 Kompromisy">
+- Szybciej ≠ lepiej: rośnie FP i obciążenie zespołu
+</SupportingDetails>
+
+<InstructorNotes>
+Omów SLO dla alarmowania (np. T_detect p95, MTTA). 
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład BESS" type="success">
+
+<KeyPoints title="📋 Efekt zmian progu">
+- −25% T_detect, +10% FP → optymalizacja F1 przy stałym MTTA
+</KeyPoints>
+
+<SupportingDetails title="🔍 Wniosek">
+- Zbalansować czułość i obciążenie operacyjne zespołu
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do A/B testów konfiguracji alertów.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

@@ -1,0 +1,72 @@
+title: "Krzywe I–V i estymacja MPP"
+sidebar_position: 1
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🔋 Krzywa I–V — podstawy" type="info">
+
+<KeyPoints title="📋 Punkty i wpływy">
+- Isc, Voc, MPP (Vmpp, Impp), FF
+- Wpływ G_POA i temperatury; derate temperaturowy
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zastosowanie">
+- Ocena kondycji modułów/stringów; benchmarking
+</SupportingDetails>
+
+<InstructorNotes>
+Przypomnij zależności Voc~T i Isc~G.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📐 Pomiary i rekonstrukcja" type="tip">
+
+<KeyPoints title="📋 Metody">
+- Sweepy I–V (online/offline); estymacja parametrów modelu
+- Wskaźniki R_s i R_sh dla diagnozy (PID, hot‑spot, złącza)
+</KeyPoints>
+
+<SupportingDetails title="🧰 Narzędzia">
+- Rejestratory I–V; modele jedno‑ i dwuwęzłowe
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż przykładową krzywą i lokalizację MPP.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="🎯 MPPT i diagnostyka" type="success">
+
+<KeyPoints title="📋 Metody MPPT">
+- Perturb‑and‑observe, incremental conductance; tracking efficiency
+- Różnice MPP vs. AC → straty DC/AC lub ograniczenia mocy
+</KeyPoints>
+
+<SupportingDetails title="🔍 Case">
+- FF ↓ 6 pp i R_s ↑ → problem z złączami MC4/przewodami DC
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do próbkowania 10% stringów per miesiąc.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

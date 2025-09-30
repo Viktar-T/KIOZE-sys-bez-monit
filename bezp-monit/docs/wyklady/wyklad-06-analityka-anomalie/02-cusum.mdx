@@ -1,0 +1,70 @@
+title: "CUSUM — detekcja zmian poziomu"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📉 CUSUM — idea" type="info">
+
+<KeyPoints title="📋 Koncepcja">
+- Kumulacja odchyleń od średniej referencyjnej (μ₀)
+- Detekcja skoków średniej; osobno sumy +/−
+</KeyPoints>
+
+<SupportingDetails title="🔧 Parametry">
+- k (nieczułość), h (próg decyzji); strojenie na danych (ROC/PR)
+</SupportingDetails>
+
+<InstructorNotes>
+Wspomnij o stabilizacji wariancji (np. Box‑Cox) przed CUSUM.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚙️ Implementacja" type="tip">
+
+<KeyPoints title="📋 Kroki">
+- Filtracja, normalizacja → liczenie sum +/− → reset po alarmie
+</KeyPoints>
+
+<SupportingDetails title="🧪 Walidacja">
+- A/B test vs. próg stały; analiza T_detect i FP
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż wykres sumy skumulowanej i moment przekroczenia h.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład PR" type="success">
+
+<KeyPoints title="📋 Efekt">
+- Spadek PR o ~5 pp/2h: CUSUM wykrył szybciej niż próg stały 60‑min → −35% MTTA
+</KeyPoints>
+
+<SupportingDetails title="🔍 Kontekst">
+- Warunki stabilnego G_POA; filtr nocy i szumów krótkookresowych
+</SupportingDetails>
+
+<InstructorNotes>
+Podkreśl wymóg stabilnych warunków referencyjnych dla interpretacji.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

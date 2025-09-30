@@ -1,0 +1,110 @@
+---
+title: "Rola monitoringu w OZE"
+sidebar_position: 1
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Dlaczego monitoring?" type="info">
+
+<KeyPoints title="📋 Kluczowe tezy">
+- ✅ Monitoring jest inwestycją z typowym ROI 1–2 lata
+- 🔍 Wczesna detekcja anomalii redukuje koszty i przestoje
+- 🔒 Krytyczny dla bezpieczeństwa (BESS, biogaz, elektryka)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Kontekst i przykłady">
+- 📈 Optymalizacja produkcji przy zmiennych warunkach środowiskowych
+- 🧰 Predykcyjne utrzymanie zamiast reaktywnego
+- 📚 Zgodność z normami (IEC 62443, IEC 61508, ATEX)
+</SupportingDetails>
+
+<InstructorNotes>
+**Szczegółowa zawartość:**
+- Przykład: farma PV 1 MW utraciła 15% rocznej produkcji przez zacienienie; monitoring wykryłby problem w tydzień
+- Wskazówki: zaakcentować koszty przestojów i znaczenie danych historycznych
+- Pytania: „Jakie są największe wyzwania monitoringu w waszej ocenie?”
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌱 Obszary wpływu monitoringu" type="success">
+
+<KeyPoints title="📋 Główne obszary">
+- ⚡ Produkcja energii: wzrost PR, wyższa dostępność
+- 🛠️ Utrzymanie predykcyjne: krótsze MTTA/MTTR
+- 🧯 Bezpieczeństwo: ograniczenie ryzyk (thermal runaway, wycieki)
+</KeyPoints>
+
+<SupportingDetails title="📊 Przykładowe KPI i korzyści">
+- PR: wzrost z 75–80% do 85–90% przy poprawnej kalibracji i czyszczeniu danych
+- Dostępność: 98–99.5% dzięki wczesnym alarmom i buforowaniu
+- ROI: zwrot nakładów ~1.5 roku dla PV 1 MW
+</SupportingDetails>
+
+<InstructorNotes>
+**Wskazówki dydaktyczne:**
+- Zaprezentować krótki case ROI z lokalnymi założeniami kosztowymi
+- Podkreślić rolę jakości danych w stabilności KPI
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔄 Cykl życia danych i trendy" type="tip">
+
+<KeyPoints title="📋 Cykl danych">
+- Czujniki → Akwizycja → Transmisja → Przechowywanie
+- Przetwarzanie → Wizualizacja → Analityka → Decyzje
+</KeyPoints>
+
+<SupportingDetails title="📈 Trendy technologiczne">
+- IIoT, bezprzewodowe sensory, edge–cloud
+- AI/ML dla anomalii i prognoz
+- Bliźniaki cyfrowe do testów what‑if
+</SupportingDetails>
+
+<InstructorNotes>
+**Sugestie:**
+- Użyć schematu cyklu życia danych z oznaczeniem narzędzi (InfluxDB, Grafana, MQTT)
+- Pytania do dyskusji: „Edge czy Cloud ważniejsze i kiedy?”
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧪 Predictive vs. Reactive" type="warning">
+
+<KeyPoints title="📋 Różnice">
+- Reactive: detekcja po awarii → przestój → naprawa
+- Predictive: monitoring ciągły → detekcja → planowana interwencja
+</KeyPoints>
+
+<SupportingDetails title="🧩 Efekty operacyjne">
+- ⬇️ Przestoje 30–50%, ⬆️ żywotność 15–25%
+- Lepsze planowanie zasobów i części zamiennych
+</SupportingDetails>
+
+<InstructorNotes>
+**Notatki:**
+- Zestawić dwa proste diagramy (jak w wersji MD) i omówić wpływ na koszty
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

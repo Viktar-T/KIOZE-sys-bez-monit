@@ -22,7 +22,42 @@
 * [X] on the bases of content from _promts\W5-wind update files in oze-pr\docs\wyklady\wyklad-05-wiatr. all updated files should looks as described in **@slides-conversion.md**
 * [X] on the bases of content from _promts\W6-biogaz update files in oze-pr\docs\wyklady\wyklad-06-biomasa-biogaz. all updated files should looks as described in **@slides-conversion.md**
 * [X] add relevant highe quality information. make two times longer.
-* [ ] deeply analyse whole project and update oze-pr\docs\heat-pump-systems
+* [X] deeply analyse whole project and update oze-pr\docs\heat-pump-systems
   oze-pr\docs\photovoltaic-systems
   oze-pr\docs\solar-thermal-systems
   oze-pr\docs\wind. add only. these file should be short and contain only imprortent information.
+* [ ] 
+* [X] you are given the course syllabus from the file:
+
+`@_promts\syt-monit\gpt-v2-90-10.md`, which contains the program for  *"Systemy bezpieczeństwa i monitorowania instalacji OZE"* .
+Write a **comprehensive lecture text for W1. create separate separate folder for new lecture in bezp-monit\docs\wyklady directory. devide logicaly lecture text into separate mdx files.**
+
+Style:
+
+* Use  **academic Polish** , suitable for a university lecture.
+* Provide  **clear structure with headings/subheadings** .
+* Where relevant, give **short real-world examples**
+
+* [X] you are given the course syllabus from the file:
+
+`@_promts\syt-monit\gpt-v2-90-10.md`, which contains the program for  *"Systemy bezpieczeństwa i monitorowania instalacji OZE"* .
+Write a **comprehensive Zajęcia audytoryjne text for C1. create separate separate folder for new Zajęcia audytoryjne in bezp-monit\docs\cwiczenia directory.**
+
+Style:
+
+* Use  **academic Polish** , suitable for a university lecture.
+* Provide  **clear structure with headings/subheadings** .
+* Where relevant, give **short real-world examples**
+
+* [X] you are given the course syllabus from the file:
+
+`@_promts\syt-monit\gpt-v2-90-10.md`, which contains the program for  *"Systemy bezpieczeństwa i monitorowania instalacji OZE"* .
+Write a **comprehensive Zajęcia audytoryjne text for C5. create separate separate folder for new Zajęcia audytoryjne in bezp-monit\docs\projekty.**
+
+Style:
+
+* Use  **academic Polish** , suitable for a university lecture.
+* Provide  **clear structure with headings/subheadings** .
+* Where relevant, give **short real-world examples**
+
+* [ ] implement @_promts\slides-conversion.md for wyklad-01 in bezp-monit\docs\wyklady directory. convert md into mdx files.

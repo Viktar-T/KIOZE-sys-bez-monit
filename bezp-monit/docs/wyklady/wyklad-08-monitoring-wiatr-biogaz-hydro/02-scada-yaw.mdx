@@ -1,0 +1,71 @@
+title: "SCADA patterning i yaw misalignment"
+sidebar_position: 2
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator 
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📊 Wzorce SCADA" type="info">
+
+<KeyPoints title="📋 Analiza">
+- Krzywe mocy vs. prędkość; segmentacja wg kierunku/temperatury
+- Odchylenia względem baseline floty
+</KeyPoints>
+
+<SupportingDetails title="🔧 Praktyka">
+- Uśrednianie i filtracja; kontrola warunków porównania
+</SupportingDetails>
+
+<InstructorNotes>
+Pokaż krzywą mocy i segmentację wg kierunku.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧭 Yaw misalignment" type="tip">
+
+<KeyPoints title="📋 Objawy i detekcja">
+- Spadek mocy przy określonych kierunkach; wzrost obciążeń
+- Błąd kierunek wiatru ↔ oś gondoli; korekta nastaw yaw
+</KeyPoints>
+
+<SupportingDetails title="🔍 Efekt">
+- Poprawa CF po kalibracji yaw
+</SupportingDetails>
+
+<InstructorNotes>
+Zachęć do przeglądu czujników kierunku i kalibracji kompasu gondoli.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="success" />
+
+<Slide title="📈 Przykład" type="success">
+
+<KeyPoints title="📋 Case">
+- Odchylenie yaw 5° → CF +1.5%
+</KeyPoints>
+
+<SupportingDetails title="🔧 Działanie">
+- Korekta nastaw i test po zmianie
+</SupportingDetails>
+
+<InstructorNotes>
+Ustal harmonogram przeglądów kalibracji yaw.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+

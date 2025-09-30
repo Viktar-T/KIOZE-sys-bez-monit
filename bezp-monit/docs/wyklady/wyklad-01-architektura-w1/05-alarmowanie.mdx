@@ -1,0 +1,34 @@
+---
+title: "Filozofia alarmowania i eskalacji"
+sidebar_position: 5
+---
+
+# Filozofia alarmowania i eskalacji
+
+## Zasady ogólne
+
+- Minimalizacja fałszywych alarmów: histereza, uśrednianie, progi adaptacyjne.
+- Priorytety: P1 (bezpieczeństwo), P2 (produkcja), P3 (konserwacja), P4 (informacyjne).
+- Eskalacja: czas na potwierdzenie, przypisanie do roli, ścieżki SMS/e‑mail, rotacja dyżurów.
+
+## Projekt reguł
+
+- Progi statyczne vs. adaptacyjne (np. z kompensacją temperatury/irradiancji).
+- Reguły korelacyjne (np. alarm wibracji + wzrost temperatury łożyska).
+- SOE (Sequence of Events) i matryce przyczynowo‑skutkowe (Cause‑&‑Effect).
+
+## Przykład reguły (PV)
+
+```text
+Alarm: Spadek PR w warunkach wysokiej irradiancji
+Warunek: PR_30min < 0.78 oraz G_POA > 400 W/m^2 przez ≥ 30 min
+Działanie: powiadomienie P2 (operator serwisu), utworzenie zgłoszenia w CMMS
+Eskalacja: jeśli brak potwierdzenia 60 min → SMS do kierownika zmiany
+```
+
+## Rejestrowanie i audyt
+
+- Każde zdarzenie z timestampem i kontekstem (tag, lokalizacja, użytkownik, akcja).
+- Przeglądy skuteczności alarmów: precision/recall, MTTA/MTTR, porządkowanie martwych reguł.
+
+
