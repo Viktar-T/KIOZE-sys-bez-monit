@@ -930,6 +930,151 @@ table tbody tr:hover {
 }
 
 /* ============================================
+  15b. LAYOUT AND GRID UTILITIES (from project-styles.md)
+  ============================================ */
+
+/* Two-column layout for comparisons/side-by-side content */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.two-column-layout .column {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Feature grid and cards (homepage/sections) */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  display: block;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Generic card grid and tool cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-theme='dark'] .two-column-layout .column,
+[data-theme='dark'] .feature-card,
+[data-theme='dark'] .tool-card {
+  background: #1a202c;
+  border-color: #2d3748;
+}
+
+/* ============================================
+  15c. PROGRESS UTILITIES (from project-styles.md)
+  ============================================ */
+
+.progress-section {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.progress-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.progress-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%; /* set via inline style or utility */
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .progress-item { grid-template-columns: 1fr; }
+}
+
+[data-theme='dark'] .progress-label { color: #e5e7eb; }
+[data-theme='dark'] .progress-bar { background: #2d3748; }
+
+/* ============================================
+  15d. FORM UTILITIES (from project-styles.md)
+  ============================================ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+[data-theme='dark'] .radio-label { color: #e5e7eb; }
+
+/* Minor utility to ensure wrapped long titles remain readable */
+.feature-card h3,
+.tool-card h3 { 
+  margin-top: 0; 
+}
+
+/* ============================================
    16. RESPONSIVE DESIGN
    ============================================ */
 

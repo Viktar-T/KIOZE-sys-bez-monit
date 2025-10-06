@@ -8,6 +8,9 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* Ensure homepage hero uses intended gradient and text color on Vercel */
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary-dark));
+  color: #ffffff;
 }
 
 @media screen and (max-width: 996px) {
