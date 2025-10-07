@@ -65,8 +65,25 @@ Style:
 * [ ] if you have not finised continue working.
 * [ ] continue working with next folder.
 * [ ] @01-wstep-rola-slides.mdx some of the slides too long, too big. They don fit the screen. rewrite or devide them.
-* [ ] on the basis of information from **@01-wstep-rola.mdx** build file with slides according to notes from here **@4. slides-conversion.md**.
-* [ ] implement **@10. InstractorNotes.md** for **@01-wstep-rola-slides.mdx**. use infor from **@01-wstep-rola.mdx**. use infor from @bezp-monit\docs\wyklady\wyklad-01-architektura-w1\01-wstep-rola.mdx.
-* [ ] on the basis of information from **@02-warstwy-architektury.mdx** build file with slides according to notes here **@4. slides-conversion.md**.
-* [ ] on the basis of information from **@03-typy-danych-zrodla.mdx** build file with slides according to notes here **@4. slides-conversion.md**.
-* [ ] on the basis of information from **@03-typy-danych-zrodla.mdx** build file with slides according to notes here **@4. slides-conversion.md**.
+
+=============1================
+
+* [X] on the basis of information from **@01-wstep-rola.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [X] on the basis of information from @02-warstwy-architektury.mdx build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [X] on the basis of information from @03-typy-danych-zrodla.mdx build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [X] on the basis of information from **@04-kpi.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [ ] on the basis of information from **@05-alarmowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [ ] on the basis of information from **@06-podsumowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+
+==========2============
+
+* [X] implement **@10. InstractorNotes.md** for **@01-wstep-rola-slides.mdx**. use infor from **@01-wstep-rola.mdx**. use infor from @bezp-monit\docs\wyklady\wyklad-01-architektura-w1\01-wstep-rola.mdx.
+* [X] implement **@10. InstractorNotes.md** for **@02-warstwy-architektury-slides.mdx**. use infor from @02-warstwy-architektury.mdx.
+* [X] implement **@10. InstractorNotes.md** for **@03-typy-danych-zrodla-slides.mdx**. use infor from @03-typy-danych-zrodla.mdx.
+* [X] implement **@10. InstractorNotes.md** for **@04-kpi-slides.mdx**. use infor from @04-kpi-zrodla.mdx.
+* [ ] implement **@10. InstractorNotes.md** for **@05-alarmowanie-slides.mdx**. use infor from @05-alarmowanie.mdx.
+* [ ] implement **@10. InstractorNotes.md** for **@06-podsumowanie-slides.mdx**. use infor from @06-podsumowanie.mdx.
+
+===========3============
+
+* [ ] run build and fix issues

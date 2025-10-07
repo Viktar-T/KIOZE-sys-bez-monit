@@ -1,0 +1,447 @@
+---
+title: "Warstwy architektury: edge–fog–cloud - Prezentacja"
+sidebar_position: 2
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🏗️ Architektura edge–fog–cloud w monitoringu OZE" type="info">
+
+<KeyPoints title="📋 Cele uczenia">
+- 🎯 **Charakterystyka trzech warstw**: Edge, Fog, Cloud i ich funkcje
+- 🔄 **Decyzje architektoniczne** wpływające na niezawodność i opóźnienia
+- 💾 **Strategie retencji danych** na poszczególnych poziomach
+- 🔗 **Przepływ danych** między warstwami i protokoły komunikacyjne
+</KeyPoints>
+
+<SupportingDetails title="🔑 Kluczowe pojęcia">
+- **Edge**: Najbliżej czujników, reakcje < 100 ms
+- **Fog**: Lokalna konsolidacja, analityka near-real-time
+- **Cloud**: Długoterminowe składowanie, ML/AI, raporty
+</SupportingDetails>
+
+<InstructorNotes>
+Rozpoczynamy drugą część wykładu o architekturze systemów monitoringu. Dzisiaj poznamy **trzy warstwy—edge, fog i cloud**—które wspólnie tworzą nowoczesny system monitoringu OZE. Każda warstwa ma swoją unikalną rolę i odpowiada na konkretne wymagania: **edge zapewnia szybkość reakcji milisekundową**, fog agreguje dane lokalnie i wykonuje analitykę near-real-time, cloud umożliwia długoterminową analitykę i uczenie maszynowe.
+
+To nie teoria—**każda warstwa rozwiązuje realne problemy biznesowe**: opóźnienia dla bezpieczeństwa, koszty transferu danych, niezawodność przy utracie łączności. Zobaczycie przykłady z rzeczywistych instalacji.
+
+Zapytajcie na początek: "Dlaczego nie można wysyłać wszystkich danych bezpośrednio do chmury?" To uruchomi dyskusję o łączności i kosztach.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🌐 Dlaczego warstwowa architektura?" type="tip">
+
+<KeyPoints title="💡 Powody ewolucji do architektury rozproszonej">
+- 📊 **Skala**: Tysiące punktów pomiarowych w farmach PV i wiatrowych
+- 📡 **Łączność**: Transfer TB danych kosztowny, łączność nie zawsze dostępna
+- ⚡ **Opóźnienia**: Reguły bezpieczeństwa wymagają reakcji w milisekundach
+- 🛡️ **Niezawodność**: Utrata łączności z cloud nie może sparaliżować kontroli
+- 🔒 **Bezpieczeństwo**: Segregacja OT/IT zgodnie z IEC 62443
+</KeyPoints>
+
+<InfoBox>
+**Model Purdue (ISA-95) w OZE**
+
+- **Edge** ≈ Poziomy 0–1 (czujniki + akwizycja + lokalne PLC)
+- **Fog** ≈ Poziomy 2–3 (SCADA, HMI, analityka krótkotermowa)
+- **Cloud** ≈ Poziom 4+ (zarządzanie flotą, long-term analytics, ERP)
+</InfoBox>
+
+<InstructorNotes>
+Ewolucja architektury była napędzana konkretnymi problemami. Współczesne farmy PV to dziesiątki tysięcy punktów pomiarowych—**przesyłanie wszystkich surowych danych do chmury przez 4G/5G kosztowałoby fortunę**. Transfer terabajtów? Nierealistyczny.
+
+Wprowadźcie Model Purdue—**standard przemysłowy ISA-95 definiujący hierarchię automatyki**. Pokażcie, jak edge, fog i cloud mapują się na jego poziomy. To pokazuje studentom, że nie wymyśliliśmy niczego nowego, tylko zaadaptowaliśmy sprawdzone wzorce z przemysłu.
+
+Kluczowy argument: **bezpieczeństwo wymaga lokalnych reakcji w milisekundach**. Odcięcie zasilania przy łuku elektrycznym nie może czekać na chmurę. Dla małych instalacji domowych niekoniecznie trzeba trzech warstw, ale nawet tam inwerter to edge z lokalną logiką MPPT.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🔹 Warstwa Edge: Blisko czujników i sterowników" type="info">
+
+<KeyPoints title="🎯 Funkcje warstwy Edge">
+- 📡 **Akwizycja danych**: Zbieranie surowych sygnałów (1–10 Hz, CMS 10–50 kHz)
+- 🔍 **Filtracja i walidacja**: Usuwanie szumów, walidacja zakresów fizycznych
+- 📊 **Normalizacja jednostek**: W→kW, Wh→kWh, °F→°C
+- 💾 **Buforowanie**: Lokalny bufor 1–24h, store-and-forward po utracie łączności
+- 🚨 **Lokalne alarmy**: Progi statyczne, interlock logic, reakcja < 100 ms
+</KeyPoints>
+
+<WarningBox>
+**Safety-critical logic must run locally!**
+
+Emergency stop, AFCI, interlock logic **nie mogą czekać na chmurę**. Opóźnienie do cloud: 100–500 ms + ryzyko utraty łączności. Reakcja musi być < 100 ms.
+</WarningBox>
+
+<InstructorNotes>
+Warstwa edge to **pierwszy punkt kontaktu między światem fizycznym a cyfrowym**. To nie tylko czytanie z czujnika—edge wykonuje inteligentne przetwarzanie: filtrację antyaliasingową, walidację zakresów, normalizację jednostek. **Store-and-forward to kluczowa funkcja** dla lokalizacji o słabej łączności.
+
+Przykład: gateway IoT w górach traci łączność LTE przez trzy godziny. Bufor przechowuje 180 rekordów minutowych, po przywróceniu łączności wysyła je partiami. **Bez buforowania stracilibyśmy wszystkie dane**.
+
+Bezpieczeństwo to priorytet absolutny. Temperatura BESS powyżej 60°C? **Edge zatrzymuje ładowanie natychmiast**, nie czeka na fog czy cloud. Jeśli macie Raspberry Pi z HAT Modbus, pokażcie—studenci uwielbiają prawdziwy hardware. Koszt: 300 euro plus 15 euro miesięcznie za 4G.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔹 Edge: Przykład z praktyki" type="success">
+
+<SuccessBox>
+**Konfiguracja edge gateway: Farma PV 1 MW**
+
+**Hardware**: Raspberry Pi 4 (4 GB RAM) + HAT Modbus RTU
+
+**Funkcje**:
+- 📊 Zbieranie z 4 inverterów (SMA) przez Modbus TCP, co 10s
+- 🔄 Normalizacja: moc AC W → kW
+- ✅ Walidacja: odrzucanie PR > 1.2 (błędy danych)
+- 💾 Bufor: SQLite, 48h danych
+- 📡 MQTT do fog: agregacja 1-min, topic `pv/site-001/inverters/{id}/power`
+- 🚨 Alarm: moc AC = 0 przy irradiancji > 200 W/m² przez 5 min → SMS
+
+**Koszt**: €300 hardware + €15/miesiąc (4G)
+</SuccessBox>
+
+<SupportingDetails title="⚙️ Ograniczenia Edge">
+- 🖥️ **CPU/RAM ograniczone**: ARM Cortex-A9, 512 MB–2 GB RAM
+- 🔍 **Brak kontekstu globalnego**: Widzi tylko lokalne dane (jedna turbina)
+- 🔧 **Trudność aktualizacji**: Firmware update na 100 gatewayach to wyzwanie
+</SupportingDetails>
+
+<InstructorNotes>
+Rzeczywisty przykład z farmy PV 1 MW. Raspberry Pi 4 z HAT Modbus RTU to popularny wybór—tani, potężny, świetna społeczność open-source. **Funkcje są konkretne i testowalne**: zbieranie co 10 sekund, agregacja przed wysłaniem przez MQTT, lokalny alarm SMS gdy inverter nie produkuje mimo słońca.
+
+Zwróćcie uwagę na **bufor 48 godzin**—dwa razy więcej niż typowe 24h, daje margines bezpieczeństwa. SQLite to doskonały wybór: lekki, bezserwerowy, niezawodny. MQTT topic hierarchiczny `pv/site-001/inverters/{id}/power` umożliwia subskrybowanie wildcardami.
+
+Koszt 300 euro to niewiele dla farmy wartej milion. **Ograniczenia też są ważne**: ARM Cortex nie uruchomi zaawansowanych modeli ML, brak kontekstu globalnego między urządzeniami, aktualizacje firmware na setkach gatewayów to wyzwanie. Dlatego potrzebujemy fog i cloud.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔸 Warstwa Fog: Lokalna konsolidacja i analityka" type="info">
+
+<KeyPoints title="🎯 Funkcje warstwy Fog">
+- 🔗 **Agregacja źródeł**: Dane z dziesiątek do setek urządzeń edge
+- 🏷️ **Normalizacja tagów**: Jednolita nomenklatura (IEC 61850)
+- 💾 **Historian**: Szczegółowe dane 7–30 dni (InfluxDB, TimescaleDB)
+- 📊 **Analityka near-RT**: Kalkulacja KPI, detekcja anomalii, HMI lokalne
+- ☁️ **Cache i sync**: Agregacja do cloud (15-min), buforowanie przy utracie łączności
+</KeyPoints>
+
+<InfoBox>
+**Fog vs. Edge: Jak rozróżnić?**
+
+- Fog **agreguje dane z wielu źródeł** + lokalna baza danych
+- Edge **zbiera z jednego urządzenia** + tylko bufor
+
+Granica jest płynna w małych instalacjach!
+</InfoBox>
+
+<InstructorNotes>
+Fog to **"mózg lokalny" instalacji**—widzi całość i podejmuje decyzje wymagające kontekstu wielu urządzeń. Farma PV 10 MW to 40 inverterów plus stacje pogodowe, fog agreguje wszystko. **Normalizacja tagów jest krytyczna**: producenci używają różnych nazw, fog mapuje wszystko do jednolitej struktury IEC 61850.
+
+Historian to narzędzie analityczne, nie backup. InfluxDB przechowuje szczegółowe dane 1-sekundowe przez 7-30 dni—**wystarczająco długo do analiz awarii bez obciążania cloud**. Po tym okresie agregacja do 15-minut i wysyłka do cloud.
+
+Fog oblicza KPI real-time: PR co 15 minut dla każdego invertera. PR spada poniżej 75% gdy inne mają 85%? Alarm "Suspected underperformance". **Open-source wygrał w OZE**: InfluxDB, Grafana, Node-RED to de facto standardy. Dla małych instalacji można pominąć fog, ale tracicie near-RT analytics.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔸 Fog: Przykład biogazownia 1 MW" type="success">
+
+<SuccessBox>
+**Architektura fog: Biogazownia 1 MW**
+
+**Hardware**: Dell Edge Gateway 5100 (Intel Atom x5, 8 GB RAM, 128 GB SSD)
+
+**Funkcje**:
+1. 🔗 **Agregacja**: PLC Siemens S7-1200 przez OPC UA
+   - 50 tagów: temperatury, przepływy CH₄/H₂S, ciśnienia
+   - Częstotliwość: 5s
+2. 💾 **Historian**: InfluxDB 2.x, retencja 30 dni (szczegółowe), 1 rok (15-min)
+3. 📊 **Analityka**: OEE co 1h, detekcja anomalii CH₄ < 50%
+4. 📈 **Prognoza**: ARIMA dla produkcji energii 24h, uruchamiana co 6h
+5. 🖥️ **HMI**: Grafana dashboard (touchscreen 10" w control room)
+6. ☁️ **Sync**: MQTT do AWS IoT Core, dane 15-min + alarmy
+
+**Koszt**: €5000 (hardware + licenses) + €50/miesiąc (cloud uplink)
+</SuccessBox>
+
+<InstructorNotes>
+Przykład biogazowni pokazuje fog w akcji w bardziej złożonym środowisku niż PV. Dell Edge Gateway 5100 to solidny sprzęt przemysłowy—8 GB RAM wystarczy na InfluxDB plus Python dla ARIMA. **OPC UA to świetny wybół dla komunikacji z PLC Siemens**—strukturowane dane, tagi z typami i jednostkami, bezpieczeństwo wbudowane.
+
+Historian ma dwie polityki retencji: **30 dni szczegółowych danych 5-sekundowych** (dla analiz procesowych) i **rok danych 15-minutowych** (dla raportów compliance i trendów długoterminowych). To inteligentne zarządzanie storage—szczegóły tylko gdy potrzebne, agregaty dla długiego okresu.
+
+Analityka w czasie rzeczywistym: **OEE co godzinę** (availability × performance × quality) to kluczowy KPI dla biogazowni. Detekcja anomalii: jeśli CH₄ spada poniżej 50% przez dwie godziny, to sygnał problemów z fermentacją—alarm natychmiast. Prognoza ARIMA uruchamiana co 6 godzin przewiduje produkcję na kolejne 24h, operator planuje interwencje w okienkach niskiej produkcji.
+
+HMI lokalne na touchscreen 10 cali w control room to wygoda dla operatorów—nie muszą logować się do cloud, mają wszystko na miejscu. Koszt 5000 euro to rozsądna inwestycja dla instalacji 1 MW. Studenci pytają o redundancję—dla instalacji powyżej 10 MW zaleca się active-standby fog servers.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="☁️ Warstwa Cloud: Długoterminowe składowanie i analityka zaawansowana" type="info">
+
+<KeyPoints title="🎯 Funkcje warstwy Cloud">
+- 💾 **Long-term storage**: 5–10 lat danych, format Parquet, €0.01–0.03/GB/miesiąc
+- 📊 **Dashboardy biznesowe**: Power BI, Grafana Cloud dla stakeholders
+- 🤖 **Machine Learning**: Predykcja produkcji (XGBoost, LSTM), detekcja anomalii (PCA)
+- 📈 **Benchmarking floty**: Porównania KPI między instalacjami w portfolio
+- 🔗 **Integracja biznesowa**: ERP, CMMS, portale OSP
+</KeyPoints>
+
+<WarningBox>
+**Cloud NIE jest dla real-time control!**
+
+RTT do chmury publicznej: 50–200 ms + jitter. Zbyt wolne dla safety-critical logic. Cloud to **analityka, raportowanie, planowanie długoterminowe**, nie kontrola procesu.
+</WarningBox>
+
+<InstructorNotes>
+Cloud to **centralne repozytorium danych i platforma analityki zaawansowanej** dla wielu instalacji. Może być publiczny (AWS, Azure), prywatny lub hybrydowy. **Długoterminowe składowanie** to lata danych w formacie Parquet—kompresja 10:1 vs CSV, koszty 0.01-0.03 euro za gigabajt miesięcznie.
+
+Dashboardy w cloud to **widok biznesowy**, nie operacyjny. Dla inwestorów: produkcja vs plan, ROI. Dla O&M: Availability, MTBF. Dla OSP: raporty compliance. **Machine learning jest dojrzały**: XGBoost i LSTM przewidują produkcję z błędem poniżej 5%, unsupervised learning wykrywa degradacje.
+
+Benchmarking floty: która farma ma najwyższy PR? Transfer best practices między obiektami. Fleet-wide alerts wykrywają problemy systemowe—bug firmware w 10 farmach jednocześnie. Kluczowy punkt: **cloud NIE może sterować procesem real-time**. RTT 50-200 ms to zbyt wolne dla safety. Edge i fog muszą działać bez cloud przez tygodnie w island mode.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="☁️ Cloud: Portfolio 50 MW" type="success">
+
+<SuccessBox>
+**Architektura cloud: 10 farm PV, łącznie 50 MW**
+
+**Platforma**: AWS (eu-central-1)
+
+**Komponenty**:
+- 📡 **Ingestion**: AWS IoT Core (MQTT, 10 połączeń)
+- 💾 **Storage**: Timestream (7 dni) + S3 Standard-IA (5 lat Parquet)
+- 🤖 **Analytics**: Lambda (KPI co 15 min) + SageMaker (ML models)
+- 📊 **Dashboards**: Grafana Cloud (live) + QuickSight (board reports)
+- 🔗 **Integracja**: API Gateway do CMMS (Maximo), ERP (SAP)
+
+**Koszty miesięczne**: ~€550 dla 50 MW = **€11/MW/miesiąc**
+
+**ROI**: Redukcja Availability spadków o 0.5 pp = +€12 500/rok. Zwrot < 6 miesięcy ✅
+</SuccessBox>
+
+<InstructorNotes>
+Portfolio 50 MW pokazuje cloud w skali produkcyjnej. AWS Frankfurt to dobry wybór—niskie latencje, compliance GDPR. **IoT Core to managed MQTT broker**: 10 połączeń, po jednym na farmę, tysiące wiadomości na sekundę.
+
+Storage dwupoziomowy: **Timestream dla 7 dni hot data** i **S3 Standard-IA dla archiwum 5 lat** Parquet. Lifecycle policy automatycznie przenosi dane. Po roku do S3 Glacier—retrieval 1-12h, OK dla audytów.
+
+Analytics serverless: **Lambda oblicza KPI co 15 minut**, SageMaker trenuje modele ML. Grafana Cloud dla operacyjnych dashboardów, QuickSight dla board—miesięczne, kwartalne. **Koszty 550 euro miesięcznie dla 50 MW to zaledwie 11 euro na megawat**. ROI szybki: lepsza predykcja redukuje spadki Availability o 0.5 pp = +12 500 euro rocznie. Zwrot w pół roku. Używajcie open standards przeciw vendor lock-in.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔄 Przepływ danych: Widok całościowy" type="info">
+
+<KeyPoints title="📊 Typowy przepływ (normal operation)">
+- 1️⃣ **Czujniki → Edge** (1–10 Hz, Modbus/OPC UA): Filtracja, walidacja, buforowanie
+- 2️⃣ **Edge → Fog** (MQTT, co 1–15 min): Zagregowane wartości, zdarzenia, alarmy
+- 3️⃣ **Fog → Cloud** (MQTT/REST, co 15 min): Agregaty 15-min, KPI, alarmy P1-P2
+- 4️⃣ **Cloud → Stakeholders**: Dashboardy real-time (~30s delay), raporty historyczne, prognozy ML
+</KeyPoints>
+
+<SupportingDetails title="⚠️ Scenariusze awaryjne">
+- 🔌 **Edge → Fog offline**: Edge buforuje do 24h, synchronizacja po przywróceniu
+- 🔌 **Fog → Cloud offline**: Fog przechowuje do 30 dni, alarmy lokalne działają
+- 💔 **Awaria Fog**: Edge wysyła bezpośrednio do Cloud (jeśli ma łączność)
+- ☁️ **Awaria Cloud**: Edge+Fog działają normalnie (island mode), brak long-term analytics
+</SupportingDetails>
+
+<InstructorNotes>
+Przepływ danych to **serce architektury**—musi działać niezawodnie i degradować gracefully przy awariach. Czujniki do edge: 1-10 Hz standardowo, 10-50 kHz dla CMS drganiowego. Edge filtruje, waliduje, normalizuje, buforuje. **MQTT to dominujący protokół transportu**: lightweight, pub-sub, QoS levels.
+
+Edge do fog co 1-15 minut: **zagregowane wartości** (średnie, min, max), nie surowe pomiary. Redukcja ruchu dramatyczna—1000 pomiarów 1-sekundowych do jednej średniej 15-minutowej. Fog do cloud: dane 15-min plus KPI plus alarmy wysokiego priorytetu. Cloud do stakeholders: dashboardy z opóźnieniem 30 sekund.
+
+Scenariusze awaryjne są **kluczowe**. Edge traci fog? Buforuje 24h, synchronizuje później. Fog traci cloud? Przechowuje 30 dni, alarmy działają lokalnie. **Awaria fog to problem**: edge wysyła bezpośrednio do cloud, ale bez lokalnego HMI wymaga wizyty serwisu. Awaria cloud? Island mode—proces kontrolowany, brak long-term analytics. Pokażcie diagram na rzutniku.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="⚖️ Decyzje architektoniczne: Opóźnienia i niezawodność" type="warning">
+
+<KeyPoints title="⚡ Latency Requirements">
+- 🚨 **Emergency stop**: < 10 ms → **Edge only**
+- ⚠️ **Alarmy operacyjne**: < 1 s → **Edge/Fog**
+- 📊 **Dashboardy operacyjne**: < 10 s → **Fog**
+- 📈 **Raporty biznesowe**: < 1 min → **Cloud** (akceptowalne)
+</KeyPoints>
+
+<WarningBox>
+**Zasada: Im bliżej procesu, tym bardziej krytyczne (safety)**
+
+- Edge + Fog muszą działać **bez cloud** przez dni–tygodnie (island mode)
+- Edge musi działać **bez fog** przez godziny (local buffering)
+- **SPOF**: Redundancja dla fog w instalacjach > 10 MW
+</WarningBox>
+
+<InstructorNotes>
+Decyzje architektoniczne to **balansowanie wielu czynników**: opóźnienia, niezawodność, koszty, skalowalność. Opóźnienia to główny driver layeringu. **Emergency stop musi reagować w milisekundach**: AFCI w PV wykrywa łuk i odcina string w < 10 ms. Fog (100-500 ms) i cloud (> 500 ms) są zbyt wolne dla safety.
+
+Alarmy operacyjne tolerują sekundę—edge lub fog wystarczą. Dashboardy dla control room: 10 sekund OK, fog wystarcza. Raporty biznesowe? Minuta opóźnienia akceptowalna, cloud idealny.
+
+Niezawodność to **graceful degradation**—każda warstwa musi działać niezależnie. Edge plus fog bez cloud przez tygodnie: island mode, lokalna kontrola działa. Edge bez fog przez godziny: local buffering. **Single Point of Failure to zagrożenie**: powyżej 10 MW zaleca się redundant fog servers active-standby. Koszt redundancji? Fog server 5-10 tysięcy euro, redundancja dodaje 50%, ale dla instalacji 10 MW wartej 10 milionów to margines błędu.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="💾 Decyzje architektoniczne: Retencja danych" type="info">
+
+<KeyPoints title="📊 Strategia retencji danych (farma 10 MW)">
+- 🔹 **Edge**: 1–10s, retencja 1–48h, 10 GB (RAM/flash)
+- 🔸 **Fog**: 1–10s, retencja 7–30 dni, 500 GB (SSD/HDD)
+- ☁️ **Cloud**: 15-min aggregates, retencja 5–10 lat, 100 GB/rok (S3 compressed)
+</KeyPoints>
+
+<InfoBox>
+**Lifecycle Policy (Cloud)**
+
+Po 1 roku w S3 Standard → archiwizacja do **S3 Glacier**
+- Koszt: €0.004/GB/miesiąc (vs €0.023 Standard)
+- Retrieval time: 1–12h (akceptowalne dla audytów)
+- Oszczędność: ~80% kosztów storage po 1 roku
+</InfoBox>
+
+<InstructorNotes>
+Koszt storage rośnie liniowo z czasem i rozdzielczością—**planowanie retencji jest kluczowe dla kontroli budżetu**. Edge przechowuje 1-48h w RAM/flash, tylko 10 GB dla farmy 10 MW. Wystarczy do przeczekania przerw w łączności.
+
+Fog trzyma szczegółowe dane 7-30 dni na SSD/HDD, około 500 GB. Złoty środek: **wystarczająco długo do analiz awarii**, wystarczająco krótko żeby nie przepłacać. Po 30 dniach agregacja do 15-minut i wysyłka do cloud.
+
+Cloud przechowuje agregaty 15-min przez 5-10 lat (compliance, audyty, refinansowanie). Parquet daje kompresję 10:1 vs CSV. **Lifecycle policy to must-have**: po roku automatyczna archiwizacja do Glacier—oszczędność 80%, retrieval 1-12h OK dla audytów.
+
+Dlaczego nie trzymać wszystkiego na zawsze? Storage to ongoing expense. 1 TB w S3 Standard-IA to 10-30 euro miesięcznie. Razy lata, razy skala—koszty rosną szybko. **Inteligentna retencja to oszczędności bez utraty wartości**.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔧 Decyzje architektoniczne: Standardy i skalowalność" type="tip">
+
+<KeyPoints title="🌐 Otwarte standardy (przeciw vendor lock-in)">
+- 📡 **Protokoły**: OPC UA (IEC 62541), MQTT (ISO/IEC 20922), Modbus (de facto)
+- 📄 **Formaty**: InfluxDB Line Protocol, JSON, Parquet (columnar, compressed)
+- 🔗 **APIs**: REST (integrations), GraphQL (flexible queries)
+</KeyPoints>
+
+<SupportingDetails title="💰 Koszty i skalowalność (CapEx vs OpEx)">
+- **< 1 MW**: Cloud-first, CapEx ~€1k, OpEx ~€500/rok
+- **1–10 MW**: Hybrid (fog+cloud), CapEx ~€10-30k, OpEx ~€2k/rok
+- **> 100 MW**: Private cloud, CapEx ~€500k, OpEx ~€50k/rok
+</SupportingDetails>
+
+<WarningBox>
+Przy wyborze komponentów pytaj: **"Co się stanie, gdy za 5 lat producent przestanie istnieć?"** Jeśli odpowiedź = "musimy przepisać wszystko", wybierz open-source lub otwarte API.
+</WarningBox>
+
+<InstructorNotes>
+Standaryzacja interfejsów to **ubezpieczenie przeciw vendor lock-in**—największemu długoterminowemu zagrożeniu. Preferujcie otwarte standardy: **OPC UA dla structured data** (tagi z typami, jednostkami), **MQTT dla lightweight telemetry** (pub-sub, QoS), **Modbus wciąż dominujący w PV/wiatr**.
+
+Formaty danych: InfluxDB Line Protocol prosty i human-readable. JSON uniwersalny ale verbose—nie dla high-frequency. **Parquet columnar i compressed idealny dla cloud**: kompresja 10:1, szybkie queries na kolumnach.
+
+Koszty i skalowalność to trade-off CapEx vs OpEx. **Małe < 1 MW**: cloud-first, niski CapEx (1000 euro), wyższy OpEx (500 rocznie). **Średnie 1-10 MW**: hybrid fog plus cloud, CapEx 10-30k, OpEx 2000 rocznie. **Duże > 100 MW**: private cloud on-premise, wysoki CapEx (500k), najniższy OpEx long-term (50k rocznie).
+
+"Co za 5 lat gdy producent software padnie?" Jeśli odpowiedź "przepisujemy wszystko", to ZŁY wybór. Open-source i otwarte API to insurance policy.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🎓 Podsumowanie: Architektura edge-fog-cloud" type="success">
+
+<KeyPoints title="🔑 Kluczowe wnioski">
+- 🔹 **Edge**: Szybkość reakcji (< 100 ms), safety-critical logic, buffering
+- 🔸 **Fog**: Kontekst lokalny, agregacja, near-RT analytics, resilience (island mode)
+- ☁️ **Cloud**: Long-term analytics, ML/AI, benchmarking, integracja biznesowa
+- 🔄 **Każda warstwa niezależna**: Graceful degradation przy awariach
+- 🌐 **Otwarte standardy**: Ochrona przed vendor lock-in
+</KeyPoints>
+
+<SuccessBox>
+**Zasady projektowania**
+
+1. **Safety-critical logic**: Edge/Fog only (< 100 ms latency)
+2. **Operational analytics**: Fog (real-time HMI, KPI)
+3. **Strategic analytics**: Cloud (ML, fleet management, reporting)
+4. **Resilience**: Edge+Fog muszą działać bez Cloud przez tygodnie
+5. **Koszty**: Agreguj w Fog (nie wysyłaj raw data do Cloud)
+</SuccessBox>
+
+<InstructorNotes>
+Zbieramy wszystko w całość. **Architektura edge-fog-cloud to best practice**, bo każda warstwa rozwiązuje konkretny problem biznesowy i techniczny. Edge zapewnia szybkość reakcji milisekundową dla safety. Fog dostarcza kontekst lokalny—widzi wszystkie urządzenia, wykonuje near-RT analytics, działa w island mode. Cloud umożliwia long-term analytics, ML/AI, benchmarking fleet, integrację ERP/CMMS.
+
+Kluczowa lekcja: **każda warstwa musi działać niezależnie**. To requirement, nie nice-to-have. Graceful degradation—utrata cloud nie paraliżuje kontroli, utrata fog nie blokuje alarmów. **Safety-critical logic zawsze lokalnie**: emergency stop, AFCI, interlock—edge lub fog, nigdy cloud.
+
+Otwarte standardy to ubezpieczenie: OPC UA, MQTT, Modbus, Parquet. Za 5-10 lat producent może nie istnieć, standardy pozostają. Koszty kontrolujemy agregacją w fog: **nie wysyłamy surowych danych 1-sekundowych**, tylko agregaty 15-min. Redukcja ruchu 900-krotna. Zapowiedź: następna sekcja to typy danych i źródła w instalacjach OZE—co mierzymy, z jakich urządzeń, w jakich formatach.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+---
+
+## 📚 Materiały uzupełniające
+
+Pełna treść wykładu z rozszerzonymi wyjaśnieniami, przykładami i szczegółami dostępna jest w pliku: [02-warstwy-architektury.mdx](./02-warstwy-architektury.mdx)
+
+### Diagramy
+- Pełny diagram przepływu danych Mermaid (edge → fog → cloud)
+- Model Purdue ISA-95 z mapowaniem do OZE
+
+### Literatura
+- IEC 62541: OPC Unified Architecture
+- ISO/IEC 20922: MQTT Protocol
+- IEC 62443: Industrial automation and control systems security
+- ISA-95: Enterprise-Control System Integration
+
+### Przykłady konfiguracji
+- Raspberry Pi + HAT Modbus dla edge gateway
+- Dell Edge Gateway 5100 dla fog w biogazowni
+- AWS IoT Core architecture dla cloud portfolio
+
+### Narzędzia
+- **Edge**: Raspberry Pi, Moxa UC-8100, Siemens IOT2040
+- **Fog**: Ignition SCADA, InfluxDB, Grafana, Node-RED
+- **Cloud**: AWS IoT Core, Azure IoT Hub, Google Cloud IoT
+

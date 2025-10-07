@@ -1,0 +1,372 @@
+---
+title: "Filozofia alarmowania i eskalacji - Prezentacja"
+sidebar_position: 5
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🚨 Filozofia alarmowania i eskalacji" type="info">
+
+<KeyPoints title="📋 Cele uczenia">
+- 🎯 **Hierarchia priorytetów**: P1–P4, kryteria przypisania
+- 🔧 **Minimalizacja fałszywych alarmów**: Histereza, filtry, adaptive thresholds
+- 📝 **Projektowanie reguł**: Szablon, typy reguł (threshold, rate-of-change, correlation)
+- 📞 **Mechanizmy eskalacji**: Role-based, multi-tier, multi-channel
+- 📊 **Metryki skuteczności**: Alarm rate, FPR, MTTA, MTTR
+- 🔄 **Alarm rationalization**: Audyt i optymalizacja co 6–12 miesięcy
+</KeyPoints>
+
+<SupportingDetails title="⚠️ Problem do rozwiązania">
+- **Alarm fatigue**: Operatorzy ignorują alarmy (zbyt wiele, false positives)
+- **Konsekwencje**: Opóźnienia reakcji, utrata produkcji, ryzyko bezpieczeństwa
+</SupportingDetails>
+
+<InstructorNotes>
+Piąta część wykładu to filozofia alarmowania. Przechodzimy od monitorowania i KPI do **przekształcania anomalii w konkretne akcje**. Dobry system alarmowy to fundament efektywnego zarządzania.
+
+Problem: **alarm fatigue**. Przeciętna instalacja generuje 1000-5000 alarmów dziennie, operator obsługuje 150-200 ze zrozumieniem. Skutek? **80-90% ignorowanych, w tym prawdziwe problemy**. W OZE bezobsługowych to opóźnienia reakcji i ryzyko bezpieczeństwa.
+
+Zapytajcie: "Czy mieliście doświadczenie z alarm fatigue?" Często rezonuje—studenci widzieli systemy z setkami nieistotnych alarmów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="✅ Dobry alarm: 3 kluczowe kryteria" type="tip">
+
+<KeyPoints title="🎯 ISA-18.2 Standard: Kryteria dobrego alarmu">
+- 🎬 **Akcjonowalny**: Operator wie, co zrobić w odpowiedzi
+- 🆔 **Unikalny**: Nie jest duplikatem innego alarmu
+- 📊 **Priorytetyzowany**: Jasno określony poziom ważności (P1–P4)
+</KeyPoints>
+
+<WarningBox>
+**Zły alarm to...**
+
+- 📢 **Informacyjny**: "Inverter włączył się" (FYI, nie wymaga akcji)
+- ❓ **Niejednoznaczny**: "Error 0x47AB" (operator nie wie co to znaczy)
+- 🔄 **Częsty**: > 10× /h (chattering, generuje noise nie value)
+
+**Quality > Quantity**: 10 dobrych alarmów > 1000 złych!
+</WarningBox>
+
+<InstructorNotes>
+Dobry alarm spełnia trzy kryteria ISA-18.2—**standardu branżowego**, który studenci spotkają w pracy. Najpierw **akcjonowalny**: operator wie co robić. "Low PR, sprawdź soiling" to dobry przykład, "Error 0x47AB" bez kontekstu to zły. Drugi: **unikalny**—jeden problem nie generuje dziesięciu alarmów (eliminujemy alarm flood). Trzeci: **priorytetyzowany**—jasny poziom P1 do P4, operator od razu wie co pilne.
+
+Odwrotność to zły alarm: informacyjny bez akcji, niejednoznaczny bez dokumentacji, częsty generujący tylko szum. **Kluczowa zasada Quality over Quantity**: dziesięć dobrych alarmów które operator obsługuje jest warte więcej niż tysiąc złych które ignoruje. W OZE, gdzie często brak operatora na miejscu przez całą dobę, precyzja alarmów jest jeszcze ważniejsza.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🎚️ Hierarchia priorytetów: P1–P4" type="warning">
+
+<KeyPoints title="📊 4 poziomy priorytetów (ISA-18.2)">
+- 🔴 **P1 Critical**: < 10 min reakcji, safety/catastrophic (thermal runaway, H₂S > 1000 ppm, arc fault)
+- 🟠 **P2 High**: < 1 h, znacząca utrata produkcji (PR < 75%, grid disconnect, gearbox vibration)
+- 🟡 **P3 Medium**: < 24 h, drobne problemy (string underperformance, minor CHP alarm)
+- 🔵 **P4 Low/Info**: < 1 week, FYI (planned maintenance due, calibration overdue)
+</KeyPoints>
+
+<WarningBox>
+**Zasada przypisania priorytetu**
+
+3 pytania:
+1. **Safety risk?** → P1
+2. **Revenue loss > €1000/h?** → P2
+3. **Can wait 24h?** → P3
+4. **Just FYI?** → P4
+
+Jeśli wątpliwości P2 vs P3: Start P2, potem downgrade na bazie reakcji.
+</WarningBox>
+
+<InstructorNotes>
+Hierarchia priorytetów to fundament skutecznego alarm management. Według standardu ISA-18.2 mamy **cztery poziomy od Critical do Info**, każdy z określonym czasem reakcji: **P1 wymaga reakcji w dziesięć minut** (safety lub catastrophic failure), P2 w godzinę (znacząca utrata produkcji), P3 w dobę (drobne problemy), P4 w tydzień (informacyjne).
+
+Jak przypisywać priorytety? **Zadajcie trzy proste pytania**. Czy to safety risk? Wtedy P1. Czy revenue loss przekracza tysiąc euro na godzinę? P2. Może poczekać dobę? P3. Tylko FYI? P4. W razie wątpliwości między P2 a P3 startujcie z P2 i później degradujcie na podstawie rzeczywistych reakcji.
+
+Ważna obserwacja: **P1 powinien być rzadki**—jeśli macie więcej niż jeden P1 tygodniowo, to albo źle skonfigurowane progi albo prawdziwy problem w instalacji. P2 to główny poziom dla operational alarms. Kolory SCADA mają znaczenie psychologiczne: czerwony natychmiast przyciąga wzrok.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🔧 Technika #1: Histereza (Hysteresis)" type="tip">
+
+<KeyPoints title="📊 Problem i rozwiązanie">
+- ⚠️ **Problem**: Wartość oscyluje wokół progu → chattering (alarm 10× w 5 min)
+- 🎯 **Rozwiązanie**: Histereza = różnica między trigger a clear threshold
+- 📐 **Przykład**: Trigger T > 60°C, Clear T < 58°C (histereza 2°C)
+- ✅ **Rezultat**: Eliminuje chattering, 1 alarm zamiast 10
+</KeyPoints>
+
+<SuccessBox>
+**Typowe wartości histerezy**
+
+- 🌡️ **Temperatura**: 2–5°C
+- ⚡ **Napięcia**: 2–5% wartości nominalnej
+- 🔌 **Prądy**: 5–10%
+- 📊 **KPI (PR, CF)**: 2–5 punktów procentowych
+
+**Rule of thumb**: Histereza = 2–5× typical noise/variability
+</SuccessBox>
+
+<InstructorNotes>
+Histereza to absolutny must-have dla każdego progu analogowego. Wyobraźcie sobie: temperatura BESS oscyluje między 59.7 a 60.1 stopnia Celsjusza, próg alarmu to 60. Wartość przekracza próg i spada poniżej dziesiątki razy w pięć minut—**chattering**. Operator dostaje dziesięć alarmów i zaczyna je ignorować (alarm fatigue).
+
+Rozwiązanie proste: **histereza czyli różnica między progiem włączenia i wyłączenia**. Trigger ustawiamy na 60 stopni, ale Clear na 58 stopni. Alarm włącza się przy przekroczeniu 60, ale wyłącza dopiero gdy temperatura spadnie poniżej 58. Rezultat? Jeden alarm zamiast dziesięciu.
+
+Typowe wartości histerezy: dla temperatury dwa do pięciu stopni, dla napięć dwa do pięciu procent wartości nominalnej, dla KPI dwa do pięciu punktów procentowych. **Rule of thumb: histereza to dwa do pięciu razy typowy szum pomiarowy**. Można przesadzić z histerezą—zbyt duża może maskować prawdziwe problemy, zbyt mała nie eliminuje chatteringu.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔧 Techniki #2-5: Filtry i adaptive thresholds" type="info">
+
+<KeyPoints title="🎯 Dodatkowe techniki minimalizacji false positives">
+- 📊 **Uśrednianie**: Moving average (1–5 min dla fast, 10–30 min dla slow)
+- 🎚️ **Dead-band**: Ignoruj zmiany < threshold (2× sensor accuracy)
+- 🧠 **Adaptive thresholds**: PR < (PR_avg_30d - 2σ), uwzględnia sezonowość
+- 🌊 **Suppression**: Jeśli root cause aktywny, suppress powiązane alarmy (1 alarm, nie 12)
+</KeyPoints>
+
+<InfoBox>
+**Przykład adaptive threshold dla PR**
+
+Zamiast statycznego PR < 0.80:
+
+```
+Trigger: PR < (PR_avg_last_30_days - 2×σ)
+AND G_POA > 400 W/m²
+AND Time: 08:00–18:00
+```
+
+Próg adaptuje się do sezonowości i historii instalacji!
+</InfoBox>
+
+<InstructorNotes>
+Mamy jeszcze cztery potężne techniki minimalizacji fałszywych alarmów. **Uśrednianie** eliminuje krótkotrwałe szpilki w danych—chmura przechodzi przez dziesięć sekund, ale moving average pięciominutowy to ignoruje, alarm triggeruje tylko gdy problem trwały. **Dead-band** to pasmo martwe ignorujące zmiany mniejsze niż dokładność czujnika—sensor ma plus minus pół stopnia, dead-band ustawiamy na dwa stopnie, czterokrotność dokładności eliminuje alarmy na szumie.
+
+**Adaptive thresholds** uwzględniają kontekst i historię. Statyczny próg PR poniżej 0.80 triggerowałby nocą gdy nie ma słońca—dodajcie warunki: irradiancja powyżej 400, czas między ósmą a osiemnastą. Jeszcze lepiej dynamiczny próg bazujący na historii: **PR poniżej średniej z trzydziestu dni minus dwa odchylenia standardowe**—próg sam adaptuje się do sezonowości, zimą niższy, latem wyższy.
+
+**Suppression eliminuje kaskady alarmów**. Jedna awaria cell imbalance w BESS może wygenerować dwanaście powiązanych alarmów. Suppression pokazuje tylko root cause, operator widzi jeden istotny alarm zamiast dwunastu symptomów. Żadna technika sama nie wystarcza—**kombinacja daje najlepszy efekt**.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📝 Projektowanie reguł alarmowych: Szablon" type="tip">
+
+<KeyPoints title="🎯 Kompletna specyfikacja reguły">
+- 🆔 **Identyfikacja**: Alarm_ID, nazwa, priorytet, technologia
+- ⚙️ **Warunek trigger**: Threshold + kontekst + czas trwania
+- ✅ **Warunek clear**: Z histerezą i dodatkowymi warunkami
+- 📞 **Akcja**: Notify (kto?), Create ticket (CMMS), Log (co?)
+- 📈 **Eskalacja**: Jeśli no ack after X min → SMS do managera
+- 📚 **Dokumentacja**: Możliwe przyczyny, typowa akcja, response time
+</KeyPoints>
+
+<SuccessBox>
+**5 typów reguł alarmowych**
+
+1. **Threshold**: T > 60°C (najprostszy)
+2. **Rate-of-change**: dT/dt > 5°C/min (thermal runaway indicator)
+3. **Deviation**: |CF_turbine - CF_avg| > 15% (underperformance)
+4. **Correlation**: Vibration > 12 mm/s AND Temp > 85°C (bearing failure)
+5. **Time-based**: Status == "Fault" FOR > 2h (wymaga interwencji)
+</SuccessBox>
+
+<InstructorNotes>
+Dobra reguła alarmowa to znacznie więcej niż tylko threshold. To **kompletna specyfikacja obejmująca sześć elementów**: identyfikację (ID, nazwa, priorytet, technologia), warunek trigger z pełnym kontekstem i czasem trwania, warunek clear z histerezą, akcję (kogo powiadomić, jaki ticket stworzyć, co zalogować), eskalację jeśli brak potwierdzenia oraz szczegółową dokumentację możliwych przyczyn i typowych działań.
+
+Mamy pięć głównych typów reguł. **Threshold** to najprostszy—wartość przekracza próg. **Rate-of-change** alarmuje na tempo zmian, przykład: temperatura rośnie szybciej niż pięć stopni na minutę to wskaźnik thermal runaway. **Deviation** wykrywa odchylenia od normalnego stanu, jak turbina z CF piętnascie procent niższym od średniej. **Correlation** łączy dwa parametry—wysokie wibracje plus wysoka temperatura razem oznaczają zbliżającą się awarię łożyska. **Time-based** triggeruje po czasie, jak inverter w stanie fault przez dwie godziny.
+
+Dokumentacja to absolutna podstawa. Bez niej operator otrzymuje alarm i nie wie co dalej. Sekcja "możliwe przyczyny" plus "typowa akcja" daje konkretny plan—sprawdź pogodę, zrób inspekcję, przejrzyj dane stringów.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📞 Eskalacja: Role-based, Multi-tier" type="info">
+
+<KeyPoints title="🎯 Ścieżki eskalacji (3-tier model)">
+- 👤 **L1 Operator**: P2, P3 alarmy, Email + SCADA, reakcja < 1h (P2)
+- 👔 **L2 O&M Manager**: P1 alarms, eskalacje z L1, SMS + Phone, reakcja < 15 min (P1)
+- 🏢 **L3 Director**: Critical incidents, regulatory, Phone, awareness < 1h
+- 🔧 **On-call Technician**: Field interventions, SMS + Phone, on-site < 4h
+</KeyPoints>
+
+<SupportingDetails title="📱 Kanały komunikacji">
+- **SCADA popup**: P2-P4 (centralized, context-rich, wymaga operatora przy SCADA)
+- **Email**: P2-P4 (dokumentacja, ale nie real-time)
+- **SMS**: P1, eskalacje P2 (fast, direct, limit 160 znaków)
+- **Phone**: P1 critical (guaranteed attention, ale annoying jeśli false)
+- **Multi-channel dla P1**: SMS + Phone + push notification (redundancja)
+</SupportingDetails>
+
+<InstructorNotes>
+Eskalacja to mechanizm przekazywania alarmu wyżej gdy brak reakcji na niższym poziomie. Kluczowa zasada: **eskalujcie do ról, nie do konkretnych osób**—Operator, Manager, Director to role stałe, ludzie w tych rolach rotują ale system działa bez zmian konfiguracji.
+
+Typowo trzy poziomy eskalacji. **L1 to Operator** obsługujący alarmy P2 i P3, dostaje email plus popup w SCADA, powinien zareagować w godzinę dla P2. **L2 to O&M Manager** dostający wszystkie P1 natychmiast przez SMS i telefon plus eskalacje z L1 gdy operator nie reaguje, oczekiwana reakcja w piętnaście minut. **L3 to Director** tylko dla critical incidents i spraw regulacyjnych. Dodatkowo **On-call Technician** dla interwencji w terenie, rotuje co tydzień według grafiku.
+
+Kanały komunikacji dobierajcie do pilności. **SCADA popup świetny dla P2 do P4**—bogaty kontekst, ale wymaga operatora przy komputerze. **SMS dla P1**—szybki, bezpośredni, mobile-friendly. Best practice: **multi-channel dla P1** czyli SMS plus telefon plus push notification, redundancja gwarantuje dostarczenie. System automatycznie używa aktualnego dyżurnego z roster.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📊 Metryki skuteczności alarmów" type="warning">
+
+<KeyPoints title="🎯 Kluczowe metryki do trackowania">
+- 📈 **Alarm rate**: Alarmów/dzień, target < 50/day (1–10 MW), < 6/h/operator
+- ❌ **FPR (False Positive Rate)**: Target < 20%, idealnie < 10%
+- ⏱️ **MTTA (Mean Time To Acknowledge)**: < 15 min (P1), < 1h (P2)
+- 🔧 **MTTR (Mean Time To Resolve)**: < 4h (P1), < 24h (P2)
+- 🎯 **Precision**: TP/(TP+FP), few false positives
+- 🔍 **Recall**: TP/(TP+FN), catch all problems (preferuj recall > precision dla safety)
+</KeyPoints>
+
+<WarningBox>
+**Red flags**
+
+- Alarm rate > 200/day = alarm flood (rationalization wymagana)
+- FPR > 30% = alarm fatigue (tune thresholds, add conditions)
+- MTTA > 2h dla P2 = alarms not noticed (operators overwhelmed)
+</WarningBox>
+
+<InstructorNotes>
+Metryki skuteczności to fundament ciągłego doskonalenia alarm management. **Alarm rate** mierzy częstotliwość—target poniżej 50 alarmów dziennie dla instalacji 1-10 MW, ISA-18.2 rekomenduje poniżej 6 na godzinę na operatora. Powyżej 200 dziennie to alarm flood wymagający natychmiastowej rationalization.
+
+**FPR (False Positive Rate)** to procent fałszywych alarmów, target poniżej 20%, idealnie poniżej 10%. FPR powyżej 30% to przepis na alarm fatigue—operatorzy zaczynają ignorować bo większość fałszywa. **MTTA (Mean Time To Acknowledge)** to średni czas do potwierdzenia: poniżej 15 minut dla P1, poniżej godziny dla P2. **MTTR (Mean Time To Resolve)** to czas do rozwiązania: poniżej 4 godzin dla P1, poniżej doby dla P2.
+
+Z machine learningu znamy Precision (dokładność) i Recall (czułość), aplikowalne do alarmów. Jest trade-off: **high precision oznacza mało fałszywych alarmów, high recall oznacza złapanie wszystkich problemów**. Dla safety-critical zawsze preferujcie recall—lepiej kilka false positives niż przegapić prawdziwy problem.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔄 Alarm Rationalization: Ciągła optymalizacja" type="success">
+
+<KeyPoints title="📋 Proces rationalization (co 6–12 miesięcy)">
+- 📊 **Zbierz dane**: Export alarm logs (last 6 months)
+- 🔍 **Analiza**: Top 20 most frequent (spam?), FPR per type, dead alarms (never triggered)
+- 🔧 **Działania**: Tune thresholds (high FPR), delete dead, consolidate (suppress cascades)
+- 📚 **Update docs**: Dla alarmów z high MTTA (unclear what to do)
+- ✅ **Deploy**: Test w shadow mode, then production
+- 📈 **Monitor**: Track metrics 1–3 miesiące, verify improvement
+</KeyPoints>
+
+<SuccessBox>
+**Przykład: Farma PV 10 MW, Q3 2024**
+
+- Top alarm: "Inverter comm loss" (320×, FPR 65%)
+- **Akcja**: Zwiększ timeout z 10s → 60s, dodaj histerezę 30s
+- **Rezultat**: 320 → 45 alarmów (86% redukcja), FPR 65% → 18%
+- **Impact**: MTTA improved 45min → 12min (operators react faster)
+
+**Overall**: Alarm rate 13.7 → 8.2/day, FPR 28% → 15%
+</SuccessBox>
+
+<InstructorNotes>
+Alarm rationalization to ciągły proces doskonalenia, nie jednorazowa konfiguracja przy uruchomieniu. **Co sześć do dwunastu miesięcy przeprowadzajcie pełny przegląd systemu alarmowego**. Proces składa się z pięciu kroków: zbierzcie dane (export logów z ostatnich sześciu miesięcy), przeanalizujcie (top 20 najczęstszych alarmów, FPR dla każdego typu, dead alarms nigdy nie triggered), zróbcie zmiany (tune thresholds dla high FPR, usuńcie martwe, skonsolidujcie kaskady), zaktualizujcie dokumentację, wdróżcie w shadow mode do testów i monitorujcie improvement przez kolejny miesiąc lub trzy.
+
+Przykład z farmy PV pokazuje dramatyczny efekt rationalization. **Najczęstszy alarm "Inverter comm loss" triggerował 320 razy w kwartale z FPR 65%**—bardzo wysoki wskaźnik false positives. Przyczyna? Krótkie przerwy w łączności poniżej pięciu sekund przez niestabilne Wi-Fi. Akcja prosta: zwiększcie timeout z dziesięciu do sześćdziesięciu sekund, dodajcie histerezę trzydziestu sekund dla clear. Rezultat? **Redukcja z 320 do 45 alarmów, czyli 86%, FPR spadł z 65% do 18%**.
+
+Impact nie tylko w liczbach. **MTTA improved z 45 minut do 12 minut**—operatorzy teraz reagują dużo szybciej bo wiedzą że alarm jest prawdziwy, nie kolejny false positive. Overall alarm rate spadł z prawie 14 do 8 dziennie, operator satisfaction znacznie wyższa. To team effort—alarm engineer prowadzi, operatorzy dają input, process engineers domain knowledge, management approves.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🎓 Podsumowanie: Checklist dobrego systemu alarmowego" type="success">
+
+<KeyPoints title="✅ 8 elementów dobrego systemu">
+- 🎚️ **Priorytetyzacja**: 4 poziomy P1–P4, jasne kryteria
+- 🔧 **Minimalizacja false positives**: Histereza, filtry, adaptive, suppression
+- 📝 **Dokumentacja reguł**: Każda ma opis, przyczyny, akcję
+- 📞 **Eskalacja**: Role-based, multi-tier, multi-channel
+- 📊 **Logging**: Pełny kontekst (trigger, values, ack, resolved, root cause)
+- 📈 **Metryki**: Track alarm rate, FPR, MTTA, MTTR monthly
+- 🔄 **Rationalization**: Co 6–12 miesięcy tune i optimize
+- 👨‍🏫 **Training**: Operatorzy wiedzą co alarmy znaczą i co robić
+</KeyPoints>
+
+<SuccessBox>
+**Dobry system alarmowy to system gdzie...**
+
+- Operatorzy **ufają** alarmom (niski FPR)
+- Operatorzy **reagują szybko** (jasna dokumentacja)
+- Problemy **wykrywane wcześnie** (przed catastrophic failures)
+- System **ewoluuje** z czasem (continuous improvement)
+
+**Quality > Quantity**: 10 akcjonowalnych alarmów > 1000 informacyjnych
+</SuccessBox>
+
+<InstructorNotes>
+Podsumowujemy filozofię alarmowania checklistą ośmiu elementów. System działa dobrze gdy **wszystkie współpracują**: priorytetyzacja P1-P4, minimalizacja false positives, kompletna dokumentacja reguł, eskalacja role-based, logging kontekstu, tracking metryk monthly, rationalization co pół roku, training operatorów.
+
+Dobry system rozpoznacie po czterech cechach: **operatorzy ufają alarmom** (niski FPR), **reagują szybko** (jasna dokumentacja), **problemy wykrywane wcześnie** (correlation, adaptive), **system ewoluuje** (rationalization).
+
+Kluczowa zasada raz jeszcze: **Quality over Quantity**. Dziesięć dobrych akcjonowalnych alarmów warte więcej niż tysiąc informacyjnych ignorowanych. W OZE alarm management absolutnie krytyczny—remote monitoring wymaga precise alarms. Następnie podsumowanie całego Wykładu 1.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+---
+
+## 📚 Materiały uzupełniające
+
+Pełna treść wykładu z rozszerzonymi wyjaśnieniami, przykładami i szczegółami dostępna jest w pliku: [05-alarmowanie.mdx](./05-alarmowanie.mdx)
+
+### Szczegółowe przykłady
+- Histereza w praktyce: Farma PV, alarm "Low PR" (z/bez histerezy)
+- Reguła korelacyjna: Wczesna detekcja awarii łożyska (wiatr)
+- Eskalacja w praktyce: Farma wiatrowa, timeline od trigger do resolved
+- Alarm rationalization: Farma PV 10 MW, Q3 2024 review
+
+### Diagramy
+- Ścieżki eskalacji 3-tier (Mermaid flowchart)
+- Cause-&-Effect Matrix dla BESS, biogas, wiatr
+- Alarm lifecycle (Triggered → Acknowledged → Resolved → Closed)
+
+### Standardy
+- ISA-18.2: Management of Alarm Systems for the Process Industries
+- IEC 62682: Management of alarms systems for the process industries
+- EEMUA 191: Alarm Systems—A Guide to Design, Management and Procurement
+
+### Best Practices
+- Target alarm rates per ISA-18.2
+- Hysteresis sizing rules of thumb
+- Adaptive threshold algorithms
+- Suppression logic patterns
+- Multi-channel escalation strategies
+
+### Narzędzia
+- **Alarm management**: Ignition Alarm Notification, WinCC Alarm Management
+- **CMMS integration**: Maximo, SAP PM, eMaint
+- **Analytics**: Alarm analytics modules w SCADA, custom Python/R scripts
+

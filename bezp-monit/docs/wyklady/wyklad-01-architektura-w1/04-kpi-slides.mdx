@@ -1,0 +1,441 @@
+---
+title: "KPI: Kluczowe wskaźniki wydajności - Prezentacja"
+sidebar_position: 4
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="📊 KPI: Kluczowe wskaźniki wydajności w OZE" type="info">
+
+<KeyPoints title="📋 Cele uczenia">
+- 📊 **Obliczanie i interpretacja** głównych KPI dla różnych technologii OZE
+- ☀️ **PR dla PV**: Performance Ratio, typowe wartości, analiza strat
+- 💨 **CF dla wiatru**: Capacity Factor, klasy wiatru, zależność v³
+- 🔋 **SoC/SoH dla BESS**: Stan naładowania i zdrowia, degradacja
+- 🏭 **OEE dla biogazu**: Availability × Performance × Quality
+- ⚡ **Availability**: Uniwersalny KPI, SLA, penalties
+</KeyPoints>
+
+<SupportingDetails title="🔑 Dlaczego KPI są kluczowe?">
+- **Benchmarking**: Porównanie wydajności między instalacjami
+- **Trend analysis**: Wykrywanie degradacji w czasie
+- **Compliance**: Weryfikacja zgodności z umowami (SLA)
+- **Maintenance planning**: Priorytetyzacja interwencji
+</SupportingDetails>
+
+<InstructorNotes>
+Czwarta część wykładu to kluczowe wskaźniki wydajności. **KPI to kwantyfikowalne metryki transformujące surowe dane w informacje biznesowe**. Bez KPI dane to tylko liczby, z KPI stają się narzędziem decyzyjnym.
+
+Dziś poznamy specyficzne KPI dla każdej technologii: **PR dla fotowoltaiki, CF dla wiatru, SoC/SoH dla magazynów, OEE dla biogazu**. Każdy wskaźnik odpowiada na konkretne pytanie.
+
+Zapytajcie: "Jakie KPI znacie z innych branż?" OEE w produkcji, NPS w usługach. **KPI to uniwersalny język biznesu**, nie tylko OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🎯 KPI vs. Metryki surowe: Hierarchia" type="tip">
+
+<KeyPoints title="📊 Różnica między metryką a KPI">
+- 📏 **Metryka surowa**: Moc invertera = 245 kW (w danej chwili)
+- 📈 **KPI**: PR = 87% (za tydzień) → kontekst + agregacja + normalizacja
+- 🎯 **Wartość KPI**: Porównywalność, trend analysis, decision support
+</KeyPoints>
+
+<InfoBox>
+**Hierarchia KPI w OZE**
+
+**Level 1**: Surowe dane (P, V, I, T, G)  
+**Level 2**: Metryki pochodne (E_AC, E_DC, η_inv)  
+**Level 3**: KPI operacyjne (PR, CF, Availability) ← **przedmiot wykładu**  
+**Level 4**: KPI finansowe (Revenue, IRR, LCOE)
+</InfoBox>
+
+<WarningBox>
+**Zasada 5–7 KPI**
+
+KPI overload (50+ metryk) = nikt nie wie, co ważne. Wybierz kilka najważniejszych dla danego stakeholdera: Operator (PR, Availability), Inwestor (Revenue, IRR), Serwis (MTBF, MTTR).
+</WarningBox>
+
+<InstructorNotes>
+Kluczowe rozróżnienie: **KPI to nie surowe dane**. Metryka surowa to "245 kW teraz", KPI to "PR 87% przez tydzień". KPI agreguje, normalizuje, kontekstualizuje. PR 87%—czy dobrze? Zależy: 2 pp niżej niż miesiąc temu wymaga analizy.
+
+Hierarchia pokazuje **poziomy abstrakcji**. Level 1: surowe dane. Level 2: proste kalkulacje (energia = całka mocy). Level 3: KPI operacyjne—przedmiot wykładu. Level 4: KPI finansowe.
+
+**KPI to język biznesu**. Inżynierowie mówią "moc, napięcie", menedżerowie "PR, Revenue". Bez KPI nie ma komunikacji. **Zasada 5-7 KPI** zapobiega przeładowaniu—wybierz to, co napędza decyzje.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="☀️ Performance Ratio (PR): Najważniejszy KPI dla PV" type="info">
+
+<KeyPoints title="📐 Definicja i wzór PR">
+- 🎯 **Pytanie**: Jak dobrze instalacja konwertuje dostępne światło w energię?
+- 📋 **Wzór**: PR = E_AC_rzecz / E_teor
+- 🌡️ **Korekty**: Uwzględnia irradiancję POA i temperaturę modułów
+- ✅ **Typowe wartości**: 78–85% (standard), 85–90% (nowa, profesjonalna)
+- 🔑 **Kluczowe**: PR nie zależy od ilości słońca (normalizuje po irradiancji)
+</KeyPoints>
+
+<InfoBox>
+**Wzór szczegółowy**
+
+$$
+PR = \frac{E_{\text{AC,rzecz}}}{G_{\text{POA}} \times A \times \eta_{\text{STC}} \times (1 + \gamma \cdot \Delta T)}
+$$
+
+- E_AC: Energia rzeczywista [kWh]
+- G_POA: Irradiancja w płaszczyźnie modułów [kWh/m²]
+- γ: Współczynnik temperaturowy (typowo -0.4 do -0.5%/°C)
+- ΔT: T_moduł - 25°C
+</InfoBox>
+
+<InstructorNotes>
+Performance Ratio to **najważniejszy KPI dla fotowoltaiki**. PR odpowiada: "Jak dobrze instalacja konwertuje dostępne światło?" Wzór energia rzeczywista AC dzielona przez teoretyczną przy danych warunkach.
+
+**Kluczowa cecha: PR nie zależy od ilości słońca**. Farma w Niemczech może mieć PR 88%, farma w Hiszpanii też 88%. PR mierzy efektywność konwersji, nie dostępność zasobu.
+
+Typowe wartości: 78-85% standard, 85-90% nowe profesjonalne, powyżej 90% exceptional. **Temperatura ma ogromny wpływ**: ΔT = 23°C to 9.66% straty—prawie 10%! Bifacial plus tracking mają wyższy PR przez lepszą wentylację.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="☀️ PR: Komponenty strat i praktyka" type="warning">
+
+<KeyPoints title="📉 Składowe strat w PR (dlaczego PR < 100%)">
+- 🔆 **Optyczne**: 2–5% (odbicia, soiling, shading)
+- 🌡️ **Temperaturowe**: 5–15% (moduły 40–70°C, nie 25°C STC)
+- ⚡ **Konwersja DC→AC**: 2–5% (sprawność invertera 95–98%)
+- 🔌 **Mismatch**: 1–3% (różnice między modułami)
+- 📊 **Razem**: Typowy PR nowej instalacji = 75–90%
+</KeyPoints>
+
+<SuccessBox>
+**Praktyczne wskazówki monitoringu PR**
+
+1. **Pyranometr POA obowiązkowy** (klasa A, kalibracja co 1–2 lata)
+2. **Alarmy**: PR < 75% przez > 2h przy G > 400 W/m² → P2 "Low PR"
+3. **Okna czasowe**: 1-h dla alertów, 24-h dla raportów, 30-day dla trendów
+4. **Segmentacja**: Analiza PR w funkcji irradiancji, temperatury, pory dnia
+5. **Benchmarking portfolio**: Porównuj PR między farmami
+</SuccessBox>
+
+<InstructorNotes>
+PR < 100% przez straty systemowe. Największe: **temperaturowe 5-15%** (moduły 40-70°C, nie 25°C STC) i **optyczne 2-5%** (soiling, odbicia). Konwersja DC→AC to 2-5%. Razem typowy PR nowej instalacji 75-90%.
+
+**Pyranometr referencyjny obowiązkowy**—bez pomiaru irradiancji POA nie można obliczyć PR. Klasa A, kalibracja co 1-2 lata. Koszt 500-1000 euro, ale drift bez kalibracji to 5-10% rocznie—wypacza kalkulacje.
+
+Alarmy: PR < 75% przez 2h przy G > 400 W/m² to P2. Nie alarmuj przy niskiej irradiancji—PR głośny przy słabym świetle. **Okna czasowe**: 1-h dla alertów, 30-day dla trendów. Segmentacja ujawnia problemy: PR niski tylko przy wysokiej irradiancji? Inverter clipping.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="💨 Capacity Factor (CF): Główny KPI dla wiatru" type="info">
+
+<KeyPoints title="📐 Definicja CF">
+- 📋 **Wzór**: CF = E_rzecz / (P_nom × t) × 100%
+- 🎯 **Pytanie**: Jak dobrze wykorzystujemy moc nominalną turbiny?
+- 🌬️ **Zależność**: P ∝ v³ (moc wiatru kubiczna od prędkości!)
+- 📊 **Typowe wartości**: 20–30% (onshore Środkowa Europa), 40–50% (offshore)
+- ⚠️ **Różnica vs. PR**: CF zależy od zasobu (wiatru), nie normalizuje
+</KeyPoints>
+
+<SupportingDetails title="🗺️ CF vs. Klasa wiatru (IEC 61400-1)">
+- **Klasa I** (V_avg = 10 m/s): CF 40–50% (offshore, wybrzeża)
+- **Klasa II** (V_avg = 8.5 m/s): CF 30–40% (dobre onshore)
+- **Klasa III** (V_avg = 7.5 m/s): CF 20–30% (Europa Środkowa)
+- **Klasa IV** (V_avg = 6 m/s): CF 15–25% (słabe wiatry)
+</SupportingDetails>
+
+<InstructorNotes>
+Capacity Factor to główny KPI wiatru—mierzy **wykorzystanie mocy nominalnej**. W przeciwieństwie do PR (normalizuje), CF bezpośrednio zależy od wiatru. Wzór prosty: energia przez moc nominalną razy czas.
+
+Kluczowa fizyka: **moc wiatru to v³—zależność kubiczna**. Wiatr 8 m/s daje 2.4× więcej mocy niż 6 m/s (przy 33% wyższej prędkości). Najważniejsza relacja w energetyce wiatrowej—podkreślcie kilkakrotnie.
+
+Typowe wartości: **20-30% onshore Europa Środkowa**, 40-50% offshore. CF silnie zależny od lokalizacji—pre-construction wind assessment krytyczny. Offshore 2× wyższy CF, ale CapEx też 2-3× wyższy. CF niska to słabe wiatry (OK) lub niska dostępność (problem)—rozdziel przez analizę Availability.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="💨 CF: Czynniki wpływające na wartość" type="warning">
+
+<KeyPoints title="⚡ Co wpływa na Capacity Factor?">
+- 🌬️ **Prędkość wiatru**: Dominujący czynnik, P ∝ v³ (zależność kubiczna!)
+- 📊 **Rozkład wiatrów**: Weibull distribution (stałe vs. zmienne wiatry)
+- 📈 **Power curve turbiny**: Cut-in (3–4 m/s), rated (10–13 m/s), cut-out (25 m/s)
+- ⏰ **Dostępność**: CF uwzględnia przestoje (A = 95% → CF spada o ~5%)
+- 🌀 **Wake effect**: Turbiny w cieniu innych mają CF niższy o 5–15%
+- ❄️ **Sezonowość**: CF zimą 2× wyższy niż latem (Europa)
+</KeyPoints>
+
+<WarningBox>
+**Przykład zależności kubicznej**
+
+- Wiatr 6 m/s → P = k × 6³ = 216k
+- Wiatr 8 m/s → P = k × 8³ = 512k
+
+**2.4× więcej mocy przy 33% wyższej prędkości!**
+</WarningBox>
+
+<InstructorNotes>
+Czynniki wpływające na CF są złożone. Dominujący: **prędkość wiatru z kubiczną zależnością**. Przykład: 8 vs 6 m/s to 33% różnicy w prędkości, ale 2.4× w mocy. Dlatego lokalizacja krytyczna.
+
+Rozkład wiatrów też ma znaczenie. Średnia 7 m/s, ale stałe wiatry (Weibull k=2.5) dają CF 30%, zmienne (k=1.5) tylko 25%. Power curve turbiny definiuje efektywność. **Nowoczesne turbiny mają niższy cut-in i wyższy rotor/generator ratio**—wyższy CF w słabych wiatrach.
+
+Wake effect praktyczny problem: turbiny w cieniu innych mają CF niższy o 5-15%. Wake steering odzyskuje 2-5%. **Sezonowość wyraźna**: wiatr silniejszy zimą, CF grudniowy 2× wyższy niż lipcowy. Odwrotnie niż PV.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔋 BESS: State of Charge (SoC)" type="info">
+
+<KeyPoints title="🔌 SoC: Stan naładowania baterii">
+- 📋 **Definicja**: SoC = Q_available / Q_nom × 100%
+- 🎯 **Zakres**: 0% (pusty) do 100% (pełny)
+- ⚙️ **Operational range**: Typowo 20–90% (chroni przed deep discharge/overcharge)
+- 🎚️ **SoC target**: 50–60% (optimal dla longevity i flexibility)
+</KeyPoints>
+
+<SupportingDetails title="🔬 Metody estymacji SoC">
+- **Coulomb Counting**: Całkowanie prądu, prosty ale drift ±5% po tygodniu
+- **Voltage-based (OCV)**: Napięcie cel vs SoC, wymaga braku obciążenia
+- **Extended Kalman Filter**: Fuzja metod + model elektrochemiczny, ±1-2% accuracy
+</SupportingDetails>
+
+<InfoBox>
+**SoC vs. DoD (Depth of Discharge)**
+
+- SoC = % naładowania (100% = pełny, 0% = pusty)
+- DoD = % rozładowania (0% = pełny, 100% = pusty)
+- Relacja: DoD = 100% - SoC
+</InfoBox>
+
+<InstructorNotes>
+State of Charge to **procent dostępnej energii** względem nominalnej. Zakres 0-100%, praktycznie operational 20-90%—chroni przed deep discharge i overcharge przyspieszającymi degradację.
+
+Metody estymacji to kompromis prostota vs dokładność. **Coulomb counting** prosty, ale drift ±5% po tygodniu. Voltage-based używa krzywej napięcie vs SoC, wymaga braku obciążenia—rzadko możliwe. **Extended Kalman Filter to gold standard**: fuzja metod plus model elektrochemiczny, ±1-2% accuracy.
+
+DoD (Depth of Discharge) to odwrotność SoC: DoD = 100% - SoC. **W kontekście cycle life baterie mają żywotność w funkcji DoD**. Przykład: 5000 cykli przy 80% DoD. Głębsze rozładowanie = krótsza żywotność. Shallow cycles dają 2-3× więcej cykli.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔋 BESS: State of Health (SoH)" type="warning">
+
+<KeyPoints title="❤️ SoH: Stan zdrowia baterii">
+- 📋 **Definicja**: SoH = C_actual / C_rated × 100%
+- 📉 **Degradacja**: 100% (nowa) → 80% (End of Life) po 3000–5000 cykli
+- ⚠️ **EoL threshold**: SoH < 80% (zmniejszona pojemność, wyższa rezystancja)
+- ♻️ **Second-life**: Baterie 70–80% SoH do mniej krytycznych aplikacji
+</KeyPoints>
+
+<SupportingDetails title="🔬 Mechanizmy degradacji">
+- 📅 **Calendar aging**: 2–5%/rok (niezależnie od użycia, SEI growth)
+- 🔄 **Cycle aging**: Zależy od DoD (50% DoD → 2× więcej cykli niż 100% DoD)
+- 🌡️ **Temperatura**: 35°C = 2× szybsza degradacja, 45°C = 4× szybsza
+- 🛡️ **Mitygacja**: Aktywne chłodzenie < 30°C, shallow cycles, SoC storage 40–60%
+</SupportingDetails>
+
+<InstructorNotes>
+State of Health to **procent aktualnej pojemności** względem nominalnej. Nowa 100%, po cyklach spada. **SoH < 80% to End of Life** dla grid-scale BESS—zmniejszona pojemność, zwiększona rezystancja, ryzyko thermal runaway.
+
+Trzy mechanizmy degradacji. **Calendar aging** 2-5% rocznie niezależnie od użycia. **Cycle aging** zależy od DoD: 100% DoD daje 3000-5000 cykli (LFP), 50% DoD daje 8000-15000. **Temperatura przyspiesza**: 35°C to 2× szybsza degradacja, 45°C to 4×.
+
+Mitygacja: **aktywne chłodzenie < 30°C**, shallow cycles, storage przy SoC 40-60%. LFP żyje dłużej niż NMC—dla grid-scale dominuje od 2020. Po EoL (70-80% SoH) baterie idą do second-life (residential storage), potem recycling.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🏭 Biogaz: Overall Equipment Effectiveness (OEE)" type="info">
+
+<KeyPoints title="📊 OEE dla biogazowni">
+- 📋 **Definicja**: OEE = Availability × Performance × Quality
+- ⚙️ **A (Availability)**: t_run / t_planned (typowo > 95%)
+- 📈 **P (Performance)**: Q_biogas_actual / Q_biogas_design (typowo 85–100%)
+- ✅ **Q (Quality)**: % biogazu spełniającego spec (CH₄ > 50%, H₂S < 500 ppm)
+- 🎯 **Typowa wartość**: OEE > 85% dobrze, > 90% world-class
+</KeyPoints>
+
+<SupportingDetails title="🔬 Kluczowe wskaźniki procesu">
+- 🌬️ **CH₄ content**: Target 50–65% (wyższy = lepsza wartość energetyczna)
+- ☠️ **H₂S**: < 500 ppm (chroni CHP przed korozją), < 1000 ppm (safety)
+- 📊 **OLR**: 2–4 kg VS/m³/day (organic loading rate)
+- ⏱️ **HRT**: 20–40 dni (hydraulic retention time)
+</SupportingDetails>
+
+<InstructorNotes>
+OEE z lean manufacturing zaadaptowany do biogazu. **Iloczyn trzech składowych**: Availability (uptime), Performance (throughput), Quality (spec). Holistic metric łączący wszystkie aspekty.
+
+Availability typowo > 95%—biogazownie 24/7, przestoje planowane. Performance: produkcja rzeczywista vs projektowa, 85-100%. **Jeśli P < 85%, problem**: niedokarmienie, temperatura, mikroflora. Quality: procent biogazu spełniającego spec (CH₄ > 50%, H₂S < 500 ppm), typowo Q > 98%.
+
+Przykład: A=96%, P=90%, Q=98% daje OEE = 84.7%. Dobry wynik, world-class > 90%. **Biogazownie najbardziej złożone** w OZE—proces biologiczny nieprzewidywalny. **CH₄ content to King**: 50% CH₄ = 5 kWh/m³, 60% = 6 kWh/m³. H₂S > 500 ppm koroduje CHP, > 1000 ppm toksyczny. Desulfurization 10-50k euro rocznie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="⚡ Availability: Uniwersalny KPI dla wszystkich technologii" type="success">
+
+<KeyPoints title="🎯 Definicja Availability">
+- 📋 **Wzór**: Availability = t_available / t_total × 100%
+- 🔑 **Pytanie**: Jaki % czasu instalacja jest zdolna do produkcji?
+- ⚠️ **Typy**: Operational (wszystkie przestoje), Technical (bez planned), Contractual (SLA)
+- 📊 **Typowe wartości**: > 99% (PV), 95–98% (wiatr onshore), 90–95% (biogaz)
+</KeyPoints>
+
+<WarningBox>
+**Availability vs. SLA = Finansowe konsekwencje**
+
+**Przykład penalty**:
+- SLA requirement: > 97% Availability
+- Actual: 95% → Shortfall 2 pp
+- Loss: 2% × 10 000 MWh = 200 MWh
+- Penalty: 200 MWh × €500/MWh = **€100 000**
+
+Availability < SLA = massive financial loss!
+</WarningBox>
+
+<InstructorNotes>
+Availability to **procent czasu zdolności do produkcji**—niezależnie od zasobu. Jeden z najważniejszych KPI, bo bezpośrednio wpływa na przychody.
+
+Trzy typy: **Operational** (wszystkie przestoje), **Technical** (bez planned—najczęściej używana), **Contractual** (SLA/PPA). Technical wyklucza planowane maintenance, bo przewidywalne.
+
+Typowe wartości: **PV > 99%** (brak ruchomych części), wiatr onshore 95-98% (gearbox wymaga maintenance), offshore 92-96% (trudniejszy dostęp), biogaz 90-95% (proces biologiczny plus CHP).
+
+**SLA penalties are real**: setki tysięcy euro rocznie. Przykład: Availability 95% vs SLA 97% = shortfall 2 pp = 200 MWh loss = 100 tysięcy euro penalty. Operatorzy bardzo zmotywowani do maksymalizacji. Force majeure zazwyczaj nie wliczane.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📊 Strategie zwiększenia Availability" type="tip">
+
+<KeyPoints title="✅ Jak maksymalizować Availability?">
+- 🔧 **Predictive Maintenance**: Wykrywaj awarie wcześnie (CMS, trend analysis)
+- 📦 **Redundancja**: Spare parts on-site, redundant SCADA/fog servers
+- 🖥️ **Remote diagnostics**: 80% problemów zdiagnozuj remote (bez wizyty)
+- ⚡ **Fast response**: SLA z serwisem < 24h dla P1, < 72h dla P2
+- 🏗️ **Design for reliability**: Over-spec (derating), modularność (no SPOF)
+</KeyPoints>
+
+<SuccessBox>
+**Przykład: Farma PV 10 MW, Availability roczna**
+
+**Przestoje planned**: 1.5 dni (mycie modułów, wymiana inverterów)  
+**Przestoje unplanned**: 0.13 dni (awarie, excluding force majeure)
+
+**Availability** = (365 - 0.13) / (365 - 1.5) × 100% = **99.96%**
+
+SLA requirement: > 99% → **Pass with margin** ✅ No penalties
+</SuccessBox>
+
+<InstructorNotes>
+Strategie zwiększenia Availability to konkretne działania. **Predictive Maintenance to fundament**—wykrywaj problemy przed eskalacją (CMS, trend analysis PR). Skraca downtimes, umożliwia planowanie w oknach niskiej produkcji.
+
+**Redundancja to ubezpieczenie**: spare parts on-site eliminuje opóźnienia dostaw, redundant SCADA/fog dla > 10 MW. Remote diagnostics game-changer—**80% problemów zdiagnozuj przez SCADA**, nie wymaga wizyty. Remote updates oszczędzają dni.
+
+Fast response contracts: < 24h dla P1, < 72h dla P2. Offshore helicopter szybszy niż weather window (kosztowny). **Design for reliability**: over-spec (derating—inverter 90% nominalnej żyje dłużej), modularność (no SPOF).
+
+Przykład PV: Availability 99.96% > SLA 99%. Unplanned tylko 0.13 dnia. Pass with margin, no penalties. Gdyby 98%, penalty około 50k euro dla 10 MW.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🎓 Podsumowanie: KPI dla różnych stakeholderów" type="success">
+
+<KeyPoints title="🔑 Kluczowe wnioski">
+- ☀️ **PV**: PR = 78–90% (normalizuje po irradiancji, temperatura -10%)
+- 💨 **Wiatr**: CF = 20–50% (zależy od v³, offshore 2× onshore)
+- 🔋 **BESS**: SoC (operational), SoH (degradacja, EoL 80%)
+- 🏭 **Biogaz**: OEE = A × P × Q (> 85% dobrze, > 90% world-class)
+- ⚡ **Availability**: > 99% (PV), 95–98% (wiatr), SLA penalties real
+</KeyPoints>
+
+<SuccessBox>
+**KPI per stakeholder**
+
+- **Operator**: PR/CF, Availability, Alarm rate
+- **Inwestor**: Revenue, IRR, Availability vs. SLA
+- **Serwis**: MTBF, MTTR, Spare parts usage
+- **OSP**: Availability, Curtailment response
+- **Management**: LCOE, Portfolio CF, ESG metrics
+
+**Nie ma "one size fits all"**—projektuj dashboardy per stakeholder!
+</SuccessBox>
+
+<InstructorNotes>
+Zbieramy całość. Każda technologia ma specyficzne KPI. **PV to PR 78-90%** (normalizuje po irradiancji, temperatura -5-15%). Wiatr to CF 20-50% (zależy v³, offshore 2× onshore ale 2-3× droższy). **BESS to SoC dla operational i SoH dla financial planning**—degradacja do 80% po 3000-5000 cykli, potem second-life. Biogaz to OEE > 85%, najbardziej złożony.
+
+Availability uniwersalny: > 99% PV, 95-98% wiatr, 90-95% biogaz. **SLA penalties realne**: setki tysięcy euro przy shortfall. Maksymalizacja przez PdM, redundancję, fast response.
+
+Różni stakeholderzy, różne KPI. **Operator**: PR/CF real-time, Availability, alarms. **Inwestor**: Revenue, Availability vs SLA. **Management**: LCOE, portfolio, ESG. **Nie ma uniwersalnego dashboardu**—projektuj per stakeholder.
+
+Zapowiedź: następna sekcja to filozofia alarmowania i eskalacji—jak przekształcić anomalie w akcje.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+---
+
+## 📚 Materiały uzupełniające
+
+Pełna treść wykładu z rozszerzonymi wyjaśnieniami, przykładami i szczegółami dostępna jest w pliku: [04-kpi.mdx](./04-kpi.mdx)
+
+### Szczegółowe przykłady
+- Kalkulacja PR krok po kroku dla farmy 1 MW
+- Porównanie CF: Farmy onshore vs. offshore
+- Degradacja SoH: BESS 1 MWh przez 5 lat eksploatacji
+- KPI biogazowni 1 MW: Analiza miesięczna
+- Availability analysis: Farma PV 10 MW z przestojami
+
+### Wzory i kalkulacje
+- PR z kompensacją temperaturową (szczegółowo)
+- CF z uwzględnieniem rozkładu Weibull
+- SoC estymacja: Coulomb counting + EKF
+- SoH tracking i prognoza EoL
+- OEE components dla biogazowni
+
+### Literatura
+- IEC 61724: Photovoltaic system performance monitoring—Guidelines for measurement, data exchange and analysis
+- IEC 61400-25: Communications for monitoring and control of wind power plants
+- IEEE Std 1188: Recommended Practice for Maintenance, Testing, and Replacement of Valve-Regulated Lead-Acid (VRLA) Batteries for Stationary Applications
+
+### Narzędzia
+- **PR calculation**: PVsyst, PVGIS, custom SCADA algorithms
+- **CF analysis**: WindPRO, WAsP, turbine SCADA
+- **SoC/SoH tracking**: BMS systems (Tesla, Fluence, ABB)
+- **OEE monitoring**: Custom SCADA, MES systems
+
