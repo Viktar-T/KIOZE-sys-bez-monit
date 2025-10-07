@@ -1,0 +1,449 @@
+---
+title: "Podsumowanie W1 - Prezentacja"
+sidebar_position: 6
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎓 Podsumowanie Wykładu 1: Architektura monitoringu OZE" type="success">
+
+<KeyPoints title="🔑 5 kluczowych obszarów W1">
+- 🎯 **Rola monitoringu**: Ciągłość, bezpieczeństwo, PdM, compliance
+- 🏗️ **Architektura warstwowa**: Edge-Fog-Cloud, podział odpowiedzialności
+- 📊 **Typy danych i źródła**: Time-series, events, metadata (PV/wiatr/BESS/biogaz)
+- 📈 **KPI**: PR, CF, SoC/SoH, OEE, Availability—metryki operacyjne i biznesowe
+- 🚨 **Alarmowanie**: Priorytetyzacja P1-P4, minimalizacja false positives, eskalacja
+</KeyPoints>
+
+<SupportingDetails title="🎯 Cel podsumowania">
+- **Synteza**: Połączenie wszystkich elementów w całościową wizję
+- **Big picture**: Jak edge-fog-cloud, KPI i alarmy współpracują
+- **Praktyka**: Case study instalacji hybrydowej PV + BESS
+</SupportingDetails>
+
+<InstructorNotes>
+To podsumowanie całego wykładu—**łączymy wszystkie kropki w big picture**. Przeszliśmy przez pięć obszarów: rola monitoringu, architektura warstwowa, typy danych, KPI i alarmowanie. Elementy nie działają w izolacji—**tworzą kompletny ekosystem**.
+
+Edge zbiera dane i reaguje na safety w milisekundach. Fog agreguje z dziesiątek źródeł, oblicza KPI realtime, generuje alarmy operacyjne. Cloud analizuje lata danych, buduje modele ML, wspiera decyzje biznesowe. **KPI transformują surowe dane w metryki**, alarmy przekształcają anomalie w akcje.
+
+Studenci często tracą big picture w szczegółach—diagram integracji przywraca kontekst. Zapytajcie: "Czy widzicie teraz jak wszystko razem działa?" Ten moment to kluczowy turning point zrozumienia.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🏗️ Synteza #1: Architektura Edge-Fog-Cloud" type="info">
+
+<KeyPoints title="🔹 Edge: Warstwa najbliższa urządzeniom">
+- 📡 **Funkcje**: Akwizycja 1-10 Hz, walidacja, normalizacja, buffering 1-48h
+- 🚨 **Safety**: Lokalne alarmy P1 (< 100 ms latency)
+- 🔧 **Hardware**: Raspberry Pi, Moxa, PLC (Siemens, ABB)
+- 🌐 **Protokoły**: Modbus RTU/TCP, OPC UA, CAN bus
+- ✅ **Benefit**: Resilience (działa bez fog/cloud), safety (lokalne reakcje)
+</KeyPoints>
+
+<KeyPoints title="🔸 Fog: Agregacja lokalna">
+- 🔗 **Funkcje**: Agregacja 10-100 źródeł, historian 7-30 dni, KPI real-time
+- 📊 **Alarmy**: P2/P3, eskalacja, HMI lokalne
+- 💻 **Tech**: InfluxDB, Grafana, Node-RED (open-source)
+- ✅ **Benefit**: Local control (działa bez cloud), low latency < 1s
+</KeyPoints>
+
+<SupportingDetails title="☁️ Cloud: Analityka i storage">
+- 💾 **Funkcje**: Storage 5-10 lat, ML/AI, fleet benchmarking, business dashboards
+- 💰 **Koszty**: €10-50/MW/miesiąc (przy dobrej agregacji w fog)
+- ✅ **Benefit**: Scalability, advanced analytics, no CapEx (OpEx model)
+</SupportingDetails>
+
+<InstructorNotes>
+Przypominamy architekturę warstwową w trzech krokach. **Edge to warstwa najbliższa urządzeniom**: akwizycja 1-10 Hz, walidacja, normalizacja, buffering 1-48 godzin. Kluczowe: **safety alarms P1 działają lokalnie z latencją poniżej 100 ms**—nie można czekać na cloud. Hardware skaluje się: Raspberry Pi dla małych, Moxa przemysłowe, PLC dla złożonych.
+
+**Fog agreguje lokalnie**: dziesiątki do setek urządzeń edge, normalizacja tagów, historian 7-30 dni, KPI realtime. Generuje alarmy P2/P3 z eskalacją, HMI dla operatorów. **Open-source stack InfluxDB + Grafana + Node-RED to de facto standard przemysłowy**.
+
+**Cloud to long-term i advanced analytics**: lata danych, ML/AI, fleet benchmarking, business dashboards, integracje ERP/CMMS. Koszty przy dobrej agregacji niskie: **10-50 euro na MW miesięcznie**. Zapamiętajcie złotą zasadę: Safety always local, analytics can be cloud—nigdy odwrotnie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📊 Synteza #2: KPI dla różnych technologii" type="info">
+
+<KeyPoints title="☀️ KPI per technologia">
+- **PV**: PR = 85-90%, próg alarmu < 75% (P2)
+- **Wiatr**: CF = 25-45% (zależy lokalizacja), porównuj między turbinami
+- **BESS**: SoC operational 20-90%, SoH degradacja do 80% (EoL)
+- **Biogaz**: OEE = A×P×Q > 85%, world-class > 90%
+- **Wszystkie**: Availability > 95-99% (zależy technologia), SLA penalties real
+</KeyPoints>
+
+<InfoBox>
+**Zasada wyboru KPI per stakeholder**
+
+- **Operators**: Availability, PR/CF, alarm rate (daily/hourly)
+- **Management**: Revenue, IRR, LCOE (monthly/quarterly)
+- **Maintenance**: MTBF, MTTR, spare parts cost (weekly)
+- **Inwestorzy**: ROI, ESG metrics, Availability vs SLA
+
+**Nie ma "one size fits all"**—projektuj dashboardy per stakeholder!
+</InfoBox>
+
+<InstructorNotes>
+Każda technologia ma charakterystyczne KPI. **PV to PR 85-90%** normalizujący produkcję po irradiancji, alarm poniżej 75%. Wiatr to **CF 25-45% silnie zależny od prędkości wiatru** (do potęgi trzeciej!), porównujcie między turbinami wykrywając underperformance. BESS ma dwa: **SoC dla control operacyjnego 20-90%**, SoH dla financial planning (degradacja do 80% to EoL). Biogaz to OEE iloczyn trzech czynników, powyżej 90% world-class.
+
+Availability uniwersalna: PV powyżej 99%, wiatr 95-98%, biogaz 90-95%. **Różni stakeholderzy potrzebują różnych KPI i to jest kluczowe**. Operator realtime: Availability, PR/CF, alarm rate. Management monthly: Revenue, SLA compliance (penalties setki tysięcy!). Maintenance weekly: MTBF, MTTR, spare parts.
+
+Projektujcie dashboardy per stakeholder—nie jeden uniwersalny dla wszystkich. Operator nie potrzebi ROI, inwestor nie chce widzieć szczegółów string currents. Tailored content to profesjonalizm.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🚨 Synteza #3: Filozofia alarmowania" type="warning">
+
+<KeyPoints title="📋 Kluczowe elementy alarm management">
+- 🎚️ **4 poziomy**: P1 Critical (< 10 min), P2 High (< 1h), P3 Medium (< 24h), P4 Info
+- 🔧 **Anti-flooding**: Histereza (2-5°C, 2-5 pp KPI), uśrednianie, adaptive thresholds
+- 📞 **Eskalacja**: Role-based, multi-tier (L1 Operator → L2 Manager → L3 Director)
+- 📊 **Metryki**: Alarm rate < 50/day, FPR < 20%, MTTA < 1h (P2), MTTR < 24h (P2)
+- 🔄 **Rationalization**: Co 6-12 miesięcy tune thresholds, delete dead alarms
+</KeyPoints>
+
+<WarningBox>
+**Quality > Quantity**
+
+- 10 akcjonowalnych alarmów > 1000 informacyjnych
+- FPR > 30% = alarm fatigue (operatorzy ignorują)
+- P1 > 1/tydzień = źle skonfigurowane progi
+- Dokumentacja każdej reguły = must-have
+</WarningBox>
+
+<InstructorNotes>
+Filozofia alarmowania w skrócie. **Cztery poziomy P1-P4 z określonymi czasami reakcji**: P1 dziesięć minut (safety), P2 godzina (utrata produkcji), P3 doba, P4 tydzień. Nie kombinujcie z pięcioma lub sześcioma poziomami—cztery wystarczą, więcej to confusion.
+
+Techniki anti-flooding to arsenał czterech narzędzi. **Histereza dla każdego progu analogowego** (2-5°C, 2-5 pp), uśrednianie eliminujące spikes, adaptive thresholds uwzględniające historię, suppression na kaskady. **Eskalacja role-based**: do Operator, Manager, Director—nie do Jana czy Marii które rotują.
+
+Metryki pokazują skuteczność: **alarm rate < 50/dzień, FPR < 20%, MTTA < 1h dla P2**. Rationalization co pół roku to must—tune, delete dead, update docs. Quality over Quantity to motto. FPR > 30% = alarm fatigue gwarantowany. Dokumentacja każdej reguły z przyczynami i akcją to fundament.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🏭 Case Study: Instalacja hybrydowa PV 5 MW + BESS 2 MWh" type="tip">
+
+<KeyPoints title="📋 Opis instalacji (Południowa Polska, 2023)">
+- ☀️ **PV**: 5 MW (20 inverterów × 250 kW), 20 000 modułów
+- 🔋 **BESS**: 2 MWh / 1 MW (LFP, 20 racków × 100 kWh)
+- 🎯 **Cel**: Peak shaving + energy arbitrage
+- 💰 **Revenue 2024**: €535k (PV €420k + peak shaving €85k + arbitrage €30k)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Architektura monitoringu">
+- **Edge**: 4× Moxa UC-8100, Modbus TCP, MQTT, local alarms (AFCI, thermal)
+- **Fog**: Dell 5100, InfluxDB 30 dni, Grafana HMI, Node-RED automation
+- **Cloud**: AWS IoT Core, Timestream 7 dni + S3, Lambda KPI, Grafana Cloud
+- **OpEx**: €140/miesiąc = €1680/rok (0.034% vs €5M CapEx—bardzo niski!)
+</SupportingDetails>
+
+<InstructorNotes>
+Case study to **integracja wszystkich koncepcji w praktyce**. Instalacja hybrydowa PV 5 MW plus BESS 2 MWh w południowej Polsce, start styczeń 2023. Cel biznesowy: peak shaving i arbitrage. Revenue 2024 to **535 tysięcy euro**—420k produkcja, 85k peak shaving, 30k arbitrage. Liczby realne, case zanonimizowany.
+
+Architektura klasyczny stack. **Edge: cztery Moxa gateways**, Modbus TCP z inverterów, MQTT publish, local alarms AFCI i thermal. **Fog: Dell z InfluxDB 30 dni**, Grafana cztery dashboardy, Node-RED automation. **Cloud: AWS IoT Core**, Timestream, Lambda serverless KPI, Grafana Cloud business.
+
+OpEx dramatycznie niski: **140 euro miesięcznie czyli 1680 rocznie**—to zaledwie 0.034% OpEx kontra 5 milionów CapEx instalacji. Bardzo niski koszt przy wysokiej wartości. Podkreślcie że to real case nie theoretical—studenci widzą że to działa naprawdę.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🔍 Case Study: Obserwowane problemy i rozwiązania" type="success">
+
+<SuccessBox>
+**Problem 1: Soiling (Q2-Q3 2024)**
+
+- 📉 PR spadł 88% → 82% w 4 miesiące
+- 🔔 Alarm "Low PR" (6× trigger)
+- 🔬 Diagnoza: Korelacja PR vs irradiancja → soiling
+- 🚿 Akcja: Mycie €8k, PR → 87%
+- 💰 **Benefit**: +€10k recovered revenue (ROI 25% w 4 miesiące)
+</SuccessBox>
+
+<SuccessBox>
+**Problem 2: BESS Cell Imbalance (Nov 2023)**
+
+- ⚡ ΔV_cell_max w Rack-05: 85 mV (norma < 50 mV)
+- 🔔 Alarm "Cell imbalance" (P3)
+- 🔬 Cell #124 degraded (3.25V vs 3.33V)
+- 🔧 Akcja: Aktywne balansowanie BMS, monitoring intensified
+- 💰 **Outcome**: ΔV stable 55-60 mV, **uniknięto wymiany rack (€10k savings)**
+</SuccessBox>
+
+<InstructorNotes>
+Dwa przykłady pokazują wartość monitoringu w euro. **Problem pierwszy to soiling**: PR spadł z 88% do 82% w cztery miesiące. Alarm "Low PR" triggerował sześć razy. Korelacja PR kontra irradiancja pokazała stały offset nie zmienne warunki—czyli soiling. Mycie kosztowało 8 tysięcy, PR wrócił 87%. **Benefit: odzyskano 10 tysięcy revenue**, ROI mycia 25% w cztery miesiące.
+
+**Problem drugi: cell imbalance BESS**. ΔV w Rack-05 wzrosło do 85 mV (norma poniżej 50). Alarm P3 wykrył wcześnie. Cell 124 degraded: 3.25V kontra 3.33V innych. Aktywne balansowanie BMS przez dwie godziny, ΔV spadło do 60. Monitoring intensified dwa tygodnie, stabilizacja 55-60 mV. **Uniknięto wymiany rack za 10 tysięcy euro**.
+
+Każdy problem demonstruje edge-fog-cloud working together, KPI diagnostic tool, alarmy trigger action. Pokazujcie financial impact—**studenci rozumieją język pieniędzy lepiej niż abstrakcyjne benefits**.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚖️ Praktyczne zastosowania: Skalowalność architektury" type="tip">
+
+<KeyPoints title="🏠 Mała: Rooftop 20 kWp">
+- **Architektura**: Smart inverter → WiFi → Vendor cloud (SaaS)
+- **Fog**: Pominięty (zbyt mała skala)
+- **KPI**: PR uproszczony (bez pyranometra), Availability auto
+- **Koszt**: €50-200/rok (cloud subscription)
+</KeyPoints>
+
+<KeyPoints title="🏢 Średnia: Farma PV 1 MW">
+- **Architektura**: Raspberry Pi (edge) + IPC fog + AWS cloud
+- **Monitoring**: 40 inverterów, weather station, opcjonalnie string-level
+- **CapEx**: €30k, **OpEx**: €3k/rok
+- **ROI**: Payback 6 lat (1% redukcja downtimes = +€5k/rok)
+</KeyPoints>
+
+<SupportingDetails title="🏭 Duża: Portfolio 100 MW">
+- **Architektura**: Industrial gateways + redundant SCADA + private cloud
+- **NOC**: 24/7 staffed (2 operators/shift)
+- **CapEx**: €2M, **OpEx**: €500k/rok
+- **ROI**: Payback < 1 rok (+€2.5M/rok przez 0.5% improvement Availability)
+</SupportingDetails>
+
+<InstructorNotes>
+Architektura skaluje się z wielkością. **Mała instalacja 20 kWp**: smart inverter WiFi do vendor cloud SaaS, bez fog, 50-200 euro rocznie. Monitoring opłaca się tylko przez wczesną detekcję większych awarii—nie na bieżąco.
+
+**Średnia 1 MW**: Raspberry Pi edge, IPC fog z InfluxDB i Grafana, AWS cloud. Weather station obowiązkowa dla dokładnego PR. CapEx 30 tysięcy, OpEx 3 tysiące rocznie. **ROI przez 1% redukcję downtimes daje plus 5 tysięcy rocznie**, payback 6 lat.
+
+**Duża 100 MW portfolio**: private cloud on-premise plus NOC 24/7. CapEx 2 miliony, OpEx 500 tysięcy (głównie staff). ROI dramatyczny: **0.5% improvement Availability to plus 2.5 miliona rocznie**, payback poniżej roku. Ekonomia skali działa—wysokie fixed, niskie variable per MW.
+
+One size does NOT fit all. Vendor SaaS dla małych (niski CapEx, fast setup), private dla dużych (wymaga expertise, najniższe TCO long-term).
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📚 Powiązania z kolejnymi wykładami" type="info">
+
+<KeyPoints title="🔜 Co dalej w kursie?">
+- 📡 **W2: Czujniki i akwizycja** - Typy czujników, kondycjonowanie, Modbus/OPC UA deep dive
+- 🌐 **W3: Protokoły i IIoT** - MQTT broker, OPC UA praktyka, edge computing
+- ⚡ **W4: Standardy i grid** - IEC 61850, DERMS, grid codes
+- 💧 **W5: Jakość danych** - Stream processing, Kafka, data cleansing
+- 🔍 **W6: Analityka i anomalie** - CUSUM, PCA, autoencoders, predictive models
+- 🔧 **W7-W10**: Specjalizacja (PV monitoring głębiej, CMS wiatr, Edge AI, bezpieczeństwo)
+</KeyPoints>
+
+<InfoBox>
+**Struktura kursu: Progressive Learning**
+
+**W1-W6**: Fundamenty (applicable do wszystkich OZE)  
+**W7-W10**: Specjalizacja per technologia (deep dives)
+
+Od universal concepts → specific applications
+</InfoBox>
+
+<InstructorNotes>
+W1 to fundament całego kursu. **Kolejne wykłady rozwijają wprowadzone tematy stopniowo**. W2 czujniki i akwizycja: od "jakie dane" do "jak gromadzimy"—pyranometry, akcelerometry, kondycjonowanie, Modbus/OPC UA deep dive. W3 protokoły: MQTT broker praktyka, OPC UA server/client, edge patterns. W4 standardy: IEC 61850, DERMS, grid codes.
+
+W5 to **jakość danych i stream processing**: Kafka, InfluxDB Flux, cleansing pipelines. W6 analityka: CUSUM, PCA, autoencoders, predictive. W7-W10 specjalizacja per technologia: PV monitoring głębiej, CMS wiatr, Edge AI, bezpieczeństwo.
+
+**Struktura to progressive learning**: najpierw fundamenty uniwersalne dla wszystkich OZE, potem deep dives specyficzne. Budujemy wiedzę systematycznie od podstaw do advanced. W1 builds na W2, W2 na W3—każdy wykład wymaga poprzednich.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="✅ Self-Assessment: Czy gotowy na W2?" type="success">
+
+<KeyPoints title="🎯 Checklist wiedzy z W1 (musisz umieć...)">
+- 🏗️ **Wyjaśnić różnice** edge, fog, cloud z przykładami funkcji
+- 📊 **Obliczyć PR** dla PV (mając E_AC, G_POA, parametry modułów)
+- 💨 **Obliczyć CF** dla turbiny (mając E_year, P_nom)
+- 🔋 **Zrozumieć SoC vs SoH** (różnice, metody, degradacja)
+- 🚨 **Zaprojektować regułę alarmową** (priorytet, histereza, eskalacja)
+- 🔒 **Uzasadnić safety logic lokalny** (nie cloud—latency, offline risk)
+- 📈 **Podać typowe wartości KPI** (PR 85-90%, CF 25-45%, A > 99%)
+- ⚠️ **Wyjaśnić alarm fatigue** (4 techniki minimalizacji)
+</KeyPoints>
+
+<WarningBox>
+**Test gotowości**
+
+- **> 50% checklist**: Gotowy na W2 ✅
+- **< 50%**: Review materiałów, solve quiz ponownie, office hours
+
+Jeśli nie czujesz się pewnie—to normalne! W1 to dużo materiału (90 min packed).
+</WarningBox>
+
+<InstructorNotes>
+Self-assessment sprawdza gotowość na W2. **Osiem kluczowych umiejętności**: wyjaśnić edge-fog-cloud z przykładami, obliczyć PR i CF, zrozumieć SoC kontra SoH, zaprojektować regułę alarmową z histerezą, uzasadnić safety lokalny nie cloud, podać typowe wartości KPI, wyjaśnić alarm fatigue z czterema technikami.
+
+**Test gotowości prosty: więcej niż 50% to gotowi, mniej to review**. Jeśli mniej, to normalne—W1 packed 90 minut. Sugestie: przeczytajcie ponownie, quiz bez podpowiedzi, office hours dla Q&A czwartek 14-16.
+
+To guidance nie ocenianie. **Zachęćcie do szczerości z samymi sobą**—lepiej zidentyfikować luki teraz i wypełnić niż ciągnąć bez fundamentów. Studenci często wstydzą się pytać—encouragement działa. Przypominajcie że jesteście dostępni.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🛠️ Ćwiczenie 1: Projekt architektury monitoringu" type="warning">
+
+<KeyPoints title="📋 Zadanie (termin: 2 tygodnie, 20% oceny)">
+- 🎯 **Wybierz**: Farma PV 2 MW / Wiatr 15 MW / Hybrid PV+BESS / Biogazownia 500 kW
+- 🏗️ **Zaprojektuj architekturę**: Edge-fog-cloud, hardware, protokoły, uzasadnienie
+- 📊 **Zdefiniuj KPI**: Min. 5 KPI z formułami, targets, alarm thresholds
+- 🚨 **System alarmowy**: Min. 10 reguł (P1-P4), trigger/clear, eskalacja
+- 💰 **Koszty i ROI**: CapEx + OpEx, payback period
+</KeyPoints>
+
+<SupportingDetails title="📄 Deliverables">
+- **Raport**: 5-10 stron PDF (architecture diagram, KPI, alarms, costs, ROI)
+- **Prezentacja**: 10 min (na zajęciach audytoryjnych za 2 tygodnie)
+- **Ocena**: Uzasadnienie decyzji, kompletność, realizm kosztów
+</SupportingDetails>
+
+<WarningBox>
+**Tips**
+
+- Nie ma "jednej poprawnej odpowiedzi"—kreatywność mile widziana!
+- Możecie użyć real data (jeśli dostęp)—anonymize!
+- Oszacowania kosztów ±20% OK—focus na trade-offs
+- Praca pojedynczo lub w parach (wybór Wasz)
+</WarningBox>
+
+<InstructorNotes>
+Ćwiczenie to zastosowanie wiedzy praktyczne. **Wybierzcie jedną z czterech opcji**: PV 2 MW, wiatr 15 MW, hybrid PV+BESS, biogazownia 500 kW. Opracujcie pięć elementów: architekturę, KPI, alarmy, koszty, ROI.
+
+**Zakres otwarty—nie ma jednej poprawnej odpowiedzi**. Ocena: uzasadnienie decyzji, kompletność, realizm. Zachęćcie do kreatywności—drony dla thermography, blockchain dla green certificates OK jeśli uzasadnią. Real data lepsze niż assumptions—jeśli dostęp, świetnie, ale anonymize.
+
+Deliverables: **raport 5-10 stron plus prezentacja 10 minut** za dwa tygodnie. To 20% końcowej oceny—znaczący weight. Pojedynczo lub w parach. Koszty ±20% OK—focus na trade-offs. Exact prices: vendor websites, AWS calculator. To projekt portfolio—na CV!
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📖 Refleksja: Od teorii do praktyki" type="tip">
+
+<KeyPoints title="🎯 Kluczowe umiejętności inżyniera monitoringu OZE">
+- ⚖️ **Balansowanie trade-offs**: Quality vs Cost, Precision vs Recall, CapEx vs OpEx
+- 🔧 **Pragmatyzm**: "Perfect is enemy of good"—lepiej dobry monitoring za 3 miesiące niż perfekcyjny nigdy
+- 🎚️ **MVP approach**: Start basic (inverters + weather), incremental improvements (string-level, ML)
+- 📏 **Adaptacja do kontekstu**: < 1 MW cloud-first, 1-10 MW hybrid, > 100 MW private
+- 📚 **Lifelong learning**: Technologie ewoluują (nowe czujniki, cloud services, edge AI)
+</KeyPoints>
+
+<SuccessBox>
+**Motto dla inżyniera OZE**
+
+**"Monitor first, optimize second."**
+
+Bez dobrego monitoringu nie wiesz co optymalizować. Inwestycja w monitoring = inwestycja w długoterminową efektywność i bezpieczeństwo.
+</SuccessBox>
+
+<InstructorNotes>
+Od teorii do praktyki—**engineering to balansowanie trade-offs**. Każdy projekt ma specyficzne wymagania, budżet, wyzwania. Nie ma perfect solutions, są optimal dla constraints.
+
+Kluczowe umiejętności inżyniera: **balansuj trade-offs** (pyranometr A za 3k czy B za 800?), **bądź pragmatyczny** (perfect is enemy of good—lepiej dobry za trzy miesiące niż perfekcyjny nigdy skończony), **MVP approach** (start basic, incremental improvements), **adaptuj do kontekstu** (< 1 MW cloud-first SaaS, 1-10 MW hybrid, > 100 MW private NOC), **lifelong learning** (technologie ewoluują rocznie, edge AI dopiero się rozwija).
+
+Motto dla inżyniera OZE: **"Monitor first, optimize second"**. Bez dobrego monitoringu nie wiecie co optymalizować. Inwestycja w monitoring to inwestycja w długoterminową efektywność i bezpieczeństwo.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🎓 Podsumowanie końcowe: Gratulacje!" type="success">
+
+<KeyPoints title="✅ Co osiągnęliście w W1">
+- 🏗️ **Zrozumienie architektury**: Edge-fog-cloud, resilience, latency requirements
+- 📊 **Znajomość KPI**: PR, CF, SoC/SoH, OEE, Availability per technologia
+- 🚨 **Filozofia alarmowania**: P1-P4, anti-flooding, eskalacja, rationalization
+- 🔗 **Integracja**: Jak wszystkie elementy współpracują (diagram, case study)
+- 🛠️ **Praktyka**: Projekt do wykonania (zastosowanie wiedzy)
+</KeyPoints>
+
+<SuccessBox>
+**Następne kroki**
+
+1. **Dokończ Ćwiczenie 1** (termin: 2 tygodnie)
+2. **Przygotuj się do W2**: Czujniki i akwizycja danych
+   - Przeczytaj sekcje 1-3 z IEC 61724 (jeśli dostępne)
+   - Review Modbus protocol basics
+3. **Zajęcia audytoryjne** (za 2 tygodnie): Prezentacje + hands-on demo
+
+**Materiały**: Slajdy, kody przykładowe, recording dostępne w systemie
+</SuccessBox>
+
+<InfoBox>
+**Kontakt**
+
+- 📧 Email: [instructor email]
+- 🕐 Office hours: Czwartek 14:00-16:00
+- 💬 Forum kursu: [link]
+
+**Do zobaczenia na W2!** 🚀
+</InfoBox>
+
+<InstructorNotes>
+Gratulacje ukończenia W1! **Macie teraz solidny fundament**: zrozumienie trzech warstw z resilience i latency, znajomość KPI per technologia, filozofię alarmowania z priorytetyzacją i anti-flooding, integrację wszystkich elementów przez diagram i case study, praktyczny projekt.
+
+Następne kroki: **dokończcie Ćwiczenie 1** dwa tygodnie (20% oceny, znaczący), przygotujcie do W2 (Modbus basics, IEC 61724 sekcje 1-3 jeśli dostępne), zajęcia audytoryjne za dwa tygodnie (prezentacje plus hands-on Node-RED demo).
+
+Materiały dostępne: slajdy, kody GitHub, recording siedem dni. Office hours czwartek 14-16—**przypominajcie że mogą przychodzić**, często się wstydzą. Zakończcie motywująco: "Monitor first, optimize second" to foundation filozofii monitoringu OZE. Do zobaczenia W2!
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+---
+
+## 📚 Materiały uzupełniające
+
+Pełna treść podsumowania z rozszerzonymi wyjaśnieniami, przykładami i szczegółami dostępna jest w pliku: [06-podsumowanie.mdx](./06-podsumowanie.mdx)
+
+### Szczegółowe zasoby
+- Diagram integracji systemu (Mermaid—edge→fog→cloud→stakeholders)
+- Case study: Instalacja hybrydowa PV+BESS—pełna analiza 4 problemów
+- Praktyczne zastosowania: Porównanie trzech skal instalacji
+- Quiz końcowy z wyjaśnieniami (4 pytania kalkulacyjne i konceptualne)
+- Ćwiczenie 1: Szczegółowy opis projektu z kryteriami oceny
+
+### Zasoby dodatkowe
+- **Standardy**: IEC 61724, IEC 61400-25, ISA-18.2, IEC 62443
+- **Tools open-source**: InfluxDB, Grafana, Node-RED, Mosquitto, Python libraries
+- **Literatura**: Książki, publikacje, blogi (NREL, Solargis, WindEurope)
+- **Mini-project**: Raspberry Pi + sensor → MQTT → InfluxDB → Grafana
+
+### Powiązania z kolejnymi wykładami
+- W2: Czujniki i akwizycja (typy, kondycjonowanie, Modbus/OPC UA)
+- W3: Protokoły i IIoT (MQTT, edge computing)
+- W4: Standardy i grid (IEC 61850, DERMS)
+- W5: Jakość danych (stream processing, Kafka)
+- W6: Analityka (CUSUM, PCA, ML)
+- W7-W10: Specjalizacja per technologia
+
