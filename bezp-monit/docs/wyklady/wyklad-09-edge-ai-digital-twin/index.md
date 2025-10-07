@@ -18,12 +18,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Estymacja SoC/SoH: Rint, Thevenin i bilans ładunku](./01-soc-soh)
-2. [Prognoza degradacji i ścieżki starzenia](./02-prognoza-degradacji)
-3. [TinyML na brzegu: klasyfikacja anomalii](./03-tinyml-edge)
-4. [Prosty digital twin: PV–inwerter–BESS](./04-digital-twin)
-5. [Scenariusze what‑if i testy alarmów](./05-scenariusze-what-if)
-6. [Podsumowanie i rekomendacje](./06-podsumowanie)
+1. [Estymacja SoC/SoH: Rint, Thevenin i bilans ładunku](./01-soc-soh.mdx)
+2. [Prognoza degradacji i ścieżki starzenia](./02-prognoza-degradacji.mdx)
+3. [TinyML na brzegu: klasyfikacja anomalii](./03-tinyml-edge.mdx)
+4. [Prosty digital twin: PV–inwerter–BESS](./04-digital-twin.mdx)
+5. [Scenariusze what‑if i testy alarmów](./05-scenariusze-what-if.mdx)
+6. [Podsumowanie i rekomendacje](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

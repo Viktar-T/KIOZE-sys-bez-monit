@@ -3,29 +3,400 @@ title: "Wprowadzenie i rola monitoringu"
 sidebar_position: 1
 ---
 
+import { LearningObjective, KeyConcept, Example } from '@site/src/components/SlideComponents';
+
 # Wprowadzenie i rola monitoringu
+
+<LearningObjective>
+Po tej sekcji student rozumie fundamentalną rolę monitoringu w zapewnieniu bezpieczeństwa, ciągłości pracy i optymalizacji instalacji OZE. Student potrafi wyjaśnić, jak monitoring wspiera utrzymanie predykcyjne i zgodność regulacyjną.
+</LearningObjective>
 
 ## Kontekst kursu i zakres W1
 
-W1 stanowi fundament całego kursu. Koncentruje się na architekturze monitoringu instalacji OZE oraz na zrozumieniu, jakie typy danych gromadzimy, jak je przetwarzamy oraz które wskaźniki (KPI) są istotne dla eksploatacji i bezpieczeństwa.
+**Wykład 1** stanowi fundament całego kursu "Systemy bezpieczeństwa i monitorowania instalacji OZE". W następnych 90 minutach skupimy się na architekturze systemów monitoringu oraz na zrozumieniu, **jakie dane gromadzimy, jak je przetwarzamy i jakie wskaźniki efektywności (KPI) są kluczowe** dla eksploatacji i bezpieczeństwa różnych technologii OZE.
 
-## Rola monitoringu w cyklu życia instalacji
+Monitoring to nie tylko zbieranie danych—to **systematyczny proces** transformowania surowych pomiarów w **wiedzę operacyjną**, która umożliwia podejmowanie świadomych decyzji o utrzymaniu, naprawach i optymalizacji. W sektorze OZE, gdzie instalacje są rozproszone geograficznie, pracują w zmiennych warunkach atmosferycznych i często funkcjonują bez stałej obsługi na miejscu, monitoring staje się **krytycznym elementem zapewnienia rentowności i bezpieczeństwa**.
 
-- Zapewnienie ciągłości pracy i bezpieczeństwa ludzi oraz majątku.
-- Wczesne wykrywanie anomalii i degradacji (np. zacienienie modułów PV, wzrost wibracji łożysk, dryft czujników).
-- Podstawa dla utrzymania predykcyjnego i planowania interwencji serwisowych.
-- Dokumentowanie zgodności z wymaganiami regulacyjnymi i kontraktowymi (SLA).
+### Dlaczego monitoring jest kluczowy dla OZE?
 
-## Przykład z praktyki
+Instalacje OZE różnią się od konwencjonalnych elektrowni pod wieloma względami:
 
-Farma PV 5 MW: sezonowy spadek Performance Ratio o 6–8% wywołany zabrudzeniem modułów. Dzięki monitorowaniu PR i irradiancji (pyranometr), zespół serwisowy zaplanował mycie, co przywróciło PR do poziomu 86–88% i skróciło okres zwrotu inwestycji o ~4 miesiące.
+- **Zmienność zasobów**: Produkcja zależy od warunków pogodowych (słońce, wiatr), co wymaga ciągłej analizy rzeczywistej wydajności w stosunku do warunków środowiskowych
+- **Rozproszenie geograficzne**: Farmy PV mogą obejmować dziesiątki hektarów, farmy wiatrowe—setki turbin oddalonych o kilometry
+- **Ograniczona obsługa**: Wiele instalacji działa w trybie bezobsługowym przez większość czasu, a interwencje serwisowe są kosztowne
+- **Wymogi regulacyjne**: Operatorzy sieci wymagają raportowania dostępności, produkcji i reagowania na sygnały sterujące (demand response, frequency regulation)
+- **Złożoność technologiczna**: Nowoczesne instalacje łączą wiele technologii (PV + magazyny BESS, farmy hybrydowe wiatr + PV), co zwiększa liczbę potencjalnych punktów awarii
 
-## Słownik pojęć (skrót)
+<KeyConcept title="Monitoring vs. Nadzór">
+**Monitoring** to ciągły proces zbierania, analizy i wizualizacji danych operacyjnych. **Nadzór (Supervision)** dodaje do tego aktywne sterowanie i interwencje. W kontekście OZE, systemy SCADA (Supervisory Control and Data Acquisition) łączą obie funkcje.
+</KeyConcept>
 
-- PR (Performance Ratio) — wskaźnik relacji produkcji rzeczywistej do teoretycznej.
-- Availability (Dostępność) — procent czasu, w którym instalacja jest gotowa do pracy.
-- CF (Capacity Factor) — stosunek produkcji rzeczywistej do maksymalnie możliwej (wiatr, hydro).
-- SoC/SoH — stan naładowania/stan zdrowia (magazyny energii, BESS).
-- OEE — wskaźnik ogólnej efektywności (biogaz, procesy).
+:::tip Kluczowa zasada
+Efektywny monitoring to nie tylko instalacja czujników—to **kompletny łańcuch wartości**: akwizycja → walidacja → analiza → wizualizacja → akcja. Każde ogniwo musi być zaprojektowane i utrzymywane z należytą starannością.
+:::
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 8–10 minut
+
+**Przebieg**: 
+1. Wprowadzenie do kursu i omówienie struktury W1 (2 min)
+2. Dyskusja: Czym monitoring różni się od tradycyjnego nadzoru? (3 min)
+3. Przegląd specyfiki OZE i dlaczego monitoring jest krytyczny (3 min)
+4. Nawiązanie do przykładu farmy PV (2 min)
+
+**Punkty kluczowe**:
+- Podkreśl różnicę między **reaktywnym utrzymaniem** (czekamy na awarię) a **predykcyjnym** (przewidujemy problemy)
+- Zaakcentuj specyfikę OZE: zmienność zasobów, rozproszenie, wymogi regulacyjne
+- Wprowadź termin "łańcuch wartości monitoringu"—będzie przewijał się przez cały kurs
+
+**Pytania studenckie**:
+- Q: Czy monitoring zawsze się opłaca ekonomicznie?
+- A: Tak, ale ROI zależy od skali. Dla małych instalacji (< 20 kWp) często używa się gotowych rozwiązań cloud operatora inwerterów. Dla farm > 1 MW, dedykowany system SCADA zwraca się w 1–2 lata przez redukcję przestojów.
+
+- Q: Jakie są koszty typowego systemu monitoringu?
+- A: Hardware (czujniki, gateway) to 1–3% CAPEX instalacji. OPEX (łączność, licencje software) to €500–2000/rok dla typowej farmy 1 MW. Redukcja przestojów o 1% rocznie pokrywa te koszty wielokrotnie.
+
+</details>
+
+---
+
+## Rola monitoringu w cyklu życia instalacji OZE
+
+Instalacje OZE przechodzą przez wieloletni cykl życia, od projektowania przez budowę, uruchomienie (commissioning), eksploatację, aż po ewentualny repowering lub likwidację. **Monitoring jest obecny na każdym etapie**, ale jego rola i priorytety ewoluują.
+
+### 1. Zapewnienie ciągłości pracy i bezpieczeństwa
+
+**Ciągłość operacyjna** to podstawowy cel każdego systemu monitoringu. W OZE, gdzie przychody są bezpośrednio proporcjonalne do wygenerowanej energii (często sprzedawanej po stałych cenach w ramach aukcji lub PPA), każda godzina przestoju to **bezpośrednia strata finansowa**. 
+
+Typowe zagrożenia dla ciągłości:
+- **Awarie sprzętu**: Uszkodzenia inwerterów, odłączenia stringów PV, problemy z przekładniami turbin
+- **Błędy konfiguracji**: Nieprawidłowe parametry pracy (np. zbyt wąskie okno napięcia MPP w inverterze)
+- **Czynniki środowiskowe**: Zabrudzenie modułów, oblodzenie łopatek turbin, zalanie pomieszczeń technicznych
+- **Cyberzagrożenia**: Ataki ransomware, nieuprawniony dostęp do systemów sterowania (w kontekście IEC 62443)
+
+**Bezpieczeństwo ludzi i majątku** to priorytet absolutny. Systemy monitoringu muszą wykrywać:
+- **Zagrożenia pożarowe**: Thermal runaway w bateriach BESS, przegrzanie okablowania DC w PV
+- **Zagrożenia gazowe**: Wycieki H₂, H₂S, CH₄ w biogazowniach
+- **Zagrożenia mechaniczne**: Wzrost wibracji w turbinach, pęknięcia łopatek (wykrywane przez monitoring drgań—CMS)
+- **Zagrożenia elektryczne**: Zwarcia, łuki elektryczne (AFCI—Arc Fault Circuit Interrupter w PV)
+
+<Example title="Przypadek: Pożar w farmy PV z powodu łuku elektrycznego">
+Farma PV 2 MW w Niemczech (2019): Uszkodzenie izolacji przewodów DC w connectorze MC4 spowodowało łuk elektryczny o mocy kilku kW. Standardowy monitoring PV (tylko poziom inwerterów) nie wykrył problemu na czas. Dopiero pojawienie się dymu skłoniło operatora do interwencji. Szkody: ~150 000 EUR, 3 tygodnie przestoju. **Wniosek**: Monitoring poziomu string (prądy DC) + AFCI wykryłby anomalię w kilka sekund.
+</Example>
+
+### 2. Wczesne wykrywanie anomalii i degradacji
+
+Większość awarii w OZE **nie pojawia się nagle**—są poprzedzone **okresem degradacji**, który objawia się subtelnymi zmianami w parametrach pracy. Właśnie te zmiany są celem monitoringu predykcyjnego (Predictive Maintenance).
+
+Typowe mechanizmy degradacji:
+- **PV**: 
+  - Zabrudzenie modułów (soiling)—obniżenie prądu zwarcia I_sc o 5–20%
+  - Delaminacja i yellow discoloration—wzrost temperatury modułu, spadek mocy
+  - PID (Potential-Induced Degradation)—spadek napięcia V_oc o kilka procent rocznie
+  - Hot spots—lokalne przegrzanie cel, wykrywane termowizją lub spadkiem string current
+  
+- **Wiatr**:
+  - Zużycie łożysk przekładni—wzrost amplitud drgań w pasmach charakterystycznych (kHz)
+  - Uszkodzenia łopatek (erozja deszczem, pioruny)—asymetria mocy między turbinami
+  - Degradacja smaru—wzrost temperatury łożysk o 5–10°C
+
+- **BESS**:
+  - Utrata pojemności (capacity fade)—SoH spada z 100% do ~80% po 3000–5000 cykli
+  - Wzrost rezystancji wewnętrznej (R_i)—większe straty ciepła, niższa sprawność round-trip
+  - Nierównowaga cel (cell imbalance)—różnice napięć > 50 mV sygnalizują problem z BMS lub z pojedynczymi celami
+
+:::caution Pułapka początkującego projektanta
+Nie projektuj systemu monitoringu "na wyczucie". Każdy parametr, który chcesz monitorować, powinien mieć:
+1. **Threshold** (próg alarmowy) oparty na specyfikacji producenta lub doświadczeniu
+2. **Action** (co robimy, gdy próg zostanie przekroczony)
+3. **Owner** (kto odpowiada za reakcję)
+
+Bez tych trzech elementów, monitoring staje się "data hoarding" bez wartości operacyjnej.
+:::
+
+### 3. Podstawa dla utrzymania predykcyjnego
+
+**Utrzymanie predykcyjne (Predictive Maintenance, PdM)** to strategia, w której interwencje serwisowe planujemy **na podstawie rzeczywistego stanu technicznego**, a nie według stałego harmonogramu (utrzymanie prewencyjne) czy po awarii (utrzymanie reaktywne).
+
+Korzyści PdM:
+- **Redukcja kosztów**: Wymiana części dokładnie wtedy, gdy jest potrzebna (nie za wcześnie, nie za późno)
+- **Zwiększenie dostępności**: Planowane interwencje w oknach czasowych o niskiej produkcji
+- **Optymalizacja zapasów**: Zamówienia części zamiennych na podstawie prognoz (nie przechowujemy drogich komponentów "na zapas")
+
+Typowe zastosowania PdM w OZE:
+- **Analiza trendów**: Spadek PR w farmie PV o 0.5 pp/miesiąc → planowanie mycia modułów
+- **Analiza widmowa (FFT)**: Wzrost amplitud w paśmie 500–1000 Hz w turbinie wiatrowej → wymiana łożyska w najbliższym przystanku (za 2–3 miesiące)
+- **Modele degradacji**: Ekstrapolacja SoH w BESS → prognoza końca życia (EoL) i planowanie wymiany baterii
+
+<Example title="ROI utrzymania predykcyjnego: Farma wiatrowa 30 MW">
+Operator farmy 10 turbin × 3 MW wdraża system CMS (Condition Monitoring System) oparty na analizie drgań i temperatur. Koszt: €200k (€20k/turbina). W ciągu pierwszych 2 lat system wykrył:
+- 3 przypadki wczesnego zużycia łożysk → wymiana planowana w czasie przestoju (koszt: €30k każda)
+- 1 pęknięcie łopatki → naprawa kompozytu zamiast wymiany całej łopatki (oszczędność: €80k)
+
+**Bez CMS**: Awarie nieplanowane → przestoje 2–3 tygodnie każda → utrata produkcji ~50 MWh/turbina → strata przychodu €2500 (przy €50/MWh).
+
+**Wniosek**: System zwrócił się w < 18 miesięcy.
+</Example>
+
+### 4. Dokumentowanie zgodności regulacyjnej i kontraktowej
+
+Operatorzy instalacji OZE działają w **silnie regulowanym środowisku**. Systemy monitoringu muszą dostarczać **dowodów zgodności** z:
+
+- **Wymaganiami OSP (Operator Systemu Przesyłowego)**: 
+  - Raportowanie dostępności (Availability) i produkcji w interwałach 15-minutowych lub godzinowych
+  - Reakcja na sygnały sterujące (frequency regulation, curtailment)
+  - Rejestry zdarzeń (SOE) dla analiz zakłóceń sieciowych
+
+- **Umowami PPA (Power Purchase Agreement)**:
+  - Weryfikacja wyprodukowanej energii (dla rozliczeń)
+  - Dokumentacja przestojów (planowanych vs. nieplanowanych)
+  - Kary za niedostępność (liquidated damages)
+
+- **Standardami branżowymi**:
+  - IEC 61724 (Monitoring PV systems)
+  - IEC 61400-25 (Communications for wind power plants)
+  - IEC 61850 (Communication networks for power utility automation)
+
+- **Audytami i certyfikacjami**:
+  - Certyfikacja ISO 50001 (Energy Management Systems)
+  - Audyty bankowe (dla refinansowania projektów)
+  - Raportowanie ESG (Environmental, Social, Governance)
+
+:::tip Praktyczna wskazówka
+**Retencja danych** to krytyczny aspekt compliance. Typowe wymagania:
+- Dane szczegółowe (1-min interval): 1–3 miesiące
+- Dane zagregowane (15-min interval): 1–2 lata
+- Dane raportowe i zdarzenia alarmowe: 5–10 lat
+
+Planuj koszty składowania i backup zgodnie z tymi wymogami.
+:::
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 12–15 minut
+
+**Przebieg**:
+1. Omówienie 4 filarów roli monitoringu (po 3 min każdy)
+2. Po każdym filarze: krótka dyskusja lub pytanie do sali
+3. Przykład pożaru w farmie PV (2 min)—bardzo dydaktyczny, studenci zapamiętują
+4. Przykład ROI utrzymania predykcyjnego (2 min)
+
+**Punkty kluczowe**:
+- **Bezpieczeństwo zawsze na pierwszym miejscu**: Powtórz kilkakrotnie, że żaden KPI finansowy nie jest wart ryzyka dla ludzi
+- **PdM to nie science fiction**: Pokazuj konkretne liczby ROI, to przekonuje studentów (i przyszłych pracodawców)
+- **Compliance to nie tylko biurokracja**: To zabezpieczenie biznesowe (bez dowodów produkcji, nie ma płatności z PPA)
+
+**Pytania studenckie**:
+- Q: Jak długo system monitoringu powinien działać bez interwencji?
+- A: W idealnym przypadku—bezterminowo, z automatyczną diagnostyką i alertami. W praktyce: przegląd kalibracji czujników co 1–2 lata, aktualizacje firmware co 6–12 miesięcy.
+
+- Q: Co z prywatnością danych? Czy monitoring PV na dachu domu nie jest inwazyjny?
+- A: Dane techniczne (moc, napięcia) nie są danymi osobowymi w rozumieniu GDPR. Problem pojawia się, gdy monitoring analizuje wzorce zużycia energii w gospodarstwie—wtedy potrzebna jest zgoda i szyfrowanie.
+
+</details>
+
+---
+
+## Przykład z praktyki: Farma PV 5 MW i problem soiling
+
+Rozważmy **rzeczywisty przypadek farmy fotowoltaicznej 5 MW** zlokalizowanej w regionie o niskich opadach (średnio 400 mm/rok, obszar stepowy). Instalacja została uruchomiona w marcu 2020 roku. W pierwszych miesiącach **Performance Ratio (PR)** wynosił 88–90%, co było zgodne z oczekiwaniami projektowymi.
+
+### Obserwowana anomalia
+
+Począwszy od lipca 2020 roku (po 4 miesiącach eksploatacji), operator zauważył **systematyczny spadek PR**:
+- Lipiec: PR = 86%
+- Sierpień: PR = 84%
+- Wrzesień: PR = 82%
+- Październik: PR = 80%
+
+**Łączny spadek o 8 punktów procentowych** w ciągu 4 miesięcy. Przy produkcji teoretycznej 750 MWh/miesiąc, strata 8 pp oznacza **~60 MWh/miesiąc = ~€3000 utraco
+
+nych przychodów** (przy cenie €50/MWh).
+
+### Diagnoza: Monitoring irradiancji ratuje sytuację
+
+System monitoringu farmy obejmował:
+- **Pyranometr referencyjny** (ISO 9060:2018, klasa A) montowany w płaszczyźnie modułów (POA—Plane of Array)
+- **Czujnik temperatury modułów** (termopara przyklejona do tylnej strony modułu)
+- **Monitoring poziomu inverterów** (moc AC, prądy/napięcia DC stringów)
+- **SCADA** z algorytmami obliczającymi PR w czasie rzeczywistym
+
+Analiza korelacji między **irradiacją POA** a **mocą rzeczywistą** wykazała, że:
+- Przy tej samej irradiancji (np. 800 W/m²), moc była o 6–8% niższa niż 4 miesiące wcześniej
+- Temperatura modułów była normalna (bez przegrzewania)
+- Napięcia i prądy stringów były równomierne (brak pojedynczych uszkodzeń)
+
+**Wniosek diagnostyczny**: Problem jest **równomierny na całej farmie** i związany z **absorpcją światła**, nie z elektroniką czy pojedynczymi modułami → **podejrzenie soiling (zabrudzenie)**.
+
+### Interwencja i wyniki
+
+Na podstawie analizy danych z monitoringu, operator zlecił **mycie modułów** (ręczne, wodą zdemineralizowaną + szczotki miękkie). Koszt: €12 000. Po myciu (3 dni pracy):
+- **PR wzrósł z 80% do 87%** (odzysk 7 pp, nie pełne 8 pp—część strat była prawdopodobnie związana z pierwszymi objawami degradacji LID—Light-Induced Degradation)
+- **Oczekiwany zysk finansowy**: 7 pp × 750 MWh × 6 miesięcy do końca roku × €50/MWh = **~€15 750**
+- **ROI mycia**: (€15 750 – €12 000) / €12 000 = **31% w 6 miesięcy**
+
+Dodatkowo, operator **wdrożył harmonogram prewencyjnego mycia** (2×/rok), co utrzymało PR na poziomie 86–88% przez kolejne lata. Dzięki monitorowaniu PR i irradiancji, zaplanowane mycie odbywało się **w oknach czasowych o niskiej produkcji** (zachmurzenie, jesień), minimalizując straty produkcji podczas prac.
+
+:::note Lekcja praktyczna
+Ten przypadek ilustruje **pełny łańcuch wartości monitoringu**:
+1. **Akwizycja**: Pyranometr i czujniki temperatury dostarczają surowe dane
+2. **Analiza**: Algorytm PR w SCADA wykrywa trend spadkowy
+3. **Diagnoza**: Korelacja irradiancja–moc wskazuje na soiling
+4. **Akcja**: Zlecenie mycia modułów
+5. **Weryfikacja**: Potwierdzenie skuteczności interwencji przez wzrost PR
+
+Bez monitoringu, operator zauważyłby problem dopiero po kilku miesiącach (poprzez niższe przychody), a diagnoza byłaby oparta na zgadywaniu, nie na danych.
+:::
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 10 minut
+
+**Przebieg**:
+1. Przedstawienie farmy i kontekstu (2 min)
+2. Prezentacja wykresu PR vs. czas (użyj Grafana screenshot jeśli masz, lub narysuj na tablicy)
+3. Proces diagnostyczny: Od objawu → przez analizę danych → do wniosku (4 min)
+4. Omówienie ROI i harmonogramu prewencyjnego mycia (2 min)
+5. Dyskusja: Jak często myć moduły w różnych klimatach? (2 min)
+
+**Punkty kluczowe**:
+- **Soiling to #1 problem w regionach suchych**: Pustynie, stepy, tereny rolnicze (kurz). W Europie Zachodniej: problem głównie w pobliżu autostrad i zakładów przemysłowych
+- **Monitoring irradiancji jest niezbędny**: Bez pyranometru, nie można oddzielić spadku produkcji z powodu soiling od spadku z powodu mniejszej ilości słońca (sezonowość)
+- **ROI mycia jest szybki**: W większości przypadków zwraca się w < 1 rok
+
+**Pytania studenckie**:
+- Q: Czy są systemy automatycznego mycia?
+- A: Tak—roboty czyszczące (np. Ecoppia, Serbot). Koszt początkowy wyższy (~€30–50k dla 1 MW), ale OPEX niższy (brak potrzeby zespołów serwisowych). Opłacalne dla farm > 10 MW w regionach o wysokim soiling (Bliski Wschód, Kalifornia).
+
+- Q: Jak często należy kalibrować pyranometr?
+- A: Co 1–2 lata (wysyłka do akredytowanego laboratorium). Koszt: €500–1000. Alternatywa: redundancja (2 pyranometry, porównanie odczytów, rekalibracja gdy rozbieżność > 2%).
+
+</details>
+
+---
+
+## Słownik kluczowych pojęć
+
+Na początku kursu wprowadzamy podstawową nomenklaturę, która będzie używana przez kolejne wykłady. Poniższe definicje są **operacyjne**—skoncentrowane na praktycznym zastosowaniu w monitoringu OZE.
+
+### Performance Ratio (PR)
+
+**Definicja**: Stosunek rzeczywistej produkcji energii do produkcji teoretycznej, skorygowanej o rzeczywiste warunki środowiskowe (irradiancja, temperatura).
+
+$$
+PR = \frac{E_{\text{rzecz}}}{E_{\text{teor}}} = \frac{E_{\text{AC,rzecz}}}{G_{\text{POA}} \times A \times \eta_{\text{STC}} \times (1 + \gamma \cdot \Delta T)}
+$$
+
+Gdzie:
+- $E_{\text{AC,rzecz}}$ — rzeczywista energia AC zmierzona na wyjściu inverterów [kWh]
+- $G_{\text{POA}}$ — całkowita irradiancja w płaszczyźnie modułów [kWh/m²]
+- $A$ — powierzchnia modułów [m²]
+- $\eta_{\text{STC}}$ — sprawność modułów w warunkach STC
+- $\gamma$ — współczynnik temperaturowy mocy [%/°C]
+- $\Delta T$ — różnica temperatury modułów względem 25°C
+
+**Typowe wartości**: PR = 75–85% (instalacje starsze, bez optymalizatorów), 85–90% (instalacje nowoczesne), > 90% (idealne warunki, krótki okres po uruchomieniu).
+
+### Availability (Dostępność)
+
+**Definicja**: Procent czasu, w którym instalacja jest **zdolna do produkcji energii** (niezależnie od tego, czy w danym momencie rzeczywiście produkuje).
+
+$$
+A = \frac{t_{\text{praca}}}{t_{\text{praca}} + t_{\text{przestój,nieplanowany}}} \times 100\%
+$$
+
+Uwaga: Przestoje planowane (konserwacja, mycie) zazwyczaj **nie są wliczane** do denominatora (zależy od umowy SLA/PPA).
+
+**Typowe wartości**: > 99% dla instalacji PV (bardzo wysokie, brak ruchomych części), 95–98% dla turbin wiatrowych, 97–99% dla BESS.
+
+### Capacity Factor (CF)
+
+**Definicja**: Stosunek rzeczywistej produkcji do produkcji maksymalnej możliwej (gdyby instalacja pracowała z mocą nominalną przez cały czas).
+
+$$
+CF = \frac{E_{\text{rzecz}}}{P_{\text{nom}} \times t} \times 100\%
+$$
+
+**Typowe wartości**:
+- **PV**: 10–20% (Europa Środkowa), 15–25% (południowa Europa), 20–30% (pustynie)
+- **Wiatr onshore**: 20–35% (zależnie od klasy wiatru i wysokości wieży)
+- **Wiatr offshore**: 40–50% (wyższe prędkości wiatru, większa regularność)
+- **Hydro run-of-river**: 30–60% (zależnie od hydrologii rzeki)
+
+:::caution Uwaga terminologiczna
+**CF ≠ PR**. CF zależy głównie od **dostępności zasobu** (ile świeciło słońce, ile wiało). PR mierzy **efektywność konwersji** przy danych zasobach. Niski CF może być normalny (mało słońca zimą), niski PR sygnalizuje problem techniczny.
+:::
+
+### State of Charge (SoC) i State of Health (SoH)
+
+**SoC (Stan naładowania)**: Procent dostępnej pojemności magazynu energii względem pojemności nominalnej.
+
+$$
+SoC = \frac{Q_{\text{dostępny}}}{Q_{\text{nom}}} \times 100\%
+$$
+
+Estymacja SoC: **Coulomb counting** (całkowanie prądu ładowania/rozładowania) skorygowane modelem elektrochemicznym (np. Extended Kalman Filter).
+
+**SoH (Stan zdrowia)**: Procent aktualnej pojemności względem pojemności początkowej (nowej baterii).
+
+$$
+SoH = \frac{C_{\text{aktualny}}}{C_{\text{nowy}}} \times 100\%
+$$
+
+**Typowa degradacja BESS**: SoH spada do ~80% po 3000–5000 pełnych cykli (zależnie od chemii: LFP jest bardziej trwały niż NMC). Koniec życia użytkowego (End of Life): SoH < 80%.
+
+### Overall Equipment Effectiveness (OEE)
+
+**Definicja** (z lean manufacturing, zaadaptowana do OZE): Iloczyn trzech składowych—dostępności, wydajności i jakości.
+
+$$
+OEE = A \times P \times Q
+$$
+
+Gdzie:
+- $A$ — Availability (dostępność czasowa)
+- $P$ — Performance (czy proces idzie z planowaną prędkością)
+- $Q$ — Quality (czy produkty/wyniki spełniają standardy)
+
+W kontekście **biogazowni**:
+- $A$ = czas pracy fermentatorów / czas zaplanowany
+- $P$ = rzeczywisty przepływ biogazu / przepływ projektowy
+- $Q$ = procent biogazu o wymaganej jakości (np. CH₄ > 50%, H₂S < 500 ppm)
+
+**Typowe wartości**: OEE > 85% dla dobrze działającej biogazowni.
+
+<KeyConcept title="Metryki: Narzędzia, nie cele same w sobie">
+KPI (Key Performance Indicators) to **narzędzia diagnostyczne**, nie cele fetyszyzowane. Jeśli PR spada, nie "poprawiamy PR"—diagnozu
+
+jemy **przyczynę** (soiling, degradacja, shading) i usuwamy ją. Metryki to **objawy**, nie choroby.
+</KeyConcept>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 8 minut
+
+**Przebieg**:
+1. Szybkie przejście przez definicje (po 1 min każda)—studenci powinni mieć te definicje w materiałach, nie muszą zapisywać
+2. Nacisk na **różnicę CF vs. PR**—to najczęstsze nieporozumienie
+3. Dla SoC/SoH: zaznacz, że szczegółowe algorytmy będą w W9 (Edge AI i Digital Twin)
+
+**Punkty kluczowe**:
+- Te definicje będą używane przez cały kurs—studenci powinni je dobrze zapamiętać
+- Pokazanie **formuł matematycznych** buduje zaufanie do profesjonalizmu kursu (to nie jest "miękka" edukacja)
+- Podanie **typowych wartości** jest bardzo praktyczne—studenci często pytają "ale ile to jest dużo?"
+
+**Pytania studenckie**:
+- Q: Czy PR może być > 100%?
+- A: Teoretycznie tak—przy niskiej temperaturze modułów (zimą, rano) i wysokiej irradancji odbitej (śnieg), moc może chwilowo przekroczyć STC. W praktyce rzadko, i tylko o kilka pp. Jeśli monitor pokazuje PR > 105%, raczej błąd kalibracji pyranometru lub błąd w obliczeniach.
+
+- Q: Jak często powinniśmy mierzyć SoH w BESS?
+- A: Co najmniej raz w miesiącu (przez pełny cykl ładowania/rozładowania z pomiarem pojemności). BMS robi to automatycznie. Spadek SoH > 5 pp/rok to sygnał alarmowy—wymaga diagnozy.
+
+</details>
 
 

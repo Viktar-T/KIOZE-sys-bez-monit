@@ -18,12 +18,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Walidacja, imputacja, dryft czujników](./01-walidacja-imputacja-dryft)
-2. [Okna czasowe, resampling, downsampling](./02-okna-resampling)
-3. [Bazy czasoszeregowe (TSDB)](./03-tsdb)
-4. [Brokerzy i wizualizacja (MQTT, Grafana)](./04-broker-grafana)
-5. [Wersjonowanie konfiguracji i dashboardów](./05-wersjonowanie)
-6. [Podsumowanie i praktyczne wskazówki](./06-podsumowanie)
+1. [Walidacja, imputacja, dryft czujników](./01-walidacja-imputacja-dryft.mdx)
+2. [Okna czasowe, resampling, downsampling](./02-okna-resampling.mdx)
+3. [Bazy czasoszeregowe (TSDB)](./03-tsdb.mdx)
+4. [Brokerzy i wizualizacja (MQTT, Grafana)](./04-broker-grafana.mdx)
+5. [Wersjonowanie konfiguracji i dashboardów](./05-wersjonowanie.mdx)
+6. [Podsumowanie i praktyczne wskazówki](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

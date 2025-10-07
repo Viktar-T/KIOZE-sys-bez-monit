@@ -3,29 +3,909 @@ title: "Typy danych i źródła"
 sidebar_position: 3
 ---
 
+import { LearningObjective, KeyConcept, Example } from '@site/src/components/SlideComponents';
+import InteractiveQuiz from '@site/src/components/InteractiveQuiz';
+
 # Typy danych i źródła
 
-## Typy danych
+<LearningObjective>
+Po tej sekcji student rozróżnia typy danych w monitoringu OZE (ciągłe, zdarzeniowe, metadane), identyfikuje główne źródła danych dla różnych technologii (PV, wiatr, BESS, biogaz) i rozumie znaczenie jakości oraz spójności danych dla efektywnego monitoringu.
+</LearningObjective>
 
-- Dane ciągłe (czasoszeregowe): prądy, napięcia, temperatury, wibracje, przepływy.
-- Zdarzenia i stany: alarmy, potwierdzenia, przełączenia, SOE (Sequence of Events).
-- Metadane: konfiguracje, wersje oprogramowania, kalibracje czujników.
+## Wprowadzenie: Taksonomia danych w monitoringu OZE
 
-## Źródła danych
+Systemy monitoringu instalacji OZE generują **ogromne ilości danych** o różnych charakterystykach. Zrozumienie **typów danych** i ich **źródeł** jest kluczowe dla zaprojektowania efektywnego systemu akwizycji, przetwarzania i analizy.
 
-- Inwertery (PV): moc AC/DC, napięcia/string-level, błędy, temperatury radiatorów.
-- BMS (BESS): SoC/SoH, napięcia cel, ΔT pakietów, prądy ładowania/rozładowania.
-- SCADA/PLC: tagi procesowe, stany układów, logika alarmów, liczniki.
-- Czujniki IIoT: pyranometry, anemometry, czujniki gazów (CH₄, H₂, H₂S), czujniki poziomu i ciśnienia.
+W tej sekcji klasyfikujemy dane według **trzech głównych kategorii**:
+1. **Dane ciągłe (czasoszeregowe)**: Pomiary fizyczne próbkowane regularnie
+2. **Zdarzenia i stany**: Dyskretne zmiany (alarmy, przełączenia)
+3. **Metadane**: Informacje o konfiguracji i kontekście
 
-## Jakość i spójność
+Dla każdej kategorii omówimy **typowe źródła**, **częstotliwości próbkowania**, **wymagania dotyczące jakości** oraz **przykłady zastosowań**.
 
-- Synchronizacja czasu (NTP/PTP), spójne strefy czasowe i odstępy próbkowania.
-- Normalizacja jednostek (np. W/m² → kW/m²), walidacja zakresów, obsługa braków danych.
-- Ślad metrologiczny: kalibracje, niepewność pomiarowa, dryft.
+<KeyConcept title="Dane vs. Informacja vs. Wiedza">
+**Dane** to surowe pomiary (np. prąd string PV = 8.2 A).  
+**Informacja** to dane w kontekście (np. prąd string jest o 15% niższy niż oczekiwany przy tej irradiancji).  
+**Wiedza** to informacja z akcją (np. string wymaga inspekcji termowizyjnej—prawdopodobna degradacja połączenia).  
 
-## Przykład
+Monitoring transformuje **dane → informację → wiedzę** przez kolejne warstwy przetwarzania (edge → fog → cloud).
+</KeyConcept>
 
-Farma wiatrowa: z turbin SCADA eksportuje prędkość wiatru, moc, kierunek, temperatury przekładni; dodatkowe czujniki drganiowe dostarczają widma w paśmie 10 Hz–10 kHz. Integracja obu strumieni umożliwia wczesną detekcję uszkodzeń łożysk.
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 6 minut
+
+**Przebieg**:
+1. Wprowadzenie do taksonomii danych (2 min)
+2. Omówienie piramidy "Dane → Informacja → Wiedza" (2 min)
+3. Pytanie do sali: "Dlaczego nie możemy monitorować wszystkiego z maksymalną częstotliwością?" (2 min)
+
+**Punkty kluczowe**:
+- **Volume vs. Value**: Więcej danych ≠ lepsza analiza. Kluczowe są **dane właściwe** (relevance) i **jakość**
+- **Piramida wiedzy**: Monitoring to nie tylko zbieranie—to transformacja do actionable insights
+- **Trade-off**: Wysoka częstotliwość = wyższe koszty (storage, bandwidth, processing). Trzeba balansować.
+
+**Pytania studenckie**:
+- Q: Jaka jest typowa objętość danych z farmy PV 1 MW?
+- A: ~10–50 MB/dzień (przy samplingiem 1-min, ~100 tagów). Farma wiatrowa (włączając CMS): ~1–5 GB/dzień. BESS z monitoringiem cell-level: ~100–500 MB/dzień.
+
+</details>
+
+---
+
+## Typy danych: Szczegółowa klasyfikacja
+
+### 1. Dane ciągłe (Time-Series Data)
+
+**Definicja**: Pomiary parametrów fizycznych, próbkowane w **regularnych odstępach czasu** (time-stamped samples). To główna kategoria danych w OZE (~95% objętości).
+
+#### Charakterystyka
+
+| Aspekt | Opis |
+|--------|------|
+| **Częstotliwość** | 0.1 Hz (co 10 s) do 50 kHz (analiza widmowa drgań) |
+| **Objętość** | Największa (terabajty/rok dla dużych farm) |
+| **Składowanie** | Time-Series Database (TSDB): InfluxDB, TimescaleDB, OSIsoft PI |
+| **Operacje** | Agregacje (avg, min, max), downsampling, interpolacja, wykrywanie trendów |
+
+#### Przykłady parametrów
+
+**Elektryczne**:
+- Napięcia (V): AC (grid-side), DC (string-level w PV, cela w BESS)
+- Prądy (A): AC (output inverterów), DC (stringi PV, cela BESS)
+- Moce (W, kW): Aktywna (P), bierna (Q), pozorna (S)
+- Energia (Wh, kWh):累積liczniki (cumulative counters)
+- Częstotliwość (Hz): Grid frequency (ważne dla regulation services)
+- Power Factor (cos φ)
+
+**Termiczne**:
+- Temperatury modułów PV (°C): Back-of-module, junction temp (obliczana)
+- Temperatury pakietów BESS (°C): Cell temp, coolant temp
+- Temperatury otoczenia (°C): Ambient, inside cabinet/container
+- Temperatury łożysk/przekładni (°C): W turbinach wiatrowych
+
+**Mechaniczne**:
+- Wibracje (g, m/s²): Akcelerometry w turbinach (CMS—Condition Monitoring System)
+- Obroty (RPM): Rotor turbiny, generatory
+- Pozycje (°): Yaw (obrót gondoli), pitch (kąt łopatek)
+
+**Środowiskowe**:
+- Irradiancja (W/m²): POA (Plane of Array), GHI (Global Horizontal), DNI/DHI (bezpośrednia/rozproszona)
+- Prędkość wiatru (m/s): Anemometry na różnych wysokościach
+- Kierunek wiatru (°): Wind vane
+- Wilgotność (%RH), ciśnienie (hPa), opady (mm/h)
+- Stężenia gazów (ppm, %): CH₄, CO₂, H₂S, H₂ (biogazownie, safety monitoring)
+
+#### Wymagania dotyczące częstotliwości próbkowania
+
+Zasada **Nyquista**: Aby odtworzyć sygnał o częstotliwości $f_{\max}$, częstotliwość próbkowania musi wynosić $f_s \geq 2 f_{\max}$. W praktyce, używamy **5–10× nadpróbkowania** dla komfortu (headroom dla filtracji).
+
+| Parametr | Charakterystyka zmian | Typowa częstotliwość | Uzasadnienie |
+|----------|------------------------|----------------------|---------------|
+| Irradiancja POA | Szybka (chmury) | 1–10 Hz | Zmiany < 1 s podczas przejścia chmury, ważne dla MPPT inverterów |
+| Moc AC (PV) | Średnia | 0.1–1 Hz (co 1–10 s) | Zmienia się z irradiacją, 10-s sampling wystarczający dla PR calculations |
+| Temperatura modułu | Wolna | 0.01–0.1 Hz (co 10–100 s) | Stała czasowa termiczna modułu: ~10–20 min |
+| Napięcie cell BESS | Szybka (charging) | 1 Hz | Monitoring balansowania, detekcja problemów z celami |
+| Wibracje łożysk | Bardzo szybka | 10–50 kHz | Analiza widmowa (FFT) wymaga sampling > 20 kHz dla detekcji do 10 kHz |
+| Stężenie CH₄ | Średnia | 0.1–1 Hz | Safety-critical, ale gaz dyfunduje w sekundach (nie milisekundach) |
+
+:::caution Pułapka over-sampling
+**Nie próbkuj szybciej niż potrzeba!** Sampling 1 kHz temperatury modułu (która zmienia się w minutach) to marnotrawstwo bandwidth i storage. Rezultat: System zahukany, a jakość analiz nie lepsza. **Dopasuj częstotliwość do fizyki procesu.**
+:::
+
+<Example title="Częstotliwości próbkowania: Farma PV 10 MW">
+**Konfiguracja**:
+- 40 inverterów, 1000 stringów, 30 000 modułów
+- 5 weather stations (pyranometry, temp sensors)
+
+**Sampling rates**:
+1. **Invertery** (40 devices, po 20 tagów = 800 tagów total):
+   - Moc AC/DC, napięcia, prądy: **10 s** (0.1 Hz) → 8 samples/s total
+   - Energia累積 (counters): **1 min** → nie wpływa na bandwidth (rzadko)
+   - Temperatury radiatorów: **1 min** → 0.67 samples/s
+
+2. **String monitoring** (1000 stringów, po 2 tagi = 2000 tagów):
+   - Prąd DC, napięcie DC: **1 min** → 33 samples/s total
+
+3. **Weather stations** (5 stations, po 10 tagów = 50 tagów):
+   - Irradiancja POA, GHI, temp ambient/module: **1 s** (1 Hz) → 50 samples/s
+
+**Total bandwidth**: ~92 samples/s → przy 8 bytes/sample (float64 + timestamp) = **736 bytes/s = 5.9 kB/s = 510 MB/dzień**. Bardzo niewiele!
+
+**Dla porównania**: Gdybyśmy samplingowali wszystko z 1 Hz (max), byłoby to **2850 samples/s = 2.5 GB/dzień** (5× więcej, bez dodatkowej wartości dla wolno zmieniających się parametrów).
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 14 minut
+
+**Przebieg**:
+1. Przegląd kategorii parametrów (elektryczne, termiczne, mechaniczne, środowiskowe)—5 min
+2. Omówienie tabeli częstotliwości próbkowania—4 min (kluczowe!)
+3. Przykład farmy PV—3 min (pokaż kalkulację bandwidth)
+4. Dyskusja: "Jakie parametry wymagają najszybszego próbkowania i dlaczego?"—2 min
+
+**Punkty kluczowe**:
+- **Nyquist to minimum, nie target**: Używaj 5–10× nadpróbkowania dla pewności
+- **Fizyka procesu dyktuje sampling**: Temperatura zmienia się w minutach, irradiancja w sekundach, wibracje w milisekundach
+- **Bandwidth rzadko jest problemem**: Nowoczesne sieci 4G/LTE mają Mbps, a dane OZE to kBps. Problem to raczej storage long-term
+
+**Pytania studenckie**:
+- Q: Czy możemy zmieniać częstotliwość próbkowania dynamicznie (np. szybciej podczas anomalii)?
+- A: Tak! To świetna strategia ("adaptive sampling"). Np. normalnie 1 min, ale gdy PR spada < 0.8 → zwiększ do 10 s przez 1 h, żeby zdiagnozować. Wymaga inteligentnego edge/fog.
+
+- Q: Co z aliasing? Jak filtrujemy przed samplingiem?
+- A: Dobrze że pytasz! Każdy ADC (przetwornik analogowo-cyfrowy) powinien mieć anti-aliasing filter (analog, Butterworth lub Chebyshev, cutoff < f_s/2). W praktyce, producenci czujników robią to za nas (wbudowane w moduły akwizycji).
+
+</details>
+
+---
+
+### 2. Zdarzenia i stany (Event & State Data)
+
+**Definicja**: Dane **dyskretne**, które zmieniają się tylko w określonych momentach (nie są próbkowane okresowo, lecz raportowane **on-change** lub **event-triggered**).
+
+#### Charakterystyka
+
+| Aspekt | Opis |
+|--------|------|
+| **Częstotliwość** | Nieregularna (event-driven), od sekund do dni między zdarzeniami |
+| **Objętość** | Mała (~1–5% całkowitej objętości danych) |
+| **Składowanie** | Event logs, relacyjne DB (PostgreSQL), TSDB (jako discrete series) |
+| **Operacje** | Sequence analysis, root cause analysis, alarm statistics (MTTA, MTTR) |
+
+#### Przykłady zdarzeń
+
+**Alarmy (Alarms)**:
+- Przypisane priorytety (P1—Critical, P2—High, P3—Medium, P4—Low)
+- Lifecycle: New → Acknowledged → Cleared/Resolved
+- Przykład: "Inverter-05: DC overvoltage (720 V, threshold 650 V)"—P2, Timestamp: 2025-10-07T14:32:18Z
+
+**Przełączenia stanów (State Changes)**:
+- ON/OFF: Inverter running, BESS charging/discharging, circuit breaker states
+- Tryby pracy: MPPT mode, constant voltage mode, curtailment active
+- Przykład: "BESS-01: State changed from CHARGING to IDLE"—Timestamp: 2025-10-07T15:00:00Z
+
+**SOE (Sequence of Events)**:
+- Uporządkowana chronologicznie sekwencja zdarzeń z rozdzielczością < 1 ms (dla analiz zakłóceń sieciowych)
+- Używane w SCADA do rekonstrukcji przebiegu awarii
+- Przykład: 
+  ```
+  T+0.000s: Grid frequency drop detected (49.2 Hz)
+  T+0.023s: Inverter-01 tripped (under-frequency protection)
+  T+0.045s: Inverter-02 tripped
+  T+0.120s: BESS discharge started (frequency support)
+  ```
+
+**Potwierdzenia i komentarze (Acknowledgements & Annotations)**:
+- Operator potwierdza alarm: "Acknowledged by J.Smith, dispatched technician"
+- Komentarze (np. po serwisie): "String-42 repaired, connector replaced"
+
+#### Wymagania dotyczące timestamping
+
+Dla **SOE**, wymagana jest synchronizacja czasu z dokładnością **< 1 ms** (PTP—Precision Time Protocol, IEEE 1588). Dla zwykłych alarmów, NTP (dokładność ~10 ms) jest wystarczający.
+
+<KeyConcept title="SOE vs. Alarmy vs. Logs">
+- **SOE**: Zdarzenia binarne (true/false), wysokie tempo (~kHz dla fault analysis), bardzo precyzyjny timestamp. Używane głównie w SCADA utility-scale.
+- **Alarmy**: Zdarzenia z kontekstem (wartości parametrów, severity), tempo średnie (~Hz), timestamp NTP. Główne narzędzie dla operatorów.
+- **Logs**: Tekstowe komunikaty (debug, info, warning, error) z systemów (software, OS). Tempo zmienne, używane dla troubleshooting IT/OT.
+</KeyConcept>
+
+<Example title="Analiza SOE: Trip invertera podczas burzy">
+Farma PV 5 MW, burza z wyładowaniami atmosferycznymi w pobliżu. System SCADA rejestruje SOE:
+
+```
+2025-07-15 16:42:33.000  Grid voltage: 230 V (normal)
+2025-07-15 16:42:33.485  Lightning strike detected (surge arrester activation, String-box-12)
+2025-07-15 16:42:33.512  Inverter-08: DC overvoltage alarm (850 V, threshold 650 V)
+2025-07-15 16:42:33.520  Inverter-08: Emergency shutdown
+2025-07-15 16:42:33.580  String-42, String-43, String-44: Communication lost (likely surge damage to gateway)
+2025-07-15 16:42:35.200  Grid voltage restored: 232 V
+2025-07-15 16:42:40.000  Inverter-08: Manual reset by operator (remote)
+2025-07-15 16:42:42.100  Inverter-08: Restarted, normal operation
+```
+
+**Diagnoza** (na podstawie SOE):
+- Surge od pioruna → przepięcie DC w stringach 42–44
+- Inverter 08 zadziałał poprawnie (ochrona przed overvoltage)
+- Gateway komunikacyjny uszkodzony (wymaga wymiany)
+- **Akcja**: Wymiana gateway (2 dni przestoju dla 3 stringów), weryfikacja surge protection (varistory w string-boxach)
+
+**Bez SOE**: Operator widzi tylko "Inverter-08 offline", diagnoza zajmuje godziny (wyjazd na miejsce, testy). Z SOE: diagnoza w 10 minut (remote), zamówienie części, planowana wizyta serwisowa.
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 10 minut
+
+**Przebieg**:
+1. Przegląd typów zdarzeń (alarmy, stany, SOE)—4 min
+2. Przykład analizy SOE (trip invertera)—4 min (bardzo dydaktyczne, studenci uwielbiają case studies)
+3. Pytanie: "Dlaczego SOE wymaga < 1 ms dokładności, a alarmy mogą mieć ~10 ms?"—2 min
+
+**Punkty kluczowe**:
+- **Event-driven ≠ less important**: Alarmy to najcenniejsze dane dla operatorów (action triggers)
+- **SOE to CSI dla OZE**: Rekonstrukcja sekwencji zdarzeń = śledztwo przyczynowo-skutkowe
+- **Timestamp accuracy matters**: Dla SOE, każda milisekunda liczy się (cause-effect musi być poprawny)
+
+**Pytania studenckie**:
+- Q: Jak system rozróżnia "prawdziwy alarm" od "fałszywego alarmu" (false positive)?
+- A: Nie rozróżnia automatycznie—to zadanie dla logiki alarmowej (histereza, filtry, suppression). Dobrze zaprojektowany system ma precision > 90% (< 10% false positives). Szczegóły w W5 (Alarmowanie).
+
+- Q: Co z cyberbezpieczeństwem? Czy ktoś może wstrzyknąć fałszywe alarmy?
+- A: Tak, to poważne zagrożenie. Ochrona: (1) autentykacja źródeł (certyfikaty X.509), (2) szyfrowanie MQTT/TLS, (3) segregacja OT/IT, (4) IDS (Intrusion Detection System) dla anomalous event patterns.
+
+</details>
+
+---
+
+### 3. Metadane (Metadata & Configuration Data)
+
+**Definicja**: Informacje **o systemie monitoringu i instalacji**, które zmieniają się rzadko (dni, miesiące) i są niezbędne do **interpretacji** danych pomiarowych.
+
+#### Charakterystyka
+
+| Aspekt | Opis |
+|--------|------|
+| **Częstotliwość zmian** | Bardzo rzadka (commissioning, upgrades, rekonfiguracje) |
+| **Objętość** | Minimalna (< 0.1% całkowitej objętości) |
+| **Składowanie** | Relacyjne DB (PostgreSQL), JSON/YAML configs, CMDB (Configuration Management DB) |
+| **Operacje** | Wyszukiwanie, wersjonowanie, audyt zmian |
+
+#### Przykłady metadanych
+
+**Konfiguracje urządzeń**:
+- Parametry inverterów: Moc nominalna (kW), napięcia MPP (V_min, V_max), firmware version
+- Parametry BESS: Pojemność nominalna (kWh), C-rate (max charging/discharging speed), chemistrytype (NMC, LFP)
+- Parametry czujników: Model, serial number, data ostatniej kalibracji, offset/gain correction factors
+
+**Topologia instalacji**:
+- Mapa połączeń: Który string jest połączony z którym inverterem? Która turbina jest w którym klastrze?
+- Geolokalizacja: GPS coordinates (dla analiz shading, wind patterns)
+- Schemat elektryczny: Single-line diagram (SLD), schemat logiczny SCADA
+
+**Kalibracje i certyfikaty**:
+- Certyfikaty kalibracji pyranometrów (lab reports, uncertainty budgets)
+- Historia dryftów: Jak czujnik zmieniał odczyty w czasie (trend analysis)
+- Daty next calibration due
+
+**Wersje oprogramowania**:
+- Firmware inverterów, BMS, PLC
+- SCADA software version, database schema version
+- Edge gateway software (Python scripts, Node-RED flows)
+
+#### Znaczenie dla analiz
+
+Metadane są **kluczowe dla kontekstualizacji** danych pomiarowych:
+- **Bez topologii**: Nie wiesz, że string-42 jest częściowo zacieniony przez drzewo → błędna diagnoza
+- **Bez kalibracji**: Pyranometr z 5% dryftem → błędne obliczenia PR, fałszywe alarmy o under-performance
+- **Bez firmware version**: Bug w inverterze firmware 1.2.3 wpływa na 10 farm → bez tej informacji, każda farma diagnozowana oddzielnie (marnowanie czasu)
+
+<Example title="Metadane ratują analizę: Dryft pyranometru">
+Farma PV 10 MW, operator zauważa systematyczny spadek PR o 3 pp w ciągu 6 miesięcy. Analiza danych:
+- Irradiancja POA: 1800 kWh/m²/rok (typowa dla regionu)
+- Produkcja AC: zgodna z irradiacją (PR = 83%, obliczony z danych)
+- **Ale**: PR powinien być ~86% dla tej farmy (zgodnie z garantowaną wydajnością)
+
+Operator sprawdza **metadane pyranometru**:
+- Model: Kipp & Zonen CMP11 (klasa A)
+- Data ostatniej kalibracji: **2 lata temu** (should be 1 year!)
+- Dryfty historyczne (z poprzednich kalibracji): +2–3% per year
+
+**Diagnoza**: Pyranometr over-reports irradiance by ~5% → PR jest fałszywie niższy. Po rekalibracji (koszt: €800), PR powraca do 86%.
+
+**Wniosek**: Bez metadanych (historia kalibracji), operator by podejrzewał problem z modułami/inverterami → kosztowna inspekcja termowizyjna, testy I-V. Metadane pozwoliły zdiagnozować problem za €800 zamiast €5000+.
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 8 minut
+
+**Przebieg**:
+1. Przegląd typów metadanych (konfiguracje, topologia, kalibracje, software versions)—4 min
+2. Przykład dryft pyranometru—3 min
+3. Pytanie: "Czy metadane powinny być w tym samym systemie co dane pomiarowe?"—1 min
+
+**Punkty kluczowe**:
+- **Metadane to fundament jakości analiz**: Bez kontekstu, dane są bezwartościowe (garbage in, garbage out)
+- **Wersjonowanie metadanych**: Konfiguracje zmieniają się w czasie (firmware updates, rekonfiguracje). Trzeba śledzić **kiedy co się zmieniło**, żeby analizy historyczne były poprawne
+- **CMDB to best practice**: W dużych instalacjach, metadane w dedykowanym Configuration Management Database (np. NetBox, Nautobot)
+
+**Pytania studenckie**:
+- Q: Czy metadane powinny być w TSDB (InfluxDB) czy w osobnej bazie (PostgreSQL)?
+- A: Depends. **Rzadko zmienne** (topology, device specs): PostgreSQL (relacyjne, lepsze dla złożonych queries). **Często zmienne** (firmware versions, thresholds): TSDB (łatwiejsze śledzenie zmian w czasie). Best practice: obie—PostgreSQL jako master, TSDB dla audit trail.
+
+- Q: Jak automatyzować synchronizację metadanych (np. firmware versions) z urządzeń?
+- A: OPC UA ma wbudowany mechanizm (device profiles, model discovery). Modbus: brak (trzeba read manual registers i mapować). MQTT: custom topic `/devices/{id}/metadata`. Best: Centralne CMDB + automated discovery scripts (Python + SNMP/OPC UA).
+
+</details>
+
+---
+
+## Źródła danych: Technologie OZE
+
+Każda technologia OZE ma **specyficzne urządz
+
+enia i czujniki**, które są głównym źródłem danych. Poniżej szczegółowy przegląd dla 4 technologii: PV, wiatr, BESS, biogaz.
+
+### 1. Fotowoltaika (PV): Inwertery i monitoring string-level
+
+#### Inwertery (Inverters)
+
+**Funkcja**: Konwersja DC (z modułów PV) → AC (do sieci), MPPT (Maximum Power Point Tracking), ochrony (over/under voltage, frequency, island detection).
+
+**Główne parametry**:
+
+| Tag | Jednostka | Sampling | Opis |
+|-----|-----------|----------|------|
+| P_AC | kW | 10 s | Moc aktywna AC (output) |
+| P_DC | kW | 10 s | Moc DC (input z modułów) |
+| Q_AC | kVAr | 10 s | Moc bierna AC |
+| V_AC (L1, L2, L3) | V | 10 s | Napięcia AC (3-phase) |
+| I_AC (L1, L2, L3) | A | 10 s | Prądy AC |
+| V_DC | V | 10 s | Napięcie DC bus (input) |
+| I_DC | A | 10 s | Prąd DC (suma stringów) |
+| E_total | kWh | 1 min | Licznik energii (lifetime cumulative) |
+| T_radiator | °C | 1 min | Temperatura radiatora (heatsink) |
+| Frequency | Hz | 10 s | Częstotliwość sieci |
+| Status | enum | on-change | Running, Standby, Fault, Off |
+| Fault codes | bitmask | on-change | Kody błędów (per standard, np. Sunspec) |
+
+**Protokoły komunikacyjne**:
+- **Modbus TCP/RTU**: Dominujący (SMA, Fronius, Huawei, ABB)
+- **Sunspec**: Standardyzacja mapy rejestrów Modbus dla PV (open standard)
+- **OPC UA**: Nowsze inwertery (Siemens, SolarEdge—commercial)
+- **Proprietary**: API producentów (SolarEdge Cloud API, Enphase Enlighten API)
+
+#### String-level monitoring
+
+**Funkcja**: Monitoring poszczególnych stringów (grupki modułów połączonych szeregowo) dla wczesnej detekcji problemów (shading, degradacji, hot spots).
+
+**Urządzenia**:
+- **String combiner boxes** z pomiarem: Prąd/napięcie każdego stringa
+- **Smart junction boxes**: Wbudowane monitoring + DC circuit breakers
+- **String optimizers** (np. SolarEdge, Tigo): Monitoring + optymalizacja MPPT na poziomie modułu/stringa
+
+**Główne parametry**:
+
+| Tag | Jednostka | Sampling | Opis |
+|-----|-----------|----------|------|
+| I_string | A | 1 min | Prąd stringa (primary metric) |
+| V_string | V | 1 min | Napięcie stringa |
+| P_string | W | 1 min | Moc (I × V) |
+| T_module | °C | 1 min | Temperatura modułu (jeśli dostępna) |
+
+**Analiza**:
+- **Porównanie stringów**: Jeśli string-42 ma I_string o 15% niższy niż średnia (przy tej samej irradiancji) → problem (shading, degradacja, connector issue)
+- **Curve tracing**: Pomiar krzywej I-V stringa (wymaga specjalnego sprzętu—curve tracer) → diagnoza problemów na poziomie modułu
+
+<Example title="Monitoring string-level: Wykrycie hot spot">
+Farma PV 1 MW, 40 stringów (25 modułów/string). String-level monitoring (combiner boxes z pomiarem prądu):
+
+**Obserwacja**:
+- Strings 1–39: I_avg = 8.2 A (przy irradiancji 800 W/m²)
+- String-40: I = 7.1 A (**13% niższy**)
+
+**Analiza**:
+- Napięcie string-40: 750 V (normalne, więc nie ma problemu z połączeniami szeregowymi)
+- Temperatura otoczenia: normalna (brak shading)
+- **Diagnoza**: Prawdopodobnie hot spot (uszkodzona cela w module, zmniejsza prąd całego stringa przez diodę bypass)
+
+**Akcja**:
+- Inspekcja termowizyjna (drone + kamera IR): Wykryto hot spot w module #18 w string-40 (temperatura 95°C vs. 55°C dla pozostałych)
+- Wymiana modułu: Koszt €250, 2 h pracy
+
+**ROI monitoringu string-level**: Bez niego, problem wykryty dopiero po awarii modułu (pożar/delamination) → koszt €5000+ (wymiana wielu modułów, przestój, ubezpieczenie).
+</Example>
+
+#### Weather stations
+
+**Funkcja**: Pomiar warunków środowiskowych dla obliczania PR i prognozowania produkcji.
+
+**Główne czujniki**:
+
+| Czujnik | Jednostka | Sampling | Dokładność |
+|---------|-----------|----------|-----------|
+| Pyranometr POA | W/m² | 1 s | ±2% (klasa A per ISO 9060) |
+| Pyranometr GHI | W/m² | 1 s | ±2% |
+| Temp modułu (back-of-module) | °C | 10 s | ±1°C |
+| Temp ambient | °C | 10 s | ±0.5°C |
+| Anemometr (prędkość wiatru) | m/s | 1 s | ±0.3 m/s |
+| Wind vane (kierunek) | ° | 10 s | ±5° |
+| Rain gauge | mm/h | 1 min | ±5% |
+
+**Kalibracja**: Pyranometry klasy A wymagają kalibracji co 1–2 lata (w akredytowanym laboratorium, koszt €500–1000).
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 12 minut
+
+**Przebieg**:
+1. Przegląd urządzeń PV (inwertery, string monitoring, weather stations)—5 min
+2. Przykład hot spot detection—4 min
+3. Omówienie protokołów (Modbus, Sunspec, OPC UA)—2 min
+4. Pytanie: "Czy monitoring string-level zawsze się opłaca?"—1 min
+
+**Punkty kluczowe**:
+- **Inwertery = mózg farmy PV**: To główne źródło danych (power, energy, faults)
+- **String monitoring = early warning**: Wykrywa problemy zanim staną się krytyczne
+- **Sunspec = game changer**: Standardizacja Modbus registers → łatwa integracja różnych producentów
+- **Weather stations = context**: Bez irradiancji, nie można obliczyć PR
+
+**Pytania studenckie**:
+- Q: Czy monitoring string-level zawsze się opłaca?
+- A: Zależy od skali. Dla farm < 1 MW: opcjonalny (ROI ~5–7 lat). Dla farm > 5 MW: **must have** (ROI < 2 lata, szczególnie w regionach o ryzyku soiling, shading, kradzieży). Dla dachowych < 20 kWp: nie (koszt > wartość).
+
+- Q: Dlaczego pyranometry są takie drogie (€1000–3000)?
+- A: Dokładność i stabilność long-term. Tanie pyranometry (photodiodes, €50–200) dryfują o 10–20% w rok. Pyranometry termopile (klasa A, €1000+) dryfują < 2%/rok. Dla farmy 10 MW, 2% błąd pyranometru = €50k/rok błędnych obliczeń PR.
+
+</details>
+
+---
+
+### 2. Wiatr: SCADA turbin i CMS
+
+#### SCADA turbin wiatrowych
+
+**Funkcja**: Monitoring i sterowanie turbiną (yaw control, pitch control, start/stop sequences, fault handling).
+
+**Główne parametry** (typowa turbina 3 MW, ~500 tagów total):
+
+**Elektryczne**:
+- P_AC, Q_AC, V_AC, I_AC, Frequency, Power Factor (jak w PV)
+- E_total (lifetime cumulative)
+
+**Wiatr**:
+- Wind speed (m/s): Anemometr na gondoli (za rotorem—wake affected) + met mast (reference, unobstructed)
+- Wind direction (°): Wind vane na gondoli
+- Air density (kg/m³): Obliczane z temp/ciśnienia/wilgotności
+
+**Mechaniczne**:
+- Rotor speed (RPM): Generator speed, rotor speed (z gearbox ratio)
+- Yaw angle (°): Obrót gondoli (tracking wiatru)
+- Pitch angles (°): Kąt każdej łopatki (3 łopatki, sterowane niezależnie)
+- Vibrations (g, m/s²): Akcelerometry w gearbox, generator, main bearing (CMS)
+
+**Termiczne**:
+- Temperatury łożysk (gearbox, generator, main bearing)
+- Temperatura oleju (gearbox, hydraulics)
+- Temperatura otoczenia (inside nacelle, outside)
+
+**Statusy i alarmy**:
+- Status: Running, Idling, Standby, Fault, Maintenance
+- Fault codes (manufacturer-specific, ~200–500 różnych kodów)
+
+**Protokoły**:
+- **OPC UA**: Standard dla nowoczesnych turbin (Vestas, Siemens Gamesa, GE)
+- **Modbus TCP**: Starsze turbiny
+- **IEC 61400-25**: Standard komunikacyjny dla turbin wiatrowych (mapping na OPC UA lub IEC 61850)
+
+#### CMS (Condition Monitoring System)
+
+**Funkcja**: Wczesna detekcja uszkodzeń mechanicznych (łożyska, przekładnie, łopatki) przez analizę drgań.
+
+**Czujniki**:
+- **Akcelerometry**: Triaxial (3-osowe), zakres 10–50 kHz, montowane na łożyskach głównych, gearbox, generator
+- **Mikrofony ultradźwiękowe**: Detekcja wycieku smaru, pęknięć łopatek
+
+**Analiza**:
+- **Analiza widmowa (FFT)**: Rozkład sygnału na częstotliwości → każde łożysko ma charakterystyczne częstotliwości (BPFO, BPFI, BSF, FTF)
+- **Envelope analysis**: Detekcja modulacji amplitudy (early bearing faults)
+- **Trend analysis**: Wzrost amplitud w czasie → predykcja końca życia łożyska
+
+**Objętość danych**: CMS generuje **1–5 GB/dzień/turbina** (high-frequency sampling 10–50 kHz). Zwykle dane są pre-processed on-edge (FFT, feature extraction), wysyłane tylko agregaty (spektra, RMS, kurtosis).
+
+<Example title="CMS wykrywa uszkodzenie łożyska: Turbina 3 MW">
+Farma wiatrowa 30 MW (10 turbin). CMS monitoruje wibracje gearbox:
+
+**Obserwacja** (Turbina-05, miesiąc 18 eksploatacji):
+- Wzrost amplitudy w paśmie 1200–1400 Hz (BPFO—Ball Pass Frequency Outer race bearing #42)
+- RMS vibration: 5 mm/s → 12 mm/s w ciągu 2 miesięcy
+
+**Diagnoza**: Wczesne uszkodzenie łożyska #42 (high-speed shaft bearing w gearbox). Prognoza: failure w 2–3 miesiącach.
+
+**Akcja**:
+- Planowana wymiana łożyska (podczas routine maintenance window—low wind season)
+- Koszt: €30k (bearing + labor), 3 dni przestoju
+- **Bez CMS**: Awaria nieplanowana → wymiana gearbox (€300k) + długi przestój (2–3 tygodnie) → utrata produkcji ~150 MWh → strata €7500
+
+**ROI CMS**: System dla 10 turbin: €200k. Jedna uratowana awaria gearbox = €300k savings. ROI < 1 rok.
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 12 minut
+
+**Przebieg**:
+1. Przegląd SCADA turbin (parametry, protokoły)—5 min
+2. CMS—funkcja, czujniki, analiza FFT—4 min
+3. Przykład wykrycia uszkodzenia łożyska—3 min
+
+**Punkty kluczowe**:
+- **Turbiny = najbardziej złożone urządzenia w OZE**: ~500 tagów/turbina (vs. ~20 dla invertera PV)
+- **CMS to standard w wietrze**: Dla turbin > 1 MW, CMS jest must-have (ROI < 2 lata)
+- **FFT to magia diagnostyki**: Pozwala "zobaczyć" co dzieje się wewnątrz gearbox bez otwierania
+
+**Pytania studenckie**:
+- Q: Dlaczego nie używamy CMS w PV?
+- A: PV nie ma ruchomych części mechanicznych (poza trackerami—tam CMS byłby użyteczny, ale rzadko wdrażany). PV degraduje się elektrycznie/cieplnie, nie mechanicznie.
+
+- Q: Co to są częstotliwości BPFO, BPFI?
+- A: BPFO (Ball Pass Frequency Outer race) = częstotliwość, z jaką kulki łożyska uderzają w zewnętrzną bieżnię. Obliczana z geometrii łożyska + RPM. Każde łożysko ma unique "fingerprint" częstotliwości → FFT pozwala zidentyfikować problem.
+
+</details>
+
+---
+
+### 3. BESS (Battery Energy Storage Systems): BMS i SOC/SOH tracking
+
+#### BMS (Battery Management System)
+
+**Funkcja**: Monitoring i sterowanie pakietami baterii (ładowanie/rozładowanie, balansowanie cel, ochrony termiczne/elektryczne).
+
+**Hierarchia**:
+- **Cell-level**: Pojedyncze cele (np. 18650 lithium-ion, 3.7 V nominalne)
+- **Module-level**: Grupa cel (np. 12 cel = moduł 44 V)
+- **Rack/String-level**: Grupa modułów (np. 10 modułów = rack 440 V)
+- **System-level**: Cały BESS (np. 10 racków = 1 MWh)
+
+**Główne parametry**:
+
+**Cell-level** (monitoring na poziomie pojedynczych cel—tysiące tagów dla dużych BESS):
+- V_cell (V): Napięcie każdej celi (critical for balancing)
+- T_cell (°C): Temperatura każdej celi (thermal runaway detection)
+
+**Module/Rack-level**:
+- V_rack, I_rack, P_rack
+- ΔV_cell_max (V): Maksymalna różnica napięć między celami w rack (imbalance indicator)
+- ΔT_cell_max (°C): Maksymalna różnica temperatur między celami
+
+**System-level**:
+- SoC (%): Stan naładowania (0–100%)
+- SoH (%): Stan zdrowia (100% = new, 80% = end-of-life)
+- P_charge, P_discharge (kW): Aktualna moc ładowania/rozładowania
+- E_stored (kWh): Energia przechowywana obecnie
+- Cycles_total: Liczba pełnych cykli (lifetime counter)
+- Charge/discharge efficiency (%): Round-trip efficiency
+
+**Ochrony i alarmy**:
+- Over-voltage, under-voltage (cell, module, system level)
+- Over-temperature, under-temperature
+- Over-current (charging, discharging)
+- Smoke detection, thermal runaway detection (safety-critical)
+
+**Protokoły**:
+- **Modbus TCP**: Dominujący (Tesla Powerpack, LG Chem, BYD)
+- **CAN bus**: Wewnętrzna komunikacja BMS (cell → module → rack → system)
+- **OPC UA**: Nowe systemy (integracja z SCADA)
+
+#### SoC/SoH tracking
+
+**SoC (State of Charge)**:
+- **Coulomb counting**: Integrate current over time: $SoC(t) = SoC(t_0) + \frac{1}{Q_{nom}} \int I(t) \, dt$
+- **Korekta modelem**: Extended Kalman Filter (EKF) koryguje coulomb counting o model elektrochemiczny (napięcie vs. SoC curve)
+- **Błędy**: Drift over time (accumulated errors w coulomb counting), wymaga okresowej rekalibracji (full charge/discharge cycle)
+
+**SoH (State of Health)**:
+- **Definicja**: $SoH = \frac{C_{actual}}{C_{rated}} \times 100\%$
+- **Pomiar**: Full charge/discharge cycle (measure actual capacity) co 1–3 miesiące
+- **Degradacja**: LFP (LiFePO₄): ~80% SoH po 5000–8000 cykli. NMC (Nickel Manganese Cobalt): ~80% po 3000–5000 cykli
+- **Tracking**: Monitor SoH trend → prognoza end-of-life (EoL) → planowanie wymiany baterii
+
+<Example title="BESS monitoring: Wykrycie cell imbalance">
+BESS 1 MWh (LFP chemistry), 10 racków × 100 kWh. BMS monitoruje 2560 cel (cell-level monitoring):
+
+**Obserwacja** (Rack-03, tydzień 120 eksploatacji):
+- ΔV_cell_max = 85 mV (normalnie < 50 mV)
+- Cela #42 w Rack-03: V_cell = 3.25 V (inne: 3.32–3.34 V)
+- SoC: 50% (mid-range, więc napięcia powinny być zbliżone)
+
+**Diagnoza**: Cell imbalance—cela #42 ma niższą pojemność (degraded) lub wyższą rezystancję wewnętrzną.
+
+**Akcja**:
+1. **Balancing cycle**: BMS uruchamia aktywne balansowanie (dissipate energy z wyższych cel, charge niższych)—trwa 2 h
+2. **Po balancingu**: ΔV zmniejszone do 60 mV (poprawa, ale wciąż > norma)
+3. **Decyzja**: Monitorować przez kolejne 2 tygodnie. Jeśli ΔV > 100 mV → wymiana Rack-03 (koszt: €10k)
+
+**Bez monitoringu cell-level**: Rack pracuje z imbalance → przyspieszenie degradacji pozostałych cel → przedwczesna awaria całego rack (€10k) + potencjalne thermal runaway (safety risk).
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 12 minut
+
+**Przebieg**:
+1. Przegląd BMS (hierarchia, parametry)—5 min
+2. SoC/SoH tracking (algorytmy, degradacja)—4 min
+3. Przykład cell imbalance—3 min
+
+**Punkty kluczowe**:
+- **BESS = najbardziej data-intensive w OZE**: Tysiące cel × monitoring każdej = gigabajty danych/dzień
+- **Cell-level monitoring = safety**: Thermal runaway detection (critical dla bezpieczeństwa)
+- **SoH tracking = financial**: Baterie degradują się → trzeba planować wymianę (CapEx planning)
+
+**Pytania studenckie**:
+- Q: Czy monitorujemy każdą celę (cell-level) czy tylko moduły/racki?
+- A: Zależy od systemu. **High-end BESS** (Tesla Megapack, Fluence): cell-level monitoring. **Mid-range** (BYD, LG Chem): module-level. **Low-cost**: rack-level only. Trade-off: granularity vs. koszt hardware/software.
+
+- Q: Co to jest thermal runaway i jak go wykrywamy?
+- A: Thermal runaway = reakcja łańcuchowa: cela przegrzewa się → wewnętrzne zwarcie → więcej ciepła → eksplozja/pożar. Wykrywanie: (1) ΔT/Δt > threshold (np. 5°C/min), (2) smoke detection, (3) gas sensors (CO, HF). Reakcja: natychmiastowe odcięcie rack, aktywacja systemu gaśniczego (FM-200, Novec 1230).
+
+</details>
+
+---
+
+### 4. Biogaz: PLC/SCADA procesowe + czujniki gazów
+
+#### PLC/SCADA biogazowni
+
+**Funkcja**: Sterowanie procesem fermentacji (feeding, stirring, heating), monitoring CHP (Combined Heat and Power), bezpieczeństwo (gas detection, fire suppression).
+
+**Główne parametry procesowe**:
+
+**Fermentory**:
+- Temperatury (°C): Fermentor (mesophilic 35–40°C lub thermophilic 50–60°C), digestate
+- Poziomy (m, %): Poziom cieczy w fermentorach (ultrasonic/radar level sensors)
+- Ciśnienia (mbar): Ciśnienie w reaktorze (slight overpressure, ~5–20 mbar)
+- pH: Optymalne 6.8–7.5 (dla bakterii metanogennych)
+- Przepływy (m³/h): Feeding rate (substrate in), digestate out
+
+**Biogas**:
+- CH₄ (%): Zawartość metanu (target: 50–65%, higher = better)
+- CO₂ (%): Zawartość CO₂ (complement do CH₄, ~35–50%)
+- H₂S (ppm): Siarkowodór (toxic, corrosive—limit < 500 ppm before CHP)
+- H₂O (%RH): Wilgotność (condensation risk—dryers needed)
+- Przepływ biogazu (m³/h): Total biogas production
+
+**CHP (Cogenerator)**:
+- P_el (kW), E_el (kWh): Moc/energia elektryczna
+- P_th (kW), E_th (kWh): Moc/energia cieplna (wykorzystana do ogrzewania fermentorów, sprzedawana do sieci ciepłowniczej)
+- Exhaust temp (°C): Temperatura spalin
+- RPM, oil pressure, coolant temp: Parametry silnika CHP
+
+**Safety**:
+- Gas detectors (CH₄, H₂, CO): Dla wykrywania wycieków (explosion risk—LEL Lower Explosion Limit dla CH₄ = 5%)
+- Flame detectors, smoke detectors
+- Emergency shutdown systems (ESD): Zatrzymanie procesu przy wykryciu zagrożenia
+
+**Protokoły**:
+- **Modbus TCP/RTU**: PLC (Siemens S7, Allen-Bradley) ↔ SCADA
+- **OPC UA**: Nowsze instalacje (interoperability)
+- **Profibus/Profinet**: Wewnętrzna sieć PLC ↔ I/O modules
+
+<Example title="Biogazownia 1 MW: Monitoring jakości biogazu">
+Biogazownia 1 MW (agricultural, corn silage + manure substrate):
+
+**Parametry**:
+- Biogas production: 400 m³/h (design capacity)
+- CH₄ content: 58% (target: > 55%)
+- H₂S content: 350 ppm (target: < 500 ppm before CHP)
+- CHP efficiency: 40% electrical, 45% thermal
+
+**Monitoring**:
+1. **Proces fermentacji** (PLC + SCADA):
+   - Temp fermentor: 38°C (mesophilic, controlled ± 1°C)
+   - pH: 7.2 (stable—good microbial balance)
+   - OLR (Organic Loading Rate): 3.5 kg VS/m³/day (volatile solids—optimal range)
+
+2. **Jakość biogazu** (inline gas analyzers):
+   - CH₄, CO₂: Infrared sensors (non-dispersive, NDIR)
+   - H₂S: Electrochemical sensor (needs calibration co 6 miesięcy)
+
+3. **CHP**:
+   - P_el: 950 kW (95% capacity—very good)
+   - Exhaust temp: 420°C (normal)
+
+**Anomalia wykryta**:
+- Tydzień 15: H₂S wzrósł do 800 ppm (przekroczenie limitu)
+- Przyczyna: Zmiana składu substratu (więcej manure, mniej corn silage → więcej siarki)
+- Akcja: (1) Zwiększenie dawki żelaza (FeCl₃—binds H₂S), (2) Korekta feeding ratio
+- Rezultat: H₂S spadł do 300 ppm w 3 dni
+
+**Bez monitoringu H₂S**: Korozja silnika CHP (H₂S + woda = kwas siarkowy) → wymiana cylindrów (€50k) + przestój (1 tydzień).
+</Example>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 10 minut
+
+**Przebieg**:
+1. Przegląd parametrów procesowych (fermentory, biogas, CHP, safety)—5 min
+2. Przykład monitoring jakości biogazu—3 min
+3. Pytanie: "Dlaczego H₂S jest tak krytyczny?"—2 min
+
+**Punkty kluczowe**:
+- **Biogazownie = najbardziej złożone procesy w OZE**: Biologiczne + chemiczne + termiczne + elektryczne
+- **Jakość biogazu = klucz do efektywności**: CH₄ content determinuje wartość energetyczną
+- **Safety paramount**: CH₄ jest wybuchowy (LEL 5%), H₂S toksyczny (IDLH—Immediately Dangerous to Life or Health = 100 ppm)
+
+**Pytania studenckie**:
+- Q: Dlaczego H₂S jest taki problematyczny?
+- A: (1) **Toksyczny**: 10 ppm = odór (rotten eggs), 100 ppm = IDLH, 500 ppm = śmierć w 30 min. (2) **Korozyjny**: H₂S + H₂O = H₂SO₄ (sulfuric acid) → eroduje metal (CHP, rury). (3) **Trujący katalizatory**: CHP exhaust aftertreatment (catalytic converters) uszkadzany przez H₂S.
+
+- Q: Jak się usuwa H₂S z biogazu?
+- A: (1) **In-situ** (w fermentorze): Dodawanie Fe²⁺ (iron chloride) lub powietrza (biological desulfurization). (2) **Ex-situ** (external scrubber): Activated carbon filters, biological filters, chemical scrubbers. Koszt: €10–50k dla 1 MW biogazowni.
+
+</details>
+
+---
+
+## Jakość i spójność danych: Fundament wiarygodnego monitoringu
+
+Nawet najlepsze czujniki i najszybsze sieci są bezwartościowe, jeśli **jakość danych jest niska**. W tej sekcji omówimy kluczowe aspekty zapewnienia jakości.
+
+### 1. Synchronizacja czasu (Time Synchronization)
+
+**Dlaczego krytyczna?**
+- **Korelacja zdarzeń**: Awaria invertera i spadek napięcia w sieci—czy to związane? Bez precyzyjnych timestampów, niemożliwe do ustalenia.
+- **Agregacje**: Obliczanie średnich 15-min wymaga, żeby wszystkie urządzenia miały spójny czas.
+- **Compliance**: SOE (Sequence of Events) dla OSP wymaga dokładności < 1 ms.
+
+**Metody synchronizacji**:
+
+| Metoda | Dokładność | Zastosowanie | Koszt |
+|--------|------------|--------------|-------|
+| **NTP** (Network Time Protocol) | ~10–100 ms | Edge gateways, SCADA servers, alarmy | €0 (free, built-in OS) |
+| **PTP** (Precision Time Protocol, IEEE 1588) | < 1 ms | SOE, fault recorders, synchrophasors | €€€ (dedicated hardware clocks, managed switches) |
+| **GPS/GNSS** | < 1 µs | Reference clocks dla PTP, offshore wind | €€ (GPS receivers ~€200–1000) |
+
+**Best practice**:
+- **Wszystkie urządzenia edge/fog**: NTP client, sync co 1 min z redundantnymi NTP servers
+- **SOE/critical**: PTP grandmaster clock (GPS-synced) + PTP-aware network switches
+- **Timezone**: **Always UTC** (unikaj DST—Daylight Saving Time confusion). Konwersja do local time tylko w warstwie prezentacji (dashboardy).
+
+### 2. Normalizacja jednostek i zakresów
+
+**Problem**: Różne urządzenia raportują w różnych jednostkach (W vs. kW, °C vs. °F, m/s vs. km/h).
+
+**Rozwiązanie**: Standaryzacja w warstwie edge/fog:
+- **Jednostki**: SI (International System of Units)—kW, kWh, °C, m/s, Pa
+- **Skalowanie**: Automatyczne (konfiguracja w tag database—mnożniki, offsety)
+- **Walidacja**: Odrzucaj wartości poza zakresami fizycznymi (hardcoded lub z metadanych)
+
+**Przykład**:
+```python
+def normalize_power(value, unit):
+    """Normalize power to kW"""
+    if unit == "W":
+        return value / 1000.0
+    elif unit == "MW":
+        return value * 1000.0
+    elif unit == "kW":
+        return value
+    else:
+        raise ValueError(f"Unknown unit: {unit}")
+```
+
+### 3. Obsługa braków danych (Missing Data Handling)
+
+**Przyczyny braków**:
+- Utrata łączności (edge ↔ fog, fog ↔ cloud)
+- Awaria czujnika/gateway
+- Błędy transmisji (packet loss)
+
+**Strategie**:
+
+| Strategia | Kiedy stosować | Zalety | Wady |
+|-----------|----------------|--------|------|
+| **NULL (brak wartości)** | Rozliczenia finansowe, audyty | Nie zniekształca statystyk | Luki w danych (analiza trudniejsza) |
+| **Forward fill** | Statusy binarne (ON/OFF) | Zachowuje ciągłość | Może maskować problemy |
+| **Interpolacja liniowa** | Wolno zmieniające się parametry (temp) | Gładkie serie czasowe | Błędne dla szybkich zmian |
+| **Model predykcyjny** | Długie luki (> 1 h) | Najdokładniejsze | Wymaga ML, kosztowne obliczeniowo |
+
+**Best practice**: Kombinacja—np. forward fill do 5 min, potem NULL (sygnalizuje problem).
+
+### 4. Ślad metrologiczny (Metrological Traceability)
+
+**Definicja** (per ISO/IEC Guide 99): Właściwość wyniku pomiaru, polegająca na możliwości powiązania go z odniesieniem (standardem) przez udokumentowany łańcuch kalibracji.
+
+**W praktyce**:
+- **Certyfikaty kalibracji**: Dla kluczowych czujników (pyranometry, energy meters, gas analyzers)
+- **Historia dryftu**: Tracking jak czujnik zmienia odczyty w czasie (trend analysis)
+- **Niepewność pomiarowa**: Każdy pomiar z ±X% uncertainty (np. ±2% dla pyranometru klasy A)
+
+**Harmonogram kalibracji** (typowy dla OZE):
+
+| Urządzenie | Częstotliwość | Koszt | Konsekwencje braku kalibracji |
+|------------|---------------|-------|-------------------------------|
+| Pyranometry (klasa A) | 1–2 lata | €500–1000 | ±5–10% błąd PR (false alarms, błędne rozliczenia) |
+| Energy meters (revenue-grade) | 2–5 lat (wymóg regulacyjny) | €200–500 | Niezgodność z regulacjami, spory z OSP |
+| Gas analyzers (H₂S, CH₄) | 6–12 miesięcy | €300–600 | Safety risk (false negatives), korozja CHP |
+| Temperature sensors (RTD) | 2–3 lata | €100–200 | Błędne obliczenia sprawności, niewłaściwe sterowanie |
+
+:::tip Kalibracja to inwestycja, nie koszt
+€1000 na rekalibrację pyranometru może zapobiec €10 000 błędnej diagnozy soiling (mycie modułów, gdy problem był w czujniku). **ROI >
+
+ 10:1**.
+:::
+
+<Inter activeQuiz
+  question="Które czujniki w farmie PV 10 MW wymagają najczęstszej kalibracji (co 6–12 miesięcy)?"
+  options={[
+    "Pyranometry (irradiancja POA/GHI)",
+    "Czujniki temperatury modułów (thermocouples)",
+    "Energy meters (liczniki AC)",
+    "Czujniki prądu DC (stringi)"
+  ]}
+  correctAnswer={0}
+  explanation="Pyranometry dryfują najszybciej (ze względu na degradację powłoki optycznej, zabrudzenie, aging fotodiod termopile). Dryft 2–5%/rok jest typowy. Czujniki temperatury i prądu są stabilniejsze (< 1%/rok). Energy meters (revenue-grade) wymagają kalibracji co 2–5 lat (wymóg regulacyjny), ale dryfują bardzo wolno (< 0.5%/rok)."
+/>
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 12 minut
+
+**Przebieg**:
+1. Synchronizacja czasu (NTP vs. PTP)—3 min
+2. Normalizacja jednostek—2 min
+3. Obsługa braków danych—3 min
+4. Ślad metrologiczny i kalibracje—3 min
+5. Quiz—1 min
+
+**Punkty kluczowe**:
+- **Jakość danych > ilość danych**: Lepiej 10 dobrych tagów niż 100 złych
+- **Time sync to fundament**: Bez spójnych timestampów, analiza korelacji niemożliwa
+- **Kalibracja = ubezpieczenie**: Chroni przed błędnymi decyzjami opartymi na danych
+
+**Pytania studenckie**:
+- Q: Czy możemy automatycznie wykrywać dryft czujników (bez fizycznej kalibracji)?
+- A: Częściowo. **Peer comparison**: Jeśli masz 5 pyranometrów i jeden pokazuje wartości o 10% niższe niż pozostałe → podejrzenie dryft. **Model comparison**: Porównanie odczytów z modelami satelitarnymi (np. PVGIS, Solargis)—jeśli rozbieżność > 5%, możliwy dryft. Ale **nie zastępuje fizycznej kalibracji** (tylko lab może określić absolute accuracy).
+
+- Q: Co z cyberbezpieczeństwem NTP? Czy ktoś może zaatakować sync czasu?
+- A: Tak, NTP amplification attack (DDoS) lub time spoofing (zmiana czasu, żeby zmylić alarmy). Ochrona: (1) Authenticated NTP (NTP v4 + symmetric key), (2) Redundant NTP servers (3+ sources, outlier detection), (3) Firewall rules (allow NTP tylko z zaufanych źródeł).
+
+</details>
+
+---
+
+## Podsumowanie
+
+**Typy danych** w monitoringu OZE:
+1. **Ciągłe (time-series)**: 95% objętości, główne źródło analiz
+2. **Zdarzeniowe (events)**: Kluczowe dla operatorów (alarmy, SOE)
+3. **Metadane**: Fundament kontekstualizacji i jakości analiz
+
+**Źródła danych** (per technologia):
+- **PV**: Inwertery (Modbus/Sunspec), string monitoring, weather stations
+- **Wiatr**: SCADA turbin (OPC UA), CMS (wibracje)
+- **BESS**: BMS (cell-level monitoring), SoC/SoH tracking
+- **Biogaz**: PLC/SCADA procesowe, czujniki gazów (CH₄, H₂S)
+
+**Jakość danych** zapewniana przez:
+- Synchronizację czasu (NTP/PTP)
+- Normalizację jednostek
+- Obsługę braków
+- Ślad metrologiczny (kalibracje)
+
+W następnej sekcji przejdziemy do **KPI** (Key Performance Indicators)—jak z tych surowych danych obliczyć metryki biznesowe: PR, Availability, CF, SoH/SoC, OEE.
 
 

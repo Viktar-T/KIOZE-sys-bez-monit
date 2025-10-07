@@ -1,0 +1,393 @@
+# Non-Mermaid Visualization Types for OZE Lecture Slides
+
+## Overview
+This document lists alternative visualization methods that can be used in your OZE lecture slides when Mermaid diagrams are not suitable or when you need different visual approaches.
+
+## 1. HTML/CSS Visualizations
+
+### CSS Grid Layouts
+```html
+<div className="grid-container">
+  <div className="grid-item">Solar PV</div>
+  <div className="grid-item">Wind Energy</div>
+  <div className="grid-item">Hydroelectric</div>
+  <div className="grid-item">Biomass</div>
+</div>
+```
+
+### CSS Flexbox Cards
+```html
+<div className="flex-container">
+  <div className="card">CAD Tools</div>
+  <div className="card">CAE Tools</div>
+  <div className="card">Specialized Software</div>
+</div>
+```
+
+### Progress Bars
+```html
+<div className="progress-container">
+  <div className="progress-bar" style={{width: '75%'}}>
+    <span>75% Efficiency</span>
+  </div>
+</div>
+```
+
+## 2. React Components
+
+### Interactive Tabs
+```jsx
+<Tabs>
+  <TabList>
+    <Tab>Solar</Tab>
+    <Tab>Wind</Tab>
+    <Tab>Hydro</Tab>
+  </TabList>
+  <TabPanel>Solar energy content...</TabPanel>
+  <TabPanel>Wind energy content...</TabPanel>
+  <TabPanel>Hydro energy content...</TabPanel>
+</Tabs>
+```
+
+### Accordion Components
+```jsx
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>CAD Tools</AccordionTrigger>
+    <AccordionContent>
+      <ul>
+        <li>AutoCAD</li>
+        <li>SolidWorks</li>
+        <li>SketchUp</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Card Grids
+```jsx
+<div className="card-grid">
+  <Card title="PV*SOL" description="Solar system design" />
+  <Card title="PVsyst" description="PV system simulation" />
+  <Card title="SAM" description="System Advisor Model" />
+</div>
+```
+
+## 3. Docusaurus Components
+
+### Info/Note/Warning Boxes
+```jsx
+<Info>
+  This is important information about OZE tools.
+</Info>
+
+<Note>
+  Note about renewable energy systems.
+</Note>
+
+<Warning>
+  Warning about system limitations.
+</Warning>
+
+<Tip>
+  Tip for better system design.
+</Tip>
+```
+
+### Callouts
+```jsx
+<Callout type="info" title="Key Information">
+  Renewable energy systems require careful planning.
+</Callout>
+
+<Callout type="warning" title="Important">
+  Always verify system calculations.
+</Callout>
+```
+
+### Tabs
+```jsx
+<Tabs>
+  <TabItem value="solar" label="Solar Energy">
+    Solar panel design and optimization
+  </TabItem>
+  <TabItem value="wind" label="Wind Energy">
+    Wind turbine selection and placement
+  </TabItem>
+  <TabItem value="hydro" label="Hydroelectric">
+    Water turbine systems
+  </TabItem>
+</Tabs>
+```
+
+## 4. Image-Based Visualizations
+
+### Infographic Layouts
+```jsx
+<div className="infographic">
+  <img src="/img/solar-process.png" alt="Solar Energy Process" />
+  <div className="overlay-text">
+    <h3>Solar Energy Conversion</h3>
+    <p>From sunlight to electricity</p>
+  </div>
+</div>
+```
+
+### Comparison Tables
+```jsx
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Type</th>
+      <th>Use Case</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PV*SOL</td>
+      <td>Specialized</td>
+      <td>Solar Design</td>
+      <td>Commercial</td>
+    </tr>
+    <tr>
+      <td>PVsyst</td>
+      <td>Specialized</td>
+      <td>PV Simulation</td>
+      <td>Academic</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## 5. Interactive Elements
+
+### Hover Cards
+```jsx
+<div className="hover-card">
+  <div className="card-trigger">CAD Tools</div>
+  <div className="card-content">
+    <h4>Computer-Aided Design</h4>
+    <p>Tools for geometric modeling and documentation</p>
+  </div>
+</div>
+```
+
+### Expandable Sections
+```jsx
+<details>
+  <summary>Advanced OZE Tools</summary>
+  <div className="expandable-content">
+    <ul>
+      <li>HOMER Pro - Microgrid optimization</li>
+      <li>WindPRO - Wind farm design</li>
+      <li>RETScreen - Energy analysis</li>
+    </ul>
+  </div>
+</details>
+```
+
+## 6. Data Visualization Components
+
+### Simple Charts (using CSS)
+```jsx
+<div className="bar-chart">
+  <div className="bar" style={{height: '60%'}}>
+    <span>Solar: 60%</span>
+  </div>
+  <div className="bar" style={{height: '30%'}}>
+    <span>Wind: 30%</span>
+  </div>
+  <div className="bar" style={{height: '10%'}}>
+    <span>Other: 10%</span>
+  </div>
+</div>
+```
+
+### Timeline Components
+```jsx
+<div className="timeline">
+  <div className="timeline-item">
+    <div className="timeline-marker">1970s</div>
+    <div className="timeline-content">
+      <h4>First Solar Cells</h4>
+      <p>Development of photovoltaic technology</p>
+    </div>
+  </div>
+  <div className="timeline-item">
+    <div className="timeline-marker">1980s</div>
+    <div className="timeline-content">
+      <h4>Wind Energy Growth</h4>
+      <p>Commercial wind farms development</p>
+    </div>
+  </div>
+</div>
+```
+
+## 7. Custom CSS Animations
+
+### Animated Progress Indicators
+```css
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 75%; }
+}
+
+.progress-bar {
+  animation: progress 2s ease-in-out;
+}
+```
+
+### Hover Effects
+```css
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+```
+
+## 8. Icon-Based Visualizations
+
+### Icon Grids
+```jsx
+<div className="icon-grid">
+  <div className="icon-item">
+    <Icon name="solar" size="large" />
+    <span>Solar Energy</span>
+  </div>
+  <div className="icon-item">
+    <Icon name="wind" size="large" />
+    <span>Wind Energy</span>
+  </div>
+  <div className="icon-item">
+    <Icon name="water" size="large" />
+    <span>Hydroelectric</span>
+  </div>
+</div>
+```
+
+### Feature Lists with Icons
+```jsx
+<ul className="feature-list">
+  <li>
+    <Icon name="check" />
+    <span>CAD Integration</span>
+  </li>
+  <li>
+    <Icon name="check" />
+    <span>Simulation Capabilities</span>
+  </li>
+  <li>
+    <Icon name="check" />
+    <span>Energy Analysis</span>
+  </li>
+</ul>
+```
+
+## 9. Layout Components
+
+### Two-Column Layouts
+```jsx
+<div className="two-column">
+  <div className="column">
+    <h3>CAD Tools</h3>
+    <ul>
+      <li>AutoCAD</li>
+      <li>SolidWorks</li>
+    </ul>
+  </div>
+  <div className="column">
+    <h3>CAE Tools</h3>
+    <ul>
+      <li>ANSYS</li>
+      <li>COMSOL</li>
+    </ul>
+  </div>
+</div>
+```
+
+### Sidebar Layouts
+```jsx
+<div className="sidebar-layout">
+  <div className="sidebar">
+    <h4>Tool Categories</h4>
+    <ul>
+      <li>CAD</li>
+      <li>CAE</li>
+      <li>Specialized</li>
+    </ul>
+  </div>
+  <div className="main-content">
+    <h2>OZE Design Tools</h2>
+    <p>Content about renewable energy tools...</p>
+  </div>
+</div>
+```
+
+## 10. Interactive Forms
+
+### Tool Selection Forms
+```jsx
+<form className="tool-selector">
+  <fieldset>
+    <legend>Select Tool Category</legend>
+    <label>
+      <input type="radio" name="category" value="cad" />
+      CAD Tools
+    </label>
+    <label>
+      <input type="radio" name="category" value="cae" />
+      CAE Tools
+    </label>
+    <label>
+      <input type="radio" name="category" value="specialized" />
+      Specialized Software
+    </label>
+  </fieldset>
+</form>
+```
+
+## Best Practices for OZE Lectures
+
+### 1. **Use Appropriate Visualizations**
+- **Process flows** → CSS animations or interactive components
+- **Comparisons** → Tables, cards, or icon grids
+- **Hierarchies** → Accordion components or expandable sections
+- **Data** → Custom charts or progress indicators
+
+### 2. **Maintain Accessibility**
+- Use semantic HTML
+- Include alt text for images
+- Ensure keyboard navigation
+- Provide text alternatives
+
+### 3. **Keep It Simple**
+- Don't overcomplicate visualizations
+- Use consistent styling
+- Ensure readability on all devices
+
+### 4. **Interactive Elements**
+- Use hover effects for engagement
+- Include expandable content for details
+- Provide clear navigation
+
+## Implementation Examples
+
+### Before (Text List):
+- CAD Tools
+- CAE Tools  
+- Specialized Software
+
+### After (Card Grid):
+```jsx
+<div className="tool-grid">
+  <Card icon="cad" title="CAD Tools" description="Geometric modeling" />
+  <Card icon="cae" title="CAE Tools" description="Engineering analysis" />
+  <Card icon="specialized" title="Specialized" description="OZE-specific software" />
+</div>
+```
+
+This approach provides multiple alternatives to Mermaid diagrams while maintaining visual appeal and educational effectiveness for your OZE course materials.

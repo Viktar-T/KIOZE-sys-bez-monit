@@ -202,3 +202,56 @@ export const SlideNavigation = ({ onPrevious, onNext, hasPrevious, hasNext, clas
     </button>
   </div>
 );
+
+/**
+ * Learning Objective component
+ * Displays learning objectives at the beginning of a section
+ * 
+ * @param {ReactNode} children - Learning objective content
+ */
+export const LearningObjective = ({ children, className, ...props }) => (
+  <div className={clsx('alert', 'alert--info', 'learning-objective', className)} {...props}>
+    <div className="learning-objective-header">
+      🎯 <strong>Cel uczenia</strong>
+    </div>
+    <div className="learning-objective-content">
+      {children}
+    </div>
+  </div>
+);
+
+/**
+ * Key Concept component
+ * Highlights important conceptual information
+ * 
+ * @param {string} title - Concept title
+ * @param {ReactNode} children - Concept explanation
+ */
+export const KeyConcept = ({ title, children, className, ...props }) => (
+  <div className={clsx('alert', 'alert--success', 'key-concept', className)} {...props}>
+    <div className="key-concept-header">
+      💡 <strong>{title}</strong>
+    </div>
+    <div className="key-concept-content">
+      {children}
+    </div>
+  </div>
+);
+
+/**
+ * Example component
+ * Displays practical examples and case studies
+ * 
+ * @param {string} title - Example title
+ * @param {ReactNode} children - Example content
+ */
+export const Example = ({ title, children, className, ...props }) => (
+  <div className={clsx('alert', 'alert--warning', 'example', className)} {...props}>
+    <div className="example-header">
+      📖 <strong>{title}</strong>
+    </div>
+    <div className="example-content">
+      {children}
+    </div>
+  </div>
+);

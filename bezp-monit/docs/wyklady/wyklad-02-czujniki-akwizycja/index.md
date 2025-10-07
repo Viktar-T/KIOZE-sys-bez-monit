@@ -18,16 +18,16 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Pomiary elektryczne: DC/AC, poziom stringów PV](./01-elektryczne-pomiary)
-2. [Irradiancja i temperatura modułów](./02-irradiancja-temperatura)
-3. [Wibracje i akustyka turbin wiatrowych](./03-wibracje-turbiny)
-4. [Czujniki gazów w biogazowniach](./04-gazy-biogaz)
-5. [Przepływ, poziom, ciśnienie](./05-przeplyw-poziom-cisnienie)
-6. [Kondycjonowanie sygnałów](./06-kondycjonowanie-sygnalu)
-7. [Kalibracja i ślad metrologiczny](./07-kalibracja-metrologia)
-8. [Próbkowanie i anti‑aliasing](./08-sampling-antyaliasing)
-9. [Synchronizacja czasu: NTP/PTP](./09-synchronizacja-czasu)
-10. [Podsumowanie i zalecenia praktyczne](./10-podsumowanie)
+1. [Pomiary elektryczne: DC/AC, poziom stringów PV](./01-elektryczne-pomiary.mdx)
+2. [Irradiancja i temperatura modułów](./02-irradiancja-temperatura.mdx)
+3. [Wibracje i akustyka turbin wiatrowych](./03-wibracje-turbiny.mdx)
+4. [Czujniki gazów w biogazowniach](./04-gazy-biogaz.mdx)
+5. [Przepływ, poziom, ciśnienie](./05-przeplyw-poziom-cisnienie.mdx)
+6. [Kondycjonowanie sygnałów](./06-kondycjonowanie-sygnalu.mdx)
+7. [Kalibracja i ślad metrologiczny](./07-kalibracja-metrologia.mdx)
+8. [Próbkowanie i anti‑aliasing](./08-sampling-antyaliasing.mdx)
+9. [Synchronizacja czasu: NTP/PTP](./09-synchronizacja-czasu.mdx)
+10. [Podsumowanie i zalecenia praktyczne](./10-podsumowanie.mdx)
 
 ## Literatura skrócona
 

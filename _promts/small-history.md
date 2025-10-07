@@ -26,7 +26,7 @@
   oze-pr\docs\photovoltaic-systems
   oze-pr\docs\solar-thermal-systems
   oze-pr\docs\wind. add only. these file should be short and contain only imprortent information.
-* [ ] 
+* [ ]
 * [X] you are given the course syllabus from the file:
 
 `@_promts\syt-monit\gpt-v2-90-10.md`, which contains the program for  *"Systemy bezpieczeństwa i monitorowania instalacji OZE"* .
@@ -60,4 +60,13 @@ Style:
 * Provide  **clear structure with headings/subheadings** .
 * Where relevant, give **short real-world examples**
 
-* [ ] implement @_promts\slides-conversion.md for wyklad-01 in bezp-monit\docs\wyklady directory. convert md into mdx files.
+* [X] implement @_promts\slides-conversion.md for wyklad-01 in bezp-monit\docs\wyklady directory. convert md into mdx files.
+* [ ] implement **@expand-lecture-content.md** for the files in the folder bezp-monitbezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja.
+* [ ] if you have not finised continue working.
+* [ ] continue working with next folder.
+* [ ] @01-wstep-rola-slides.mdx some of the slides too long, too big. They don fit the screen. rewrite or devide them.
+* [ ] on the basis of information from **@01-wstep-rola.mdx** build file with slides according to notes from here **@4. slides-conversion.md**.
+* [ ] implement **@10. InstractorNotes.md** for **@01-wstep-rola-slides.mdx**. use infor from **@01-wstep-rola.mdx**. use infor from @bezp-monit\docs\wyklady\wyklad-01-architektura-w1\01-wstep-rola.mdx.
+* [ ] on the basis of information from **@02-warstwy-architektury.mdx** build file with slides according to notes here **@4. slides-conversion.md**.
+* [ ] on the basis of information from **@03-typy-danych-zrodla.mdx** build file with slides according to notes here **@4. slides-conversion.md**.
+* [ ] on the basis of information from **@03-typy-danych-zrodla.mdx** build file with slides according to notes here **@4. slides-conversion.md**.

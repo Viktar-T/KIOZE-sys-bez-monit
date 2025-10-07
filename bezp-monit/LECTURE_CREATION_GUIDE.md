@@ -7,13 +7,14 @@ I've created a **complete demonstration** of Wykład 1 (Lecture 1) to show you t
 ### ✅ Files Created
 
 ```
-docs/wyklady/wyklad-01-architektura/
+docs/wyklady/wyklad-01-architektura-w1/
 ├── index.md                      ✅ Lecture overview with objectives
-├── 01-rola-monitoringu.md       ✅ Section 1: Role of monitoring
-├── 02-architektury.md           ✅ Section 2: Edge-Fog-Cloud architectures
-├── 05-podsumowanie.md           ✅ Section 5: Summary & quiz
-└── [03-metryki-kpi.md]          🔜 To be created (example for you)
-    [04-alarmy.md]               🔜 To be created (example for you)
+├── 01-wstep-rola.mdx            ✅ Section 1: Introduction and role of monitoring
+├── 02-warstwy-architektury.mdx  ✅ Section 2: Edge-Fog-Cloud architectures
+├── 03-typy-danych-zrodla.mdx    ✅ Section 3: Data types and sources
+├── 04-kpi.mdx                   ✅ Section 4: KPI metrics
+├── 05-alarmowanie.mdx           ✅ Section 5: Alerting philosophy
+└── 06-podsumowanie.md           ✅ Section 6: Summary & quiz
 ```
 
 ### 📊 Content Overview
@@ -380,7 +381,7 @@ cd bezp-monit
 npm run start
 ```
 
-Navigate to: `http://localhost:3000/docs/wyklady/wyklad-01-architektura/`
+Navigate to: `http://localhost:3000/docs/wyklady/wyklad-01-architektura-w1/`
 
 ### Create New Lecture
 
@@ -389,7 +390,7 @@ Navigate to: `http://localhost:3000/docs/wyklady/wyklad-01-architektura/`
 mkdir -p docs/wyklady/wyklad-02-czujniki
 
 # Copy template
-cp docs/wyklady/wyklad-01-architektura/index.md docs/wyklady/wyklad-02-czujniki/index.md
+cp docs/wyklady/wyklad-01-architektura-w1/index.md docs/wyklady/wyklad-02-czujniki/index.md
 
 # Edit and customize
 code docs/wyklady/wyklad-02-czujniki/index.md

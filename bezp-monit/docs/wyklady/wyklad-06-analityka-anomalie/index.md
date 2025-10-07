@@ -19,13 +19,13 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Progi statyczne i adaptacyjne](./01-progi)
-2. [CUSUM — detekcja zmian poziomu](./02-cusum)
-3. [PCA i autoenkoder — koncepcje](./03-pca-autoencoder)
-4. [Korelacje wielowymiarowe](./04-korelacje)
-5. [Metryki alarmów i opóźnienia detekcji](./05-metryki-opoznienia)
-6. [Studia przypadków: PV, wiatr, BESS](./06-case-studies)
-7. [Podsumowanie i rekomendacje](./07-podsumowanie)
+1. [Progi statyczne i adaptacyjne](./01-progi.mdx)
+2. [CUSUM — detekcja zmian poziomu](./02-cusum.mdx)
+3. [PCA i autoenkoder — koncepcje](./03-pca-autoencoder.mdx)
+4. [Korelacje wielowymiarowe](./04-korelacje.mdx)
+5. [Metryki alarmów i opóźnienia detekcji](./05-metryki-opoznienia.mdx)
+6. [Studia przypadków: PV, wiatr, BESS](./06-case-studies.mdx)
+7. [Podsumowanie i rekomendacje](./07-podsumowanie.mdx)
 
 ## Literatura skrócona
 

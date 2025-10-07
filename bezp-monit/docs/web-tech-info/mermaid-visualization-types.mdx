@@ -1,0 +1,327 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Mermaid Visualization Types for OZE Lecture Slides
+
+## Overview
+This document lists all available Mermaid diagram types that can be used in your OZE lecture slides to replace text lists with visual diagrams.
+
+## 1. Flowcharts and Process Diagrams
+
+### Basic Flowchart
+```mermaid
+graph TD
+    A[Start] --> B[Process]
+    B --> C[Decision]
+    C -->|Yes| D[Action 1]
+    C -->|No| E[Action 2]
+    D --> F[End]
+    E --> F
+```
+
+### Left-Right Flowchart
+```mermaid
+graph LR
+    A[Input] --> B[Processing]
+    B --> C[Output]
+```
+
+### Top-Down Flowchart
+```mermaid
+graph TD
+    A[Level 1] --> B[Level 2]
+    B --> C[Level 3]
+```
+
+## 2. Mind Maps
+```mermaid
+mindmap
+  root((Central Topic))
+    Branch 1
+      Sub-branch 1.1
+      Sub-branch 1.2
+    Branch 2
+      Sub-branch 2.1
+      Sub-branch 2.2
+    Branch 3
+      Sub-branch 3.1
+```
+
+## 3. Gantt Charts
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat  YYYY-MM-DD
+    section Phase 1
+    Planning           :done,    des1, 2024-01-01, 2024-01-07
+    Design             :active,  des2, 2024-01-08, 2024-01-14
+    section Phase 2
+    Development        :         des3, 2024-01-15, 2024-01-21
+    Testing            :         des4, 2024-01-22, 2024-01-28
+```
+
+## 4. Sequence Diagrams
+```mermaid
+sequenceDiagram
+    participant A as User
+    participant B as System
+    participant C as Database
+    
+    A->>B: Request
+    B->>C: Query
+    C-->>B: Response
+    B-->>A: Result
+```
+
+## 5. Class Diagrams
+```mermaid
+classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+        +bark()
+    }
+    Animal <|-- Dog
+```
+
+## 6. State Diagrams
+```mermaid
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+```
+
+## 7. Entity Relationship Diagrams
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+## 8. User Journey Diagrams
+```mermaid
+journey
+    title User Journey
+    section Discovery
+      Visit website: 5: User
+      Browse products: 4: User
+    section Purchase
+      Add to cart: 3: User
+      Checkout: 2: User
+    section Post-purchase
+      Receive confirmation: 5: User
+      Track delivery: 4: User
+```
+
+## 9. Git Graphs
+```mermaid
+gitgraph
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+```
+
+## 10. Pie Charts
+```mermaid
+pie title Energy Sources Distribution
+    "Solar" : 40
+    "Wind" : 30
+    "Hydro" : 20
+    "Other" : 10
+```
+
+## 11. Quadrant Charts
+```mermaid
+quadrantChart
+    title OZE Technology Assessment
+    x-axis Low Cost --> High Cost
+    y-axis Low Efficiency --> High Efficiency
+    quadrant-1 High Efficiency, High Cost
+    quadrant-2 Low Efficiency, High Cost
+    quadrant-3 Low Efficiency, Low Cost
+    quadrant-4 High Efficiency, Low Cost
+    Solar PV: [0.8, 0.6]
+    Wind: [0.7, 0.8]
+    Hydro: [0.9, 0.4]
+```
+
+## 12. Timeline Diagrams
+```mermaid
+timeline
+    title OZE Development Timeline
+    1970s : First Solar Cells
+    1980s : Wind Energy Growth
+    1990s : Grid Integration
+    2000s : Smart Grids
+    2010s : Energy Storage
+    2020s : AI Integration
+```
+
+## 13. Sankey Diagrams
+```mermaid
+sankey-beta
+    Energy Sources --> Solar
+    Energy Sources --> Wind
+    Energy Sources --> Hydro
+    Solar --> Grid
+    Wind --> Grid
+    Hydro --> Grid
+    Grid --> Consumption
+```
+
+## 14. XY Charts
+```mermaid
+xychart-beta
+    title "Energy Production Over Time"
+    x-axis [2020, 2021, 2022, 2023, 2024]
+    y-axis "MWh" 0 --> 1000
+    bar [100, 200, 300, 400, 500]
+    line [150, 250, 350, 450, 550]
+```
+
+## 15. Block Diagrams
+```mermaid
+block-beta
+    columns 3
+    A["Block A"] B["Block B"] C["Block C"]
+    D["Block D"] E["Block E"] F["Block F"]
+```
+
+## Best Practices for OZE Lectures
+
+<Tabs>
+  <TabItem value="process" label="Process Flows" default>
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> System workflows, data flow, process steps
+    </div>
+    <p><strong>Example:</strong> PV system design process, energy conversion chain</p>
+    <p><strong>Diagram Type:</strong> graph TD/LR</p>
+  </TabItem>
+  
+  <TabItem value="hierarchy" label="Hierarchical Structures">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> Tool classifications, technology categories, learning outcomes
+    </div>
+    <p><strong>Example:</strong> OZE tool categories, course structure</p>
+    <p><strong>Diagram Type:</strong> mindmap</p>
+  </TabItem>
+  
+  <TabItem value="timeline" label="Timelines">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> Historical development, project phases, technology evolution
+    </div>
+    <p><strong>Example:</strong> OZE technology development, project milestones</p>
+    <p><strong>Diagram Type:</strong> timeline</p>
+  </TabItem>
+  
+  <TabItem value="comparison" label="Comparisons">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> Technology comparisons, performance analysis
+    </div>
+    <p><strong>Example:</strong> Efficiency vs cost analysis, technology maturity</p>
+    <p><strong>Diagram Type:</strong> quadrantChart, xychart-beta</p>
+  </TabItem>
+  
+  <TabItem value="architecture" label="System Architecture">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> System components, data flow, architecture layers
+    </div>
+    <p><strong>Example:</strong> Application architecture, data processing pipeline</p>
+    <p><strong>Diagram Type:</strong> block-beta, graph TD</p>
+  </TabItem>
+  
+  <TabItem value="interactions" label="User Interactions">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> System interactions, user workflows
+    </div>
+    <p><strong>Example:</strong> User-system interactions, API calls</p>
+    <p><strong>Diagram Type:</strong> sequenceDiagram</p>
+  </TabItem>
+  
+  <TabItem value="planning" label="Project Planning">
+    <div style={{backgroundColor: '#e3f2fd', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
+      <strong>Use for:</strong> Project timelines, phase planning
+    </div>
+    <p><strong>Example:</strong> Course schedule, project phases</p>
+    <p><strong>Diagram Type:</strong> gantt</p>
+  </TabItem>
+</Tabs>
+
+## Styling Options
+
+### Colors
+```mermaid
+graph TD
+    A[Node 1] --> B[Node 2]
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+```
+
+### Node Shapes
+- `[Rectangle]` - Default
+- `(Round)` - Rounded
+- `{Diamond}` - Decision
+- `((Circle))` - Start/End
+- `>Flag]` - Flag
+
+### Arrow Types
+- `-->` - Solid arrow
+- `-.->` - Dotted arrow
+- `==>` - Thick arrow
+- `--x` - Crossed arrow
+
+## Implementation in Slides
+
+:::note **Implementation in Slides**
+Replace text lists with appropriate Mermaid diagrams to make your OZE lectures more visually engaging and help students understand complex relationships and processes more effectively.
+:::
+
+### Before (Text List):
+- Point 1
+- Point 2
+- Point 3
+
+### After (Mermaid Diagram):
+```mermaid
+graph TD
+    A[Point 1] --> B[Point 2]
+    B --> C[Point 3]
+```
+
+## Quick Reference
+
+:::tip **Pro Tip**
+**Pro Tip:** Start with simple flowcharts (graph TD/LR) for most OZE content, then explore more complex diagrams like mindmaps and timelines as you become comfortable with Mermaid syntax.
+:::
+
+### Most Common for OZE Lectures:
+1. **Flowcharts** - Process flows, system workflows
+2. **Mind Maps** - Tool classifications, learning outcomes
+3. **Timelines** - Technology development, project phases
+4. **Block Diagrams** - System architecture, components
+
+### Advanced Visualizations:
+1. **Quadrant Charts** - Technology comparisons
+2. **Sankey Diagrams** - Energy flow analysis
+3. **XY Charts** - Performance data
+4. **Gantt Charts** - Project planning
+
+:::warning **Remember**
+**Remember:** Keep diagrams simple and focused. Complex diagrams can overwhelm students. Start with basic shapes and gradually add complexity as needed.
+:::
+
+This approach makes your OZE lectures more visually engaging and helps students understand complex relationships and processes more effectively.

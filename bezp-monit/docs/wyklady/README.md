@@ -1,15 +1,6 @@
 # Wykłady
 
-## Przegląd
-
-Wykłady stanowią podstawę teoretyczną kursu "Systemy bezpieczeństwa i monitorowania instalacji OZE". Każdy wykład łączy teorię z praktycznymi przykładami z branży OZE.
-
 ## Lista wykładów
-
-### [Wykład 1: Architektura systemów monitoringu OZE](./wyklad-01-architektura/)
-- **Temat**: Edge-Fog-Cloud, KPI, filozofia alarmowania
-- **Czas**: 120 minut
-- **Format**: Wykład + dyskusja
 
 ### [Wykład 2: Czujniki i akwizycja danych](./wyklad-02-czujniki-akwizycja/)
 - **Temat**: Typy czujników, kondycjonowanie, protokoły

@@ -18,12 +18,12 @@ Po ukończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Wprowadzenie i rola monitoringu](./01-wstep-rola)
-2. [Warstwy architektury: edge–fog–cloud](./02-warstwy-architektury)
-3. [Typy danych i źródła](./03-typy-danych-zrodla)
-4. [KPI dla PV, wiatru, BESS i biogazu](./04-kpi)
-5. [Filozofia alarmowania i eskalacji](./05-alarmowanie)
-6. [Podsumowanie i wskazówki praktyczne](./06-podsumowanie)
+1. [Wprowadzenie i rola monitoringu](./01-wstep-rola.mdx)
+2. [Warstwy architektury: edge–fog–cloud](./02-warstwy-architektury.mdx)
+3. [Typy danych i źródła](./03-typy-danych-zrodla.mdx)
+4. [KPI dla PV, wiatru, BESS i biogazu](./04-kpi.mdx)
+5. [Filozofia alarmowania i eskalacji](./05-alarmowanie.mdx)
+6. [Podsumowanie i wskazówki praktyczne](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

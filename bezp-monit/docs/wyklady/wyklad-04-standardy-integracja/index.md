@@ -18,12 +18,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Profile danych dla PV, wiatru i BESS](./01-profile-danych)
-2. [Podstawy IEC 61850 i IEC 60870‑5‑104](./02-iec-61850-104)
-3. [Integracja z EMS/DERMS i VPP](./03-integracja-derms-ems)
-4. [Telemetria do OSD/agregatorów i VPP](./04-telemetria-osd-vpp)
-5. [SOE i wymagania raportowe](./05-soe-raporty)
-6. [Podsumowanie i rekomendacje](./06-podsumowanie)
+1. [Profile danych dla PV, wiatru i BESS](./01-profile-danych.mdx)
+2. [Podstawy IEC 61850 i IEC 60870‑5‑104](./02-iec-61850-104.mdx)
+3. [Integracja z EMS/DERMS i VPP](./03-integracja-derms-ems.mdx)
+4. [Telemetria do OSD/agregatorów i VPP](./04-telemetria-osd-vpp.mdx)
+5. [SOE i wymagania raportowe](./05-soe-raporty.mdx)
+6. [Podsumowanie i rekomendacje](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

@@ -19,12 +19,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [Krzywe I–V i estymacja MPP](./01-iv-mpp)
-2. [Mismatch, PID i hot‑spoty](./02-mismatch-pid-hotspots)
-3. [Poziomy monitoringu: string/tracker/inwerter](./03-poziomy-monitoringu)
-4. [Soiling index i planowanie konserwacji](./04-soiling-index)
-5. [Prognoza krótkoterminowa produkcji](./05-prognoza-krotkoterminowa)
-6. [Podsumowanie i zalecenia](./06-podsumowanie)
+1. [Krzywe I–V i estymacja MPP](./01-iv-mpp.mdx)
+2. [Mismatch, PID i hot‑spoty](./02-mismatch-pid-hotspots.mdx)
+3. [Poziomy monitoringu: string/tracker/inwerter](./03-poziomy-monitoringu.mdx)
+4. [Soiling index i planowanie konserwacji](./04-soiling-index.mdx)
+5. [Prognoza krótkoterminowa produkcji](./05-prognoza-krotkoterminowa.mdx)
+6. [Podsumowanie i zalecenia](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

@@ -19,12 +19,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [CMS: widma drgań turbin wiatrowych](./01-cms-wiatr)
-2. [SCADA patterning i yaw misalignment](./02-scada-yaw)
-3. [Biogaz: H₂S/CH₄/O₂ i efektywność flaringu](./03-biogaz)
-4. [Mała hydro: kawitacja i monitoring łopat](./04-hydro)
-5. [Integracja różnorodnych sterowników](./05-integracja-sterownikow)
-6. [Podsumowanie i zalecenia](./06-podsumowanie)
+1. [CMS: widma drgań turbin wiatrowych](./01-cms-wiatr.mdx)
+2. [SCADA patterning i yaw misalignment](./02-scada-yaw.mdx)
+3. [Biogaz: H₂S/CH₄/O₂ i efektywność flaringu](./03-biogaz.mdx)
+4. [Mała hydro: kawitacja i monitoring łopat](./04-hydro.mdx)
+5. [Integracja różnorodnych sterowników](./05-integracja-sterownikow.mdx)
+6. [Podsumowanie i zalecenia](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

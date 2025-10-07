@@ -381,7 +381,7 @@ Visit these pages to see the styling:
 - `http://localhost:3000/docs/test-components`
 
 **Wykład 1** (Real content):
-- `http://localhost:3000/docs/wyklady/wyklad-01-architektura/01-rola-monitoringu`
+- `http://localhost:3000/docs/wyklady/wyklad-01-architektura-w1/01-wstep-rola`
 
 **Homepage**:
 - `http://localhost:3000/`

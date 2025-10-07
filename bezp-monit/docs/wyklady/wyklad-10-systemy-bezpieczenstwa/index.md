@@ -19,12 +19,12 @@ Po zakończeniu wykładu student potrafi:
 
 ## Struktura materiału
 
-1. [PV: ochrona przeciwpożarowa torów DC](./01-ppoz-pv)
-2. [BESS: thermal runaway i sekwencje wyłączeń](./02-bess-runaway)
-3. [Biogaz: ATEX i dobór aparatury](./03-biogaz-atex)
-4. [LOTO i matryce Cause‑&‑Effect](./04-loto-cause-effect)
-5. [Checklisty przeglądów i audyty](./05-checklisty-audyt)
-6. [Podsumowanie i rekomendacje](./06-podsumowanie)
+1. [PV: ochrona przeciwpożarowa torów DC](./01-ppoz-pv.mdx)
+2. [BESS: thermal runaway i sekwencje wyłączeń](./02-bess-runaway.mdx)
+3. [Biogaz: ATEX i dobór aparatury](./03-biogaz-atex.mdx)
+4. [LOTO i matryce Cause‑&‑Effect](./04-loto-cause-effect.mdx)
+5. [Checklisty przeglądów i audyty](./05-checklisty-audyt.mdx)
+6. [Podsumowanie i rekomendacje](./06-podsumowanie.mdx)
 
 ## Literatura skrócona
 

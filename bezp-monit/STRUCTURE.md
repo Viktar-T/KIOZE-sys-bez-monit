@@ -29,7 +29,7 @@ docs/
 
 ### Examples
 ✅ **Good**:
-- `wyklady/wyklad-01-architektura-monitoringu/`
+- `wyklady/wyklad-01-architektura-w1/`
 - `cwiczenia/lab-01-opc-ua-mqtt/`
 - `projekty/project-01-pv-monitoring.md`
 
@@ -50,8 +50,8 @@ docs/
 ### Examples
 - `docs/intro.md` - Main introduction
 - `docs/wyklady/README.md` - Lectures overview
-- `docs/wyklady/wyklad-01-architektura/index.md` - Lecture main page
-- `docs/wyklady/wyklad-01-architektura/01-wprowadzenie.mdx` - Lecture section
+- `docs/wyklady/wyklad-01-architektura-w1/index.md` - Lecture main page
+- `docs/wyklady/wyklad-01-architektura-w1/01-wstep-rola.mdx` - Lecture section
 
 ## ⚙️ Category Configuration
 
@@ -90,10 +90,10 @@ This allows adding new categories at positions 5, 15, 25, etc. without renumberi
 For detailed lecture content, use this structure:
 
 ```
-docs/wyklady/wyklad-01-architektura/
+docs/wyklady/wyklad-01-architektura-w1/
 ├── index.md                    # Lecture overview
-├── 01-wprowadzenie.mdx        # Section 1
-├── 02-warstwy-edge-fog.mdx    # Section 2
+├── 01-wstep-rola.mdx          # Section 1
+├── 02-warstwy-architektury.mdx # Section 2
 ├── 03-metryki-kpi.mdx         # Section 3
 └── 04-podsumowanie.mdx        # Section 4
 ```
