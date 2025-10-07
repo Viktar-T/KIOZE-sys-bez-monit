@@ -134,3 +134,6 @@ export function TabbedContent({ tabs }) {
     </div>
   );
 }
+
+// Default export for backwards compatibility
+export default MultipleChoiceQuiz;
