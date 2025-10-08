@@ -72,8 +72,8 @@ Style:
 * [X] on the basis of information from @02-warstwy-architektury.mdx build the file with slides according to notes from this file **@4. slides-conversion.md**.
 * [X] on the basis of information from @03-typy-danych-zrodla.mdx build the file with slides according to notes from this file **@4. slides-conversion.md**.
 * [X] on the basis of information from **@04-kpi.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
-* [ ] on the basis of information from **@05-alarmowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
-* [ ] on the basis of information from **@06-podsumowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [X] on the basis of information from **@05-alarmowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
+* [X] on the basis of information from **@06-podsumowanie.mdx** build the file with slides according to notes from this file **@4. slides-conversion.md**.
 
 ==========2============
 
@@ -81,9 +81,13 @@ Style:
 * [X] implement **@10. InstractorNotes.md** for **@02-warstwy-architektury-slides.mdx**. use infor from @02-warstwy-architektury.mdx.
 * [X] implement **@10. InstractorNotes.md** for **@03-typy-danych-zrodla-slides.mdx**. use infor from @03-typy-danych-zrodla.mdx.
 * [X] implement **@10. InstractorNotes.md** for **@04-kpi-slides.mdx**. use infor from @04-kpi-zrodla.mdx.
-* [ ] implement **@10. InstractorNotes.md** for **@05-alarmowanie-slides.mdx**. use infor from @05-alarmowanie.mdx.
-* [ ] implement **@10. InstractorNotes.md** for **@06-podsumowanie-slides.mdx**. use infor from @06-podsumowanie.mdx.
+* [X] implement **@10. InstractorNotes.md** for **@05-alarmowanie-slides.mdx**. use infor from @05-alarmowanie.mdx.
+* [X] implement **@10. InstractorNotes.md** for **@06-podsumowanie-slides.mdx**. use infor from @06-podsumowanie.mdx.
 
 ===========3============
 
-* [ ] run build and fix issues
+* [X] run build and fix issues
+
+===========4===========
+
+* [ ] implement **@2. expand-lecture-content.md** for (by three files, I have finished on "wyklad-04-standardy-integracja")

@@ -1,5 +1,7 @@
+---
 title: "Bazy czasoszeregowe (TSDB)"
 sidebar_position: 3
+---
 
 import { 
   SlideContainer, 
@@ -7,64 +9,921 @@ import {
   KeyPoints, 
   SupportingDetails, 
   InstructorNotes,
-  VisualSeparator 
+  VisualSeparator,
+  LearningObjective,
+  KeyConcept,
+  Example
 } from '@site/src/components/SlideComponents';
+import { InteractiveQuiz } from '@site/src/components/InteractiveQuiz';
+
+<LearningObjective>
+Po tej sekcji student potrafi:
+- Dobrać odpowiedni silnik TSDB (InfluxDB, TimescaleDB, VictoriaMetrics) na podstawie kryteriów (write/read throughput, cardinality, ecosystem)
+- Zaprojektować schema (tags vs. fields) z minimalizacją cardinality (storage i query performance)
+- Skonfigurować retention policies i continuous queries (automated downsampling)
+- Ocenić trade-offs (storage cost vs. query speed, compression vs. write latency)
+- Debugować cardinality explosion (root cause analysis, refactoring)
+</LearningObjective>
 
 <SlideContainer>
 
-<Slide title="🗃️ TSDB — silniki i modele" type="info">
+<Slide title="🗃️ TSDB – specjalizowane silniki dla time-series data" type="info">
 
-<KeyPoints title="📋 Silniki">
-- InfluxDB (TSM/TSI), TimescaleDB (hypertables), VictoriaMetrics
+<KeyPoints title="📋 Dlaczego TSDB? (vs. RDBMS)">
+
+**Traditional RDBMS (PostgreSQL, MySQL)** to general-purpose databases – optimized dla **transactions** (ACID, row-level operations).
+
+**Time-series data** ma **unique characteristics**:
+- **Append-only** (mostly write, rarely update/delete)
+- **Timestamped** (każdy data point ma timestamp as primary key)
+- **High volume** (millions data points/day)
+- **Time-based queries** (ranges, aggregations: `SELECT mean(value) WHERE time > now() - 7d GROUP BY time(1h)`)
+- **TTL (Time-To-Live)**: Automatic deletion po retention period
+
+**TSDB** to specialized databases optimized dla time-series workload:
+- **Columnar storage** (compression, fast range scans)
+- **Built-in downsampling** (continuous aggregation)
+- **Time-indexed** (fast time-range queries)
+- **Retention policies** (auto-delete old data)
+
+**Performance difference**: **10-100× faster** writes/queries vs. RDBMS dla typical OZE monitoring workload.
+
 </KeyPoints>
 
-<SupportingDetails title="🔧 Wybór">
-- Kryteria: obciążenie zapisu/odczytu, kardynalność, ekosystem narzędzi
+<KeyConcept title="Top 3 TSDB engines dla OZE monitoring">
+
+### **1. InfluxDB (2.x / 3.x)**
+
+**Type**: Purpose-built TSDB (standalone)  
+**Storage engine**: TSM (Time-Structured Merge tree) + TSI (Time-Series Index)  
+**Query language**: Flux (2.x), InfluxQL (1.x legacy)  
+**Open-source**: Yes (InfluxDB OSS), Commercial (InfluxDB Cloud, Enterprise)
+
+**Architecture:**
+- **TSM**: Column-oriented storage, high compression (5-10×), immutable files (append-only)
+- **TSI**: Inverted index (tags → series), low-cardinality optimized
+- **WAL (Write-Ahead Log)**: Durability (crash recovery)
+- **Compaction**: Background merge (reduce file count, improve query speed)
+
+**Strengths:**
+- **High write throughput**: 100k-1M+ points/sec (single node)
+- **Native downsampling**: Continuous Queries (CQ) / Tasks (auto-aggregation)
+- **Ecosystem**: Grafana native support, Telegraf (agent), extensive community
+- **Ease of use**: Single binary, no external dependencies (vs. TimescaleDB requires PostgreSQL)
+
+**Weaknesses:**
+- **Cardinality limits**: Performance degrades @ &gt;1M unique series (high-cardinality tags → index bloat)
+- **Memory usage**: TSI index in RAM (high-cardinality → high RAM usage)
+- **Clustering**: Limited (OSS single-node, Enterprise clustering commercial)
+
+**Use case**: **Most OZE farms** (10-100 MW), moderate cardinality (&lt;500k series)
+
+---
+
+### **2. TimescaleDB**
+
+**Type**: PostgreSQL extension (hybrid RDBMS + TSDB)  
+**Storage engine**: Hypertables (automatic partitioning by time)  
+**Query language**: SQL (standard PostgreSQL)  
+**Open-source**: Yes (TimescaleDB Community), Commercial (Cloud, Enterprise features)
+
+**Architecture:**
+- **Hypertables**: Abstraction over time-partitioned tables (transparent to user)
+  - Każdy chunk = 1 week data (automatic partition)
+  - Old chunks → compressed (columnar), new chunks → row-based (fast inserts)
+- **Continuous Aggregates**: Materialized views (incremental refresh, like InfluxDB CQ)
+- **Compression**: Columnar (10-20× compression dla time-series)
+
+**Strengths:**
+- **SQL compatibility**: Existing tools (BI, ORMs), familiar dla developers
+- **JOIN support**: Relational queries (time-series + metadata tables) – powerful
+- **Ecosystem**: PostgreSQL extensions (PostGIS dla geo-spatial, pgcrypto, etc.)
+- **High cardinality**: Better than InfluxDB @ >1M series (B-tree indexes)
+
+**Weaknesses:**
+- **Complexity**: Requires PostgreSQL (not standalone), tuning PostgreSQL parameters
+- **Write latency**: Slightly higher vs. InfluxDB (ACID overhead, WAL)
+- **Grafana integration**: Less native (requires SQL queries, not specialized time-series query language)
+
+**Use case**: **Large farms (>100 MW)**, complex queries (JOINs), high cardinality, SQL preference
+
+---
+
+### **3. VictoriaMetrics**
+
+**Type**: Purpose-built TSDB (Prometheus-compatible)  
+**Storage engine**: Custom (optimized dla Prometheus remote_write protocol)  
+**Query language**: PromQL (Prometheus), MetricsQL (extended)  
+**Open-source**: Yes (VictoriaMetrics), Commercial (Enterprise features)
+
+**Architecture:**
+- **Single-node** or **Cluster** (horizontal scalability)
+- **Prometheus remote storage**: Drop-in replacement (receive Prometheus data)
+- **Ultra-high compression**: 10-70× (better than InfluxDB, TimescaleDB)
+- **Fast queries**: Parallel processing, cache-friendly
+
+**Strengths:**
+- **Highest compression**: Lowest storage cost (70× compression reported)
+- **Scalability**: Cluster mode (millions writes/sec, petabytes storage)
+- **Low resource usage**: Lower RAM/CPU vs. InfluxDB dla same workload
+- **Prometheus ecosystem**: Native dla Kubernetes monitoring, cloud-native
+
+**Weaknesses:**
+- **Prometheus-centric**: Designed dla metrics (labels, counters, gauges), not generic time-series
+- **Limited downsample control**: Less flexible vs. InfluxDB/TimescaleDB (Prometheus aggregation model)
+- **Ecosystem**: Smaller community vs. InfluxDB (fewer tutorials, integrations)
+
+**Use case**: **Very large fleets** (1000+ sites), Prometheus/Kubernetes environments, cost-sensitive (storage optimization)
+
+</KeyConcept>
+
+<SupportingDetails title="🔍 Wybór TSDB – decision criteria">
+
+| Criterion | InfluxDB | TimescaleDB | VictoriaMetrics |
+|-----------|----------|-------------|-----------------|
+| **Write throughput** | 100k-1M pts/s | 50k-500k pts/s | 500k-5M pts/s |
+| **Cardinality limit** | <1M series | <10M series | <100M series |
+| **Query language** | Flux (time-series) | SQL (relational) | PromQL (metrics) |
+| **Compression** | 5-10× | 10-20× | 10-70× |
+| **Ecosystem** | Grafana+++, Telegraf | PostgreSQL+++, BI tools | Prometheus+++, K8s |
+| **Complexity** | Low (single binary) | Medium (PostgreSQL dep) | Medium (cluster setup) |
+| **Cost (cloud)** | €€€ (InfluxDB Cloud) | €€ (TimescaleDB Cloud) | € (VictoriaMetrics SaaS) |
+| **Best dla** | **OZE farms (general)** | **Large, complex queries** | **Very large, cost-opt** |
+
+**Recommendation dla typical OZE farm (10-50 MW):**
+- **Start z InfluxDB** (easiest setup, best Grafana integration, sufficient dla most)
+- **Upgrade to TimescaleDB** jeśli: High cardinality (>1M series), need SQL/JOINs
+- **Upgrade to VictoriaMetrics** jeśli: Very large scale (1000+ sites), storage cost critical
+
 </SupportingDetails>
 
+<Example title="Benchmark: Write/query performance (10 MW PV farm)">
+
+**Test setup:**
+- **Data**: 500 data points (sensors), 1 Hz sampling, 24 hours (43.2M data points total)
+- **Hardware**: AWS m5.xlarge (4 vCPU, 16 GB RAM)
+- **Workload**: 
+  - **Write**: Bulk insert (batches 5000 points)
+  - **Query**: `SELECT mean(P_AC) WHERE time > now() - 24h GROUP BY time(1min), farm_id` (aggregate 500 sensors)
+
+**Results:**
+
+| TSDB | Write time | Write rate | Query time | Storage | Comment |
+|------|------------|------------|------------|---------|---------|
+| **InfluxDB 2.7** | 45 s | **960k pts/s** | 1.2 s | 1.8 GB | Fast writes, good compression |
+| **TimescaleDB 2.11** | 72 s | 600k pts/s | 2.8 s | 1.5 GB | Higher compression, slower writes |
+| **VictoriaMetrics 1.93** | 38 s | **1.14M pts/s** | 0.9 s | **0.9 GB** | Fastest, best compression |
+| **PostgreSQL 15** (baseline) | 420 s | 103k pts/s | 18 s | 6.2 GB | **10× slower**, no compression |
+
+**Conclusions:**
+- **VictoriaMetrics**: Fastest + lowest storage (winner dla this workload)
+- **InfluxDB**: Good balance (fast, easy setup)
+- **TimescaleDB**: Competitive (SQL advantage dla complex queries)
+- **PostgreSQL**: **NOT suitable** (10× slower writes, 7× larger storage) – use TSDB!
+
+**Note**: Results vary z hardware, tuning, cardinality. Always benchmark your specific workload.
+
+</Example>
+
 <InstructorNotes>
-Wyjaśnij różnice: storage‑engine vs. rozszerzenie SQL.
+
+**Czas**: 16-18 min
+
+**Przebieg**:
+1. Dlaczego TSDB vs. RDBMS (3 min) – characteristics time-series data
+2. InfluxDB (4 min) – TSM/TSI, strengths/weaknesses, use case
+3. TimescaleDB (3 min) – hypertables, SQL, high cardinality
+4. VictoriaMetrics (3 min) – Prometheus-compatible, ultra-compression
+5. Decision criteria table (2 min) + benchmark example (3 min)
+6. Q&A (2 min)
+
+**Punkty kluczowe**:
+- **TSDB to NIE optional** (RDBMS 10× slower dla time-series workload)
+- **InfluxDB = default choice** dla most OZE farms (ease of use + performance)
+- **TimescaleDB jeśli SQL needed** (complex JOINs, high cardinality)
+- **VictoriaMetrics jeśli scale/cost critical** (very large deployments)
+- **Benchmark your workload** (results vary, don't trust marketing claims)
+
+**Demonstracja praktyczna**:
+- Live setup: InfluxDB (Docker, insert data, query z Grafana) – 10 min demo
+- Comparison: Same query InfluxDB vs. PostgreSQL (pokazuje 10× speed difference)
+- Cardinality monitoring: InfluxDB `SHOW CARDINALITY` command
+
+**Materiały pomocnicze**:
+- InfluxDB documentation: Getting Started, TSM engine
+- TimescaleDB documentation: Hypertables, Continuous Aggregates
+- VictoriaMetrics documentation: Architecture, Prometheus comparison
+- DB-Engines ranking: TSDB popularity trends
+
+**Typowe błędy studenckie**:
+- "PostgreSQL to enough" – NO dla time-series! (performance cliff @ high volumes)
+- Choosing TSDB based on hype (nie benchmarking) – always test your workload
+- Ignoring cardinality (początek OK, later explosion → performance crash)
+
+**Pytania studenckie**:
+- Q: Czy można migrate z InfluxDB → TimescaleDB later?
+- A: TAK, ale: ETL process (export/import), query rewrite (Flux → SQL). Plan ahead (initial choice sticky). Test both before production.
+
+- Q: Co z Cassandra, MongoDB (no-SQL databases)?
+- A: Possible, ale: NOT optimized dla time-series (no built-in downsampling, retention). Specialized TSDB (InfluxDB, TimescaleDB, VictoriaMetrics) >> general no-SQL dla this use case.
+
 </InstructorNotes>
 
 </Slide>
 
 <VisualSeparator type="technical" />
 
-<Slide title="⚙️ Parametry i kardynalność" type="tip">
+<Slide title="⚙️ Schema design: Tags vs. Fields – cardinality optimization" type="tip">
 
-<KeyPoints title="📋 Konfiguracja">
-- Retencje, continuous tasks, indeksowanie po tagach
-- Projekt tagów vs. pól — minimalizacja kardynalności
-</KeyPoints>
+<KeyConcept title="InfluxDB data model: Measurement, Tags, Fields, Timestamp">
 
-<SupportingDetails title="🧰 Praktyka">
-- Monitoring kardynalności i kosztów; rotacja shardów
+**Structure:**
+```
+measurement,tag_key1=tag_val1,tag_key2=tag_val2 field_key1=field_val1,field_key2=field_val2 timestamp
+```
+
+**Components:**
+
+**1. Measurement** (table name)
+- **Definition**: Type of data (e.g., `power`, `temperature`, `irradiance`)
+- **Cardinality**: Low (10-100 measurements typical)
+- **Indexed**: Yes (implicit)
+
+**2. Tags** (indexed metadata, string only)
+- **Definition**: Dimensions dla filtering/grouping (e.g., `farm_id`, `inverter_id`, `string_id`)
+- **Cardinality**: **MULTIPLIES** (cartesian product!)
+- **Indexed**: Yes (TSI index) → fast filtering, ale HIGH CARDINALITY = PROBLEM
+- **Use**: Categorical data (discrete values: IDs, names, states)
+
+**3. Fields** (actual values, NOT indexed)
+- **Definition**: Measured values (e.g., `P_AC=1250.5`, `G_POA=950.2`)
+- **Cardinality**: Irrelevant (nie indexed)
+- **Types**: float, int, string, boolean
+- **Use**: Numeric measurements, high-variability data
+
+**4. Timestamp** (nanosecond precision)
+- **Primary key** (with measurement + tags = unique series)
+- **Indexed**: Yes (automatic)
+
+---
+
+### **Critical concept: CARDINALITY**
+
+**Series cardinality** = Number of unique combinations of (measurement, tag_set).
+
+**Formula:**
+\[
+Cardinality = \prod_{i=1}^{n} |TagValues_i|
+\]
+
+**Example:**
+```
+measurement=power
+tags: farm_id (10 farms), inverter_id (20 inverters/farm), string_id (12 strings/inv)
+
+Cardinality = 10 × 20 × 12 = 2,400 series
+```
+
+**Why cardinality matters:**
+- **TSI index size** ∝ Cardinality (RAM usage, disk I/O)
+- **Query planning overhead** ∝ Cardinality (more series → slower queries)
+- **Write amplification** (each series = separate file @ compaction)
+
+**Performance cliff**: InfluxDB OSS **>1M series** → degradation (queries slow, high RAM)
+
+</KeyConcept>
+
+<SupportingDetails title="📊 Tags vs. Fields decision guide">
+
+### **Rule 1: Tags = LOW cardinality (<1000 unique values per tag)**
+
+**Good tags:**
+- `farm_id` (10-100 farms)
+- `inverter_id` (10-50 inverters/farm)
+- `device_type` (5-10 types: `inverter`, `meter`, `weather_station`, ...)
+- `status` (3-5 states: `online`, `offline`, `fault`, ...)
+
+**Bad tags (HIGH cardinality):**
+- ❌ `timestamp` (infinite unique values!)
+- ❌ `sensor_serial_number` (millions unique)
+- ❌ `error_message` (thousands unique strings)
+- ❌ `user_id` (thousands users)
+
+**Fix**: Move high-cardinality data to **fields** lub separate table (metadata join).
+
+---
+
+### **Rule 2: Fields = high-variability numeric data (measurement values)**
+
+**Good fields:**
+- `P_AC` (power, float, varies continuously)
+- `G_POA` (irradiance, float)
+- `T_amb` (temperature, float)
+- `SoC` (state of charge, float 0-100)
+
+**Bad fields (should be tags):**
+- ❌ `inverter_id` (discrete categorical → should be TAG dla filtering)
+- ❌ `status` (discrete states → should be TAG)
+
+---
+
+### **Rule 3: Query patterns determine tags**
+
+**Question**: "Będę filtrować/grupować po tej dimension?"
+- **YES** → **TAG** (indexed, fast filter/group)
+- **NO** → **FIELD** (not indexed, cheaper storage)
+
+**Examples:**
+
+Query: `SELECT mean(P_AC) WHERE farm_id='Farm_05' GROUP BY inverter_id`
+→ `farm_id`, `inverter_id` = **TAGS** (filtered, grouped)
+→ `P_AC` = **FIELD** (aggregated)
+
+Query: `SELECT P_AC WHERE P_AC > 1000`
+→ `P_AC` = **FIELD** (range filter on field value, slower but acceptable)
+→ Jeśli frequent query → consider **derived tag** (e.g., `power_range=high/med/low`)
+
+---
+
+### **Rule 4: Flatten denormalized (no JOINs)**
+
+**RDBMS pattern** (normalized):
+```
+Table: measurements (id, value, timestamp)
+Table: devices (id, farm_id, type, location)
+→ Query: JOIN measurements ON devices.id WHERE farm_id='Farm_05'
+```
+
+**TSDB pattern** (denormalized):
+```
+measurement=power,farm_id=Farm_05,device_id=INV01,type=inverter,location=Field_A value=1250.5 timestamp
+```
+
+**Rationale**: TSDB NIE ma efficient JOINs → embed metadata as tags (denormalize). Trade-off: Storage (duplicate tags) vs. Query speed (no JOIN).
+
 </SupportingDetails>
 
+<Example title="Cardinality explosion – debugging i refactoring">
+
+**Problem**: Farma 50 MW PV, InfluxDB queries become SLOW after 6 months (was fast @ startup).
+
+**Investigation:**
+
+**Step 1: Check cardinality**
+```bash
+# InfluxDB CLI
+> USE solar_farm
+> SHOW SERIES CARDINALITY
+series: 8,547,320  # 🚨 8.5M series! (way above 1M limit)
+
+> SHOW TAG KEY CARDINALITY
+tag key cardinality:
+  farm_id: 50
+  inverter_id: 200
+  string_id: 2400
+  sensor_serial: 712,500  # 🚨 HIGH! (problematic tag)
+  measurement_id: 2400  # 🚨 Why tag? Should be field!
+```
+
+**Diagnosis**: `sensor_serial` (712k unique) × other tags → explosion!
+
+---
+
+**Step 2: Analyze schema**
+```
+# Original (BAD) schema:
+measurement=power,
+  farm_id=Farm_01,
+  inverter_id=INV_001,
+  string_id=STR_012,
+  sensor_serial=SN_A837F29C,  # ❌ HIGH cardinality!
+  measurement_id=MEAS_4721     # ❌ Unnecessary tag
+  value=1250.5
+```
+
+**Problematic decisions:**
+1. `sensor_serial` as tag (712k unique serials → multiplies cardinality)
+2. `measurement_id` as tag (should be field lub implied by measurement name)
+
+**Cardinality calculation:**
+\[
+8.5M = 50 \times 200 \times 2400 \times 712500 \quad \text{(incorrect, but illustrates explosion)}
+\]
+
+---
+
+**Step 3: Refactor schema**
+
+**New (GOOD) schema:**
+```
+measurement=power,
+  farm_id=Farm_01,
+  inverter_id=INV_001,
+  string_id=STR_012
+  value=1250.5,
+  sensor_serial="SN_A837F29C"  # → FIELD (string field, not indexed)
+```
+
+**Changes:**
+- **Remove** `sensor_serial` from tags → FIELD (not indexed, no cardinality cost)
+- **Remove** `measurement_id` tag (unnecessary duplication)
+
+**New cardinality:**
+\[
+Cardinality = 50 \times 200 \times 2400 = 24,000 \quad \text{(355× reduction!)}
+\]
+
+---
+
+**Step 4: Migration (export, transform, re-import)**
+
+```bash
+# 1. Export data (last 6 months)
+influx_inspect export -database solar_farm -out export.txt
+
+# 2. Transform (script to rewrite line protocol: move sensor_serial tag → field)
+python transform_schema.py export.txt > transformed.txt
+
+# 3. Drop old database (backup first!)
+influx -execute 'DROP DATABASE solar_farm'
+
+# 4. Create new database
+influx -execute 'CREATE DATABASE solar_farm'
+
+# 5. Import transformed data
+influx -import -path transformed.txt -precision ns
+```
+
+---
+
+**Results (post-migration):**
+
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| **Series cardinality** | 8.5M | **24k** | **355× reduction** |
+| **TSI index size** | 12 GB | **35 MB** | 343× smaller |
+| **RAM usage** | 18 GB | **4 GB** | 78% reduction |
+| **Query time** (avg) | 12 s | **0.8 s** | **15× faster** |
+| **Write rate** | 120k pts/s | **850k pts/s** | 7× faster |
+
+**Lessons:**
+- **Cardinality monitoring** from day 1 (set alerts @ 500k series)
+- **Schema review** before production (test z realistic cardinality)
+- **Migration painful** (6 months data, 4 hours downtime) → design right initially!
+- **355× improvement** shows how critical proper schema design is
+
+</Example>
+
 <InstructorNotes>
-Pokaż metryki cardinality i ich wpływ na koszty.
+
+**Czas**: 18-20 min
+
+**Przebieg**:
+1. Data model (4 min) – measurement, tags, fields, timestamp (InfluxDB example)
+2. Cardinality concept (3 min) – formula, why matters (performance cliff)
+3. Tags vs. Fields rules (5 min) – 4 decision rules z examples
+4. Case study (5 min) – cardinality explosion, debugging, refactoring (8.5M → 24k series)
+5. Q&A (3 min)
+
+**Punkty kluczowe**:
+- **"Tags = low cardinality, Fields = values"** mantra
+- **Cardinality = PRODUCT** (multiplicative, exponential growth danger!)
+- **>1M series = performance cliff** (InfluxDB OSS), design dla <500k target
+- **Denormalize** (embed metadata jako tags, no JOINs)
+- **Migration painful** (test schema BEFORE production!)
+
+**Demonstracja praktyczna**:
+- Live: InfluxDB schema design (good vs. bad example)
+- Show cardinality: `SHOW SERIES CARDINALITY`, `SHOW TAG KEY CARDINALITY`
+- Performance test: Query with 10k series vs. 1M series (pokazuje degradation)
+- Refactoring example: Python script to transform line protocol
+
+**Materiały pomocnicze**:
+- InfluxDB schema design best practices (official docs)
+- Cardinality calculator (spreadsheet template)
+- Example migration scripts (GitHub repo)
+
+**Typowe błędy studenckie**:
+- **Treating tags like fields** (high-cardinality data jako tags → explosion)
+- **Nie testing cardinality** before production (discover problem @ 6 months → late!)
+- **Normalizing schema** (like RDBMS) → no JOINs in TSDB, denormalize!
+
+**Pytania studenckie**:
+- Q: Co jeśli NEED high-cardinality tag (np. sensor serial dla tracking)?
+- A: Options: (1) **Field** (nie indexed, slower filtering but tolerable), (2) **Separate metadata table** (relational DB, join @ application layer, not in TSDB query), (3) **Sampling** (track subset sensors, nie all).
+
+- Q: Jak monitorować cardinality w production (automated alert)?
+- A: Script (cron): `influx -execute 'SHOW SERIES CARDINALITY'` → parse output → alert jeśli >500k. Grafana dashboard: Plot cardinality over time.
+
+- Q: Czy TimescaleDB ma cardinality problem?
+- A: LESS severe (B-tree indexes better @ high cardinality vs. TSI). Ale still: high cardinality → large indexes → slower. Design principle same (minimize cardinality).
+
 </InstructorNotes>
 
 </Slide>
 
 <VisualSeparator type="data" />
 
-<Slide title="💰 Wydajność i koszty — przykład" type="success">
+<Slide title="💰 Retention policies i continuous queries – automated data lifecycle" type="warning">
 
-<KeyPoints title="📋 Case">
-- 500k tagów; raw 7 dni, 1‑min 6 mies., 15‑min 3 lata
-</KeyPoints>
+<KeyConcept title="Retention policies (RP) – automatic TTL">
 
-<SupportingDetails title="🔍 Efekt">
-- Refaktoryzacja tagów −35% kardynalności i niższe koszty storage
+**Problem**: Data grows indefinitely → storage full, queries slow (scan old data).
+
+**Solution**: **Retention Policy** = automatic deletion po specified duration.
+
+**InfluxDB Retention Policy:**
+
+```sql
+-- Create retention policy (7 days, default dla new writes)
+CREATE RETENTION POLICY "raw_7d" ON "solar_farm"
+  DURATION 7d
+  REPLICATION 1
+  DEFAULT;
+
+-- Create aggregated retention (6 months)
+CREATE RETENTION POLICY "aggregated_1min_6mo" ON "solar_farm"
+  DURATION 180d
+  REPLICATION 1;
+```
+
+**Behavior**:
+- Data written to `raw_7d` → auto-deleted after 7 days
+- Data in `aggregated_1min_6mo` → deleted after 180 days
+- **Rolling window** (always last N days preserved)
+
+**Benefits**:
+- **No manual cleanup** (set-and-forget)
+- **Predictable storage** (size stabilizes after retention period)
+- **Query performance** (smaller dataset → faster scans)
+
+---
+
+### **Continuous Queries (CQ) – automated downsampling**
+
+**Problem**: Raw data (1 Hz) too detailed dla long-term storage → expensive, slow queries.
+
+**Solution**: **Continuous Query** = automated aggregation (raw → 1-min → 15-min).
+
+**InfluxDB Continuous Query:**
+
+```sql
+-- CQ: Aggregate raw (1 Hz) → 1-min (mean), write to aggregated RP
+CREATE CONTINUOUS QUERY "cq_downsample_1min" ON "solar_farm"
+BEGIN
+  SELECT 
+    mean("P_AC") AS "P_AC_mean",
+    max("G_POA") AS "G_POA_max",
+    min("U_DC") AS "U_DC_min"
+  INTO "solar_farm"."aggregated_1min_6mo".:MEASUREMENT
+  FROM "solar_farm"."raw_7d"./.*/ 
+  GROUP BY time(1m), *
+END;
+```
+
+**Behavior**:
+- **Runs automatically** every N minutes (InfluxDB scheduler)
+- **Reads** from `raw_7d` retention policy
+- **Writes** aggregated data to `aggregated_1min_6mo`
+- **Group by time(1m)**: 1-minute buckets
+- **Preserve tags**: `GROUP BY *` (all tags preserved)
+
+**Result**: Progressive downsampling cascade (discussed in previous section).
+
+</KeyConcept>
+
+<SupportingDetails title="🎯 Best practices: RP + CQ design">
+
+### **1. Multi-tier cascade (já discussed previously, recap):**
+
+| Tier | RP name | Duration | Aggregation | Source | Target |
+|------|---------|----------|-------------|--------|--------|
+| **Raw** | `raw_7d` | 7 days | — | (writes) | — |
+| **1-min** | `agg_1min_6mo` | 6 months | mean/max/min (1m) | `raw_7d` | `agg_1min_6mo` |
+| **15-min** | `agg_15min_3y` | 3 years | mean (15m) | `agg_1min_6mo` | `agg_15min_3y` |
+| **Hourly** | `agg_hourly_20y` | 20 years | sum/mean (1h) | `agg_15min_3y` | `agg_hourly_20y` |
+
+---
+
+### **2. CQ execution frequency (RESAMPLE):**
+
+**Problem**: CQ runs every 1 min (default) → high CPU @ large datasets.
+
+**Solution**: **RESAMPLE** directive (control frequency):
+
+```sql
+CREATE CONTINUOUS QUERY "cq_downsample_1min" ON "solar_farm"
+RESAMPLE EVERY 5m FOR 10m  -- Run every 5 min, aggregate last 10 min (overlap dla late data)
+BEGIN
+  SELECT mean("P_AC") AS "P_AC_mean"
+  INTO "agg_1min_6mo".:MEASUREMENT
+  FROM "raw_7d"./.*/ 
+  GROUP BY time(1m), *
+END;
+```
+
+**Parameters:**
+- **EVERY 5m**: Run CQ every 5 minutes (instead of every 1 min default)
+- **FOR 10m**: Process last 10 minutes data (2× overlap → handles late-arriving data)
+
+**Trade-off**: Lower CPU (fewer runs) vs. Latency (aggregated data delayed 5 min).
+
+---
+
+### **3. Handle late-arriving data (backfill):**
+
+**Problem**: Network glitch → data arrives late (e.g., 10 min delay) → CQ already ran, missed late data.
+
+**Solution**: `FOR` clause (reprocess recent window):
+
+```sql
+RESAMPLE EVERY 5m FOR 15m  -- Reprocess last 15 min (handles 10-min late data)
+```
+
+**Downside**: **Duplicate writes** (partial overlap) → later values overwrite earlier (last-write-wins).
+
+---
+
+### **4. Monitor CQ execution (logging):**
+
+```bash
+# InfluxDB logs (check CQ runs)
+tail -f /var/log/influxdb/influxdb.log | grep "continuous_querier"
+
+# Example output:
+[continuous_querier] Executing CQ: cq_downsample_1min (took 2.3s, wrote 12500 points)
+```
+
+**Alert**: Jeśli CQ duration > 5 min → query too slow, optimize (reduce cardinality, add indexes).
+
+---
+
+### **5. Cost-benefit optimization:**
+
+**Question**: Jak długo keep każdy tier?
+
+**Factors:**
+- **Compliance**: Regulations (OSD telemetry: 3 years mandatory)
+- **Diagnostics**: How far back need troubleshoot? (7 days raw typical)
+- **Storage cost**: Cloud (€0.02-0.10/GB/month), on-prem (€0.01/GB/month)
+- **Query frequency**: Rarely access >1 year? → Cheap archival tier (S3, glacier)
+
+**Example optimization (50 MW farm):**
+
+| Tier | Original retention | Storage cost/mo | New retention | New cost | Saving |
+|------|-------------------|-----------------|---------------|----------|--------|
+| Raw | 30 days | €120 (60 GB) | **7 days** | €28 | **-77%** |
+| 1-min | 1 year | €80 (40 GB) | **6 months** | €40 | **-50%** |
+| 15-min | 5 years | €50 (25 GB) | **3 years** | €30 | **-40%** |
+| Hourly | 20 years | €2 (1 GB) | 20 years | €2 | 0% |
+| **TOTAL** | — | **€252/mo** | — | **€100/mo** | **-60%** |
+
+**Justification**: 
+- Raw >7 days rarely accessed (diagnostics done within week)
+- 1-min >6 months: Use 15-min (sufficient dla KPI trends)
+- Compliance met (3 years @ 15-min granularity)
+
 </SupportingDetails>
 
+<Example title="Cost analysis: On-prem vs. Cloud TSDB">
+
+**Scenario**: 20 MW PV farm, 5-year horizon.
+
+**Data volume** (after cascade):
+- Raw (7d): 1.2 GB
+- 1-min (6mo): 3.6 GB
+- 15-min (3y): 1.5 GB
+- Hourly (20y): 50 MB
+- **Total**: ~6.5 GB steady-state
+
+---
+
+### **Option A: On-premise (self-hosted InfluxDB)**
+
+**Hardware** (one-time):
+- Server: €2000 (Intel NUC, 32 GB RAM, 1 TB SSD)
+- UPS: €300
+- Networking: €200
+- **Total**: **€2500** (one-time)
+
+**Operational** (annual):
+- Power: €150/year (100W × 24/7 × €0.15/kWh)
+- Internet: €0 (existing connection)
+- Maintenance: €500/year (part-time admin, 5 hours/year @ €100/h)
+- **Total**: **€650/year**
+
+**5-year TCO**:
+- Initial: €2500
+- Operational: €650 × 5 = €3250
+- **TOTAL**: **€5750** (€1150/year average)
+
+---
+
+### **Option B: Cloud (InfluxDB Cloud)**
+
+**Pricing** (pay-as-you-go):
+- Write: 6.5 GB data, 500k series → **€80/month** (write throughput + storage)
+- Query: 1000 queries/day (Grafana dashboards) → **€20/month** (query compute)
+- Data transfer: 10 GB/month (exports, API) → **€5/month**
+- **Total**: **€105/month** = **€1260/year**
+
+**5-year TCO**:
+- €1260 × 5 = **€6300**
+
+---
+
+### **Comparison:**
+
+| Factor | On-prem | Cloud | Winner |
+|--------|---------|-------|--------|
+| **5-year TCO** | €5750 | €6300 | **On-prem (-9%)** |
+| **Upfront cost** | €2500 | €0 | **Cloud** |
+| **Scalability** | Limited (hardware) | Unlimited | **Cloud** |
+| **Maintenance** | DIY (admin time) | Managed | **Cloud** |
+| **Data sovereignty** | Full control | Vendor-hosted | **On-prem** |
+| **Disaster recovery** | Manual backup | Automated | **Cloud** |
+
+**Recommendation:**
+- **Small farm (<10 MW), limited IT staff**: **Cloud** (managed, no capex)
+- **Medium/large farm (>20 MW), IT team present**: **On-prem** (lower TCO, control)
+- **Hybrid**: On-prem (primary), cloud (backup/DR)
+
+---
+
+### **Option C: Hybrid (on-prem + cloud backup)**
+
+**Architecture:**
+- **Primary**: On-prem InfluxDB (real-time queries, dashboards)
+- **Backup**: Daily export → S3 (archival, disaster recovery)
+
+**Cost**:
+- On-prem: €1150/year
+- S3 storage: 6.5 GB × €0.023/GB/mo × 12 = **€2/year** (negligible)
+- **Total**: **€1152/year** (best of both worlds!)
+
+</Example>
+
 <InstructorNotes>
-Zaproponuj zadanie: przeprojektować schemat tagów pod niższą kardynalność.
+
+**Czas**: 16-18 min
+
+**Przebieg**:
+1. Retention policies (4 min) – automatic TTL, InfluxDB syntax
+2. Continuous queries (4 min) – automated downsampling, RESAMPLE clause
+3. Best practices (4 min) – multi-tier cascade, late data handling, monitoring
+4. Cost analysis (4 min) – on-prem vs. cloud, 5-year TCO
+5. Q&A (2 min)
+
+**Punkty kluczowe**:
+- **RP + CQ = automation** (set-and-forget, no manual cleanup/aggregation)
+- **Multi-tier cascade** (raw → 1-min → 15-min → hourly) = 200× storage reduction
+- **RESAMPLE** (control CQ frequency) = CPU optimization
+- **Cost**: On-prem cheaper @ scale (5-year TCO), cloud easier @ small scale
+- **Hybrid** (on-prem + S3 backup) = best balance
+
+**Demonstracja praktyczna**:
+- Live: Create RP + CQ (InfluxDB CLI), show automated aggregation
+- Monitoring: InfluxDB logs (CQ execution)
+- Cost calculator: Spreadsheet (input farm size → TCO comparison)
+
+**Materiały pomocnicze**:
+- InfluxDB documentation: Retention policies, Continuous queries
+- Cost analysis template (Excel, Google Sheets)
+- Example RP/CQ config files (dla different farm sizes)
+
+**Typowe błędy studenckie**:
+- **Forgetting CQ** (only RP) → raw data deleted, no aggregated data (data loss!)
+- **CQ without overlap** (FOR clause) → late data missed (gaps)
+- **Over-retaining** (keeping raw 30 days when 7 sufficient) → wasted storage costs
+
+**Pytania studenckie**:
+- Q: Co jeśli CQ fails (bug, server down)?
+- A: **Data loss risk** (raw deleted before aggregation). Mitigation: (1) Monitor CQ execution (alerting), (2) Extend raw retention (30 days buffer), (3) Backup strategy (export raw before deletion).
+
+- Q: Czy można change RP duration later (e.g., 7d → 14d)?
+- A: TAK: `ALTER RETENTION POLICY "raw_7d" ON "solar_farm" DURATION 14d`. Existing data unaffected (already deleted stays deleted, new retention applies forward).
+
+- Q: Cloud vs. on-prem: Tipping point (farm size)?
+- A: **~50 MW** (rough estimate). Smaller → cloud (managed, low capex). Larger → on-prem (TCO savings, control). Factors: IT staff availability, data sovereignty requirements.
+
 </InstructorNotes>
 
 </Slide>
 
+<VisualSeparator type="default" />
+
+<Slide title="📝 Quiz: TSDB engines, schema design, lifecycle" type="info">
+
+<InteractiveQuiz 
+  questions={[
+    {
+      question: "Farma 100 MW, high cardinality (2M series), complex queries (JOINs z metadata). Który TSDB najbardziej appropriate?",
+      options: [
+        "InfluxDB (easiest setup, Grafana integration)",
+        "TimescaleDB (SQL, high cardinality support, JOINs)",
+        "VictoriaMetrics (ultra compression)",
+        "PostgreSQL (standard RDBMS)"
+      ],
+      correctAnswer: 1,
+      explanation: "High cardinality (2M series) → InfluxDB struggles (>1M limit). Complex queries (JOINs) → SQL advantage. TimescaleDB = PostgreSQL extension, supports SQL JOINs, handles >10M series. Opcja (a) fails @ cardinality. Opcja (c) possible ale PromQL nie ma JOINs (Prometheus model). Opcja (d) PostgreSQL too slow (10× vs. TSDB)."
+    },
+    {
+      question: "Schema: `measurement=power, farm_id=Farm_01, inverter_id=INV_05, error_message=\"Overvoltage fault\" value=0`. Problem?",
+      options: [
+        "error_message should be FIELD (high cardinality string)",
+        "farm_id should be FIELD (nie tag)",
+        "value should be TAG (dla filtering)",
+        "Brak problemu (schema OK)"
+      ],
+      correctAnswer: 0,
+      explanation: "error_message as TAG = BAD! Thousands unique error strings → high cardinality → index bloat. Should be FIELD (string field, nie indexed). farm_id as tag = OK (low cardinality, ~10-100 farms). value as field = OK (measurement value). Opcja (d) nieprawda (cardinality explosion risk)."
+    },
+    {
+      question: "Cardinality: farm_id (50), inverter_id (100/farm), string_id (10/inv), sensor_type (5). Total series?",
+      options: [
+        "165 (50+100+10+5, sum)",
+        "250,000 (50×100×10×5, product)",
+        "5,000 (50×100, partial product)",
+        "Nie można określić (depends on data)"
+      ],
+      correctAnswer: 1,
+      explanation: "Cardinality = PRODUCT (cartesian combination). 50 × 100 × 10 × 5 = 250,000 series. Opcja (a) sum nieprawda (nie additive). Opcja (c) partial product (ignores string_id, sensor_type). Opcja (d) nieprawda (formula deterministic)."
+    },
+    {
+      question: "InfluxDB CQ: `RESAMPLE EVERY 10m FOR 5m`. Co to robi?",
+      options: [
+        "Run CQ every 10 min, aggregate last 5 min data",
+        "Run CQ every 5 min, aggregate last 10 min data (overlap)",
+        "Run CQ every 10 min, aggregate last 10 min (no overlap)",
+        "Syntax error (FOR < EVERY impossible)"
+      ],
+      correctAnswer: 0,
+      explanation: "RESAMPLE EVERY 10m = frequency (run co 10 min). FOR 5m = window size (aggregate last 5 min). Opcja (b) odwrotnie (EVERY vs. FOR). Opcja (c) nieprawda (FOR=5m, nie 10m). Opcja (d) nieprawda (FOR < EVERY = legal, means NO overlap, gap risk but valid syntax)."
+    },
+    {
+      question: "5-year TCO: On-prem €5750, Cloud €6300. Ale on-prem requires €2500 upfront. Firma ma limited capex. Decision?",
+      options: [
+        "On-prem (lower TCO, -9%)",
+        "Cloud (no upfront, opex-only, easier budgeting)",
+        "Hybrid (on-prem primary, cloud backup)",
+        "Defer decision (wait dla more data)"
+      ],
+      correctAnswer: 1,
+      explanation: "Limited capex → €2500 upfront may be blocker. Cloud = €0 upfront, pay-as-you-go (opex). TCO slightly higher (+9%), ale budgeting flexibility may be worth. Opcja (a) ignores capex constraint. Opcja (c) hybrid still requires on-prem capex. Opcja (d) deferring wastes time (problem known). Context: Capex constraint > TCO optimization."
+    }
+  ]}
+/>
+
+:::tip Rekomendacja po quizie
+Jeśli uzyskałeś <80%, przejrzyj: (1) TSDB selection criteria (cardinality limits, query language), (2) Tags vs. Fields (low cardinality = tag, high = field), (3) Cardinality formula (product, nie sum), (4) CQ syntax (RESAMPLE EVERY vs. FOR), (5) TCO context (capex vs. opex, not just total cost).
+:::
+
+</Slide>
+
 </SlideContainer>
+
+---
+
+## Podsumowanie i wnioski
+
+**Kluczowe punkty z tej sekcji:**
+
+**Wybór TSDB**:
+   - **InfluxDB**: Default choice (easiest, best Grafana integration, <1M series)
+   - **TimescaleDB**: High cardinality (>1M series), SQL/JOINs needed
+   - **VictoriaMetrics**: Very large scale (>1000 sites), cost-sensitive (ultra compression)
+   - **Performance**: TSDB 10-100× faster vs. RDBMS (PostgreSQL, MySQL) dla time-series workload
+
+**Schema design (cardinality optimization)**:
+   - **Tags**: Low cardinality (<1000 unique/tag), indexed (fast filter/group)
+   - **Fields**: High-variability values, nie indexed (cheaper storage)
+   - **Cardinality formula**: PRODUCT (multiplicative) → 50×100×10 = 50k series
+   - **Performance cliff**: InfluxDB >1M series → degradation (design dla <500k target)
+   - **Refactoring**: Case study 8.5M → 24k series (355× reduction) = 15× faster queries
+
+**Data lifecycle automation**:
+   - **Retention Policies**: Automatic TTL (7d raw, 6mo 1-min, 3y 15-min, 20y hourly)
+   - **Continuous Queries**: Automated downsampling (raw → aggregated tiers)
+   - **RESAMPLE**: Control CQ frequency (CPU optimization, late data handling)
+   - **Storage savings**: 200× reduction (2.5 TB → 12 GB) via cascade
+
+**Cost optimization**:
+   - **On-prem**: Lower 5-year TCO (€5750) @ scale, requires capex + admin
+   - **Cloud**: Higher TCO (€6300), but no upfront, managed, scalable
+   - **Hybrid**: On-prem primary + S3 backup (€1152/year, best balance)
+   - **Tipping point**: ~50 MW (smaller → cloud, larger → on-prem)
+
+**Następne kroki:**
+- Ćwiczenie: Setup InfluxDB (Docker), create RP + CQ, monitor cardinality
+- Lab: Schema design refactoring (optimize high-cardinality scenario)
+- Przygotowanie: Następny wykład – Broker MQTT i Grafana (full stack integration)
+
+---
+
+**Dodatkowe zasoby:**
+- **InfluxDB**: Official documentation (schema design, retention, continuous queries)
+- **TimescaleDB**: Hypertables, continuous aggregates guides
+- **VictoriaMetrics**: Architecture, Prometheus remote storage
+- **DB-Engines ranking**: TSDB popularity trends, feature comparison
 
 

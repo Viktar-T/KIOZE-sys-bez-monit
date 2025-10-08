@@ -1,5 +1,7 @@
+---
 title: "Okna czasowe, resampling, downsampling"
 sidebar_position: 2
+---
 
 import { 
   SlideContainer, 
@@ -7,66 +9,887 @@ import {
   KeyPoints, 
   SupportingDetails, 
   InstructorNotes,
-  VisualSeparator 
+  VisualSeparator,
+  LearningObjective,
+  KeyConcept,
+  Example
 } from '@site/src/components/SlideComponents';
+import { InteractiveQuiz } from '@site/src/components/InteractiveQuiz';
+
+<LearningObjective>
+Po tej sekcji student potrafi:
+- Dobrać odpowiedni rozmiar i typ okna czasowego (rectangular, Hanning, Hamming) dla różnych procesów (PV, wind, vibrations)
+- Zastosować resampling i agregacje (mean, max, p95) do synchronizacji multi-rate data streams
+- Zaprojektować kaskadę retencji (raw → 1-min → 15-min → hourly) z optymalizacją storage/query performance
+- Ocenić trade-off między noise reduction a detection latency (window size vs. false positive rate)
+</LearningObjective>
 
 <SlideContainer>
 
-<Slide title="🪟 Okna czasowe" type="info">
+<Slide title="🪟 Okna czasowe (Windowing) – wygładzanie sygnału" type="info">
 
-<KeyPoints title="📋 Wygładzanie">
-- Średnie/mediany kroczące; okna Hanning/Hamming
-- Rozmiar okna vs. dynamika procesu (PV ≠ wibracje)
+<KeyPoints title="📋 Dlaczego windowing? Problem: Noise vs. Signal">
+
+**Raw data** zawiera:
+- **Signal** (real process: PV power, wind speed, temperature)
+- **Noise** (measurement uncertainty, EMI, quantization, transients)
+
+**Bez filtrowania**: Noise triggers false alarms (FP) → alarm fatigue  
+**Z windowing**: Smooth signal → reduced FP, ale **trade-off**: Detection latency ↑
+
+**Cel windowing**: Extract signal, suppress noise, preserve features (peaks, transients critical dla alarming).
+
 </KeyPoints>
 
-<SupportingDetails title="🔧 Praktyka">
-- Oddzielne okna dla KPI i detektorów zdarzeń
+<KeyConcept title="Typy okien czasowych (Window Functions)">
+
+**1. Rectangular Window (prostokątny, "box average")**
+
+**Formula (moving average):**
+\[
+y_{smoothed}(t) = \frac{1}{N} \sum_{i=0}^{N-1} x(t - i)
+\]
+
+Gdzie:
+- N: Window size (liczba próbek)
+- x(t): Raw measurement
+
+**Charakterystyka**:
+- **Uniform weights** (każda próbka równa waga 1/N)
+- **Prostota** (easy to implement)
+- **Wady**: Sharp cutoff → spectral leakage (ringing artifacts w frequency domain)
+
+**Zastosowanie**: KPI calculation (PR, energy totals), gdy nie potrzeba sharp filtering
+
+**Przykład (Python):**
+```python
+import pandas as pd
+
+# Raw data (PV power, 1s interval)
+df = pd.DataFrame({'P_AC': [1000, 1050, 1020, 1080, 1040, ...]})
+
+# 60-second moving average (rectangular window)
+df['P_AC_smooth'] = df['P_AC'].rolling(window=60, center=False).mean()
+
+# Result: każdy punkt = average ostatnich 60 s
+```
+
+---
+
+**2. Hanning Window (weighted, smooth tapering)**
+
+**Formula:**
+\[
+w(n) = 0.5 \left(1 - \cos\left(\frac{2\pi n}{N-1}\right)\right), \quad n=0,1,\ldots,N-1
+\]
+
+**Charakterystyka**:
+- **Weights taper** (points na końcach okna mają mniejszą wagę → smooth transition)
+- **Better frequency response** (reduced spectral leakage vs. rectangular)
+- **Application**: Signal processing (FFT analysis, vibrations, spectral analysis)
+
+**Przykład (scipy):**
+```python
+from scipy.signal import hann, convolve
+import numpy as np
+
+# Raw vibration data (accelerometer, 10 kHz)
+signal = np.array([...])  # Noisy accel data
+
+# Hanning window (101 samples, ~10 ms @ 10 kHz)
+window = hann(101)
+window /= window.sum()  # Normalize (sum = 1)
+
+# Convolve (smoothing)
+signal_smooth = convolve(signal, window, mode='same')
+```
+
+---
+
+**3. Hamming Window (variant of Hanning, slightly different weights)**
+
+**Formula:**
+\[
+w(n) = 0.54 - 0.46 \cos\left(\frac{2\pi n}{N-1}\right)
+\]
+
+**Różnica vs. Hanning**: Slightly higher sidelobes, but better mainlobe (trade-off)
+
+**Application**: Similar do Hanning (spectral analysis), preferred w niektórych DSP contexts
+
+---
+
+**4. Exponential Weighted Moving Average (EWMA) – adaptive**
+
+**Formula:**
+\[
+y(t) = \alpha \cdot x(t) + (1-\alpha) \cdot y(t-1)
+\]
+
+Gdzie:
+- α: Smoothing factor (0 < α < 1)
+  - α → 1: More responsive (less smoothing)
+  - α → 0: More smoothing (slower response)
+
+**Charakterystyka**:
+- **Adaptive** (recent data higher weight)
+- **Single parameter** (α)
+- **Application**: Real-time trending (KPI dashboards, control loops)
+
+**Przykład (pandas):**
+```python
+# EWMA dla PV power (α = 0.1 → heavy smoothing)
+df['P_AC_ewma'] = df['P_AC'].ewm(alpha=0.1, adjust=False).mean()
+```
+
+</KeyConcept>
+
+<SupportingDetails title="📊 Wybór rozmiaru okna: Process dynamics">
+
+**Kluczowa zasada**: **Window size ∝ Process time constant**
+
+### **Proces SLOW (PV power, temperature):**
+
+- **Time constant**: τ ~ 1-10 min (clouds → irradiance change → power response)
+- **Window size**: 1-5 min (60-300 s)
+- **Rationale**: Noise high-frequency (1-10 Hz), signal low-frequency (<0.1 Hz) → large window OK
+
+**Przykład: PV power smoothing**
+```python
+# Raw: 1 Hz (1000 samples/min) → very noisy (inverter switching, measurement noise)
+# Window: 60 s (60 samples) → smooth, preserves cloud transients (τ ~ 2-5 min)
+
+df['P_AC_1min'] = df['P_AC'].rolling(window=60).mean()
+```
+
+**Impact:**
+- **Noise reduction**: σ (std. dev) reduced by √N = √60 ≈ **7.7×** (Central Limit Theorem)
+- **Detection latency**: +30 s (half window, if center=True) lub +60 s (full window, center=False)
+
+---
+
+### **Proces FAST (wind gusts, vibrations):**
+
+- **Time constant**: τ ~ 0.1-1 s (vibrations: bearing defects 10-100 Hz)
+- **Window size**: Depends on application:
+  - **Trending/KPI**: 10 s - 1 min (reduce noise dla dashboard)
+  - **Event detection**: NO smoothing lub very small window (preserve transients!)
+
+**Przykład: Wind speed (10 Hz sampling, gust detection)**
+```python
+# Raw: 10 Hz (100 samples/s) → dla KPI (10-min average)
+df['Wind_10min'] = df['Wind'].rolling(window=6000).mean()  # 10 min × 60 s × 10 Hz
+
+# Dla gust alarm: NO smoothing (detect peaks immediately)
+df['Gust_alarm'] = df['Wind'] > 25  # m/s threshold, raw data
+```
+
+---
+
+### **Trade-off: Window size vs. Detection latency**
+
+**Tabela:**
+
+| Window Size | Noise Reduction | Detection Latency | False Positive Rate | Application |
+|-------------|-----------------|-------------------|---------------------|-------------|
+| **Small** (10 s) | √10 ≈ 3× | +5 s (half window) | HIGH (noise passes) | Fast process, critical alarms |
+| **Medium** (60 s) | √60 ≈ 8× | +30 s | MEDIUM | Balance (PV, most OZE) |
+| **Large** (300 s, 5 min) | √300 ≈ 17× | +2.5 min | LOW | KPI, trending (nie alarms) |
+
+**Decision guideline:**
+- **Alarms (critical)**: Small window (accept higher FP, fast detection)
+- **KPI (reporting)**: Large window (smooth, stable)
+- **Control loops**: Medium (balance responsiveness/noise)
+
 </SupportingDetails>
 
+<Example title="Case study: PV farm alarm – window size optimization">
+
+**Problem**: Farma PV 10 MWp, alarm "Low PR" (PR < 75%) triggering **50× / day** (false positives, alarm fatigue).
+
+**Root cause analysis:**
+1. PR calculated every 1 s (real-time)
+2. G_POA noise: σ = ±15 W/m² (±1.5% @ 1000 W/m²)
+3. P_AC noise: σ = ±50 kW (±0.5% @ 10 MW)
+4. Combined: PR noise σ ≈ ±2% → PR fluctuates 80% ± 2% → frequent dips <75%
+
+**Solution options:**
+
+**Option A: Increase alarm threshold (75% → 70%)**
+- **Pros**: Fewer FP (threshold below noise floor)
+- **Cons**: Delayed detection (real problem @ 72% nie trigger alarm)
+- **Result**: NOT chosen (trade-off too severe)
+
+**Option B: Windowing (smooth PR before alarming)**
+- **Implementation**: 5-min moving average dla PR calculation
+```python
+# Before (1 s raw)
+PR_raw = E_actual / E_expected  # Every 1 s
+
+# After (5-min window)
+PR_5min = df[['E_actual', 'E_expected']].rolling(window=300).sum()
+PR_5min = PR_5min['E_actual'] / PR_5min['E_expected']
+```
+
+**Impact:**
+- **Noise reduction**: √300 ≈ **17×** → σ_PR: ±2% → ±0.12% (poniżej threshold)
+- **FP rate**: 50/day → **2/day** (-96%! Huge improvement)
+- **Detection latency**: +2.5 min (acceptable dla non-critical PR monitoring)
+
+**Final tuning:**
+- Alarm threshold: 75% (unchanged, proper level)
+- Window: 5 min dla alarming, 1 s preserved dla trending (dashboard shows both)
+- **Additional rule**: Alarm ONLY if PR <75% persists for **2 consecutive windows** (10 min total) → further reduces transient FP
+
+**Result (post-deployment, 1 month):**
+- FP rate: **0.5/day** (1 w 2 dni, mostly legitimate borderline cases)
+- True positive detection: 100% (all real PR drops detected within 12 min, acceptable)
+- Operator satisfaction: ↑↑ (alarm credibility restored)
+
+</Example>
+
 <InstructorNotes>
-Pokaż wpływ długości okna na T_detect i FP.
+
+**Czas**: 16-18 min
+
+**Przebieg**:
+1. Dlaczego windowing (4 min) – noise vs. signal, false positives
+2. Typy okien (5 min) – rectangular, Hanning, Hamming, EWMA (formulas + examples)
+3. Wybór rozmiaru okna (4 min) – process dynamics (slow PV vs. fast vibrations), table trade-offs
+4. Case study (4 min) – PV alarm optimization (96% FP reduction)
+5. Q&A (2 min)
+
+**Punkty kluczowe**:
+- **"Window size = 3-5× process time constant"** rule of thumb
+- **Noise reduction ∝ √N** (Central Limit Theorem) – duże okno = dramatyczna poprawa SNR
+- **Trade-off**: Smoothing (FP reduction) vs. Latency (detection delay)
+- **Separate windows** dla alarming (small) vs. KPI (large) – different objectives!
+
+**Demonstracja praktyczna**:
+- Live Python: Raw vs. smoothed signal (matplotlib plot)
+- Comparison: 10 s vs. 60 s vs. 300 s window (pokazuje trade-off)
+- Hanning vs. rectangular (frequency domain plot – pokazuje spectral leakage)
+
+**Materiały pomocnicze**:
+- Scipy signal processing documentation (`rolling`, `ewm`, `convolve`)
+- DSP textbook: Window functions chapter (Harris, 1978 classic paper)
+- Example code: Alarm logic z windowing (Python)
+
+**Typowe błędy studenckie**:
+- "Bigger window = always better" – NO! Zależy od application (alarms vs. KPI)
+- Applying large window do fast process (vibrations) → miss transients (defeats purpose)
+- Nie rozróżnianie noise (measurement) od signal variability (real clouds) – window removes obie, ale to intended
+
+**Pytania studenckie**:
+- Q: Dlaczego Hanning zamiast rectangular?
+- A: Dla **spectral analysis** (FFT): Hanning reduces spectral leakage (smooth taper → less ringing). Dla **simple averaging** (KPI): rectangular OK (prostszy, equivalent dla time-domain smoothing).
+
+- Q: Jak dobrać α w EWMA?
+- A: Empirically lub z process τ: α ≈ 2/(N+1), gdzie N = equivalent window size. For τ=60 s, α ≈ 0.03 (heavy smoothing). Tune based on desired responsiveness.
+
 </InstructorNotes>
 
 </Slide>
 
 <VisualSeparator type="technical" />
 
-<Slide title="⏱️ Resampling i synchronizacja" type="tip">
+<Slide title="⏱️ Resampling i synchronizacja – multi-rate data streams" type="tip">
 
-<KeyPoints title="📋 Wspólna siatka czasu">
-- Agregacje: mean/max/p95; strefy czasowe i DST
-- Alignowanie strumieni (1 s/10 s/1 min)
-</KeyPoints>
+<KeyConcept title="Problem: Niejednorodne częstotliwości próbkowania">
 
-<SupportingDetails title="🧰 Implementacja">
-- Ustal źródło prawdy czasu; unikaj wielokrotnego timestampingu
+**Real-world OZE system** ma **multiple data streams** z różnymi sampling rates:
+
+| Stream | Rate | Example |
+|--------|------|---------|
+| **High-frequency** (HF) | 1-100 Hz | Vibrations (10 kHz), electrical waveforms (1 kHz), wind gusts (10 Hz) |
+| **Medium** | 1 Hz - 1/min | PV power (1 Hz), wind speed average (1 Hz), temperatures (10 s) |
+| **Low-frequency** (LF) | 1/min - 1/hour | Energy totals (15 min), KPI (hourly), weather forecasts (hourly) |
+| **Event-driven** | Irregular | Alarms, SOE, state changes (trigger on event, nie periodic) |
+
+**Challenge**: Jak analyze/correlate streams z różnymi rates? **Solution**: **Resampling** → common time grid.
+
+</KeyConcept>
+
+<SupportingDetails title="🔧 Resampling methods: Upsampling vs. Downsampling">
+
+### **Downsampling (decimation): High rate → Low rate**
+
+**Proces**: Reduce sampling rate (e.g., 1 Hz → 1/min)
+
+**Method**: **Aggregation** (mean, max, min, sum, p95, ...)
+
+**Example (PV power: 1 Hz → 1 min):**
+```python
+# Raw data (1 Hz, 3600 samples/hour)
+df_1Hz = pd.read_csv('pv_power_1Hz.csv', parse_dates=['timestamp'])
+df_1Hz.set_index('timestamp', inplace=True)
+
+# Downsample: 1-min intervals (mean aggregation)
+df_1min = df_1Hz.resample('1T').agg({
+    'P_AC': 'mean',       # Average power
+    'I_DC': 'mean',       # Average current
+    'U_DC': 'mean',       # Average voltage
+    'E_total': 'last',    # Energy counter (cumulative, take last value)
+    'Faults': 'sum'       # Count faults in interval
+})
+
+# Result: 60 samples/hour (60× reduction)
+```
+
+**Aggregation functions:**
+
+| Function | Use Case | Formula | Example |
+|----------|----------|---------|---------|
+| **mean** | Average (power, voltage, current, temps) | \( \bar{x} = \frac{1}{N}\sum x_i \) | P_AC_1min = mean(P_AC_1Hz, 60 samples) |
+| **max** | Peak values (Gmax dla irradiance, wind gusts) | \( x_{max} = \max(x_i) \) | G_max_15min = max(G_POA_1Hz) |
+| **min** | Minimum (SoC_min, voltage sags) | \( x_{min} = \min(x_i) \) | U_min_1min = min(U_grid_1Hz) |
+| **sum** | Totals (energy, fault counts, event counts) | \( S = \sum x_i \) | E_15min = sum(P_AC_1Hz) × Δt |
+| **p95** (percentile 95%) | Robust max (excludes outliers) | 95th percentile | P95_power = quantile(P_AC, 0.95) |
+| **last** | Cumulative counters (energy total, state) | Last value in interval | E_total_end = last(E_total) |
+
+**Decision guide:**
+- **Mean**: General default (stable, robust)
+- **Max**: Extreme values (safety, compliance)
+- **Sum**: Counters/totals (energy billing)
+- **p95**: Robust max (when outliers expected)
+
+---
+
+### **Upsampling (interpolation): Low rate → High rate**
+
+**Proces**: Increase sampling rate (e.g., 1/min → 1 Hz)
+
+**Method**: **Interpolation** (forward-fill, linear, polynomial, cubic spline)
+
+**Example (temperature: 1/min → 1 Hz):**
+```python
+# Low-rate data (1 sample/min)
+df_1min = pd.DataFrame({
+    'timestamp': pd.date_range('2024-01-01 10:00', periods=10, freq='1T'),
+    'T_amb': [22.5, 22.6, 22.7, 22.8, ...]
+}).set_index('timestamp')
+
+# Upsample: 1 Hz (create empty slots)
+df_1Hz = df_1min.resample('1S').asfreq()
+
+# Fill gaps: forward-fill (carry last value)
+df_1Hz['T_amb'] = df_1Hz['T_amb'].fillna(method='ffill')
+
+# Alternative: linear interpolation
+df_1Hz['T_amb'] = df_1Hz['T_amb'].interpolate(method='linear')
+```
+
+**When to upsample?**
+- Aligning multi-rate streams (common time grid dla correlation/analysis)
+- Visualization (smooth plot)
+
+**Caution**: Upsampling NIE adds information (interpolated data to estimates, nie real measurements). Mark jako synthetic (quality flag).
+
+---
+
+### **Synchronizacja time grids (alignment):**
+
+**Problem**: Streams z różnymi timestamps (jitter, clock skew, different sources).
+
+**Solution**: **Resample do common grid** (e.g., 1-min intervals on :00 seconds).
+
+**Example (align PV inverters 1-10, all 1 Hz but timestamps differ):**
+```python
+# Inverter 1: timestamps @ 10:00:00.123, 10:00:01.127, ... (jitter ±200 ms)
+# Inverter 2: timestamps @ 10:00:00.456, 10:00:01.451, ...
+# ...
+
+# Solution: Resample ALL to 1 Hz exact grid (:00.000 seconds)
+common_grid = pd.date_range('2024-01-01 10:00:00', periods=3600, freq='1S')
+
+df_inv1_aligned = df_inv1.reindex(common_grid, method='nearest', tolerance='500ms')
+df_inv2_aligned = df_inv2.reindex(common_grid, method='nearest', tolerance='500ms')
+# ...
+
+# Now: All inverters on SAME timestamps → can sum/aggregate easily
+df_farm = pd.concat([df_inv1_aligned['P_AC'], df_inv2_aligned['P_AC'], ...], axis=1).sum(axis=1)
+```
+
+**Tolerance**: Allow matching within ±500 ms (if no sample within tolerance → NaN).
+
 </SupportingDetails>
 
+<Example title="Multi-rate correlation: Wind farm fault diagnosis">
+
+**Scenario**: Wind turbine #5 (3 MW), suspected gearbox issue.
+
+**Data streams:**
+
+| Stream | Rate | Source |
+|--------|------|--------|
+| **Vibration** (accelerometer) | 10 kHz | CMS (Condition Monitoring System) |
+| **Power, RPM, temps** | 1 Hz | SCADA |
+| **Alarms** | Event-driven | Turbine controller |
+| **Wind speed** (nacelle) | 1 Hz | Anemometer |
+
+**Analysis goal**: Correlate vibration spikes z power/RPM changes → diagnose fault.
+
+**Step 1: Downsample vibrations (10 kHz → 1 Hz)**
+```python
+# Vibration raw: 10 kHz → very high volume (36 GB/hour!)
+# Downsample: RMS (root-mean-square) every 1 s
+df_vib_1Hz = df_vib_10kHz.resample('1S').apply(lambda x: np.sqrt(np.mean(x**2)))
+
+# Result: 3600 samples/hour (10000× reduction, storage-friendly)
+```
+
+**Step 2: Align all streams @ 1 Hz grid**
+```python
+# Common grid (1 Hz, 1 hour window)
+grid = pd.date_range('2024-07-15 14:00:00', periods=3600, freq='1S')
+
+# Resample each
+df_vib = df_vib_1Hz.reindex(grid, method='nearest', tolerance='1S')
+df_power = df_power_raw.reindex(grid, method='nearest')
+df_rpm = df_rpm_raw.reindex(grid, method='nearest')
+df_wind = df_wind_raw.reindex(grid, method='nearest')
+
+# Merge
+df = pd.concat([df_vib, df_power, df_rpm, df_wind], axis=1)
+```
+
+**Step 3: Correlation analysis**
+```python
+# Correlation matrix
+corr_matrix = df.corr()
+print(corr_matrix)
+
+# Result:
+#            Vibration  Power   RPM    Wind
+# Vibration     1.00   -0.68  -0.72   0.15
+# Power        -0.68    1.00   0.98   0.85
+# RPM          -0.72    0.98   1.00   0.82
+# Wind          0.15    0.85   0.82   1.00
+```
+
+**Interpretation:**
+- **Vibration vs. Power**: r = -0.68 (negative correlation!) → High vibration gdy LOW power
+- **Vibration vs. RPM**: r = -0.72 (stronger negative) → High vibration @ LOW RPM
+- **Insight**: Gearbox fault occurs @ low-speed, high-torque conditions (startup/shutdown ramps)
+
+**Step 4: Time-series plot (aligned)**
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(3, 1, figsize=(12, 8), sharex=True)
+
+ax[0].plot(df.index, df['Power'], label='Power (kW)')
+ax[0].set_ylabel('Power [kW]')
+ax[0].legend()
+
+ax[1].plot(df.index, df['RPM'], label='RPM', color='orange')
+ax[1].set_ylabel('RPM')
+ax[1].legend()
+
+ax[2].plot(df.index, df['Vibration'], label='Vibration RMS [g]', color='red')
+ax[2].set_ylabel('Vibration [g]')
+ax[2].axhline(y=0.5, color='red', linestyle='--', label='Alarm threshold')
+ax[2].legend()
+ax[2].set_xlabel('Time')
+
+plt.tight_layout()
+plt.show()
+```
+
+**Finding**: Vibration spikes @ 14:12, 14:28, 14:45 → correlate z RPM ramps (acceleration phase) → gearbox bearing fault confirmed.
+
+**Action**: Scheduled maintenance (bearing replacement), prevented catastrophic failure (cost savings €200k).
+
+</Example>
+
 <InstructorNotes>
-Zwróć uwagę na jitter zegarów i NTP/PTP.
+
+**Czas**: 14-16 min
+
+**Przebieg**:
+1. Multi-rate problem (3 min) – table różnych rates w OZE
+2. Downsampling (4 min) – aggregation methods (mean, max, sum, p95)
+3. Upsampling (2 min) – interpolation (forward-fill, linear)
+4. Alignment (2 min) – common time grid, jitter handling
+5. Case study (4 min) – wind turbine fault diagnosis, correlation
+
+**Punkty kluczowe**:
+- **Resampling = foundational** dla multi-source data analysis
+- **Aggregation function matters** (mean ≠ max ≠ sum) – zależy od physical meaning
+- **Upsampling nie dodaje info** (synthetic data, flag accordingly)
+- **Time alignment kluczowy** dla correlation (clock sync NTP/PTP!)
+
+**Demonstracja praktyczna**:
+- Pandas `resample()` demo (live Jupyter)
+- Pokazuje different aggregations (mean vs. max) → different insights
+- Alignment visualization (before/after: misaligned → aligned timestamps)
+
+**Materiały pomocnicze**:
+- Pandas time series documentation (`resample`, `reindex`, `asfreq`)
+- Example notebook: Multi-rate OZE data processing
+- NTP/PTP time sync best practices (link back to Wykład 02)
+
+**Typowe błędy studenckie**:
+- Upsampling thinking it adds resolution – NO, only interpolates (pretend)
+- Nie specifying aggregation function (pandas default: mean, ale może nie be appropriate)
+- Ignoring timezone i DST (resample @ DST transitions → gaps/overlaps)
+
+**Pytania studenckie**:
+- Q: Co z event-driven data (alarms, SOE)? Jak resample?
+- A: Event-driven to discrete (nie continuous time series). Options: (1) Count events per interval (resample + count), (2) Preserve as-is (timestamp + event, merge z time-series based on timestamp lookup).
+
+- Q: Który aggregation dla energy billing (15-min intervals)?
+- A: **sum(Power × Δt)** dla energy (Wh), lub **mean(Power) × interval_duration** (equivalent). Verify with meter reading (ground truth).
+
 </InstructorNotes>
 
 </Slide>
 
 <VisualSeparator type="data" />
 
-<Slide title="🗜️ Downsampling i retencja" type="warning">
+<Slide title="🗜️ Downsampling cascade i retencja – storage optimization" type="warning">
 
-<KeyPoints title="📋 Kaskady retencji">
-- Raw → 1‑min → 15‑min → godzinowe
-- Stabilność KPI vs. utrata detali
-</KeyPoints>
+<KeyConcept title="Problem: Infinite storage nie istnieje">
 
-<SupportingDetails title="📈 Przykład">
-- PR: przejście z 1 s → 1 min: −60% FP, bez utraty czułości na trendy
+**Typical OZE farm (10 MW PV):**
+- **Sensors**: 500 data points (inverters, strings, weather, grid)
+- **Sampling**: 1 Hz (1 sample/s per point)
+- **Data rate**: 500 points × 1 Hz × 8 bytes (float64) = **4 kB/s** = 345 MB/day = **126 GB/year** (raw!)
+
+**For 20-year lifetime**: 126 GB × 20 = **2.5 TB** (per farm!) + compliance wymaga 10+ years retention.
+
+**Solution**: **Downsampling cascade** + **Retention policies** (progressive aggregation + deletion)
+
+</KeyConcept>
+
+<SupportingDetails title="🎯 Retention cascade design – 4 tiers">
+
+**Tier 1: RAW (high-resolution, short-term)**
+- **Rate**: 1 Hz (original sampling)
+- **Retention**: **7 days** (168 hours)
+- **Purpose**: Detailed diagnostics, event investigation (recent)
+- **Storage**: 345 MB/day × 7 = **2.4 GB** (rolling window)
+
+**Tier 2: 1-MINUTE aggregated**
+- **Rate**: 1/min (60× reduction)
+- **Aggregation**: mean (dla most), max (dla peaks), min (dla sags)
+- **Retention**: **6 months** (180 days)
+- **Purpose**: KPI analysis, weekly/monthly reports, trend analysis
+- **Storage**: 2.4 GB / 60 × 180 = **7.2 GB**
+
+**Tier 3: 15-MINUTE aggregated**
+- **Rate**: 1/15min (900× reduction vs. raw)
+- **Aggregation**: mean (standard dla grid telemetry OSD)
+- **Retention**: **3 years** (compliance, contractual SLA)
+- **Purpose**: Billing, regulatory reporting, long-term performance
+- **Storage**: 2.4 GB / 900 × 1095 days = **2.9 GB**
+
+**Tier 4: HOURLY / DAILY aggregated**
+- **Rate**: 1/hour lub 1/day
+- **Aggregation**: sum (energy totals), mean (PR, CF)
+- **Retention**: **10-20 years** (archival, historical analysis)
+- **Purpose**: Lifetime performance, degradation analysis, ROI
+- **Storage**: Negligible (~100 MB dla 20 years)
+
+---
+
+### **Total storage (4-tier cascade):**
+
+| Tier | Retention | Storage | % of Total |
+|------|-----------|---------|------------|
+| Raw (1 Hz) | 7 days | 2.4 GB | 19% |
+| 1-min | 6 months | 7.2 GB | 57% |
+| 15-min | 3 years | 2.9 GB | 23% |
+| Hourly | 20 years | 0.1 GB | 1% |
+| **TOTAL** | — | **12.6 GB** | 100% |
+
+**Comparison**: Bez cascade (20 years raw @ 1 Hz): **2.5 TB**  
+**Reduction**: 2500 GB → 12.6 GB = **200×** savings! 🎉
+
 </SupportingDetails>
 
+<Example title="InfluxDB retention policy – implementation">
+
+**Platform**: InfluxDB 2.x (time-series database)
+
+**Configuration (Flux / CLI):**
+
+```sql
+-- Tier 1: RAW (7 days retention)
+CREATE RETENTION POLICY "raw_7d" ON "solar_farm"
+  DURATION 7d           -- Auto-delete data older than 7 days
+  REPLICATION 1         -- Single replica (edge deployment)
+  DEFAULT;              -- Default policy (new writes go here)
+
+-- Tier 2: 1-MIN aggregation (6 months retention)
+CREATE RETENTION POLICY "aggregated_1min_6mo" ON "solar_farm"
+  DURATION 180d         -- 6 months
+  REPLICATION 1;
+
+-- Continuous Query (CQ): Auto-aggregate raw → 1-min every hour
+CREATE CONTINUOUS QUERY "cq_downsample_1min" ON "solar_farm"
+BEGIN
+  SELECT 
+    mean("P_AC") AS "P_AC_mean",
+    max("G_POA") AS "G_POA_max",
+    min("U_DC") AS "U_DC_min",
+    sum("Faults") AS "Fault_count"
+  INTO "solar_farm"."aggregated_1min_6mo".:MEASUREMENT
+  FROM "solar_farm"."raw_7d"./.*/ 
+  GROUP BY time(1m), *    -- 1-minute buckets, preserve all tags
+END;
+
+-- Tier 3: 15-MIN aggregation (3 years)
+CREATE RETENTION POLICY "aggregated_15min_3y" ON "solar_farm"
+  DURATION 1095d;       -- 3 years
+
+CREATE CONTINUOUS QUERY "cq_downsample_15min" ON "solar_farm"
+BEGIN
+  SELECT 
+    mean("P_AC_mean") AS "P_AC",
+    mean("G_POA_max") AS "G_POA"
+  INTO "solar_farm"."aggregated_15min_3y".:MEASUREMENT
+  FROM "solar_farm"."aggregated_1min_6mo"./.*/ 
+  GROUP BY time(15m), *
+END;
+
+-- Tier 4: HOURLY aggregation (20 years)
+CREATE RETENTION POLICY "aggregated_hourly_20y" ON "solar_farm"
+  DURATION 7300d;       -- 20 years
+
+CREATE CONTINUOUS QUERY "cq_downsample_hourly" ON "solar_farm"
+BEGIN
+  SELECT 
+    sum("P_AC") * 15 / 60 AS "E_kWh",    -- Energy (kWh) from 15-min power (kW)
+    mean("P_AC") AS "P_avg"
+  INTO "solar_farm"."aggregated_hourly_20y".:MEASUREMENT
+  FROM "solar_farm"."aggregated_15min_3y"./.*/ 
+  GROUP BY time(1h), *
+END;
+```
+
+**Automation**: Continuous Queries (CQ) run automatically (every hour) → progressive downsampling, old data auto-deleted per retention policy.
+
+**Benefit**: **Set-and-forget** (no manual intervention, storage self-manages).
+
+---
+
+### **Query strategy (depends on time range):**
+
+```python
+# Python client (query optimization)
+def query_power(start, end, farm_id):
+    duration = (end - start).total_seconds()
+    
+    if duration <= 7 * 86400:  # ≤ 7 days → use RAW
+        bucket = "raw_7d"
+        interval = "1s"
+    elif duration <= 180 * 86400:  # ≤ 6 months → use 1-MIN
+        bucket = "aggregated_1min_6mo"
+        interval = "1m"
+    elif duration <= 1095 * 86400:  # ≤ 3 years → use 15-MIN
+        bucket = "aggregated_15min_3y"
+        interval = "15m"
+    else:  # > 3 years → use HOURLY
+        bucket = "aggregated_hourly_20y"
+        interval = "1h"
+    
+    # Flux query
+    query = f'''
+    from(bucket: "{bucket}")
+      |> range(start: {start}, stop: {end})
+      |> filter(fn: (r) => r.farm_id == "{farm_id}")
+      |> filter(fn: (r) => r._measurement == "power")
+      |> aggregateWindow(every: {interval}, fn: mean)
+    '''
+    return influx_client.query(query)
+```
+
+**Optimization**: Automatic tier selection based on query range → fast queries (minimal data scanned).
+
+</Example>
+
+<Example title="Trade-off analysis: PR calculation accuracy vs. storage">
+
+**Question**: Jaki minimal aggregation interval dla PR accuracy?
+
+**Test setup:**
+- Farma PV 10 MWp, 1 month data (Jan 2024)
+- PR baseline (ground truth): **82.5%** (calculated z 1 Hz raw data)
+
+**Test aggregation levels:**
+
+| Aggregation | Interval | PR calculated | Δ vs. baseline | Storage (1 month) | Comment |
+|-------------|----------|---------------|----------------|-------------------|---------|
+| **Raw** | 1 Hz | 82.50% | 0.00% (reference) | 10.3 GB | Baseline, high storage |
+| **1-MIN** | 60 s | 82.49% | -0.01% | 172 MB | Minimal error, 60× reduction ✅ |
+| **15-MIN** | 900 s | 82.47% | -0.03% | 11.5 MB | Acceptable error, 900× reduction ✅ |
+| **HOURLY** | 3600 s | 82.38% | -0.12% | 2.9 MB | Noticeable bias (smooths cloud events) ⚠️ |
+| **DAILY** | 86400 s | 81.95% | -0.55% | 122 kB | Significant error (too coarse) ❌ |
+
+**Findings:**
+- **1-MIN aggregation**: Virtually identical to raw (<0.01% error) → **RECOMMENDED minimum dla KPI**
+- **15-MIN**: Standard dla grid telemetry (OSD compliance), error <0.05% → **ACCEPTABLE dla billing/reporting**
+- **HOURLY**: Smoothing introduces bias (-0.12%) → OK dla trending, **NOT for billing**
+- **DAILY**: Too coarse (-0.55% error, misses intra-day variability) → **Archival only**
+
+**Recommendation**: **15-min minimum** dla long-term retention (3 years), **1-min dla KPI analysis** (6 months), raw (7 days emergency diagnostics).
+
+</Example>
+
 <InstructorNotes>
-Omów kompromisy i wpływ na analitykę anomalii krótkotrwałych.
+
+**Czas**: 16-18 min
+
+**Przebieg**:
+1. Storage problem (3 min) – math shows 2.5 TB dla 20 years (impractical)
+2. Retention cascade design (5 min) – 4 tiers (raw, 1-min, 15-min, hourly)
+3. InfluxDB implementation (4 min) – retention policies + continuous queries
+4. Trade-off analysis (3 min) – PR accuracy vs. aggregation interval
+5. Q&A (2 min)
+
+**Punkty kluczowe**:
+- **Cascade downsampling** = mandatory (nie optional) dla long-term sustainability
+- **200× storage reduction** (2.5 TB → 12 GB) bez significant loss accuracy
+- **15-min standard** dla compliance (grid telemetry, billing)
+- **Automation** (CQ / scheduled tasks) → no manual intervention
+
+**Demonstracja praktyczna**:
+- InfluxDB dashboard: Show 4 retention policies (data volume per tier)
+- Query comparison: Raw vs. 1-min vs. 15-min (speed difference, accuracy)
+- Example: Grafana query auto-selects tier based on time range (transparent to user)
+
+**Materiały pomocnicze**:
+- InfluxDB documentation: Retention policies, Continuous Queries
+- Example configuration files (retention policies dla different farm sizes)
+- Cost analysis: Storage costs (cloud S3/Azure) vs. on-prem
+
+**Typowe błędy studenckie**:
+- "Store everything raw forever" – impossible (storage/cost)
+- Aggregating before preservation (irreversible) – cascade allows re-aggregation later
+- Nie testing PR accuracy before deploying retention → discover error too late
+
+**Pytania studenckie**:
+- Q: Co jeśli discover error AFTER raw data deleted (>7 days)?
+- A: CANNOT recover. Dlatego: (1) Extend raw retention dla critical commissioning period (30 days), (2) Verify 1-min aggregation accuracy BEFORE deleting raw, (3) Backup critical periods (e.g., acceptance tests).
+
+- Q: Czy można mieć różne retention dla różnych measurements (power vs. temps)?
+- A: TAK! Separate retention policies per measurement type (power: 7 days raw, temps: 1 day raw – less critical). Flexible design.
+
 </InstructorNotes>
 
 </Slide>
 
+<VisualSeparator type="default" />
+
+<Slide title="📝 Quiz: Windowing, resampling, retention" type="info">
+
+<InteractiveQuiz 
+  questions={[
+    {
+      question: "Window size: 60 s, sampling 1 Hz. Jaka noise reduction (theoretical, Central Limit Theorem)?",
+      options: [
+        "√60 ≈ 7.7× reduction in σ (std. dev)",
+        "60× reduction (linear z window size)",
+        "1/60 = 0.0167× (60× smaller)",
+        "Zależy od noise type (nie można określić bez spektrum)"
+      ],
+      correctAnswer: 0,
+      explanation: "Central Limit Theorem: σ_avg = σ_raw / √N. Dla N=60, reduction = √60 ≈ 7.7×. Opcja (b) nieprawda (linear only dla sum, nie average). Opcja (c) odwrotnie. Opcja (d) partially true (CLT assumes independent noise), ale √N to good approximation dla most cases."
+    },
+    {
+      question: "False Positive rate: 50/day. Po zastosowaniu 5-min windowing: 2/day (-96%). Detection latency wzrósł o?",
+      options: [
+        "+2.5 min (half window, center=False)",
+        "+5 min (full window)",
+        "+10 min (2× window dla confirmation)",
+        "Brak latency (windowing nie opóźnia)"
+      ],
+      correctAnswer: 0,
+      explanation: "Windowing (center=False, default): Detection latency = half window size (signal musi 'fill' window). 5 min / 2 = +2.5 min. Opcja (b) full window tylko jeśli wymaga ENTIRE window above threshold (rare). Opcja (c) to additional confirmation rule (nie windowing itself). Opcja (d) nieprawda (windowing ALWAYS adds latency)."
+    },
+    {
+      question: "Downsampling 1 Hz → 15 min: Która aggregacja dla G_POA (irradiancja) dla PR calculation?",
+      options: [
+        "mean (average irradiance over 15 min)",
+        "max (peak irradiance)",
+        "min (lowest irradiance)",
+        "sum (total irradiance)"
+      ],
+      correctAnswer: 0,
+      explanation: "PR = E_actual / E_expected, gdzie E_expected ∝ G_average (nie peak). Mean to correct aggregation (represents average energy available). Max/min to extremes (nie representative). Sum would need unit conversion (W/m² → Wh/m², requires × Δt)."
+    },
+    {
+      question: "Retention cascade: raw 7d, 1-min 6mo, 15-min 3y. Query dla last 2 months KPI analysis – który tier?",
+      options: [
+        "1-min (2 months < 6 months retention, sufficient resolution)",
+        "Raw (highest resolution always best)",
+        "15-min (standard dla KPI)",
+        "Hourly (faster query)"
+      ],
+      correctAnswer: 0,
+      explanation: "2 months < 6 months → 1-min tier available i sufficient (0.01% error vs. raw, 60× faster query). Opcja (b) raw may nie być available (>7 days deleted) i overkill (slow query). Opcja (c) 15-min OK ale lower resolution (1-min better jeśli available). Opcja (d) hourly too coarse dla KPI."
+    },
+    {
+      question: "PR error: Raw (82.50%) vs. Hourly aggregation (82.38%, -0.12%). Dlaczego bias?",
+      options: [
+        "Hourly smoothing misses intra-hour variability (cloud transients averaged out, denominator E_expected overestimated)",
+        "Rounding errors (float precision loss)",
+        "Timezone issues (DST transitions)",
+        "Measurement drift (sensor degradation over month)"
+      ],
+      correctAnswer: 0,
+      explanation: "Hourly aggregation smooths cloud events → G_average slightly higher (transients averaged) → E_expected overestimated → PR underestimated. Opcja (b) negligible (float64 precision >>0.1%). Opcja (c) nieprawda (monthly aggregation wouldn't be affected by single DST event). Opcja (d) irrelevant (drift affects raw too, nie aggregation bias)."
+    }
+  ]}
+/>
+
+:::tip Rekomendacja po quizie
+Jeśli uzyskałeś <80%, przejrzyj: (1) Noise reduction √N (CLT), (2) Aggregation functions (mean vs. max, context-dependent), (3) Retention tier selection (query optimization). Windowing i downsampling to core skills data engineeringu.
+:::
+
+</Slide>
+
 </SlideContainer>
+
+---
+
+## Podsumowanie i wnioski
+
+**Kluczowe punkty z tej sekcji:**
+
+**Windowing (wygładzanie)**:
+   - **Noise reduction**: ∝ √N (60 s window → 7.7× reduction)
+   - **Types**: Rectangular (simple), Hanning/Hamming (spectral analysis), EWMA (adaptive)
+   - **Trade-off**: Smoothing (FP reduction) vs. Detection latency (delay)
+   - **Rule**: Window size = 3-5× process time constant
+
+**Resampling (multi-rate synchronization)**:
+   - **Downsampling**: Aggregation (mean, max, sum, p95) – context-dependent choice
+   - **Upsampling**: Interpolation (forward-fill, linear) – synthetic data, flag accordingly
+   - **Alignment**: Common time grid (resample + reindex) kluczowy dla correlation
+
+**Retention cascade (storage optimization)**:
+   - **4 tiers**: Raw (7d), 1-min (6mo), 15-min (3y), Hourly (20y)
+   - **Storage savings**: 200× reduction (2.5 TB → 12 GB) bez significant accuracy loss
+   - **Automation**: Retention policies + Continuous Queries (InfluxDB, TimescaleDB)
+   - **Query optimization**: Auto-select tier based on time range
+
+**Best practices**:
+   - **Separate windows** dla alarming (small, fast) vs. KPI (large, stable)
+   - **15-min minimum** dla long-term compliance (grid telemetry standard)
+   - **Test aggregation accuracy** before deploying retention (PR error <0.05% target)
+
+**Następne kroki:**
+- Ćwiczenie: Implement retention cascade (InfluxDB config)
+- Lab: Window size optimization (FP rate vs. latency trade-off)
+- Przygotowanie: Następna sekcja – TSDB (Time-Series Databases) wybór i konfiguracja
+
+---
+
+**Dodatkowe zasoby:**
+- **Pandas time series**: Documentation (`resample`, `rolling`, `ewm`)
+- **InfluxDB**: Retention policies, Continuous Queries guide
+- **DSP literature**: Window functions (Harris, 1978), Signal processing textbooks
 
 
