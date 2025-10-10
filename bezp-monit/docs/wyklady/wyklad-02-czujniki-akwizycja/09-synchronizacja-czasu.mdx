@@ -60,9 +60,9 @@ Przykład: Analiza wyłączenia inwertera
 **2. Błędy w obliczeniach energii (billing errors)**
 
 Performance Ratio:
-\[
+$$
 PR = \frac{E_{actual}(t_1, t_2)}{P_{STC} \times \int_{t_1}^{t_2} G(t) \, dt}
-\]
+$$
 
 Jeśli t_1, t_2 różnią się między E i G (różne zegary) → błąd do ±5-10% w PR!
 
@@ -168,7 +168,7 @@ OS scheduler latency:
 - Stosowanie system time() call do timestampów high-frequency – jitter 1-10 ms
 
 **Pytania studenckie**:
-- Q: Czemu nie użyć GPS do synchronizacji (dokładność <100 ns)?
+- Q: Czemu nie użyć GPS do synchronizacji (dokładność &lt;100 ns)?
 - A: MOŻNA (GPS clock modules ~100-500 EUR). Ale: (1) wymaga anteny outdoor (w gondoli OK, w data center NO), (2) GNSS jamming/spoofing risk. W praktyce: GPS dla master, NTP/PTP dystrybuuje do slaves.
 
 - Q: Co to jest "leap second"?
@@ -221,7 +221,7 @@ graph TB
 4. **Obliczenie offset**: θ = [(T2-T1) + (T3-T4)] / 2
 5. **Obliczenie delay**: δ = (T4-T1) - (T3-T2)
 
-**Korekta zegara**: Stepwise (jeśli |θ| >128 ms) lub slew (stopniowa, <128 ms)
+**Korekta zegara**: Stepwise (jeśli |θ| &gt;128 ms) lub slew (stopniowa, &lt;128 ms)
 
 ---
 
@@ -324,7 +324,7 @@ Stratum 3: Sensors, inverters, PLCs (5000+ devices)
 **Szczegóły implementacji:**
 
 **Stratum 1 (NTP servers):**
-- Hardware: 2× Raspberry Pi 4 (redundancja) + GPS HAT (u-blox NEO-M8N, <50 EUR)
+- Hardware: 2× Raspberry Pi 4 (redundancja) + GPS HAT (u-blox NEO-M8N, &lt;50 EUR)
 - OS: Raspberry Pi OS + chrony (modern NTP daemon, lepszy niż ntpd)
 - Config `chrony.conf`:
 ```
@@ -479,7 +479,7 @@ makestep 1 3  # Step if offset >1s in first 3 updates
         "±1 µs (sub-microsecond precision)"
       ],
       correctAnswer: 2,
-      explanation: "Różnica timestampów: 789 - 456 = 333 ms. Aby mieć pewność kolejności, sync uncertainty musi być <333 ms. Opcja (c) ±100 ms daje margin 233 ms → SAFE. Opcja (b) ±500 ms > 333 ms → uncertainty (mogą być reverse!). Opcja (a) za słabe. Opcja (d) overkill (PTP territory)."
+      explanation: "Różnica timestampów: 789 - 456 = 333 ms. Aby mieć pewność kolejności, sync uncertainty musi być &lt;333 ms. Opcja (c) ±100 ms daje margin 233 ms → SAFE. Opcja (b) ±500 ms &gt; 333 ms → uncertainty (mogą być reverse!). Opcja (a) za słabe. Opcja (d) overkill (PTP territory)."
     },
     {
       question: "Co to jest 'leap second' i jak NTP go obsługuje?",
@@ -496,7 +496,7 @@ makestep 1 3  # Step if offset >1s in first 3 updates
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o drift (ppm → s/day conversion), dokładności NTP vs. PTP, i PTP transparent clocks. Zrozumienie tych konceptów jest kluczowe dla projektowania niezawodnych systemów rozproszonych.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o drift (ppm → s/day conversion), dokładności NTP vs. PTP, i PTP transparent clocks. Zrozumienie tych konceptów jest kluczowe dla projektowania niezawodnych systemów rozproszonych.
 :::
 
 </Slide>
@@ -544,7 +544,7 @@ Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o drift (ppm →
 
 **Następne kroki:**
 - Ćwiczenie 9: Konfiguracja chrony/NTP, monitoring z `chronyc tracking`
-- Lab hands-on: Raspberry Pi + GPS HAT → DIY stratum 1 server (<150 EUR)
+- Lab hands-on: Raspberry Pi + GPS HAT → DIY stratum 1 server (&lt;150 EUR)
 - Przygotowanie do następnej sekcji: Podsumowanie całego wykładu 02
 
 ---

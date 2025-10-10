@@ -142,7 +142,7 @@ Po tej sekcji student potrafi:
 | Criterion | InfluxDB | TimescaleDB | VictoriaMetrics |
 |-----------|----------|-------------|-----------------|
 | **Write throughput** | 100k-1M pts/s | 50k-500k pts/s | 500k-5M pts/s |
-| **Cardinality limit** | <1M series | <10M series | <100M series |
+| **Cardinality limit** | &lt;1M series | &lt;10M series | &lt;100M series |
 | **Query language** | Flux (time-series) | SQL (relational) | PromQL (metrics) |
 | **Compression** | 5-10× | 10-20× | 10-70× |
 | **Ecosystem** | Grafana+++, Telegraf | PostgreSQL+++, BI tools | Prometheus+++, K8s |
@@ -272,9 +272,9 @@ measurement,tag_key1=tag_val1,tag_key2=tag_val2 field_key1=field_val1,field_key2
 **Series cardinality** = Number of unique combinations of (measurement, tag_set).
 
 **Formula:**
-\[
+$$
 Cardinality = \prod_{i=1}^{n} |TagValues_i|
-\]
+$$
 
 **Example:**
 ```
@@ -295,7 +295,7 @@ Cardinality = 10 × 20 × 12 = 2,400 series
 
 <SupportingDetails title="📊 Tags vs. Fields decision guide">
 
-### **Rule 1: Tags = LOW cardinality (<1000 unique values per tag)**
+### **Rule 1: Tags = LOW cardinality (&lt;1000 unique values per tag)**
 
 **Good tags:**
 - `farm_id` (10-100 farms)
@@ -406,9 +406,9 @@ measurement=power,
 2. `measurement_id` as tag (should be field lub implied by measurement name)
 
 **Cardinality calculation:**
-\[
+$$
 8.5M = 50 \times 200 \times 2400 \times 712500 \quad \text{(incorrect, but illustrates explosion)}
-\]
+$$
 
 ---
 
@@ -429,9 +429,9 @@ measurement=power,
 - **Remove** `measurement_id` tag (unnecessary duplication)
 
 **New cardinality:**
-\[
+$$
 Cardinality = 50 \times 200 \times 2400 = 24,000 \quad \text{(355× reduction!)}
-\]
+$$
 
 ---
 
@@ -488,7 +488,7 @@ influx -import -path transformed.txt -precision ns
 **Punkty kluczowe**:
 - **"Tags = low cardinality, Fields = values"** mantra
 - **Cardinality = PRODUCT** (multiplicative, exponential growth danger!)
-- **>1M series = performance cliff** (InfluxDB OSS), design dla <500k target
+- **&gt;1M series = performance cliff** (InfluxDB OSS), design dla &lt;500k target
 - **Denormalize** (embed metadata jako tags, no JOINs)
 - **Migration painful** (test schema BEFORE production!)
 
@@ -744,8 +744,8 @@ tail -f /var/log/influxdb/influxdb.log | grep "continuous_querier"
 | **Disaster recovery** | Manual backup | Automated | **Cloud** |
 
 **Recommendation:**
-- **Small farm (<10 MW), limited IT staff**: **Cloud** (managed, no capex)
-- **Medium/large farm (>20 MW), IT team present**: **On-prem** (lower TCO, control)
+- **Small farm (&lt;10 MW), limited IT staff**: **Cloud** (managed, no capex)
+- **Medium/large farm (&gt;20 MW), IT team present**: **On-prem** (lower TCO, control)
 - **Hybrid**: On-prem (primary), cloud (backup/DR)
 
 ---
@@ -875,7 +875,7 @@ tail -f /var/log/influxdb/influxdb.log | grep "continuous_querier"
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80%, przejrzyj: (1) TSDB selection criteria (cardinality limits, query language), (2) Tags vs. Fields (low cardinality = tag, high = field), (3) Cardinality formula (product, nie sum), (4) CQ syntax (RESAMPLE EVERY vs. FOR), (5) TCO context (capex vs. opex, not just total cost).
+Jeśli uzyskałeś &lt;80%, przejrzyj: (1) TSDB selection criteria (cardinality limits, query language), (2) Tags vs. Fields (low cardinality = tag, high = field), (3) Cardinality formula (product, nie sum), (4) CQ syntax (RESAMPLE EVERY vs. FOR), (5) TCO context (capex vs. opex, not just total cost).
 :::
 
 </Slide>
@@ -889,16 +889,16 @@ Jeśli uzyskałeś <80%, przejrzyj: (1) TSDB selection criteria (cardinality lim
 **Kluczowe punkty z tej sekcji:**
 
 **Wybór TSDB**:
-   - **InfluxDB**: Default choice (easiest, best Grafana integration, <1M series)
-   - **TimescaleDB**: High cardinality (>1M series), SQL/JOINs needed
-   - **VictoriaMetrics**: Very large scale (>1000 sites), cost-sensitive (ultra compression)
+   - **InfluxDB**: Default choice (easiest, best Grafana integration, &lt;1M series)
+   - **TimescaleDB**: High cardinality (&gt;1M series), SQL/JOINs needed
+   - **VictoriaMetrics**: Very large scale (&gt;1000 sites), cost-sensitive (ultra compression)
    - **Performance**: TSDB 10-100× faster vs. RDBMS (PostgreSQL, MySQL) dla time-series workload
 
 **Schema design (cardinality optimization)**:
-   - **Tags**: Low cardinality (<1000 unique/tag), indexed (fast filter/group)
+   - **Tags**: Low cardinality (&lt;1000 unique/tag), indexed (fast filter/group)
    - **Fields**: High-variability values, nie indexed (cheaper storage)
    - **Cardinality formula**: PRODUCT (multiplicative) → 50×100×10 = 50k series
-   - **Performance cliff**: InfluxDB >1M series → degradation (design dla <500k target)
+   - **Performance cliff**: InfluxDB &gt;1M series → degradation (design dla &lt;500k target)
    - **Refactoring**: Case study 8.5M → 24k series (355× reduction) = 15× faster queries
 
 **Data lifecycle automation**:

@@ -205,7 +205,7 @@ Definiują strukturę Data Objects:
 
 **Charakterystyka:**
 - **Transport**: Ethernet Layer 2 (nie IP!) → multicast MAC address
-- **Latency**: <4 ms (typowo 1-2 ms w switched network)
+- **Latency**: &lt;4 ms (typowo 1-2 ms w switched network)
 - **Reliability**: Publish-subscribe z retransmissions (adaptive timing)
 - **Data**: Binary (DPS, SPS) lub analog (MV), max ~1500 bytes per message
 - **Frequency**: Event-driven (przy zmianie wartości) + periodic heartbeat (co 1-5 s)
@@ -301,10 +301,10 @@ graph TD
 
 | Requirement | GOOSE | MMS |
 |-------------|-------|-----|
-| **Latency <4 ms** | ✅ YES | ❌ NO (10-100 ms) |
+| **Latency &lt;4 ms** | ✅ YES | ❌ NO (10-100 ms) |
 | **Event-driven** | ✅ Optimized | ⚠️ Polling inefficient |
 | **Configuration** | ❌ NO | ✅ YES |
-| **Large datasets** | ❌ Limited (<1500 bytes) | ✅ YES (multi-message) |
+| **Large datasets** | ❌ Limited (&lt;1500 bytes) | ✅ YES (multi-message) |
 | **Security (TLS)** | ❌ NO (Layer 2) | ✅ YES (TCP → TLS possible) |
 | **Routable (WAN)** | ❌ NO (multicast local only) | ✅ YES (TCP/IP) |
 
@@ -382,14 +382,14 @@ graph LR
 **Czas**: 16-18 min
 
 **Przebieg**:
-1. GOOSE explanation (6 min) – multicast, latency <4 ms, retransmission algorithm
+1. GOOSE explanation (6 min) – multicast, latency &lt;4 ms, retransmission algorithm
 2. MMS explanation (4 min) – client-server, TCP/IP, operations
 3. Decision tree GOOSE vs. MMS (3 min)
 4. Wind farm protection example (4 min) – pokazuje GOOSE w akcji
 5. Q&A (2 min)
 
 **Punkty kluczowe**:
-- **GOOSE = fast (<4 ms), MMS = flexible (10-100 ms)** – różne use cases
+- **GOOSE = fast (&lt;4 ms), MMS = flexible (10-100 ms)** – różne use cases
 - **GOOSE to Layer 2** (multicast Ethernet) → NOT routable przez Internet (local only)
 - **Retransmission algorithm** zapewnia reliability mimo UDP-like behavior
 - **150 wires → 2 fibers** = główna value proposition IEC 61850
@@ -620,7 +620,7 @@ def map_sunspec_to_iec104():
 **Requirements od OSD (PSE Dystrybucja):**
 - Protokół: **IEC 60870-5-104**
 - Update rate: ≥1 per minute (dla mocy), ≥15 min (dla energii)
-- Dostępność: >99.5% (allowed downtime <43h/year)
+- Dostępność: &gt;99.5% (allowed downtime &lt;43h/year)
 - Cybersecurity: Firewall, VPN IPsec, no public IP
 - Time sync: ±1 s (NTP)
 
@@ -738,7 +738,7 @@ server.start()  # Non-blocking
 - Aggregation: Sum power, compute PR (farm-level)
 - IEC 104: 18 data points (required 15 + 3 optional)
 - Deadband: 1% dla mocy (200 kW), 0.5% dla napięcia
-- GI response time: <5 s (all 18 points)
+- GI response time: &lt;5 s (all 18 points)
 
 **Costs (1-year TCO):**
 - CAPEX: 8000 + 2000 + installation 5000 = **€15 000**
@@ -795,7 +795,7 @@ server.start()  # Non-blocking
 - A: MOŻNA, ale uncommon. IEC 104 designed dla telecontrol (long-distance, WAN). Wewnętrznie lepiej: Modbus, OPC UA, IEC 61850 (local).
 
 - Q: Co to redundancja łączy (primary/secondary)?
-- A: 2 połączenia TCP do OSD (różne routes: fiber + LTE). Jeśli primary fail → automatic switchover do secondary (<1 min). IEC 104 ma built-in redundancy support.
+- A: 2 połączenia TCP do OSD (różne routes: fiber + LTE). Jeśli primary fail → automatic switchover do secondary (&lt;1 min). IEC 104 ma built-in redundancy support.
 
 </InstructorNotes>
 
@@ -866,7 +866,7 @@ server.start()  # Non-blocking
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o usługach IEC 61850 (GOOSE vs. MMS), hierarchii obiektów (IED/LD/LN/DO/DA), i IEC 104 structure (COT, deadband). Zrozumienie tych protokołów jest kluczowe dla integracji farm OZE z systemem energetycznym.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o usługach IEC 61850 (GOOSE vs. MMS), hierarchii obiektów (IED/LD/LN/DO/DA), i IEC 104 structure (COT, deadband). Zrozumienie tych protokołów jest kluczowe dla integracji farm OZE z systemem energetycznym.
 :::
 
 </Slide>
@@ -883,7 +883,7 @@ Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o usługach IEC 
 
 2. **Architektura IEC 61850:**
    - **Information Model**: IED → LD → LN → DO → DA (hierarchia semantyczna)
-   - **Services**: GOOSE (<4 ms, protection), MMS (10-100 ms, monitoring), SV (<1 ms, waveforms)
+   - **Services**: GOOSE (&lt;4 ms, protection), MMS (10-100 ms, monitoring), SV (&lt;1 ms, waveforms)
    - **Network**: Ethernet, redundancja (PRP/HSR)
 
 3. **Logical Nodes (LN)** to semantic building blocks:

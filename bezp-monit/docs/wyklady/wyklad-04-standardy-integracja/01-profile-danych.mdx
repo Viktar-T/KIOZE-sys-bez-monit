@@ -543,9 +543,9 @@ Przykład: `WROT.RotSpd` (Rotor Speed)
 | **Safety** | `BESS.Contactors_Status`, `BESS.Isolation_Resistance`, `BESS.Smoke_Detected` | — / MΩ / BOOL | CRITICAL | 1 s |
 
 **Thermal runaway indicators (MUST monitor):**
-- ΔT_max (max cell temp difference): Threshold <5°C (normal), >10°C (WARNING), >15°C (ALARM → shutdown)
+- ΔT_max (max cell temp difference): Threshold &lt;5°C (normal), >10°C (WARNING), >15°C (ALARM → shutdown)
 - dT/dt (rate of temperature rise): >5°C/min → immediate shutdown
-- V_cell_min divergence: Jeśli 1 cell <2.5 V (others ~3.7 V) → fault
+- V_cell_min divergence: Jeśli 1 cell &lt;2.5 V (others ~3.7 V) → fault
 
 </KeyPoints>
 
@@ -764,7 +764,7 @@ Grid:
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o SunSpec (Modbus register maps), IEC 61400-25 (Logical Nodes), i mixed units problem. Zrozumienie standaryzacji danych jest fundamentem interoperacyjnych systemów OZE.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o SunSpec (Modbus register maps), IEC 61400-25 (Logical Nodes), i mixed units problem. Zrozumienie standaryzacji danych jest fundamentem interoperacyjnych systemów OZE.
 :::
 
 </Slide>

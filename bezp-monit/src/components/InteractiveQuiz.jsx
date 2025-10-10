@@ -135,5 +135,34 @@ export function TabbedContent({ tabs }) {
   );
 }
 
+/**
+ * InteractiveQuiz Component
+ * 
+ * Displays multiple quiz questions in sequence
+ * 
+ * @param {array} questions - Array of question objects with {question, options, correctAnswer, explanation}
+ */
+export function InteractiveQuiz({ questions }) {
+  if (!questions || !Array.isArray(questions)) {
+    return <div>Error: questions prop must be an array</div>;
+  }
+
+  return (
+    <div className="interactive-quiz-container">
+      {questions.map((q, index) => (
+        <div key={index} style={{ marginBottom: '2rem' }}>
+          <h5>Pytanie {index + 1}/{questions.length}</h5>
+          <MultipleChoiceQuiz
+            question={q.question}
+            options={q.options}
+            correctAnswer={q.correctAnswer}
+            explanation={q.explanation}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Default export for backwards compatibility
 export default MultipleChoiceQuiz;

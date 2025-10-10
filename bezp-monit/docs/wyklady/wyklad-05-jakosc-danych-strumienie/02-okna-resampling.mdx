@@ -46,9 +46,9 @@ Po tej sekcji student potrafi:
 **1. Rectangular Window (prostokątny, "box average")**
 
 **Formula (moving average):**
-\[
+$$
 y_{smoothed}(t) = \frac{1}{N} \sum_{i=0}^{N-1} x(t - i)
-\]
+$$
 
 Gdzie:
 - N: Window size (liczba próbek)
@@ -79,9 +79,9 @@ df['P_AC_smooth'] = df['P_AC'].rolling(window=60, center=False).mean()
 **2. Hanning Window (weighted, smooth tapering)**
 
 **Formula:**
-\[
+$$
 w(n) = 0.5 \left(1 - \cos\left(\frac{2\pi n}{N-1}\right)\right), \quad n=0,1,\ldots,N-1
-\]
+$$
 
 **Charakterystyka**:
 - **Weights taper** (points na końcach okna mają mniejszą wagę → smooth transition)
@@ -109,9 +109,9 @@ signal_smooth = convolve(signal, window, mode='same')
 **3. Hamming Window (variant of Hanning, slightly different weights)**
 
 **Formula:**
-\[
+$$
 w(n) = 0.54 - 0.46 \cos\left(\frac{2\pi n}{N-1}\right)
-\]
+$$
 
 **Różnica vs. Hanning**: Slightly higher sidelobes, but better mainlobe (trade-off)
 
@@ -122,9 +122,9 @@ w(n) = 0.54 - 0.46 \cos\left(\frac{2\pi n}{N-1}\right)
 **4. Exponential Weighted Moving Average (EWMA) – adaptive**
 
 **Formula:**
-\[
+$$
 y(t) = \alpha \cdot x(t) + (1-\alpha) \cdot y(t-1)
-\]
+$$
 
 Gdzie:
 - α: Smoothing factor (0 < α < 1)
@@ -152,7 +152,7 @@ df['P_AC_ewma'] = df['P_AC'].ewm(alpha=0.1, adjust=False).mean()
 
 - **Time constant**: τ ~ 1-10 min (clouds → irradiance change → power response)
 - **Window size**: 1-5 min (60-300 s)
-- **Rationale**: Noise high-frequency (1-10 Hz), signal low-frequency (<0.1 Hz) → large window OK
+- **Rationale**: Noise high-frequency (1-10 Hz), signal low-frequency (&lt;0.1 Hz) → large window OK
 
 **Przykład: PV power smoothing**
 ```python
@@ -211,7 +211,7 @@ df['Gust_alarm'] = df['Wind'] > 25  # m/s threshold, raw data
 1. PR calculated every 1 s (real-time)
 2. G_POA noise: σ = ±15 W/m² (±1.5% @ 1000 W/m²)
 3. P_AC noise: σ = ±50 kW (±0.5% @ 10 MW)
-4. Combined: PR noise σ ≈ ±2% → PR fluctuates 80% ± 2% → frequent dips <75%
+4. Combined: PR noise σ ≈ ±2% → PR fluctuates 80% ± 2% → frequent dips &lt;75%
 
 **Solution options:**
 
@@ -239,7 +239,7 @@ PR_5min = PR_5min['E_actual'] / PR_5min['E_expected']
 **Final tuning:**
 - Alarm threshold: 75% (unchanged, proper level)
 - Window: 5 min dla alarming, 1 s preserved dla trending (dashboard shows both)
-- **Additional rule**: Alarm ONLY if PR <75% persists for **2 consecutive windows** (10 min total) → further reduces transient FP
+- **Additional rule**: Alarm ONLY if PR &lt;75% persists for **2 consecutive windows** (10 min total) → further reduces transient FP
 
 **Result (post-deployment, 1 month):**
 - FP rate: **0.5/day** (1 w 2 dni, mostly legitimate borderline cases)
@@ -340,10 +340,10 @@ df_1min = df_1Hz.resample('1T').agg({
 
 | Function | Use Case | Formula | Example |
 |----------|----------|---------|---------|
-| **mean** | Average (power, voltage, current, temps) | \( \bar{x} = \frac{1}{N}\sum x_i \) | P_AC_1min = mean(P_AC_1Hz, 60 samples) |
-| **max** | Peak values (Gmax dla irradiance, wind gusts) | \( x_{max} = \max(x_i) \) | G_max_15min = max(G_POA_1Hz) |
-| **min** | Minimum (SoC_min, voltage sags) | \( x_{min} = \min(x_i) \) | U_min_1min = min(U_grid_1Hz) |
-| **sum** | Totals (energy, fault counts, event counts) | \( S = \sum x_i \) | E_15min = sum(P_AC_1Hz) × Δt |
+| **mean** | Average (power, voltage, current, temps) | $ \bar{x} = \frac{1}{N}\sum x_i $ | P_AC_1min = mean(P_AC_1Hz, 60 samples) |
+| **max** | Peak values (Gmax dla irradiance, wind gusts) | $ x_{max} = \max(x_i) $ | G_max_15min = max(G_POA_1Hz) |
+| **min** | Minimum (SoC_min, voltage sags) | $ x_{min} = \min(x_i) $ | U_min_1min = min(U_grid_1Hz) |
+| **sum** | Totals (energy, fault counts, event counts) | $ S = \sum x_i $ | E_15min = sum(P_AC_1Hz) × Δt |
 | **p95** (percentile 95%) | Robust max (excludes outliers) | 95th percentile | P95_power = quantile(P_AC, 0.95) |
 | **last** | Cumulative counters (energy total, state) | Last value in interval | E_total_end = last(E_total) |
 
@@ -728,8 +728,8 @@ def query_power(start, end, farm_id):
 | **DAILY** | 86400 s | 81.95% | -0.55% | 122 kB | Significant error (too coarse) ❌ |
 
 **Findings:**
-- **1-MIN aggregation**: Virtually identical to raw (<0.01% error) → **RECOMMENDED minimum dla KPI**
-- **15-MIN**: Standard dla grid telemetry (OSD compliance), error <0.05% → **ACCEPTABLE dla billing/reporting**
+- **1-MIN aggregation**: Virtually identical to raw (&lt;0.01% error) → **RECOMMENDED minimum dla KPI**
+- **15-MIN**: Standard dla grid telemetry (OSD compliance), error &lt;0.05% → **ACCEPTABLE dla billing/reporting**
 - **HOURLY**: Smoothing introduces bias (-0.12%) → OK dla trending, **NOT for billing**
 - **DAILY**: Too coarse (-0.55% error, misses intra-day variability) → **Archival only**
 
@@ -845,7 +845,7 @@ def query_power(start, end, farm_id):
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80%, przejrzyj: (1) Noise reduction √N (CLT), (2) Aggregation functions (mean vs. max, context-dependent), (3) Retention tier selection (query optimization). Windowing i downsampling to core skills data engineeringu.
+Jeśli uzyskałeś &lt;80%, przejrzyj: (1) Noise reduction √N (CLT), (2) Aggregation functions (mean vs. max, context-dependent), (3) Retention tier selection (query optimization). Windowing i downsampling to core skills data engineeringu.
 :::
 
 </Slide>
@@ -878,7 +878,7 @@ Jeśli uzyskałeś <80%, przejrzyj: (1) Noise reduction √N (CLT), (2) Aggregat
 **Best practices**:
    - **Separate windows** dla alarming (small, fast) vs. KPI (large, stable)
    - **15-min minimum** dla long-term compliance (grid telemetry standard)
-   - **Test aggregation accuracy** before deploying retention (PR error <0.05% target)
+   - **Test aggregation accuracy** before deploying retention (PR error &lt;0.05% target)
 
 **Następne kroki:**
 - Ćwiczenie: Implement retention cascade (InfluxDB config)

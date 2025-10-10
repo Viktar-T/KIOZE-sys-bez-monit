@@ -166,8 +166,8 @@ Stosować tylko do szybkiego monitoringu lub tam, gdzie budżet &lt;500 EUR. Dla
 
 **Weryfikacja terenowa (co 1-6 miesięcy):**
 - Porównanie z drugim pyranometrem (mobilny standard)
-- Sprawdzenie zeroing w nocy (offset <±5 W/m²)
-- Test spójności: korelacja z satelitarnymi danymi (CAMS, SolarGIS) – różnica <±5% w skali miesiąca
+- Sprawdzenie zeroing w nocy (offset &lt;±5 W/m²)
+- Test spójności: korelacja z satelitarnymi danymi (CAMS, SolarGIS) – różnica &lt;±5% w skali miesiąca
 
 :::tip Dobra praktyka
 W farmach &gt;1 MWp stosuje się **2 pyranometry POA** (różne lokalizacje) + 1 GHI. Redundancja + możliwość wykrycia dryftu/uszkodzenia przez porównanie. Koszt dodatkowy ~1500 EUR, ale eliminuje ryzyko nieświadomego błędu przez miesiące.
@@ -291,16 +291,16 @@ Ramka aluminiowa ma inną temperaturę niż ogniwo (~5-10°C chłodniejsza w sł
 
 **Formuła PR z kompensacją:**
 
-\[
+$$
 PR = \frac{E_{actual}}{E_{expected}} = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA}}{1000} \times [1 + \gamma (T_{mod} - 25)]}
-\]
+$$
 
 Gdzie:
-- \(E_{actual}\) – rzeczywista energia wyprodukowana [kWh]
-- \(P_{STC}\) – moc nominalna w STC [kWp]
-- \(G_{POA}\) – irradiancja w płaszczyźnie modułów [W/m²]
-- \(\gamma\) – współczynnik temperaturowy mocy [%/°C], typowo -0.35 do -0.50%/°C
-- \(T_{mod}\) – zmierzona temperatura modułów [°C]
+- $E_{actual}$ – rzeczywista energia wyprodukowana [kWh]
+- $P_{STC}$ – moc nominalna w STC [kWp]
+- $G_{POA}$ – irradiancja w płaszczyźnie modułów [W/m²]
+- $\gamma$ – współczynnik temperaturowy mocy [%/°C], typowo -0.35 do -0.50%/°C
+- $T_{mod}$ – zmierzona temperatura modułów [°C]
 
 **Przykład numeryczny (godzina w południe, lipiec)**:
 - Instalacja: 100 kWp, moduły z γ = -0.40%/°C
@@ -309,24 +309,24 @@ Gdzie:
 - E_actual = 85 kWh (zmierzone w ciągu godziny)
 
 **Obliczenie E_expected:**
-\[
+$$
 E_{expected} = 100 \times \frac{950}{1000} \times [1 + (-0.004) \times (55 - 25)] = 100 \times 0.95 \times 0.88 = 83.6 \text{ kWh}
-\]
+$$
 
 **PR:**
-\[
+$$
 PR = \frac{85}{83.6} = 1.017 \text{ czyli } 101.7\%
-\]
+$$
 
 **Interpretacja**: System działa lekko lepiej niż oczekiwano (możliwe przyczyny: nowsze moduły mają lepszy γ, dobra wentylacja). PR &gt;100% jest możliwe w krótkich okresach (np. niskie temperatury powietrza + wysokie G).
 
 **Gdyby NIE uwzględnić temperatury** (założenie T_mod = 25°C):
-\[
+$$
 E_{expected, no\_comp} = 100 \times 0.95 = 95 \text{ kWh}
-\]
-\[
+$$
+$$
 PR_{no\_comp} = \frac{85}{95} = 0.895 \text{ czyli } 89.5\%
-\]
+$$
 
 **Różnica: 12 punktów procentowych!** Brak kompensacji termicznej radykalnie zniekształca PR, szczególnie latem.
 
@@ -480,14 +480,14 @@ Zainstalowano pyranometr First Class (Kipp & Zonen CMP11) obok istniejącego krz
 ### Faza 3: Przeliczenie PR z poprawnymi danymi
 
 **PR z pyranometrem krzemowym (błędne)**:
-\[
+$$
 PR = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA, krem}}{1000}} \approx 0.73
-\]
+$$
 
 **PR z pyranometrem termopilowym (poprawne)**:
-\[
+$$
 PR = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA, termo}}{1000}} \approx 0.84
-\]
+$$
 
 **Wynik**: System działał PRAWIDŁOWO! Problem był w pomiarze, nie w instalacji PV.
 

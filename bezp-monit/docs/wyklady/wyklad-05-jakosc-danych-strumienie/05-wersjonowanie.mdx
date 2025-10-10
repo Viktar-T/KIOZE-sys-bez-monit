@@ -73,7 +73,7 @@ Po tej sekcji student potrafi:
 - Catch errors early (typo in query, wrong threshold) → prevent production issues
 
 **5. Disaster recovery (DR)**
-- Server crash → `git clone` + redeploy → **RTO <30 min** (vs. days manual rebuild)
+- Server crash → `git clone` + redeploy → **RTO &lt;30 min** (vs. days manual rebuild)
 - Backup = Git repo (distributed, multiple copies: GitHub, GitLab, on-prem)
 
 **6. Multi-environment consistency**
@@ -675,8 +675,8 @@ echo "✅ Deployed to staging: http://staging-server:3000"
 **Scenario**: Grafana server hardware failure (disk crash), complete data loss.
 
 **Recovery objectives:**
-- **RTO (Recovery Time Objective)**: <30 min (max downtime tolerable)
-- **RPO (Recovery Point Objective)**: <15 min (max data loss tolerable)
+- **RTO (Recovery Time Objective)**: &lt;30 min (max downtime tolerable)
+- **RPO (Recovery Point Objective)**: &lt;15 min (max data loss tolerable)
 
 ---
 
@@ -759,7 +759,7 @@ influx -execute 'SHOW DATABASES'
   # Primary InfluxDB → Replica (async replication, <1 min lag)
   influx -execute 'CREATE SUBSCRIPTION "replica" ON "solar_farm"."raw_7d" DESTINATIONS ALL "http://influxdb-replica:8086"'
   ```
-- **With replication**: RPO = **<1 min** (acceptable!)
+- **With replication**: RPO = **&lt;1 min** (acceptable!)
 
 ---
 
@@ -779,7 +779,7 @@ influx -execute 'SHOW DATABASES'
 
 **Final RTO/RPO (after improvements):**
 - **RTO**: 20 min (automation improvements, -10 min)
-- **RPO**: <1 min (continuous replication, -119 min)
+- **RPO**: &lt;1 min (continuous replication, -119 min)
 
 </Example>
 
@@ -798,7 +798,7 @@ influx -execute 'SHOW DATABASES'
 - **CI = automated gatekeeper** (catch errors before deploy)
 - **Regression tests** (KPI calculations) critical (prevent silent bugs)
 - **Staging environment** mandatory (test before production)
-- **DR from Git** = fast recovery (RTO <30 min achievable)
+- **DR from Git** = fast recovery (RTO &lt;30 min achievable)
 - **RPO vs. RTO** trade-off (continuous replication expensive, backup lag cheaper)
 
 **Demonstracja praktyczna**:
@@ -898,7 +898,7 @@ influx -execute 'SHOW DATABASES'
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80%, przejrzyj: (1) Secrets management (NOT in Git, use Vault), (2) Code review workflow (request changes → fix → merge), (3) CI blocking (failure = no merge), (4) RTO/RPO definitions (time to restore vs. data loss), (5) Regression tests (catch logic bugs, nie just syntax).
+Jeśli uzyskałeś &lt;80%, przejrzyj: (1) Secrets management (NOT in Git, use Vault), (2) Code review workflow (request changes → fix → merge), (3) CI blocking (failure = no merge), (4) RTO/RPO definitions (time to restore vs. data loss), (5) Regression tests (catch logic bugs, nie just syntax).
 :::
 
 </Slide>
@@ -913,7 +913,7 @@ Jeśli uzyskałeś <80%, przejrzyj: (1) Secrets management (NOT in Git, use Vaul
 
 **Configuration as Code (wersjonowanie obowiązkowe)**:
    - Git = single source of truth (wszystkie configs, pełna historia)
-   - Benefits: Reprodukowalność, audyt, rollback, DR (<30 min RTO)
+   - Benefits: Reprodukowalność, audyt, rollback, DR (&lt;30 min RTO)
    - Zakres: Monitoring configs, infrastructure (IaC), docs (NOT secrets!)
 
 **Git workflow (branches + code review)**:
@@ -927,8 +927,8 @@ Jeśli uzyskałeś <80%, przejrzyj: (1) Secrets management (NOT in Git, use Vaul
    - Regression tests critical (KPI calculations, nie tylko syntax)
 
 **Disaster recovery (Git = backup)**:
-   - Restore procedure: Clone Git → deploy → RTO <30 min (achievable)
-   - RPO <15 min: Continuous InfluxDB replication (vs. periodic backups)
+   - Restore procedure: Clone Git → deploy → RTO &lt;30 min (achievable)
+   - RPO &lt;15 min: Continuous InfluxDB replication (vs. periodic backups)
    - DR rehearsal quarterly (test procedure, improve RTO/RPO)
 
 **Następne kroki:**

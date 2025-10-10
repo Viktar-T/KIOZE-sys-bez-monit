@@ -217,7 +217,7 @@ Oznacza: z 95% prawdopodobieństwem prawdziwa wartość T ∈ [39.7, 40.3] °C
 **A) Bump test (co 1-3 miesiące):**
 - Gaz testowy: np. 50 ppm H₂S w N₂ balance
 - Adapter flow cap na czujnik, przepływ 0.5 L/min, czas 60 s
-- **Akceptacja**: Odczyt 45-55 ppm (±10%), czas reakcji <30 s, return to zero <60 s
+- **Akceptacja**: Odczyt 45-55 ppm (±10%), czas reakcji &lt;30 s, return to zero &lt;60 s
 - **FAIL**: Wymiana czujnika
 
 **B) Full calibration (co 12 miesięcy):**
@@ -227,9 +227,9 @@ Oznacza: z 95% prawdopodobieństwem prawdziwa wartość T ∈ [39.7, 40.3] °C
 4. **Dokumentacja**: Data, nr butli, wyniki, next cal due date
 
 **Kryterium akceptacji:**
-- Odchylenie zera: <5 ppm
-- Odchylenie span: <±5% (50 ppm: 47.5-52.5 ppm)
-- Linearność w mid-range: <±10%
+- Odchylenie zera: &lt;5 ppm
+- Odchylenie span: &lt;±5% (50 ppm: 47.5-52.5 ppm)
+- Linearność w mid-range: &lt;±10%
 
 **Interwał:** 
 - Bump test: co 1-3 miesiące
@@ -257,9 +257,9 @@ Oznacza: z 95% prawdopodobieństwem prawdziwa wartość T ∈ [39.7, 40.3] °C
 5. Obliczenie: linearity error, hysteresis, repeatability
 
 **Kryterium akceptacji:**
-- Błąd liniowości: <±0.5% FS (dla klasy 0.5)
-- Histereza: <±0.2% FS
-- Powtarzalność: <±0.1% FS
+- Błąd liniowości: &lt;±0.5% FS (dla klasy 0.5)
+- Histereza: &lt;±0.2% FS
+- Powtarzalność: &lt;±0.1% FS
 
 **Interwał:** Co 2 lata (przemysłowe), rocznie (safety-critical)
 
@@ -293,7 +293,7 @@ Oznacza: z 95% prawdopodobieństwem prawdziwa wartość T ∈ [39.7, 40.3] °C
 ### Dobra praktyka: Risk-Based Calibration Intervals
 
 Zamiast fixed intervals → **dynamiczne dostosowywanie** na podstawie:
-1. **Trend dryftu**: Jeśli ostatnie 3 kalibracje pokazały <1% drift → wydłuż interwał o 50%
+1. **Trend dryftu**: Jeśli ostatnie 3 kalibracje pokazały &lt;1% drift → wydłuż interwał o 50%
 2. **Warunki eksploatacji**: Jeśli środowisko mniej agresywne niż zakładano → wydłuż
 3. **Redundancja**: Jeśli masz 2 czujniki (primary + backup) → primary częściej, backup rzadziej
 
@@ -374,7 +374,7 @@ graph TD
 
 ### Audyt kalibracji (przykład checklist):
 
-✅ Wszystkie czujniki mają aktualne certyfikaty (<interwał)  
+✅ Wszystkie czujniki mają aktualne certyfikaty (&lt;interwał)  
 ✅ Certyfikaty zawierają traceability statement  
 ✅ CMMS zawiera pełną historię (min. 5 lat wstecz)  
 ✅ Procedury kalibracji zgodne z ISO/IEC 17025  
@@ -442,17 +442,17 @@ graph TD
 
 Zdefiniuj równanie pomiaru:
 
-\[
+$$
 Y = f(X_1, X_2, ..., X_N)
-\]
+$$
 
 Gdzie Y to wielkość mierzona (measurand), X₁...Xₙ to wielkości wejściowe.
 
 **Przykład (Performance Ratio):**
 
-\[
+$$
 PR = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA}}{1000} \times [1 + \gamma (T_{mod} - 25)]}
-\]
+$$
 
 Wielkości wejściowe: E_actual, P_STC, G_POA, T_mod, γ
 
@@ -472,45 +472,45 @@ Dla każdej wielkości wejściowej Xᵢ określ:
 
 Dla każdej Xᵢ:
 
-\[
+$$
 u(X_i) = \sqrt{u_A^2 + u_{B1}^2 + u_{B2}^2 + ...}
-\]
+$$
 
 **Przykład G_POA:**
 
-\[
+$$
 u(G_{POA}) = \sqrt{2^2 + 10^2 + 0.5^2 + 5^2} = \sqrt{4 + 100 + 0.25 + 25} = \sqrt{129.25} = 11.4 \text{ W/m}^2
-\]
+$$
 
 **Krok 4: Propagacja niepewności (prawo propagacji)**
 
-\[
+$$
 u_c(Y) = \sqrt{\sum_{i=1}^{N} \left( \frac{\partial f}{\partial X_i} \right)^2 u^2(X_i)}
-\]
+$$
 
-Współczynniki wrażliwości: \( c_i = \frac{\partial f}{\partial X_i} \)
+Współczynniki wrażliwości: $c_i = \frac{\partial f}{\partial X_i}$
 
 **Dla PR (uproszczony przykład):**
 
-\[
+$$
 \frac{\partial PR}{\partial G_{POA}} = \frac{-E_{actual}}{P_{STC} \times G_{POA}^2 \times ...}
-\]
+$$
 
 (W praktyce: używamy numerical differentiation lub software – GUM Workbench, Python `uncertainties` library)
 
 **Krok 5: Niepewność rozszerzona**
 
-\[
+$$
 U = k \times u_c(Y)
-\]
+$$
 
 Typowo k=2 (95% confidence level, rozkład normalny)
 
 **Wynik końcowy:**
 
-\[
+$$
 PR = 0.82 \pm 0.03 \quad (U, k=2)
-\]
+$$
 
 Oznacza: Z 95% prawdopodobieństwem prawdziwe PR ∈ [0.79, 0.85]
 
@@ -537,13 +537,13 @@ Oznacza: Z 95% prawdopodobieństwem prawdziwe PR ∈ [0.79, 0.85]
 
 **Obliczenie PR:**
 
-\[
+$$
 PR = \frac{850}{1000 \times \frac{950}{1000} \times [1 + (-0.004) \times (55 - 25)]}
-\]
+$$
 
-\[
+$$
 = \frac{850}{1000 \times 0.95 \times 0.88} = \frac{850}{836} = 1.017
-\]
+$$
 
 **Propagacja niepewności (symplifikacja – używamy wzorów):**
 
@@ -557,21 +557,21 @@ Wkłady poszczególnych źródeł do u_c(PR)²:
 
 **Suma (root sum of squares):**
 
-\[
+$$
 u_c(PR) = \sqrt{8.94 + 25.8 + 65.5 + 49 + 16} \times 10^{-6} = \sqrt{165.2} \times 10^{-6} = 0.0129
-\]
+$$
 
 **Niepewność rozszerzona (k=2):**
 
-\[
+$$
 U(PR) = 2 \times 0.0129 = 0.026 \approx 0.03
-\]
+$$
 
 **Wynik końcowy:**
 
-\[
+$$
 \boxed{PR = 1.02 \pm 0.03 \quad (U, k=2, 95\% \text{ CL})}
-\]
+$$
 
 **Interpretacja:**
 - Niepewność względna: 0.03 / 1.02 = **2.9%**
@@ -655,13 +655,13 @@ U(PR) = 2 \times 0.0129 = 0.026 \approx 0.03
     {
       question: "Czujnik H₂S przeszedł bump test (50 ppm gaz → odczyt 48 ppm, czas reakcji 25s). Czy czujnik PASS?",
       options: [
-        "PASS – odczyt w tolerancji ±10% (45-55 ppm) i czas reakcji <30s",
+        "PASS – odczyt w tolerancji ±10% (45-55 ppm) i czas reakcji &lt;30s",
         "FAIL – odczyt poniżej 50 ppm (niedokładny)",
         "PASS, ale wymaga adjustment (re-span do 50 ppm)",
         "Nie można ocenić bez full calibration (zero + span)"
       ],
       correctAnswer: 0,
-      explanation: "Bump test acceptance criteria: Odczyt ±10% (50 ppm: 45-55 ppm ✓), czas reakcji <30 s (25 s ✓), return to zero <60 s. 48 ppm jest w tolerancji → PASS. Bump test to functional check, nie wymaga adjustment."
+      explanation: "Bump test acceptance criteria: Odczyt ±10% (50 ppm: 45-55 ppm ✓), czas reakcji &lt;30 s (25 s ✓), return to zero &lt;60 s. 48 ppm jest w tolerancji → PASS. Bump test to functional check, nie wymaga adjustment."
     },
     {
       question: "Obliczanie niepewności złożonej u_c z kilku źródeł (u1=3, u2=4, u3=5). Jaki jest u_c?",
@@ -689,7 +689,7 @@ U(PR) = 2 \times 0.0129 = 0.026 \approx 0.03
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o traceability, obliczaniu niepewności (RSS) i procedurach kalibracji (bump test vs. full calibration). Zrozumienie tych pojęć jest fundamentem metrologii przemysłowej.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o traceability, obliczaniu niepewności (RSS) i procedurach kalibracji (bump test vs. full calibration). Zrozumienie tych pojęć jest fundamentem metrologii przemysłowej.
 :::
 
 </Slide>

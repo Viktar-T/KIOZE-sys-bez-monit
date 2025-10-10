@@ -190,13 +190,13 @@ graph LR
 
 **Aby prawidłowo zrekonstruować sygnał o maksymalnej częstotliwości f_max, częstotliwość próbkowania musi wynosić:**
 
-\[
+$$
 f_{sample} \geq 2 \times f_{max} \quad \text{(Nyquist rate)}
-\]
+$$
 
 **W praktyce: f_sample ≥ 2.5-5 × f_max** (zapas na nieperfektne filtry)
 
-**Co się dzieje jeśli f_sample < 2 × f_max?**
+**Co się dzieje jeśli f_sample &lt; 2 × f_max?**
 
 **Aliasing** – wysokie częstotliwości "zawijają się" (fold back) i pojawiają jako fałszywe niskie częstotliwości.
 
@@ -209,9 +209,9 @@ ADC "widzi" sygnał 100 Hz zamiast 900 Hz → **niemożliwe do odzyskania po pr�
 
 **Rozwiązanie: Filtr antyaliasing (analogowy LP przed ADC)**
 
-\[
+$$
 f_{cutoff} = \frac{f_{sample}}{2.5} \quad \text{do} \quad \frac{f_{sample}}{5}
-\]
+$$
 
 **Przykład (monitoring wibracji):**
 - Interesujące pasmo: 10 Hz - 5 kHz (BPFO, mesh freq)
@@ -250,7 +250,7 @@ Vin --/\/\/\--+--/\/\/\--+-- Vout
 
 **Dobór elementów (dla f_c = 6 kHz):**
 
-Wzór: \( f_c = \frac{1}{2\pi \sqrt{R_1 R_2 C_1 C_2}} \)
+Wzór: $f_c = \frac{1}{2\pi \sqrt{R_1 R_2 C_1 C_2}}$
 
 Standardowe wartości (dla equal-component Sallen-Key):
 - R1 = R2 = 2.7 kΩ
@@ -260,7 +260,7 @@ Standardowe wartości (dla equal-component Sallen-Key):
 **Op-amp requirements:**
 - Bandwidth (GBW): >10× f_c = 60 kHz (typowy op-amp: 1-10 MHz → OK)
 - Slew rate: >1 V/µs
-- Low noise: <10 nV/√Hz
+- Low noise: &lt;10 nV/√Hz
 - Przykład: TL072, OPA2134, AD8610
 
 ### Weryfikacja filtru (測試):
@@ -275,7 +275,7 @@ Standardowe wartości (dla equal-component Sallen-Key):
 **Test aliasing:**
 1. Podaj sygnał f = 15 kHz (= f_sample)
 2. Bez filtru: ADC widzi alias @ 0 Hz (DC)
-3. Z filtrem: ADC widzi <0.001× amplitudy (-60 dB) → neglectable
+3. Z filtrem: ADC widzi &lt;0.001× amplitudy (-60 dB) → neglectable
 
 </SupportingDetails>
 
@@ -321,7 +321,7 @@ Po instalacji:
 - Czas instalacji: 2h
 - **Benefit**: Wiarygodne dane, uniknięto false alarm (koszt interwencji serwisowej: ~5000 EUR)
 
-**Lekcja:** Antyaliasing to MUST, nie "nice to have". Koszt filtru << koszt błędnej diagnozy.
+**Lekcja:** Antyaliasing to MUST, nie "nice to have". Koszt filtru &lt;&lt; koszt błędnej diagnozy.
 
 </Example>
 
@@ -462,7 +462,7 @@ graph LR
 **Zasada:** Przewód ekranowany (shielded cable) – metalowy oplot wokół żył sygnałowych
 
 **Topologie:**
-- **Ekran uziemiony jednostronnie** (sensor end): Dla f <1 MHz, długość <100 m
+- **Ekran uziemiony jednostronnie** (sensor end): Dla f &lt;1 MHz, długość &lt;100 m
 - **Ekran uziemiony obustronnie** (both ends): Dla f >1 MHz (high-frequency EMI)
 - **Ekran floating** (nie podłączony): NIE STOSOWAĆ (shield działa jak antena!)
 
@@ -544,8 +544,8 @@ Fermenter (Ground A) --[PT1000 signal]-- PLC (Ground B)
 
 **Wnioski:**
 - Izolacja galwaniczna to **najszybsze i najbardziej niezawodne** rozwiązanie
-- Koszt 180 EUR << koszt false alarms (interwencje serwisowe niepotrzebne: ~500 EUR każda)
-- **ROI: <1 miesiąc**
+- Koszt 180 EUR &lt;&lt; koszt false alarms (interwencje serwisowe niepotrzebne: ~500 EUR każda)
+- **ROI: &lt;1 miesiąc**
 
 </Example>
 
@@ -657,7 +657,7 @@ Fermenter (Ground A) --[PT1000 signal]-- PLC (Ground B)
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (aliasing), ground loops i różnicy między 4-20 mA vs. 0-10 V. Zrozumienie kondycjonowania sygnałów jest fundamentem wiarygodnego monitoringu w środowisku przemysłowym.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (aliasing), ground loops i różnicy między 4-20 mA vs. 0-10 V. Zrozumienie kondycjonowania sygnałów jest fundamentem wiarygodnego monitoringu w środowisku przemysłowym.
 :::
 
 </Slide>

@@ -335,13 +335,13 @@ related = df[(df['timestamp'] >= trigger_time) &
 | **MTBF** | Mean Time Between Failures | &gt;2000 h | Failure log | Quarterly |
 | **MTTR** | Mean Time To Repair | &lt;24 h | Incident log | Quarterly |
 | **Revenue** | E_export × Price | Variable | Billing data | Monthly |
-| **O&M costs** | Maintenance + Repairs | <€15/kWp/year | Invoice data | Monthly |
+| **O&M costs** | Maintenance + Repairs | &lt;€15/kWp/year | Invoice data | Monthly |
 
 **Przykład PR calculation (IEC 61724):**
 
-\[
+$$
 PR = \frac{E_{actual}}{E_{reference}} = \frac{E_{actual}}{P_{rated} \times \sum \frac{G_{POA}}{G_{STC}} \times [1 + \gamma (T_{mod} - T_{STC})]}
-\]
+$$
 
 Gdzie:
 - E_actual: Rzeczywista energia (MWh, z licznika)

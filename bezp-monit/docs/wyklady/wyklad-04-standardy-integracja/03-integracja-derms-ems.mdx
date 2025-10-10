@@ -230,7 +230,7 @@ graph TB
 
 **Pytania studenckie**:
 - Q: Czy każda farma PV potrzebuje EMS?
-- A: NIE. Małe farmy (<1 MW, bez BESS): Basic monitoring wystarczy. EMS sensowny dla: (1) Hybrid PV+BESS, (2) Demand response participation, (3) Complex tariffs (TOU – Time of Use). Koszt EMS: €10-50k, ROI zależy od business case.
+- A: NIE. Małe farmy (&lt;1 MW, bez BESS): Basic monitoring wystarczy. EMS sensowny dla: (1) Hybrid PV+BESS, (2) Demand response participation, (3) Complex tariffs (TOU – Time of Use). Koszt EMS: €10-50k, ROI zależy od business case.
 
 - Q: Co to prequalification dla VPP (TSO services)?
 - A: TSO wymaga proof że VPP może deliver (testy performance: ramp rates, availability, telemetry). Proces: 3-12 miesięcy, koszty €50-200k (technical documentation, tests). Bez prequalification: NO market access.
@@ -356,10 +356,10 @@ telemetry/SITE_123/site/AGGR/total_power         → 1750.0 (kW, PV+BESS)
 
 | Flow | Protocol | Frequency | Latency target | Example |
 |------|----------|-----------|----------------|---------|
-| **TSO → VPP** | IEC 104, IEC 61850 | On-demand (aFRR activation) | <5 s | "Increase +10 MW" |
-| **VPP → DERMS** | REST API (POST setpoint) | Minutes (optimization cycle) | <30 s | Portfolio distribution |
-| **DERMS → EMS** | MQTT (pub), REST (sync) | Seconds-minutes | <10 s | Site-level setpoints |
-| **EMS → Assets** | Modbus, SunSpec, CAN | Milliseconds-seconds | <1 s | Inverter curtailment, BESS charge |
+| **TSO → VPP** | IEC 104, IEC 61850 | On-demand (aFRR activation) | &lt;5 s | "Increase +10 MW" |
+| **VPP → DERMS** | REST API (POST setpoint) | Minutes (optimization cycle) | &lt;30 s | Portfolio distribution |
+| **DERMS → EMS** | MQTT (pub), REST (sync) | Seconds-minutes | &lt;10 s | Site-level setpoints |
+| **EMS → Assets** | Modbus, SunSpec, CAN | Milliseconds-seconds | &lt;1 s | Inverter curtailment, BESS charge |
 
 ### **Upstream (telemetry): Assets → EMS → DERMS → VPP → TSO**
 
@@ -576,7 +576,7 @@ graph TB
 **5. Incident Response Plan**
 
 - **Playbooks**: Defined procedures dla różnych scenarios (ransomware, DoS, unauthorized access)
-- **Isolation capability**: Możliwość disconnect compromised site/device w <5 min
+- **Isolation capability**: Możliwość disconnect compromised site/device w &lt;5 min
 - **Backup & Recovery**: Daily backups (configuration, data), tested recovery (co kwartał)
 - **Contacts**: 24/7 SOC (Security Operations Center) lub external (managed security)
 
@@ -674,7 +674,7 @@ graph TB
 - **Cybersecurity to NIE opcja** – critical infrastructure, grid stability at stake
 - **Defense-in-depth** (multiple layers) – jeśli 1 layer fails, inne chronią
 - **MFA + rate limiting + SIEM** to minimum viable security
-- **Cost of prevention << cost of incident** (€120k vs. €206k)
+- **Cost of prevention &lt;&lt; cost of incident** (€120k vs. €206k)
 
 **Demonstracja praktyczna**:
 - Network diagram: Segmentation (DMZ, OT, Field) – pokazuje firewalls, VLANs
@@ -768,7 +768,7 @@ graph TB
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o różnicach EMS/DERMS/VPP (scale, optimization objectives), REST API security (OAuth 2.0, MFA), i defense-in-depth strategy. Cybersecurity w critical infrastructure to must-know topic.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o różnicach EMS/DERMS/VPP (scale, optimization objectives), REST API security (OAuth 2.0, MFA), i defense-in-depth strategy. Cybersecurity w critical infrastructure to must-know topic.
 :::
 
 </Slide>
@@ -792,14 +792,14 @@ Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o różnicach EM
    - **OAuth 2.0 + MFA**: Authentication dla critical infrastructure
 
 3. **Data flows:**
-   - **Downstream** (commands): TSO → VPP → DERMS → EMS → Assets (<1 min total)
+   - **Downstream** (commands): TSO → VPP → DERMS → EMS → Assets (&lt;1 min total)
    - **Upstream** (telemetry): Assets → EMS → DERMS → VPP → TSO (aggregation 180 000×!)
 
 4. **Cybersecurity fundamentals:**
    - **Defense-in-depth**: Network segmentation, firewalls, VPN, encryption
    - **IEC 62351**: Security extensions dla IEC 61850/104
    - **RBAC + MFA + SIEM**: Minimum viable security
-   - **Cost prevention << cost incident** (€120k vs. €206k)
+   - **Cost prevention &lt;&lt; cost incident** (€120k vs. €206k)
 
 5. **Use cases:**
    - Peak shaving: €63k/year savings, ROI 5 months
