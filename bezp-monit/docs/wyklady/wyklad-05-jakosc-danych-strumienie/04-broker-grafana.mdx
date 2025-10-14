@@ -63,7 +63,7 @@ Po tej sekcji student potrafi:
 **Behavior**: Publisher sends message → broker forwards → NO acknowledgement → NO retry
 
 **Pros:**
-- **Lowest latency** (<5 ms typical)
+- **Lowest latency** (&lt;5 ms typical)
 - **Lowest bandwidth** (no ACKs)
 - **Highest throughput** (no retransmission overhead)
 
@@ -455,7 +455,7 @@ graph LR
 - **Version-controlled**: Git history (who changed what, when, rollback)
 - **Review process**: Pull requests (code review dla dashboards!)
 - **Multi-environment**: Dev/staging/prod (same config, different datasource URLs)
-- **Disaster recovery**: Grafana crashes → redeploy from Git (RTO <30 min)
+- **Disaster recovery**: Grafana crashes → redeploy from Git (RTO &lt;30 min)
 
 </KeyConcept>
 
@@ -893,11 +893,11 @@ graph LR
 **1. End-to-end latency** (sensor → visualization)
 
 **Formula:**
-\[
+$$
 Latency_{e2e} = T_{sensor} + T_{gateway} + T_{mqtt} + T_{telegraf} + T_{influx} + T_{grafana}
-\]
+$$
 
-**Target**: <10 s dla real-time monitoring, <60 s dla KPI
+**Target**: &lt;10 s dla real-time monitoring, &lt;60 s dla KPI
 
 **Measurement:**
 ```python
@@ -922,18 +922,18 @@ if latency_ms > 10000:
 - Telegraf (consume + transform): 50-200 ms
 - InfluxDB (write): 10-50 ms
 - Grafana (query + render): 200-1000 ms
-- **Total**: 365-1770 ms (typical <2 s, well under 10 s target)
+- **Total**: 365-1770 ms (typical &lt;2 s, well under 10 s target)
 
 ---
 
 **2. Data completeness** (% expected data points received)
 
 **Formula:**
-\[
+$$
 Completeness = \frac{N_{received}}{N_{expected}} \times 100\%
-\]
+$$
 
-**Target**: >99% dla critical telemetry, >95% dla non-critical
+**Target**: &gt;99% dla critical telemetry, &gt;95% dla non-critical
 
 **Measurement:**
 ```sql
@@ -945,7 +945,7 @@ SELECT COUNT("P_AC") FROM "power" WHERE time > now() - 1h
 -- Completeness: 3580/3600 = 99.44% ✓ (above 99% target)
 ```
 
-**Root causes jeśli low (<95%)**:
+**Root causes jeśli low (&lt;95%)**:
 - Network issues (packet loss, outages)
 - MQTT broker overload (message drops)
 - InfluxDB write timeouts (disk I/O bottleneck)
@@ -956,11 +956,11 @@ SELECT COUNT("P_AC") FROM "power" WHERE time > now() - 1h
 **3. Packet loss rate** (MQTT broker)
 
 **Formula:**
-\[
+$$
 Loss_{rate} = \frac{N_{dropped}}{N_{published}} \times 100\%
-\]
+$$
 
-**Target**: <0.1% (1 in 1000 messages lost)
+**Target**: &lt;0.1% (1 in 1000 messages lost)
 
 **Monitoring** (Mosquitto stats):
 ```bash
@@ -984,7 +984,7 @@ mosquitto_sub -h localhost -t '$SYS/broker/messages/publish/dropped' -C 1
 
 **4. Alert delivery time** (alarm → notification received)
 
-**Target**: <60 s dla critical alarms
+**Target**: &lt;60 s dla critical alarms
 
 **Measurement**:
 ```python
@@ -1113,7 +1113,7 @@ mosquitto_pub -t "solar/Farm_12/alarms/critical" \
 | **Reproducibility** | None (ad-hoc) | **Perfect** (IaC) | Consistent across farms |
 | **Scalability** | Poor (repeat dla each) | **Excellent** (template reuse) | 10× faster @ scale |
 
-**ROI**: 22 hours/farm × €100/h = **€2,200 saved/farm**. With 10 farms/year = **€22,000 savings** (pays for automation dev costs in <1 year).
+**ROI**: 22 hours/farm × €100/h = **€2,200 saved/farm**. With 10 farms/year = **€22,000 savings** (pays for automation dev costs in &lt;1 year).
 
 </Example>
 
@@ -1129,8 +1129,8 @@ mosquitto_pub -t "solar/Farm_12/alarms/critical" \
 5. Q&A (2 min)
 
 **Punkty kluczowe**:
-- **End-to-end latency <10 s** target (real-time monitoring requirement)
-- **Completeness >99%** dla critical telemetry (data loss not acceptable)
+- **End-to-end latency &lt;10 s** target (real-time monitoring requirement)
+- **Completeness &gt;99%** dla critical telemetry (data loss not acceptable)
 - **Automation = 85% time savings** (26h → 4h) + consistency
 - **SLO monitoring** = proactive (catch pipeline issues before they impact operations)
 
@@ -1230,7 +1230,7 @@ mosquitto_pub -t "solar/Farm_12/alarms/critical" \
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80%, przejrzyj: (1) MQTT QoS trade-offs (reliability vs. latency), (2) Wildcard syntax (+ = single-level, # = multi-level), (3) Grafana provisioning options (allowUiUpdates, disableDeletion), (4) SLO metric troubleshooting hierarchy (broker → DB → frontend), (5) Secret management best practices (Vault, encrypted storage).
+Jeśli uzyskałeś &lt;80%, przejrzyj: (1) MQTT QoS trade-offs (reliability vs. latency), (2) Wildcard syntax (+ = single-level, # = multi-level), (3) Grafana provisioning options (allowUiUpdates, disableDeletion), (4) SLO metric troubleshooting hierarchy (broker → DB → frontend), (5) Secret management best practices (Vault, encrypted storage).
 :::
 
 </Slide>
@@ -1257,10 +1257,10 @@ Jeśli uzyskałeś <80%, przejrzyj: (1) MQTT QoS trade-offs (reliability vs. lat
    - **Benefits**: Reproducible (spin up Grafana → auto-configured), scalable (template reuse), DR (redeploy from Git)
 
 **Pipeline integration (MQTT → Telegraf → InfluxDB → Grafana)**:
-   - **Latency SLO**: <10 s end-to-end (real-time monitoring)
-   - **Completeness SLO**: >99% data points received (minimal loss)
-   - **Packet loss**: <0.1% @ MQTT broker (network reliability)
-   - **Alert delivery**: <60 s (critical alarms)
+   - **Latency SLO**: &lt;10 s end-to-end (real-time monitoring)
+   - **Completeness SLO**: &gt;99% data points received (minimal loss)
+   - **Packet loss**: &lt;0.1% @ MQTT broker (network reliability)
+   - **Alert delivery**: &lt;60 s (critical alarms)
 
 **Automation ROI**:
    - **Onboarding**: 26 hours → 4 hours (-85%, templates + IaC + CI/CD)

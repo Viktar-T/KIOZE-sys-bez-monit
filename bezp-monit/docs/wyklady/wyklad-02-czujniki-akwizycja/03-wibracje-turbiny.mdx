@@ -202,7 +202,7 @@ graph TB
 - **Stud mounting** (wkręt M6/M8): Najlepszy kontakt, pasmo do 10 kHz
 - **Magnes**: Szybki montaż, pasmo do 3-5 kHz (kontakt nie idealny)
 - **Klej**: Trwałe, pasmo do 7 kHz
-- **Taśma dwustronna**: NIE STOSOWAĆ (pasmo <500 Hz, degradacja)
+- **Taśma dwustronna**: NIE STOSOWAĆ (pasmo &lt;500 Hz, degradacja)
 
 **Orientacja:** 
 - Radialna (radial): Prostopadła do osi obrotu → wykrywa niezbalansowanie, misalignment
@@ -327,28 +327,28 @@ Turbiny wiatrowe = ekstremalne środowisko:
 
 Każde łożysko ma **4 charakterystyczne częstotliwości**:
 
-\[
+$$
 BPFO = \frac{n \cdot f_r}{2} \left(1 + \frac{d}{D} \cos \phi \right) \quad \text{(Ball Pass Frequency Outer race)}
-\]
+$$
 
-\[
+$$
 BPFI = \frac{n \cdot f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right) \quad \text{(Ball Pass Frequency Inner race)}
-\]
+$$
 
-\[
+$$
 BSF = \frac{D \cdot f_r}{2 \cdot d} \left(1 - \left(\frac{d}{D} \cos \phi \right)^2 \right) \quad \text{(Ball Spin Frequency)}
-\]
+$$
 
-\[
+$$
 FTF = \frac{f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right) \quad \text{(Fundamental Train Frequency)}
-\]
+$$
 
 Gdzie:
-- \(f_r\) – częstotliwość obrotowa [Hz]
-- \(n\) – liczba kulek/rolek
-- \(d\) – średnica kulki/rolki [mm]
-- \(D\) – średnica podziałowa łożyska (pitch diameter) [mm]
-- \(\phi\) – kąt przyłożenia (contact angle) [°]
+- $f_r$ – częstotliwość obrotowa [Hz]
+- $n$ – liczba kulek/rolek
+- $d$ – średnica kulki/rolki [mm]
+- $D$ – średnica podziałowa łożyska (pitch diameter) [mm]
+- $\phi$ – kąt przyłożenia (contact angle) [°]
 
 **Interpretacja:**
 - **BPFO** – uszkodzenie zewnętrznej bieżni (outer race) – najczęstsze (obciążenie statyczne)
@@ -362,21 +362,21 @@ Gdzie:
 
 **Mesh frequency** (częstotliwość zazębienia):
 
-\[
+$$
 f_{mesh} = z_1 \cdot f_{shaft1} = z_2 \cdot f_{shaft2}
-\]
+$$
 
 Gdzie:
-- \(z_1, z_2\) – liczba zębów na kołach 1 i 2
-- \(f_{shaft1}, f_{shaft2}\) – częstotliwości obrotowe wałów [Hz]
+- $z_1, z_2$ – liczba zębów na kołach 1 i 2
+- $f_{shaft1}, f_{shaft2}$ – częstotliwości obrotowe wałów [Hz]
 
-**Harmoniczne**: Uszkodzenia zazębienia pojawiają się jako sidebands wokół \(f_{mesh}\) i jej harmonicznych (2×, 3×, ...)
+**Harmoniczne**: Uszkodzenia zazębienia pojawiają się jako sidebands wokół $f_{mesh}$ i jej harmonicznych (2×, 3×, ...)
 
 **Przykład (turbina 3 MW):**
-- Gearbox stage 1: \(z_1 = 20\), \(z_2 = 80\), ratio 1:4
+- Gearbox stage 1: $z_1 = 20$, $z_2 = 80$, ratio 1:4
 - Rotor: 15 rpm = 0.25 Hz
 - Intermediate shaft: 15 × 4 = 60 rpm = 1 Hz
-- Mesh freq stage 1: \(f_{mesh} = 20 \times 0.25 = 5\) Hz
+- Mesh freq stage 1: $f_{mesh} = 20 \times 0.25 = 5$ Hz
 
 </SupportingDetails>
 
@@ -442,7 +442,7 @@ Częstotliwość [Hz]    Amplituda [g]    Identyfikacja
 - Przykład raportu CMS z prawdziwej turbiny (PDF, zanonimizowany)
 
 **Typowe błędy studenckie**:
-- Mylenie \(f_r\) w [rpm] vs. [Hz] w równaniach – ZAWSZE Hz!
+- Mylenie $f_r$ w [rpm] vs. [Hz] w równaniach – ZAWSZE Hz!
 - Niezrozumienie, że BPFO ≠ stała wartość – zależy od RPM (dlatego order tracking!)
 - Myślenie, że każdy peak w FFT to uszkodzenie – mogą być resonance, harmoniczne, artefakty
 
@@ -522,7 +522,7 @@ Częstotliwość [Hz]    Amplituda [g]    Identyfikacja
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o typach czujników, częstotliwości próbkowania (Nyquist) i charakterystycznych częstotliwościach usterek (BPFO, mesh frequency). Zrozumienie diagnostyki predykcyjnej to klucz do projektowania efektywnych systemów CMS.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o typach czujników, częstotliwości próbkowania (Nyquist) i charakterystycznych częstotliwościach usterek (BPFO, mesh frequency). Zrozumienie diagnostyki predykcyjnej to klucz do projektowania efektywnych systemów CMS.
 :::
 
 </Slide>

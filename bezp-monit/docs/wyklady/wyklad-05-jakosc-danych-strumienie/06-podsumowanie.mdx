@@ -91,9 +91,9 @@ graph TB
 - **Level 3 (Consistency)**: Cross-channel (∑I_string ≈ I_DC) → flag SUSPECT
 
 **Imputacja (decision tree):**
-- Gap <1 min: **Linear interpolation** (flag: INTERPOLATED)
+- Gap &lt;1 min: **Linear interpolation** (flag: INTERPOLATED)
 - Gap 1-15 min: **Forward-fill** (slow processes) lub **model-based** (fast)
-- Gap >15 min: **NO imputation** (flag: MISSING, exclude from KPI)
+- Gap &gt;15 min: **NO imputation** (flag: MISSING, exclude from KPI)
 
 **Drift detection (CUSUM):**
 - Kumuluj różnice od baseline → wykryj stopniowe zmiany
@@ -154,15 +154,15 @@ graph TB
 | Criterion | InfluxDB | TimescaleDB | VictoriaMetrics |
 |-----------|----------|-------------|-----------------|
 | **Write rate** | 100k-1M pts/s | 50k-500k pts/s | 500k-5M pts/s |
-| **Cardinality** | <1M series | <10M series | <100M series |
+| **Cardinality** | &lt;1M series | &lt;10M series | &lt;100M series |
 | **Query lang** | Flux (TS-specific) | SQL (relational) | PromQL (metrics) |
 | **Compression** | 5-10× | 10-20× | **10-70×** (best) |
 | **Best dla** | **OZE farms (general)** | Large + complex | Very large + cost-opt |
 
-**Recommendation**: **InfluxDB** default choice (ease + performance), upgrade to TimescaleDB jeśli cardinality >1M lub need SQL.
+**Recommendation**: **InfluxDB** default choice (ease + performance), upgrade to TimescaleDB jeśli cardinality &gt;1M lub need SQL.
 
 **Schema design (tags vs. fields):**
-- **Tags**: Low cardinality (<1000 unique/tag), indexed → use dla filtering/grouping
+- **Tags**: Low cardinality (&lt;1000 unique/tag), indexed → use dla filtering/grouping
 - **Fields**: High-variability values, NOT indexed → use dla measurements
 - **Cardinality formula**: PRODUCT (multiplicative) → 50×100×10 = **50k series**
 
@@ -212,7 +212,7 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 **Benefits:**
 - **Reproducible**: Spin up new Grafana → auto-configured (no clicks)
 - **Scalable**: Template reuse (10 farms = 10× copies with variable substitution)
-- **DR**: Server crash → redeploy from Git (RTO <30 min)
+- **DR**: Server crash → redeploy from Git (RTO &lt;30 min)
 
 **Onboarding automation:**
 - **Manual approach**: 26 hours (click-ops, error-prone)
@@ -220,10 +220,10 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 - **ROI**: 22 hours saved/farm × 10 farms/year = €22k savings
 
 **SLO metrics (pipeline health):**
-- **Latency**: <10 s end-to-end (sensor → Grafana)
-- **Completeness**: >99% data points received
-- **Packet loss**: <0.1% @ MQTT broker
-- **Alert delivery**: <60 s (critical alarms)
+- **Latency**: &lt;10 s end-to-end (sensor → Grafana)
+- **Completeness**: &gt;99% data points received
+- **Packet loss**: &lt;0.1% @ MQTT broker
+- **Alert delivery**: &lt;60 s (critical alarms)
 
 </KeyConcept>
 
@@ -256,16 +256,16 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 **CI failure = block merge** (no broken configs to production)
 
 **Disaster recovery (RTO/RPO):**
-- **RTO (Recovery Time Objective)**: <30 min (max downtime tolerable)
+- **RTO (Recovery Time Objective)**: &lt;30 min (max downtime tolerable)
   - Procedure: Provision server (5 min) → Clone Git (2 min) → Deploy (10 min) → DNS update (5 min) → **Verify (8 min)** = 30 min
-- **RPO (Recovery Point Objective)**: <15 min (max data loss tolerable)
-  - Solution: Continuous InfluxDB replication (async, <1 min lag) vs. periodic backups (2 hours lag)
+- **RPO (Recovery Point Objective)**: &lt;15 min (max data loss tolerable)
+  - Solution: Continuous InfluxDB replication (async, &lt;1 min lag) vs. periodic backups (2 hours lag)
 
 **Lessons learned:**
 - ✅ Git = single source of truth (configs recovered instantly)
 - ✅ Provisioning = dashboards auto-loaded (no manual recreation)
-- ❌ RPO violated without replication (2 hours data loss > 15 min target)
-- **Action**: Implement continuous replication (achieve RPO <1 min)
+- ❌ RPO violated without replication (2 hours data loss &gt; 15 min target)
+- **Action**: Implement continuous replication (achieve RPO &lt;1 min)
 
 </KeyConcept>
 
@@ -291,7 +291,7 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 
 **Problem**: 50 false positives/day (alarm fatigue)
 
-**Root cause**: PR calculated @ 1 s (noisy) → σ_PR ≈ ±2% → frequent dips <75% threshold
+**Root cause**: PR calculated @ 1 s (noisy) → σ_PR ≈ ±2% → frequent dips &lt;75% threshold
 
 **Solution**: 5-min windowing (300 s) → noise reduction √300 ≈ **17×** → σ_PR ≈ ±0.12%
 
@@ -335,7 +335,7 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 - **T+30 min: Service restored** ✅
 
 **RTO met**: 30 min (target achieved)  
-**RPO issue**: 2 hours data loss (backup lag) → fix: implement continuous replication (RPO <1 min)
+**RPO issue**: 2 hours data loss (backup lag) → fix: implement continuous replication (RPO &lt;1 min)
 
 ---
 
@@ -459,7 +459,7 @@ solar/{farm_id}/commands/curtailment          → QoS 1
 :::tip Wynik quizu
 - **8-10 poprawnych** (80-100%): Excellent comprehension! Ready dla Wykład 06.
 - **6-7 poprawnych** (60-70%): Good understanding, review weak areas (identify które topics).
-- **<6 poprawnych** (<60%): Re-study Wykład 05 (focus: walidacja, cardinality, QoS, Git workflow).
+- **&lt;6 poprawnych** (&lt;60%): Re-study Wykład 05 (focus: walidacja, cardinality, QoS, Git workflow).
 :::
 
 ---

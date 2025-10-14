@@ -271,9 +271,9 @@ graph TB
 
 **Rozwiązanie: Kompensacja przez pomiar T:**
 
-\[
+$$
 h_{true} = \frac{p}{\rho(T) \times g} = \frac{p}{\rho_0 \times g} \times \left[1 + \beta (T - T_0)\right]
-\]
+$$
 
 W systemie SCADA:
 ```python
@@ -442,27 +442,27 @@ print(f"Level (compensated): {h_corrected:.2f} m")  # Output: 12.00 m ✅
 
 **Obliczenie wysokości spadu (hydraulic head):**
 
-\[
+$$
 H = \frac{p}{\rho \times g} = \frac{1250000}{1000 \times 9.81} = 127.4 \text{ m}
-\]
+$$
 
 **Moc hydrauliczna (dostępna):**
 
-\[
+$$
 P_{hydraulic} = \rho \times g \times Q \times H = 1000 \times 9.81 \times 3.2 \times 127.4 = 4000 \text{ kW}
-\]
+$$
 
 **Moc mechaniczna na wale turbiny:**
 
-\[
+$$
 P_{mechanical} = P_{hydraulic} \times \eta_{turbine} = 4000 \times 0.90 = 3600 \text{ kW}
-\]
+$$
 
 **Moc elektryczna (net):**
 
-\[
+$$
 P_{electrical} = P_{mechanical} \times \eta_{generator} = 3600 \times 0.96 = 3456 \text{ kW}
-\]
+$$
 
 **System monitoringu w SCADA:**
 - Ciągły pomiar p i Q (co 1 s)
@@ -562,7 +562,7 @@ Gdyby różnica była >5% → inspekcja turbiny (osady, wear, misalignment).
         "Bez zmian (ultradźwięki nie zależą od T)",
         "Poziom wzrośnie (false high) – prędkość dźwięku spadła",
         "Poziom spadnie (false low) – prędkość dźwięku wzrosła",
-        "Czujnik przestanie działać przy T <5°C"
+        "Czujnik przestanie działać przy T &lt;5°C"
       ],
       correctAnswer: 1,
       explanation: "Prędkość dźwięku: v = 331.5 + 0.6×T [m/s]. Spadek T 20°C → 0°C: v zmienia się z 343 m/s do 331.5 m/s (-3.4%). Czujnik (bez kompensacji) zakłada stałe v → oblicza zbyt długi czas → zawyża odległość → zaniża poziom... STOP! Czekaj: odległość = v × t. Jeśli v↓ a t mierzone, to d↓ → poziom (h = H_tank - d) rośnie! Odpowiedź: poziom FALSE HIGH."
@@ -593,7 +593,7 @@ Gdyby różnica była >5% → inspekcja turbiny (osady, wear, misalignment).
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o wpływie temperatury na pomiary (kompensacja ρ, v_sound) i konwersje jednostek (bar → m H₂O). Zrozumienie fizyki czujników jest kluczowe dla unikania błędów systematycznych w systemach monitoringu.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o wpływie temperatury na pomiary (kompensacja ρ, v_sound) i konwersje jednostek (bar → m H₂O). Zrozumienie fizyki czujników jest kluczowe dla unikania błędów systematycznych w systemach monitoringu.
 :::
 
 </Slide>

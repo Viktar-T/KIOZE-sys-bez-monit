@@ -136,7 +136,7 @@ graph TB
 
 **Typowe błędy studenckie**:
 - Mylenie LEL (explosive limit) z TWA (occupational exposure) – to różne pojęcia!
-- Niezrozumienie, że O₂ <19.5% to zagrożenie (deficyt), nie tylko O₂ = 0%
+- Niezrozumienie, że O₂ &lt;19.5% to zagrożenie (deficyt), nie tylko O₂ = 0%
 - Myślenie, że jeden czujnik CH₄ wystarczy – potrzeba redundancji i różnych lokalizacji
 
 **Pytania studenckie**:
@@ -160,7 +160,7 @@ graph TB
 - **Zasada**: Spalanie katalityczne gazu palnego na podgrzanym drucie platynowym → wzrost temperatury → zmiana rezystancji (most Wheatstone'a)
 - **Gazy**: CH₄, H₂, LPG (wszystkie palne)
 - **Zakres**: 0-100% LEL (typowo 0-5% v/v dla CH₄)
-- **Zalety**: Tanio (200-400 EUR), niezawodne, szybka odpowiedź (<30 s)
+- **Zalety**: Tanio (200-400 EUR), niezawodne, szybka odpowiedź (&lt;30 s)
 - **Wady**: 
   - Trucie przez H₂S, silikony, ołów → degradacja czułości
   - Wymaga O₂ (min. 10-12%) do spalania
@@ -176,7 +176,7 @@ graph TB
   - NIE wymaga O₂
   - Odporny na trucie
   - Długa żywotność (5-10 lat)
-  - Niski dryft (<2% rocznie)
+  - Niski dryft (&lt;2% rocznie)
 - **Wady**: Drogi (800-2000 EUR), wrażliwy na kondensację, większe wymiary
 - **Zastosowanie**: **Analiza składu biogazu** (proces control), duplikacja czujników katalitycznych
 
@@ -219,7 +219,7 @@ graph TB
 | **Zakres** | 0-100% LEL | 0-100% v/v | ppb-ppm (H₂S)<br/>%-v/v (O₂) | ppm-% (nieskalowany) |
 | **Selektywność** | Średnia | Bardzo wysoka | Wysoka | Niska |
 | **Żywotność** | 2-5 lat | 5-10 lat | 1-3 lat (H₂S)<br/>3-5 lat (O₂) | 2-3 lata |
-| **Dryft** | 5-10%/rok | <2%/rok | 5-15%/rok | Wysoki |
+| **Dryft** | 5-10%/rok | &lt;2%/rok | 5-15%/rok | Wysoki |
 | **Wymaga O₂** | ✅ Tak (>10%) | ❌ Nie | ❌ Nie | ❌ Nie |
 | **Trucie** | ✅ H₂S, silikony | ❌ Odporny | ⚠️ Cross-sens. | ⚠️ Wilgotność |
 | **ATEX** | ✅ Dostępny | ✅ Dostępny | ✅ Dostępny | ⚠️ Rzadko |
@@ -312,7 +312,7 @@ Koszt dodatkowy ~1000 EUR, ale eliminuje single point of failure.
 
 **Pytania studenckie**:
 - Q: Dlaczego elektrochemiczny H₂S ma tak krótką żywotność?
-- A: Elektrolit (roztwór kwasowy) degraduje się przez reakcję z H₂S, temperatura, wilgotność. W ekstremalnych warunkach (>1000 ppm non-stop) nawet <1 rok.
+- A: Elektrolit (roztwór kwasowy) degraduje się przez reakcję z H₂S, temperatura, wilgotność. W ekstremalnych warunkach (>1000 ppm non-stop) nawet &lt;1 rok.
 
 - Q: Czy można używać jednego czujnika IR do CH₄ i CO₂ jednocześnie?
 - A: TAK! Dual-channel IR (dwie długości fali) mierzy oba. Koszt ~3000-4000 EUR, ale dostajemy pełny skład.
@@ -429,7 +429,7 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
 **Skutki:**
 - ✅ **Uniknięto uszkodzenia BHKW** (H₂S >2000 ppm przez >4h → korozja, koszt naprawy >50 000 EUR)
 - ✅ **Brak przestoju produkcji** (bypass na flarę to strata revenue, ale lepsza niż awaria)
-- ✅ **Bezpieczeństwo zachowane** (H₂S w pomieszczeniach <10 ppm przez cały czas)
+- ✅ **Bezpieczeństwo zachowane** (H₂S w pomieszczeniach &lt;10 ppm przez cały czas)
 
 **ROI systemu detekcji:**
 - Koszt systemu: ~13 000 EUR
@@ -447,7 +447,7 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
 **Procedura bump test (15 min):**
 
 1. **Przygotowanie**:
-   - Gaz testowy: 50 ppm H₂S (certyfikat, data ważności <12 miesięcy)
+   - Gaz testowy: 50 ppm H₂S (certyfikat, data ważności &lt;12 miesięcy)
    - Adapter flow (cap) dopasowany do czujnika
    - Dokumentacja: formularz testu + timestamp
 
@@ -457,7 +457,7 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
    - Odczyt: Czujnik powinien wskazać 50 ±5 ppm (±10% tolerancja)
 
 3. **Kryteria akceptacji**:
-   - ✅ **PASS**: Odczyt 45-55 ppm, czas reakcji <30 s, powrót do zera <60 s
+   - ✅ **PASS**: Odczyt 45-55 ppm, czas reakcji &lt;30 s, powrót do zera &lt;60 s
    - ❌ **FAIL**: Odchylenie >±10%, brak reakcji, bardzo wolny powrót do zera → wymiana czujnika
 
 **Procedura full calibration (30-45 min):**
@@ -484,10 +484,10 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
 
 | Problem | Przyczyna | Rozwiązanie |
 |---------|-----------|-------------|
-| Odczyt stale >5 ppm (zero drift) | Degradacja elektrolitu | Wymiana czujnika |
-| Bardzo wolna reakcja (>60 s) | Zatykanie membrany (pył, wilgoć) | Czyszczenie lub wymiana |
+| Odczyt stale &gt;5 ppm (zero drift) | Degradacja elektrolitu | Wymiana czujnika |
+| Bardzo wolna reakcja (&gt;60 s) | Zatykanie membrany (pył, wilgoć) | Czyszczenie lub wymiana |
 | Brak reakcji na gaz | Czujnik "martwy" (end of life) | Wymiana |
-| Odczyt <90% expected (span drift) | Normalna degradacja | Re-calibration, jeśli >10% → wymiana |
+| Odczyt &lt;90% expected (span drift) | Normalna degradacja | Re-calibration, jeśli &gt;10% → wymiana |
 
 </Example>
 
@@ -598,7 +598,7 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o technologiach czujników (katalityczny vs. elektrochemiczny) i reakcjach chemicznych w biogazowniach (FeCl₃ desulfuryzacja). Zrozumienie ograniczeń czujników (np. wymóg O₂) jest kluczowe dla projektowania bezpiecznych systemów.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o technologiach czujników (katalityczny vs. elektrochemiczny) i reakcjach chemicznych w biogazowniach (FeCl₃ desulfuryzacja). Zrozumienie ograniczeń czujników (np. wymóg O₂) jest kluczowe dla projektowania bezpiecznych systemów.
 :::
 
 </Slide>

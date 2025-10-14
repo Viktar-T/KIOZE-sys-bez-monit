@@ -34,20 +34,20 @@ Po tej sekcji student potrafi:
 
 Aby **wiernie zrekonstruować** sygnał ciągły (analog) z próbek dyskretnych (digital), częstotliwość próbkowania musi spełniać:
 
-\[
+$$
 f_{sample} \geq 2 \times f_{max}
-\]
+$$
 
 Gdzie:
-- \(f_{sample}\) – częstotliwość próbkowania [Hz lub samples/s]
-- \(f_{max}\) – maksymalna częstotliwość w sygnale [Hz]
-- **Częstotliwość Nyquista**: \(f_{Nyquist} = 2 \times f_{max}\)
+- $f_{sample}$ – częstotliwość próbkowania [Hz lub samples/s]
+- $f_{max}$ – maksymalna częstotliwość w sygnale [Hz]
+- **Częstotliwość Nyquista**: $f_{Nyquist} = 2 \times f_{max}$
 
 **W praktyce (ZAWSZE!):**
 
-\[
+$$
 f_{sample} \geq (2.5 - 5) \times f_{max}
-\]
+$$
 
 **Dlaczego zapas?**
 1. **Filtry nie są idealne** – Slope roll-off jest skończony (-20 dB/dec dla 1st order, -80 dB/dec dla 4th order)
@@ -63,9 +63,9 @@ f_{sample} \geq (2.5 - 5) \times f_{max}
 
 **Wzór na częstotliwość alias:**
 
-\[
+$$
 f_{alias} = |f_{signal} - n \times f_{sample}|
-\]
+$$
 
 Gdzie n = 1, 2, 3, ... (integer)
 
@@ -105,9 +105,9 @@ Analiza spektrum sygnału:
 
 **Krok 2: Wybierz zapas (oversampling ratio)**
 
-\[
+$$
 OSR = \frac{f_{sample}}{2 \cdot f_{max}}
-\]
+$$
 
 Typowe wartości:
 - **OSR = 1.25-1.5×** (barely Nyquist, wymaga bardzo stromego filtru – 8th order+)
@@ -138,7 +138,7 @@ ADC mają dyskretne f_sample (często potęgi 2):
 **Wnioski:**
 - **Wolne procesy** (temp, gazy): f_sample = 1-10 Hz wystarczy
 - **Dynamiczne procesy** (wibracje): f_sample = kilkadziesiąt kHz
-- **Zawsze filtr anty-aliasing!** (poza bardzo wolnymi: <0.1 Hz)
+- **Zawsze filtr anty-aliasing!** (poza bardzo wolnymi: &lt;0.1 Hz)
 
 </SupportingDetails>
 
@@ -200,9 +200,9 @@ Bez filtru → szumy >f_Nyquist **się aliasują** i pojawiają w paśmie sygna�
 
 **Rozwiązanie:** Filtr dolnoprzepustowy (low-pass) PRZED ADC:
 
-\[
+$$
 f_{cutoff} = \frac{f_{sample}}{2 \times OSR} = \frac{f_{sample}}{2.5 - 5}
-\]
+$$
 
 **Przykład:**
 - f_sample = 10 kHz (wybrane dla systemu akwizycji)
@@ -400,7 +400,7 @@ Pasmo użyteczne (passband -3 dB): DC - 2.7 kHz ✓ (powyżej 2.5 kHz design)
 
 **Pytania studenckie**:
 - Q: Czy można stosować switched-capacitor filters zamiast aktywnych RC?
-- A: TAK (np. MAX7400 series). Zalety: No external components, easy f_cutoff tuning (clock frequency). Wady: Clock noise, limited f_cutoff (max ~100 kHz). W anti-aliasing: OK dla f_c <50 kHz.
+- A: TAK (np. MAX7400 series). Zalety: No external components, easy f_cutoff tuning (clock frequency). Wady: Clock noise, limited f_cutoff (max ~100 kHz). W anti-aliasing: OK dla f_c &lt;50 kHz.
 
 - Q: Dlaczego Butterworth, a nie Chebyshev (steeper roll-off)?
 - A: Chebyshev ma ripple w passband (±1-3 dB) → zniekształca sygnał. W precision measurement: inacceptable. Butterworth = flat ±0.1 dB → preferred.
@@ -486,7 +486,7 @@ f_sample dynamicznie dostosowuje się do dynamics sygnału:
 ### **Compressed sensing (advanced)**
 
 Sample at sub-Nyquist rate, reconstruct with sparsity algorithms:
-- **Theory**: Jeśli sygnał jest "sparse" w jakiejś domenie (time, frequency, wavelet), można sample <f_Nyquist
+- **Theory**: Jeśli sygnał jest "sparse" w jakiejś domenie (time, frequency, wavelet), można sample &lt;f_Nyquist
 - **Reconstruction**: L1-minimization, matching pursuit
 
 **Zastosowanie**: Very niche (research), NIE dla general-purpose monitoring
@@ -508,7 +508,7 @@ Sample at sub-Nyquist rate, reconstruct with sparsity algorithms:
 | **Electrical events (SOE)** | Impulsowe | Triggered @ kHz | Variable (events only) | Event log | 10 lat |
 
 **Obserwacje:**
-- **Slow processes** (temp, gaz): <1 Hz → data rate neglectable (<1 MB/day)
+- **Slow processes** (temp, gaz): &lt;1 Hz → data rate neglectable (&lt;1 MB/day)
 - **Fast processes** (vibration high-freq): 50 kHz → data rate massive (>50 GB/day) → triggered sampling MUST
 - **Aggregation** redukuje long-term storage 100-1000× (raw→mean)
 
@@ -724,7 +724,7 @@ graph TB
 />
 
 :::tip Rekomendacja po quizie
-Jeśli uzyskałeś <80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (f_sample ≥ 2×f_max), obliczaniu aliasing (|f - n×f_s|), i konwersji dB/decade ↔ dB/octave. Zrozumienie tych fundamentów jest kluczowe dla projektowania systemów akwizycji.
+Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (f_sample ≥ 2×f_max), obliczaniu aliasing (|f - n×f_s|), i konwersji dB/decade ↔ dB/octave. Zrozumienie tych fundamentów jest kluczowe dla projektowania systemów akwizycji.
 :::
 
 </Slide>
