@@ -410,7 +410,7 @@ Zostaw minutę na dyskusję – często studenci mają doświadczenia z praktyk 
 
 <VisualSeparator type="technical" />
 
-<Slide title="📊 Porównanie technologii czujników prądu" type="info">
+<Slide title="📊 Porównanie technologii czujników prądu<" type="info">
 
 ### Tabela porównawcza
 
@@ -429,11 +429,40 @@ Zostaw minutę na dyskusję – często studenci mają doświadczenia z praktyk 
 **Laboratorium + precyzja → Bocznik + izolowany woltomierz różnicowy**
 :::
 
+<InstructorNotes>
+
+Tabela porównawcza to świetne narzędzie do podsumowania wiedzy – poświęć około pięć do sześciu minut na szczegółowe omówienie.
+
+**Strategia prezentacji**: Przejdź przez tabelę wiersz po wierszu, ale **nie czytaj mechanicznie danych** – studenci to widzą. Zamiast tego skup się na **kontekście praktycznym i decyzjach projektowych**.
+
+Rozpocznij od **bocznika precyzyjnego** – podkreśl, że to najprostsza i najtańsza technologia (około pięciu euro), ale ma fundamentalne ograniczenie: **brak izolacji galwanicznej**. Pytanie do studentów: "Dlaczego to problem przy wysokich napięciach?" Odpowiedź: bezpieczeństwo – dotknięcie bocznika pod napięciem to śmiertelne ryzyko. Dlatego boczniki tylko w laboratoriach lub instalacjach niskonapięciowych poniżej stu woltów.
+
+**Hall DC** to koń roboczy instalacji fotowoltaicznych. Koszt czterdzieści do osiemdziesięciu euro (symbolicznie €€), izolacja dwa do trzech kilowolty, dokładność 0,5-1%. **To optymalny kompromis dla monitoringu stringów PV**. Zwróć uwagę na pasmo DC-50 kHz – wystarczające dla wolnych zmian prądu DC. Podkreśl, że Hall ma dryft termiczny (omawialiśmy wcześniej), więc wymaga okresowej kalibracji.
+
+**DCCT (flux-gate)** – technologia premium. Dokładność 0,05-0,2%, ale koszt pięćset do tysiąca pięćset euro (€€€€). Pytanie: "Kiedy warto zapłacić takie pieniądze?" Odpowiedź: **pomiary referencyjne, rozliczenia finansowe, certyfikacja instalacji**. W codziennym monitoringu farmy PV to przesada – Hall wystarcza.
+
+Przejdź do strony zmiennoprądowej. **CT klasyczny** – to standard przemysłowy od dekad. Koszt umiarkowany (€€), dobra dokładność 0,2-1%, stosowany wszędzie po stronie AC (inwertery, rozdzielnie). Przekładnik sto do pięciu amperów wymaga obciążenia wtórnego (burden resistor) – **to ważne, CT nigdy nie może pracować na biegu jałowym** (rozwarty obwód wtórny prowadzi do przepięć i uszkodzenia).
+
+**Cęgi Rogowskiego** – nowoczesna alternatywa dla CT. Główna zaleta: **montaż bez przerywania obwodu** – zakładamy giętką cewkę na przewód w pięć minut, bez wyłączania instalacji. Szerokie pasmo (0,1 Hz do 1 MHz) czyni je idealnymi do analizy harmonicznych THD i szybkich transjenów. Koszt wyższy (€€€), ale oszczędność czasu montażu to często kompensuje w serwisie instalacji działających.
+
+**Kluczowa zasada wyboru** na dole tabeli – to ściągawka, którą studenci powinni zapamiętać. Przejdź przez każdą linię i zapytaj: "Dlaczego DC plus wysokie napięcie wymaga bezwzględnej izolacji?" Bo porażenie prądem przy tysiąc pięćset woltów to śmierć, a nie tylko nieprzyjemne mrowienie.
+
+**Typowe pytania studentów**:
+- P: Czy można użyć CT do pomiaru DC?
+- O: Nie – CT działa na zasadzie transformatora, wymaga zmiennego pola magnetycznego. Dla DC trzeba Hall lub DCCT.
+
+- P: Dlaczego Rogowski ma niższą dokładność niż CT?
+- O: Bo to cewka powietrzna bez rdzenia, bardziej wrażliwa na pozycjonowanie i pola zewnętrzne. Ale to nadal wystarczająca dokładność (0,5-2%) do większości zastosowań przemysłowych.
+
+Zakończ podkreśleniem, że **wybór technologii to zawsze kompromis między dokładnością, kosztem i warunkami montażu**. Nie ma rozwiązania uniwersalnego – inżynier musi zrozumieć kontekst aplikacji.
+
+</InstructorNotes>
+
 </Slide>
 
 <VisualSeparator type="default" />
 
-<Slide title="⚖️ Trade-off: dokładność vs. koszt vs. montaż" type="tip">
+<Slide title="⚖️ Trade-off: dokładność vs. koszt vs. montaż<" type="tip">
 
 <KeyConcept title="Zasada kompromisu w projektowaniu">
 
