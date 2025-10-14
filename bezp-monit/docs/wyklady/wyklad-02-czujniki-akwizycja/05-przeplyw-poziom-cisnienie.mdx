@@ -26,30 +26,56 @@ Po tej sekcji student potrafi:
 
 <SlideContainer>
 
-<Slide title="🌊 Pomiar przepływu – wprowadzenie i zastosowania" type="info">
+<Slide title="🌊 Pomiar przepływu – zastosowania w OZE" type="info">
 
 <KeyPoints title="📋 Dlaczego mierzymy przepływ?">
 
 **Pomiar przepływu to fundamentalna wielkość w instalacjach OZE:**
 
 **Biogazownie:**
-- Przepływ substratu do fermenterów [m³/h, kg/h] → bilans masowy, sterowanie dozowaniem
-- Przepływ biogazu [Nm³/h] → monitorowanie produkcji, rozliczenia
-- Przepływ wody chłodzącej [m³/h] → kontrola temperatury fermentacji
+- Przepływ substratu [m³/h, kg/h] → bilans masowy, dozowanie
+- Przepływ biogazu [Nm³/h] → produkcja, rozliczenia
+- Przepływ wody chłodzącej [m³/h] → kontrola temperatury
 
 **Elektrownie wodne:**
-- Przepływ wody przez turbinę [m³/s] → obliczanie mocy (P = ρ g Q H)
-- Przepływ w kanale dopływowym [m³/s] → prognozowanie dostępności
+- Przepływ wody przez turbinę [m³/s] → moc (P = ρ g Q H)
+- Przepływ w kanale [m³/s] → prognozowanie
 
 **Pompy ciepła:**
-- Przepływ czynnika roboczego [kg/h] → efektywność COP
-- Przepływ glikolu w kolektorach [L/min] → monitoring obiegów
+- Przepływ czynnika [kg/h] → efektywność COP
+- Przepływ glikolu [L/min] → monitoring obiegów
 
 **Instalacje biomasy:**
-- Przepływ paliwa (pellet, zrębki) [kg/h] → sterowanie spalaniem
-- Przepływ spalin [Nm³/h] → bilans energetyczny, emisje
+- Przepływ paliwa [kg/h] → sterowanie spalaniem
+- Przepływ spalin [Nm³/h] → bilans, emisje
 
-**Kluczowe parametry medium wpływające na wybór technologii:**
+</KeyPoints>
+
+<InstructorNotes>
+
+Wprowadzenie do pomiaru przepływu – około pięć do siedmiu minut.
+
+**Kluczowy przekaz**: przepływ to fundamentalna wielkość w instalacjach OZE. Bez pomiaru przepływu nie można obliczyć bilansu masowego, energetycznego, efektywności.
+
+Przejdź przez aplikacje. **Biogazownie**: przepływ substratu do fermenterów (siano, gnojowica, odpady) – to podstawa sterowania dozowaniem. Przepływ biogazu to monitorowanie produkcji i rozliczenia (sprzedaż do sieci gazowej). Przepływ wody chłodzącej kontroluje temperaturę fermentacji (optymalna trzydzieści osiem do czterdzieści dwa stopnie).
+
+**Elektrownie wodne**: przepływ wody przez turbinę to kluczowy parametr do obliczania mocy. Wzór: P = ρ g Q H (gęstość razy grawitacja razy przepływ razy wysokość spadu). Przepływ w kanale dopływowym to prognozowanie dostępności mocy.
+
+**Pompy ciepła**: przepływ czynnika roboczego (R134a, R410A) wpływa na efektywność COP. Przepływ glikolu w kolektorach gruntowych to monitoring obiegów.
+
+**Biomasa**: przepływ paliwa (pellet, zrębki) steruje spalaniem. Przepływ spalin to bilans energetyczny i monitoring emisji.
+
+Podkreśl, że **jednostki różnią się**: objętość [m³/h], masa [kg/h], prędkość [m/s], przepływ normalny [Nm³/h - przy warunkach normalnych zero stopni, jeden bar]. Trzeba wiedzieć, co mierzymy.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Parametry medium – wpływ na dobór" type="info">
+
+**Kluczowe parametry medium:**
 
 | Parametr | Wpływ na dobór | Przykład |
 |----------|----------------|----------|
@@ -60,9 +86,31 @@ Po tej sekcji student potrafi:
 | **Ciśnienie** | Wytrzymałość mechaniczna | Hydro: do 40 bar |
 | **Zakres przepływów** | Turndown ratio (min/max) | 1:10 (DP) vs. 1:100 (mag) |
 
-</KeyPoints>
+<InstructorNotes>
 
-<SupportingDetails title="📊 Przegląd technologii pomiaru przepływu">
+Parametry medium to kluczowe kryteria wyboru – około cztery do pięciu minut.
+
+**Przewodność elektryczna** – elektromagnetyczny flowmeter działa tylko dla cieczy przewodzących (sigma powyżej pięć mikrosimensów na centymetr). Woda, gnojowica, osady: OK. Olej, benzynę, destylaty: NIE.
+
+**Lepkość** – dla wysokiej lepkości (gliceryna tysiąc milipaskali-sekund, miód, osady) lepsze są Coriolis lub termiczne. Turbinowy się zatka, DP ma ogromny spadek ciśnienia.
+
+**Zawiesiny** – ultradźwięki transit-time wymagają czystego medium (pęcherzyki powietrza, zawiesiny zakłócają propagację fali). Dla zawiesin stosuje się Doppler (mierzy przesunięcie częstotliwości od poruszających się cząstek) lub elektromagnetyczny (odporny na zawiesiny).
+
+**Temperatura** – powyżej stu pięćdziesięciu stopni wymagane specjalne materiały (uszczelki, elektronika). Coriolis ma limit około stu pięćdziesięciu stopni, DP może więcej (metal, bez elektroniki w rurze).
+
+**Ciśnienie** – elektrownie wodne to do czterdziestu bar. Elektromagnetyczny i Coriolis muszą mieć odpowiednią klasę ciśnieniową (droższe flansze, grubsze ścianki).
+
+**Turndown ratio** – stosunek maksymalnego do minimalnego przepływu przy zachowaniu dokładności. Elektromagnetyczny i Coriolis mają jeden do stu (szeroki zakres), DP (zwężki) tylko jeden do dziesięciu. **To oznacza, że zwężka mierzy dobrze tylko w wąskim zakresie**.
+
+Podkreśl, że **nie ma uniwersalnej metody** – każde medium, każda aplikacja wymaga analizy trade-off'ów.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔄 Diagram wyboru technologii przepływu" type="info">
 
 ```mermaid
 graph TB
@@ -94,59 +142,75 @@ graph TB
     style H fill:#ffd700
 ```
 
-### Porównanie metod:
+<InstructorNotes>
 
-| Metoda | Zasada działania | Medium | Zakres | Turndown | Dokładność | Δp | Koszt |
-|--------|------------------|--------|--------|----------|------------|-------|-------|
-| **Elektromagnetyczny** | Prawo Faradaya: U ∝ v × B | Ciecze przewodzące | 0.01-10 m/s | 1:100 | ±0.2-0.5% | Brak | €€€ |
-| **Ultradźwiękowy (transit-time)** | Różnica czasu przelotu fali | Ciecze czyste | 0.01-10 m/s | 1:100 | ±0.5-2% | Brak (clamp) | €€€ |
-| **Ultradźwiękowy (Doppler)** | Przesunięcie Dopplera od cząstek | Zawiesiny, pęcherzyki | 0.3-10 m/s | 1:50 | ±2-5% | Brak | €€ |
-| **Coriolis** | Siła Coriolisa → masa | Ciecze, gazy | 0-max | 1:100 | ±0.1-0.4% (masa) | Średni | €€€€ |
-| **DP (zwężka, Venturi)** | Bernoulli: Δp ∝ Q² | Ciecze, gazy | 0.3-max | 1:10 | ±1-5% | Duży | €€ |
-| **Vortex** | Częstotliwość wirów von Kármána | Ciecze, gazy, para | 0.5-max | 1:20 | ±1% | Średni | €€ |
-| **Turbinowy** | Obroty turbinki ∝ Q | Ciecze czyste | 0.3-max | 1:10 | ±0.5-1% | Mały | €€ |
-| **Termiczny (mass)** | Chłodzenie elementu grzejnego | Gazy | 0-max | 1:100 | ±1-2% | Brak | €€€ |
+Diagram wyboru technologii – około cztery do pięciu minut. **Diagram może być większy, to wyjątek**.
 
-</SupportingDetails>
+Przejdź przez diagram krok po kroku. **Pierwsze pytanie: czy medium przewodzi elektrycznie?** Sigma powyżej pięć mikrosimensów na centymetr – woda, gnojowica, roztwory wodne: tak. Olej, benzyna, gazy: nie.
+
+Jeśli tak – **elektromagnetyczny to najlepszy wybór**. Brak przeszkód w rurze (nic się nie zatyka), szeroki turndown ratio jeden do stu, dokładność plus minus 0,2-0,5%. Koszt około tysiąc do trzech tysięcy euro zależnie od rozmiaru.
+
+Jeśli nie przewodzi – **drugie pytanie: czy medium czyste?** Woda pitna, olej hydrauliczny: czyste. Gnojowica, osady, ciecze z pęcherzykami: zanieczyszczone.
+
+Czyste – **ultradźwiękowy** (transit-time lub clamp-on). Nieiwazyjny (montaż na zewnątrz rury, bez przerywania przepływu), brak strat ciśnienia. Świetne do retrofitów.
+
+Zanieczyszczone – **trzecie pytanie: czy potrzeba masy i gęstości?** Jeśli tak (rozliczenia, bilanse energetyczne) – Coriolis. Jeśli nie wystarczy objętość – DP flowmeter (zwężka, Venturi).
+
+**Coriolis** to premium – pomiar masy plus gęstość plus temperatura w jednym urządzeniu. Dokładność plus minus 0,1-0,4% (masa). Wady: drogie (trzy do dziesięciu tysięcy euro), średni spadek ciśnienia.
+
+**DP** (differential pressure) to tanie (pięćset do dwóch tysięcy euro), sprawdzone (norma ISO 5167), ale wąski turndown (jeden do dziesięciu) i duży spadek ciśnienia. Plus: zależność Δp proporcjonalna do Q kwadrat – nieliniowa, wymaga pierwiastkowania.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Porównanie technologii przepływu" type="info">
+
+| Metoda | Zasada | Medium | Turndown | Dokładność | Δp | Koszt |
+|--------|--------|--------|----------|------------|-----|-------|
+| **Elektromagnetyczny** | Faraday: U ∝ v×B | Ciecze przew. | 1:100 | ±0.2-0.5% | Brak | €€€ |
+| **Ultradźw (transit)** | Czas przelotu fali | Ciecze czyste | 1:100 | ±0.5-2% | Brak | €€€ |
+| **Ultradźw (Doppler)** | Doppler od cząstek | Zawiesiny | 1:50 | ±2-5% | Brak | €€ |
+| **Coriolis** | Siła Coriolisa | Ciecze, gazy | 1:100 | ±0.1-0.4% | Średni | €€€€ |
+| **DP (zwężka)** | Bernoulli: Δp∝Q² | Ciecze, gazy | 1:10 | ±1-5% | Duży | €€ |
+| **Vortex** | Wiry von Kármána | Ciecze, gazy | 1:20 | ±1% | Średni | €€ |
+| **Turbinowy** | Obroty ∝ Q | Ciecze czyste | 1:10 | ±0.5-1% | Mały | €€ |
+| **Termiczny** | Chłodzenie | Gazy | 1:100 | ±1-2% | Brak | €€€ |
+
+<KeyPoints title="📋 Dobór dla typowych aplikacji OZE">
+
+**Biogazownia - substrat**: Elektromagnetyczny (gnojowica przewodzi)  
+**Biogazownia - biogaz**: Termiczny mass flow (gaz, małe Q)  
+**Hydro - turbina**: Ultradźw clamp-on (retrofit) lub Venturi (nowe)  
+**Pompa ciepła**: Coriolis (masa czynnika) lub turbinowy (glikol)
+
+</KeyPoints>
 
 <InstructorNotes>
 
-**Czas**: 14-16 min
+Tabela porównawcza to synteza – około pięć do siedmiu minut.
 
-**Przebieg**:
-1. Wprowadzenie – dlaczego przepływ? (3 min) – przykłady z biogazowni, hydro
-2. Diagram wyboru technologii (4 min) – omów flowchart krok po kroku
-3. Tabela porównawcza (5 min) – podkreśl trade-offy (dokładność vs. koszt vs. Δp)
-4. Dyskusja: Jaką metodę wybraliby studenci dla biogazowni? (2 min)
-5. Q&A (2 min)
+Przejdź przez tabelę wiersz po wierszu. **Elektromagnetyczny**: workhorse przemysłu, turndown jeden do stu, dokładność plus minus 0,2-0,5%, brak spadku ciśnienia. Wymaga przewodzącego medium (sigma powyżej pięć mikrosimensów).
 
-**Punkty kluczowe**:
-- **Nie ma uniwersalnej metody** – dobór zależy od medium, zakresu, budżetu
-- **Elektromagnetyczny to workhorse biogazowni** – woda, substrat (jeśli przewodzący)
-- **Ultradźwięki clamp-on** – świetne do retofitów (montaż bez przerywania rury!)
-- **Coriolis** – gdy potrzeba masy (bilans energetyczny, rozliczenia)
+**Ultradźwiękowy transit-time**: dla czystych cieczy, clamp-on to montaż bez przerywania rury (świetne do retrofitów). Doppler dla zawiesin (mierzy przesunięcie częstotliwości od poruszających się cząstek).
 
-**Demonstracja praktyczna**:
-- Pokaż ultradźwiękowy clamp-on (dwa przetworniki, mocowane na rurze)
-- Elektromagnetyczny flowmeter (przekrój poprzeczny – brak przeszkód w rurze)
-- Film: vortex shedding (wiry von Kármána) – wizualizacja
+**Coriolis**: najdokładniejszy (plus minus 0,1-0,4% masy), plus daje gęstość i temperaturę. Drogi (trzy do dziesięciu tysięcy euro), ale zwraca się w aplikacjach wymagających precyzyjnych bilansów (rozliczenia, process control).
 
-**Materiały pomocnicze**:
-- ISO 5167 – Measurement of fluid flow by means of pressure differential devices
-- Endress+Hauser, Krohne, Emerson application guides (free PDFs)
-- Kalkulator Δp dla zwężek (online tool)
+**DP (zwężka, Venturi)**: najtańszy (pięćset do dwóch tysięcy euro), ale wąski turndown (jeden do dziesięciu) i duży spadek ciśnienia. Zależność nieliniowa (Δp proporcjonalne do Q kwadrat).
 
-**Typowe błędy studenckie**:
-- Stosowanie elektromagnetycznego do oleju/benzyny (NIE PRZEWODZI!)
-- Ultradźwięki transit-time w medium z pęcherzykami (błędy +10-50%) → Doppler
-- Ignorowanie Δp – w biogazowni z małym ciśnieniem (200 mbar) zwężka z Δp = 100 mbar to katastrofa
+**Vortex**: mierzy częstotliwość wirów von Kármána za przeszkodą (bluff body). Dobry dla pary, gazów, cieczy (universal), turndown jeden do dwudziestu.
 
-**Pytania studenckie**:
-- Q: Dlaczego Coriolis mierzy masę, a nie objętość?
-- A: Siła Coriolisa zależy od MASY przepływającego medium (m = ρ × Q). Bonus: Coriolis daje też gęstość i temperaturę!
+**Turbinowy**: obroty turbinki proporcjonalne do przepływu. Dokładny (plus minus 0,5-1%), ale tylko dla czystych cieczy (zawiesiny zatykają turbinkę).
 
-- Q: Co to turndown ratio?
-- A: Stosunek max/min przepływu przy zachowaniu dokładności. 1:100 = mierzy od 1% do 100% zakresu z tą samą accuracy. DP (zwężki) mają słaby turndown 1:3-1:10.
+**Termiczny mass**: dla gazów, mierzy masę bezpośrednio (chłodzenie podgrzanego elementu proporcjonalne do masy przepływu). Świetny turndown jeden do stu.
+
+Dobór dla OZE: **biogazownia substrat to elektromagnetyczny** (gnojowica przewodzi), **biogaz to termiczny mass**, **hydro to clamp-on lub Venturi**, **pompa ciepła to Coriolis lub turbinowy**.
+
+Typowy błąd: stosowanie elektromagnetycznego do oleju – **nie przewodzi, nie zadziała**. Ultradźwięki w medium z pęcherzykami – transit-time da błędy plus dziesięć do pięćdziesięciu procent, trzeba Doppler.
+
+Pytanie o turndown ratio – stosunek maksymalnego do minimalnego przepływu. **Jeden do stu** oznacza, że flowmeter mierzy od jeden procent do stu procent zakresu z tą samą dokładnością. Zwężki mają słaby turndown (jeden do trzech, jeden do dziesięciu) – mierzą dobrze tylko w wąskim zakresie.
 
 </InstructorNotes>
 
@@ -154,188 +218,222 @@ graph TB
 
 <VisualSeparator type="technical" />
 
-<Slide title="📏 Pomiar poziomu – technologie i zastosowania" type="tip">
+<Slide title="📏 Pomiar poziomu – przegląd technologii" type="tip">
 
 <KeyPoints title="📋 Metody pomiaru poziomu">
 
 **1. Hydrostatyczny (ciśnienie słupa cieczy)**
-- **Zasada**: p = ρ g h → czujnik ciśnienia na dnie zbiornika
-- **Zastosowanie**: Zbiorniki otwarte/zamknięte, ciecze czyste i zanieczyszczone
-- **Zalety**: Prosty, niezawodny, tani (300-800 EUR)
-- **Wady**: 
-  - Wymaga kompensacji ciśnienia nadmuchowego (w zamkniętych zbiornikach)
-  - Gęstość ρ musi być stała (wpływ temperatury!)
-  - Kontakt z medium → ryzyko korozji
-- **Dokładność**: ±0.1-0.5% FS
+- Zasada: p = ρ g h → czujnik na dnie zbiornika
+- Zalety: Prosty, tani (300-800 EUR)
+- Wady: Wymaga kompensacji T (gęstość ρ = f(T)), kontakt z medium
+- Dokładność: ±0.1-0.5% FS
 
-**2. Radarowy (FMCW – Frequency Modulated Continuous Wave)**
-- **Zasada**: Czas przelotu fali elektromagnetycznej (microwave, 26 GHz) odbijej od powierzchni
-- **Zastosowanie**: Zbiorniki (ciecze, sypkie), bezkontaktowy, ATEX
-- **Zalety**: 
-  - Bezkontaktowy (nie dotyka medium)
-  - Odporny na temperaturę, ciśnienie, pary
-  - Wysoka dokładność (±2-5 mm)
-  - Nie zależy od gęstości medium
-- **Wady**: Drogi (2000-5000 EUR), problemy z pianą/kondensacją na antenie
-- **Zastosowanie OZE**: Fermentery biogazowni, zbiorniki substratów
+**2. Radarowy (FMCW)**
+- Zasada: Czas przelotu microwave (26 GHz) od powierzchni
+- Zalety: Bezkontaktowy, odporny na T/p/pary, dokładność ±2-5 mm
+- Wady: Drogi (2000-5000 EUR)
+- Zastosowanie OZE: ⭐ Fermentery biogazowni
 
 **3. Ultradźwiękowy (bezkontaktowy)**
-- **Zasada**: Czas przelotu fali ultradźwiękowej (40-80 kHz) odbijej od powierzchni
-- **Zastosowanie**: Zbiorniki otwarte (ciecze, sypkie), odległości do 15 m
-- **Zalety**: Tani (500-1500 EUR), prosty montaż
-- **Wady**: 
-  - Wrażliwy na temperaturę powietrza (prędkość dźwięku = f(T))
-  - Problemy z parą, kondensacją, turbulencjami
-  - "Dead zone" (martwa strefa) ~0.3-0.5 m od przetwornika
-- **Kompensacja temperatury**: v_sound = 331.5 + 0.6 × T [m/s, °C]
-
-**4. Pojemnościowy**
-- **Zasada**: Zmiana pojemności elektrycznej między sondą a ścianką zbiornika przy zmianie poziomu
-- **Zastosowanie**: Ciecze przewodzące i nieprzewodzące, sypkie
-- **Zalety**: Prosty, brak części ruchomych, można mierzyć interface (granica faz)
-- **Wady**: Wrażliwy na osady na sondzie, zmiana ε medium (wilgotność)
-
-**5. Pływakowy / Hydrostatyka różnicowa**
-- **Zasada**: Pływak mechanicznie połączony z potencjometrem lub enkoderem
-- **Zastosowanie**: Proste zbiorniki, backup systems
-- **Zalety**: Bardzo tani (50-200 EUR), niezawodny dla prostych aplikacji
-- **Wady**: Części ruchome (wear), problemy z zawiesinami (blokada)
-
-**6. Laserowy / LIDAR**
-- **Zasada**: Time-of-flight lasera (650-905 nm)
-- **Zastosowanie**: Precyzyjne pomiary, czyste media, duże odległości (do 300 m)
-- **Zalety**: Bardzo wysoka dokładność (±1 mm), wąska wiązka (małe obiekty)
-- **Wady**: Bardzo drogi (5000-15000 EUR), wrażliwy na pary/pył
+- Zasada: Czas przelotu ultradźwięków (40-80 kHz)
+- Zalety: Tani (500-1500 EUR), prosty montaż
+- Wady: Wrażliwy na T powietrza, para, dead zone ~0.3-0.5 m
+- Kompensacja: v_sound = 331.5 + 0.6×T [m/s]
 
 </KeyPoints>
 
-<SupportingDetails title="🔧 Dobór metody według aplikacji">
+<InstructorNotes>
 
-### Fermenter biogazowni (20 m wysokości, medium: gnojowica + osady):
+Przegląd technologii pomiaru poziomu – około sześć do ośmiu minut.
 
-**Wymagania:**
-- Zakres: 0-20 m
-- Medium: agresywne, zanieczyszczone, zawiesiny
-- Temperatura: 35-42°C (fermentacja mezofilna)
-- Ciśnienie nadmuchowe: 50-200 mbar (biogaz)
-- ATEX: Strefa 0 (wnętrze) / Strefa 1 (flange)
+Zacznij od **hydrostatycznego** – najprostszy, czujnik ciśnienia na dnie zbiornika. Ciśnienie słupa cieczy p = ρ g h, więc poziom h = p/(ρ g). **Prosty, niezawodny, tani** (trzysta do osiemset euro). Wada: **wymaga kompensacji temperatury**, bo gęstość zmienia się z temperaturą (rozszerzalność objętościowa). Plus: kontakt z medium – ryzyko korozji w agresywnych środowiskach.
 
-**Rekomendacja: Radar FMCW (Ex d/ia)**
-- Bezkontaktowy (osady na przetwornikach = problem)
-- Odporny na ciśnienie nadmuchowe i parę
-- ATEX-certified (Ex ia dla Strefy 0)
-- **Koszt: 3000-4500 EUR**
+**Radarowy FMCW** – fala elektromagnetyczna (microwave, dwadzieścia sześć gigaherców) odbija się od powierzchni cieczy. Czas przelotu daje odległość. **Bezkontaktowy, odporny na wszystko** (temperatura, ciśnienie, pary, zawiesiny), dokładność plus minus dwa do pięciu milimetrów. Wada: drogi (dwa do pięciu tysięcy euro). **To premium wybór dla fermenterów biogazowni** – osady na czujniku kontaktowym to problem, radar tego unika.
 
-**Alternative (backup): Hydrostatyczny z membranową separacją**
-- Czujnik ciśnienia z membraną ceramiczną (odporną na H₂S)
-- Kompensacja ciśnienia nadmuchowego (pomiar różnicowy)
-- **Koszt: 800-1200 EUR**
+**Ultradźwiękowy** – fala dźwiękowa (czterdzieści do osiemdziesięciu kiloherców) odbija się od powierzchni. Tani (pięćset do tysiąc pięćset euro), prosty montaż (przykręcony do pokrywy zbiornika). Wady: **wrażliwy na temperaturę powietrza** (prędkość dźwięku zmienia się 0,6 metra na sekundę na stopień Celsjusza), problemy z parą (absorbuje ultradźwięki), dead zone (martwa strefa) trzydzieści do pięćdziesięciu centymetrów od przetwornika.
 
-### Zbiornik końcowy biogazowni (10 m, biogaz nad cieczą):
+Kompensacja temperatury ultradźwięków: v = 331,5 + 0,6 razy T. Przy dwudziestu stopniach to 343 m/s, przy zero stopni 331,5 m/s. **Bez kompensacji błąd około trzy do czterech procent** na dwadzieścia stopni różnicy.
 
-**Rekomendacja: Ultradźwiękowy bezkontaktowy**
-- Medium względnie czyste (po fermentacji)
-- Powierzchnia spokojna
-- **Koszt: 800-1200 EUR**
+</InstructorNotes>
 
-### Hydro – poziom wody w zbiorniku górnym (100 m wysokości):
+</Slide>
 
-**Rekomendacja: Hydrostatyczny (submersible pressure sensor)**
-- Duży zakres (0-10 bar)
-- Medium: czysta woda
-- **Koszt: 500-1000 EUR**
-- **Alternative**: Radar lub laser (jeśli dostęp od góry)
+<VisualSeparator type="default" />
+
+<Slide title="📏 Pomiar poziomu – technologie dodatkowe" type="tip">
+
+<KeyPoints title="📋 Inne metody pomiaru">
+
+**4. Pojemnościowy**
+- Zmiana pojemności elektrycznej między sondą a ścianką przy zmianie poziomu
+- Zalety: Prosty, brak części ruchomych, może mierzyć interface (granica faz)
+- Wady: Wrażliwy na osady na sondzie, zmiana ε medium
+
+**5. Pływakowy**
+- Pływak mechanicznie połączony z potencjometrem/enkoderem
+- Zalety: Bardzo tani (50-200 EUR), niezawodny dla prostych aplikacji
+- Wady: Części ruchome (wear), problemy z zawiesinami
+
+**6. Laserowy / LIDAR**
+- Time-of-flight lasera (650-905 nm)
+- Zalety: Bardzo wysoka dokładność (±1 mm), duże odległości (300 m)
+- Wady: Bardzo drogi (5000-15000 EUR), wrażliwy na pary/pył
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Dodatkowe technologie – około cztery do pięciu minut. Przejdź szybko przez trzy mniej popularne metody.
+
+**Pojemnościowy** – sonda zanurzona w medium, pojemność elektryczna między sondą a ścianką zbiornika zmienia się z poziomem. Może mierzyć interface (granicę dwóch faz, np. olej/woda). Wrażliwy na osady na sondzie (zmienia pojemność parazytyczną) i wilgotność medium (zmienia stałą dielektryczną epsilon).
+
+**Pływakowy** – stara, mechaniczna metoda. Pływak pływa na powierzchni, mechanicznie połączony z potencjometrem (rezystancja zmienia się z pozycją) lub enkoderem optycznym. **Bardzo tani** (pięćdziesiąt do dwustu euro), ale części ruchome – wear, problemy z zatykaniem w zawiesinach. Stosowany jako backup w prostych aplikacjach.
+
+**Laserowy/LIDAR** – time-of-flight lasera. **Dokładność plus minus jeden milimetr**, wąska wiązka (można mierzyć małe obiekty), duże odległości (do trzystu metrów dla systemów LIDAR). Wady: bardzo drogi (pięć do piętnastu tysięcy euro), wrażliwy na pary i pył (absorbują laser). Stosowany w specjalistycznych aplikacjach (zbiorniki chemiczne, duże odległości).
+
+W OZE rzadko stosowane – za drogie dla typowych zastosowań. Radar wystarczy i jest tańszy.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🏭 Dobór czujników poziom – aplikacje OZE" type="success">
+
+<SupportingDetails title="🔧 Dobór według aplikacji">
+
+**Fermenter biogazowni (20 m, gnojowica + osady):**
+- Wymagania: ATEX Strefa 0/1, ciśnienie nadmuchowe 50-200 mbar
+- **Rekomendacja: Radar FMCW (Ex ia)** – bezkontaktowy, odporny
+- Koszt: 3000-4500 EUR
+- **Alternative: Hydrostatyczny** z membraną ceramiczną – 800-1200 EUR
+
+**Zbiornik końcowy biogazowni (10 m, biogaz):**
+- Medium względnie czyste, powierzchnia spokojna
+- **Rekomendacja: Ultradźwiękowy** bezkontaktowy
+- Koszt: 800-1200 EUR
+
+**Hydro – zbiornik górny (100 m wysokości):**
+- Duży zakres (0-10 bar), czysta woda
+- **Rekomendacja: Hydrostatyczny** (submersible pressure sensor)
+- Koszt: 500-1000 EUR
 
 </SupportingDetails>
 
-<Example title="Kompensacja temperatury w pomiarze hydrostatycznym">
+<InstructorNotes>
+
+Dobór czujników dla konkretnych aplikacji – około cztery do pięciu minut.
+
+**Fermenter biogazowni**: dwadzieścia metrów wysokości, medium agresywne (gnojowica plus osady), temperatura trzydzieści pięć do czterdziestu dwóch stopnie, ciśnienie nadmuchowe pięćdziesiąt do dwustu milibarów (biogaz nad cieczą), **ATEX Strefa zero wnętrze, Strefa jeden flansza**.
+
+Rekomendacja: **Radar FMCW z certyfikatem Ex ia**. Bezkontaktowy (osady na czujniku to problem), odporny na ciśnienie nadmuchowe i pary, ATEX-certified. Koszt trzy do czterech i pół tysiąca euro – drogo, ale to must w tej aplikacji.
+
+Alternative: hydrostatyczny z membranową separacją (ceramika odporna na H₂S) plus kompensacja ciśnienia nadmuchowego (pomiar różnicowy: p_dno minus p_góra). Koszt osiemset do tysiąc dwieście euro – tańsze, ale ryzyko zatykania membrany osadami.
+
+**Zbiornik końcowy** – dziesięć metrów, medium czyste (po fermentacji), powierzchnia względnie spokojna. **Ultradźwiękowy bezkontaktowy** wystarczy – koszt osiemset do tysiąc dwieście euro.
+
+**Hydro zbiornik górny** – sto metrów wysokości (odpowiada dziesięciu barom ciśnienia), czysta woda. **Hydrostatyczny submersible** (zanurzalny czujnik ciśnienia) – koszt pięćset do tysiąc euro. Alternative: radar lub laser jeśli dostęp od góry.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌡️ Kompensacja temperatury – pomiar hydrostatyczny" type="info">
+
+<Example title="Wpływ temperatury na pomiar">
 
 **Problem**: Fermenter biogazowni, wysokość 15 m, medium: woda + organika
 
 **Parametry:**
 - Gęstość ρ₀ = 1050 kg/m³ (T = 40°C, baseline)
-- Współczynnik rozszerzalności objętościowej β ≈ 3×10⁻⁴ /°C (woda + organika)
-- Czujnik ciśnienia na dnie: zakres 0-2 bar (0-200 kPa)
+- Współczynnik rozszerzalności β ≈ 3×10⁻⁴ /°C
+- Czujnik ciśnienia: zakres 0-2 bar (0-200 kPa)
 
-**Pomiar bez kompensacji:**
-- Poziom nominalny: h = 12 m
+**Scenariusz bez kompensacji:**
+
+1. **Warunki normalne** (T = 40°C):
+   - Poziom h = 12 m
 - Ciśnienie: p = ρ g h = 1050 × 9.81 × 12 = 123.6 kPa
-- T = 40°C → czujnik wskazuje h = 12 m ✅
+   - Czujnik wskazuje: h = 12 m ✅
 
-**Zmiana temperatury → T = 50°C (przegrzanie fermentera):**
-- Gęstość: ρ = ρ₀ / (1 + β ΔT) = 1050 / (1 + 3×10⁻⁴ × 10) = 1046.9 kg/m³
-- Ciśnienie (przy tym samym poziomie h = 12 m): p = 1046.9 × 9.81 × 12 = 123.2 kPa
-- **Czujnik (bez kompensacji) wskaże**: h = 123.2 / (1050 × 9.81) = **11.96 m**
+2. **Przegrzanie fermentera** (T = 50°C):
+   - Gęstość spadła: ρ = 1046.9 kg/m³
+   - Ciśnienie (ten sam poziom): p = 123.2 kPa
+   - **Czujnik wskaże**: h = 11.96 m ❌
 
-**Błąd: -4 cm** (zaniżenie, bo gęstość spadła)
+**Błąd: -4 cm** (zaniżenie przez spadek gęstości)
 
-**Rozwiązanie: Kompensacja przez pomiar T:**
+</Example>
+
+<InstructorNotes>
+
+Problem kompensacji temperatury – około cztery do pięciu minut.
+
+Zacznij od **praktycznego scenariusza fermentera biogazowni**. Wysokość piętnaście metrów, medium to woda plus organika (gnojowica, osady). Gęstość nominalnie tysiąc pięćdziesiąt kilogramów na metr sześcienny przy czterdziestu stopniach Celsjusza.
+
+**Kluczowy przekaz**: pomiar hydrostatyczny to nie "plug and play". Gęstość medium zmienia się z temperaturą według współczynnika rozszerzalności objętościowej beta. Dla wody plus organika beta około trzy razy dziesięć do minus czwartej na stopień Celsjusza.
+
+Przejdź przez scenariusz krok po kroku. **Warunki normalne** – czterdzieści stopni, poziom dwanaście metrów. Ciśnienie na dnie: p = ρ g h = 1050 × 9,81 × 12 = 123,6 kilopaskala. Czujnik pokazuje dwanaście metrów – wszystko OK.
+
+Teraz **przegrzanie fermentera** do pięćdziesięciu stopni (może się zdarzyć przy awarii chłodzenia). Gęstość spada do 1046,9 kg/m³. Ten sam poziom dwanaście metrów daje teraz ciśnienie 123,2 kPa. **Czujnik bez kompensacji wskaże 11,96 metra** – błąd minus cztery centymetry.
+
+Podkreśl: **cztery centymetry błędu w zbiorniku o średnicy dziesięć metrów to około trzy metry sześcienne objętości** – znacząca różnica w kontroli procesu fermentacji.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💻 Kompensacja temperatury – rozwiązanie" type="success">
+
+**Wzór kompensacji:**
 
 $$
-h_{true} = \frac{p}{\rho(T) \times g} = \frac{p}{\rho_0 \times g} \times \left[1 + \beta (T - T_0)\right]
+h_{\text{true}} = \frac{p}{\rho(T) \times g} = \frac{p}{\rho_0 \times g} \times \left[1 + \beta (T - T_0)\right]
 $$
 
-W systemie SCADA:
+**Implementacja w SCADA:**
+
 ```python
-# Python code example
+# Python code - temperatura compensation
 rho_0 = 1050  # kg/m³ at T_0 = 40°C
 beta = 3e-4   # /°C
 g = 9.81      # m/s²
 
-p_measured = 123.2e3  # Pa (from sensor)
+p_measured = 123.2e3  # Pa (from pressure sensor)
 T_measured = 50       # °C (from PT1000)
 T_0 = 40              # °C (baseline)
 
 rho_actual = rho_0 / (1 + beta * (T_measured - T_0))
 h_corrected = p_measured / (rho_actual * g)
 
-print(f"Level (compensated): {h_corrected:.2f} m")  # Output: 12.00 m ✅
+print(f"Level (compensated): {h_corrected:.2f} m")
+# Output: 12.00 m ✅
 ```
 
-**Wnioski:**
+:::tip Kluczowe wnioski
 - Bez kompensacji temperatury: błąd do ±0.5-1% na 10°C
-- Zawsze mierz T medium przy pomiarach hydrostatycznych!
-
-</Example>
+- **Zawsze mierz T medium** przy pomiarach hydrostatycznych!
+- PT100/PT1000 w fermentarze: koszt ~100-200 EUR
+:::
 
 <InstructorNotes>
 
-**Czas**: 16-18 min
+Rozwiązanie problemu kompensacji – około cztery do pięciu minut.
 
-**Przebieg**:
-1. Przegląd technologii pomiaru poziomu (6 min) – radar, ultradźwięki, hydrostatyka
-2. Dobór metody według aplikacji (4 min) – fermenter vs. zbiornik końcowy
-3. Przykład kompensacji temperatury (4 min) – obliczenia na tablicy lub slajdzie
-4. Dyskusja: Dlaczego radar jest drogi, ale popularny? (2 min)
-5. Q&A (2 min)
+Pokaż **wzór kompensacji** – poziom prawdziwy to ciśnienie podzielone przez gęstość zależną od temperatury razy grawitacja. Można to zapisać jako wzór z gęstością bazową ρ₀ i współczynnikiem beta.
 
-**Punkty kluczowe**:
-- **Radar to premium, ale worth it** dla trudnych mediów (osady, piana, ATEX)
-- Hydrostatyczny: prosty, ale WYMAGA kompensacji T (dla ρ = f(T))
-- Ultradźwięki: OK dla spokojnych powierzchni, problemy z parą/turbuencjami
-- Dead zone ultradźwięków ~0.3-0.5 m – nie montować w pełnym zbiorniku!
+Przejdź do **implementacji w SCADA**. Python to popularny język dla edge computing i przetwarzania danych. Pokazany kod to realistyczny przykład – odczyt z czujnika ciśnienia (Pa), odczyt z PT1000 (temperatura medium), obliczenie gęstości przy aktualnej temperaturze, korekcja poziomu.
 
-**Demonstracja praktyczna**:
-- Pokaż radar (horn antenna, rod antenna) – różne typy dla różnych aplikacji
-- Ultradźwiękowy (czujnik + stożek odbijający) – konstrukcja
-- Wykres: wpływ T na gęstość wody (1000 kg/m³ @ 4°C, 958 kg/m³ @ 100°C)
+**Kluczowy element**: dodatkowy czujnik temperatury PT1000 kosztuje sto do dwustu euro. To niewiele w porównaniu do kosztów błędnego pomiaru poziomu. **Zwrot z inwestycji jest natychmiastowy** – od pierwszego dnia mamy poprawne dane.
 
-**Materiały pomocnicze**:
-- VEGA, Endress+Hauser radar datasheets (Vegapuls, Micropilot)
-- ISO/TR 11044 – Level measurement in silos/bins
-- Przykład instalacji radaru w fermentarze (zdjęcie, schemat)
+Podkreśl praktyczne aspekty. W systemie SCADA (Grafana, InfluxDB, Node-RED) taka kompensacja to **kilka linii kodu w funkcji transformującej dane**. Można to zautomatyzować całkowicie – czujnik temperatury wysyła dane co dziesięć sekund, algorytm kompensuje w czasie rzeczywistym.
 
-**Typowe błędy studenckie**:
-- Myślenie, że hydrostatyka to "plug and play" – NO! Kompensacja ρ(T), p_nadmuch
-- Ultradźwięki w parze wodnej (>80°C) – echo słabe/brak (absorpcja)
-- Radar bez właściwego flange/nozzle – odbicia od ścianek → false readings
-
-**Pytania studenckie**:
-- Q: Czemu radar jest tak drogi (3000-5000 EUR)?
-- A: Technologia high-frequency (26 GHz), cyfrowe przetwarzanie sygnału (DSP), ATEX certification, lifetime 10-20 lat (vs. ultradźwięki 5-10 lat).
-
-- Q: Czy można używać jednego czujnika do 2 zbiorników?
-- A: NIE dla radaru/ultradźwięków (jeden przetwornik = jeden zbiornik). TAK dla hydrostatyki (przełączanie zaworów, ale niepraktyczne).
+Typowy błąd: stosowanie stałej gęstości nominalnej bez kompensacji. **To działa tylko jeśli temperatura jest stabilna** (co w praktyce rzadko się zdarza).
 
 </InstructorNotes>
 
@@ -343,186 +441,58 @@ print(f"Level (compensated): {h_corrected:.2f} m")  # Output: 12.00 m ✅
 
 <VisualSeparator type="default" />
 
-<Slide title="🔧 Pomiar ciśnienia – przetworniki i zastosowania" type="info">
+<Slide title="🔧 Pomiar ciśnienia – typy przetworników" type="info">
 
-<KeyPoints title="📋 Typy przetworników ciśnienia">
+<KeyPoints title="📋 Technologie przetworników ciśnienia">
 
-**1. Piezorezystancyjne (strain gauge)**
-- **Zasada**: Deformacja membrany → zmiana rezystancji tensometrów (most Wheatstone'a)
-- **Zakres**: 0-1 bar do 0-1000 bar
-- **Dokładność**: ±0.1-0.5% FS
-- **Zalety**: Tanie (200-800 EUR), szerokie zastosowanie, kompaktowe
-- **Wady**: Dryft temperaturowy (wymaga kompensacji), wrażliwe na overload
-- **Zastosowanie**: **Najpopularniejszy typ** – ciśnienie wody, powietrza, gazu
+**1. Piezorezystancyjne (strain gauge)** ⭐ Najpopularniejszy
+- Zasada: Deformacja membrany → zmiana rezystancji (most Wheatstone'a)
+- Zakres: 0-1 bar do 0-1000 bar
+- Dokładność: ±0.1-0.5% FS
+- Koszt: 200-800 EUR | **80% rynku przemysłowego**
 
 **2. Pojemnościowe (capacitive)**
-- **Zasada**: Zmiana pojemności między membraną a elektroadą stałą
-- **Zakres**: Niskie ciśnienia (0-10 mbar) do 0-100 bar
-- **Dokładność**: ±0.05-0.2% FS (lepsze od piezo)
-- **Zalety**: Bardzo dobra stabilność długoterminowa, niski dryft
-- **Wady**: Droższe (500-1500 EUR), wrażliwe na temperaturę
-- **Zastosowanie**: Precyzyjne pomiary, vakuum, czyste media
+- Zasada: Zmiana pojemności między membraną a elektroadą
+- Zakres: 0-10 mbar do 0-100 bar
+- Dokładność: ±0.05-0.2% FS (lepsze niż piezo)
+- Koszt: 500-1500 EUR | Precyzyjne pomiary, vakuum
 
 **3. Piezoelektryczne**
-- **Zasada**: Kryształ piezo generuje ładunek proporcjonalny do siły (ciśnienia)
-- **Zakres**: Dynamiczne ciśnienia (szybkie zmiany), >1 bar
-- **Częstotliwość**: Do 100 kHz (szybka odpowiedź)
-- **Zalety**: Bardzo szybkie, odporność na overload
-- **Wady**: NIE mierzy ciśnienia statycznego (tylko zmiany), wymaga charge amplifier
-- **Zastosowanie**: Spalanie (cylindry silników), eksplozje, testy
+- Zasada: Kryształ piezo generuje ładunek przy zmianie ciśnienia
+- **Tylko dynamiczne** (NIE mierzy ciśnienia statycznego!)
+- Częstotliwość: Do 100 kHz | Spalanie, eksplozje
 
 **4. Rezonansowe (resonant)**
-- **Zasada**: Zmiana częstotliwości rezonansowej elementu pod wpływem ciśnienia
-- **Dokładność**: ±0.01-0.05% FS (ultra-precyzyjne)
-- **Zalety**: Bardzo stabilny, cyfrowy output (częstotliwość)
-- **Wady**: Bardzo drogi (3000-10000 EUR), złożone
-- **Zastosowanie**: Metrology, kalibrace, standardy
-
-### Typy pomiaru ciśnienia:
-
-- **Absolutne (absolute)**: Pomiar względem próżni (0 bar abs = vacuum)
-- **Względne (gauge)**: Pomiar względem ciśnienia atmosferycznego (0 bar g = 1 atm)
-- **Różnicowe (differential, DP)**: Różnica między dwoma punktami (ΔP = p₁ - p₂)
-
-**Konwersja jednostek:**
-- 1 bar = 100 kPa = 10 m H₂O (słup wody) = 0.987 atm
-- 1 psi = 6.895 kPa = 0.06895 bar
+- Dokładność: ±0.01-0.05% FS (ultra-precyzyjne)
+- Koszt: 3000-10000 EUR | Metrologia, standardy
 
 </KeyPoints>
 
-<SupportingDetails title="🌐 Zastosowania w instalacjach OZE">
+<KeyPoints title="📋 Typy pomiaru">
 
-### Biogazownie:
+**Absolutne (absolute)**: Pomiar względem próżni (0 bar abs = vacuum)  
+**Względne (gauge)**: Pomiar względem p_atm (0 bar g = 1 atm)  
+**Różnicowe (DP)**: Różnica ΔP = p₁ - p₂
 
-| Punkt pomiaru | Typ | Zakres | Zastosowanie |
-|---------------|-----|--------|--------------|
-| Ciśnienie biogazu w fermentarze | Gauge | 0-500 mbar | Monitoring produkcji, safety |
-| Ciśnienie przed BHKW | Gauge | 0-200 mbar | Kontrola dostawy gazu |
-| ΔP filtr biogazu | Differential | 0-100 mbar | Detekcja zatkania |
-| Ciśnienie pompowania substratu | Gauge | 0-10 bar | Sterowanie pompą |
+:::caution Uwaga
+1 bar gauge ≠ 1 bar absolute! Krytyczna różnica w projektowaniu.
+:::
 
-### Elektrownie wodne (hydro):
-
-| Punkt pomiaru | Typ | Zakres | Zastosowanie |
-|---------------|-----|--------|--------------|
-| Ciśnienie przed turbiną | Gauge | 0-40 bar | Obliczanie mocy: P = η ρ g Q H |
-| ΔP turbina (wlot-wylot) | Differential | 0-20 bar | Efektywność turbiny |
-| Ciśnienie w draft tube | Gauge / vacuum | -1 bar to +2 bar | Kavitacja (cavitation monitoring) |
-
-### Pompy ciepła:
-
-| Punkt pomiaru | Typ | Zakres | Zastosowanie |
-|---------------|-----|--------|--------------|
-| Ciśnienie ssania (suction) | Gauge | 0-10 bar | COP calculation |
-| Ciśnienie tłoczenia (discharge) | Gauge | 0-40 bar | Monitoring kompresora |
-| ΔP wymiennik | Differential | 0-2 bar | Detekcja osadów/zabrudzenia |
-
-### Membrany separacyjne (dla mediów agresywnych):
-
-**Problem**: H₂S w biogazie → korozja membrany stalowej przetwornika
-
-**Rozwiązanie**: Membrana separacyjna (diaphragm seal)
-- Materiał: Tantal, Hastelloy, PTFE, ceramika
-- Wypełnienie: Olej silikonowy (przekazuje ciśnienie, izoluje medium)
-- **Koszt dodatkowy**: +300-800 EUR
-
-</SupportingDetails>
-
-<Example title="Obliczanie mocy turbiny wodnej z pomiaru ciśnienia">
-
-**Kontekst: Mała elektrownia wodna (MEW), turbina Francisa**
-
-**Dane pomiarowe:**
-- Ciśnienie przed turbiną: p = 12.5 bar (gauge) = 1250 kPa
-- Przepływ wody: Q = 3.2 m³/s (z flowmetera elektromagnetycznego)
-- Temperatura wody: T = 10°C
-- Gęstość wody: ρ = 1000 kg/m³ (w przybliżeniu)
-- Sprawność turbiny: η_turbine = 90% (z danych producenta)
-- Sprawność generatora: η_generator = 96%
-
-**Obliczenie wysokości spadu (hydraulic head):**
-
-$$
-H = \frac{p}{\rho \times g} = \frac{1250000}{1000 \times 9.81} = 127.4 \text{ m}
-$$
-
-**Moc hydrauliczna (dostępna):**
-
-$$
-P_{hydraulic} = \rho \times g \times Q \times H = 1000 \times 9.81 \times 3.2 \times 127.4 = 4000 \text{ kW}
-$$
-
-**Moc mechaniczna na wale turbiny:**
-
-$$
-P_{mechanical} = P_{hydraulic} \times \eta_{turbine} = 4000 \times 0.90 = 3600 \text{ kW}
-$$
-
-**Moc elektryczna (net):**
-
-$$
-P_{electrical} = P_{mechanical} \times \eta_{generator} = 3600 \times 0.96 = 3456 \text{ kW}
-$$
-
-**System monitoringu w SCADA:**
-- Ciągły pomiar p i Q (co 1 s)
-- Agregacja do 1 min → obliczenie P_electrical
-- Porównanie z rzeczywistym pomiarem mocy (wattomierz na generatorze)
-- **Jeśli różnica >5%** → alarm (możliwa kavitacja, zatkanie, spadek η)
-
-**Monitorowanie kavitacji:**
-- Ciśnienie w draft tube (wylot turbiny): p_draft
-- Kryterium: p_draft > p_vapor(T) (ciśnienie pary wodnej)
-- Jeśli p_draft < p_vapor → **kavitacja** → uszkodzenia turbiny (erozja łopatek)
-- Dla T = 10°C: p_vapor ≈ 0.012 bar → p_draft powinno być >0.1-0.2 bar (margin)
-
-**Rzeczywiste dane (monitoring 24h):**
-- P_electrical_calculated: 3456 kW (z p, Q)
-- P_electrical_measured: 3390 kW (wattomierz)
-- Różnica: -66 kW (-1.9%) → **OK, w tolerancji**
-
-Gdyby różnica była >5% → inspekcja turbiny (osady, wear, misalignment).
-
-</Example>
+</KeyPoints>
 
 <InstructorNotes>
 
-**Czas**: 14-16 min
+Typy przetworników ciśnienia – około pięć do sześciu minut.
 
-**Przebieg**:
-1. Typy przetworników ciśnienia (5 min) – piezo, pojemnościowe, resonant
-2. Zastosowania w OZE (4 min) – biogazownie, hydro, pompy ciepła
-3. Przykład obliczania mocy turbiny hydro (4 min) – live calculations
-4. Dyskusja: Dlaczego membrany separacyjne? (2 min)
-5. Q&A (2 min)
+**Piezorezystancyjne to osiemdziesiąt procent rynku** – dobry kompromis koszt versus performance. Zasada: membrana odkształca się pod ciśnieniem, tensometry (strain gauges) na membranie zmieniają rezystancję, most Wheatstone'a zamienia to na napięcie. Zakres od zero do jeden bar do zero do tysiąc bar. Dokładność plus minus 0,1-0,5% FS (full scale). **Koszt dwieście do osiemset euro** – to workhorse przemysłu.
 
-**Punkty kluczowe**:
-- **Piezorezystancyjne to 80% rynku** – dobry kompromis koszt/performance
-- Absolutne vs. gauge vs. differential – trzeba wiedzieć, czego potrzebujemy!
-- Membrany separacyjne dla agresywnych mediów (H₂S, kwasy) – MUST
-- Hydro: ciśnienie = wysokość spadu (p = ρ g H) → kluczowe dla P
+**Pojemnościowe** – membrana i elektroda tworzą kondensator, ciśnienie zmienia pojemność. Lepsze niż piezo (plus minus 0,05-0,2%), ale droższe (pięćset do tysiąc pięćset euro). Bardzo dobra stabilność długoterminowa, niski dryft. Stosowane w precyzyjnych pomiarach i vakuum.
 
-**Demonstracja praktyczna**:
-- Pokaż przetwornik ciśnienia (typowy industrial: 0-10 bar, 4-20 mA)
-- Przekrój przetwornika z membraną separacyjną (diagram lub zdjęcie)
-- Kalkulator: konwersja bar ↔ psi ↔ m H₂O (online tool)
+**Piezoelektryczne** – kryształ piezo generuje ładunek tylko przy ZMIANIE ciśnienia (dF/dt). **Nie mierzy ciśnienia statycznego** – ładunek wycieka przez rezystancję izolacji (stała czasowa jeden do dziesięciu sekund). Bardzo szybkie (do stu kiloherców), stosowane w spalaniu (cylindry silników), eksplozjach, testach dynamicznych.
 
-**Materiały pomocnicze**:
-- Endress+Hauser, Wika, Rosemount datasheets
-- IEC 61298 – Process measurement and control devices (pressure transmitters)
-- Aplikacja: Pressure Unit Converter (smartphone app)
+**Rezonansowe** – ultra-precyzyjne (plus minus 0,01-0,05%), ale bardzo drogie (trzy do dziesięciu tysięcy euro). Stosowane w metrologii, kalibracjach, standardach.
 
-**Typowe błędy studenckie**:
-- Mylenie absolutne vs. gauge – KRYTYCZNE! 1 bar gauge ≠ 1 bar absolute
-- Używanie stalowej membrany w H₂S → korozja po miesiącach
-- Ignorowanie kompensacji temperatury – dryft do 0.3%/10°C dla tanich czujników
-
-**Pytania studenckie**:
-- Q: Dlaczego piezoelektryczne NIE mierzy ciśnienia statycznego?
-- A: Kryształ piezo generuje ładunek tylko przy ZMIANIE siły (dF/dt). Stałe ciśnienie → stały ładunek → ładunek "wycieka" przez rezystancję izolacji. Stała czasowa ~1-10 s.
-
-- Q: Jaka jest różnica między overload a burst pressure?
-- A: Overload = max ciśnienie bez trwałego uszkodzenia (np. 2× FS). Burst = ciśnienie zniszczenia (pęknięcie membrany, np. 10× FS). Zawsze wybieraj zakres z marginem!
+**Typy pomiaru – kluczowa różnica**: absolutne mierzy względem próżni (zero bar absolute to vacuum), gauge mierzy względem ciśnienia atmosferycznego (zero bar gauge to jeden atm), differential to różnica między dwoma punktami. **Typowy błąd studentów: mylenie absolutne versus gauge**. Jeden bar gauge to dwa bary absolute (jeden plus atmosfera). KRYTYCZNE w projektowaniu!
 
 </InstructorNotes>
 
@@ -530,116 +500,115 @@ Gdyby różnica była >5% → inspekcja turbiny (osady, wear, misalignment).
 
 <VisualSeparator type="default" />
 
-<Slide title="📝 Quiz: Przepływ, poziom, ciśnienie" type="info">
+<Slide title="🌐 Pomiar ciśnienia – zastosowania OZE" type="info">
 
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Jaką technologię pomiaru przepływu należy zastosować dla przewodzącego substratu (gnojowica) w biogazowni?",
-      options: [
-        "Ultradźwiękowy clamp-on (nieiwazyjny)",
-        "Elektromagnetyczny (magnetic flowmeter)",
-        "Turbinowy (turbine meter)",
-        "DP z zwężką (orifice plate)"
-      ],
-      correctAnswer: 1,
-      explanation: "Elektromagnetyczny to standard dla przewodzących cieczy z zawiesinami (gnojowica, osady). Ultradźwięki mają problem z akustyką w zawiesinach. Turbinowy zatka się. DP ma duży Δp i wąski turndown. Wymóg: σ >5 µS/cm (gnojowica: OK)."
-    },
-    {
-      question: "Pomiar poziomu hydrostatyczny w fermentarze (ρ = 1050 kg/m³, h = 12 m) daje ciśnienie p = 123.6 kPa. Temperatura wzrosła z 40°C do 50°C (β = 3×10⁻⁴ /°C). Jaki jest rzeczywisty poziom BEZ kompensacji temperatury?",
-      options: [
-        "12.00 m (bez zmian)",
-        "11.96 m (zaniżony, bo ρ↓)",
-        "12.04 m (zawyżony, bo ρ↑)",
-        "Nie można obliczyć bez pomiaru T"
-      ],
-      correctAnswer: 1,
-      explanation: "Wzrost T → spadek ρ (rozszerzalność). Przy tym samym h ciśnienie jest niższe → czujnik (bez kompensacji) wskaże za mało. Błąd: ~0.3% na 10°C. Odpowiedź (d) błędna – pytanie mówi 'BEZ kompensacji', czyli ignorujemy T."
-    },
-    {
-      question: "Czujnik ultradźwiękowy mierzy poziom w zbiorniku. Temperatura powietrza spadła z 20°C do 0°C. Jak zmieni się odczyt BEZ kompensacji?",
-      options: [
-        "Bez zmian (ultradźwięki nie zależą od T)",
-        "Poziom wzrośnie (false high) – prędkość dźwięku spadła",
-        "Poziom spadnie (false low) – prędkość dźwięku wzrosła",
-        "Czujnik przestanie działać przy T &lt;5°C"
-      ],
-      correctAnswer: 1,
-      explanation: "Prędkość dźwięku: v = 331.5 + 0.6×T [m/s]. Spadek T 20°C → 0°C: v zmienia się z 343 m/s do 331.5 m/s (-3.4%). Czujnik (bez kompensacji) zakłada stałe v → oblicza zbyt długi czas → zawyża odległość → zaniża poziom... STOP! Czekaj: odległość = v × t. Jeśli v↓ a t mierzone, to d↓ → poziom (h = H_tank - d) rośnie! Odpowiedź: poziom FALSE HIGH."
-    },
-    {
-      question: "Elektrownia wodna: ciśnienie przed turbiną p = 15 bar (gauge), przepływ Q = 2.5 m³/s, η_turbine = 88%, η_gen = 95%. Jaka jest moc elektryczna?",
-      options: [
-        "3100 kW",
-        "3700 kW",
-        "4200 kW",
-        "Nie można obliczyć bez wysokości spadu H"
-      ],
-      correctAnswer: 0,
-      explanation: "H = p/(ρg) = 1500000/(1000×9.81) = 153 m. P_hydr = ρgQH = 1000×9.81×2.5×153 = 3754 kW. P_mech = 3754×0.88 = 3303 kW. P_elec = 3303×0.95 = 3138 kW ≈ 3100 kW. Odpowiedź (d) błędna – p można przeliczyć na H!"
-    },
-    {
-      question: "Flowmeter Coriolis mierzy masę, nie objętość. Jaką dodatkową informację można uzyskać z czujnika Coriolis?",
-      options: [
-        "Tylko przepływ masowy [kg/h]",
-        "Przepływ masowy + gęstość medium ρ",
-        "Przepływ masowy + gęstość ρ + temperatura T",
-        "Przepływ masowy + lepkość η"
-      ],
-      correctAnswer: 2,
-      explanation: "Coriolis to 'smart sensor' – z pomiaru siły Coriolisa dostajemy masę, z częstotliwości rezonansu rurki → gęstość ρ, z rezystancji RTD (wbudowanej) → temperatura T. Lepkość NIE jest mierzona bezpośrednio (można estymować z damping, ale nieprecyzyjnie)."
-    }
-  ]}
-/>
+**Biogazownie:**
 
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o wpływie temperatury na pomiary (kompensacja ρ, v_sound) i konwersje jednostek (bar → m H₂O). Zrozumienie fizyki czujników jest kluczowe dla unikania błędów systematycznych w systemach monitoringu.
+| Punkt pomiaru | Typ | Zakres | Zastosowanie |
+|---------------|-----|--------|--------------|
+| Biogaz w fermentarze | Gauge | 0-500 mbar | Produkcja, safety |
+| Przed BHKW | Gauge | 0-200 mbar | Kontrola dostawy |
+| ΔP filtr biogazu | Differential | 0-100 mbar | Detekcja zatkania |
+| Pompowanie substratu | Gauge | 0-10 bar | Sterowanie pompą |
+
+**Elektrownie wodne:**
+
+| Punkt pomiaru | Typ | Zakres | Zastosowanie |
+|---------------|-----|--------|--------------|
+| Przed turbiną | Gauge | 0-40 bar | Moc: P = η ρ g Q H |
+| ΔP turbina | Differential | 0-20 bar | Efektywność |
+| Draft tube | Gauge/vacuum | -1 to +2 bar | Monit. kavitacji |
+
+**Pompy ciepła:**
+
+| Punkt pomiaru | Typ | Zakres | Zastosowanie |
+|---------------|-----|--------|--------------|
+| Ssanie (suction) | Gauge | 0-10 bar | COP calculation |
+| Tłoczenie (discharge) | Gauge | 0-40 bar | Monit. kompresora |
+| ΔP wymiennik | Differential | 0-2 bar | Detekcja osadów |
+
+:::tip Membrany separacyjne dla mediów agresywnych
+**Problem**: H₂S w biogazie → korozja membrany stalowej  
+**Rozwiązanie**: Membrana z tantalem/Hastelloy/PTFE, wypełnienie olejem  
+**Koszt**: +300-800 EUR
 :::
+
+<InstructorNotes>
+
+Zastosowania w OZE – około cztery do pięciu minut. Przejdź przez tabele.
+
+**Biogazownie**: ciśnienie biogazu w fermentarze (zero do pięćset milibarów gauge) to monitoring produkcji i safety – jeśli ciśnienie za wysokie, ryzyko wybuchu. Ciśnienie przed BHKW (block heat and power, kogeneracja) to kontrola dostawy gazu. ΔP filtr to detekcja zatkania – jeśli rośnie, filtr trzeba wymienić.
+
+**Elektrownie wodne**: ciśnienie przed turbiną (do czterdziestu barów) to kluczowy parametr do obliczania mocy. Wzór: P = η ρ g Q H, gdzie H (wysokość spadu) wynika z ciśnienia: H = p/(ρ g). ΔP turbina to różnica wlot-wylot, mierzy efektywność. Draft tube (wylot turbiny) – monitoring kavitacji, musi być powyżej ciśnienia pary wodnej.
+
+**Pompy ciepła**: ssanie i tłoczenie to monitoring kompresora, obliczanie COP. ΔP wymiennik to detekcja osadów i zabrudzenia – jeśli rośnie, wymiennik trzeba wyczyścić.
+
+**Membrany separacyjne**: dla agresywnych mediów (H₂S w biogazie, kwasy) stalowa membrana koroduje. Rozwiązanie: membrana separacyjna z tantalem, Hastelloy, PTFE, ceramiki. Olej silikonowy przekazuje ciśnienie, izoluje medium od czujnika. Koszt dodatkowy trzysta do osiemset euro – ale to must w biogazowniach.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💧 Przykład: Moc turbiny wodnej" type="success">
+
+<Example title="Obliczanie mocy turbiny z pomiaru ciśnienia">
+
+**Kontekst: MEW, turbina Francisa**
+
+**Dane pomiarowe:**
+- Ciśnienie przed turbiną: p = 12.5 bar = 1250 kPa
+- Przepływ: Q = 3.2 m³/s
+- η_turbine = 90%, η_generator = 96%
+
+**Obliczenia:**
+
+1. **Wysokość spadu**: H = p/(ρ g) = 1250000/(1000 × 9.81) = **127.4 m**
+
+2. **Moc hydrauliczna**: P_hydr = ρ g Q H = 1000 × 9.81 × 3.2 × 127.4 = **4000 kW**
+
+3. **Moc mechaniczna**: P_mech = 4000 × 0.90 = **3600 kW**
+
+4. **Moc elektryczna**: P_el = 3600 × 0.96 = **3456 kW**
+
+**Monitoring w SCADA:**
+- Pomiar p i Q co 1 s → obliczenie P_el
+- Porównanie z wattomierzem na generatorze
+- **Jeśli różnica >5%** → alarm (kavitacja, zatkanie)
+
+**Monitoring kavitacji (draft tube):**
+- p_draft > p_vapor(T) (ciśnienie pary wodnej)
+- Dla T=10°C: p_vapor ≈ 0.012 bar → p_draft >0.1-0.2 bar
+
+**Rzeczywiste dane (24h):**
+- P_el_calculated: 3456 kW | P_el_measured: 3390 kW
+- Różnica: -66 kW (-1.9%) → **OK**
+
+</Example>
+
+<InstructorNotes>
+
+Przykład turbiny wodnej – około pięć do sześciu minut. Obliczenia na tablicy lub slajdzie live.
+
+**Kontekst**: mała elektrownia wodna (MEW), turbina Francisa (to najpopularniejszy typ dla średnich spadów sto do dwustu metrów). Ciśnienie przed turbiną 12,5 bara gauge (tysiąc dwieście pięćdziesiąt kilopaskali), przepływ 3,2 metra sześciennego na sekundę.
+
+Przejdź przez obliczenia krok po kroku. **Krok 1: wysokość spadu** H = p/(ρ g). To kluczowy wzór – ciśnienie to słup wody, więc można przeliczyć na wysokość. 127,4 metra spadu.
+
+**Krok 2: moc hydrauliczna** – to moc dostępna w wodzie: P = ρ g Q H. Tysiąc razy 9,81 razy 3,2 razy 127,4 = cztery tysiące kilowatów. To potencjał energetyczny wody.
+
+**Krok 3: moc mechaniczna** na wale turbiny – turbina ma sprawność dziewięćdziesiąt procent (typowa dla Francisa w nominalnym punkcie pracy). Cztery tysiące razy 0,9 = trzy tysiące sześćset kilowatów.
+
+**Krok 4: moc elektryczna** – generator ma sprawność dziewięćdziesiąt sześć procent. Trzy tysiące sześćset razy 0,96 = trzy tysiące czterysta pięćdziesiąt sześć kilowatów elektrycznych (net).
+
+**System monitoringu w SCADA**: ciągły pomiar p i Q co sekundę, agregacja do jednej minuty, obliczenie mocy elektrycznej. Porównanie z rzeczywistym pomiarem z wattomierza na generatorze. **Jeśli różnica większa niż pięć procent – alarm**. Możliwe przyczyny: kavitacja, zatkanie, spadek sprawności (wear, osady).
+
+**Monitoring kavitacji**: ciśnienie w draft tube (wylot turbiny) musi być powyżej ciśnienia pary wodnej przy danej temperaturze. Dla dziesięciu stopni Celsjusza p_vapor około 0,012 bara. Draft tube powinno być powyżej 0,1-0,2 bara (margin bezpieczeństwa). Jeśli spada poniżej – **kavitacja** – pęcherzyki pary implodują, erozja łopatek turbiny.
+
+Rzeczywiste dane z monitoringu: moc obliczona trzy tysiące czterysta pięćdziesiąt sześć kilowatów, zmierzona trzy tysiące trzysta dziewięćdziesiąt kilowatów. Różnica minus sześćdziesiąt sześć kilowatów (minus 1,9%) – **OK, w tolerancji**.
+
+</InstructorNotes>
 
 </Slide>
 
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Pomiar przepływu – dobór według medium:**
-   - **Elektromagnetyczny**: Ciecze przewodzące, brak przeszkód, wide turndown (1:100)
-   - **Ultradźwiękowy**: Nieiwazyjny (clamp-on), czyste media, retrofit-friendly
-   - **Coriolis**: Masa + gęstość + T, najdokładniejszy (±0.1%), ale drogi
-   - **DP (zwężka)**: Tani, ale wąski turndown (1:10) i duży spadek ciśnienia
-
-2. **Pomiar poziomu – kompensacja temperatury jest kluczowa:**
-   - **Hydrostatyczny**: Prosty, ale WYMAGA kompensacji ρ(T) i ciśnienia nadmuchowego
-   - **Radar FMCW**: Premium (3000-5000 EUR), bezkontaktowy, ATEX, odporny na wszystko
-   - **Ultradźwiękowy**: Tani, ale wrażliwy na T powietrza, parę, turbulencje
-
-3. **Pomiar ciśnienia – typy i zastosowania:**
-   - **Piezorezystancyjny**: 80% rynku, 200-800 EUR, 0-1000 bar
-   - **Absolutne vs. gauge vs. differential** – musisz wiedzieć, czego potrzebujesz!
-   - **Membrany separacyjne** dla agresywnych mediów (H₂S, kwasy) – dodatkowe 300-800 EUR
-
-4. **Aplikacje OZE:**
-   - **Biogazownie**: Przepływ substratu/biogazu, poziom fermenterów, ciśnienie gazu
-   - **Hydro**: Ciśnienie → wysokość spadu → obliczanie mocy (P = η ρ g Q H)
-   - **Pompy ciepła**: Ciśnienia suction/discharge → COP, diagnostyka
-
-5. **Błędy do unikania:**
-   - Elektromagnetyczny dla mediów nieprzewodzących (olej, gaz)
-   - Brak kompensacji T w hydrostatyce → błąd 0.3-1%
-   - Ultradźwięki w parze (>80°C) → brak echa
-
-**Następne kroki:**
-- Ćwiczenie 5: Projektowanie systemu monitoringu procesowego dla biogazowni (dobór czujników, lokalizacje, CAPEX/OPEX)
-- Przygotowanie do następnej sekcji: Kondycjonowanie sygnałów (filtry, izolacja, ochrona przed przepięciami)
-
----
-
-**Dodatkowe zasoby:**
-- **ISO 5167** – Measurement of fluid flow (DP devices)
-- **IEC 61298** – Process measurement devices (pressure, level)
-- **Endress+Hauser, Krohne, Emerson** – Application guides (free PDFs)
-- **VEGA** – Radar level measurement handbook

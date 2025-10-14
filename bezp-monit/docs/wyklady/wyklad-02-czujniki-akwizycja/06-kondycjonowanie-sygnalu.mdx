@@ -191,7 +191,7 @@ graph LR
 **Aby prawidłowo zrekonstruować sygnał o maksymalnej częstotliwości f_max, częstotliwość próbkowania musi wynosić:**
 
 $$
-f_{sample} \geq 2 \times f_{max} \quad \text{(Nyquist rate)}
+f_{\text{sample}} \geq 2 \times f_{\text{max}} \quad \text{(Nyquist rate)}
 $$
 
 **W praktyce: f_sample ≥ 2.5-5 × f_max** (zapas na nieperfektne filtry)
@@ -592,115 +592,4 @@ Fermenter (Ground A) --[PT1000 signal]-- PLC (Ground B)
 
 </Slide>
 
-<VisualSeparator type="default" />
-
-<Slide title="📝 Quiz: Kondycjonowanie sygnałów" type="info">
-
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Akcelerometr generuje sygnał 0-50 mV, ADC wymaga 0-5 V. Jakie wzmocnienie należy zastosować w wzmacniaczu instrumentacyjnym?",
-      options: [
-        "10× (0.5 V)",
-        "50× (2.5 V)",
-        "100× (5 V)",
-        "1000× (50 V, za dużo)"
-      ],
-      correctAnswer: 2,
-      explanation: "Wzmocnienie = V_out / V_in = 5 V / 0.05 V = 100×. Opcja (d) błędna: 50 mV × 1000 = 50 V (saturacja ADC i op-amp!). Zawsze dopasuj wzmocnienie do zakresu ADC."
-    },
-    {
-      question: "System akwizycji wibracji ma f_sample = 10 kHz. Jaka powinna być częstotliwość cut-off filtru antyaliasing (Butterworth 4th order)?",
-      options: [
-        "5 kHz (f_sample / 2, Nyquist)",
-        "4 kHz (f_sample / 2.5, zapas)",
-        "2 kHz (f_sample / 5, duży zapas)",
-        "Nie potrzeba filtru, 10 kHz wystarczy"
-      ],
-      correctAnswer: 1,
-      explanation: "f_cutoff = f_sample / 2.5 = 10000 / 2.5 = 4 kHz. Opcja (a) to teoretyczny Nyquist, ale real-world filtry nie są idealne (slope skończony). Opcja (c) to overkill (za dużo sygnału zafiltrowane). Opcja (d) BŁĄD – bez antyaliasing będzie aliasing!"
-    },
-    {
-      question: "Sygnał 4.5 kHz próbkowany z f_sample = 5 kHz (BRAK filtru antyaliasing). Jaka częstotliwość pojawi się w ADC (alias)?",
-      options: [
-        "4.5 kHz (bez zmian)",
-        "500 Hz (|4500 - 5000|)",
-        "9.5 kHz (4500 + 5000)",
-        "0.5 kHz (4500 / 5000)"
-      ],
-      correctAnswer: 1,
-      explanation: "Aliasing: f_alias = |f_signal - n × f_sample|. Dla n=1: |4500 - 5000| = 500 Hz. Sygnał 4.5 kHz 'zawija się' i pojawia jako 500 Hz w ADC. Opcja (c) to suma (nie dzieje się). Opcja (d) to dzielenie (niepoprawne)."
-    },
-    {
-      question: "Ground loop powoduje zakłócenie 50 Hz w sygnale 10 mV z tensometru. Co jest NAJLEPSZYM rozwiązaniem?",
-      options: [
-        "Zwiększenie wzmocnienia (amplify signal and noise together)",
-        "Filtr notch 50 Hz (tłumi zakłócenie, ale też może sygnał)",
-        "Izolacja galwaniczna (isolation amplifier, przerywa pętlę)",
-        "Skrócenie przewodu sygnałowego (zmniejsza rezystancję)"
-      ],
-      correctAnswer: 2,
-      explanation: "Izolacja galwaniczna to root cause fix – przerywa ground loop elektryczne. Opcja (a) wzmacnia też szum (SNR bez zmiany!). Opcja (b) działa, ale jeśli sygnał ma składowe @ 50 Hz – zostanie zafiltrowany. Opcja (d) pomaga trochę, ale nie eliminuje różnicy potencjałów ground."
-    },
-    {
-      question: "Dlaczego w przemyśle stosuje się 4-20 mA zamiast 0-10 V do transmisji sygnałów?",
-      options: [
-        "4-20 mA jest tańsze (mniejsze komponenty)",
-        "4-20 mA jest immune do zakłóceń EMI i ground loops (prąd stały w pętli)",
-        "4-20 mA ma większą dokładność (±0.01%)",
-        "4-20 mA nie wymaga zasilania czujnika"
-      ],
-      correctAnswer: 1,
-      explanation: "Prąd w pętli jest taki sam niezależnie od spadków napięcia (EMI, ground loops). 4 mA to 'live zero' (zerwany przewód = 0 mA = alarm). 0-10 V wrażliwe na zakłócenia napięciowe. Opcja (c) nieprawda (dokładność zależy od DAC/ADC). Opcja (d) nieprawda (4-20 mA wymaga power supply, np. 24 V)."
-    }
-  ]}
-/>
-
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (aliasing), ground loops i różnicy między 4-20 mA vs. 0-10 V. Zrozumienie kondycjonowania sygnałów jest fundamentem wiarygodnego monitoringu w środowisku przemysłowym.
-:::
-
-</Slide>
-
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Kondycjonowanie sygnału to NIE opcja** – surowy sygnał z czujnika rzadko nadaje się bezpośrednio do ADC. Wymaga: wzmacniania, filtracji, liniaryzacji, izolacji.
-
-2. **Filtr antyaliasing (analogowy LP przed ADC) jest OBOWIĄZKOWY** – po sampling aliased frequency nie jest do odzyskania. f_cutoff = f_sample / 2.5-5, Butterworth 4th order to dobry wybór.
-
-3. **Ground loops to najczęstszy problem w przemyśle** – różnice potencjałów ground (50-100 mV @ 50 Hz) indukują zakłócenia. Rozwiązania:
-   - Izolacja galwaniczna (isolation amplifier): 100-200 EUR, eliminuje problem
-   - 4-20 mA loops: standard SCADA, immune do EMI/ground loops
-   - Ekranowanie + twisted pair: redukcja, ale nie eliminacja
-
-4. **Wzmacniacz instrumentacyjny (in-amp) > zwykły op-amp** – CMRR >100 dB eliminuje zakłócenia common-mode. Koszt: 2-10 EUR/szt. (AD620, INA128).
-
-5. **Topologie 4-wire dla czujników rezystancyjnych** (PT100/1000) – kompensacja rezystancji przewodów, kluczowe dla długich dystansów (>10 m).
-
-6. **Ochrona przed przepięciami** (TVS, varistory) – koszt 1-5 EUR, ale ratuje sprzęt za setki/tysiące EUR (ADC, procesory).
-
-**Typowe błędy do unikania:**
-- Brak filtru antyaliasing → aliasing → fałszywe częstotliwości
-- Ignorowanie ground loops → zakłócenia 50 Hz → dane bezużyteczne
-- Stosowanie zwykłego op-ampa zamiast in-amp → niski CMRR → wrażliwość na EMI
-- Ekran floating (nie podłączony) → shield działa jak antena
-
-**Następne kroki:**
-- Ćwiczenie 6: Projekt toru pomiarowego (czujnik → conditioning → ADC → µC) z symulacją w LTspice/Matlab
-- Lab hands-on: Budowa filtru antyaliasing, test z generatorem i oscyloskopem
-- Przygotowanie do egzaminu: Powtórka całego wykładu 02 (czujniki + akwizycja)
-
----
-
-**Dodatkowe zasoby:**
-- **Analog Devices**: "A Designer's Guide to Instrumentation Amplifiers" (MT-070)
-- **TI**: "Understanding Data Converters" (SLAA013)
-- **Ott, Henry**: "Electromagnetic Compatibility Engineering" (książka, biblia EMC)
-- **IEC 61326** – EMC requirements for electrical equipment for measurement
-- **Grounding and Shielding** (Ralph Morrison) – klasyk, praktyczne podejście

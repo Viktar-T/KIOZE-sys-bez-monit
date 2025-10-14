@@ -26,7 +26,7 @@ Po tej sekcji student potrafi:
 
 <SlideContainer>
 
-<Slide title="☀️ Irradiancja — pomiar i standardy ISO 9060" type="info">
+<Slide title="☀️ Irradiancja — podstawy i typy pomiaru" type="info">
 
 <KeyPoints title="📋 Definicje i wielkości">
 
@@ -45,7 +45,25 @@ Po tej sekcji student potrafi:
 
 </KeyPoints>
 
-<SupportingDetails title="🔧 Standard ISO 9060:2018 – klasy pyranometrów">
+<InstructorNotes>
+
+Ten slajd wprowadza podstawowe pojęcia – około sześć do ośmiu minut.
+
+Zacznij od wyjaśnienia, czym jest irradiancja i dlaczego jest kluczowa. **Irradiancja to moc na metr kwadratowy**, nie mylić z insolacją (która jest całką, czyli energią). Studenci często to mylą.
+
+Przejdź przez typy pomiaru. **GHI to pozioma płaszczyzna** – historycznie stosowana w meteorologii, ale dla fotowoltaiki mało użyteczna bez transpozycji. **POA to płaszczyzna modułów** – właściwy wybór dla obliczania Performance Ratio, bo pokazuje rzeczywiste naświetlenie paneli.
+
+Podkreśl, że **bez POA nie można obliczyć wiarygodnego PR**. GHI wymaga modeli transpozycji (Perez, Hay-Davies), które dodają niepewność trzy do pięciu procent. To może być decydujące w sporach o gwarancje.
+
+DNI i DHI to bardziej zaawansowane pomiary – używane w systemach z trackerami lub koncentratorami, ale nie w standardowych instalacjach PV. Wystarczy je wspomnieć.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Standard ISO 9060:2018 – klasy pyranometrów" type="info">
 
 ### Klasyfikacja dokładności:
 
@@ -56,17 +74,55 @@ Po tej sekcji student potrafi:
 | **Second Class** | &lt;10% | 350-2500 nm | &lt;20 s | Monitoring prosumencki, diagnostyka | 300-800 EUR |
 | **Class C** | &lt;20% | 400-2000 nm | &lt;30 s | Systemy niskobudżetowe | 100-300 EUR |
 
-**Kluczowe parametry pyranometru:**
+<KeyPoints title="📋 Dobór klasy pyranometru">
 
-1. **Czułość spektralna**: Odpowiedź powinna pokrywać widmo słoneczne (AM 1.5G: 280-4000 nm). Pyranometry krzemowe (photovoltaic reference cells) mają węższe pasmo (400-1100 nm), co prowadzi do błędów w pochmurne dni (więcej niebieskiego światła).
+**First Class** to standard dla farm komercyjnych &gt;500 kWp:
+- Niepewność &lt;5% wystarczy do rozliczeń i gwarancji PR
+- Koszt 0.1-0.3% CAPEX instalacji (niewielki, ale kluczowy)
+- Kalibracja co 2 lata
 
-2. **Nieliniowość**: Błąd przy zmiennej intensywności (&lt;1% dla First Class)
+**Secondary Standard** tylko dla:
+- Pomiarów referencyjnych i laboratoriów
+- Projektów badawczych wymagających &lt;3% niepewności
+- Koszt 2-3× wyższy niż First Class przy marginalnej poprawie dokładności
 
-3. **Odpowiedź kierunkowa**: Błąd przy małych kątach padania (poranek/wieczór). Pyranometry z kopułą szklaną mają lepszą odpowiedź kątową.
+</KeyPoints>
 
-4. **Dryft termiczny**: Zmiana czułości z temperaturą (&lt;2% w zakresie -20 do +50°C dla First Class)
+<InstructorNotes>
 
-5. **Zeroing (offset)**: Odpowiedź w nocy powinna być 0 W/m² (typowo ±1-5 W/m² dla dobrych pyranometrów)
+Tabela klasyfikacji ISO 9060 to podstawa wyboru pyranometru – około pięć do siedmiu minut na ten slajd.
+
+Przejdź przez tabelę kolumna po kolumnie. **Niepewność** to kluczowy parametr – dla First Class poniżej pięciu procent, co jest wystarczające dla większości zastosowań komercyjnych. **Secondary Standard** daje poniżej trzech procent, ale kosztuje dwa do trzech razy więcej – różnica nie jest warta dla typowego monitoringu.
+
+Zwróć uwagę na **zakres spektralny**. Pyranometry termopilowe pokrywają szeroki zakres (300-3000 nm), co odpowiada całemu widmu słonecznemu. To ważne, bo w pochmurne dni widmo się zmienia (więcej niebieskiego światła).
+
+**Czas reakcji** – dla pomiarów uśrednionych (pięć minut, godzina) nie jest krytyczny. Dziesięć sekund wystarczy. Szybsze czujniki (krzemowe, milisekundy) są potrzebne tylko do badania szybkich zmian (analiza chmur).
+
+Koszt pyranometru to **zaledwie 0.1-0.3% całkowitego CAPEX farmy PV**, ale decyduje o wiarygodności wszystkich KPI przez dwadzieścia pięć lat. To najlepsza inwestycja w jakość danych.
+
+**Kalibracja** – First Class co dwa lata, Secondary Standard co pięć lat. To wymóg norm i umów gwarancyjnych.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚠️ Parametry i ograniczenia pyranometrów" type="tip">
+
+<KeyPoints title="📋 Kluczowe parametry techniczne">
+
+**1. Czułość spektralna**: Odpowiedź powinna pokrywać widmo słoneczne (AM 1.5G: 280-4000 nm)
+
+**2. Nieliniowość**: Błąd przy zmiennej intensywności (&lt;1% dla First Class)
+
+**3. Odpowiedź kierunkowa**: Błąd przy małych kątach padania (poranek/wieczór). Pyranometry z kopułą szklaną mają lepszą odpowiedź kątową
+
+**4. Dryft termiczny**: Zmiana czułości z temperaturą (&lt;2% w zakresie -20 do +50°C dla First Class)
+
+**5. Zeroing (offset)**: Odpowiedź w nocy powinna być 0 W/m² (typowo ±1-5 W/m² dla dobrych pyranometrów)
+
+</KeyPoints>
 
 :::caution Uwaga: Pyranometry krzemowe (PV reference cells)
 Tańsze (100-300 EUR) i szybsze (ms), ale:
@@ -77,45 +133,25 @@ Tańsze (100-300 EUR) i szybsze (ms), ale:
 Stosować tylko do szybkiego monitoringu lub tam, gdzie budżet &lt;500 EUR. Dla rozliczeń i PR zawsze termopilowy (First/Secondary Standard).
 :::
 
-</SupportingDetails>
-
 <InstructorNotes>
 
-**Czas**: 15-18 min
+Parametry techniczne to kwestie praktyczne – około pięć do siedmiu minut.
 
-**Przebieg**:
-1. Wprowadzenie do irradiancji i jej roli w monitoringu PV (4 min)
-2. Omówienie typów pomiaru: GHI vs. POA (3 min) – użyj ilustracji lub modelu
-3. Klasyfikacja ISO 9060 (5 min) – pokaż przykładowy pyranometr (jeśli dostępny)
-4. Trade-off: pyranometry termopilowe vs. krzemowe (3 min)
-5. Q&A (2 min)
+**Czułość spektralna** to najważniejszy parametr. Pyranometry krzemowe (fotoogniwa kalibracyjne) mają wąskie pasmo czterysta do tysiąc sto nanometrów – **w pochmurne dni błąd sięga pięć do dziesięć procent**, bo widmo się przesuwa w stronę niebieskiego. Termopilowe pokrywają pełne widmo (trzysta do trzech tysięcy nanometrów) – to powód, dla którego są standardem.
 
-**Punkty kluczowe**:
-- **POA to must-have**: bez POA nie można obliczyć wiarygodnego PR (GHI wymaga modelu transpozycji, dodatkowa niepewność ±3-5%)
-- Pyranometry First Class to standard dla farm &gt;500 kWp
-- Kalibracja co 2 lata dla First Class, co 5 lat dla Secondary Standard
-- Koszt pyranometru to 0.1-0.3% CAPEX farmy PV (niewielki, ale kluczowy)
+**Nieliniowość** – dobrze zaprojektowany pyranometr ma liniową odpowiedź od zera do tysiąc pięćset watów na metr kwadratowy. Tanie czujniki mogą mieć błąd przy niskich lub wysokich intensywnościach.
 
-**Demonstracja praktyczna** (jeśli dostępna):
-- Pokaż różnicę w odczytach pyranometr termopilowy vs. krzemowy w pochmurny dzień
-- Wyświetl certyfikat kalibracji pyranometru (niepewność, stała kalibracji)
+**Odpowiedź kierunkowa** (angular response) – rano i wieczorem, gdy słońce pada pod małym kątem, tani pyranometr może zaniżać pomiar. Kopuła szklana pomaga zachować równomierną odpowiedź.
 
-**Materiały pomocnicze**:
-- ISO 9060:2018 (wybrane fragmenty, tabelki klasyfikacji)
-- Datasheets: Kipp & Zonen CMP11 (First Class), EKO ML-01 (Second Class)
-- Aplikacja do transpozycji GHI→POA (pvlib-python, przykład)
+**Dryft termiczny** – czujnik zmienia czułość z temperaturą. First Class ma maksymalnie dwa procent dryftu w zakresie minus dwadzieścia do plus pięćdziesiąt stopni Celsjusza. To trzeba uwzględnić w obliczeniach lub stosować kompensację.
 
-**Typowe błędy studenckie**:
-- Mylenie irradiancji (W/m²) z insolacją (Wh/m² lub J/m²) – to całka!
-- Stosowanie GHI do obliczania PR bez transpozycji
-- Niezrozumienie, że pyranometr krzemowy NIE jest zgodny z ISO 9060
+**Zeroing** – w nocy pyranometr powinien pokazywać zero. Jeśli pokazuje plus minus pięć watów na metr kwadratowy, to offset trzeba odjąć od pomiarów dziennych.
 
-**Pytania studenckie**:
-- Q: Dlaczego nie wszędzie stosuje się Secondary Standard?
-- A: Koszt (3000-5000 EUR) vs. First Class (1000-1500 EUR). Różnica w niepewności &lt;2%, dla większości zastosowań First Class wystarczy.
+Podkreśl **problem pyranometrów krzemowych**. Tanie, szybkie, ale **nie spełniają ISO 9060**. Można ich używać do wstępnego monitoringu lub gdy budżet poniżej pięciuset euro, ale **nigdy do rozliczeń i PR**.
 
-- Q: Jak często czyścić pyranometr?
-- A: W zależności od środowiska. Obszary pyłowe/rolnicze: co tydzień. Czyste środowiska: co miesiąc. Zabrudzona kopuła → zaniżony pomiar G → zawyżony PR!
+Jeśli ktoś zapyta, dlaczego nie wszędzie Secondary Standard – odpowiedź: koszt trzy do pięciu tysięcy euro versus tysiąc do dwóch tysięcy euro za First Class. **Różnica w niepewności poniżej dwóch procent** – dla większości zastosowań nie warta podwojenia ceny.
+
+Czyszczenie pyranometru – **w zależności od środowiska**. Obszary pyłowe/rolnicze: co tydzień. Czyste: co miesiąc. Zabrudzona kopuła zaniża pomiar G, co zawyża PR – fałszywe poczucie sukcesu!
 
 </InstructorNotes>
 
@@ -146,13 +182,34 @@ Stosować tylko do szybkiego monitoringu lub tam, gdzie budżet &lt;500 EUR. Dla
 - Czyszczenie kopuły: woda destylowana + szmata mikrofibra (NIE detergenty!)
 - Częstotliwość: co 1-4 tygodnie (zależnie od środowiska)
 - Sprawdzanie poziomu (libella w korpusie pyranometru) co 6 miesięcy
-- **Rejestr konserwacji** – wymóg norm ISO 9847 dla pomiarów referencyjnych
 
 </KeyPoints>
 
-<SupportingDetails title="🧪 Kalibracja i weryfikacja">
+<InstructorNotes>
 
-### Procedury kalibracyjne:
+Decyzje instalacyjne to praktyczne aspekty montażu – około sześć do ośmiu minut.
+
+**POA to absolutny must dla Performance Ratio** – to nie jest "nice to have". Bez POA musimy używać GHI z transpozycją, a to dodaje trzy do pięciu procent niepewności. W sporach o gwarancje to może być decydujące.
+
+Lokalizacja czujnika – **blisko reprezentatywnych modułów, maksymalnie pięć metrów**, ta sama wysokość. Symulacja trójwymiarowa w PVsyst lub HelioScope pomaga znaleźć miejsca bez zacienienia przez cały rok.
+
+**Typowy błąd**: odbicia od białych dachów, śniegu, wody. Widziałem instalację, gdzie pyranometr był pięć metrów od białego dachu – **odbite światło dodawało pięć do dwudziestu watów na metr kwadratowy**, co fałszowało wszystkie KPI.
+
+Mocowanie – **stabilna konstrukcja odporna na wiatr**, bez drgań. Przewód ekranowany, prowadzony równolegle do konstrukcji metalowej dla właściwego uziemienia.
+
+Czyszczenie kopuły – **woda destylowana plus mikrofibra**, żadnych detergentów (zostają naloty). Częstotliwość: obszary pyłowe co tydzień, czyste co miesiąc. **Zabrudzona kopuła zaniża pomiar G, co zawyża PR** – fałszywe poczucie sukcesu!
+
+Sprawdzanie poziomu (libella) co pół roku – przechylony pyranometr daje błędy kierunkowe.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔬 Kalibracja i weryfikacja pyranometrów" type="tip">
+
+<SupportingDetails title="🧪 Procedury kalibracyjne">
 
 **Kalibracja fabryczna (nowy pyranometr):**
 - Wykonywana przez producenta w kontrolowanych warunkach (lampy kalibracyjne, standard WRR)
@@ -166,8 +223,8 @@ Stosować tylko do szybkiego monitoringu lub tam, gdzie budżet &lt;500 EUR. Dla
 
 **Weryfikacja terenowa (co 1-6 miesięcy):**
 - Porównanie z drugim pyranometrem (mobilny standard)
-- Sprawdzenie zeroing w nocy (offset &lt;±5 W/m²)
-- Test spójności: korelacja z satelitarnymi danymi (CAMS, SolarGIS) – różnica &lt;±5% w skali miesiąca
+- Sprawdzenie zeroing w nocy (offset {'<'}±5 W/m²)
+- Test spójności: korelacja z satelitarnymi danymi (CAMS, SolarGIS) – różnica &lt;5% w skali miesiąca
 
 :::tip Dobra praktyka
 W farmach &gt;1 MWp stosuje się **2 pyranometry POA** (różne lokalizacje) + 1 GHI. Redundancja + możliwość wykrycia dryftu/uszkodzenia przez porównanie. Koszt dodatkowy ~1500 EUR, ale eliminuje ryzyko nieświadomego błędu przez miesiące.
@@ -175,7 +232,29 @@ W farmach &gt;1 MWp stosuje się **2 pyranometry POA** (różne lokalizacje) + 1
 
 </SupportingDetails>
 
-<Example title="Wpływ błędów montażu na PR">
+<InstructorNotes>
+
+Procedury kalibracyjne to kwestia jakości danych – około cztery do sześciu minut.
+
+**Kalibracja fabryczna** – każdy nowy pyranometr ma certyfikat z konstanta kalibracji (sensitivity), typowo pięć do piętnastu mikrowoltów na wat na metr kwadratowy dla termopilowych. **To jest mnożnik, który przelicza napięcie z czujnika na irradiancję**.
+
+**Rekalibracja co dwa do pięciu lat** – wymóg dla pomiarów rozliczeniowych. Koszt trzysta do osiemset euro, czas dwa do czterech tygodni (pyranometr musi pojechać do laboratorium). W farmach komercyjnych to obowiązek, nie opcja.
+
+**Weryfikacja terenowa** – co jeden do sześciu miesięcy porównujemy nasz pyranometr z mobilnym standardem lub sprawdzamy korelację z danymi satelitarnymi. Różnica powyżej pięciu procent w skali miesiąca to sygnał alarmowy – możliwy dryft lub uszkodzenie.
+
+**Dobra praktyka**: w farmach powyżej megawata stosujemy **dwa pyranometry POA w różnych lokalizacjach** plus jeden GHI. Koszt dodatkowy tysiąc pięćset euro, ale eliminuje ryzyko, że przez miesiące nie wiemy o uszkodzonym czujniku.
+
+Pokaż przykład certyfikatu kalibracji – studenci muszą wiedzieć, jak go czytać. Wykres korelacji G_pyranometr versus G_satelita to dobra wizualizacja spójności danych.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📉 Błędy montażu i ich wpływ na PR" type="warning">
+
+<Example title="Studium przypadku: Błędny azymut pyranometru">
 
 **Scenariusz**: Farma PV 1 MWp, pyranometr zamontowany z błędem azymutu +15° względem modułów.
 
@@ -197,68 +276,70 @@ W farmach &gt;1 MWp stosuje się **2 pyranometry POA** (różne lokalizacje) + 1
 
 <InstructorNotes>
 
-**Czas**: 12-15 min
+Ten slajd pokazuje konsekwencje błędnego montażu – około cztery do pięciu minut.
 
-**Przebieg**:
-1. Omówienie decyzji POA vs. GHI (3 min) – użyj przykładu obliczenia PR
-2. Montaż i lokalizacja czujnika (4 min) – pokaż zdjęcia dobrych i złych montaży
-3. Kalibracja i weryfikacja (3 min)
-4. Przykład błędu montażu i jego wpływu na PR (2 min)
-5. Q&A (2 min)
+**Kluczowy przekaz**: piętnaście stopni błędu w azymucie pyranometru daje **dwa punkty procentowe błędu w PR**. W farmie megawatowej to różnica między osiemdziesiąt przecinek pięć a osiemdziesiąt dwa przecinek sześć procent. Jeśli gwarancja w umowie PPA mówi osiemdziesiąt jeden procent, pierwsza wartość sugeruje niedotrzymanie warunków, druga – spełnienie.
 
-**Punkty kluczowe**:
-- POA to MUST dla PR – to nie jest "nice to have"
-- Montaż to często zaniedbany aspekt – widziałem farmy z pyranometrem w cieniu konstrukcji wsporczej...
-- Czyścić regularnie! Zabrudzona kopuła → zaniżona G → zawyżony PR → fałszywe poczucie sukcesu
+Przejdź przez obliczenia. Błędny azymut powoduje, że pyranometr "widzi" więcej światła (tysiąc osiemdziesiąt versus tysiąc sto pięćdziesiąt kilowatogodzin na metr kwadratowy rocznie). **Dzieląc rzeczywistą produkcję przez zawyżoną irradiancję dostajemy zaniżony PR**.
 
-**Demonstracja praktyczna**:
-- Pokaż jak wygląda poprawnie zamontowany pyranometr (zdjęcie z farmy)
-- Przykład certyfikatu kalibracji
-- Wykres korelacji G_pyranometr vs. G_satelita (powinny się zgadzać ±5%)
+Weryfikacja montażu – **kompas lub GPS do sprawdzenia azymutu z dokładnością plus minus dwa stopnie**, poziomica lub inklinometr do nachylenia plus minus jeden stopień. To trwa dziesięć minut przy instalacji, ale eliminuje systematyczny błąd na dwadzieścia pięć lat.
 
-**Materiały pomocnicze**:
-- ISO 9847:1992 – Solar energy — Calibration of field pyranometers by comparison to a reference pyranometer
-- Przykłady błędnych montaży (odbicia od białych dachów, zacienienie rano)
-- Kalkulator transpozycji pvlib: https://pvlib-python.readthedocs.io/
+Jeśli ktoś zapyta o dane satelitarne zamiast pyranometru – odpowiedź: **nie do PR**! Satelity (CAMS, SolarGIS) mają niepewność pięć do dziesięciu procent, okej do prognoz długoterminowych, ale nie do dziennego czy godzinowego Performance Ratio.
 
-**Pytania studenckie**:
-- Q: Czy można używać danych satelitarnych zamiast pyranometru?
-- A: Nie do PR! Satelity (CAMS, SolarGIS) mają niepewność ±5-10%, OK do long-term, ale nie do daily/hourly PR.
-
-- Q: Czemu nie montować pyranometru na module PV?
-- A: Można, ale moduł się grzeje (~40-60°C w słońcu), pyranometr ma dryft termiczny. Lepiej na konstrukcji obok, z wentylacją.
+Pytanie o montaż na module PV – można, ale moduł grzeje się do czterdziestu do sześćdziesięciu stopni w słońcu, **pyranometr ma dryft termiczny**. Lepiej na konstrukcji obok z wentylacją.
 
 </InstructorNotes>
 
 </Slide>
 
-<Slide title="🌡️ Temperatura modułów (T_mod) – pomiar i kompensacja" type="tip">
+<Slide title="🌡️ Temperatura modułów – cel i technologie" type="tip">
 
-<KeyPoints title="📋 Technologie pomiaru temperatury">
+<KeyPoints title="📋 Dlaczego mierzymy T_mod?">
 
-**Dlaczego mierzymy T_mod?**
 1. **Kompensacja temperaturowa mocy**: Moduły PV tracą ~0.35-0.5%/°C mocy przy wzroście temperatury
 2. **Obliczanie PR**: PR wymaga oczekiwanej mocy przy rzeczywistych G i T
 3. **Diagnostyka przegrzewania**: Hot-spoty, zły montaż, problemy z wentylacją
 4. **Modelowanie**: Walidacja modeli termicznych, prognozowanie
 
-**Czujniki temperatury:**
+</KeyPoints>
 
-| Typ czujnika | Zakres | Dokładność | Linearność | Interfejs | Koszt | Zastosowanie |
-|--------------|--------|------------|------------|-----------|-------|--------------|
-| **PT100** | -200 do +850°C | ±0.15°C (Class A) | Bardzo dobra | 4-wire ohm | €€€ | Stacje meteo, referencyjne |
-| **PT1000** | -200 do +850°C | ±0.15-0.3°C | Bardzo dobra | 2-wire ohm | €€ | Monitoring PV (standard) |
-| **NTC 10kΩ** | -40 do +125°C | ±0.5-1°C | Nieliniowa | Ohm / voltage divider | € | Niskobudżetowe, prosumenckie |
-| **Termopar (K-type)** | -200 do +1200°C | ±1-2°C | Średnia | mV (cold junction comp) | € | Wysokie temperatury, eksperymentalne |
-| **IR (pyrometr)** | -50 do +1000°C | ±1-3°C | - | Analog/digital | €€€€ | Bezkontaktowy, termowizja |
+<KeyPoints title="📋 Czujniki temperatury - porównanie">
+
+| Typ czujnika | Zakres | Dokładność | Koszt | Zastosowanie |
+|--------------|--------|------------|-------|--------------|
+| **PT100** | -200 do +850°C | ±0.15°C | €€€ | Stacje meteo, referencyjne |
+| **PT1000** | -200 do +850°C | ±0.15-0.3°C | €€ | Monitoring PV (standard) |
+| **NTC 10kΩ** | -40 do +125°C | ±0.5-1°C | € | Niskobudżetowe |
+| **Termopar K** | -200 do +1200°C | ±1-2°C | € | Wysokie T, eksperymentalne |
+| **IR pyrometr** | -50 do +1000°C | ±1-3°C | €€€€ | Bezkontaktowy, termowizja |
 
 **Dla monitoringu PV: PT1000 to standard** (dobry kompromis dokładność/koszt).
 
 </KeyPoints>
 
-<SupportingDetails title="🔧 Montaż czujników temperatury">
+<InstructorNotes>
 
-### Kluczowe zasady instalacji:
+Wprowadzenie do pomiaru temperatury modułów – około pięć do siedmiu minut.
+
+**Dlaczego temperatura jest kluczowa**? Współczynnik temperaturowy γ to minus 0,35 do minus 0,50 procent na stopień Celsjusza. Przy pięćdziesięciu pięciu stopniach (typowa temperatura latem) mamy **straty dwanaście do piętnaście procent mocy** względem warunków STC (dwadzieścia pięć stopni). Bez kompensacji temperaturowej PR jest całkowicie zniekształcony.
+
+Przejdź przez tabelę czujników. **PT1000 to przemysłowy standard** – dokładność plus minus 0,15-0,3 stopnia, liniowy, stabilny, koszt trzydzieści do sześćdziesiąt euro. PT100 jest dokładniejszy, ale trzy razy droższy – niepotrzebny dla typowego monitoringu.
+
+NTC (termistory) są tanie (pięć do piętnastu euro), ale **nieliniowe** – wymagają tabeli kalibracyjnej lub równania Steinhart-Hart. Okej dla budżetowych systemów prosumenckich.
+
+Termopary to przeszłość – niższa dokładność, wymagają kompensacji cold junction. IR (pirometry bezkontaktowe) to narzędzie diagnostyczne, nie do ciągłego monitoringu.
+
+**T_mod to nie T_amb**! Studenci to mylą. Temperatura modułu to temperatura otoczenia plus dwadzieścia pięć do trzydzieści pięć stopni przy napromieniowaniu tysiąc watów na metr kwadratowy. W lecie w Polsce: T_mod pięćdziesiąt do sześćdziesiąt pięć stopni.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔧 Montaż czujników temperatury" type="tip">
+
+<KeyPoints title="📋 Kluczowe zasady instalacji">
 
 **1. Lokalizacja na module**
 - **Tylna ścianka modułu** (back-sheet), środek modułu (unikać ramki aluminiowej – odmienna temp.)
@@ -268,107 +349,41 @@ W farmach &gt;1 MWp stosuje się **2 pyranometry POA** (różne lokalizacje) + 1
 **2. Mocowanie**
 - **Klejenie**: taśma termoprzewodząca (thermal pad, ~3-5 W/mK) + klej epoksydowy
 - **NIE używać** zwykłej taśmy izolacyjnej (zły kontakt termiczny, degradacja UV)
-- Przewód powinien być odciążony (nie ciągnąć czujnika!), prowadzony z tyłu konstrukcji
+- Przewód odciążony (nie ciągnąć czujnika!), prowadzony z tyłu konstrukcji
 
 **3. Liczba czujników**
 - Instalacje &lt;100 kWp: 1-2 czujniki
 - Instalacje 100 kWp-1 MWp: 3-5 czujników (różne sekcje, orientacje)
-- &gt;1 MWp: min. 1 czujnik na każdą tablicę inwerterową + czujniki w miejscach podejrzanych (przegrzewanie)
+- &gt;1 MWp: min. 1 czujnik na każdą tablicę inwerterową
 
 **4. Konfiguracja pomiaru**
-- **PT1000 2-wire**: dla odległości &lt;10 m, rezystancja przewodów &lt;2 Ω
-- **PT1000 4-wire**: dla &gt;10 m lub pomiarów ±0.1°C (kompensacja rezystancji przewodów)
-- Częstotliwość próbkowania: 10-60 s (temperatura zmienia się wolno)
-- Agregacja: średnia 1-5 min (redukcja szumów, spójne z G_POA i P_dc)
+- PT1000 2-wire: dla odległości &lt;10 m
+- PT1000 4-wire: dla &gt;10 m lub pomiarów ±0.1°C
+- Próbkowanie: 10-60 s | Agregacja: średnia 1-5 min
+
+</KeyPoints>
 
 :::caution Typowy błąd: montaż czujnika na ramce aluminiowej
 Ramka aluminiowa ma inną temperaturę niż ogniwo (~5-10°C chłodniejsza w słońcu z powodu wentylacji). Montaż tam prowadzi do **systematycznego zaniżania T_mod** → przeszacowanie oczekiwanej mocy → zaniżony PR.
 :::
 
-</SupportingDetails>
-
-<Example title="Kompensacja temperaturowa w obliczaniu PR">
-
-**Formuła PR z kompensacją:**
-
-$$
-PR = \frac{E_{actual}}{E_{expected}} = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA}}{1000} \times [1 + \gamma (T_{mod} - 25)]}
-$$
-
-Gdzie:
-- $E_{actual}$ – rzeczywista energia wyprodukowana [kWh]
-- $P_{STC}$ – moc nominalna w STC [kWp]
-- $G_{POA}$ – irradiancja w płaszczyźnie modułów [W/m²]
-- $\gamma$ – współczynnik temperaturowy mocy [%/°C], typowo -0.35 do -0.50%/°C
-- $T_{mod}$ – zmierzona temperatura modułów [°C]
-
-**Przykład numeryczny (godzina w południe, lipiec)**:
-- Instalacja: 100 kWp, moduły z γ = -0.40%/°C
-- G_POA = 950 W/m²
-- T_mod = 55°C
-- E_actual = 85 kWh (zmierzone w ciągu godziny)
-
-**Obliczenie E_expected:**
-$$
-E_{expected} = 100 \times \frac{950}{1000} \times [1 + (-0.004) \times (55 - 25)] = 100 \times 0.95 \times 0.88 = 83.6 \text{ kWh}
-$$
-
-**PR:**
-$$
-PR = \frac{85}{83.6} = 1.017 \text{ czyli } 101.7\%
-$$
-
-**Interpretacja**: System działa lekko lepiej niż oczekiwano (możliwe przyczyny: nowsze moduły mają lepszy γ, dobra wentylacja). PR &gt;100% jest możliwe w krótkich okresach (np. niskie temperatury powietrza + wysokie G).
-
-**Gdyby NIE uwzględnić temperatury** (założenie T_mod = 25°C):
-$$
-E_{expected, no\_comp} = 100 \times 0.95 = 95 \text{ kWh}
-$$
-$$
-PR_{no\_comp} = \frac{85}{95} = 0.895 \text{ czyli } 89.5\%
-$$
-
-**Różnica: 12 punktów procentowych!** Brak kompensacji termicznej radykalnie zniekształca PR, szczególnie latem.
-
-</Example>
-
 <InstructorNotes>
 
-**Czas**: 14-16 min
+Praktyczne aspekty montażu czujników – około pięć do siedmiu minut.
 
-**Przebieg**:
-1. Wyjaśnienie dlaczego mierzymy T_mod (3 min)
-2. Przegląd czujników (PT1000, NTC, termopar) (4 min)
-3. Montaż i typowe błędy (4 min) – pokaż zdjęcia poprawnego i błędnego montażu
-4. Przykład obliczenia PR z kompensacją (3 min) – przeprowadź live na tablicy/slajdzie
-5. Q&A (2 min)
+**Lokalizacja**: tylna ścianka modułu (back-sheet), środek, unikać ramki aluminiowej. Ramka jest pięć do dziesięciu stopni chłodniejsza przez wentylację – **to systematyczny błąd, który zniekształca wszystkie obliczenia PR**.
 
-**Punkty kluczowe**:
-- **Współczynnik γ** jest w datasheet modułu (szukać "temperature coefficient of P_max")
-- T_mod ≠ T_amb (temperatura otoczenia)! Typowo T_mod = T_amb + 25-35°C przy G = 1000 W/m²
-- PT1000 to najbardziej popularny wybór (dokładność vs. koszt)
+Mocowanie – **taśma termoprzewodząca plus klej epoksydowy**. Widziałem instalacje, gdzie użyto zwykłej taśmy izolacyjnej – po roku degradacja UV, czujnik się odkleił. Thermal pad zapewnia dobry kontakt termiczny (trzy do pięciu watów na metr kelwin).
 
-**Demonstracja praktyczna**:
-- Pokaż czujnik PT1000 + thermal pad
-- Wykres T_mod vs. T_amb vs. G_POA przez jeden dzień (pokaże dynamikę)
-- Live obliczenie PR na przykładzie (użyj rzeczywistych danych z lokalnej instalacji jeśli dostępne)
+Przewód musi być odciążony – nie może ciągnąć czujnika. Prowadzić z tyłu konstrukcji, chronić przed UV i mechanicznymi uszkodzeniami.
 
-**Materiały pomocnicze**:
-- Datasheet modułu PV z temperaturowym współczynnikiem (np. Longi, JinkoSolar)
-- IEC 61853-3 (procedury pomiarowe dla T_mod)
-- Wykres zależności T_mod od G_POA (z NREL, Sandia model)
+**Liczba czujników** zależy od wielkości i złożoności instalacji. W małych systemach (poniżej stu kilowatów) wystarczą jeden do dwóch. W farmach megawatowych potrzeba minimum jeden na każdą sekcję inwerterową.
 
-**Typowe błędy studenckie**:
-- Mylenie T_cell (temperatura ogniwa) z T_module (back-sheet) – różnica ~2-5°C
-- Stosowanie T_amb zamiast T_mod w kompensacji (BŁĄD!)
-- Niezrozumienie, że γ jest ujemny (wyższa T → niższa moc)
+Konfiguracja pomiaru – **PT1000 2-wire dla odległości poniżej dziesięciu metrów**, 4-wire dla dłuższych tras lub gdy potrzebujemy dokładności plus minus 0,1 stopnia (kompensuje rezystancję przewodów).
 
-**Pytania studenckie**:
-- Q: Czy można używać kamery termowizyjnej zamiast PT1000?
-- A: Tak, ale to pomiar punktowy/periodyczny. Do ciągłego monitoringu potrzeba kontaktowych czujników. Termowizja świetna do diagnostyki hot-spotów.
+Próbkowanie co dziesięć do sześćdziesięciu sekund wystarczy – **temperatura zmienia się wolno**. Agregacja do średniej co jeden do pięciu minut, spójnie z G_POA i mocą DC.
 
-- Q: Jaki jest typowy T_mod latem w Polsce?
-- A: Przy G = 900-1000 W/m² i T_amb = 25-30°C → T_mod = 50-65°C. W pustynnych farmach (Arabia, Sahara) → 70-85°C!
+Pokaż zdjęcia poprawnego i błędnego montażu – studenci muszą zobaczyć różnicę. Czujnik PT1000 z thermal padem to niewielki koszt (około pięćdziesiąt euro), ale decyduje o jakości kompensacji temperaturowej przez dwadzieścia pięć lat.
 
 </InstructorNotes>
 
@@ -376,16 +391,75 @@ $$
 
 <VisualSeparator type="default" />
 
-<Slide title="📐 Integracja G_POA i T_mod do obliczania PR" type="info">
+<Slide title="📐 Kompensacja temperaturowa w PR" type="info">
 
-<KeyConcept title="Synchronizacja czasowa i agregacja danych">
+<Example title="Obliczanie PR z kompensacją temperatury">
 
-**Problem**: Dane z różnych źródeł (pyranometr, PT1000, inwertery) mają różne:
-- Częstotliwości próbkowania (pyranometr: 1 s, inwerter: 5 s, PT1000: 30 s)
-- Znaczniki czasu (time stamps) – mogą być przesunięte o kilka sekund
-- Strefy czasowe (UTC vs. local time) – kluczowy problem w międzynarodowych projektach!
+**Formuła PR z kompensacją:**
 
-**Rozwiązanie**: Wspólny pipeline agregacji danych
+$$
+PR = \frac{E_{actual}}{E_{expected}} = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA}}{1000} \times [1 + \gamma (T_{mod} - 25)]}
+$$
+
+Gdzie: $\gamma$ – współczynnik temperaturowy mocy [%/°C], typowo -0.35 do -0.50%/°C
+
+**Przykład (godzina w południe, lipiec)**:
+- Instalacja: 100 kWp, γ = -0.40%/°C
+- G_POA = 950 W/m², T_mod = 55°C
+- E_actual = 85 kWh
+
+**Obliczenie:**
+$$
+E_{expected} = 100 \times \frac{950}{1000} \times [1 - 0.004 \times 30] = 100 \times 0.95 \times 0.88 = 83.6 \text{ kWh}
+$$
+
+$$
+PR = \frac{85}{83.6} = 1.017 = 101.7\%
+$$
+
+**Bez kompensacji** (założenie T_mod = 25°C):
+$$
+E_{expected} = 100 \times 0.95 = 95 \text{ kWh} \quad \Rightarrow \quad PR = \frac{85}{95} = 89.5\%
+$$
+
+**Różnica: 12 punktów procentowych!** Brak kompensacji termicznej radykalnie zniekształca PR.
+
+</Example>
+
+<InstructorNotes>
+
+Przykład obliczeniowy to konkrety – około sześć do ośmiu minut. **Przeprowadź to live na tablicy lub w Excelu**.
+
+Zacznij od wzoru. **Kompensacja temperaturowa** to mnożnik jeden plus gamma razy różnica temperatur. Gamma to minus 0,4 procent na stopień, różnica to trzydzieści stopni (pięćdziesiąt pięć minus dwadzieścia pięć), daje minus dwanaście procent.
+
+Przejdź krok po kroku przez obliczenia. **Oczekiwana energia to nominalna moc razy irradiancja znormalizowana razy kompensacja temperaturowa**. Dla naszego przykładu: sto razy 0,95 razy 0,88 równa się osiemdziesiąt trzy przecinek sześć kilowatogodzin.
+
+Performance Ratio: osiemdziesiąt pięć podzielić przez osiemdziesiąt trzy przecinek sześć równa się jeden przecinek zero siedemnaście, czyli **sto jeden przecinek siedem procent**. PR powyżej stu procent to możliwe – oznacza, że system działa lepiej niż model STC przewiduje.
+
+Teraz pokażcie różnicę **bez kompensacji**. Zakładając dwadzieścia pięć stopni, oczekiwana energia to dziewięćdziesiąt pięć kilowatogodzin, PR to osiemdziesiąt dziewięć przecinek pięć procent. **Różnica dwanaście punktów procentowych** – to ogromne zniekształcenie!
+
+Studenci muszą zrozumieć, że **bez pomiaru temperatury modułów nie można obliczyć wiarygodnego PR**, szczególnie latem. To nie opcja, to wymóg.
+
+Współczynnik γ jest w datasheet każdego modułu – szukać "temperature coefficient of P_max". Typowo minus 0,35 do minus 0,50 procent na stopień dla krzemowych modułów.
+
+Jeśli ktoś zapyta o kamerę termowizyjną – tak, można, ale to pomiar punktowy, nie ciągły. **Do monitoringu potrzeba kontaktowych czujników typu PT1000**. Termowizja świetna do diagnostyki hot-spotów, ale nie do dziennego PR.
+
+Typowa T_mod latem w Polsce: pięćdziesiąt do sześćdziesiąt pięć stopni przy G dziewięćset do tysiąc watów na metr kwadratowy i T_amb dwadzieścia pięć do trzydzieści stopni. W pustynnych farmach (Arabia, Sahara) siedemdziesiąt do osiemdziesiąt pięć stopni!
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📐 Integracja G_POA i T_mod — pipeline danych" type="info">
+
+<KeyConcept title="Pipeline agregacji danych">
+
+**Problem**: Dane z różnych źródeł mają różne częstotliwości próbkowania i timestampy
+- Pyranometr: 1 s | PT1000: 30 s | Inwerter: 5 s
+
+**Rozwiązanie**: Wspólny pipeline agregacji
 
 ```mermaid
 graph LR
@@ -406,39 +480,70 @@ graph LR
 ```
 
 **Kluczowe kroki:**
-
-1. **Konwersja do UTC**: Wszystkie znaczniki czasu w bazie danych w UTC
-2. **Agregacja do wspólnego okna**: Typowo 5 lub 15 min (mean dla G i T, sum dla E)
-3. **Synchronizacja**: Dopasowanie timestampów (np. przez interpolację lub najbliższy sąsiad)
-4. **Filtrowanie**: Usunięcie outlierów (G&lt;10 W/m² → noc, pomiń) i błędnych odczytów
-
-:::tip Dobra praktyka: okna agregacji
-- **5 min**: Standardowe w monitoringu komercyjnym (kompromis granularności vs. szum)
-- **15 min**: Często w SCADA energetycznym (zgodnie z IEC 61850)
-- **1 godz. / 1 dzień**: Do raportowania dla inwestorów i long-term analiz
-:::
+1. **Konwersja do UTC**: Wszystkie znaczniki czasu w UTC
+2. **Agregacja**: Typowo 5 lub 15 min (mean dla G i T, sum dla E)
+3. **Synchronizacja**: Dopasowanie timestampów
+4. **Filtrowanie**: Usunięcie outlierów (G&lt;10 W/m² → noc)
 
 </KeyConcept>
 
-<SupportingDetails title="🔍 Typowe problemy synchronizacji">
+<InstructorNotes>
+
+Diagram pipeline agregacji danych – około pięć do siedmiu minut na ten slajd.
+
+**Kluczowy problem**: różne źródła danych mają różne częstotliwości próbkowania. Pyranometr co sekundę, PT1000 co trzydzieści sekund, inwerter co pięć sekund. **Jak to zsynchronizować do wspólnego obliczenia PR?**
+
+Przejdź przez diagram. Gateway zbiera dane z wszystkich źródeł przez Modbus RTU lub TCP, konwertuje timestampy na UTC, wysyła do InfluxDB przez MQTT.
+
+**W bazie danych następuje agregacja**. Typowo okno pięć minut – obliczamy średnią G_POA, średnią T_mod, sumę energii. To redukuje szum i synchronizuje dane z różnych źródeł.
+
+Podkreśl znaczenie UTC. **Wszystkie timestampy w UTC**, bez wyjątków. Konwersja do czasu lokalnego tylko przy wizualizacji. Eliminuje to problemy ze strefami czasowymi i zmianą czasu (DST).
+
+Filtrowanie – **usuwamy noc** (G poniżej dziesięciu watów na metr kwadratowy) i błędne odczyty (G powyżej tysiąc pięćset, T_mod powyżej dziewięćdziesięciu stopni – fizycznie niemożliwe).
+
+Okna agregacji: pięć minut to standard w komercyjnym monitoringu (kompromis między granularnością a redukcją szumu), piętnaście minut w SCADA energetycznym zgodnie z IEC 61850, godzina lub dzień do raportów dla inwestorów.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚠️ Problemy synchronizacji danych" type="warning">
+
+<KeyPoints title="📋 Typowe problemy i rozwiązania">
 
 **Problem 1: Brak NTP w gateway**
 - Symptom: Dryf zegara edge device o kilka sekund/dzień
 - Rozwiązanie: Konfiguracja NTP (pool.ntp.org), synchronizacja co 1 godz.
 
 **Problem 2: Strefy czasowe**
-- Symptom: PR jest "przesunięty" o kilka godzin (wykres PR vs. godzina jest nietypowy)
+- Symptom: PR "przesunięty" o kilka godzin (wykres PR vs. godzina nietypowy)
 - Rozwiązanie: Wszystkie dane w UTC, konwersja do local time tylko w wizualizacji
 
 **Problem 3: Różne częstotliwości próbkowania**
-- Symptom: Niektóre minuty mają dane G ale nie mają P, lub odwrotnie
-- Rozwiązanie: Agregacja do wspólnego okna (np. 5 min) + interpolacja brakujących wartości
+- Symptom: Niektóre minuty mają dane G ale nie P, lub odwrotnie
+- Rozwiązanie: Agregacja do wspólnego okna (5 min) + interpolacja brakujących wartości
 
 **Problem 4: Opóźnienia w komunikacji**
-- Symptom: Timestamp w bazie danych vs. rzeczywisty czas pomiaru różnią się o &gt;10 s
-- Rozwiązanie: Stosowanie timestampów z czujników/inwerterów (jeśli mają RTC), nie z gateway
+- Symptom: Timestamp w bazie vs. rzeczywisty czas różni się &gt;10 s
+- Rozwiązanie: Timestampy z czujników/inwerterów (RTC), nie z gateway
 
-</SupportingDetails>
+</KeyPoints>
+
+<InstructorNotes>
+
+Typowe problemy synchronizacji to praktyczne kwestie – około cztery do pięciu minut.
+
+**Brak NTP** to częsty błąd w budżetowych instalacjach. Raspberry Pi bez synchronizacji zegara dryfuje kilka sekund dziennie – **po tygodniu to już minuta różnicy**. Konfiguracja NTP to dziesięć minut pracy, eliminuje problem na lata.
+
+**Strefy czasowe** to zmora międzynarodowych projektów. Widziałem instalację w Niemczech, gdzie dane były w UTC plus jeden, ale przez pół roku po zmianie czasu (DST) były w UTC plus dwa – chaos w raportach. **Rozwiązanie: wszystko w UTC**, konwersja przy wizualizacji.
+
+**Różne częstotliwości** – agregacja do wspólnego okna (pięć minut) i interpolacja brakujących wartości. W InfluxDB to proste zapytanie (GROUP BY time(5m), MEAN()).
+
+**Opóźnienia w komunikacji** – jeśli używamy timestampu z gateway (czas zapisu do bazy), może być przesunięty względem rzeczywistego czasu pomiaru. Lepiej używać timestampów z czujników (jeśli mają RTC), lub Edge device z NTP.
+
+</InstructorNotes>
 
 </Slide>
 
@@ -477,88 +582,21 @@ Zainstalowano pyranometr First Class (Kipp & Zonen CMP11) obok istniejącego krz
 | 11:00 | 520 W/m² | 470 W/m² | +11% |
 | 12:00 | 580 W/m² | 530 W/m² | +9% |
 
-### Faza 3: Przeliczenie PR z poprawnymi danymi
-
-**PR z pyranometrem krzemowym (błędne)**:
-$$
-PR = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA, krem}}{1000}} \approx 0.73
-$$
-
-**PR z pyranometrem termopilowym (poprawne)**:
-$$
-PR = \frac{E_{actual}}{P_{STC} \times \frac{G_{POA, termo}}{1000}} \approx 0.84
-$$
-
-**Wynik**: System działał PRAWIDŁOWO! Problem był w pomiarze, nie w instalacji PV.
-
-### Faza 4: Działania (wrzesień 2021)
-
-- Wymiana pyranometru krzemowego na First Class termopilowy (koszt: 1200 EUR)
-- Retrospektywna korekta raportów PR dla inwestora (za okres czerwiec-sierpień)
-- Uniknięto kosztownej i nieuzasadnionej reklamacji gwarancyjnej (potencjalny koszt: &gt;50 000 EUR!)
-
-**ROI wymiany pyranometru**: Zwrot w ciągu 1 miesiąca (uniknięcie kosztów prawnych i audytów).
-
 </SupportingDetails>
-
-<Example title="Lekcje i rekomendacje">
-
-**Kluczowe wnioski:**
-
-1. **Pyranometry krzemowe NIE nadają się do rozliczeń i gwarancji PR**
-   - Błąd spektralny w zmiennych warunkach pogodowych
-   - OK do szybkiego monitoringu, nieakceptowalne do celów prawnych
-
-2. **Weryfikacja z danymi satelitarnymi (CAMS, SolarGIS)**
-   - Jeśli różnica >±5-7% w skali miesiąca → sprawdź pyranometr!
-   - Satelity mają niepewność ±5-10%, ale są niezależne
-
-3. **Redundancja pyranometrów w dużych instalacjach**
-   - Farmy &gt;1 MWp powinny mieć 2+ pyranometry różnych typów/producentów
-   - Koszt: 1500-3000 EUR dodatkowe, ale eliminuje single point of failure
-
-4. **Inspekcja przy odbiorze instalacji**
-   - Sprawdź typ pyranometru (ISO 9060 class!)
-   - Certyfikat kalibracji (&lt;2 lata)
-   - Porównanie z sąsiednimi instalacjami lub satelitami
-
-:::caution Uwaga prawna
-Wiele umów PPA (Power Purchase Agreement) i gwarancji producentów odnosi się do PR obliczonego według norm IEC 61724. Norma **wymaga pyranometru zgodnego z ISO 9060** (co najmniej Second Class). Pyranometry krzemowe nie spełniają tego wymogu → możliwość unieważnienia gwarancji!
-:::
-
-</Example>
 
 <InstructorNotes>
 
-**Czas**: 10-12 min
+Pierwsze dwie fazy studium przypadku – około pięć do siedmiu minut.
 
-**Przebieg**:
-1. Przedstawienie problemu (2 min) – podkreśl niepokój inwestora
-2. Omówienie diagnozy (4 min) – wyjaśnij błąd spektralny pyranometrów krzemowych
-3. Pokazanie danych porównawczych (2 min) – tabela lub wykres
-4. Dyskusja: Jak studenci podeszliby do tego problemu? (2 min)
-5. Rekomendacje i wnioski (2 min)
+**Przedstaw kontekst**: farma dwa megawaty, Performance Ratio siedemdziesiąt dwa do siedemdziesiąt pięć procent latem. To **dramatycznie nisko** – oczekiwane osiemdziesiąt dwa do osiemdziesiąt pięć procent. Inwestor panikuje, mówi o reklamacji gwarancyjnej.
 
-**Punkty kluczowe**:
-- To prawdziwy case (anonimizowany) – podkreśl, że to nie jest teoretyczny problem
-- Koszt pyranometru: 1000-1500 EUR, koszt błędnej diagnozy: &gt;50 000 EUR (prawnik, audyty, wymiana sprzętu)
-- Pyranometry krzemowe są często stosowane przez niewykwalifikowanych instalatorów (tańsze, szybsze) → problem branżowy
+Zewnętrzna firma O&M zauważyła wzorzec: **PR pada w pochmurne dni do sześćdziesięciu ośmiu procent**, w słoneczne osiemdziesiąt. To dziwne – powinno być odwrotnie (w pochmurne mniej strat termicznych). Plus pyranometr krzemowy pokazuje osiem do dwunastu procent więcej niż satelity.
 
-**Demonstracja praktyczna**:
-- Pokaż różnicę w spektralnej czułości: termopilowy (widmo szerokie) vs. krzemowy (tylko 400-1100 nm)
-- Wykres G_POA (krzemowy vs. termopilowy vs. satelity) przez tydzień (pokaże rozbieżności)
+**Hipoteza**: błąd spektralny. Pyranometry krzemowe mają wąskie pasmo (czterysta do tysiąc sto nanometrów). W pochmurne dni widmo przesuwa się w stronę niebieskiego – tam czujnik krzemowy ma wysoką czułość – **zawyża pomiar irradiancji**.
 
-**Materiały pomocnicze**:
-- IEC 61724-1:2017 – Photovoltaic system performance monitoring (wymogi dla pyranometrów)
-- Przykładowy kontrakt PPA z klauzulą o pyranometrach zgodnych z ISO 9060
-- Artykuł naukowy o błędach spektralnych PV reference cells (np. z Solar Energy journal)
+Weryfikacja – zainstalowano referencyjny pyranometr termopilowy First Class obok krzemowego. W słoneczny dzień różnica około trzech procent (akceptowalne), w pochmurny **plus dziesięć do piętnastu procent** – krzemowy pokazuje więcej. Bingo, hipoteza potwierdzona!
 
-**Pytania studenckie**:
-- Q: Czy można korygować odczyty pyranometru krzemowego matematycznie?
-- A: Trudne – korekta zależy od spektrum (zmienne w czasie). Prostsze i pewniejsze: użyć termopilowego.
-
-- Q: Dlaczego ktoś w ogóle stosuje pyranometry krzemowe?
-- A: Tanie (100-300 EUR vs. 1000+ EUR), szybkie (ms vs. 5-10 s), małe. OK do szybkiego monitoringu/R&D, ale nie do rozliczeń.
+Pokaż tabelę z przykładowymi danymi – studenci muszą zobaczyć konkretne liczby. O dziesiątej czterysta pięćdziesiąt versus trzysta dziewięćdziesiąt watów na metr kwadratowy – to piętnaście procent różnicy.
 
 </InstructorNotes>
 
@@ -566,94 +604,72 @@ Wiele umów PPA (Power Purchase Agreement) i gwarancji producentów odnosi się 
 
 <VisualSeparator type="default" />
 
-<Slide title="📝 Quiz: Irradiancja i temperatura" type="info">
+<Slide title="💡 Studium przypadku: Rozwiązanie i lekcje" type="success">
 
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Jaką klasę pyranometru (ISO 9060) należy zastosować w farmie PV 500 kWp z gwarancją PR dla inwestora?",
-      options: [
-        "Pyranometr krzemowy (PV reference cell) – wystarczająco dokładny",
-        "Second Class (niepewność &lt;10%) – minimum dla komercyjnych instalacji",
-        "First Class (niepewność &lt;5%) – standard dla gwarancji i rozliczeń",
-        "Secondary Standard (&lt;3%) – obowiązkowe dla wszystkich farm"
-      ],
-      correctAnswer: 2,
-      explanation: "First Class to standard dla instalacji komercyjnych z gwarancjami PR. Second Class można stosować w mniejszych instalacjach prosumenckich. Secondary Standard to overkill (koszt 3000-5000 EUR). Pyranometry krzemowe NIE spełniają ISO 9060."
-    },
-    {
-      question: "Dlaczego pomiar POA (Plane of Array) jest lepszy niż GHI dla obliczania PR w instalacji PV?",
-      options: [
-        "POA jest tańszy w instalacji",
-        "POA bezpośrednio mierzy irradiancję w płaszczyźnie modułów, GHI wymaga transpozycji (dodatkowa niepewność ±3-5%)",
-        "GHI nie działa w pochmurne dni",
-        "POA jest wymagane przez prawo"
-      ],
-      correctAnswer: 1,
-      explanation: "POA mierzy rzeczywiste naświetlenie modułów. GHI (horizontal) wymaga modelu transpozycji (Perez, Hay-Davies), co dodaje niepewność ±3-5%. POA jest rekomendowane przez IEC 61724, choć nie zawsze prawnie wymagane."
-    },
-    {
-      question: "Gdzie należy zamontować czujnik PT1000 do pomiaru T_mod?",
-      options: [
-        "Na ramce aluminiowej modułu (łatwy dostęp)",
-        "Na przedniej powierzchni szklanej (bezpośredni kontakt ze słońcem)",
-        "Na tylnej ściance (back-sheet) w środku modułu, z taśmą termoprzewodzącą",
-        "W powietrzu obok modułu (reprezentuje T_amb)"
-      ],
-      correctAnswer: 2,
-      explanation: "Tylna ścianka (back-sheet) w środku modułu to właściwe miejsce – reprezentuje temperaturę ogniwa. Ramka aluminiowa jest chłodniejsza (błąd -5-10°C). Powierzchnia szklana nie oddaje T ogniwa. Pomiar T_amb to nie T_mod!"
-    },
-    {
-      question: "Moduł PV ma współczynnik temperaturowy γ = -0.40%/°C. Przy T_mod = 60°C (vs. STC 25°C), jaka jest strata mocy względem nominalnej?",
-      options: [
-        "-10%",
-        "-12%",
-        "-14%",
-        "-16%"
-      ],
-      correctAnswer: 2,
-      explanation: "Strata = γ × (T_mod - 25) = -0.40%/°C × (60 - 25)°C = -0.40 × 35 = -14%. To znacząca strata – stąd potrzeba kompensacji termicznej w obliczeniach PR."
-    },
-    {
-      question: "Jakie okno agregacji (time window) jest standardem w komercyjnym monitoringu PV?",
-      options: [
-        "1 sekunda (real-time)",
-        "5 minut (kompromis granularności vs. szum)",
-        "1 godzina (zgodne z rozliczeniami energetycznymi)",
-        "1 dzień (raportowanie inwestorskie)"
-      ],
-      correctAnswer: 1,
-      explanation: "5 minut to standard w branży – wystarczająca granularność do diagnostyki, redukuje szum, kompatybilne z większością systemów SCADA. 1 s to za dużo danych (szum), 1 h/dzień to za mało dla operacyjnego monitoringu."
-    }
-  ]}
-/>
+<KeyPoints title="📋 Fazy 3-4: Przeliczenie i działania">
 
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o klasach pyranometrów (ISO 9060) i kompensacji temperaturowej. Zrozumienie wpływu błędów pomiarowych na PR jest kluczowe dla projektowania wiarygodnych systemów monitoringu.
+### Faza 3: Przeliczenie PR z poprawnymi danymi
+
+**PR z pyranometrem krzemowym (błędne)**: ~73%  
+**PR z pyranometrem termopilowym (poprawne)**: ~84%
+
+**Wynik**: System działał PRAWIDŁOWO! Problem był w pomiarze, nie w instalacji PV.
+
+### Faza 4: Działania (wrzesień 2021)
+
+- Wymiana pyranometru na First Class termopilowy (1200 EUR)
+- Retrospektywna korekta raportów PR
+- Uniknięto reklamacji gwarancyjnej (koszt: &gt;50 000 EUR!)
+
+**ROI**: Zwrot w ciągu 1 miesiąca
+
+</KeyPoints>
+
+<Example title="Kluczowe lekcje">
+
+**1. Pyranometry krzemowe NIE nadają się do rozliczeń i PR**
+- Błąd spektralny w zmiennych warunkach
+- OK do szybkiego monitoringu, nie do celów prawnych
+
+**2. Weryfikacja z danymi satelitarnymi**
+- Jeśli różnica >±5-7% w skali miesiąca → sprawdź pyranometr!
+
+**3. Redundancja w dużych instalacjach**
+- Farmy &gt;1 MWp: 2+ pyranometry różnych typów
+- Koszt: 1500-3000 EUR, eliminuje single point of failure
+
+**4. Inspekcja przy odbiorze**
+- Sprawdź typ pyranometru (ISO 9060 class!)
+- Certyfikat kalibracji (&lt;2 lata)
+
+:::caution Uwaga prawna
+Norma IEC 61724 **wymaga pyranometru zgodnego z ISO 9060** (min. Second Class). Pyranometry krzemowe nie spełniają → możliwość unieważnienia gwarancji!
 :::
+
+</Example>
+
+<InstructorNotes>
+
+Rozwiązanie i lekcje ze studium przypadku – około pięć do siedmiu minut.
+
+**Przeliczenie PR**: z krzemowym siedemdziesiąt trzy procent, z termopilowym osiemdziesiąt cztery procent. **Jedenaście punktów procentowych różnicy** – to ogromne! System działał prawidłowo, problem był w pomiarze.
+
+Wymiana kosztowała tysiąc dwieście euro. **Uniknięto reklamacji gwarancyjnej powyżej pięćdziesięciu tysięcy euro** (prawnicy, audyty, potencjalna wymiana sprzętu). ROI: jeden miesiąc.
+
+**Kluczowa lekcja**: pyranometry krzemowe to "false economy". Oszczędność siedemset euro przy zakupie, ryzyko dziesiątek tysięcy w sporach. **Dla rozliczeń i PR zawsze termopilowy First Class**.
+
+Weryfikacja z satelitami – jeśli różnica powyżej pięciu do siedmiu procent w skali miesiąca, to alarm. Satelity mają niepewność pięć do dziesięciu procent, ale są niezależne.
+
+Redundancja – farmy powyżej megawata powinny mieć **dwa lub więcej pyranometry różnych typów**. Koszt tysiąc pięćset do trzech tysięcy euro, eliminuje pojedynczy punkt awarii.
+
+**Uwaga prawna**: IEC 61724 wymaga pyranometru zgodnego z ISO 9060, minimum Second Class. Krzemowe **nie spełniają** – użycie ich może być podstawą do zakwestionowania gwarancji.
+
+Jeśli ktoś zapyta o korekcję matematyczną odczytów krzemowych – **trudne**, bo korekta zależy od widma (zmienne). Prostsze i pewniejsze: użyć właściwego czujnika od początku.
+
+Dlaczego w ogóle ktoś stosuje krzemowe? Tanie, szybkie, małe. Okej do R&D, demonstracji. **Nie do rozliczeń**.
+
+</InstructorNotes>
 
 </Slide>
 
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Pyranometry First Class (ISO 9060) to standard dla farm &gt;100 kWp** – koszt 1000-1500 EUR to zaledwie 0.1-0.2% CAPEX, ale decyduje o wiarygodności PR i gwarancji.
-
-2. **POA (Plane of Array) jest kluczowe dla PR** – GHI wymaga transpozycji i dodaje niepewność ±3-5%. W instalacjach komercyjnych POA to must-have.
-
-3. **Temperatura modułów (T_mod) radykalnie wpływa na moc** – współczynnik -0.35 do -0.50%/°C oznacza straty ~12-14% przy T_mod = 60°C. Bez kompensacji termicznej PR jest zniekształcony o &gt;10 punktów procentowych.
-
-4. **Synchronizacja czasowa i agregacja danych** – wszystkie znaczniki czasu w UTC, agregacja do wspólnych okien (typowo 5 min), filtrowanie outlierów.
-
-5. **Typowe błędy: pyranometry krzemowe, błędna orientacja, montaż czujnika T na ramce** – wszystkie prowadzą do systematycznych błędów w KPI, które mogą kosztować dziesiątki tysięcy EUR (reklamacje, audyty).
-
-**Następne kroki:**
-- Ćwiczenie 2: Obliczanie PR z rzeczywistych danych (G_POA, T_mod, E_actual) – hands-on z Pythonem/Excel
-- Przygotowanie do następnej sekcji: Monitoring wibracji i akustyki turbin wiatrowych (zupełnie inna dziedzina czujników!)
-
-

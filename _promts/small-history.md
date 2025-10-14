@@ -90,4 +90,18 @@ Style:
 
 ===========4===========
 
-* [ ] implement **@2. expand-lecture-content.md** for (by three files, I have finished on "wyklad-04-standardy-integracja")
+* [X] implement **@2. expand-lecture-content.md** for (by three files, I have finished on "wyklad-04-standardy-integracja")
+* [ ] files consists of separate sections called slides. Each slide should fit the screen when lecturer present it. The exeption could be the giagram. You can divide particular slide into several slides.
+  analyse and update slides in @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\01-elektryczne-pomiary.mdx
+* [X] implement **@slide-screen-fit.md**  for b@bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\02-irradiancja-temperatura.mdx
+* [X] implement **@slide-screen-fit.md**  for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\03-wibracje-turbiny.mdx
+* [X] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\04-gazy-biogaz.mdx
+* [X] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\05-przeplyw-poziom-cisnienie.mdx
+* [ ] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\06-kondycjonowanie-sygnalu.mdx
+* [ ] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\07-kalibracja-metrologia.mdx
+* [ ] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\08-sampling-antyaliasing.mdx
+* [ ] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\09-synchronizacja-czasu.mdx
+* [ ] implement @slide-screen-fit.md for @bezp-monit\docs\wyklady\wyklad-02-czujniki-akwizycja\10-podsumowanie.mdx
+* [ ] add images at the begining of each file.
+* [ ] add InstractorNotes to "Architektura systemu pomiarowego"
+* [ ] clean upp the dublicated content in

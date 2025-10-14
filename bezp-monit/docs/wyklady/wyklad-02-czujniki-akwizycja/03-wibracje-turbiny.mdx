@@ -26,30 +26,52 @@ Po tej sekcji student potrafi:
 
 <SlideContainer>
 
-<Slide title="🌪️ Monitoring wibracji w turbinach wiatrowych – wprowadzenie" type="info">
+<Slide title="🌪️ Monitoring wibracji – cele i ekonomia" type="info">
 
 <KeyPoints title="📋 Dlaczego monitorujemy wibracje?">
 
-**Wibracje to kluczowy wskaźnik stanu technicznego turbiny wiatrowej**. Większość awarii mechanicznych (łożyska, przekładnie, wał) objawia się wzrostem amplitudy drgań na charakterystycznych częstotliwościach.
+**Wibracje to kluczowy wskaźnik stanu technicznego turbiny**. Większość awarii mechanicznych objawia się wzrostem amplitudy drgań na charakterystycznych częstotliwościach.
 
-**Główne cele monitoringu wibracji:**
-
-1. **Predykcyjna konserwacja (Predictive Maintenance)** – wykrycie uszkodzenia 3-12 miesięcy przed awarią
-2. **Redukcja OPEX** – planowane przestoje vs. awarie awaryjne (5-10× tańsze!)
-3. **Bezpieczeństwo** – katastrofalne awarie łożysk/przekładni mogą prowadzić do pożarów
-4. **Optymalizacja O&M** – interwencje serwisowe w optymalnych warunkach pogodowych (dostęp, safe-to-climb)
-
-**Typowe koszty awarii:**
-- Wymiana głównego łożyska (main bearing): 200 000 – 500 000 EUR + downtime ~2-4 tygodnie
-- Wymiana przekładni (gearbox): 150 000 – 400 000 EUR + downtime ~1-3 tygodnie
-- Utracona produkcja: 500-2000 EUR/dzień (zależnie od wielkości turbiny i cen energii)
-
-**ROI systemu CMS (Condition Monitoring System)**: 
-Koszt CMS: 10 000 – 30 000 EUR/turbinę. Wykrycie 1 awarii głównego łożyska → zwrot 5-15×.
+**Główne cele monitoringu:**
+1. **Predykcyjna konserwacja** – wykrycie uszkodzenia 3-12 miesięcy przed awarią
+2. **Redukcja OPEX** – planowane przestoje vs. awarie (5-10× tańsze!)
+3. **Bezpieczeństwo** – katastrofalne awarie mogą prowadzić do pożarów
+4. **Optymalizacja O&M** – interwencje w optymalnych warunkach pogodowych
 
 </KeyPoints>
 
-<SupportingDetails title="🔧 Komponenty turbiny wiatrowej wymagające monitoringu">
+<KeyPoints title="💰 Koszty i ROI">
+
+**Typowe koszty awarii:**
+- Main bearing: 200-500k EUR + downtime ~2-4 tyg.
+- Gearbox: 150-400k EUR + downtime ~1-3 tyg.
+- Utracona produkcja: 500-2000 EUR/dzień
+
+**ROI systemu CMS:** 
+- Koszt: 10-30k EUR/turbinę
+- Wykrycie 1 awarii → zwrot 5-15×
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Wprowadzenie do monitoringu wibracji – około pięć do siedmiu minut.
+
+**Kluczowy przekaz**: wibracje to nie tylko szum czy dyskomfort – to **okno do wnętrza mechaniki turbiny**. Wzrost amplitudy na charakterystycznych częstotliwościach (BPFO dla łożysk, mesh frequency dla przekładni) to wczesny sygnał uszkodzenia, często trzy do dwunastu miesięcy przed całkowitą awarią.
+
+Predykcyjna konserwacja versus awarie awaryjne – **różnica w kosztach pięć do dziesięć razy**. Planowana wymiana łożyska to dwieście do trzystu tysięcy euro plus dwa tygodnie downtime, awaryjna (katastroficzna) to czterysta do pięćset tysięcy plus cztery tygodnie (trzeba więcej demontażu, uszkodzenia wtórne).
+
+ROI systemu CMS: koszt dziesięć do trzydzieści tysięcy euro na turbinę. **Wykrycie jednej awarii głównego łożyska zwraca koszt całego systemu pięć do piętnastu razy**. To jest argument dla każdego operatora farmy wiatrowej.
+
+Bezpieczeństwo – katastrofalne awarie łożysk lub przekładni mogą prowadzić do pożarów (olej, tarcie, iskry). Monitoring CMS wykrywa problem wcześnie, zanim dojdzie do niebezpiecznej sytuacji.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Komponenty turbiny – architektura" type="info">
 
 ```mermaid
 graph TB
@@ -85,53 +107,66 @@ graph TB
     style S5 fill:#99ff99
 ```
 
-**Kluczowe komponenty i ich typowe częstotliwości:**
+<KeyPoints title="📋 Punkty pomiaru CMS">
 
-| Komponent | Prędkość obrotowa | Charakterystyczne pasma | Typowe uszkodzenia |
-|-----------|-------------------|-------------------------|-------------------|
-| **Main bearing** | 10-20 rpm | BPFO: 5-15 Hz, BPFI: 8-25 Hz | Pittingi, spalling, wear |
-| **Gearbox** | Stage 1: 10-20 rpm<br/>Stage 3: 800-1500 rpm | Mesh frequencies: 50-800 Hz<br/>Harmoniki przekładni | Zużycie zębów, pęknięcia |
-| **Generator** | 1500 rpm (4-pole)<br/>lub variable (PMSG) | 25 Hz (synchronous)<br/>2× bar pass: 50-200 Hz | Łożyska, niezbalansowanie |
-| **Yaw bearing** | &lt;1 rpm | &lt;1 Hz, ultra-low frequency | Zużycie zębów, braking system |
+Typowa turbina &gt;2 MW ma **5-8 czujników wibracji**:
+- Main bearing: aksjalny + radialny (wykrycie wear, misalignment)
+- Gearbox: input + high-speed stage + output (3 punkty minimum)
+- Generator: drive end + non-drive end (łożyska)
+- Yaw: bearing + brake system (opcjonalne)
 
-</SupportingDetails>
+</KeyPoints>
 
 <InstructorNotes>
 
-**Czas**: 12-15 min
+Architektura turbiny i punkty pomiaru – około pięć do siedmiu minut. **Diagram jest wyjątkiem, może być większy**.
 
-**Przebieg**:
-1. Wprowadzenie do monitoringu wibracji – dlaczego jest kluczowy? (3 min)
-2. Omówienie komponentów turbiny z diagramem (4 min) – wskaż na różnice prędkości obrotowych (10 rpm rotor vs. 1500 rpm generator)
-3. Przykłady kosztów awarii vs. koszt CMS (3 min) – podkreśl ROI
-4. Dyskusja: Czy studenci widzieli turbinę od środka? (2 min)
-5. Q&A (2 min)
+Przejdź przez diagram. **Rotor obraca się powoli** (dziesięć do osiemdziesięciu obrotów na minutę), przekładnia zwiększa prędkość pięćdziesiąt do sto razy, generator pracuje przy tysiąc pięćset obrotach na minutę (lub zmiennie dla PMSG).
 
-**Punkty kluczowe**:
-- **Przekładnia to "słabe ogniwo"** – ~20-30% awarii turbin dotyczy gearbox (wysokie obciążenia zmienne, smarowanie)
-- Modern turbiny (&gt;4 MW) często stosują **direct-drive** (bez przekładni) → inne profile wibracji, PMSG
-- CMS to standard w turbinach &gt;2 MW, opcjonalne w &lt;1 MW (prosumenckie)
+**Punkty pomiaru**: minimum pięć czujników w typowej turbinie. Main bearing (łożysko główne) to krytyczny punkt – dwa czujniki, aksjalny i radialny, bo uszkodzenie może być kierunkowe. Gearbox wymaga minimum trzech punktów (wejście, szybki stopień, wyjście) – to najbardziej awaryjny komponent.
 
-**Demonstracja praktyczna**:
-- Pokaż zdjęcia/filmy z wnętrza gondoli turbiny (jeśli dostępne)
-- Wykres wibracji przed i po awarii łożyska (dramatyczny wzrost amplitudy)
+Podkreśl różnice prędkości obrotowych. **Rotor to dziesięć do dwudziestu obrotów na minutę, generator tysiąc pięćset**. To ogromna różnica – przekładnia musi to obsłużyć, stąd wysokie obciążenia i awarie.
 
-**Materiały pomocnicze**:
-- Schemat turbiny z komponentami (Vestas, Siemens Gamesa, GE)
-- Przykładowy raport CMS z prawdziwej turbiny (zanonimizowany)
-- ISO 10816 – Mechanical vibration – Evaluation of machine vibration
+**Przekładnia to słabe ogniwo** – dwadzieścia do trzydziestu procent awarii turbin dotyczy gearbox. Wysokie obciążenia zmienne (wiatr porywisty), smarowanie (degradacja oleju), zużycie zębów.
 
-**Typowe błędy studenckie**:
-- Mylenie częstotliwości obrotowej [Hz] z prędkością obrotowej [rpm] – pamiętaj: 1 Hz = 60 rpm
-- Niezrozumienie, że przekładnia ZWIĘKSZA prędkość (rotor powolny → generator szybki)
-- Myślenie, że wibracje zawsze oznaczają awarię – normalne turbiny też drgają!
+Nowoczesne turbiny powyżej czterech megawatów często stosują **direct-drive bez przekładni** – PMSG (permanent magnet) bezpośrednio na wolnym wale. Droższe (plus trzydzieści do pięćdziesięciu procent CAPEX), ale wyższa niezawodność (brak gearbox) i mniej OPEX długoterminowo.
 
-**Pytania studenckie**:
-- Q: Dlaczego nie stosuje się wszędzie direct-drive (bez przekładni)?
-- A: Koszt! PMSG (permanent magnet synchronous generator) dla 3 MW jest ~30-50% droższy. Ale: wyższa niezawodność (brak gearbox), mniej OPEX long-term.
+CMS to standard w turbinach powyżej dwóch megawatów, opcjonalne w mniejszych (prosumenckich, poniżej megawata).
 
-- Q: Jak często wymieniany jest olej w przekładni?
-- A: Zależy od typu. Syntetyczne oleje: co 3-5 lat. Ale: regularne badania oleju (particle count, water content) co 6-12 miesięcy.
+Jeśli ktoś zapyta, dlaczego nie wszędzie direct-drive – **koszt**. PMSG dla trzech megawatów to plus trzydzieści do pięćdziesięciu procent ceny względem standardowej konfiguracji z przekładnią. Ale trend idzie w stronę direct-drive, bo OPEX oszczędności w długim terminie.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Częstotliwości i typowe uszkodzenia" type="info">
+
+**Charakterystyczne pasma częstotliwości:**
+
+| Komponent | Prędkość obrotowa | Charakterystyczne pasma | Typowe uszkodzenia |
+|-----------|-------------------|-------------------------|-------------------|
+| **Main bearing** | 10-20 rpm | BPFO: 5-15 Hz<br/>BPFI: 8-25 Hz | Pittingi, spalling, wear |
+| **Gearbox** | Stage 1: 10-20 rpm<br/>Stage 3: 800-1500 rpm | Mesh freq: 50-800 Hz<br/>Harmoniki | Zużycie zębów, pęknięcia |
+| **Generator** | 1500 rpm (4-pole)<br/>lub variable (PMSG) | 25 Hz (synch)<br/>2× bar pass: 50-200 Hz | Łożyska, niezbalansowanie |
+| **Yaw bearing** | {'<'}1 rpm | {'<'}1 Hz, ultra-low | Zużycie zębów, braking |
+
+<InstructorNotes>
+
+Tabela częstotliwości to praktyczna ściągawka – około cztery do pięciu minut.
+
+Przejdź przez tabelę wiersz po wierszu. **Main bearing** – prędkość dziesięć do dwudziestu obrotów na minutę przekłada się na BPFO (Ball Pass Frequency Outer race) pięć do piętnastu herców. To charakterystyczna częstotliwość uszkodzenia zewnętrznej bieżni łożyska.
+
+**Gearbox** – mesh frequency (częstotliwość zazębienia) to pięćdziesiąt do ośmiuset herców, zależy od liczby zębów i prędkości obrotowej. Harmoniki mesh frequency (dwa razy, trzy razy) wskazują na zużycie lub uszkodzenie zębów.
+
+**Generator** – przy tysiąc pięćset obrotach na minutę (dwadzieścia pięć herców) główna częstotliwość to dwadzieścia pięć herców. Bar pass frequency (dwukrotność liczby prętów wirnika) to pięćdziesiąt do dwustu herców.
+
+**Yaw bearing** – obraca się bardzo wolno (poniżej jeden obrot na minutę), więc częstotliwości ultra-niskie (poniżej jeden herc). Wymaga specjalnych czujników lub długich okien pomiaru.
+
+Typowy błąd studentów: **mylenie herców z obrotami na minutę**. Pamiętaj: jeden herc to sześćdziesiąt obrotów na minutę. Dziesięć obrotów na minutę to zero przecinek siedemnaście herca.
+
+Podkreśl, że **normalne turbiny też drgają** – to nie oznacza awarii. Monitoring polega na wykryciu wzrostu amplitudy na charakterystycznych częstotliwościach lub pojawienia się nowych pików w widmie FFT.
 
 </InstructorNotes>
 
@@ -139,153 +174,214 @@ graph TB
 
 <VisualSeparator type="technical" />
 
-<Slide title="📡 Czujniki wibracji – technologie i dobór" type="tip">
+<Slide title="📡 Akcelerometry piezoelektryczne – standard CMS" type="tip">
 
-<KeyPoints title="📋 Typy czujników">
+<KeyPoints title="📋 Akcelerometry piezoelektryczne (piezo)">
 
-**1. Akcelerometry piezoelektryczne**
-- **Zasada działania**: Kryształ piezo generuje ładunek proporcjonalny do przyspieszenia
-- **Zakres częstotliwości**: 1 Hz – 10 kHz (standardowe), do 50 kHz (high-frequency)
+**Zasada działania**: Kryształ piezo generuje ładunek proporcjonalny do przyspieszenia
+
+**Parametry:**
+- **Zakres częstotliwości**: 1 Hz – 10 kHz (standardowe), do 50 kHz (high-freq)
 - **Czułość**: Typowo 100 mV/g (g = 9.81 m/s²)
-- **Zalety**: Szerokie pasmo, trwałe, małe (20-50 g), odporność na środowisko
-- **Wady**: Wymaga przetwornika ładunku (charge amplifier) lub IEPE (integrated electronics)
-- **Koszt**: 200-1000 EUR (IEPE), 50-200 EUR (proste piezo)
-- **Zastosowanie**: **Standard dla CMS w turbinach wiatrowych**
+- **Zakres dynamiczny**: ±5 g (normalne), ±50 g (ekstremalne)
 
-**2. Czujniki prędkości drgań (velocity sensors)**
-- **Zasada działania**: Cewka w polu magnetycznym, generuje napięcie proporcjonalne do prędkości
-- **Zakres częstotliwości**: 10 Hz – 1 kHz (węższe niż piezo)
-- **Zalety**: Bezpośredni pomiar prędkości (często stosowana w normach ISO 10816)
-- **Wady**: Większe, cięższe, gorsze dla wysokich częstotliwości
-- **Zastosowanie**: Starsze instalacje, pomiary referencyjne
+**Zalety:**
+- Szerokie pasmo częstotliwości
+- Trwałe, odporne na środowisko
+- Małe wymiary (20-50 g)
 
-**3. Akcelerometry MEMS**
-- **Zasada działania**: Mikromechaniczne struktury, pomiar przemieszczenia masy
-- **Zakres częstotliwości**: 0 Hz (DC) – 2 kHz
-- **Zalety**: Bardzo małe, tanie (5-50 EUR), niskie pobór mocy, cyfrowy interfejs (I2C, SPI)
-- **Wady**: Niższa czułość, dryft, szumy
-- **Zastosowanie**: Monitoring low-cost, IoT, strukturalne (tower vibrations)
+**Wady:**
+- Wymaga przetwornika ładunku lub IEPE (integrated electronics)
 
-**4. Mikrofony kierunkowe (akustyka)**
-- **Zasada działania**: Pomiar ciśnienia akustycznego [Pa] lub poziom dźwięku [dB]
-- **Zakres częstotliwości**: 20 Hz – 20 kHz (audio)
-- **Zastosowanie**: Wykrywanie nietypowych dźwięków (trzaski, grzechotanie), diagnostyka łopat, noise pollution monitoring
+**Koszt**: 200-1000 EUR (IEPE), 50-200 EUR (proste piezo)
+
+**Zastosowanie**: ⭐ **Standard dla CMS w turbinach wiatrowych**
 
 </KeyPoints>
 
-<SupportingDetails title="🔧 Parametry kluczowe przy wyborze czujników">
+<KeyConcept title="IEPE (Integrated Electronics Piezo-Electric)">
 
-### 1. Zakres dynamiczny i czułość
+IEPE to ulepszona wersja piezo z wbudowaną elektroniką:
+- **2-wire**: Sygnał + zasilanie w jednym przewodzie (uproszczenie instalacji)
+- **Low impedance output**: Odporność na zakłócenia EMI
+- **Typowe zasilanie**: 18-30 V DC (constant current ~2-4 mA)
+- **Standard przemysłowy** – 90% czujników w CMS to IEPE
 
-**Czułość akcelerometru** (sensitivity) – typowo 10-1000 mV/g:
-- **Wysoka czułość (500-1000 mV/g)**: Dla niskich wibracji (main bearing, tower), lepszy SNR (signal-to-noise ratio)
-- **Niska czułość (10-100 mV/g)**: Dla wysokich wibracji (gearbox, generator), unika saturacji
+</KeyConcept>
 
-**Zakres pomiaru**: ±5 g (normalne), ±50 g (ekstremalne warunki, startupy)
+<InstructorNotes>
 
-### 2. Częstotliwość próbkowania (sampling rate)
+Akcelerometry piezoelektryczne to fundament CMS – około pięć do siedmiu minut.
+
+**Zasada działania**: kryształ piezoelektryczny pod wpływem naprężenia mechanicznego (przyspieszenia) generuje ładunek elektryczny proporcjonalny do siły. To najprostszy i najtrwalszy sposób pomiaru wibracji.
+
+Zakres częstotliwości jeden herc do dziesięć kiloherców to pokrywa praktycznie wszystkie interesujące częstotliwości w turbinach (BPFO pięć do piętnastu herców, mesh frequency sto do ośmiuset herców). Czujniki high-frequency (do pięćdziesięciu kiloherców) stosuje się do ultrasonic monitoring (wczesne uszkodzenia łożysk).
+
+**Czułość sto miliwoltów na g** to typowa wartość. Przy przyspieszeniu jeden g (9,81 metra na sekundę kwadrat) czujnik daje sto miliwoltów. Dla niskich wibracji (main bearing) stosuje się wyższą czułość (pięćset do tysiąc mV/g) dla lepszego stosunku sygnału do szumu.
+
+**IEPE to game-changer** w przemyśle. Zamiast delikatnego wysokoimpedancyjnego sygnału ładunku (wymaga charge amplifier, ekranowane przewody), IEPE ma wbudowaną elektronikę – **niskoimpedancyjne wyjście odporne na zakłócenia**. Plus: zasilanie i sygnał w jednym przewodzie (2-wire), upraszcza instalację.
+
+Koszt: dwieście do tysiąc euro za IEPE przemysłowy (PCB Piezotronics, Bruel & Kjaer, Kistler). Proste piezo bez elektroniki to pięćdziesiąt do dwustu euro, ale wymaga charge amplifier (dodatkowe sto do trzysta euro).
+
+**Standard przemysłowy: dziewięćdziesiąt procent czujników w CMS to IEPE**. To pewna, sprawdzona technologia.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📡 Inne typy czujników wibracji" type="tip">
+
+<KeyPoints title="📋 Alternatywne technologie">
+
+**Czujniki prędkości drgań (velocity sensors)**
+- Cewka w polu magnetycznym → napięcie proporcjonalne do prędkości
+- Zakres: 10 Hz – 1 kHz (węższe niż piezo)
+- Zalety: Bezpośredni pomiar prędkości (normy ISO 10816)
+- Wady: Większe, cięższe, gorsze dla wysokich częstotliwości
+- Zastosowanie: Starsze instalacje, pomiary referencyjne
+
+**Akcelerometry MEMS**
+- Mikromechaniczne struktury, pomiar przemieszczenia masy
+- Zakres: 0 Hz (DC) – 2 kHz
+- Zalety: Bardzo małe, tanie (5-50 EUR), cyfrowy interfejs (I2C, SPI)
+- Wady: Niższa czułość, dryft, szumy
+- Zastosowanie: Monitoring low-cost, IoT, strukturalne (tower)
+
+**Mikrofony kierunkowe (akustyka)**
+- Pomiar ciśnienia akustycznego [Pa] lub poziom dźwięku [dB]
+- Zakres: 20 Hz – 20 kHz (audio)
+- Zastosowanie: Wykrywanie nietypowych dźwięków, diagnostyka łopat
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Alternatywne technologie czujników – około cztery do pięciu minut.
+
+**Czujniki prędkości** (velocity sensors) to starsza technologia – cewka porusza się w polu magnetycznym, generuje napięcie proporcjonalne do prędkości drgań. Zaleta: bezpośredni pomiar prędkości (ISO 10816 definiuje progi w milimetrach na sekundę). Wada: większe (kilkaset gramów), cięższe, węższe pasmo (dziesięć do tysiąc herców). Stosowane w starszych instalacjach i pomiarach referencyjnych.
+
+**MEMS** to nowoczesna, budżetowa alternatywa. Bardzo małe (kilka milimetrów), tanie (pięć do pięćdziesięciu euro), cyfrowy interfejs (I2C, SPI) – łatwo integrować z Raspberry Pi, Arduino. Wady: **niższa czułość, dryft, szumy**. Okej do monitoringu strukturalnego (drgania wieży) lub niskobudżetowych systemów IoT, ale nie do diagnostyki łożysk i przekładni w turbinach megawatowych.
+
+**Mikrofony** to pomoc diagnostyczna – wykrywają nietypowe dźwięki (trzaski, grzechotanie, świsty). Świetne do diagnostyki łopat (trzaski mogą wskazywać pęknięcia), ale nie zastępują akcelerometrów. Niektóre zaawansowane systemy CMS łączą wibracje plus akustykę (multi-modal monitoring).
+
+Jeśli ktoś zapyta o czujniki bezprzewodowe – są dostępne (Bluetooth, LoRa), ale w turbinach powyżej dwóch megawatów **preferowane przewodowe** z powodu niezawodności, zasilania (baterie w gondoli przy minus trzydziestu stopniach to problem) i opóźnień transmisji.
+
+Pytanie o smartfona jako czujnik – do edukacji okej (mamy MEMS wbudowany), do produkcyjnego CMS absolutnie nie (brak kalibracji, dryft, IP rating, żywotność).
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔧 Parametry doboru i montażu czujników" type="tip">
+
+<KeyPoints title="📋 Częstotliwość próbkowania (sampling rate)">
 
 **Twierdzenie Nyquista**: f_sample ≥ 2 × f_max (w praktyce: 2.5-5×)
 
 **Typowe wybory:**
-- **Main bearing** (BPFO ~5-15 Hz): f_sample = 200-500 Hz (zapas dla harmonicznych)
-- **Gearbox** (mesh frequency ~100-800 Hz): f_sample = 5-10 kHz
-- **Generator** (bar pass frequency ~50-200 Hz): f_sample = 2-5 kHz
+- **Main bearing** (BPFO ~5-15 Hz): f_sample = 200-500 Hz
+- **Gearbox** (mesh freq ~100-800 Hz): f_sample = 5-10 kHz
+- **Generator** (bar pass ~50-200 Hz): f_sample = 2-5 kHz
 
-**Trade-off**: Wyższa częstotliwość = więcej danych → wyższy koszt storage/transmisji. W praktyce: **CMS próbkuje w trybach:**
-- Ciągły (continuous): 1-10 kHz dla krótkich okien (10-60 s) co 10-60 min
-- Triggered: Wysoka częstotliwość (10-25 kHz) tylko gdy wykryto anomalię
+**Trade-off**: Wyższa częstotliwość = więcej danych → koszt storage  
+**Rozwiązanie**: Tryby próbkowania:
+- Ciągły: 1-10 kHz, krótkie okna (10-60 s) co 10-60 min
+- Triggered: 10-25 kHz tylko gdy wykryto anomalię
 
-### 3. Montaż i orientacja
+</KeyPoints>
+
+<KeyPoints title="📋 Montaż i orientacja">
 
 **Metody montażu:**
 - **Stud mounting** (wkręt M6/M8): Najlepszy kontakt, pasmo do 10 kHz
-- **Magnes**: Szybki montaż, pasmo do 3-5 kHz (kontakt nie idealny)
+- **Magnes**: Szybki montaż, pasmo do 3-5 kHz
 - **Klej**: Trwałe, pasmo do 7 kHz
-- **Taśma dwustronna**: NIE STOSOWAĆ (pasmo &lt;500 Hz, degradacja)
+- **Taśma**: ❌ NIE STOSOWAĆ (pasmo {'<'}500 Hz, degradacja)
 
 **Orientacja:** 
-- Radialna (radial): Prostopadła do osi obrotu → wykrywa niezbalansowanie, misalignment
-- Aksjalna (axial): Wzdłuż osi → wykrywa thrust bearing issues
-- Typowo: 2 czujniki (radial + axial) na każdy punkt pomiarowy
+- **Radialna**: Prostopadła do osi → wykrywa niezbalansowanie, misalignment
+- **Aksjalna**: Wzdłuż osi → wykrywa thrust bearing issues
+- Typowo: 2 czujniki (radial + axial) na punkt
 
-### 4. Ochrona środowiskowa
+**IP rating**: Min. IP65, lepiej IP67 (ekstremalne warunki w gondoli)
 
-Turbiny wiatrowe = ekstremalne środowisko:
-- **Temperatura**: -30°C do +70°C (gondola latem)
-- **Wilgotność**: Do 100% (kondensacja, deszcz przez uszczelki)
-- **Wibracje**: Czujnik musi wytrzymać to, co mierzy!
-- **IP rating**: Min. IP65 (kurz, strumienie wody), lepiej IP67 (zanurzenie chwilowe)
+</KeyPoints>
 
-</SupportingDetails>
+<InstructorNotes>
 
-<Example title="Konfiguracja CMS dla turbiny 3 MW">
+Parametry doboru i montażu – około sześć do ośmiu minut.
+
+**Częstotliwość próbkowania to kluczowa decyzja**. Według Nyquista minimum dwa razy maksymalna interesująca częstotliwość, w praktyce dwa i pół do pięć razy zapas.
+
+Main bearing ma BPFO pięć do piętnastu herców, ale potrzebujemy harmonicznych (do piątej harmonicznej, czyli siedemdziesiąt pięć herców) – **próbkowanie dwieście do pięćset herców**. Gearbox z mesh frequency sto do ośmiuset herców wymaga pięć do dziesięć kiloherców.
+
+**Trade-off**: więcej danych to wyższy koszt storage i transmisji. W farmie wiatrowej dziesięć turbin po jedenaście kanałów każda przy dziesięć kiloherców ciągłym próbkowaniu to **gigabajty danych dziennie**. Niepraktyczne.
+
+Rozwiązanie: tryby próbkowania. **Ciągły tryb low-rate** (jeden do dziesięciu kiloherców) przez krótkie okna (dziesięć do sześćdziesięciu sekund) co dziesięć do sześćdziesięciu minut. **Triggered high-rate** (dziesięć do dwadzieścia pięć kiloherców) tylko gdy wykryto anomalię. To redukuje data rate sto do tysiąc razy.
+
+Montaż – **stud mounting to złoty standard**: wkręt M6 lub M8 wkręcony w obudowę łożyska lub przekładni. Najlepszy kontakt mechaniczny, pasmo do dziesięciu kiloherców. Magnes to szybkie, ale kontakt nie idealny (pasmo do trzech do pięciu kiloherców). Klej (cyanoacrylate) to trwałe, pasmo do siedmiu kiloherców.
+
+**Taśma dwustronna to absolutnie nie** – pasmo poniżej pięćset herców, degradacja od temperatury i wilgoci. Widziałem instalacje, gdzie czujniki odkleiły się po roku.
+
+Orientacja – **radialna wykrywa niezbalansowanie i misalignment** (prostopadle do osi obrotu), **aksjalna wykrywa problemy thrust bearing** (wzdłuż osi). Typowo montujemy dwa czujniki na każdy krytyczny punkt (radial plus axial).
+
+IP rating – gondola turbiny to ekstremalne środowisko: minus trzydzieści do plus siedemdziesięciu stopni, wilgotność do stu procent (kondensacja). **Minimum IP65 (kurz, woda), lepiej IP67** (zanurzenie chwilowe).
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💼 Przykład: Konfiguracja CMS dla turbiny 3 MW" type="success">
+
+<Example title="Kompletna konfiguracja systemu monitoringu">
 
 **Specyfikacja turbiny:**
 - Moc: 3 MW, rotor 110 m, 3 łopaty
 - Gearbox: 3-stage, ratio 1:97
-- Generator: asynchronous, 1500 rpm (50 Hz grid)
+- Generator: asynchronous, 1500 rpm
 - High-speed shaft: ~1500 rpm
 
 **Konfiguracja czujników:**
 
-| Punkt pomiarowy | Typ czujnika | Czułość | Orientacja | f_sample | Tryb |
-|-----------------|--------------|---------|------------|----------|------|
-| Main bearing (upwind) | IEPE piezo | 500 mV/g | Radial + axial | 2 kHz | Continuous 30s/10min |
-| Gearbox input | IEPE piezo | 100 mV/g | Radial | 10 kHz | Continuous 60s/60min |
-| Gearbox output (HSS) | IEPE piezo | 100 mV/g | Radial + axial | 10 kHz | Continuous 60s/60min |
-| Generator DE (drive end) | IEPE piezo | 100 mV/g | Radial + axial | 5 kHz | Continuous 30s/30min |
-| Generator NDE (non-drive end) | IEPE piezo | 100 mV/g | Radial | 5 kHz | Continuous 30s/30min |
-| Tower top | MEMS | 2000 mV/g | 2× horizontal | 100 Hz | Continuous |
+| Punkt pomiarowy | Typ | Czułość | Orientacja | f_sample | Tryb |
+|-----------------|-----|---------|------------|----------|------|
+| Main bearing | IEPE | 500 mV/g | Rad + ax | 2 kHz | Cont 30s/10min |
+| Gearbox input | IEPE | 100 mV/g | Radial | 10 kHz | Cont 60s/60min |
+| Gearbox output (HSS) | IEPE | 100 mV/g | Rad + ax | 10 kHz | Cont 60s/60min |
+| Generator DE | IEPE | 100 mV/g | Rad + ax | 5 kHz | Cont 30s/30min |
+| Generator NDE | IEPE | 100 mV/g | Radial | 5 kHz | Cont 30s/30min |
+| Tower top | MEMS | 2000 mV/g | 2× horiz | 100 Hz | Continuous |
 
-**Łącznie**: 11 kanałów, ~150 MB danych/dzień (po kompresji)
+**Łącznie**: 11 kanałów, ~150 MB/dzień (po kompresji)
 
-**System akwizycji:**
-- **Edge device**: CompactDAQ (National Instruments) lub equival., 24-bit ADC
-- **Komunikacja**: Ethernet → SCADA master w gondola base → 4G/LTE → cloud
-- **Analiza**: Edge (basic FFT, alarmy) + cloud (advanced analytics, ML)
-
-**Koszt całkowity**: ~15 000 EUR (czujniki + DAQ + instalacja)
+**System**: CompactDAQ + 4G/LTE → cloud  
+**Koszt**: ~15 000 EUR
 
 </Example>
 
 <InstructorNotes>
 
-**Czas**: 18-20 min (dużo techniki!)
+Przykład konkretnej konfiguracji – około pięć do siedmiu minut.
 
-**Przebieg**:
-1. Przegląd typów czujników (6 min) – pokaż przykładowy akcelerometr IEPE
-2. Omówienie parametrów wyboru (6 min) – częstotliwość próbkowania to kluczowa decyzja
-3. Montaż i orientacja (3 min) – pokaż zdjęcia różnych montaży
-4. Przykład konfiguracji CMS (3 min) – omów trade-offy (liczba czujników vs. koszt vs. coverage)
-5. Q&A (2 min)
+Przejdź przez tabelę wiersz po wierszu. **Main bearing** – czułość pięćset miliwoltów na g (wysoka, bo wibracje niskie), orientacja radialna plus aksjalna (dwa czujniki), próbkowanie dwa kilohercy. Tryb ciągły przez trzydzieści sekund co dziesięć minut – to wystarczy do wykrycia trendów.
 
-**Punkty kluczowe**:
-- **IEPE (Integrated Electronics Piezo-Electric)** to standard – wbudowana elektronika, prosty interfejs (2-wire: signal + zasilanie)
-- Częstotliwość próbkowania: więcej ≠ lepiej! 10 kHz to max dla większości aplikacji (powyżej to ultrasonic, specjalistyczne)
-- Redundancja: W krytycznych punktach (main bearing, gearbox HSS) stosuje się 2 czujniki (różne producenci) → fail-safe
+**Gearbox** – krytyczny komponent, dlatego trzy punkty pomiaru. Czułość sto miliwoltów na g (niższa, bo wibracje wyższe – unikamy saturacji), próbkowanie dziesięć kiloherców (mesh frequency do ośmiuset herców, potrzeba zapasu).
 
-**Demonstracja praktyczna**:
-- Pokaż akcelerometr IEPE (jeśli dostępny) – małe urządzenie, M8 thread
-- Wykres raw data (time domain) vs. FFT (frequency domain) – pokazuje siłę transformacji
-- Audio playback wibracji (sonifikacja) – ciekawa demonstracja
+**Generator** – dwa punkty (drive end i non-drive end), próbkowanie pięć kiloherców wystarczy (bar pass frequency do dwustu herców).
 
-**Materiały pomocnicze**:
-- Datasheets: PCB Piezotronics 356A15 (standard industrial IEPE)
-- ISO 10816-21:2015 – Wind turbines (normy dla CMS)
-- Przykład instalacji czujników (zdjęcia z turbiny)
+**Tower** – monitoring strukturalny, MEMS wystarczy (tani, niskie częstotliwości poniżej dziesięciu herców), ciągłe próbkowanie sto herców.
 
-**Typowe błędy studenckie**:
-- Mylenie prędkości drgań [mm/s] z przyspieszenia [m/s² lub g] – to różne wielkości!
-- Stosowanie za niskiej częstotliwości próbkowania → aliasing (fałszywe częstotliwości)
-- Ignorowanie montażu – źle przyklejony czujnik = bezużyteczne dane
+Łącznie jedenaście kanałów daje około sto pięćdziesiąt megabajtów dziennie po kompresji (raw byłoby gigabajty). **Edge processing** oblicza features (RMS, kurtosis, FFT peaks) lokalnie, wysyła tylko istotne dane do chmury.
 
-**Pytania studenckie**:
-- Q: Dlaczego nie stosuje się czujników bezprzewodowych (wireless)?
-- A: Są dostępne (np. Bluetooth, LoRa), ale: (1) baterie w gondoli (-30°C, wibracje), (2) niezawodność, (3) opóźnienia. W turbinach >2 MW preferowane przewodowe.
+System akwizycji: CompactDAQ (National Instruments) lub equivalent, dwudziesto-cztery-bitowy ADC, Ethernet do SCADA w podstawie gondoli, stamtąd 4G/LTE do cloud.
 
-- Q: Czy można używać smartfona jako czujnika wibracji (MEMS)?
-- A: Do edukacji/demonstracji – tak. Do produkcyjnego CMS – nie (dryft, brak kalibracji, IP rating).
+Koszt całkowity około piętnaście tysięcy euro (czujniki plus DAQ plus instalacja) to **mniej niż dwa procent wartości turbiny** (trzy megawaty to około milion euro), ale decyduje o wykryciu awarii kosztujących setki tysięcy.
 
 </InstructorNotes>
 
@@ -293,92 +389,146 @@ Turbiny wiatrowe = ekstremalne środowisko:
 
 <VisualSeparator type="technical" />
 
-<Slide title="🔬 Analiza sygnałów wibracji – od surowych danych do diagnostyki" type="info">
+<Slide title="🔬 Analiza sygnałów wibracji – domeny analizy" type="info">
 
 <KeyConcept title="Trzy domeny analizy wibracji">
 
 **1. Domena czasu (time domain)**
-- **Surowy sygnał**: Przyspieszenie [g] vs. czas [s]
-- **Metryki**: RMS (root mean square), peak, crest factor, kurtosis
-- **Zalety**: Prosty, bezpośredni, łatwy do wizualizacji
-- **Wady**: Trudno zidentyfikować konkretną usterkę (wszystko "zaszumione")
+- Surowy sygnał: Przyspieszenie [g] vs. czas [s]
+- Metryki: RMS, peak, crest factor, kurtosis
+- Zalety: Prosty, bezpośredni
+- Wady: Trudno zidentyfikować konkretną usterkę
 
-**2. Domena częstotliwości (frequency domain) – FFT**
-- **Transformata Fouriera**: Rozkład sygnału na składowe harmoniczne
-- **Wykres**: Amplituda [g lub mm/s] vs. częstotliwość [Hz]
-- **Zalety**: **KLUCZOWA dla diagnostyki** – każda usterka ma "swoją" częstotliwość
-- **Wady**: Wymaga stacjonarności sygnału (constant speed)
+**2. Domena częstotliwości (FFT)**
+- Transformata Fouriera: Rozkład sygnału na składowe harmoniczne
+- Wykres: Amplituda [g] vs. częstotliwość [Hz]
+- **KLUCZOWA dla diagnostyki** – każda usterka ma "swoją" częstotliwość
 
-**3. Domena czasu-częstotliwości (time-frequency) – STFT, Wavelet**
-- **Short-Time Fourier Transform (STFT)**: FFT dla przesuwanych okien czasowych
-- **Wavelet**: Analiza wieloskalowa
-- **Zalety**: Dla sygnałów niestacjonarnych (zmienne obroty, transjenty)
-- **Wady**: Bardziej skomplikowane, większe wymagania obliczeniowe
-
-**Dla turbin wiatrowych (zmienne obroty!) stosuje się:**
-- **Order tracking**: Synchronizacja z prędkością obrotową → widmo w "order" (wielokrotności RPM) zamiast Hz
-- **Envelope analysis**: Demodulacja high-frequency, wykrywa wczesne uszkodzenia łożysk
+**3. Domena czasu-częstotliwości (STFT, Wavelet)**
+- Dla sygnałów niestacjonarnych (zmienne obroty)
+- Order tracking: Widmo w "order" (wielokrotności RPM)
+- Envelope analysis: Demodulacja, wczesne uszkodzenia łożysk
 
 </KeyConcept>
 
-<SupportingDetails title="📊 Charakterystyczne częstotliwości usterek">
+<InstructorNotes>
 
-### Łożyska (bearings)
+Wprowadzenie do analizy sygnałów – około pięć do siedmiu minut.
+
+**Trzy domeny analizy** to fundamentalne podejścia do przetwarzania sygnałów wibracji.
+
+**Domena czasu** – surowy sygnał, przyspieszenie versus czas. Obliczamy metryki statystyczne: RMS (root mean square, wartość skuteczna), peak (maksimum), crest factor (stosunek peak do RMS), kurtosis (spłaszczenie rozkładu). **Proste, ale trudno zdiagnozować konkretną usterkę** – wszystko wygląda jak "szum".
+
+**Domena częstotliwości** – **to jest game-changer**. Transformata Fouriera FFT rozkłada sygnał na składowe harmoniczne. Dostajemy wykres amplitudy versus częstotliwości. **Każda usterka ma charakterystyczną częstotliwość** – BPFO dla zewnętrznej bieżni łożyska, mesh frequency dla przekładni. To kluczowe narzędzie diagnostyczne.
+
+**Domena czasu-częstotliwości** – dla sygnałów niestacjonarnych (turbiny mają zmienne obroty przez zmienność wiatru). STFT (Short-Time Fourier Transform) to FFT dla przesuwanych okien czasowych. Wavelet to analiza wieloskalowa. Order tracking synchronizuje widmo z prędkością obrotową – dostajemy widmo w "order" (wielokrotności RPM) zamiast w hercach.
+
+**Envelope analysis** – demodulacja wysokoczęstotliwościowej resonancji (pięć do dwudziestu kiloherców), która jest modulowana przez BPFO/BPFI. Pozwala wykryć wczesne uszkodzenia łożysk (mikro-pittingi), które są niewidoczne w zwykłym FFT. To zaawansowana technika, ale dostępna w komercyjnych systemach CMS.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📐 Częstotliwości usterek łożysk" type="info">
+
+<SupportingDetails title="📊 Charakterystyczne częstotliwości łożysk">
 
 Każde łożysko ma **4 charakterystyczne częstotliwości**:
 
+**BPFO (Ball Pass Frequency Outer race)** – zewnętrzna bieżnia:
 $$
-BPFO = \frac{n \cdot f_r}{2} \left(1 + \frac{d}{D} \cos \phi \right) \quad \text{(Ball Pass Frequency Outer race)}
-$$
-
-$$
-BPFI = \frac{n \cdot f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right) \quad \text{(Ball Pass Frequency Inner race)}
+BPFO = \frac{n \cdot f_r}{2} \left(1 + \frac{d}{D} \cos \phi \right)
 $$
 
+**BPFI (Ball Pass Frequency Inner race)** – wewnętrzna bieżnia:
 $$
-BSF = \frac{D \cdot f_r}{2 \cdot d} \left(1 - \left(\frac{d}{D} \cos \phi \right)^2 \right) \quad \text{(Ball Spin Frequency)}
-$$
-
-$$
-FTF = \frac{f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right) \quad \text{(Fundamental Train Frequency)}
+BPFI = \frac{n \cdot f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right)
 $$
 
-Gdzie:
-- $f_r$ – częstotliwość obrotowa [Hz]
-- $n$ – liczba kulek/rolek
-- $d$ – średnica kulki/rolki [mm]
-- $D$ – średnica podziałowa łożyska (pitch diameter) [mm]
-- $\phi$ – kąt przyłożenia (contact angle) [°]
+**BSF (Ball Spin Frequency)** – kulka/rolka:
+$$
+BSF = \frac{D \cdot f_r}{2 \cdot d} \left(1 - \left(\frac{d}{D} \cos \phi \right)^2 \right)
+$$
+
+**FTF (Fundamental Train Frequency)** – koszyk:
+$$
+FTF = \frac{f_r}{2} \left(1 - \frac{d}{D} \cos \phi \right)
+$$
+
+Gdzie: $f_r$ [Hz], $n$ – liczba kulek, $d$, $D$ [mm], $\phi$ [°]
 
 **Interpretacja:**
-- **BPFO** – uszkodzenie zewnętrznej bieżni (outer race) – najczęstsze (obciążenie statyczne)
-- **BPFI** – uszkodzenie wewnętrznej bieżni (inner race)
-- **BSF** – uszkodzenie kulki/rolki (ball/roller defect)
-- **FTF** – uszkodzenie koszyka (cage)
+- **BPFO** – najczęstsze (obciążenie statyczne, outer race)
+- **BPFI** – inner race
+- **BSF** – uszkodzenie kulki/rolki
+- **FTF** – uszkodzenie koszyka
 
-**W praktyce:** Producenci łożysk podają te częstotliwości w katalogach (np. SKF, FAG, Schaeffler)
+</SupportingDetails>
 
-### Przekładnie (gears)
+<InstructorNotes>
 
-**Mesh frequency** (częstotliwość zazębienia):
+Wzory charakterystycznych częstotliwości łożysk – około cztery do pięciu minut. **To może być techniczne**, ale studenci inżynierowie muszą to znać.
 
+Każde łożysko ma cztery charakterystyczne częstotliwości – BPFO, BPFI, BSF, FTF. **Wzory wyglądają strasznie**, ale w praktyce producenci łożysk (SKF, FAG, Schaeffler) podają te wartości w katalogach i kartach technicznych.
+
+**BPFO to najczęstsza częstotliwość uszkodzenia** – zewnętrzna bieżnia łożyska nosi obciążenie statyczne (ciężar wału, rotora). Pittingi i spalling pojawiają się tam najpierw.
+
+Nie wymagaj od studentów zapamiętania wzorów – **ważniejsze jest zrozumienie, że każda część łożyska ma swoją częstotliwość**. W diagnostyce FFT szukamy peaków na tych częstotliwościach i ich harmonicznych.
+
+Przykładowo: dla main bearing przy piętnastu obrotach na minutę (zero przecinek dwadzieścia pięć herca) i liczbie kulek dwadzieścia, BPFO to około dziesięć do dwunastu herców. **Pik na tej częstotliwości w FFT to sygnał alarmowy** – zewnętrzna bieżnia ma uszkodzenie.
+
+Podkreśl, że **w praktyce nie liczymy tych wzorów ręcznie** – software CMS (SKF @ptitude, Emerson AMS, Bruel & Kjaer) ma wbudowane bazy danych łożysk i automatycznie oblicza te częstotliwości na podstawie prędkości obrotowej i typu łożyska.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Mesh frequency przekładni" type="info">
+
+<KeyPoints title="📋 Częstotliwość zazębienia">
+
+**Mesh frequency**:
 $$
 f_{mesh} = z_1 \cdot f_{shaft1} = z_2 \cdot f_{shaft2}
 $$
 
-Gdzie:
-- $z_1, z_2$ – liczba zębów na kołach 1 i 2
-- $f_{shaft1}, f_{shaft2}$ – częstotliwości obrotowe wałów [Hz]
+Gdzie: $z_1, z_2$ – liczba zębów, $f_{shaft}$ – częstotliwość obrotowa [Hz]
 
-**Harmoniczne**: Uszkodzenia zazębienia pojawiają się jako sidebands wokół $f_{mesh}$ i jej harmonicznych (2×, 3×, ...)
+**Harmoniczne**: Uszkodzenia zazębienia → sidebands wokół $f_{mesh}$ i harmonicznych (2×, 3×)
 
 **Przykład (turbina 3 MW):**
 - Gearbox stage 1: $z_1 = 20$, $z_2 = 80$, ratio 1:4
 - Rotor: 15 rpm = 0.25 Hz
-- Intermediate shaft: 15 × 4 = 60 rpm = 1 Hz
-- Mesh freq stage 1: $f_{mesh} = 20 \times 0.25 = 5$ Hz
+- Intermediate shaft: 60 rpm = 1 Hz
+- **Mesh freq stage 1**: $f_{mesh} = 20 \times 0.25 = 5$ Hz
 
-</SupportingDetails>
+</KeyPoints>
+
+<InstructorNotes>
+
+Mesh frequency przekładni – około trzy do czterech minut.
+
+**Mesh frequency to częstotliwość zazębienia** – ile razy na sekundę zęby jednego koła zazębiają się z drugim kołem. Wzór prosty: liczba zębów razy częstotliwość obrotowa wału.
+
+Przykład: koło dwadzieścia zębów obraca się z zero przecinek dwadzieścia pięć herca (rotor piętnaście obrotów na minutę). Mesh frequency to dwadzieścia razy zero przecinek dwadzieścia pięć równa się pięć herców.
+
+**Diagnostyka**: uszkodzenie zazębienia (zużycie zębów, pęknięcia, misalignment) pojawia się jako **sidebands** wokół mesh frequency i jej harmonicznych. Sideband to dodatkowy pik przesunięty o częstotliwość wału (plus minus jeden herc w naszym przykładzie).
+
+Przykładowo: mesh frequency pięć herców, widzimy piki na cztery, pięć, sześć herców – to wskazuje na uszkodzenie zazębienia modulowane przez obroty wału.
+
+Podkreśl, że **to prostsze niż łożyska** – jeden wzór, łatwa interpretacja. Software CMS automatycznie oblicza mesh frequencies dla wszystkich stopni przekładni.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📈 Studium przypadku: Uszkodzenie main bearing" type="success">
 
 <Example title="Wykrywanie uszkodzenia main bearing – case study">
 
@@ -457,104 +607,4 @@ Częstotliwość [Hz]    Amplituda [g]    Identyfikacja
 
 </Slide>
 
-<VisualSeparator type="default" />
-
-<Slide title="📝 Quiz: Wibracje i monitoring turbin" type="info">
-
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Jaki typ czujnika jest standardem dla CMS (Condition Monitoring System) w turbinach wiatrowych >2 MW?",
-      options: [
-        "Akcelerometr MEMS (tani, małe wymiary)",
-        "Czujnik prędkości drgań (velocity sensor)",
-        "Akcelerometr piezoelektryczny IEPE (szerokie pasmo, trwały)",
-        "Mikrofon kierunkowy (pomiar akustyki)"
-      ],
-      correctAnswer: 2,
-      explanation: "Akcelerometry piezoelektryczne IEPE to standard – szerokie pasmo (1 Hz-10 kHz), wysoką niezawodność, trwałość w ekstremalnych warunkach. MEMS to budżetowe/IoT, velocity sensors to starsze technologie, mikrofony to pomoc diagnostyczna."
-    },
-    {
-      question: "Turbina ma rotor obracający się z prędkością 18 rpm. Jaka jest minimalna częstotliwość próbkowania (f_sample) dla monitorowania main bearing z harmonicznymi do 5× BPFO (BPFO ≈ 12 Hz)?",
-      options: [
-        "50 Hz (wystarczy dla f_max = 60 Hz)",
-        "150 Hz (2.5× Nyquist dla 60 Hz)",
-        "300 Hz (5× Nyquist, zapas)",
-        "10 kHz (always better to oversample)"
-      ],
-      correctAnswer: 1,
-      explanation: "5× BPFO = 5 × 12 Hz = 60 Hz. Według Nyquista: f_sample ≥ 2 × 60 = 120 Hz. W praktyce 2.5× zapas → 150 Hz. 10 kHz to overkill (niepotrzebne dane, storage). 50 Hz to za mało (aliasing)."
-    },
-    {
-      question: "W widmie FFT wibracji gearbox zauważono peak na częstotliwości 450 Hz oraz sidebands ±1 Hz. Co to najprawdopodobniej oznacza?",
-      options: [
-        "Uszkodzenie łożyska (BPFO)",
-        "Mesh frequency przekładni z modulacją (uszkodzenie zębów/misalignment)",
-        "Niezbalansowanie wirnika (1× RPM)",
-        "Resonance mechaniczna konstrukcji"
-      ],
-      correctAnswer: 1,
-      explanation: "Mesh frequency (typowo 50-800 Hz dla gearbox) + sidebands ±1 Hz (= shaft frequency) to klasyczna sygnatura uszkodzenia zazębienia lub misalignment. BPFO byłby niżej (~5-20 Hz), niezbalansowanie to 1× RPM (bez sidebands), resonance nie ma sidebands."
-    },
-    {
-      question: "Jaki jest główny cel zastosowania envelope analysis w diagnostyce łożysk?",
-      options: [
-        "Zwiększenie amplitudy sygnału dla lepszej wizualizacji",
-        "Demodulacja high-frequency resonance, wykrycie wczesnych uszkodzeń (spalling, pittingi)",
-        "Redukcja szumów w time domain",
-        "Obliczanie RMS sygnału"
-      ],
-      correctAnswer: 1,
-      explanation: "Envelope analysis (analiza obwiedni) demoduluje wysokoczęstotliwościową resonancję (~5-20 kHz), która jest modulowana przez BPFO/BPFI. Pozwala wykryć wczesne uszkodzenia łożysk (mikro-pittingi), które są niewidoczne w zwykłym FFT."
-    },
-    {
-      question: "Koszt CMS dla turbiny to 15 000 EUR. System wykrył uszkodzenie main bearing 3 miesiące przed awarią, umożliwiając planowaną wymianę (koszt 350 000 EUR) zamiast awaryjnej katastroficznej awarii (koszt >1 mln EUR). Jaki jest ROI (Return on Investment) CMS w tym przypadku?",
-      options: [
-        "23× (350 000 / 15 000)",
-        "67× (1 000 000 / 15 000)",
-        "43× ((1 000 000 - 350 000) / 15 000)",
-        "Nie można obliczyć bez znajomości downtime"
-      ],
-      correctAnswer: 2,
-      explanation: "ROI = (uniknięty koszt - rzeczywisty koszt) / koszt CMS = (1 000 000 - 350 000) / 15 000 ≈ 43×. Opcja (a) nie uwzględnia, że planowana wymiana też kosztuje. Opcja (b) zakłada, że nie byłoby żadnej wymiany (nierealistyczne). Downtime jest już wliczony w koszty."
-    }
-  ]}
-/>
-
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o typach czujników, częstotliwości próbkowania (Nyquist) i charakterystycznych częstotliwościach usterek (BPFO, mesh frequency). Zrozumienie diagnostyki predykcyjnej to klucz do projektowania efektywnych systemów CMS.
-:::
-
-</Slide>
-
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Monitoring wibracji to fundament predykcyjnej konserwacji turbin wiatrowych** – ROI systemu CMS to typowo 5-30× (wykrycie 1 awarii main bearing/gearbox zwraca koszt całego systemu).
-
-2. **Akcelerometry piezoelektryczne IEPE to standard** – szerokie pasmo (1 Hz-10 kHz), trwałość, IEPE (2-wire) upraszcza instalację. MEMS to budżetowe alternatywy dla mniej krytycznych punktów.
-
-3. **FFT (analiza w domenie częstotliwości) to kluczowe narzędzie diagnostyczne** – każda usterka ma charakterystyczne częstotliwości (BPFO dla łożysk, mesh frequency dla przekładni). Order tracking i envelope analysis dla zmiennych obrotów.
-
-4. **Częstotliwość próbkowania: 2.5-5× Nyquist dla najwyższej interesującej częstotliwości** – trade-off między coverage a storage/transmisją. Typowo 2-10 kHz dla większości aplikacji.
-
-5. **Diagnostyka = FFT + fizyka + doświadczenie** – algorytmy ML pomagają wykrywać anomalie, ale ostateczna diagnoza wymaga eksperta. Hybrid approach: ML screening + human final decision.
-
-**Następne kroki:**
-- Ćwiczenie 3: Analiza rzeczywistych danych wibracji (FFT w Python/MATLAB, identyfikacja BPFO)
-- Przygotowanie do następnej sekcji: Monitoring innych technologii OZE (biogaz, hydro) – czujniki gazu, przepływu, poziomu
-
----
-
-**Dodatkowe zasoby:**
-
-- **ISO 10816-21:2015** – Mechanical vibration — Evaluation of machine vibration by measurements on non-rotating parts — Part 21: Horizontal axis wind turbines with gearbox
-- **SKF Bearing Maintenance Handbook** – Comprehensive guide (free PDF)
-- **NREL Technical Reports** – Wind turbine condition monitoring (research papers)
-- **Vibration Institute** – Certification programs (CAT I-IV)
-

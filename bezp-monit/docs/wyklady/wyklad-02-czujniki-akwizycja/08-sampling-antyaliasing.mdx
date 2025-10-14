@@ -106,7 +106,7 @@ Analiza spektrum sygnału:
 **Krok 2: Wybierz zapas (oversampling ratio)**
 
 $$
-OSR = \frac{f_{sample}}{2 \cdot f_{max}}
+OSR = \frac{f_{\text{sample}}}{2 \cdot f_{\text{max}}}
 $$
 
 Typowe wartości:
@@ -659,120 +659,4 @@ graph TB
 
 </Slide>
 
-<VisualSeparator type="default" />
-
-<Slide title="📝 Quiz: Próbkowanie i anti-aliasing" type="info">
-
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Sygnał ma maksymalną częstotliwość f_max = 5 kHz. Jaka jest minimalna częstotliwość próbkowania według Nyquista?",
-      options: [
-        "5 kHz (równa f_max)",
-        "10 kHz (2 × f_max)",
-        "12.5 kHz (2.5 × f_max, practical)",
-        "25 kHz (5 × f_max, conservative)"
-      ],
-      correctAnswer: 1,
-      explanation: "Twierdzenie Nyquista: f_sample ≥ 2 × f_max. Dla f_max = 5 kHz → f_Nyquist = 10 kHz (MINIMUM teoretyczne). W praktyce: 2.5-5× (12.5-25 kHz), ale pytanie o Nyquist → 10 kHz."
-    },
-    {
-      question: "Mamy f_sample = 8 kHz. Sygnał zakłócający ma częstotliwość 7 kHz (powyżej f_Nyquist = 4 kHz). Jaka częstotliwość alias pojawi się w ADC?",
-      options: [
-        "7 kHz (bez zmian)",
-        "1 kHz (|7 - 8|)",
-        "3 kHz (7 - 4)",
-        "15 kHz (7 + 8)"
-      ],
-      correctAnswer: 1,
-      explanation: "Alias: f_alias = |f_signal - n×f_sample|. Dla n=1: |7 - 8| = 1 kHz. Sygnał 7 kHz 'zawija się' i pojawia jako 1 kHz. Opcja (c) to błędne odejmowanie f_Nyquist. Opcja (d) to suma (nie ma sensu)."
-    },
-    {
-      question: "Projektujemy filtr anti-aliasing dla systemu z f_sample = 20 kHz. OSR (oversampling ratio) = 4×. Jaka powinna być f_cutoff filtru?",
-      options: [
-        "10 kHz (f_sample/2, Nyquist)",
-        "5 kHz (f_sample/4)",
-        "2.5 kHz (f_sample/8 = f_sample/(2×OSR))",
-        "20 kHz (równa f_sample)"
-      ],
-      correctAnswer: 2,
-      explanation: "OSR = f_sample / (2 × f_max) → f_max = f_sample / (2 × OSR). Dla OSR=4: f_max = 20000 / (2×4) = 2500 Hz. f_cutoff ≈ f_max. Alternatywnie: f_cutoff = f_sample / (2×OSR) = 20000/8 = 2.5 kHz."
-    },
-    {
-      question: "Filtr Butterworth 4th order ma roll-off -80 dB/decade. Po przesunięciu o 1 octave (podwojenie częstotliwości) od f_cutoff, jaka jest attenuation?",
-      options: [
-        "-24 dB/octave × 1 = -24 dB",
-        "-80 dB (całkowita dekada)",
-        "-40 dB (połowa dekady = octave)",
-        "Nie można obliczyć bez logarytmów"
-      ],
-      correctAnswer: 0,
-      explanation: "-80 dB/decade = -24 dB/octave (bo decade = 10×, octave = 2×, log₁₀(2) ≈ 0.3). 1 octave → -24 dB. Opcja (c) myląco sugeruje -40 dB, ale to dla 2nd order. Opcja (d) nieprawda – prosta konwersja: -80 dB/dec ÷ 3.32 ≈ -24 dB/oct."
-    },
-    {
-      question: "W farmie wiatrowej 100 MW (50 turbin) stosowano continuous sampling @ 25 kHz (2.1 TB/day). Po optymalizacji (edge processing + triggered + scheduled) data rate spadł do 2.1 GB/day. Jaki jest reduction factor?",
-      options: [
-        "100× (2100/21)",
-        "1000× (2100 GB / 2.1 GB)",
-        "10× (tylko jeden rząd wielkości)",
-        "Nie można porównać (różne units)"
-      ],
-      correctAnswer: 1,
-      explanation: "2.1 TB = 2100 GB. Reduction: 2100 GB / 2.1 GB = 1000×. Opcja (a) błędnie dzieli 2100/21 = 100 (brak konwersji TB→GB). Opcja (d) nieprawda – obie są w GB po konwersji."
-    }
-  ]}
-/>
-
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o twierdzeniu Nyquista (f_sample ≥ 2×f_max), obliczaniu aliasing (|f - n×f_s|), i konwersji dB/decade ↔ dB/octave. Zrozumienie tych fundamentów jest kluczowe dla projektowania systemów akwizycji.
-:::
-
-</Slide>
-
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Twierdzenie Nyquista: f_sample ≥ 2 × f_max** – to MINIMUM teoretyczne. W praktyce: **2.5-5× zapas** dla real-world filtrów.
-
-2. **Aliasing to nieodwracalna strata** – wysokie częstotliwości "zawijają się" jako fałszywe niskie. Po sampling NIE DA SIĘ cofnąć → filtr anty-aliasing PRZED ADC to must.
-
-3. **Filtr Butterworth 4th order to standard** – flat passband, -80 dB/decade roll-off. Dla OSR=3-5× wystarczy 4th order. OSR=2× wymaga 6th-8th order.
-
-4. **Parametry sampling zależą od dynamics sygnału:**
-   - Slow (temp, gas): 0.1-1 Hz
-   - Medium (PV strings): 10-100 Hz
-   - Fast (vibration low-freq): 1-5 kHz
-   - Very fast (vibration high-freq): 25-50 kHz
-
-5. **Multi-tier sampling strategy** radykalnie redukuje data rate:
-   - Tier 1: Continuous low-rate (features: RMS, kurtosis) @ 1 Hz
-   - Tier 2: Triggered high-rate (events) @ 25 kHz, 1-5% czasu
-   - Tier 3: Scheduled deep analysis @ 25 kHz, weekly
-   - **Reduction: 100-1000×** vs. continuous high-rate → savings $$$ storage/bandwidth
-
-6. **Edge processing to game-changer** – extract features locally (DSP @ edge), send only relevant data to cloud. Raspberry Pi/Jetson może przetwarzać 10 kanałów @ 25 kHz real-time.
-
-**Typowe błędy do unikania:**
-- f_sample = 2×f_max (Nyquist) w praktyce – zawsze 2.5-5× zapas!
-- Brak filtru anty-aliasing ("filter cyfrowy po ADC wystarczy") – aliasing już się stał
-- Continuous high-rate dla wszystkiego – koszty storage/bandwidth eksplodują
-- Ignorowanie edge processing – wysyłanie raw data to waste bandwidth
-
-**Następne kroki:**
-- Ćwiczenie 8: Obliczanie f_sample, projektowanie filtru Butterworth (online calculator)
-- Lab hands-on: Breadboard 4th order filter + test z function generator
-- Przygotowanie do następnej sekcji: Synchronizacja czasu (NTP/PTP)
-
----
-
-**Dodatkowe zasoby:**
-- **Lyons**: "Understanding Digital Signal Processing" (bible of DSP)
-- **TI**: "ADC Sampling Frequency Selection" (AN-282)
-- **Analog Devices Filter Wizard**: Online tool (https://tools.analog.com/en/filterwizard/)
-- **Python**: `scipy.signal` library – Butterworth design, `lfilter()` simulation
-- **LTspice**: Free circuit simulator – design/test filters (https://www.analog.com/ltspice)

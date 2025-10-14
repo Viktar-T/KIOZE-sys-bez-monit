@@ -2,19 +2,11 @@
 sidebar_position: 3
 title: "W2: Czujniki i akwizycja danych w OZE"
 ---
-
 # W2: Czujniki i akwizycja danych w OZE
 
 ## Przegląd i cele kształcenia
 
 Wykład omawia dobór i eksploatację czujników oraz zasady akwizycji danych w instalacjach OZE. Akcent pada na łańcuch pomiarowy (sensor → kondycjonowanie → akwizycja → synchronizacja czasu) oraz wymagania jakościowe.
-
-Po zakończeniu wykładu student potrafi:
-
-1. Dobrać czujniki do pomiaru prądów/napięć DC/AC, irradiancji, temperatury, wibracji, gazów, przepływu/poziomu i ciśnienia.
-2. Zaprojektować kondycjonowanie sygnału oraz parametry próbkowania z uwzględnieniem aliasingu.
-3. Określić procedury kalibracji i prowadzić ślad metrologiczny.
-4. Zastosować synchronizację czasu (NTP/PTP) i poprawnie znacznikować dane.
 
 ## Struktura materiału
 
@@ -30,9 +22,3 @@ Po zakończeniu wykładu student potrafi:
 10. [Podsumowanie i zalecenia praktyczne](./10-podsumowanie.mdx)
 
 ## Literatura skrócona
-
-- IEC 61010 (bezpieczeństwo aparatury), ISO 16063 (kalibracja wibrometrów)
-- Dokumentacja producentów: pyranometry ISO 9060, czujniki H₂S/CH₄, przepływomierze
-- InfluxDB 2.x, Grafana 10.x — integracja i weryfikacja danych pomiarowych
-
-

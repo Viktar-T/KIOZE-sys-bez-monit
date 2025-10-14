@@ -30,53 +30,128 @@ Po tej sekcji student potrafi:
 
 <KeyPoints title="📋 Dlaczego monitorujemy gazy?">
 
-**Biogazownie to środowisko o wysokim ryzyku** – obecność gazów palnych (CH₄, H₂), toksycznych (H₂S), korozyjnych i duszących (CO₂). System monitoringu gazów to wymóg:
+**Biogazownie to środowisko o wysokim ryzyku** – obecność gazów palnych (CH₄, H₂), toksycznych (H₂S), korozyjnych i duszących (CO₂). 
+
+**System monitoringu gazów to wymóg:**
 - **Bezpieczeństwa pracowników** (BHP, dyrektywa ATEX 1999/92/EC)
-- **Ochrony środowiska** (emisje, wycieki metanu do atmosfery)
+- **Ochrony środowiska** (emisje, wycieki metanu)
 - **Optymalizacji procesu** (skład biogazu = efektywność fermentacji)
-- **Zgodności z normami** (ISO 23553, VDI 3475, krajowe przepisy)
+- **Zgodności z normami** (ISO 23553, VDI 3475)
 
-**Kluczowe gazy i ich zagrożenia:**
-
-| Gaz | Stężenie typowe | Zagrożenie | LEL/TWA/IDLH | Detekcja |
-|-----|-----------------|------------|---------------|----------|
-| **CH₄** (metan) | 50-75% v/v (biogaz) | Palny, wybuchowy | LEL = 5% (50 000 ppm) | Katalityczny, IR |
-| **H₂S** (siarkowodór) | 100-5000 ppm (raw biogas) | Toksyczny, korozyjny, palny | TWA = 10 ppm, IDLH = 100 ppm | Elektrochemiczny |
-| **CO₂** (dwutlenek węgla) | 25-45% v/v (biogaz) | Duszący (wypiera O₂) | TWA = 5000 ppm (8h) | IR (NDIR) |
-| **O₂** (tlen) | ~20.9% (powietrze) | Deficyt &lt;19.5% → uduszenie | Min. bezpieczne: 19.5% | Elektrochemiczny, paramagnetyczny |
-| **H₂** (wodór) | &lt;1% (proces) | Palny, wybuchowy | LEL = 4% (40 000 ppm) | Katalityczny, elektrochem. |
-| **NH₃** (amoniak) | &lt;100 ppm | Toksyczny, żrący | TWA = 25 ppm, IDLH = 300 ppm | Elektrochemiczny |
-
-**Definicje:**
-- **LEL (Lower Explosive Limit)**: Dolna granica wybuchowości – minimalne stężenie palne w powietrzu
-- **TWA (Time-Weighted Average)**: Dopuszczalne stężenie średnie ważone w czasie (8h)
-- **IDLH (Immediately Dangerous to Life or Health)**: Stężenie natychmiastowo zagrażające życiu
+**Definicje kluczowe:**
+- **LEL (Lower Explosive Limit)**: Dolna granica wybuchowości
+- **TWA (Time-Weighted Average)**: Dopuszczalne stężenie średnie (8h)
+- **IDLH (Immediately Dangerous to Life or Health)**: Stężenie śmiertelne
 
 :::caution Zagrożenie H₂S
-Siarkowodór to "cichy zabójca" biogazowni. Już przy 100-150 ppm powoduje paraliż węchu (nie czuje się ostrzegawczego zapachu zgniłych jaj!), przy 500-1000 ppm – utrata przytomności w ciągu minut, powyżej 1000 ppm – śmierć. **Detekcja H₂S to absolutny priorytet.**
+Siarkowodór to "cichy zabójca". Już przy 100-150 ppm powoduje paraliż węchu, przy 500-1000 ppm – utrata przytomności w ciągu minut, powyżej 1000 ppm – śmierć. **Detekcja H₂S to absolutny priorytet.**
 :::
 
 </KeyPoints>
 
-<SupportingDetails title="🔥 Klasyfikacja stref ATEX">
+<InstructorNotes>
 
-**Dyrektywa ATEX 1999/92/EC** (Atmosphères Explosibles) klasyfikuje strefy zagrożenia wybuchem:
+Wprowadzenie do monitoringu gazów – około pięć do siedmiu minut.
 
-### Strefy gazowe:
+**Kluczowy przekaz**: biogazownie to **środowisko wysokiego ryzyka**. Metan jest palny (LEL pięć procent), siarkowodór toksyczny (IDLH sto ppm), dwutlenek węgla duszący (wypiera tlen).
 
-- **Strefa 0**: Atmosfera wybuchowa obecna **stale** lub przez długi czas (>1000h/rok)
-  - Przykład: Wnętrze zbiorników biogazu, szczelne komory fermentacyjne
-  - Wymagany sprzęt: **Ex ia** (iskrobezpieczny kategoria ia) lub Ex s (specjalny)
+Wyjaśnij definicje. **LEL to dolna granica wybuchowości** – minimalne stężenie, przy którym gaz może się zapalić. Dla metanu to pięć procent objętościowych (pięćdziesiąt tysięcy ppm). **TWA to dopuszczalne stężenie średnie ważone w czasie** – dla ośmiu godzin pracy. **IDLH to stężenie natychmiastowo zagrażające życiu**.
 
-- **Strefa 1**: Atmosfera wybuchowa może wystąpić **sporadycznie** w normalnej eksploatacji (10-1000h/rok)
-  - Przykład: Pomieszczenia z otwartymi zbiornikami, wokół zaworów/złączy
-  - Wymagany sprzęt: **Ex ib, Ex d** (obudowa przeciwwybuchowa)
+Podkreśl **zagrożenie H₂S**. Sto ppm to już IDLH – natychmiastowe zagrożenie życia. Dla porównania: tlenek węgla (CO) ma IDLH tysiąc dwieście ppm. **Siarkowodór jest dwanaście razy bardziej toksyczny**. Plus: paraliż węchu przy stu do stu pięćdziesięciu ppm – nie czujesz ostrzegawczego zapachu!
 
-- **Strefa 2**: Atmosfera wybuchowa występuje **rzadko** i krótkotrwale (&lt;10h/rok), tylko w warunkach awaryjnych
-  - Przykład: Wokół biogazowni (wentylowane otoczenie)
-  - Wymagany sprzęt: **Ex nA** (nieiskrzący)
+System monitoringu to nie opcja – **wymóg prawny** (dyrektywa ATEX, polskie rozporządzenie MPiPS). Każdego roku kilka śmiertelnych wypadków w biogazowniach i oczyszczalniach ścieków przez H₂S.
 
-### Dobór czujników według ATEX:
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Kluczowe gazy i ich zagrożenia" type="warning">
+
+| Gaz | Stężenie typowe | Zagrożenie | LEL/TWA/IDLH | Detekcja |
+|-----|-----------------|------------|---------------|----------|
+| **CH₄** | 50-75% v/v | Palny, wybuchowy | LEL = 5% | Katalityczny, IR |
+| **H₂S** | 100-5000 ppm | Toksyczny, korozyjny | TWA = 10 ppm<br/>IDLH = 100 ppm | Elektrochemiczny |
+| **CO₂** | 25-45% v/v | Duszący | TWA = 5000 ppm | IR (NDIR) |
+| **O₂** | ~20.9% | Deficyt &lt;19.5% → uduszenie | Min. 19.5% | Elektrochemiczny |
+| **H₂** | &lt;1% | Palny, wybuchowy | LEL = 4% | Katalityczny |
+| **NH₃** | &lt;100 ppm | Toksyczny, żrący | TWA = 25 ppm<br/>IDLH = 300 ppm | Elektrochemiczny |
+
+<InstructorNotes>
+
+Tabela gazów to praktyczna ściągawka – około pięć do siedmiu minut.
+
+Przejdź przez tabelę wiersz po wierszu. **Metan** (CH₄) to główny składnik biogazu (pięćdziesiąt do siedemdziesięciu pięciu procent objętościowych). LEL pięć procent – **to granica wybuchowości**. Poniżej za mało do spalenia, powyżej za mało tlenu. Zakres wybuchowości metanu: pięć do piętnastu procent.
+
+**Siarkowodór** (H₂S) to największe zagrożenie. Stężenia w surowym biogazie: sto do pięciu tysięcy ppm. TWA (dopuszczalne przez osiem godzin) to zaledwie dziesięć ppm. **IDLH to sto ppm** – natychmiastowe zagrożenie życia. Każda biogazownia musi mieć czujniki H₂S w kluczowych punktach.
+
+**Dwutlenek węgla** (CO₂) to dwadzieścia pięć do czterdzieści pięć procent biogazu. Sam nie jest toksyczny przy niskich stężeniach, ale **wypiera tlen** – deficyt O₂ poniżej 19,5% to uduszenie. Dlatego monitoring O₂ jest równie ważny.
+
+**Tlen** (O₂) – normalne stężenie w powietrzu 20,9%. **Poniżej 19,5% to zagrożenie** – zawroty głowy, dezorientacja. Poniżej 16% – utrata przytomności. Monitor O₂ to must w zamkniętych przestrzeniach biogazowni.
+
+Wodór i amoniak to mniejsze zagrożenia w typowych biogazowniach, ale warto je monitorować jeśli proces obejmuje hydrolizę lub wysokoazotowe substraty.
+
+Detekcja: **katalityczne dla metanu** (tanie, sprawdzone), **elektrochemiczne dla H₂S, O₂, NH₃** (selektywność, czułość w ppm), **IR dla CO₂** (bez zużycia, długa żywotność).
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔥 Klasyfikacja stref ATEX" type="warning">
+
+**Dyrektywa ATEX 1999/92/EC** klasyfikuje strefy zagrożenia wybuchem:
+
+<KeyPoints title="📋 Strefy gazowe">
+
+**Strefa 0**: Atmosfera wybuchowa **stale** (>1000h/rok)
+- Przykład: Wnętrze zbiorników biogazu, komory fermentacyjne
+- Wymagany sprzęt: **Ex ia** (iskrobezpieczny) lub Ex s
+
+**Strefa 1**: Atmosfera wybuchowa **sporadycznie** (10-1000h/rok)
+- Przykład: Pomieszczenia z otwartymi zbiornikami, wokół zaworów
+- Wymagany sprzęt: **Ex ib, Ex d** (obudowa przeciwwybuchowa)
+
+**Strefa 2**: Atmosfera wybuchowa **rzadko** (&lt;10h/rok), warunki awaryjne
+- Przykład: Wokół biogazowni (wentylowane otoczenie)
+- Wymagany sprzęt: **Ex nA** (nieiskrzący)
+
+</KeyPoints>
+
+<KeyPoints title="💰 Koszty czujników ATEX">
+
+- Standard (non-ATEX): 200-500 EUR
+- Ex nA (Strefa 2): 400-800 EUR
+- Ex d/ib (Strefa 1): 800-1500 EUR
+- Ex ia (Strefa 0): 1500-3000 EUR + barrier 300-600 EUR
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Klasyfikacja ATEX to wymóg prawny – około pięć do siedmiu minut.
+
+**Dyrektywa ATEX** (Atmosphères Explosibles) klasyfikuje strefy według prawdopodobieństwa wystąpienia atmosfery wybuchowej. **Strefa zero to stale** (powyżej tysiąc godzin rocznie) – wnętrze zbiorników biogazu, szczelne komory. **Strefa jeden to sporadycznie** (dziesięć do tysiąc godzin) – pomieszczenia z otwartymi zbiornikami, wokół zaworów. **Strefa dwa to rzadko** (poniżej dziesięć godzin) – tylko awarie.
+
+Wymagania sprzętu różnią się drastycznie. **Strefa zero wymaga Ex ia** (iskrobezpieczny kategoria ia) – energia elektryczna w obwodzie jest tak niska, że nawet zwarcie nie może wywołać iskry. Plus: barrier (bariera iskrobezpieczna) separująca obwody safe i hazardous. **Koszt: tysiąc pięćset do trzech tysięcy euro za czujnik plus trzysta do sześćset euro za barrier**.
+
+Strefa jeden: Ex d (obudowa przeciwwybuchowa - wybuch wewnątrz, ale nie przedostaje się na zewnątrz) lub Ex ib (iskrobezpieczny kategoria ib). Koszt osiemset do tysiąc pięćset euro.
+
+Strefa dwa: Ex nA (nieiskrzący) lub czasem standard non-ATEX (jeśli strefa sklasyfikowana jako nie-ATEX przez rzeczoznawcę). Koszt czterysta do ośmiuset euro.
+
+**Certyfikacja ATEX** to proces – czujnik musi mieć certyfikat od notified body (np. DEKRA, TÜV), instalacja przez wykwalifikowany personel, inspekcja co trzy lata. To nie fanaberia – **wymóg prawny, brak certyfikacji to podstawa do zamknięcia instalacji** przez inspekcję PIP.
+
+Jeśli ktoś zapyta o czujniki non-ATEX w wentylowanych pomieszczeniach – tylko jeśli **pomieszczenie sklasyfikowane jako nie-ATEX przez uprawnionego rzeczoznawcę**. W praktyce: wszystko wokół biogazu to ATEX (strefa jeden lub dwa minimum).
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔄 Dobór czujników według ATEX – schemat" type="info">
 
 ```mermaid
 graph TB
@@ -100,51 +175,19 @@ graph TB
     style H fill:#99ff99
 ```
 
-**Koszty czujników ATEX:**
-- Standard (non-ATEX): 200-500 EUR
-- Ex nA (Strefa 2): 400-800 EUR
-- Ex d/ib (Strefa 1): 800-1500 EUR
-- Ex ia (Strefa 0): 1500-3000 EUR + barrier 300-600 EUR
-
-</SupportingDetails>
-
 <InstructorNotes>
 
-**Czas**: 14-16 min
+Schemat decyzyjny ATEX – około trzy do czterech minut. **Diagram może być większy, to wyjątek**.
 
-**Przebieg**:
-1. Wprowadzenie do gazów w biogazowniach – dlaczego są niebezpieczne? (3 min)
-2. Omówienie tabeli gazów i zagrożeń (4 min) – podkreśl H₂S jako największe zagrożenie
-3. Strefy ATEX i dobór czujników (5 min) – użyj diagramu, pokaż przykładowy czujnik Ex
-4. Dyskusja: Czy studenci wiedzieli o ATEX przed wykładem? (2 min)
-5. Q&A (2 min)
+Przejdź przez schemat krok po kroku. **Pierwszy krok**: klasyfikacja strefy przez uprawnionego rzeczoznawcę (inżynier z certyfikatem ATEX). Nie można tego zrobić "na oko" – to wymaga analizy ryzyka, obliczeń wentylacji, scenariuszy awaryjnych.
 
-**Punkty kluczowe**:
-- **H₂S to killer nr 1** – każdego roku kilka śmiertelnych wypadków w biogazowniach/oczyszczalniach
-- ATEX to nie opcja, to WYMÓG PRAWNY (UE, Polska: rozporządzenie MPiPS)
-- Koszt certyfikacji ATEX to 2-3× czujnika standardowego, ale to MUST
+**Dobór czujnika** według strefy: zero wymaga Ex ia plus barrier, jeden wymaga Ex d lub Ex ib, dwa wymaga Ex nA lub czasem standard.
 
-**Demonstracja praktyczna**:
-- Pokaż przykładowy czujnik Ex ia lub Ex d (jeśli dostępny) – charakterystyczna obudowa
-- Film z testowania czujników gazowych (exposure test)
-- Symulacja alarmu H₂S (audio + wizualny) – pokazuje procedurę awaryjną
+**Certyfikat ATEX** – czujnik musi mieć certyfikat od notified body, oznaczenie CE, deklarację zgodności. **Instalacja tylko przez wykwalifikowany personel** – to nie jest praca dla elektryka bez certyfikatu ATEX.
 
-**Materiały pomocnicze**:
-- Dyrektywa ATEX 1999/92/EC (wybrane fragmenty)
-- Przykładowa instrukcja bezpieczeństwa biogazowni (PDF)
-- Datasheets: Dräger Polytron 8000 (H₂S Ex), Honeywell Sensepoint XCD (CH₄ IR)
+**Inspekcja co trzy lata** plus weryfikacja – wymóg prawny. Sprawdza się stan czujników, kalibrację, dokumentację, procedury awaryjne.
 
-**Typowe błędy studenckie**:
-- Mylenie LEL (explosive limit) z TWA (occupational exposure) – to różne pojęcia!
-- Niezrozumienie, że O₂ &lt;19.5% to zagrożenie (deficyt), nie tylko O₂ = 0%
-- Myślenie, że jeden czujnik CH₄ wystarczy – potrzeba redundancji i różnych lokalizacji
-
-**Pytania studenckie**:
-- Q: Dlaczego H₂S jest tak niebezpieczny, skoro stężenia są "tylko" 100-5000 ppm?
-- A: 100 ppm to IDLH (immediately dangerous). Dla porównania: CO (tlenek węgla) ma IDLH = 1200 ppm. H₂S jest 12× bardziej toksyczny!
-
-- Q: Czy można stosować czujniki non-ATEX w pomieszczeniach wentylowanych?
-- A: Tylko jeśli pomieszczenie zostało sklasyfikowane jako "niebędące strefą ATEX" przez uprawnionego rzeczoznawcę. W praktyce: wszystko wokół biogazu = ATEX.
+Podkreśl, że **to nie jest opcjonalne** – brak certyfikacji ATEX to podstawa do zamknięcia instalacji przez inspekcję PIP (Państwowa Inspekcja Pracy).
 
 </InstructorNotes>
 
@@ -152,91 +195,179 @@ graph TB
 
 <VisualSeparator type="technical" />
 
-<Slide title="🔬 Technologie czujników gazowych" type="tip">
+<Slide title="🔬 Czujniki katalityczne i IR" type="tip">
 
-<KeyPoints title="📋 Przegląd metod detekcji">
+<KeyPoints title="📋 Czujniki katalityczne (pellistory)">
 
-**1. Czujniki katalityczne (pellistory)**
-- **Zasada**: Spalanie katalityczne gazu palnego na podgrzanym drucie platynowym → wzrost temperatury → zmiana rezystancji (most Wheatstone'a)
-- **Gazy**: CH₄, H₂, LPG (wszystkie palne)
-- **Zakres**: 0-100% LEL (typowo 0-5% v/v dla CH₄)
-- **Zalety**: Tanio (200-400 EUR), niezawodne, szybka odpowiedź (&lt;30 s)
-- **Wady**: 
-  - Trucie przez H₂S, silikony, ołów → degradacja czułości
-  - Wymaga O₂ (min. 10-12%) do spalania
-  - Dryft kalibr. ~5-10% rocznie
-- **Żywotność**: 2-5 lat (zależnie od środowiska)
-- **Zastosowanie**: **Podstawowy czujnik CH₄ w biogazowniach** (monitoring LEL)
+**Zasada**: Spalanie katalityczne gazu → wzrost T → zmiana rezystancji
 
-**2. Czujniki podczerwieni (IR, NDIR)**
-- **Zasada**: Absorpcja promieniowania IR na charakterystycznych długościach fali (CH₄: 3.3 µm, CO₂: 4.26 µm)
-- **Gazy**: CH₄, CO₂, propan (molekuły dwu-/wieloatomowe)
-- **Zakres**: 0-100% v/v (CH₄), 0-100% v/v (CO₂)
-- **Zalety**: 
-  - NIE wymaga O₂
-  - Odporny na trucie
-  - Długa żywotność (5-10 lat)
-  - Niski dryft (&lt;2% rocznie)
-- **Wady**: Drogi (800-2000 EUR), wrażliwy na kondensację, większe wymiary
-- **Zastosowanie**: **Analiza składu biogazu** (proces control), duplikacja czujników katalitycznych
+**Parametry:**
+- Gazy: CH₄, H₂, LPG (wszystkie palne)
+- Zakres: 0-100% LEL (0-5% v/v dla CH₄)
+- Żywotność: 2-5 lat
 
-**3. Czujniki elektrochemiczne**
-- **Zasada**: Reakcja elektrodowa gazu na elektrodzie roboczej → prąd proporcjonalny do stężenia
-- **Gazy**: H₂S, O₂, NH₃, CO, H₂ (toksyczne i O₂)
-- **Zakres**: 
-  - H₂S: 0-100 ppm lub 0-1000 ppm (two-electrode, three-electrode)
-  - O₂: 0-25% v/v
-- **Zalety**: 
-  - Wysoka selektywność (elektroda specyficzna dla gazu)
-  - Czułość (ppb-ppm)
-  - Kompaktowe (20-50 mm Ø)
-- **Wady**: 
-  - Krótka żywotność (1-3 lata dla H₂S, 3-5 lat dla O₂)
-  - Wrażliwe na temperaturę i wilgotność
-  - Cross-sensitivity (np. H₂S czujnik reaguje na SO₂)
-  - Dryft zera (offset drift)
-- **Koszt**: 150-500 EUR (sensor replacement)
-- **Zastosowanie**: **Standard dla H₂S, O₂, NH₃**
+**Zalety**: Tanie (200-400 EUR), niezawodne, szybka odpowiedź (&lt;30 s)
 
-**4. Czujniki półprzewodnikowe (MOS – Metal Oxide Semiconductor)**
-- **Zasada**: Zmiana przewodności warstwy SnO₂ (tlenek cyny) w obecności gazów redukujących
-- **Gazy**: CH₄, H₂, lotne związki organiczne (VOC)
-- **Zalety**: Bardzo tanie (10-50 EUR), małe, niskie pobór mocy
-- **Wady**: 
-  - Niska selektywność (reaguje na wszystko!)
-  - Duży dryft
-  - Wrażliwy na wilgotność
-  - NIE nadaje się do safety-critical
-- **Zastosowanie**: Detekcja jakościowa ("coś jest"), indoor air quality, NIE w biogazowniach ATEX
+**Wady**: 
+- Trucie przez H₂S, silikony → degradacja
+- **Wymaga O₂** (min. 10-12%) do spalania
+- Dryft ~5-10%/rok
+
+**Zastosowanie**: ⭐ **Podstawowy czujnik CH₄** (monitoring LEL)
 
 </KeyPoints>
 
-<SupportingDetails title="📊 Tabela porównawcza technologii">
+<KeyPoints title="📋 Czujniki podczerwieni (IR, NDIR)">
 
-| Parametr | Katalityczny | IR (NDIR) | Elektrochemiczny | Półprzewodnikowy |
-|----------|--------------|-----------|------------------|------------------|
-| **Gazy** | CH₄, H₂ (palne) | CH₄, CO₂ | H₂S, O₂, NH₃ | Szerokie spektrum |
-| **Zakres** | 0-100% LEL | 0-100% v/v | ppb-ppm (H₂S)<br/>%-v/v (O₂) | ppm-% (nieskalowany) |
+**Zasada**: Absorpcja IR na charakterystycznych długościach fali
+
+**Parametry:**
+- Gazy: CH₄ (3.3 µm), CO₂ (4.26 µm)
+- Zakres: 0-100% v/v
+- Żywotność: 5-10 lat
+
+**Zalety**: 
+- **NIE wymaga O₂**
+- Odporny na trucie
+- Niski dryft (&lt;2%/rok)
+
+**Wady**: Drogi (800-2000 EUR), wrażliwy na kondensację
+
+**Zastosowanie**: **Analiza składu biogazu** (process control)
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Czujniki katalityczne i IR – około sześć do ośmiu minut.
+
+**Czujniki katalityczne** (pellistory) to podstawa monitoringu metanu. Zasada: podgrzany drut platynowy z katalizatorem – w obecności metanu i tlenu zachodzi spalanie katalityczne, temperatura rośnie, rezystancja drucika się zmienia. Most Wheatstone'a mierzy zmianę. **Proste, tanie (dwieście do czterystu euro), niezawodne**.
+
+Wady: **wymaga tlenu** – minimum dziesięć do dwunastu procent. W atmosferze bogatej w biogaz (osiemdziesiąt procent CH₄, brak O₂) czujnik pokaże zero procent LEL mimo wysokiego stężenia metanu. **To poważne zagrożenie** – false negative. Dlatego w takich miejscach stosuje się IR.
+
+Trucie przez siarkowodór – H₂S degraduje katalizator platynowy, obniża czułość. Po roku w biogazowni dryft pięć do dziesięciu procent – wymaga częstej kalibracji.
+
+**Czujniki IR** (infrared, NDIR - non-dispersive) to technologia optyczna. Metan absorbuje promieniowanie podczerwone na 3,3 mikrometra, dwutlenek węgla na 4,26 mikrometra. **Nie wymaga tlenu, odporny na trucie, długa żywotność pięć do dziesięć lat**.
+
+Wady: droższe (osiemset do dwóch tysięcy euro), większe wymiary (sto do dwustu milimetrów), wrażliwe na kondensację (krople wody na optyce = false reading).
+
+Zastosowanie IR: **analiza składu biogazu** – stosunek metanu do dwutlenku węgla pokazuje efektywność fermentacji. Plus: backup dla czujników katalitycznych w strefach zero (gdzie O₂ może być deficyt).
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔬 Czujniki elektrochemiczne i MOS" type="tip">
+
+<KeyPoints title="📋 Czujniki elektrochemiczne">
+
+**Zasada**: Reakcja elektrodowa → prąd proporcjonalny do stężenia
+
+**Parametry:**
+- Gazy: H₂S, O₂, NH₃, CO
+- Zakres: H₂S 0-100 ppm lub 0-1000 ppm | O₂ 0-25%
+- Żywotność: 1-3 lata (H₂S), 3-5 lat (O₂)
+
+**Zalety**: 
+- Wysoka selektywność
+- Czułość (ppb-ppm)
+- Kompaktowe (20-50 mm Ø)
+
+**Wady**: 
+- Krótka żywotność
+- Wrażliwe na T i wilgotność
+- Dryft zera
+
+**Koszt**: 150-500 EUR  
+**Zastosowanie**: ⭐ **Standard dla H₂S, O₂, NH₃**
+
+</KeyPoints>
+
+<KeyPoints title="📋 Czujniki półprzewodnikowe (MOS)">
+
+**Zasada**: Zmiana przewodności SnO₂ w obecności gazów
+
+**Zalety**: Bardzo tanie (10-50 EUR), małe
+
+**Wady**: 
+- Niska selektywność (reaguje na wszystko!)
+- Duży dryft
+- NIE nadaje się do safety-critical
+
+**Zastosowanie**: Indoor air quality, **NIE w biogazowniach ATEX**
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Czujniki elektrochemiczne i MOS – około pięć do siedmiu minut.
+
+**Elektrochemiczne** to standard dla gazów toksycznych (H₂S, NH₃) i tlenu. Zasada: elektroda robocza, elektroda referencyjna, elektrolit (roztwór kwasowy). Gaz dyfunduje przez membranę, reaguje na elektrodzie – **prąd proporcjonalny do stężenia**.
+
+Selektywność wysoka – elektroda H₂S reaguje głównie na siarkowodór (cross-sensitivity do SO₂ około dziesięć procent, ale to można skorygować). Czułość w ppb do ppm – idealnie do monitorowania niskich stężeń toksycznych.
+
+Wady: **krótka żywotność**. Dla H₂S w biogazowni to **rok do trzech lat** – elektrolit degraduje się przez ciągłą reakcję plus wilgotność plus temperatura. Nie można "naładować" – trzeba wymienić cały czujnik. Koszt wymiany sto pięćdziesiąt do pięciuset euro.
+
+Dryft zera – czujnik "zapomina" gdzie jest zero. Wymaga regularnej kalibracji (bump test co trzy miesiące, full calibration co rok).
+
+**MOS** (Metal Oxide Semiconductor) to tlenek cyny (SnO₂) podgrzany do trzystu stopni. W obecności gazów redukujących przewodność rośnie. **Bardzo tanie** (dziesięć do pięćdziesięciu euro), małe, niski pobór mocy (idealny dla IoT).
+
+Ale: **niska selektywność** – reaguje na metan, wodór, alkohole, lotne organiczne, praktycznie wszystko. **Nie nadaje się do safety-critical** – nie można polegać na tym do alarmów w biogazowni ATEX. Okej do indoor air quality (mieszkania, biura), nie do przemysłu.
+
+Podkreśl, że **nie ma uniwersalnego czujnika**. Każdy gaz wymaga dedykowanej technologii. Metan to katalityczny lub IR, siarkowodór to elektrochemiczny, tlen to elektrochemiczny lub paramagnetyczny.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Porównanie technologii czujników" type="info">
+
+| Parametr | Katalityczny | IR (NDIR) | Elektrochemiczny | MOS |
+|----------|--------------|-----------|------------------|-----|
+| **Gazy** | CH₄, H₂ | CH₄, CO₂ | H₂S, O₂, NH₃ | Szerokie |
 | **Selektywność** | Średnia | Bardzo wysoka | Wysoka | Niska |
-| **Żywotność** | 2-5 lat | 5-10 lat | 1-3 lat (H₂S)<br/>3-5 lat (O₂) | 2-3 lata |
+| **Żywotność** | 2-5 lat | 5-10 lat | 1-3 lat (H₂S) | 2-3 lata |
 | **Dryft** | 5-10%/rok | &lt;2%/rok | 5-15%/rok | Wysoki |
-| **Wymaga O₂** | ✅ Tak (>10%) | ❌ Nie | ❌ Nie | ❌ Nie |
-| **Trucie** | ✅ H₂S, silikony | ❌ Odporny | ⚠️ Cross-sens. | ⚠️ Wilgotność |
+| **Wymaga O₂** | ✅ Tak | ❌ Nie | ❌ Nie | ❌ Nie |
 | **ATEX** | ✅ Dostępny | ✅ Dostępny | ✅ Dostępny | ⚠️ Rzadko |
 | **Koszt** | €€ | €€€€ | €€ | € |
-| **Aplikacja** | LEL CH₄ | Skład biogazu | Safety H₂S/O₂ | Nie dla ATEX |
+| **Aplikacja** | LEL CH₄ | Skład | Safety H₂S/O₂ | Nie dla ATEX |
 
 :::tip Dobra praktyka: redundancja
-W krytycznych punktach (np. wejście do fermenterów, pomieszczenia zamknięte) stosuje się **2 czujniki różnych technologii**:
+W krytycznych punktach stosuje się **2 czujniki różnych technologii**:
 - CH₄: katalityczny (primary) + IR (backup)
 - H₂S: elektrochemiczny (primary) + tape colorimetric (backup/portable)
 
-Koszt dodatkowy ~1000 EUR, ale eliminuje single point of failure.
+Koszt dodatkowy ~1000 EUR, eliminuje single point of failure.
 :::
 
-</SupportingDetails>
+<InstructorNotes>
 
-<Example title="Konfiguracja systemu detekcji gazów – biogazownia 1 MW">
+Tabela porównawcza to synteza – około cztery do pięciu minut.
+
+Przejdź przez tabelę kolumna po kolumnie. **Selektywność**: IR bardzo wysoka (absorpcja na konkretnej długości fali), elektrochemiczny wysoka (specyficzna elektroda), katalityczny średnia (reaguje na wszystkie gazy palne), MOS niska (reaguje na wszystko).
+
+**Żywotność**: IR najdłuższa (pięć do dziesięciu lat, brak zużycia), katalityczny dwa do pięciu lat (trucie, degradacja katalizatora), **elektrochemiczny H₂S najkrótsza (rok do trzech lat)** – elektrolit degraduje się szybko. To oznacza **plan wymiany co dwa lata**.
+
+**Wymaga O₂**: tylko katalityczny. To krytyczne ograniczenie – **w atmosferze bogatej w biogaz (poniżej dziesięciu procent O₂) czujnik katalityczny nie działa**. Dlatego stosuje się IR jako backup.
+
+**Koszty**: MOS najtańszy (dziesięć do pięćdziesięciu euro), ale bezużyteczny dla ATEX. Katalityczny i elektrochemiczny dwieście do pięćset euro. IR najdroższy (osiemset do dwóch tysięcy euro), ale długa żywotność amortyzuje koszt.
+
+Redundancja – **w krytycznych punktach stosujemy dwa czujniki różnych technologii**. CH₄: katalityczny jako primary, IR jako backup. H₂S: elektrochemiczny jako primary, tape colorimetric (taśmy wskaźnikowe) jako backup/portable. Koszt dodatkowy około tysiąc euro, ale eliminuje single point of failure – **bezpieczeństwo to priorytet**.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💼 Przykład: System detekcji – biogazownia 1 MW" type="success">
+
+<Example title="Kompletna konfiguracja systemu gazowego">
 
 **Parametry instalacji:**
 - Moc elektryczna: 1 MW (BHKW – kogeneracja)
@@ -323,34 +454,51 @@ Koszt dodatkowy ~1000 EUR, ale eliminuje single point of failure.
 
 <VisualSeparator type="default" />
 
-<Slide title="🚨 Progi alarmowe i procedury awaryjne" type="success">
+<Slide title="🚨 Progi alarmowe dla gazów" type="warning">
 
-<KeyConcept title="System 3-poziomowych alarmów">
+<KeyPoints title="📋 System 3-poziomowych alarmów">
 
-**Standardowa konfiguracja alarmów gazowych:**
-
-### Dla CH₄ (metan):
-
-- **LOW alarm** (20-25% LEL): Ostrzeżenie, zwiększona wentylacja, rejestracja zdarzenia
-- **HIGH alarm** (40-50% LEL): Alarm dźwiękowy/wizualny, procedura ewakuacji, wstrzymanie prac
-- **HIGH-HIGH** (60% LEL): **E-stop** (emergency stop) – automatyczne odcięcie źródeł zapłonu, wentylacja forsowana, zamknięcie zaworów
+**Dla CH₄ (metan):**
+- **LOW** (20-25% LEL): Ostrzeżenie, zwiększona wentylacja
+- **HIGH** (40-50% LEL): Alarm dźwiękowy, ewakuacja
+- **HIGH-HIGH** (60% LEL): **E-stop** – odcięcie źródeł zapłonu
 
 **Dlaczego 60% LEL, a nie 100%?**
-- Zapas bezpieczeństwa (niepewność czujnika ±5-10%, zmiany lokalne stężenia)
-- Czas reakcji (między HIGH-HIGH a LEL = 100% musi być margin na działanie)
+- Zapas bezpieczeństwa (niepewność czujnika ±5-10%)
+- Czas reakcji (margin na działanie przed LEL = 100%)
 
-### Dla H₂S (siarkowodór):
+**Dla H₂S (siarkowodór):**
+- **LOW** (10 ppm): Równa TWA, procedura sprawdzająca
+- **HIGH** (20-30 ppm): Natychmiastowa ewakuacja
+- **HIGH-HIGH** (50-100 ppm): **E-stop**, wejście tylko w SCBA
 
-- **LOW alarm** (10 ppm): Równa TWA (8h exposure limit), procedura sprawdzająca
-- **HIGH alarm** (20-30 ppm): Natychmiastowa ewakuacja pomieszczenia, wentylacja
-- **HIGH-HIGH** (50-100 ppm): **E-stop**, tylko wejście z aparatami SCBA (Self-Contained Breathing Apparatus)
-
-### Dla O₂ (tlen):
-
-- **LOW alarm** (19.5%): Deficyt O₂, ewakuacja
+**Dla O₂ (tlen):**
+- **LOW** (19.5%): Deficyt O₂, ewakuacja
 - **VERY LOW** (18%): E-stop, zakaz wejścia
 
-**Diagram sekwencji alarmowej:**
+</KeyPoints>
+
+<InstructorNotes>
+
+Progi alarmowe to praktyczne kwestie bezpieczeństwa – około pięć do siedmiu minut.
+
+**System trójpoziomowy**: LOW to ostrzeżenie (procedura sprawdzająca), HIGH to ewakuacja (alarm dźwiękowy), HIGH-HIGH to E-stop automatyczny (odcięcie źródeł zapłonu, zamknięcie zaworów, wentylacja forsowana).
+
+Dla metanu: LOW dwadzieścia do dwudziestu pięciu procent LEL, HIGH czterdzieści do pięćdziesiąt procent, **HIGH-HIGH sześćdziesiąt procent**. Dlaczego nie sto procent? **Zapas bezpieczeństwa** – niepewność czujnika plus minus pięć do dziesięciu procent, zmiany lokalne stężenia, czas reakcji systemu. Między sześćdziesięciu a stu procent LEL musi być margin na automatyczne działanie (zamknięcie zaworów, wentylacja, wyłączenie zapłonu).
+
+Dla siarkowodoru: LOW dziesięć ppm (równe TWA - dopuszczalne przez osiem godzin), HIGH dwadzieścia do trzydziestu ppm (natychmiastowa ewakuacja), **HIGH-HIGH pięćdziesiąt do stu ppm** (E-stop, wejście tylko w aparatach SCBA - Self-Contained Breathing Apparatus). Pamiętaj: sto ppm to IDLH – natychmiastowe zagrożenie życia.
+
+Dla tlenu: LOW 19,5% (deficyt, ewakuacja), VERY LOW osiemnaście procent (E-stop, zakaz wejścia). Normalne stężenie to 20,9% – już przy 19,5% są zawroty głowy.
+
+Podkreśl, że **alarmy nie są arbitralne** – wynikają z norm BHP, limitów TWA/IDLH, analizy ryzyka. Każda biogazownia musi mieć udokumentowaną analizę zagrożeń i procedury awaryjne zatwierdzone przez PIP.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔄 Diagram sekwencji alarmowej" type="info">
 
 ```mermaid
 flowchart TD
@@ -386,57 +534,122 @@ flowchart TD
     style T fill:#99ff99
 ```
 
-</KeyConcept>
+<InstructorNotes>
 
-<SupportingDetails title="🔍 Studium przypadku: Automatyczna reakcja na wzrost H₂S">
+Diagram sekwencji alarmowej – około cztery do pięciu minut. **Diagram może być większy, to wyjątek**.
 
-**Kontekst: Biogazownia 0.8 MW, luty 2023**
+Przejdź przez sekwencję krok po kroku. **LOW alarm** – rejestracja SOE (Sequence of Events) z timestampem UTC, alarm wizualny na panelu SCADA, powiadomienie operatora SMS/email.
 
-### Faza 1: Detekcja anomalii
+Jeśli stężenie spada poniżej LOW – reset alarmu (może być manualny lub automatyczny, zależy od konfiguracji). Jeśli rośnie powyżej HIGH – **alarm dźwiękowy, sygnalizatory świetlne**, procedura ewakuacji.
 
-- **Czas**: 14:23, środa
-- **Czujnik**: H₂S w linii biogazu (post-fermenter, pre-desulfuryzacja)
-- **Odczyt**: Wzrost z typowych 1200 ppm do **2400 ppm** w ciągu 20 min
-- **Alarm**: LOW (1500 ppm) → HIGH (2000 ppm) w ciągu 10 min
+**HIGH-HIGH to E-stop automatyczny** – bez interwencji człowieka. Sekwencja: (1) wyłączenie źródeł zapłonu (przełączniki, sprzęt elektryczny), (2) zamknięcie zaworów głównych (stop dopływu biogazu), (3) wentylacja forsowana sto procent, (4) wezwanie służb ratunkowych.
 
-### Faza 2: Automatyczna reakcja systemu
+Wejście do pomieszczenia tylko w **SCBA** (Self-Contained Breathing Apparatus) – aparat powietrzny jak dla strażaków, plus przenośny detektor gazowy. Lokalizacja źródła wycieku, naprawa, weryfikacja, test funkcjonalny całego systemu, dopiero potem reset E-stop i restart.
 
-System SCADA zainicjował sekwencję:
+Podkreśl, że **to nie jest teoria** – każda biogazownia musi mieć te procedury pisemne, przećwiczone (ćwiczenia co rok), zatwierdzone przez PIP. Brak procedur to podstawa do wstrzymania eksploatacji.
 
-1. **14:24** – Zwiększenie wentylacji fermenterów (z 50% do 100%)
-2. **14:25** – Przełączenie biogazu na bypass (omijając BHKW, spalanie w flarze)
-3. **14:26** – Zwiększenie dozowania FeCl₃ (chlorek żelaza) z 15 L/h do 30 L/h
-4. **14:30** – Powiadomienie operatora (SMS + email)
+</InstructorNotes>
 
-### Faza 3: Diagnoza (operator)
+</Slide>
 
-Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
-- **Zmiana substratu** (zwiększony udział odpadów białkowych) → więcej siarki organicznej
-- **Temperatura fermentera** wyższa o 2°C (42°C zamiast 40°C) → wzmożona aktywność bakterii siarkowych
+<VisualSeparator type="default" />
 
-### Faza 4: Korekta procesu
+<Slide title="📈 Studium przypadku: Wzrost H₂S – detekcja" type="success">
 
+<KeyPoints title="📋 Kontekst i detekcja">
+
+**Biogazownia 0.8 MW, luty 2023**
+
+**Faza 1: Detekcja anomalii (14:23)**
+- Czujnik: H₂S w linii biogazu (pre-desulfuryzacja)
+- Odczyt: Wzrost z 1200 ppm → **2400 ppm** w 20 min
+- Alarm: LOW (1500 ppm) → HIGH (2000 ppm) w 10 min
+
+**Faza 2: Automatyczna reakcja systemu**
+1. **14:24** – Zwiększenie wentylacji (50% → 100%)
+2. **14:25** – Bypass biogazu (BHKW → flara)
+3. **14:26** – Zwiększenie dozowania FeCl₃ (15 → 30 L/h)
+4. **14:30** – Powiadomienie operatora (SMS/email)
+
+</KeyPoints>
+
+<InstructorNotes>
+
+Pierwsze dwie fazy studium przypadku – około pięć do siedmiu minut.
+
+**Przedstaw kontekst**: biogazownia 0,8 megawata, luty, środowe popołudnie. Czujnik H₂S w linii biogazu pokazuje **wzrost z tysiąc dwustu do dwóch tysięcy czterystu ppm w dwadzieścia minut**. To dramatyczny wzrost – normalne zmiany to plus minus dwieście ppm w ciągu godziny.
+
+Alarm LOW (tysiąc pięćset ppm) następuje o 14:23, alarm HIGH (dwa tysiące ppm) dziesięć minut później. **System reaguje automatycznie**, bez czekania na operatora.
+
+Sekwencja reakcji: (1) zwiększenie wentylacji fermenterów do stu procent – wyrzuca nadmiar H₂S, (2) przełączenie biogazu na bypass – zamiast do BHKW (kogeneracja) idzie do flary (spalanie awaryjne), **to chroni silnik BHKW przed korozją**, (3) zwiększenie dozowania FeCl₃ (chlorek żelaza) – chemiczna desulfuryzacja, reaguje z H₂S tworząc siarczek żelaza, (4) powiadomienie operatora.
+
+**Kluczowe**: system działa automatycznie w ciągu trzech minut. Operator dostaje powiadomienie, ale **najważniejsze działania są już wykonane** – to ratuje sprzęt.
+
+Podkreśl znaczenie automatyki. Gdyby czekać na operatora (przyjazd 14:45, czyli dwadzieścia minut) – H₂S mogłoby wzrosnąć do trzech do czterech tysięcy ppm, BHKW pracowałby w korozyjnym środowisku przez godzinę – **uszkodzenia silnika, koszt naprawy powyżej pięćdziesięciu tysięcy euro**.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💡 Studium przypadku: Diagnoza i rozwiązanie" type="success">
+
+<KeyPoints title="📋 Fazy 3-5: Korekta i powrót do normy">
+
+**Faza 3: Diagnoza (operator, 14:45)**
+- **Zmiana substratu**: Zwiększony udział odpadów białkowych → więcej siarki organicznej
+- **Temperatura fermentera**: +2°C (42°C vs. 40°C) → wzmożona aktywność bakterii siarkowych
+
+**Faza 4: Korekta procesu**
 - Obniżenie temp. fermentera do 40°C (chłodzenie)
-- Zmiana receptury substratu (mniej odpadów białkowych, więcej kiszonki kukurydzy)
-- Kontynuacja zwiększonego dozowania FeCl₃ przez 48h
+- Zmiana receptury substratu
+- Kontynuacja dozowania FeCl₃ przez 48h
 
-### Faza 5: Powrót do normy
-
-- **16:00** (1.5h później) – H₂S spadł do 1000 ppm
+**Faza 5: Powrót do normy**
+- **16:00** – H₂S spadł do 1000 ppm
 - **18:00** – H₂S stabilny ~600 ppm
-- **Następny dzień** – H₂S powrót do typowych 200-400 ppm, restart BHKW
+- **Następny dzień** – H₂S powrót do 200-400 ppm, restart BHKW
+
+</KeyPoints>
+
+<KeyConcept title="💰 ROI i skutki">
 
 **Skutki:**
-- ✅ **Uniknięto uszkodzenia BHKW** (H₂S >2000 ppm przez >4h → korozja, koszt naprawy >50 000 EUR)
-- ✅ **Brak przestoju produkcji** (bypass na flarę to strata revenue, ale lepsza niż awaria)
-- ✅ **Bezpieczeństwo zachowane** (H₂S w pomieszczeniach &lt;10 ppm przez cały czas)
+- ✅ Uniknięto uszkodzenia BHKW (>50 000 EUR repair)
+- ✅ Brak przestoju produkcji
+- ✅ Bezpieczeństwo zachowane (H₂S &lt;10 ppm w pomieszczeniach)
 
-**ROI systemu detekcji:**
-- Koszt systemu: ~13 000 EUR
-- Uniknięty koszt: >50 000 EUR (BHKW repair) + downtime
-- **Zwrot w jednym zdarzeniu: >3×**
+**ROI systemu:**
+- Koszt: ~13 000 EUR
+- Uniknięty koszt: >50 000 EUR + downtime
+- **Zwrot: >3× w jednym zdarzeniu**
 
-</SupportingDetails>
+</KeyConcept>
+
+<InstructorNotes>
+
+Diagnoza, korekta i podsumowanie – około pięć do siedmiu minut.
+
+Operator przyjeżdża o 14:45 (dwadzieścia minut po alarmie). **Diagnoza**: zmiana substratu – więcej odpadów białkowych (mięso, odpady kuchenne) oznacza więcej siarki organicznej, która jest metabolizowana przez bakterie siarkowe do H₂S. Plus temperatura fermentera wyższa o dwa stopnie (czterdzieści dwa zamiast czterdziestu) – **wzmożona aktywność bakterii**.
+
+Korekta procesu: obniżenie temperatury (chłodzenie), zmiana receptury substratu (mniej białka, więcej kiszonki kukurydzy), kontynuacja dozowania chlorku żelaza przez czterdzieści osiem godzin.
+
+Powrót do normy: **półtorej godziny po działaniach** H₂S spada do tysiąc ppm, po czterech godzinach stabilny sześćset ppm, następnego dnia powrót do dwustu do czterystu ppm. Restart BHKW, produkcja wraca do normalnej.
+
+**ROI**: system detekcji kosztował trzynaście tysięcy euro. Uniknięto uszkodzenia BHKW (koszt naprawy powyżej pięćdziesięciu tysięcy euro plus przestój produkcji tydzień do dwóch tygodni – kolejne dziesięć do dwadzieścia tysięcy euro strat). **Zwrot ponad trzykrotny w jednym zdarzeniu**.
+
+Kluczowa lekcja: **automatyka ratuje sprzęt**. Gdyby czekać na operatora, BHKW pracowałby w H₂S powyżej dwóch tysięcy ppm przez godzinę – korozja, uszkodzenie tłoków, zaworów, turbosprężarki. Automatyczne przełączenie na bypass po trzech minutach od alarmu – **to jest wartość inteligentnego systemu SCADA**.
+
+Bezpieczeństwo – przez cały incydent H₂S w pomieszczeniach pozostało poniżej dziesięciu ppm (daleko od IDLH stu ppm). **Monitoring i automatyka zapobiegły zagrożeniu dla ludzi**.
+
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔧 Kalibracja czujników gazowych" type="tip">
 
 <Example title="Procedura kalibracji czujnika H₂S (elektrochemiczny)">
 
@@ -533,105 +746,4 @@ Operator (przyjazd na miejsce 14:45) zidentyfikował przyczynę:
 
 </Slide>
 
-<VisualSeparator type="default" />
-
-<Slide title="📝 Quiz: Czujniki gazów w biogazowniach" type="info">
-
-<InteractiveQuiz 
-  questions={[
-    {
-      question: "Jaką technologię czujnika należy zastosować do pomiaru H₂S w zakresie 0-100 ppm w biogazowni (strefa ATEX 1)?",
-      options: [
-        "Katalityczny (pellistor)",
-        "Infrared (IR/NDIR)",
-        "Elektrochemiczny (three-electrode)",
-        "Półprzewodnikowy (MOS)"
-      ],
-      correctAnswer: 2,
-      explanation: "Elektrochemiczny to standard dla H₂S w zakresie ppm (toksyczność). Katalityczny to dla gazów palnych (LEL), IR nie działa dla H₂S (brak absorpcji w IR), MOS nie ma selektywności i nie jest ATEX-certified."
-    },
-    {
-      question: "Czujnik katalityczny CH₄ wymaga minimum 10-12% O₂ do działania. Co się stanie w atmosferze 80% CH₄ + 20% CO₂ (brak O₂)?",
-      options: [
-        "Czujnik wskaże 80% LEL (poprawnie)",
-        "Czujnik wskaże 0% LEL (błędnie, brak spalania)",
-        "Czujnik ulegnie uszkodzeniu (przegrzanie)",
-        "Czujnik przestawi się na tryb IR (automatycznie)"
-      ],
-      correctAnswer: 1,
-      explanation: "Bez O₂ nie ma spalania katalitycznego → czujnik wskaże 0% LEL mimo obecności 80% CH₄! To poważne zagrożenie. Dlatego w atmosferze bogatej w biogaz (>60% CH₄) stosuje się czujniki IR (nie wymagają O₂) + czujnik O₂ deficyt."
-    },
-    {
-      question: "Żywotność czujnika elektrochemicznego H₂S w biogazowni to typowo 1-3 lata. Co jest główną przyczyną degradacji?",
-      options: [
-        "Mechaniczne uszkodzenie membrany przez pył",
-        "Wyczerpanie elektrolitu przez reakcję z H₂S i warunki środowiskowe (temperatura, wilgotność)",
-        "Przegrzanie elementu czujnikowego",
-        "Trucie przez CH₄ i CO₂"
-      ],
-      correctAnswer: 1,
-      explanation: "Elektrolit (kwasowy roztwór) degraduje się przez ciągłą reakcję elektrodową z H₂S + temperatura + wilgotność. Nie można 'naładować' – trzeba wymienić cały czujnik. Pył to problem secondary (membrany są filtry), przegrzanie nie występuje (temp. pracy do +50°C), CH₄/CO₂ nie trują (selektywność elektrody)."
-    },
-    {
-      question: "W biogazowni czujnik H₂S pokazuje 2000 ppm (HIGH alarm). System automatycznie zwiększa dozowanie FeCl₃. Jaka jest reakcja chemiczna?",
-      options: [
-        "FeCl₃ reaguje z CH₄ tworząc CH₃Cl (chlorometan)",
-        "FeCl₃ + H₂S → FeS (siarczek żelaza) + HCl (wytrącanie siarki)",
-        "FeCl₃ utlenia CO₂ do O₂ (regeneracja)",
-        "FeCl₃ reaguje z H₂O tworząc Fe(OH)₃ (wodorotlenek)"
-      ],
-      correctAnswer: 1,
-      explanation: "FeCl₃ (chlorek żelaza) to klasyczny 'scavenger' H₂S w biogazowniach: 2 FeCl₃ + 3 H₂S → 2 FeS + 6 HCl + S. Siarczek żelaza (FeS) wytrąca się jako czarny osad. To metoda chemiczna desulfuryzacji (alternative: biologiczna z bakteriami tlenowymi)."
-    },
-    {
-      question: "HIGH-HIGH alarm dla CH₄ to 60% LEL. Dla metanu LEL = 5% v/v. Jakie jest rzeczywiste stężenie CH₄ w powietrzu przy tym alarmie?",
-      options: [
-        "3% v/v (60% × 5%)",
-        "5% v/v (= LEL)",
-        "60% v/v (alarm = stężenie)",
-        "0.6% v/v (60% × 0.01)"
-      ],
-      correctAnswer: 0,
-      explanation: "60% LEL = 60% z 5% = 0.6 × 5% = 3% v/v. To stężenie wybuchowe (w zakresie 5-15% v/v dla CH₄), stąd E-stop. Opcja (b) to 100% LEL. Opcja (c) myląc alarm (% LEL) z stężeniem (% v/v). Opcja (d) błędne mnożenie."
-    }
-  ]}
-/>
-
-:::tip Rekomendacja po quizie
-Jeśli uzyskałeś &lt;80% poprawnych odpowiedzi, przejrzyj sekcje o technologiach czujników (katalityczny vs. elektrochemiczny) i reakcjach chemicznych w biogazowniach (FeCl₃ desulfuryzacja). Zrozumienie ograniczeń czujników (np. wymóg O₂) jest kluczowe dla projektowania bezpiecznych systemów.
-:::
-
-</Slide>
-
 </SlideContainer>
-
----
-
-## Podsumowanie i wnioski
-
-**Kluczowe punkty z tej sekcji:**
-
-1. **Biogazownie = środowisko wysokiego ryzyka** – CH₄ (palny), H₂S (toksyczny, killer), CO₂ (duszący). System detekcji gazów to WYMÓG ATEX.
-
-2. **Technologie czujników:**
-   - **Katalityczne**: CH₄ LEL (monitoring wybuchowości), wymagają O₂
-   - **IR (NDIR)**: CH₄/CO₂ skład (process control), nie wymagają O₂, drogie
-   - **Elektrochemiczne**: H₂S/O₂/NH₃ (safety), żywotność 1-3 lata dla H₂S
-
-3. **System 3-poziomowych alarmów**: LOW (procedura check) → HIGH (ewakuacja) → HIGH-HIGH (E-stop automatyczny). Progi: CH₄ 60% LEL, H₂S 50-100 ppm.
-
-4. **Kalibracja to konieczność**: Bump test co 3 miesiące, full calibration co 12 miesięcy. Czujnik bez kalibracji = false sense of security.
-
-5. **ROI systemu detekcji: 3-10×** – jedno uniknięte zdarzenie (BHKW damage, H₂S exposure) zwraca koszt całego systemu.
-
-**Następne kroki:**
-- Ćwiczenie 4: Projekt systemu detekcji gazów dla biogazowni (dobór czujników, lokalizacje, progi, CAPEX/OPEX)
-- Przygotowanie do następnej sekcji: Przepływ, poziom, ciśnienie – czujniki procesowe
-
----
-
-**Dodatkowe zasoby:**
-- **Dyrektywa ATEX 1999/92/EC** + polska implementacja
-- **EN 60079-29-1** – Gas detectors – Performance requirements
-- **ISO 23553** – Safety and control devices for biogas installations
-- **Dräger / Honeywell application notes** – biogas monitoring (free PDFs)

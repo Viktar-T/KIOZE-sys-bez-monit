@@ -60,9 +60,8 @@ const config = {
           exclude: [
             '**/bezp-monit/**', 
             '**/wyklady/*/README.md',
-            '**/wyklad-02-czujniki-akwizycja/**',
-            '**/wyklad-04-standardy-integracja/**',
-            '**/wyklad-05-jakosc-danych-strumienie/**'
+            '**/wyklad-04-standardy-integracja/*.mdx',
+            '**/wyklad-05-jakosc-danych-strumienie/*.mdx'
           ],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
