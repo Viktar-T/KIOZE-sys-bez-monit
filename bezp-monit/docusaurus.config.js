@@ -57,7 +57,13 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           path: 'docs',
-          exclude: ['**/bezp-monit/**', '**/wyklady/*/README.md'],
+          exclude: [
+            '**/bezp-monit/**', 
+            '**/wyklady/*/README.md',
+            '**/wyklad-02-czujniki-akwizycja/**',
+            '**/wyklad-04-standardy-integracja/**',
+            '**/wyklad-05-jakosc-danych-strumienie/**'
+          ],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
