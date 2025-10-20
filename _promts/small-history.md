@@ -105,3 +105,8 @@ Style:
 * [ ] add images at the begining of each file.
 * [ ] add InstractorNotes to "Architektura systemu pomiarowego"
 * [ ] clean upp the dublicated content in
+* [ ] on the bases of information from @bezp-monit\docs\wyklady\wyklad-03-protokoly\index.md write logical, comprehensive content for the lecture. each punkt in "Struktura materiału" should be separate mdx file. The complexity level of the text should be beginer-middle, more beginer. Write only for these parts:
+
+* [Topologie SCADA i architektura systemów](./01-topologie-scada.mdx)
+* [PLC i protokoły Modbus RTU/TCP](./02-plc-modbus.mdx)
+* [Serwery OPC UA: namespace&#39;y, tagi, bezpieczeństwo](./03-opc-ua-serwery.mdx)
