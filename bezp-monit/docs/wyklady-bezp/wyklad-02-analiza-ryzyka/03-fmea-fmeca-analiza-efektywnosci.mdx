@@ -1,0 +1,290 @@
+---
+title: "FMEA/FMECA - analiza efektywności"
+---
+
+import { LearningObjective, KeyConcept, Example, InstructorNotes } from '@site/src/components/SlideComponents';
+
+# FMEA/FMECA - analiza efektywności
+
+<LearningObjective>
+Po tej sekcji student potrafi przeprowadzić analizę FMEA/FMECA, zrozumie różnice między tymi metodami, obliczy RPN (Risk Priority Number) oraz zastosuje te metody do analizy komponentów w instalacjach OZE.
+</LearningObjective>
+
+## FMEA - Failure Mode and Effects Analysis
+
+### Definicja i podstawy FMEA
+
+**FMEA (Failure Mode and Effects Analysis)** to systematyczna metoda analizy **sposobów awarii** (failure modes) komponentów i ich **wpływu na system** oraz **przyczyn awarii**.
+
+**Główne cele FMEA**:
+- **Identyfikacja** wszystkich możliwych sposobów awarii komponentu
+- **Analiza skutków** każdej awarii na funkcjonowanie systemu
+- **Identyfikacja przyczyn** prowadzących do awarii
+- **Priorytetyzacja** problemów do rozwiązania
+- **Oszacowanie ryzyka** poprzez obliczenie RPN
+
+<KeyConcept title="Kluczowe pojęcia FMEA">
+**Failure Mode (Sposób awarii)** - sposób, w jaki komponent może ulec awarii
+
+**Effect (Skutek)** - konsekwencja awarii dla funkcjonowania systemu
+
+**Cause (Przyczyna)** - mechanizm prowadzący do awarii komponentu
+
+**Detection (Wykrywalność)** - prawdopodobieństwo wykrycia problemu przed awarią
+
+**Severity (Krytyczność)** - nasilenie skutków awarii (1-10)
+</KeyConcept>
+
+### Proces FMEA
+
+**Krok 1: Przygotowanie**
+- **Wyboru komponentów** do analizy (criticality analysis)
+- **Definicji funkcji** każdego komponentu
+- **Zebranie zespołu** ekspertów (inżynierowie, operatorzy, serwis)
+- **Przygotowanie arkuszy** FMEA
+
+**Krok 2: Analiza komponent po komponencie**
+Dla każdego komponentu analizujemy:
+- **Funkcję komponentu** - co ma robić
+- **Możliwe sposoby awarii** - jak może się zepsuć
+- **Skutki awarii** - co się stanie w systemie
+- **Przyczyny awarii** - dlaczego może się zepsuć
+- **Obecne środki kontroli** - jak to obecnie monitorujemy
+
+**Krok 3: Ocena ryzyka**
+- **Severity (S)** - ocena 1-10 skutków awarii
+- **Occurrence (O)** - ocena 1-10 prawdopodobieństwa wystąpienia
+- **Detection (D)** - ocena 1-10 możliwości wykrycia przed awarią
+- **RPN** = S × O × D (Risk Priority Number)
+
+**Krok 4: Akcje i follow-up**
+- **Zalecenie środków** redukcji ryzyka dla wysokiej RPN
+- **Re-evaluacja** RPN po implementacji środków
+- **Monitoring** skuteczności środków
+
+### Przykład FMEA dla inwertera PV
+
+**Komponent**: Inwerter centralny 500 kW dla farmy PV
+
+| Komponent | Funkcja | Failure Mode | Effect | Cause | Severity | Occurrence | Detection | RPN | Action |
+|-----------|---------|--------------|--------|-------|----------|------------|-----------|-----|--------|
+| **Kondensator DC** | Filtracja napięcia DC | Pękanie, wyciek elektrolitu | Spadek napięcia, spadek mocy | Przegrzanie, starzenie | 7 | 3 | 4 | 84 | Monitoring temperatury, wymiana co 10 lat |
+| **IGBT** | Przekształcenie DC/AC | Uszkodzenie tranzystora | Całkowita utrata mocy 0.5 MW | Przepięcia, przeciążenie | 9 | 2 | 6 | 108 | **WYSOKIE** - Zabezpieczenia przepięciowe |
+| **System chłodzenia** | Chłodzenie komponentów | Awaria wentylatora | Przegrzanie, awarie | Zatkanie filtrów, zużycie | 6 | 4 | 3 | 72 | Monitoring temperatury, alarmy |
+| **PCB sterująca** | Kontrola pracy inwertera | Uszkodzenie płyty | Utrata sterowania | Korozja, przepięcia | 8 | 1 | 7 | 56 | Kontrolowany klimat, SPD |
+
+**Interpretacja wyników**:
+- **IGBT** (RPN=108) - **najwyższe ryzyko**, wymaga natychmiastowej uwagi
+- **Kondensator DC** (RPN=84) - **wysokie ryzyko**, planowane działanie
+- **System chłodzenia** (RPN=72) - **średnie ryzyko**, monitorowanie
+- **PCB** (RPN=56) - **niskie ryzyko**, akceptowalne
+
+## FMECA - Failure Mode, Effects and Criticality Analysis
+
+### Definicja FMECA
+
+**FMECA** to rozszerzenie FMEA o **analizę krytyczności** (criticality analysis), która:
+- **Ilościowo ocenia** prawdopodobieństwo awarii
+- **Oblicza wskaźniki krytyczności** dla różnych sposobów awarii
+- **Porównuje ryzyko** różnych komponentów w systemie
+- **Wspomaga decyzje** o alokacji zasobów na bezpieczeństwo
+
+### Różnice między FMEA a FMECA
+
+**FMEA**:
+- **Jakościowa/półilościowa** ocena ryzyka (skala 1-10)
+- **Porównawcza** analiza komponentów
+- **Subiektywna** ocena prawdopodobieństwa
+- **Szybka** implementacja
+
+**FMECA**:
+- **Ilościowa** ocena prawdopodobieństwa awarii
+- **Absolutne** wartości ryzyka
+- **Obiektywna** ocena na podstawie danych
+- **Bardziej czasochłonna**, ale precyzyjniejsza
+
+### Metoda obliczania krytyczności
+
+**Wskaźnik krytyczności (Criticality Number) CM**:
+
+```
+CM = β × α × λp × t
+```
+
+Gdzie:
+- **β** - współczynnik skuteczności awarii (0.1-1.0)
+- **α** - ułamek czasu awarii dla danego failure mode (0.1-1.0)  
+- **λp** - intensywność awarii komponentu (failures/hour)
+- **t** - czas eksploatacji (h)
+
+**Interpretacja**:
+- **CM** `< 10⁻⁶` - niska krytyczność
+- **CM** `= 10⁻⁶ do 10⁻⁴` - średnia krytyczność  
+- **CM** `> 10⁻⁴` - wysoka krytyczność
+
+<Example title="FMECA dla turbiny wiatrowej 3 MW - przykład łożyska głównego">
+**Komponent**: Łożysko główne przekładni
+
+**Dane podstawowe**:
+- **MTBF** (Mean Time Between Failures) = 15 lat = 131 400 h
+- **λp** = 1/131 400 = 7.6 × 10⁻⁶ failures/h
+- **Czas eksploatacji** t = 20 lat = 175 200 h (typowy lifetime)
+
+**Analiza Failure Modes**:
+
+| Failure Mode | β | α | CM | Criticality |
+|--------------|---|---|-----|-------------|
+| **Wear/Brinneling** | 0.9 | 0.6 | 7.2×10⁻⁶ | ŚREDNIA |
+| **Fatigue cracking** | 1.0 | 0.2 | 2.7×10⁻⁶ | NISKA |
+| **Corrosion** | 0.8 | 0.1 | 1.1×10⁻⁶ | NISKA |
+| **Contamination** | 0.7 | 0.8 | 7.4×10⁻⁶ | ŚREDNIA |
+
+**Wyniki i zalecenia**:
+- **Wear/Brinneling** i **Contamination** - najwyższa krytyczność
+- **Zalecenie**: Advanced CMS monitoring, regularna analiza oleju, filtry
+- **Różnica z klasyczną FMEA**: Obiektywne dane zamiast subjektywnej oceny
+
+**Koszt monitoring vs. ryzyko**: 
+- CMS system: €50 000
+- Straty przy awarii łożyska: €200 000 (naprawa + utrata produkcji)
+- ROI: 300% przy redukcji ryzyka o 70%
+</Example>
+
+## Praktyczne zastosowanie FMEA/FMECA w OZE
+
+### Specyfika komponentów OZE
+
+**Charakterystyki wpływające na FMEA**:
+- **Nowość technologii** - ograniczone dane o awariach
+- **Warunki zewnętrzne** - wpływ klimatu, pogody
+- **Cykle pracy** - zmienne obciążenie (słońce, wiatr)
+- **Długi okres eksploatacji** - 20-25 lat for PV, 20-30 lat for turbines
+
+### Adaptacja FMEA do różnych technologii
+
+**Fotowoltaika**:
+- **Komponenty krytyczne**: Moduły, inwertery, okablowanie, systemy monitoringu
+- **Specyfika**: Degradacja w czasie, wpływ środowiska, monitoring string-level
+- **Częstotliwość**: FMEA co 5 lat (degradacja technologii)
+
+**Turbiny wiatrowe**:
+- **Komponenty krytyczne**: Łopaty, przekładnia, generator, system kontroli
+- **Specyfika**: Dynamiczne obciążenia, CMS integration, remote access challenges
+- **Częstotliwość**: FMEA przy większych serwisach (co 2-3 lata)
+
+**Magazyny BESS**:
+- **Komponenty krytyczne**: Ogniwa, BMS, system chłodzenia, zabezpieczenia
+- **Specyfika**: Thermal runaway, degradacja pojemności, cybersecurity
+- **Częstotliwość**: Ciągła aktualizacja (nowe technologie, lessons learned)
+
+### RPN w kontekście OZE
+
+**Typowe progi RPN dla projektów OZE**:
+- **RPN** `> 150`: **Krytyczne** - wymaga natychmiastowej uwagi i działania
+- **RPN** `100-150`: **Wysokie** - planowane działanie w ciągu 6 miesięcy
+- **RPN** `50-100`: **Średnie** - akceptowalne z monitoringiem
+- **RPN** `< 50`: **Niskie** - standardowe procedury utrzymania
+
+**Dostosowanie wag w skali S×O×D** dla OZE:
+
+**Severity (S)** - specyficzne dla OZE:
+- **10**: Awaria z ofiarami śmiertelnymi
+- **9**: Pożar/eksplozja z uszkodzeniem `>€1M`
+- **8**: Utrata `>50%` mocy na `>1 tydzień`
+- **7**: Utrata 10-50% mocy na `>1 tydzień`
+- **6**: Utrata `<10%` mocy na `>1 miesiąc`
+
+**Occurrence (O)** - częstotliwość awarii:
+- **Używanie danych branżowych**: IEA, NREL, operacyjne statystyki
+- **Lokalne warunki**: Klimat, jakość instalacji, poziom serwisu
+
+### Follow-up i monitorowanie
+
+**Działania po FMEA/FMECA**:
+
+**1. Implementacja zaleceń**
+- **Prio 1** (RPN `> 150`): Natychmiastowe działanie
+- **Prio 2** (RPN `100-150`): Planowane w ciągu 6 miesięcy
+- **Prio 3** (RPN `50-100`): W następnym cyklu konserwacji
+
+**2. Monitoring skuteczności**
+- **Mierniki**: Redukcja awarii, MTBF, dostępność
+- **Przeglądy**: Co 12 miesięcy aktualizacja FMEA
+- **Feedback loop**: Wnioski z eksploatacji → aktualizacja analizy
+
+**3. Dokumentacja i komunikacja**
+- **Raport FMEA** dla wszystkich zainteresowanych stron
+- **Training** personelu na podstawie zidentyfikowanych zagrożeń
+- **Integration** z systemami utrzymania (CMMS)
+
+<KeyConcept title="Integracja FMEA z systemami utrzymania">
+**FMEA jako podstawa**:
+- **Harmonogramów konserwacji** - częstotliwość dla komponentów krytycznych
+- **Zapasów części** - poziom stock dla elementów wysokiej RPN
+- **Procedur serwisowych** - szczegółowe instrukcje dla ryzykownych operacji
+- **Systemów monitoringu** - automatyczna detekcja dla failure modes
+</KeyConcept>
+
+<Example title="FMEA jako podstawa systemu utrzymania: Farma wiatrowa 100 MW">
+**Kontekst**: Farma 50 turbin × 2 MW, po 5 latach eksploatacji
+
+**Problemy**: Dużo nieplanowanych awarii, wysokie koszty utrzymania, niska dostępność (86%)
+
+**Rozwiązanie** - systematyczna FMEA:
+
+**Etap 1**: Analiza FMEA dla wszystkich komponentów krytycznych
+- **Zespół**: 8 ekspertów (2 tygodnie workshops)
+- **Komponenty**: 15 kategorii (łożyska, łopaty, pitch system, yaw, generator, etc.)
+- **Wyniki**: 247 failure modes, średni RPN 89
+
+**Etap 2**: Implementacja zaleceń na podstawie RPN
+- **RPN** `> 120`: 23 failure modes → immediate actions
+- **RPN** `80-120`: 45 failure modes → planned improvements
+- **RPN** `< 80`: 179 failure modes → standard maintenance
+
+**Etap 3**: Integracja z CMMS
+- **Harmonogramy**: Dostosowane do failure modes i RPN
+- **Zapasy**: Zwiększone dla komponentów wysokiego ryzyka
+- **Monitoring**: Dodatkowe czujniki dla krytycznych elementów
+
+**Rezultaty po 18 miesiącach**:
+- **Dostępność**: 86% → 95% (+9 pp)
+- **Koszty utrzymania**: -35% przez lepsze planowanie
+- **Nieplanowane awarie**: -60% przez prewencyjne działania
+- **ROI**: 450% (koszt FMEA: €180k, oszczędności: €800k/rok)
+
+**Kluczowy sukces**: FMEA nie była jednorazową analizą, ale podstawą systematycznego, science-based approach do utrzymania.
+</Example>
+
+<InstructorNotes title="📝 Notatki prowadzącego">
+**Czas**: 25-27 minut
+
+**Przebieg**:
+1. FMEA - definicja, proces, przykład inwertera PV (10 min)
+2. FMECA - różnice, metoda obliczania krytyczności (8 min)
+3. Praktyczne zastosowanie w OZE - specyfika, progi RPN (6 min)
+4. Follow-up i integracja z utrzymaniem (3 min)
+
+**Punkty kluczowe**:
+- **RPN to narzędzie, nie cel**: Ważne jest zrozumienie ryzyka, nie tylko liczby
+- **Dane są kluczowe**: FMECA wymaga dobrych danych o awariach
+- **Systematyczność**: FMEA to fundament dobrego systemu utrzymania
+
+**Ćwiczenie praktyczne** (jeśli czas):
+Podaj prosty komponent (np. pompa chłodnictwa BESS) i poproś studentów o przeprowadzenie mini-FMEA w grupach (15-20 min).
+
+**Materiały pomocnicze**:
+- Przykładowe arkusze FMEA/FMECA
+- Tabele wag dla S, O, D w kontekście OZE
+- Kalkulatory RPN i Criticality
+
+**Pytania studenckie**:
+- Q: Jak często aktualizować FMEA?
+- A: Co najmniej raz w roku, lub przy zmianach w systemie/operacji. Dla nowych technologii - częściej (co 6 miesięcy).
+
+- Q: Co jeśli nie mamy danych o awariach dla nowych komponentów?
+- A: Używać danych z podobnych technologii, współpraca z producentami, modele prognostyczne, konserwatywne oszacowania.
+
+- Q: Czy można automatyzować FMEA?
+- A: Częściowo - templates, databases failure modes, ale ocena S/O/D wymaga eksperckiej wiedzy i kontekstu projektu.
+</InstructorNotes>

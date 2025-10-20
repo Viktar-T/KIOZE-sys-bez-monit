@@ -1,0 +1,399 @@
+---
+title: "Wprowadzenie do metodologii analizy ryzyka"
+sidebar_position: 1
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Wprowadzenie do metodologii analizy ryzyka" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie podstawowe założenia metodologii analizy ryzyka w kontekście instalacji OZE, zna klasyfikację metod analizy oraz potrafi wybrać odpowiednią metodę w zależności od fazy projektu i typu zagrożeń.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🔍 **Definicja analizy ryzyka** - systematyczny proces identyfikacji i oceny
+- 📊 **5-krokowy proces** - od identyfikacji do ranking ryzyka  
+- ⚙️ **Klasyfikacja metod** - jakościowe, półilościowe, ilościowe
+- 🎯 **Specyfika OZE** - wyzwania technologii odnawialnych
+- 📋 **Kryteria wyboru** - jak dobrać odpowiednią metodę
+</KeyPoints>
+
+<InstructorNotes>
+**Przebieg wykładu (18-20 min):**
+
+Rozpocznij od krótkiego wprowadzenia - pokaż studentom, że analiza ryzyka to nie abstrakcyjna teoria, ale **praktyczne narzędzie inżynierskie**. Zapytaj: "Kto z was słyszał o awariach w elektrowniach wiatrowych lub pożarach w instalacjach PV?" - to pokaże rzeczywiste problemy.
+
+**Kluczowa myśl**: Analiza ryzyka to **systematyczny proces**, nie intuicja. Każdy projekt OZE powyżej 10 MW wymaga profesjonalnej analizy ryzyka zgodnej z normami.
+
+**Struktura prezentacji**: 5 slajdów odpowiadających głównym blokom tematycznym, z praktycznymi przykładami z branży OZE.
+
+**Zakończenie**: Studenci powinni zrozumieć, że wybór metody analizy zależy od kontekstu projektu, a nie od preferencji inżyniera.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔍 Definicja i podstawowe zasady analizy ryzyka" type="info">
+
+<KeyPoints title="📋 Definicja analizy ryzyka">
+- 🎯 **Systematyczny proces** identyfikacji, oceny i oceny ryzyka
+- 📊 **Cel**: zrozumienie natury ryzyka i ustalenie poziomu
+- ⚙️ **Kontekst operacyjny** - analiza w konkretnych warunkach
+- 🔍 **Kompleksowość** - wszystkie aspekty systemu OZE
+</KeyPoints>
+
+<SupportingDetails title="🔧 Kategorie zagrożeń w OZE">
+- 🔧 **Zagrożenia techniczne** - komponenty i systemy
+- 👥 **Zagrożenia operacyjne** - procesy i human factors  
+- 🌍 **Zagrożenia środowiskowe** - czynniki zewnętrzne
+- 📋 **Zagrożenia regulacyjne** - zgodność z wymogami prawnymi
+</SupportingDetails>
+
+<KeyConcept title="Podstawowe zasady analizy ryzyka">
+**Zasada systematyczności** - analiza musi być metodyczna i kompletna
+
+**Zasada interdyscyplinarności** - wymaga współpracy różnych specjalistów
+
+**Zasada iteracyjności** - analiza powinna być powtarzana w miarę rozwoju projektu
+
+**Zasada dokumentacji** - wszystkie ustalenia muszą być udokumentowane i śledzone
+</KeyConcept>
+
+<InstructorNotes>
+**Czas**: 4-5 minut
+
+**Kluczowe punkty do podkreślenia**:
+Rozpocznij od wyjaśnienia, że **analiza ryzyka to nie przepowiadanie przyszłości**, ale **systematyczne badanie potencjalnych problemów**. To różnica fundamentalna - wiele osób myśli, że ryzyko to "coś co może się zdarzyć", podczas gdy dla inżyniera to **konkretne zagrożenia z możliwymi do oszacowania konsekwencjami**.
+
+**Praktyczny przykład**: Zapytaj studentów: "Jakie ryzyko widzicie w turbinie wiatrowej 3 MW?" - większość powie o awarii mechanicznej, ale rzadko kto wspomni o cyberatakach, błędach operatora, czy zmianach w przepisach.
+
+**Zasady**: Szczególnie podkreśl **interdyscyplinarność** - analiza ryzyka wymaga zespołu z różnych dziedzin, nie może być robiona przez jednego inżyniera w "wolnej chwili".
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📊 Proces analizy ryzyka - 5 kroków" type="info">
+
+<KeyPoints title="📋 Etapy procesu analizy ryzyka">
+- 🔍 **Krok 1**: Identyfikacja zagrożeń (HAZID, HAZOP)
+- 🔧 **Krok 2**: Analiza przyczyn (Why-why, Fault Tree)
+- 📊 **Krok 3**: Ocena konsekwencji (Event Tree, modelowanie)
+- ⚡ **Krok 4**: Ocena prawdopodobieństwa (dane historyczne)
+- 🎯 **Krok 5**: Ranking ryzyka (matryca, decyzje)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Metody i wyniki każdego kroku">
+- **HAZID/HAZOP** → Lista zagrożeń z opisem
+- **Why-why analysis** → Drzewo przyczyn awarii
+- **Event Tree Analysis** → Charakterystyka konsekwencji
+- **Statistical modeling** → Prawdopodobieństwo zdarzeń
+- **Risk matrix** → Poziomy ryzyka i priorytety
+</SupportingDetails>
+
+<InfoBox title="ℹ️ Kluczowa zasada">
+Wszystkie 5 kroków musi być wykonanych **systematycznie** - nie można pominąć żadnego etapu. Każdy krok buduje na wynikach poprzedniego.
+</InfoBox>
+
+<InstructorNotes>
+**Czas**: 5-6 minut
+
+**Wizualizacja procesu**: Narysuj na tablicy schemat z 5 prostokątami połączonymi strzałkami. To pomoże studentom zrozumieć **sekwencyjność** procesu.
+
+**Praktyczny przykład**: Wybierz konkretny scenariusz (np. "pożar w farmie PV") i przejdź przez wszystkie 5 kroków:
+1. **Identyfikacja**: Pożar paneli PV
+2. **Przyczyny**: Przegrzanie, błąd w okablowaniu, uderzenie pioruna
+3. **Konsekwencje**: Szkody materialne, przerwa w dostawie, emisje
+4. **Prawdopodobieństwo**: Na podstawie danych historycznych z branży
+5. **Ranking**: Wysokie ryzyko → wymagane działania redukcyjne
+
+**Błąd często popełniany**: Studenci myślą, że można zacząć od kroku 4 lub 5. Podkreśl, że **kolejność jest kluczowa** - bez pełnej identyfikacji zagrożeń nie można prawidłowo ocenić ryzyka.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="⚙️ Klasyfikacja metod analizy ryzyka" type="tip">
+
+<KeyPoints title="📋 Główne typy metod">
+- 🔍 **Jakościowe** - ocena opisowa (HAZOP, What-if)
+- 📊 **Półilościowe** - kombinacja opis + liczby (HAZID, FMEA)
+- 💻 **Ilościowe** - precyzyjne obliczenia (QRA, FTA, ETA)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Charakterystyka każdego typu">
+- **Jakościowe**: Szybka ocena, ograniczone dane, wstępny screening
+- **Półilościowe**: Szczegółowa ocena, ranking ryzyka, matryce
+- **Ilościowe**: Precyzyjne wartości, duże projekty, wymagania prawne
+</SupportingDetails>
+
+<KeyConcept title="Kierunki analizy">
+**Indukcyjne (Bottom-up)**: Od przyczyn → do konsekwencji
+- *Przykłady*: FMEA, What-if analysis
+- *Zaleta*: Systematyczność, kompletność
+- *Wada*: Może pomijać kombinacje zdarzeń
+
+**Dedukcyjne (Top-down)**: Od konsekwencji → do przyczyn  
+- *Przykłady*: FTA, Event Tree Analysis
+- *Zaleta*: Skupienie na krytycznych scenariuszach
+- *Wada*: Może pomijać nieoczekiwane mechanizmy
+</KeyConcept>
+
+<InstructorNotes>
+**Czas**: 4-5 minut
+
+**Kluczowe rozróżnienie**: Wiele studentów myli **jakościowe** z **subiektywnym**. Podkreśl, że metody jakościowe też są systematyczne i oparte na eksperckiej wiedzy, tylko nie używają precyzyjnych liczb.
+
+**Praktyczne przykłady do wyjaśnienia**:
+- **Jakościowo**: "Wysokie ryzyko pożaru" - ekspert ocenia
+- **Półilościowo**: "Ryzyko 7/10" na skali 1-10
+- **Ilościowo**: "Prawdopodobieństwo 1.2×10⁻⁶ rocznie"
+
+**Wybór metody**: To nie jest kwestia "lepsza vs gorsza", ale **adekwatności do sytuacji**. Dla małej instalacji PV 1 MW HAZID może być wystarczający, ale dla farmy 500 MW potrzeba QRA.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📖 Przykład praktyczny: Farma PV 50 MW" type="success">
+
+<KeyPoints title="📋 Kontekst projektu">
+- 🌞 **Farma PV 50 MW** w fazie przygotowania
+- ⏰ **3 miesiące** na analizę ryzyka  
+- 💰 **Budżet**: €50 000 na analizę
+- 👥 **Zespół**: 4 inżynierów + konsultant HAZOP
+</KeyPoints>
+
+<SupportingDetails title="🔧 Wybór metod analizy">
+- **HAZID** (półilościowa, indukcyjna) → Identyfikacja zagrożeń
+- **FMEA** (półilościowa, indukcyjna) → Analiza komponentów krytycznych  
+- **FTA** (ilościowa, dedukcyjna) → Scenariusze krytyczne
+</SupportingDetails>
+
+<SuccessBox title="✅ Rezultat">
+**47 zidentyfikowanych zagrożeń**, ranking ryzyka, kompletny plan redukcji ryzyka dla farmy PV 50 MW z harmonogramem 12-tygodniowym.
+</SuccessBox>
+
+<Example title="Harmonogram implementacji">
+- **Tydzień 1-4**: HAZID workshops
+- **Tydzień 5-8**: FMEA (inwertery, transformatory, okablowanie)
+- **Tydzień 9-12**: FTA dla 3 największych ryzyk
+</Example>
+
+<InstructorNotes>
+**Czas**: 3-4 minuty
+
+**Praktyczne zastosowanie**: Ten przykład pokazuje **realny proces decyzyjny** - nie wybiera się metody "bo jest najlepsza", ale **w zależności od ograniczeń projektu** (czas, budżet, dostępność danych).
+
+**Kluczowe momenty do podkreślenia**:
+- **Kombinacja metod** - nie używamy jednej metody, ale dostosowujemy zestaw do potrzeb
+- **Realistyczne ograniczenia** - każdy projekt ma ograniczony budżet i czas
+- **Ewolucja analizy** - od ogólnego screening (HAZID) do szczegółowej analizy krytycznych scenariuszy (FTA)
+
+**Ćwiczenie**: Poproś studentów o wybór metod dla innego scenariusza - np. mała biogazownia 1 MW w fazie projektowej.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="⚡ Specyfika analizy ryzyka w OZE" type="warning">
+
+<KeyPoints title="📋 Główne wyzwania technologii OZE">
+- 🆕 **Nowość technologii** - ograniczone dane historyczne  
+- 🌐 **Rozproszenie instalacji** - duża liczba podobnych komponentów
+- 🌍 **Zmienne warunki** - zależność od pogody i lokalizacji
+- 🔌 **Integracja z siecią** - ryzyko wpływu na stabilność
+</KeyPoints>
+
+<SupportingDetails title="🔧 Konkretne przykłady wyzwań">
+- **BESS**: Porównanie z akumulatorami samochodowymi (brak danych przemysłowych)
+- **Farma PV**: Awaria stringa vs. całej sekcji - analiza kaskadowa
+- **Turbiny wiatrowe**: Profile wiatru, zlodowacenie - analiza probabilistyczna  
+- **Farma wiatrowa**: Nagłe odłączenie 100 MW - modelowanie sieciowe
+</SupportingDetails>
+
+<WarningBox title="⚠️ Kluczowa różnica">
+Technologie OZE wymagają **specjalistycznych podejść** - nie można bezpośrednio przenieść metod z tradycyjnej energetyki. Każda technologia ma unikalne ryzyka.
+</WarningBox>
+
+<InstructorNotes>
+**Czas**: 4-5 minut
+
+**Kluczowe przesłanie**: Studenci muszą zrozumieć, że OZE to **nie tylko czyste technologie**, ale także **nowe wyzwania inżynierskie**. Analiza ryzyka w OZE wymaga kreatywności i adaptacji istniejących metod.
+
+**Konkretne przykłady z branży**:
+- **Case study 1**: Awaria w farmie wiatrowej - pokaż jak **brak danych historycznych** komplikował analizę
+- **Case study 2**: Pożar w instalacji PV - jak **rozproszenie** wpływa na propagację ryzyka
+
+**Pytania do studentów**: "Co może być trudniejsze w analizie ryzyka farmy PV 500 MW w porównaniu z konwencjonalną elektrownią?"
+
+**Przejście**: Te wyzwania wpływają na wybór metod analizy - co prowadzi nas do następnego slajdu o kryteriach wyboru.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📋 Fazy projektu a analiza ryzyka" type="info">
+
+<KeyPoints title="📋 Główne fazy projektu">
+- 🎯 **Koncepcyjna** - wstępna ocena, go/no-go decyzja
+- 📐 **Projektowa** - szczegółowa analiza, środki bezpieczeństwa  
+- 🔨 **Budowy** - kontrola podczas realizacji
+- ⚡ **Eksploatacji** - ciągłe monitorowanie ryzyka
+</KeyPoints>
+
+<SupportingDetails title="🔧 Metody dla każdej fazy">
+- **Pre-FEED**: HAZID, Risk matrix, SWOT analysis
+- **FEED/DED**: HAZOP, FMEA, FTA dla krytycznych systemów
+- **Construction**: Job Safety Analysis, Toolbox talks
+- **Operation**: Recurring HAZOP, Bow-tie analysis, Risk registers
+</SupportingDetails>
+
+<InfoBox title="ℹ️ Kluczowa zasada">
+Analiza ryzyka **nie kończy się** z projektem - to **ciągły proces** przez cały cykl życia instalacji.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🎯 Kryteria wyboru metody analizy" type="tip">
+
+<KeyPoints title="📋 Czynniki wpływające na wybór">
+- ⏰ **Faza projektu** - wczesna vs. szczegółowa vs. operacyjna
+- 📊 **Dostępność danych** - brak vs. ograniczone vs. bogate
+- ⚙️ **Złożoność systemu** - proste vs. średnie vs. złożone  
+- 📋 **Wymagania prawne** - SEVESO, ATEX, prawo budowlane
+</KeyPoints>
+
+<SupportingDetails title="🔧 Mapowanie metod do sytuacji">
+- **Brak danych** → HAZOP, What-if (metody eksperckie)
+- **Ograniczone dane** → FMEA, Risk matrix (półilościowe)
+- **Dużo danych** → QRA, Statistical analysis (ilościowe)
+- **Złożone systemy** → FTA, Event Tree (dedukcyjne)
+</SupportingDetails>
+
+<KeyConcept title="Matryca wyboru metody analizy ryzyka">
+**Dla projektów OZE typowa kombinacja**:
+- **HAZID** - obowiązkowe dla wszystkich projektów `> 10 MW`
+- **FMEA** - dla komponentów krytycznych (inwertery, BMS, turbiny)
+- **HAZOP** - dla systemów procesowych (biogazownie, BESS)
+- **FTA** - dla scenariuszy krytycznych (pożar, eksplozja, porażenie)
+- **QRA** - dla dużych projektów z wymaganiami SEVESO
+</KeyConcept>
+
+<InstructorNotes>
+**Czas**: 4-5 minut
+
+**Praktické zastosowanie**: Podkreśl, że wybór metody to **strategiczne decyzja**, nie techniczny detal. Niewłaściwy wybór może oznaczać pominięcie krytycznych zagrożeń.
+
+**Pytania do studentów**: "Dla jakiego projektu wybralibyście QRA zamiast HAZID?" - to pomoże zrozumieć różnice w zastosowaniu.
+
+**Case study**: Pokazuj konkretne przykłady z branży - np. dlaczego farma wiatrowa 200 MW wymagała QRA (SEVESO), podczas gdy mała instalacja PV 5 MW wystarczył HAZID.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="👥 Organizacja zespołu analizy ryzyka" type="info">
+
+<KeyPoints title="📋 Kluczowe role w zespole">
+- 🎯 **Facilitator/Team Leader** - prowadzenie sesji, zarządzanie procesem
+- ⚙️ **Inżynierowie procesu** - ekspercka wiedza o technologii (5+ lat)
+- 🔒 **Inżynierowie bezpieczeństwa** - ocena konsekwencji, środki ochrony
+- 👤 **Przedstawiciel operatora** - perspektywa użytkownika, realność zaleceń
+</KeyPoints>
+
+<SupportingDetails title="🔧 Wymagania i odpowiedzialności">
+- **Facilitator**: Szkolenie HAZOP/HAZID, doświadczenie OZE, jakość procesu
+- **Procesowi**: Identyfikacja zagrożeń, ocena prawdopodobieństwa  
+- **Bezpieczeństwa**: Certyfikaty, znajomość norm, zalecenia redukcji
+- **Operator**: Doświadczenie eksploatacji, realność zaleceń, koszty
+</SupportingDetails>
+
+<InfoBox title="💡 Typowy harmonogram - Farma PV 100 MW">
+- **Tydzień 1-2**: Przygotowanie i wybór zespołu
+- **Tydzień 3-4**: HAZID workshop (4 dni × 6h)
+- **Tydzień 5-8**: Analiza szczegółowa (FMEA, FTA)
+- **Tydzień 9-12**: Dokumentacja, raportowanie, akceptacja
+
+**Budżet**: €80,000-€150,000 | **Czas**: 200-400h eksperckich
+</InfoBox>
+
+<InstructorNotes>
+**Czas**: 3-4 minuty
+
+**Kluczowa myśl**: Sukces analizy ryzyka to **80% zespół, 20% metody**. Nie można przeprowadzić właściwej analizy bez właściwego zespołu.
+
+**Praktyczne wyzwania**: 
+- Znalezienie facilitator z certyfikatem HAZOP/HAZID może być trudne
+- **5+ lat doświadczenia** w technologii OZE to często problem - technologia jest nowa
+- **Koszty**: €80k-150k to znaczący budżet dla mniejszych projektów
+
+**Pytanie do studentów**: "Co jeśli nie macie dostępu do doświadczonego facilitator HAZOP?"
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="📝 Podsumowanie - Kluczowe wnioski" type="success">
+
+<KeyPoints title="📋 Główne przesłania wykładu">
+- 🎯 **Brak uniwersalnej metody** - wybór zależy od kontekstu projektu
+- ⚙️ **Systematyczność kluczowa** - 5-krokowy proces zapewnia kompletność  
+- 💡 **Praktyczny aspekt** - rozumienie kiedy użyć której metody
+- 👥 **Zespół to 80% sukcesu** - właściwe kwalifikacje i doświadczenie
+</KeyPoints>
+
+<SuccessBox title="✅ Gotowość do zastosowania">
+Po tym wykładzie studenci potrafią **wybrać odpowiednią metodę analizy ryzyka** w zależności od fazy projektu, dostępności danych i wymagań regulacyjnych dla instalacji OZE.
+</SuccessBox>
+
+<InstructorNotes>
+**Wykład kompletny - 18-20 minut**
+
+**Struktura zrealizowana**:
+1. **Wprowadzenie** (3 min) - cel uczenia, główne tematy
+2. **Definicje i zasady** (4-5 min) - systematyczny proces, 4 kategorie zagrożeń
+3. **5-krokowy proces** (5-6 min) - od identyfikacji do ranking ryzyka
+4. **Klasyfikacja metod** (4-5 min) - jakościowe/półilościowe/ilościowe, indukcyjne/dedukcyjne
+5. **Przykład praktyczny** (3-4 min) - farma PV 50 MW, realne ograniczenia
+6. **Specyfika OZE** (4-5 min) - wyzwania nowych technologii
+7. **Fazy projektu** (2-3 min) - metody dla każdej fazy
+8. **Kryteria wyboru** (4-5 min) - czynniki wpływające na decyzję
+9. **Organizacja zespołu** (3-4 min) - role, wymagania, budżety
+
+**Kluczowe przesłanie**: Analiza ryzyka w OZE to **nie tylko technika**, ale **strategiczne narzędzie** wymagające właściwego zespołu i systematycznego podejścia.
+
+**Pytania często zadawane przez studentów**:
+- Q: Czy można przeprowadzić analizę bez zewnętrznego eksperta?
+- A: Dla projektów `<10 MW` możliwe, dla większych zalecany facilitator z certyfikatem
+- Q: Jak długo ważna jest analiza?
+- A: Przegląd co 2-3 lata lub przy znaczących zmianach
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

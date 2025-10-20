@@ -11,7 +11,7 @@ Rewrite only the `InstructorNotes` for each slide for the file or directory.
 
 * Keep MDX structure, order, IDs, imports, code, math  **unchanged** .
 * Replace only `InstructorNotes` content (create if missing).
-* 80–200 words per slide (ok to be shorter if simple).
+* 80–150 words per slide (ok to be shorter if simple).
 * Use **bold** for key points.
 * Prefer short paragraphs; no lists unless the slide is a list.
 

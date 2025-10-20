@@ -1,0 +1,305 @@
+---
+title: "Przegląd norm i wytycznych"
+sidebar_position: 4
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<LearningObjective>
+Po tej sekcji student potrafi zidentyfikować kluczowe normy i wytyczne obowiązujące w branży OZE, rozumie ich hierarchię i zakres zastosowania oraz zna podstawowe wymagania normatywne dla różnych technologii odnawialnych.
+</LearningObjective>
+
+<Slide title="🏛️ Hierarchia dokumentów normatywnych" type="info">
+
+<KeyPoints title="📋 Struktura systemu normatywnego">
+- ✅ **Dyrektywy UE** - najwyższy poziom (maszynowa, ATEX, RED)
+- 🔥 **Normy EN** - harmonizowane, obowiązkowe dla CE
+- 💡 **Normy IEC/ISO** - międzynarodowe, dobrowolne ale powszechne
+- ⚙️ **Normy PN** - krajowe, adaptacja do polskich warunków
+</KeyPoints>
+
+<SupportingDetails title="🔧 Szczegóły hierarchii">
+- 📊 **Dyrektywa maszynowa 2006/42/WE** - wymagania bezpieczeństwa maszyn w OZE
+- 🎨 **Dyrektywa ATEX 2014/34/UE** - urządzenia dla atmosfer wybuchowych (biogaz)
+- ⚙️ **Dyrektywa RED 2014/53/UE** - urządzenia radiowe i telekomunikacyjne w monitoringu
+</SupportingDetails>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na hierarchię dokumentów normatywnych. Zacznę od pytania o setki wymagań, które musi spełniać każda instalacja OZE - hierarchia norm to nasza mapa nawigacyjna w tym gąszczu przepisów.
+
+W branży OZE mamy **czteropoziomową hierarchię norm**. **Dyrektywy UE** - maszynowa, **ATEX (Atmosphères Explosibles)**, RED - określają podstawowe wymagania bezpieczeństwa dla całej Unii Europejskiej. **Normy EN** to szczegółowe wymagania techniczne, harmonizowane z dyrektywami, które są **obowiązkowe dla oznaczania CE**. **Normy IEC/ISO** to międzynarodowe standardy, formalnie dobrowolne, ale powszechnie stosowane przez producentów i projektantów. **Normy PN** adaptują europejskie standardy do polskich warunków klimatycznych i technicznych.
+
+Teraz sprawdzimy, które normy są faktycznie obowiązkowe prawnie, a które są dobrowolne, ale wymagane przez praktykę branżową i ubezpieczycieli.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚖️ Klasyfikacja norm według obowiązkowości" type="tip">
+
+<KeyPoints title="📋 Typy norm w praktyce inżynierskiej">
+- ✅ **Normy zharmonizowane** - obowiązkowe dla oznaczania CE
+- 🔥 **Normy branżowe** - wymagane przez inwestorów/ubezpieczycieli  
+- 💡 **Wytyczne producentów** - specyficzne zalecenia techniczne
+</KeyPoints>
+
+<KeyConcept title="Zasada obowiązkowości norm">
+**Normy zharmonizowane** mają bezpośrednie powiązanie z dyrektywami UE - ich przestrzeganie jest warunkiem oznakowania CE. **Normy branżowe** nie są prawnie obowiązkowe, ale są powszechnie wymagane przez ubezpieczycieli, inwestorów i operatorów systemów energetycznych. **Wytyczne producentów** to specyficzne instrukcje dla konkretnych technologii i komponentów.
+</KeyConcept>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na klasyfikację norm według obowiązkowości. Pytanie o to, czy wszystkie normy są tak samo ważne, to kluczowa wiedza dla praktyki inżynierskiej - odpowiedź brzmi: nie.
+
+**Normy zharmonizowane** z listy w Journal of EU to te, które są **obowiązkowe dla oznaczania CE**. Nie można sprzedawać urządzeń w Unii Europejskiej bez ich spełnienia. **Normy branżowe** jak **IEC (International Electrotechnical Commission)** i **ISO (International Organization for Standardization)** są **dobrowolne prawnie**, ale **faktycznie obowiązkowe** - żaden ubezpieczyciel nie ubezpieczy instalacji, która ich nie spełnia. **Wytyczne producentów** to wewnętrzne standardy firm, często bardziej szczegółowe niż normy formalne.
+
+Praktyczny przykład pokazuje, że instalacja PV może spełniać normy zharmonizowane i otrzymać oznakowanie CE, ale ubezpieczyciel będzie wymagał dodatkowego spełnienia **IEC 62446-1** dla testów bezpieczeństwa.
+
+Kluczowe jest, żeby zawsze sprawdzać wymagania ubezpieczyciela i operatora sieci - oni decydują o faktycznej obowiązkowości norm w praktyce. Teraz przejdziemy do konkretnych norm dla poszczególnych technologii OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="☀️ Normy dla instalacji fotowoltaicznych" type="info">
+
+<KeyPoints title="📋 Podstawowe normy PV">
+- ✅ **PN-HD 60364-7-712** - wymagania bezpieczeństwa instalacji
+- 🔥 **IEC 62446-1** - testy bezpieczeństwa i inspekcje
+- 💡 **IEC 61643** - ograniczniki przepięć (SPD)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Szczegóły norm PV">
+- 📊 **PN-HD 60364-7-712**: Uziemienie, zabezpieczenia, oznakowanie - wszystkie instalacje PV w Polsce
+- 🎨 **IEC 62446-1**: Testy izolacji, ciągłości, rezystancji uziemienia - kontrole okresowe i odbiory
+- ⚙️ **IEC 61643**: Klasy SPD T1/T2/T3, parametry Uc/In/Imax - ochrona przed przepięciami
+</SupportingDetails>
+
+<Example title="SPD dla farmy PV 10 MW">
+**Farma PV 10 MW, napięcie DC 1500V**
+
+**Wymagania IEC 61643**:
+- **Koordynacja trzystopniowa**: T1+T2+T3
+- **T1**: Uc=1500V, In≥10kA (ochrona przed piorunami)
+- **T2**: Uc=1000V, In≥5kA (ochrona przepięć)
+- **Lokalizacja**: Centralna→stringi→inwertery
+</Example>
+
+<InstructorNotes>
+**Czas** to sześć do siedmiu minut na normy dla instalacji fotowoltaicznych. PV to nie tylko panele - to kompleksowy system elektryczny wymagający specyficznej ochrony przed różnymi zagrożeniami.
+
+**PN-HD 60364-7-712** to **polska norma** adaptująca wymagania bezpieczeństwa dla instalacji PV, która definiuje uziemienie, zabezpieczenia i oznakowanie. **IEC 62446-1** definiuje **procedury testowe** - testy izolacji, ciągłości, pomiary rezystancji uziemienia, które są kluczowe przy kontrolach okresowych i odbiorach instalacji. **IEC 61643** to standard dla **SPD (Surge Protection Devices)**, czyli ograniczników przepięć - kluczowe dla ochrony kosztownej elektroniki przed przepięciami i uderzeniami piorunów.
+
+Praktyczny przykład pokazuje, że w przypadku farmy o mocy dziesięciu megawatów z napięciem tysiąc pięćset woltów DC potrzebujemy **koordynacji trzystopniowej SPD** - różne klasy ochrony na różnych poziomach systemu elektroenergetycznego.
+
+Każda instalacja PV musi mieć kompleksową ochronę przepięciową zgodną z klasą zagrożenia i wartością napięcia. Podobnie specyficzne normy obowiązują dla turbin wiatrowych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="💨 Normy dla turbin wiatrowych" type="info">
+
+<KeyPoints title="📋 Podstawowe normy wiatrowe">
+- ✅ **IEC 61400-1** - wymagania projektowe, klasy turbin I/II/III/S
+- 🔥 **IEC 61400-3** - dodatkowe wymagania dla turbin offshore
+- 💡 **IEC 61400-11** - pomiary akustyczne, klasy hałasu
+</KeyPoints>
+
+<SupportingDetails title="🔧 Szczegóły norm wiatrowych">
+- 📊 **IEC 61400-1**: Obciążenia ekstremalne, turbulencje, cykle zmęczeniowe
+- 🎨 **IEC 61400-3**: Obciążenia morskie, korozja, systemy dostępu/ewakuacji
+- ⚙️ **ISO 14839**: Monitoring drgań, parametry CMS, progi alarmowe
+</SupportingDetails>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na normy dla turbin wiatrowych. Turbiny wiatrowe pracują w ekstremalnych warunkach - normy muszą uwzględniać te specyficzne wyzwania środowiskowe i operacyjne.
+
+**IEC 61400-1** definiuje podstawowe wymagania projektowe, gdzie **klasy turbin** - pierwsza, druga, trzecia i specjalna - zależą od lokalnych warunków wiatrowych. **IEC 61400-3** to szczególne wymagania dla **turbin offshore**, które muszą wytrzymać dodatkowe obciążenia od fal morskich, prądów oceanicznych i korozji solnej. **IEC 61400-11** standardyzuje **pomiary akustyczne** - poziom mocy akustycznej LWA i krzywe kierunkowe hałasu.
+
+Praktyczny przykład pokazuje, że turbina klasy drugiej dla średnich wiatrów wynoszących osiem i pół metra na sekundę musi wytrzymać ekstremalne wiatry do pięćdziesięciu dziewięciu i pół metra na sekundę zgodnie z normą.
+
+Klasy turbin determinują nie tylko wydajność energetyczną, ale przede wszystkim bezpieczeństwo konstrukcji i jej trwałość w danych warunkach wiatrowych. Podobnie kompleksowe normy dotyczą magazynów energii.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔋 Normy dla magazynów energii (BESS)" type="warning">
+
+<KeyPoints title="📋 Kluczowe normy BESS">
+- ✅ **NFPA 855** - wymagania bezpieczeństwa pożarowego
+- 🔥 **UL 9540/9540A** - testy bezpieczeństwa i certyfikacja
+- 💡 **IEC 62933** - wymagania techniczne i bezpieczeństwa
+</KeyPoints>
+
+<SupportingDetails title="🔧 Szczegóły norm BESS">
+- 📊 **NFPA 855**: Strefowanie według skali, systemy gaszenia Li-ion
+- 🎨 **UL 9540**: Testy thermal runaway, przeładowanie, zwarcie
+- ⚙️ **IEC 62933**: Sprawność, cykl życia, integracja z siecią
+</SupportingDetails>
+
+<KeyConcept title="Strefowanie BESS według NFPA 855">
+**Klasyfikacja według mocy**:
+- **Strefa 1**: < 20 kWh - ogólne wymagania bezpieczeństwa
+- **Strefa 2**: 20-600 kWh - dodatkowa wentylacja, separacja
+- **Strefa 3**: > 600 kWh - specjalne wymagania projektowe, systemy gaszenia
+</KeyConcept>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na normy dla magazynów energii. **BESS (Battery Energy Storage Systems)** to czasem porównywane do bomb - normy muszą zapobiegać katastrofom wynikającym z thermal runaway i innych zagrożeń.
+
+**NFPA 855 (National Fire Protection Association)** to amerykański standard, ale szeroko stosowany globalnie dla **bezpieczeństwa pożarowego** w magazynach energii. Definiuje **strefowanie według mocy energetycznej** - większe systemy wymagają specjalnych systemów gaszenia i wentylacji. **UL 9540** to standard **certyfikacji urządzeń** - obejmuje testy thermal runaway, przeładowania, zwarcia i innych scenariuszy awaryjnych. **IEC 62933** to międzynarodowy standard **wymagań technicznych** dla integracji z siecią energetyczną.
+
+Praktyczny przykład pokazuje, że system o mocy jednego megawatogodziny, czyli Strefa trzecia według NFPA 855, wymaga specjalnych systemów gaszenia, wentylacji awaryjnej i minimalnych odstępów trzech metrów od innych budynków.
+
+Skala systemu determinuje poziom wymagań bezpieczeństwa - nie ma uniwersalnych standardów dla wszystkich rozmiarów magazynów energii. Jeszcze bardziej specyficzne wymagania dotyczą atmosfer wybuchowych w instalacjach biogazowych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚠️ Normy ATEX dla instalacji biogazowych" type="danger">
+
+<KeyPoints title="📋 Podstawowe normy ATEX">
+- ✅ **PN-EN 60079** - klasyfikacja atmosfer wybuchowych
+- 🔥 **Dyrektywa ATEX 2014/34/UE** - urządzenia ATEX, kategorie 1G/2G/3G
+- 💡 **PN-EN 1127-1** - zapobieganie i ochrona przed wybuchami
+</KeyPoints>
+
+<SupportingDetails title="🔧 Klasyfikacja stref ATEX">
+- 📊 **Strefa 0**: Ciągłe zagrożenie (wewnętrzna część fermentatora)
+- 🎨 **Strefa 1**: Okresowe zagrożenie (okolice zaworów, pompy)
+- ⚙️ **Strefa 2**: Rzadkie zagrożenie (obszary z wentylacją)
+</SupportingDetails>
+
+<KeyConcept title="Urządzenia ATEX według dyrektywy 2014/34/UE">
+**Kategorie urządzeń**:
+- **1G, 2G, 3G** - dla gazów (grupa II, środowiska nie-górnicze)
+- **1D, 2D, 3D** - dla pyłów (grupa III)
+- **Kategoria 1** - najwyższy poziom bezpieczeństwa (strefa 0)
+</KeyConcept>
+
+<InstructorNotes>
+**Czas** to sześć do siedmiu minut na normy ATEX dla instalacji biogazowych. Biogaz to głównie metan - jeden z najbardziej wybuchowych gazów. Normy ATEX to dosłownie nasze życie w tym środowisku pracy.
+
+**PN-EN 60079** klasyfikuje **atmosfery wybuchowe** na trzy strefy według czasu trwania zagrożenia wybuchowego. **Dyrektywa ATEX 2014/34/UE** definiuje **urządzenia** przeznaczone do pracy w tych strefach - każda kategoria odpowiada poziomowi bezpieczeństwa. **PN-EN 1127-1** to zasady **zapobiegania wybuchom** - obejmuje wentylację, detektory gazu, systemy bezpieczeństwa i procedury eksploatacyjne.
+
+Praktyczny przykład pokazuje, że w fermentatorze biogazowym strefa zero - gdzie występuje ciągłe zagrożenie wybuchowe - wymaga urządzeń kategorii jeden G, a okolice zaworów, gdzie występuje okresowe zagrożenie, czyli strefa jeden, wymaga urządzeń kategorii dwa G.
+
+Każda strefa ma swoje specyficzne wymagania - błędna klasyfikacja może być śmiertelna w skutkach. Nowe wyzwanie to cyberbezpieczeństwo systemów OZE, które staje się coraz ważniejsze.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔒 Cyberbezpieczeństwo w systemach OZE" type="warning">
+
+<KeyPoints title="📋 Normy cyberbezpieczeństwa">
+- ✅ **IEC 62443** - cyberbezpieczeństwo systemów przemysłowych
+- 🔥 **NIST SP 800-82** - wytyczne dla systemów kontroli przemysłowej
+- 💡 **Segmentacja sieci** - poziomy 0-5 według krytyczności
+</KeyPoints>
+
+<SupportingDetails title="🔧 Strefy bezpieczeństwa IEC 62443">
+- 📊 **Poziom 0**: Enterprise (biuro, Internet) - najniższa bezpieczeństwa
+- 🎨 **Poziom 3-5**: OT (SCADA, automatyka) - najwyższa krytyczność
+- ⚙️ **Framework NIST**: Identyfikacja → ochrona → wykrywanie → reagowanie → odzyskiwanie
+</SupportingDetails>
+
+<Example title="Cyberbezpieczeństwo farmy PV 50 MW">
+**System SCADA z zdalnym dostępem**
+
+**Wymagania IEC 62443-3-3**:
+- **Segmentacja**: VLAN, firewall IT/OT, DHCP
+- **Uwierzytelnienie**: 2FA dla dostępu zdalnego
+- **Monitoring**: Logging, SIEM, backup co 24h
+- **SL-T**: Minimalny poziom 2 (Security Level Target)
+</Example>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na cyberbezpieczeństwo systemów OZE. Atak hakerski na farmę PV może wyłączyć energię w całym regionie - cyberbezpieczeństwo to nie opcja, ale konieczność w nowoczesnych systemach energetycznych.
+
+**IEC 62443** to pierwszy standard cyberbezpieczeństwa dla systemów przemysłowych OZE. Definiuje **segmentację sieci** na poziomy zero do pięciu - oddzielenie systemów informatycznych od operacyjno-technologicznych. **NIST SP 800-82** to framework składający się z **pięciu kroków** do zarządzania cyberzagrożeniami w systemach kontroli przemysłowej. **Security Level Target (SL-T)** określa minimalny poziom ochrony wymagany dla danego systemu.
+
+Praktyczny przykład pokazuje, że farma o mocy pięćdziesięciu megawatów wymaga minimalnego SL-T równa się dwa, co oznacza segmentację sieci, monitoring bezpieczeństwa, backupy danych i testy procedur przywracania.
+
+Cyberbezpieczeństwo OZE to nie zwykłe IT security - to ochrona krytycznej infrastruktury energetycznej, która ma bezpośredni wpływ na bezpieczeństwo dostaw energii. Kończąc, zobaczymy kto tworzy te normy i jak się aktualizują w czasie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🏛️ Organy normalizacyjne i procesy" type="info">
+
+<KeyPoints title="📋 Główne organizacje normalizacyjne">
+- ✅ **IEC** - normy międzynarodowe (TC 88 - wiatr, TC 82 - PV)
+- 🔥 **ISO** - standardy globalne (ISO 45001, 50001)
+- 💡 **CEN/CENELEC** - adaptacja do Europy → EN → PN
+</KeyPoints>
+
+<SupportingDetails title="🔧 Proces normalizacji w Polsce">
+- 📊 **PKN** - Polski Komitet Normalizacyjny, adaptacja norm do polskich warunków
+- 🎨 **Cykl aktualizacji** - przegląd co 5 lat, informowanie przez PKN Newsletter
+- ⚙️ **Obowiązywanie** - nowa norma obowiązuje od daty publikacji
+</SupportingDetails>
+
+<InfoBox title="ℹ️ Dostęp do norm">
+**Źródła norm**:
+- Sklep PKN (normy płatne)
+- Niektóre normy bezpłatnie na stronie PKN
+- Biuletyny branżowe o aktualizacjach
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na organy normalizacyjne i procesy aktualizacji norm. Kto decyduje o normach i co się dzieje, gdy się zmieniają? To kluczowe pytania dla praktyki inżynierskiej.
+
+**IEC (International Electrotechnical Commission)** tworzy normy międzynarodowe przez grupy robocze - **TC 88** dla turbin wiatrowych, **TC 82** dla systemów fotowoltaicznych. **ISO (International Organization for Standardization)** to standardy dla wszystkich dziedzin przemysłu, nie tylko elektryki. **CEN/CENELEC** adaptuje normy międzynarodowe do specyfiki europejskiej. **PKN (Polski Komitet Normalizacyjny)** finalizuje proces normalizacji dla Polski. Normy są **przeglądane co pięć lat** - inżynierowie muszą śledzić aktualizacje.
+
+Praktyczny przykład pokazuje, że **IEC 61400-1** dla turbin wiatrowych jest aktualizowana co kilka lat - nowa wersja może zmieniać wymagania projektowe, co ma bezpośredni wpływ na koszty i bezpieczeństwo realizacji.
+
+Normy to żywe dokumenty - każdy inżynier musi śledzić ich aktualizacje, bo mogą znacząco zmienić wymagania projektowe i procedury certyfikacji. To kończy przegląd norm - teraz studenci wiedzą gdzie szukać aktualnych informacji i jak interpretować normy w praktyce inżynierskiej.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<InstructorNotes>
+**Czas wykładu** to dwadzieścia do dwudziestu pięciu minut systematycznego przeglądu norm i wytycznych w OZE. Przebieg wykładu to systematyczne przejście przez świat dokumentów normatywnych.
+
+Zaczynamy od hierarchii dokumentów normatywnych - to około pięciu minut na zrozumienie, że mamy różne poziomy: dyrektywy UE, normy EN, **IEC/ISO** i krajowe PN. Studenci muszą zrozumieć różnice między tymi poziomami i ich wzajemne powiązania.
+
+**Normy dla PV** to około sześciu minut z konkretnymi przykładami. **PN-HD 60364-7-712**, **IEC 62446-1**, **IEC 61643** dla **SPD (Surge Protection Devices)** - pokazuję praktyczne zastosowania każdej normy w projektowaniu instalacji fotowoltaicznych.
+
+**Normy dla wiatru i BESS** to kolejne sześć minut. **IEC 61400** seria dla turbin wiatrowych, **NFPA 855** dla **BESS (Battery Energy Storage Systems)** - każda technologia ma swoje specyficzne wymagania normatywne, które muszą być rozumiane.
+
+**Normy ATEX dla biogazu** to pięć minut na atmosfery wybuchowe - to bardzo specyficzny obszar, ale kluczowy dla bezpieczeństwa instalacji biogazowych i wymaga szczególnej uwagi.
+
+**Cyberbezpieczeństwo** to trzy minuty na nowe wyzwanie - **IEC 62443**, **NIST SP 800-82** to standardy, które zyskują na znaczeniu w dobie cyfryzacji systemów energetycznych.
+
+Kluczowe podejście to nie uczenie numerów norm na pamięć, ale zrozumienie ich zasad i zakresu zastosowania. Ważne jest pokazywanie praktycznych zastosowań - jak norma wpływa na projektowanie instalacji. Różnica między normami obowiązkowymi a dobrowolnymi to kluczowe dla praktyki inżynierskiej.
+</InstructorNotes>
+
+</SlideContainer>

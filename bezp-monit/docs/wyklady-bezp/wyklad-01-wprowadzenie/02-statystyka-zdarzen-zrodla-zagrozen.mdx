@@ -1,0 +1,472 @@
+---
+title: "Statystyka zdarzeń i źródła zagrożeń"
+sidebar_position: 2
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Statystyka zdarzeń i źródła zagrożeń" type="info">
+
+<LearningObjective>
+Po tej sekcji student potrafi interpretować statystyki zdarzeń w OZE, zna główne źródła zagrożeń w różnych technologiach oraz rozumie wpływ czynników środowiskowych i operacyjnych na bezpieczeństwo instalacji.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 📊 **Statystyki zdarzeń** - realne dane z branży OZE
+- 🔍 **Źródła zagrożeń** - klasyfikacja według pochodzenia
+- ⚠️ **Zagrożenia techniczne** - komponenty i konstrukcje
+- 🌍 **Zagrożenia środowiskowe** - czynniki naturalne
+- 👥 **Zagrożenia operacyjne** - błędy ludzkie i organizacyjne
+- 📖 **Scenariusze praktyczne** - analiza rzeczywistych przypadków
+</KeyPoints>
+
+<InstructorNotes>
+**Czas wykładu** to osiemnaście do dwudziestu minut systematycznej analizy rzeczywistych zagrożeń w OZE. Zacznę od pytania o bezpieczeństwo instalacji OZE - większość studentów odpowie pozytywnie, co pozwoli pokazać, że to złożony problem wymagający analizy twardych danych, nie ogólnych przekonań.
+
+**Kluczowe przesłanie** to fakt, że instalacje OZE są **względnie bezpieczne**, ale liczba incydentów rośnie wraz z rozwojem branży. Każda technologia ma specyficzne ryzyka, które trzeba zrozumieć, żeby projektować bezpieczne systemy. Bez znajomości rzeczywistych zagrożeń nie można skutecznie zarządzać bezpieczeństwem.
+
+Struktura prezentacji prowadzi od globalnych statystyk przez klasyfikację źródeł zagrożeń aż do konkretnych scenariuszy i studiów przypadków z branży. **Statystyki pokazują skalę problemu**, ale dopiero analiza przyczyn pozwala na skuteczne zapobieganie incydentom.
+
+**Zakończenie** podkreśla, że zrozumienie rzeczywistych zagrożeń jest fundamentem projektowania bezpiecznych instalacji. To nie teoria - każde zagrożenie może się materializować w konkretnych warunkach eksploatacyjnych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📊 Globalne statystyki zdarzeń w OZE" type="info">
+
+<KeyPoints title="📈 Główne wnioski z danych">
+- **Instalacje OZE są względnie bezpieczne**
+- **Liczba incydentów rośnie** wraz z rozwojem sektora
+- **Każda technologia** ma specyficzne ryzyka
+- **Rozwój technologii** wpływa na trendy bezpieczeństwa
+</KeyPoints>
+
+<SupportingDetails title="📋 Kluczowe statystyki (dane 2015-2022)">
+**Fotowoltaika:**
+- Wskaźnik incydentów: **0.2-0.5** incydentów na MW rocznie
+- Najczęstsze przyczyny: pożary (40%), uszkodzenia mechaniczne (30%), problemy elektryczne (20%)
+- Śmiertelność: bardzo niska (średnio **0.05 zgonów na TWh**)
+
+**Energia wiatrowa:**
+- Wskaźnik incydentów: **2-5** poważnych awarii na 1000 turbin rocznie
+- Najczęstsze przyczyny: uszkodzenia łopatek (35%), awarie przekładni (25%), problemy strukturalne (20%)
+- Śmiertelność: około **0.15 zgonów na TWh** (głównie podczas prac serwisowych)
+
+**Magazyny energii:**
+- Wskaźnik incydentów: rośnie wraz z rozwojem technologii BESS
+- Najczęstsze przyczyny: thermal runaway (60%), błędy BMS (25%)
+- Szczególne ryzyko: gęstość mocy i nowość technologii
+</SupportingDetails>
+
+<InfoBox>
+**Źródła danych**: Raporty IEA, IRENA, NERC, oraz agencje energetyczne poszczególnych krajów zapewniają kompleksowy obraz bezpieczeństwa OZE na świecie.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na globalne statystyki. Zacznę od pytania o liczbę zdarzeń rocznie w polskim systemie elektroenergetycznym porównując z instalacjami OZE - to otwiera dyskusję i pokazuje skalę problemu.
+
+**Główne przesłanie** to fakt, że instalacje OZE są **znacznie bezpieczniejsze** niż tradycyjne systemy energetyczne. Śmiertelność w OZE jest około **dziesięć razy niższa** niż w energetyce opartej na paliwach kopalnych, ale każda technologia ma swoje specyficzne ryzyka, które trzeba znać.
+
+Kluczowe w statystykach to sposób ich podawania - wskaźniki są wyrażane na **MW zainstalowany** lub **TWh wyprodukowany**, co pozwala na sprawiedliwe porównanie technologii. **Fotowoltaika** ma najniższą śmiertelność, ale problem z pożarami stanowi poważne wyzwanie. **Wiatr** ma wyższą śmiertelność głównie przez prace serwisowe na wysokości. **Magazyny energii BESS** to nowa technologia z rosnącym wskaźnikiem incydentów.
+
+Praktyczny przykład - duża farma PV o mocy 100 MW może mieć od dwudziestu do pięćdziesięciu incydentów rocznie, ale większość to drobne uszkodzenia, nie katastrofy. Ważne jest zrozumienie, że **częstość incydentów** nie przekłada się bezpośrednio na ich **poważność**.
+
+Teraz przeanalizujmy konkretne źródła tych zagrożeń, żeby zrozumieć, skąd pochodzą problemy.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📖 Statystyki rzeczywiste: Niemcy 2021" type="warning">
+
+<KeyPoints title="📊 Dane z Bundesnetzagentur (2021)">
+- **PV**: 127 incydentów z tego 23 z uszkodzeniem `>100k€`
+- **Wiatr**: 45 poważnych awarii, 2 wypadki śmiertelne podczas serwisu
+- **Biogaz**: 8 incydentów związanych z wyciekiem gazów
+- **Proporcjonalność**: liczba incydentów odpowiada mocy zainstalowanej
+</KeyPoints>
+
+<Example title="Szczegółowa analiza incydentów PV">
+- **Pożary**: 78% wszystkich incydentów PV (głównie błędy okablowania)
+- **Kontakt elektryczny**: 12% (prace konserwacyjne bez LOTO)
+- **Uszkodzenia strukturalne**: 10% (konstrukcje wsporcze)
+
+**Koszt średni**: €450k na poważny incydent z uszkodzeniem majątku
+</Example>
+
+<WarningBox>
+**Ważne**: Statystyki niemieckie są szczególnie rzetelne dzięki obowiązkowemu raportowaniu wszystkich incydentów do Bundesnetzagentur.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na przykład praktyczny. Pokażę, jak wygląda rzeczywistość w kraju z największą mocą fotowoltaiki w Europie - Niemcy to doskonały przykład do analizy, bo mają najlepsze systemy raportowania.
+
+**Główne przesłanie** to fakt, że statystyki niemieckie pokazują **realistyczny obraz** bezpieczeństwa OZE. **Bundesnetzagentur** wymaga raportowania wszystkich incydentów, więc dane są kompleksowe i rzetelne, co pozwala na obiektywną analizę.
+
+Analiza szczegółowa pokazuje, że **sto dwadzieścia siedem incydentów fotowoltaicznych** w kraju z około 60 GW mocy zainstalowanej to wskaźnik **0,21 incydentów na MW** - dokładnie w środku międzynarodowego przedziału. **Dwadzieścia trzy incydenty z uszkodzeniem przekraczającym 100 tysięcy euro** pokazuje, że poważne zdarzenia to około 18 procent wszystkich.
+
+W energetyce wiatrowej **czterdzieści pięć awarii** przy około 65 GW mocy to **0,7 awarii na 1000 turbin** - poniżej średniej międzynarodowej. **Dwa wypadki śmiertelne** przy 28 000 turbin podkreślają, że główne ryzyko to prace serwisowe na wysokości.
+
+Średni koszt poważnego incydentu fotowoltaicznego to **450 tysięcy euro** - to składa się z utraconej produkcji, napraw, ubezpieczeń i konsekwencji prawnych. Teraz przejdziemy do systematycznej klasyfikacji wszystkich źródeł zagrożeń.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔍 Źródła zagrożeń w technologiach OZE" type="info">
+
+<KeyConcept title="Klasyfikacja zagrożeń według źródeł">
+**Zagrożenia można kategoryzować według pochodzenia:**
+- **Wewnętrzne techniczne**: związane z komponentami i konstrukcją
+- **Wewnętrzne ludzkie**: błędy obsługi, zaniedbania, brak procedur
+- **Zewnętrzne środowiskowe**: czynniki naturalne (pogoda, katastrofy)
+- **Zewnętrzne antropogeniczne**: wandalizm, kradzieże, awarie sieci
+</KeyConcept>
+
+<InfoBox>
+**Systematyczne podejście**: Klasyfikacja według źródła pozwala na **targetowane środki zaradcze** - inne rozwiązania dla problemów technicznych, a inne dla błędów ludzkich.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na klasyfikację zagrożeń. Zacznę od pytania, skąd biorą się problemy w instalacjach OZE i czy można je uporządkować - to wprowadza potrzebę systematycznego podejścia do analizy ryzyka.
+
+**Główne przesłanie** to fakt, że każda klasa zagrożeń wymaga **odmiennej strategii zarządzania**. Nie można walczyć z błędami ludzkimi tak samo jak z problemami technicznymi czy czynnikami środowiskowymi - każde z tych zagrożeń ma inne przyczyny i wymaga innych środków zaradczych.
+
+**Wewnętrzne techniczne** to najczęstsze źródło problemów, około 60-70 procent incydentów. Dotyczą komponentów, konstrukcji, układów elektrycznych, gdzie problemy wynikają z wad materiałowych lub błędów projektowych. **Wewnętrzne ludzkie** to błędy procedur, brak kompetencji, presja czasowa - to około 20-25 procent problemów. **Zewnętrzne środowiskowe** to czynniki naturalne, których nie kontrolujemy, około 10-15 procent zagrożeń. **Zewnętrzne antropogeniczne** to celowe działanie ludzi, wandalizm, kradzieże.
+
+Pożar w farmie fotowoltaicznej może mieć przyczynę techniczną jak błąd okablowania, ludzką jak nieprawidłowy montaż, środowiskową jak uderzenie pioruna, lub antropogeniczną jak podpalenie. Zacznijmy od najczęstszej kategorii - zagrożeń technicznych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Zagrożenia wewnętrzne (techniczne)" type="warning">
+
+<KeyPoints title="🔧 Główne kategorie zagrożeń technicznych">
+- **Komponenty elektryczne** - awarie układów DC/AC
+- **Mechanika** - degradacja materiałów, zużycie
+- **Systemy kontroli** - błędy oprogramowania, czujników
+- **Konstrukcje** - obciążenia, korozja, starzenie
+</KeyPoints>
+
+<SupportingDetails title="⚡ Szczegóły według technologii">
+**Fotowoltaika:**
+- **Komponenty DC**: wysokie napięcia (600-1500V), prądy zwarciowe do 10kA
+- **Okablowanie**: degradacja izolacji, korozja połączeń MC4
+- **Inwertery**: awarie układów chłodzenia, problemy z kondensatorami
+
+**Turbiny wiatrowe:**
+- **Łopatki**: pęknięcia zmęczeniowe, erozja krawędzi
+- **Przekładnie**: zużycie łożysk, awarie chłodzenia oleju
+- **Generatory**: problemy z izolacją uzwojeń
+
+**Magazyny BESS:**
+- **Ogniwa baterii**: degradacja, thermal runaway Li-ion
+- **BMS**: błędy oprogramowania, problemy z balansowaniem
+- **Systemy chłodzenia**: awarie pompek, zatkania filtrów
+</SupportingDetails>
+
+<WarningBox>
+**Krytyczne**: **60-70% wszystkich incydentów OZE** ma źródło w problemach technicznych związanych z komponentami, konstrukcją lub systemami kontroli.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na zagrożenia techniczne. Zacznę od pytania, gdzie najczęściej psują się instalacje OZE i w jakich komponentach - to sprawdza wiedzę studentów o technologiach.
+
+**Główne przesłanie** to fakt, że **zagrożenia techniczne** to najczęstsza przyczyna incydentów w OZE. Każda technologia ma swoje **słabe punkty**, które trzeba znać przy projektowaniu i eksploatacji, żeby skutecznie zapobiegać problemom.
+
+Szczegółowa analiza pokazuje specyfikę każdej technologii. **W fotowoltaice** główny problem to **okablowanie DC** z wysokimi napięciami do 1500 woltów. Łuki elektryczne przy uszkodzonych connectorach MC4 to częsta przyczyna pożarów. **W turbinach wiatrowych** **przekładnie** to najbardziej awaryjne elementy, łożyska podlegają ogromnym obciążeniom przez ponad 20 lat eksploatacji. **W magazynach energii BESS** **thermal runaway** to najpoważniejsze zagrożenie, szczególnie w starszych systemach bez odpowiednich zabezpieczeń.
+
+Praktyczny przykład - w farmie fotowoltaicznej 10 MW można mieć **ponad 500 połączeń MC4**. Jeśli 1 procent ma problem z korozją lub uszkodzeniem, to mamy 5 potencjalnych miejsc łuku elektrycznego. Jakie czynniki zewnętrzne mogą wpływać na te komponenty techniczne?
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌪️ Zagrożenia zewnętrzne (środowiskowe)" type="warning">
+
+<KeyPoints title="🌡️ Czynniki atmosferyczne">
+- **Wiatr**: ekstremalne prędkości (`>25 m/s`), turbulencje
+- **Temperatura**: ekstremalne mrozy (`<-30°C`), upały (`>45°C`)
+- **Wilgotność**: kondensacja, korozja, degradacja izolacji
+- **Opady**: oblodzenie, gradobicia, powodzie lokalne
+</KeyPoints>
+
+<SupportingDetails title="⚡ Zjawiska meteorologiczne">
+**Burze**: pioruny (uszkodzenia SPD, porażenia), silne wiatry, ulewne deszcze
+
+**Tornada/huragany**: niszczycielskie siły wiatru - zniszczenie całych instalacji
+
+**Susze**: zwiększone ryzyko pożarów w farmach PV, przegrzanie
+
+**Trzęsienia ziemi**: uszkodzenia konstrukcji wsporczych
+</SupportingDetails>
+
+<InfoBox>
+**Projekcja**: Klimatyczne zmiany zwiększają częstotliwość ekstremalnych zjawisk pogodowych, co wymaga aktualizacji norm projektowych dla instalacji OZE.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na zagrożenia środowiskowe. Zacznę od pytania, co robi ekstremalna pogoda z instalacjami OZE i jakie zjawiska meteorologiczne są najgroźniejsze - to sprawdza wiedzę o oddziaływaniu środowiska.
+
+**Główne przesłanie** to fakt, że **czynniki środowiskowe** to około **10-15 procent wszystkich incydentów**, ale mają potencjał katastrofalnych skutków. Nie możemy ich kontrolować, ale możemy się na nie przygotować przez odpowiednie projektowanie i procedury.
+
+Wiatr przekraczający 25 metrów na sekundę może zniszczyć konstrukcje wsporcze fotowoltaiczne, zwłaszcza przy złej geometrii montażu. **Pioruny** to główny problem - mogą zniszczyć ograniczniki przepięć SPD, uszkodzić inwertery kosztem tysięcy euro. **Ekstremalne temperatury** wpływają na degradację materiałów, szczególnie w magazynach energii BESS, gdzie temperatura krytyczna to około **60 stopni Celsjusza**.
+
+Praktyczny przykład z Hiszpanii z 2019 roku - grad o średnicy 5 centymetrów zniszczył **3000 modułów** w ciągu 10 minut. Koszt wymiany to **1,2 miliona euro**. **Ubezpieczenie** pokryło tylko część, bo grad większy niż 3 centymetry to standardowe wyłączenie z polisy.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="👥 Zagrożenia operacyjne (ludzkie)" type="warning">
+
+<KeyPoints title="⚠️ Błędy ludzkie w eksploatacji">
+- **Niewłaściwe procedury**: praca pod napięciem, brak LOTO
+- **Nieodpowiedni sprzęt**: brak wyposażenia ochronnego
+- **Niewłaściwe szkolenia**: brak kompetencji w obsłudze
+- **Presja czasowa**: próby skrócenia procedur bezpieczeństwa
+</KeyPoints>
+
+<SupportingDetails title="🏢 Problemy organizacyjne">
+- **Brak procedur**: nieudokumentowane procesy bezpieczeństwa
+- **Niedostateczny monitoring**: brak ciągłej kontroli systemów
+- **Problemy komunikacyjne**: błędy w przekazywaniu informacji
+- **Zaniedbania**: opóźnienia w konserwacji, ignorowanie sygnałów alarmowych
+</SupportingDetails>
+
+<WarningBox>
+**Statystyki**: Około **20-25% incydentów OZE** ma bezpośrednią przyczynę w błędach ludzkich lub problemach organizacyjnych, ale może wpływać na większość pozostałych zdarzeń.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na zagrożenia operacyjne. Zacznę od pytania, kto ponosi winę za większość awarii - człowiek czy maszyna - to wprowadza dyskusję o **czynniku ludzkim** w bezpieczeństwie OZE.
+
+**Główne przesłanie** to fakt, że **błędy ludzkie** to często **przyczyna pierwotna** problemów, nawet jeśli skutek jest techniczny. **Procedury bezpieczeństwa** są kluczowe, ale często ignorowane pod presją czasową lub ekonomiczną.
+
+Szczegółowa analiza pokazuje główne problemy. **LOTO (Lock-Out/Tag-Out)** to najczęściej łamana procedura bezpieczeństwa - prace pod napięciem w fotowoltaice to około **40 procent wypadków śmiertelnych**. **Brak kompetencji** to poważny problem, bo instalacje OZE to nowe technologie i wielu serwisantów nie ma odpowiednich szkoleń. **Presja ekonomiczna** - przerwy w produkcji kosztują, więc próbuje się skracać procedury bezpieczeństwa.
+
+Praktyczny przykład z Danii z 2018 roku - serwisant turbiny wiatrowej **zginął** podczas prac bez odpowiednich zabezpieczeń. **Przyczyna**: presja czasowa, pominięcie procedur, brak odpowiedniego sprzętu ochronnego. **Koszt**: 500 tysięcy euro odszkodowania plus szkody reputacyjne. Przeanalizujmy teraz konkretne scenariusze, które pokazują jak te zagrożenia się realizują.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔥 Scenariusz 1: Pożar w farmie PV" type="danger">
+
+<KeyPoints title="⚡ Główne przyczyny pożarów PV">
+- **Łuk elektryczny** w uszkodzonym connectorze MC4 (60% przypadków)
+- **Przegrzanie okablowania** DC przy przeciążeniu (25% przypadków)
+- **Błędy w układzie** uziemienia i SPD (10% przypadków)
+- **Czynniki zewnętrzne** - uderzenie pioruna (5% przypadków)
+</KeyPoints>
+
+<SupportingDetails title="💰 Konsekwencje finansowe">
+**Bezpośrednie szkody:**
+- Spalenie modułów: **€200-400/modół** x liczba modułów
+- Uszkodzenie konstrukcji: **€50-150/modół**
+- Zniszczone okablowanie i inwertery
+
+**Koszty pośrednie:**
+- Utrata produkcji: **€2000-5000/MW/dzień**
+- Koszty serwisowe i naprawy: **€50k-500k**
+- Wpływ na reputację i ubezpieczenia
+</SupportingDetails>
+
+<WarningBox>
+**Krytyczne**: Standardowe systemy gaśnicze często są **nieskuteczne** w przypadku pożaru modułów PV - wymagają specjalnych procedur i środków gaśniczych.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na scenariusz pożaru w fotowoltaice. Zacznę od pytania, jak gasi się pożar w farmie PV i czy tradycyjne metody działają - to sprawdza wiedzę o specyfice pożarów w instalacjach fotowoltaicznych.
+
+**Główne przesłanie** to fakt, że **pożary fotowoltaiczne** to **najczęstszy typ** poważnego incydentu w tej technologii. Problem nie tylko w szkodach materialnych, ale w **trudnościach gaszenia** i kontynuacji ryzyka podczas akcji ratunkowej.
+
+**Łuk elektryczny** w connectorze MC4 to typowy problem - korozja, uszkodzenie mechaniczne, nieprawidłowy montaż. **Prąd DC** nie ma punktów przejścia przez zero jak prąd AC, więc łuk może się utrzymywać przez długi czas. **Standardowe gaśnice wodne** są niebezpieczne przy żywych przewodach DC - ryzyko porażenia prądem dla strażaków.
+
+Praktyczny przykład z Niemiec z 2021 roku - **instalacja 500 kW**, pożar spowodowany uszkodzonym connectorem. **Koszt**: 180 tysięcy euro bezpośrednich szkód plus 45 tysięcy strat produkcji. **Straż pożarna** nie mogła użyć wody przez 4 godziny - czekali na wyłączenie obwodów DC. A jak wygląda sytuacja z turbinami wiatrowymi - czy tam też dominują pożary?
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌪️ Scenariusz 2: Awaria turbiny wiatrowej" type="warning">
+
+<KeyPoints title="🔧 Najczęstsze przyczyny awarii">
+- **Pęknięcie łopatki** przez zmęczenie materiału (35% przypadków)
+- **Uszkodzenie łożysk** przekładni - zużycie, brak smaru (25% przypadków)
+- **Błędy w systemie** kontroli pitch, yaw (20% przypadków)
+- **Czynniki ekstremalne** - huragan, oblodzenie (20% przypadków)
+</KeyPoints>
+
+<SupportingDetails title="💰 Konsekwencje finansowe i organizacyjne">
+**Koszty techniczne:**
+- Przestój: **2-6 tygodni** bez produkcji
+- Koszt naprawy: **€50k-€500k** w zależności od uszkodzenia
+- Wymiana łopatki: **€200k-€400k**, przekładnia: **€150k-€300k**
+
+**Ryzyka dodatkowe:**
+- **Środowiskowe**: ryzyko uszkodzenia otoczenia, fragmentacja łopatki
+- **Ludzkie**: zagrożenie dla serwisantów przy pracach na wysokości
+- **Reputacyjne**: wizerunek projektu, ubezpieczenia
+</SupportingDetails>
+
+<InfoBox>
+**Statystyki**: Turbina wiatrowa średnio ma **1-2 poważne awarie** w ciągu 20-letniego okresu eksploatacji, ale nowe technologie (offshore) mają wyższy wskaźnik.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na scenariusz awarii turbiny wiatrowej. Zacznę od pytania, co się dzieje gdy turbina wiatrowa się psuje i jakie elementy są najbardziej problematyczne - to wprowadza specyfikę energetyki wiatrowej.
+
+**Główne przesłanie** to fakt, że **turbiny wiatrowe** mają inne wzorce awaryjności niż fotowoltaika - problemy są bardziej **kompleksowe technicznie** i **kosztowne w naprawie**. **Wysokość** konstrukcji i **trudność dostępu** to dodatkowe czynniki ryzyka, które nie występują w innych technologiach.
+
+**Łopatki** to główny problem - **zmęczenie materiału** przy cyklach obciążenia może prowadzić do pękania. **Przekładnia** to najbardziej awaryjny element, bo łożyska pracują w ekstremalnych warunkach przez ponad 20 lat. **Systemy kontroli** - awarie pitch drive mogą prowadzić do **runaway** turbiny, co jest szczególnie niebezpieczne.
+
+Praktyczny przykład z Polski z 2020 roku - **turbina 2,5 MW**, pęknięcie łopatki podczas burzy. **Koszt**: 380 tysięcy euro wymiana plus 45 tysięcy przestój plus 12 tysięcy koszty serwisowe. **Czas naprawy**: 4 tygodnie - trzeba było czekać na nową łopatkę z zagranicy. A co z najnowszą technologią - magazynami energii? Tam ryzyko jest zupełnie inne.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💥 Scenariusz 3: Thermal runaway w BESS" type="danger">
+
+<KeyPoints title="🔋 Najczęstsze przyczyny thermal runaway">
+- **Nieprawidłowe ładowanie** - przeładowanie, zbyt szybka szybkość ładowania (40%)
+- **Uszkodzenie ogniwa** - mechaniczne, lokalne przegrzanie (30%)
+- **Błąd BMS** - błędne odczyty SoC, SoH, nieprawidłowa kalibracja (20%)
+- **Problemy z chłodzeniem** - awarie układów, zatkania (10%)
+</KeyPoints>
+
+<SupportingDetails title="💰 Katastrofalne konsekwencje">
+**Bezpośrednie zagrożenia:**
+- **Eksplozja/pożar**: zagrożenie życia, toksyczne gazy (HF, CO, CO2)
+- **Kaskadowy efekt**: thermal runaway rozprzestrzenia się między ogniwami
+- **Trudności w gaszeniu**: standardowe środki nieskuteczne
+
+**Koszty finansowe:**
+- **Strata całego systemu**: wymiana BESS w 100% (€500-2000/kWh)
+- **Zniszczenia infrastruktury**: budynki, instalacje elektryczne
+- **Odpowiedzialność**: ubezpieczenia, odszkodowania, kary
+</SupportingDetails>
+
+<WarningBox>
+**Krytyczne**: Thermal runaway może wystąpić w ciągu **sekund** od pierwszych sygnałów temperaturowych. Wymagane są systemy **monitoringu w czasie rzeczywistym** i **szybkiej reakcji**.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na scenariusz thermal runaway. Zacznę od pytania, jak szybko rozwija się thermal runaway w bateriach i czy można to zatrzymać - to wprowadza najpoważniejsze zagrożenie w magazynach energii BESS.
+
+**Główne przesłanie** to fakt, że **thermal runaway** to **najpoważniejsze** zagrożenie w systemach BESS - może prowadzić do **katastrofalnych** skutków w bardzo krótkim czasie. **Nie można go zatrzymać** gdy się zacznie - można tylko zapobiegać przez odpowiednie systemy monitoringu i zabezpieczeń.
+
+**Proces kaskadowy** rozwija się szybko - jedno ogniwo się przegrzewa, uwalnia gaz, podgrzewa sąsiednie ogniwa, co prowadzi do geometrycznego postępu problemu. **Czas reakcji** od pierwszego sygnału temperaturowego do eksplozji może być zaledwie **30-120 sekund**. **BMS (Battery Management System)** musi mieć **wielokrotną redundancję** w monitoringu temperatury.
+
+Praktyczny przykład z **magazynem BESS 2,3 MWh**, gdzie **temperatura ogniwa** wzrosła z 25 stopni do 200 stopni Celsjusza w ciągu **45 sekund**. System alarmowy zadziałał, ale **automatyczne gaszenie nie wystartowało**. Przybycie straży pożarnej po 12 minutach - system już w płomieniach. Przeanalizujmy konkretny przypadek z rzeczywistych danych.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📖 Studium przypadku: Pożar BESS w Arizonie (2019)" type="warning">
+
+<KeyPoints title="📊 Kluczowe fakty z incydentu">
+- **Instalacja**: 2.3 MWh BESS, moduły Li-ion
+- **Czas trwania**: 6 godzin pożaru
+- **Ofiary**: 4 rannych strażaków (uduszenie dymami)
+- **Szkody**: USD 8.9 mln (całkowita strata systemu)
+</KeyPoints>
+
+<Example title="Szczegółowa analiza przyczyn">
+**Przyczyna pierwotna**: Błąd w układzie chłodzenia + nieprawidłowa kalibracja BMS
+
+**Sekwencja wydarzeń**:
+1. **Temperatura ogniwa** wzrosła do 85°C (próg alarmu: 60°C)
+2. **BMS nie zareagował** z powodu błędnej kalibracji czujników
+3. **Thermal runaway** rozpoczął się w 12:23 PM
+4. **Pożar rozprzestrzenił się** na cały system w 15 minut
+5. **Straż pożarna** przybyła o 12:35 PM, ale **systemy gaszenia zawiodły**
+
+**Lekcje kluczowe**: 
+- BESS wymagają **specjalnych systemów** gaszenia (gaz, nie woda)
+- **Monitoring temperatury** z **redundancją** jest absolutnie krytyczny
+- **Procedury ratownicze** muszą uwzględniać **toksyczne gazy** i **specyfikę baterii**
+</Example>
+
+<WarningBox>
+**Krytyczne**: Incydent w Arizonie spowodował **zmiany w normach** BESS w USA i UE - wymagane są teraz **podwójne systemy** monitoringu temperatury i **specjalne procedury** gaszenia.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na studium przypadku. Zacznę od pytania, co się stało z najsłynniejszym pożarem BESS w historii i jakie zmiany spowodował - Arizona to przełomowy przypadek w branży.
+
+**Główne przesłanie** to fakt, że incydent w **Arizonie** to **przełomowy moment** dla bezpieczeństwa magazynów energii BESS. Pokazuje, że nawet **drobne błędy** jak nieprawidłowa kalibracja BMS mogą prowadzić do **katastrofalnych** skutków. **Wpłynął na zmianę** przepisów w całym świecie, wpływając na standardy bezpieczeństwa.
+
+**2,3 MWh** to stosunkowo mała instalacja, ale **szkody 8,9 miliona dolarów** pokazują skalę problemu związanego z thermal runaway. **Problemy z BMS** - błędne odczyty temperatury to często spotykany problem w nowych systemach. **System gaszenia** zawiódł, bo standardowe środki były **nieskuteczne** przeciwko pożarowi baterii litowo-jonowych.
+
+Ustalenia dochodzenia wskazują na potrzebę **wielokrotnej redundancji** w czujnikach temperatury, **szybkiej reakcji** systemów bezpieczeństwa, **specjalnych procedur** dla straży pożarnej. **Wpływ na branżę**: nowe **normy NFPA** i **IEC** dotyczące BESS. Jak wygląda przyszłość bezpieczeństwa OZE? Czy wyciągnęliśmy wnioski z takich incydentów?
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📈 Trendy i prognozy bezpieczeństwa OZE" type="success">
+
+<KeyPoints title="✅ Pozytywne trendy rozwoju">
+- **Lepsze technologie**: nowe materiały ogniw, ulepszone układy BMS, smart grid
+- **Inteligentne systemy**: AI/ML w monitoringu, predykcyjna diagnostyka, digital twins
+- **Standaryzacja**: jednolite normy bezpieczeństwa (IEC, NFPA, UL)
+- **Doświadczenie**: rosnąca wiedza branżowa, best practices, case studies
+</KeyPoints>
+
+<SupportingDetails title="⚠️ Nowe wyzwania bezpieczeństwa">
+- **Nowe technologie**: większe moce jednostkowe, nowe chemie baterii (solid-state)
+- **Skala instalacji**: farmy PV `>500 MW`, offshore `>1 GW`, gigafactory BESS
+- **Cyberbezpieczeństwo**: digitalizacja zwiększa ryzyko ataków, SCADA/OT security
+- **Szybki rozwój**: presja czasowa na wdrażanie może wpływać na jakość
+</SupportingDetails>
+
+<SuccessBox>
+**Perspektywa**: Branża OZE uczy się na błędach - incydenty jak w Arizonie **przekształcają** praktyki bezpieczeństwa i **poprawiają** standardy w całej branży.
+</SuccessBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na podsumowanie i perspektywy. Zacznę od pytania, czy przyszłość bezpieczeństwa OZE wygląda lepiej czy gorzej i jakie nowe wyzwania nas czekają - to wprowadza finalne podsumowanie wykładu.
+
+**Główne przesłanie** to fakt, że **bezpieczeństwo OZE** ewoluuje szybko - nowe technologie przynoszą nowe ryzyka, ale też **lepsze narzędzia** zarządzania nimi. **Kluczowe** to umiejętność **przewidywania nowych zagrożeń** zanim się materializują w rzeczywistych incydentach.
+
+**Pozytywne trendy** obejmują **AI i Machine Learning** w monitoringu, co to prawdziwy przełom - przewidywanie awarii zamiast reakcji po fakcie. **Digital twins** pozwalają testować systemy w środowisku wirtualnym przed wdrożeniem. **Standaryzacja** - jednolite normy **upraszczają** implementację bezpieczeństwa i zmniejszają koszty.
+
+**Nowe wyzwania** to **cyberbezpieczeństwo** jako rosnące zagrożenie - **stare systemy SCADA** są łatwe do ataku. **Skala** - farmy powyżej 500 MW to **nowe problemy** z dostępem, monitoringiem, zarządzaniem. **Presja czasowa** na wdrażanie może prowadzić do **kompromisów w jakości** projektowania bezpieczeństwa.
+
+**Energia wiatrowa offshore** - nowe wyzwania z dostępem do turbin, **korozją**, **ekstremalną pogodą**. Ale też nowe rozwiązania - **monitoring dronami**, **predykcyjne utrzymanie ruchu**. Bezpieczeństwo OZE to **dynamiczny proces** - musimy się ciągle uczyć i adaptować.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

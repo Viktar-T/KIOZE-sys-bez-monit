@@ -1,0 +1,329 @@
+---
+title: "Wprowadzenie: bezpieczeństwo w OZE - kontekst branżowy"
+sidebar_position: 1
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Wprowadzenie: bezpieczeństwo w OZE" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie kontekst branżowy bezpieczeństwa w instalacjach OZE, zna podstawowe pojęcia i definicje oraz potrafi scharakteryzować specyfikę zagrożeń w różnych technologiach odnawialnych.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🌱 **Kontekst branży OZE** - dynamiczny rozwój i wyzwania
+- 📚 **Definicje i pojęcia** - podstawy terminologii bezpieczeństwa  
+- ⚡ **Specyfika zagrożeń** - różnice między technologiami
+- 📖 **Przykłady praktyczne** - incydenty i wnioski
+- 🎯 **Cel przedmiotu** - kompetencje do zdobycia
+</KeyPoints>
+
+<InstructorNotes>
+**Czas wykładu** to piętnaście do osiemnastu minut systematycznego wprowadzenia w świat bezpieczeństwa instalacji OZE. Zacznę od pytania o pożary farm PV lub awarie turbin wiatrowych - to pokaże studentom, że mówimy o realnych problemach, nie abstrakcjach.
+
+**Kluczowe przesłanie** to fakt, że bezpieczeństwo w OZE to **aktywne zarządzanie ryzykiem**, a nie tylko przestrzeganie przepisów. Studenci muszą zrozumieć, że to będzie ich odpowiedzialność zawodowa. **OZE (Odnawialne Źródła Energii)** to dynamicznie rozwijająca się branża, gdzie bezpieczeństwo staje się fundamentem trwałego funkcjonowania.
+
+Struktura wykładu prowadzi od ogólnego kontekstu branżowego, przez podstawowe definicje, aż do konkretnych przykładów zagrożeń w różnych technologiach. **Każda technologia ma swoje specyficzne wyzwania** - **PV (Photovoltaic)** to nie to samo co turbiny wiatrowe czy magazyny energii **BESS (Battery Energy Storage Systems)**.
+
+**Zakończenie** podkreśla praktyczny charakter przedmiotu. To nie są teoretyczne rozważania, ale przygotowanie do realnych wyzwań zawodowych w branży OZE, która będzie potrzebowała kompetentnych specjalistów bezpieczeństwa.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🌱 Kontekst branży OZE i znaczenie bezpieczeństwa" type="info">
+
+<KeyPoints title="📈 Rozwój branży OZE">
+- **40%+ udział OZE** w produkcji energii w Europie
+- **Transformacja energetyczna** w pełnym toku
+- **Bezpieczeństwo = podstawa** trwałego funkcjonowania
+</KeyPoints>
+
+<SupportingDetails title="🔍 Specyficzne cechy instalacji OZE">
+**Rozproszenie geograficzne:**
+- Farmy PV: dziesiątki hektarów, tysiące modułów
+- Farmy wiatrowe: turbiny oddalone o kilometry
+- Biogazownie: kompleksy technologiczne z wieloma systemami
+
+**Złożoność technologiczna:**
+- Połączenia różnych technologii (PV + BESS, hybrydy)
+- Wysokie napięcia DC w PV (do 1500V)
+- Systemy automatyczne bez stałej obsługi
+
+**Wymagania regulacyjne:**
+- Surowsze normy bezpieczeństwa niż tradycyjna energetyka
+- Wymogi raportowania incydentów
+- Certyfikacje i audyty bezpieczeństwa
+</SupportingDetails>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na kontekst branżowy. Zacznę od aktualnych statystyk - w 2023 roku **OZE (Odnawialne Źródła Energii)** stanowiły już czterdzieści procent produkcji energii w **UE (Unii Europejskiej)**, a w Polsce to dynamiczny wzrost z kilku procent do ponad dwudziestu. To nie teoria, to rzeczywistość.
+
+**Kluczowa myśl** to fakt, że **każdy wzrost udziału OZE oznacza wzrost liczby instalacji**, a więc i potencjalnych zagrożeń. Bezpieczeństwo staje się **wąskim gardłem** rozwoju branży. Jeśli nie będziemy potrafić bezpiecznie projektować i eksploatować instalacji OZE, cała transformacja energetyczna może się zatrzymać.
+
+Konkretne liczby robią wrażenie - farmy **PV (Photovoltaic)** o mocy stu megawatów to czterysta tysięcy modułów, czyli czterysta tysięcy punktów potencjalnej awarii. Turbina wiatrowa sześć megawatów to sto dwudziestometrowa wieża plus osiemdziesięciometrowe łopaty, co oznacza ogromne ryzyko mechaniczne. **Rozproszenie geograficzne** i **złożoność technologiczna** to wyzwania, z którymi tradycyjna energetyka nie miała do czynienia.
+
+Zadam studentom pytanie o konsekwencje - co będzie, jeśli z powodu problemów bezpieczeństwa zaczniemy odbiegać od celów transformacji energetycznej?
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📚 Definicja bezpieczeństwa w OZE" type="tip">
+
+<KeyPoints title="🔑 Podstawowa definicja">
+- 🛡️ **Kompleksowe zarządzanie ryzykiem** - nie tylko przepisy
+- 👥 **Bezpieczeństwo ludzi** - pracownicy, mieszkańcy okolicy  
+- 🌍 **Bezpieczeństwo środowiska** - ochrona przed wyciekami
+- 💰 **Bezpieczeństwo majątku** - ochrona inwestycji przed szkodami
+- ⚡ **Bezpieczeństwo operacyjne** - ciągłość dostaw energii
+</KeyPoints>
+
+<KeyConcept title="Definicja bezpieczeństwa w OZE">
+Bezpieczeństwo w instalacjach OZE to **kompleksowe zarządzanie ryzykiem** obejmujące wszystkie aspekty funkcjonowania instalacji - od projektowania, przez budowę i eksploatację, do końca życia technicznego.
+</KeyConcept>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na definicję bezpieczeństwa. **Kluczowa różnica** to rozróżnienie między bezpieczeństwem a przestrzeganiem przepisów. Bezpieczeństwo to **aktywne zarządzanie ryzykiem** - znajdowanie potencjalnych problemów zanim się pojawią, nie czekanie na awarie.
+
+Instalacja może być zgodna z przepisami, ale nadal niebezpieczna jeśli nie uwzględnia specyficznych warunków lokalnych - na przykład częstych burz w regionie czy skłonności do pożarów trawy. **Prawdziwe bezpieczeństwo** wymaga głębokiej analizy ryzyka, nie tylko checkboxów w formalnych procedurach.
+
+Bezpieczeństwo w **OZE (Odnawialnych Źródłach Energii)** opiera się na **czterech filarach**, z których każdy ma równe znaczenie. **Bezpieczeństwo ludzi** to ochrona przed porażeniami, upadkami, narażeniem na gazy. **Bezpieczeństwo środowiska** to zapobieganie wyciekom, pożarom, nadmiernemu hałasowi. **Bezpieczeństwo majątku** to ochrona sprzętu przed uszkodzeniami i minimalizacja strat finansowych. **Bezpieczeństwo operacyjne** to ciągłość dostaw energii dla sieci.
+
+Teraz gdy wiemy, co to bezpieczeństwo, zobaczmy jakie są podstawowe pojęcia, których będziemy używać przez cały kurs.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📝 Podstawowe pojęcia i definicje" type="info">
+
+<KeyPoints title="🔑 Kluczowe definicje">
+- ⚠️ **Zagrożenie (Hazard)** - źródło potencjalnej szkody
+- 📊 **Ryzyko (Risk)** - kombinacja prawdopodobieństwa i skutków
+- 🚨 **Incydent bezpieczeństwa** - zdarzenie niezamierzone
+- 🔧 **Awarie** - nieplanowane zatrzymania instalacji
+</KeyPoints>
+
+<SupportingDetails title="📖 Szczegółowe definicje">
+**Zagrożenie (Hazard)** - źródło potencjalnej szkody lub sytuacja, która może spowodować straty ludzi, środowiska lub majątku.
+
+**Ryzyko (Risk)** - kombinacja prawdopodobieństwa wystąpienia szkody i jej konsekwencji:
+- Prawdopodobieństwo wystąpienia zdarzenia  
+- Skutki tego zdarzenia
+
+**Incydent bezpieczeństwa** - zdarzenie niezamierzone, które prowadzi lub może prowadzić do szkody ludzi, środowiska lub majątku.
+
+**Awarie** - nieplanowane zatrzymania instalacji spowodowane uszkodzeniami technicznymi lub czynnikami zewnętrznymi.
+</SupportingDetails>
+
+<InfoBox title="💡 Kluczowa różnica">
+**Zagrożenie** ≠ **Ryzyko**: Zagrożenie to potencjalna przyczyna szkody (np. wysoka temperatura), ryzyko to ocena jak prawdopodobne jest wystąpienie szkody w konkretnych warunkach.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na podstawowe pojęcia. **Najczęstszy błąd** studentów to mieszanie **zagrożenia** z **ryzykiem**. To fundamentalna różnica, którą muszą zrozumieć od początku.
+
+**Zagrożenie** to "co może się stać" - na przykład wysokie napięcie w instalacji **PV (Photovoltaic)**. **Ryzyko** to "jak prawdopodobne, że się stanie" - na przykład ryzyko porażenia operatora przy pracach konserwacyjnych to kombinacja prawdopodobieństwa wystąpienia zdarzenia i jego konsekwencji.
+
+Praktyczny przykład do zapamiętania - **zagrożenie** to łuk elektryczny w inwerterze PV. **Ryzyko** to szacunek, że prawdopodobieństwo porażenia operatora jest niskie dzięki zabezpieczeniom, ale konsekwencje byłyby wysokie, nawet śmiertelne.
+
+**Incydent** to problem bezpieczeństwa obejmujący pożar, porażenie, wyciek gazów. **Awaria** to problem techniczny, na przykład zatrzymanie produkcji energii. W farmie PV brak produkcji to awaria, ale jeśli spowodowała pożar, to już incydent bezpieczeństwa.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚡ Specyficzne zagrożenia w technologiach OZE" type="warning">
+
+<KeyPoints title="🔍 Główne kategorie zagrożeń">
+- ⚡ **Zagrożenia elektryczne** - wysokie napięcia, łuki elektryczne
+- 🔥 **Zagrożenia pożarowe** - przegrzania, zwarcia
+- 🔧 **Zagrożenia mechaniczne** - uszkodzenia, upadki
+- 💨 **Zagrożenia gazowe** - wycieki, eksplozje
+</KeyPoints>
+
+<SupportingDetails title="🔧 Zagrożenia według technologii">
+**Fotowoltaika (PV):**
+- ⚡ Zagrożenia elektryczne: wysokie napięcia DC, łuki elektryczne
+- 🔥 Zagrożenia pożarowe: zwarcie w okablowaniu, przegrzanie
+- 🔧 Zagrożenia mechaniczne: uszkodzenie modułów, upadki z wysokości
+
+**Energia wiatrowa:**
+- 🔧 Zagrożenia mechaniczne: pęknięcie łopatek, awarie przekładni
+- 💨 Zagrożenia aerodynamiczne: ekstremalne wiatry, oblodzenie
+- 🏗️ Zagrożenia wysokościowe: prace na wieżach turbin
+
+**Magazyny energii (BESS):**
+- 🌡️ Thermal runaway: niekontrolowane rozgrzanie baterii
+- 💨 Zagrożenia gazowe: uwolnienie gazów przy awarii
+- ⚡ Zagrożenia elektryczne: wysokie napięcia, prądy zwarciowe
+
+**Instalacje biogazowe:**
+- 💥 Zagrożenia wybuchowe: mieszaniny gazów w strefach ATEX
+- ☠️ Zagrożenia toksyczne: H₂S, metan, amoniak
+- 🔥 Zagrożenia pożarowe: gazy palne
+</SupportingDetails>
+
+<WarningBox title="⚠️ Kluczowa różnica">
+Każda technologia OZE ma **unikalne zagrożenia** - nie można stosować tych samych procedur bezpieczeństwa dla PV i turbin wiatrowych.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to pięć do sześciu minut na specyficzne zagrożenia. **Kluczowe przesłanie** to fakt, że nie ma "bezpieczeństwa OZE" jako jednolitej kategorii - każda technologia ma inne zagrożenia wymagające innych podejść. To najczęstszy błąd projektantów.
+
+Konkretne przykłady, które studenci muszą zapamiętać. **W fotowoltaice** łuki elektryczne **DC** są znacznie trudniejsze do wygaszenia niż w systemach **AC**. **W energetyce wiatrowej** sto dwudziestometrowa wieża oznacza ogromne ryzyko upadku przy ekstremalnych wiatrach. **W magazynach energii BESS (Battery Energy Storage Systems)** thermal runaway może nastąpić w ciągu minut. **W biogazowniach** siarkowodór **H₂S** jest śmiertelny już przy stężeniu zero jeden procent.
+
+Pytania do studentów wywołają refleksję - które zagrożenie w **PV (Photovoltaic)** jest najczęściej pomijane? Odpowiedź to łuki elektryczne DC, bo większość inżynierów myśli o systemach AC. Dlaczego **BESS** jest szczególnie niebezpieczny? Szybkość rozwoju pożaru - to nie są godziny jak w tradycyjnym pożarze, ale minuty.
+
+Te zagrożenia to nie teoria - pokażę studentom konkretny przykład rzeczywistego incydentu.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📖 Przykład: Incydent w farmie PV" type="warning">
+
+<KeyPoints title="📋 Opis incydentu">
+- ⛈️ **2017, farma PV 10 MW** w centralnej Polsce
+- ⚡ Piorun uszkodził inwerter → zwarcie w okablowaniu DC
+- 🔥 Pożar okablowania, system monitoringu wykrył spadek mocy
+- 💰 **Straty: 200 000 EUR, 2 tygodnie przestoju**
+</KeyPoints>
+
+<Example title="Przyczyny i wnioski">
+**Przyczyny:**
+- Brak właściwych zabezpieczeń odgromowych (SPD)
+- Niewystarczające zabezpieczenia przeciwłukowe (AFCI)
+- Monitoring wykrył spadek mocy, ale za późno
+
+**Wnioski:**
+- Kluczowe: **AFCI** (Arc Fault Circuit Interrupters) i **SPD** (Surge Protection Devices)
+- Monitoring poziomu stringów może wcześniej wykryć problemy
+- Procedury reakcji na burze wymagają ulepszenia
+</Example>
+
+<WarningBox title="🚨 Kluczowa lekcja">
+Ten incydent pokazuje, że **nawet nowoczesne instalacje** mogą mieć błędy w projektowaniu bezpieczeństwa - nie można polegać tylko na "standardowych" rozwiązaniach.
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na przykład praktyczny. To prawdziwa historia z Polski z 2017 roku - studenci muszą zrozumieć, że mówimy o rzeczywistych problemach, nie abstrakcyjnych scenariuszach.
+
+**Kluczowe elementy** tego incydentu to lekcje dla wszystkich. **Burza** to zewnętrzne zagrożenie, którego nie można wyeliminować, więc trzeba przygotować się na jego skutki. **System monitoringu** zadziałał, ale za późno - to pokazuje potrzebę predykcyjnego monitoringu, który wykryje problemy przed ich eskalacją.
+
+**Koszty** dwustu tysięcy euro to około jednego procenta wartości farmy, ale dwa tygodnie przestoju to poważny problem dla operatora sieci energetycznej. To pokazuje, że konsekwencje wykraczają daleko poza same koszty naprawy.
+
+Zadam studentom pytania o refleksję - co zrobiliby inaczej w projekcie tej farmy? Jak wcześnie można wykryć takie zagrożenie? Ten przykład pokazuje potrzebę właściwych kompetencji, które zdobędą w tym kursie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🎯 Cel i zakres przedmiotu" type="success">
+
+<KeyPoints title="📚 Główne cele kształcenia">
+- 🔍 **Identyfikować zagrożenia** w różnych typach instalacji OZE
+- 📊 **Oceniać ryzyko** stosując profesjonalne metody
+- 🛡️ **Projektować systemy bezpieczeństwa** i monitoringu
+- 🚨 **Reagować na incydenty** zgodnie z procedurami
+- 🔮 **Zapobiegać awariom** przez monitoring predykcyjny
+</KeyPoints>
+
+<SuccessBox title="💼 Kompetencje zawodowe">
+Po ukończeniu kursu absolwenci będą przygotowani do pracy jako **inżynierowie bezpieczeństwa OZE**, **audytorzy bezpieczeństwa** lub **specjaliści monitoringu** w branży odnawialnych źródeł energii.
+</SuccessBox>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na cele kształcenia. **Praktyczne zastosowanie** każdego z pięciu celów odpowiada konkretnym zadaniom zawodowym w branży OZE.
+
+**Identyfikacja zagrożeń** przekłada się na prowadzenie audytów bezpieczeństwa, metodologie **HAZID (Hazard Identification)** i **HAZOP (Hazard and Operability Study)**. **Ocena ryzyka** to risk assessment, matryce ryzyka, analizy **FTA (Fault Tree Analysis)** i **ETA (Event Tree Analysis)**. **Projektowanie systemów** bezpieczeństwa to design safety i specyfikacje zabezpieczeń. **Reagowanie na incydenty** to crisis management i procedury awaryjne. **Monitoring predykcyjny** to prewencyjne utrzymanie ruchu i wykorzystanie **AI (Artificial Intelligence)** oraz **ML (Machine Learning)** w monitoringu.
+
+**Kariera zawodowa** w tej dziedzinie to rozwijająca się branża - eksperci bezpieczeństwa OZE są bardzo poszukiwani, a zarobki są konkurencyjne w porównaniu z tradycyjnymi branżami inżynierskimi. To nowa specjalizacja, która będzie potrzebna przez następne dziesięciolecia.
+
+Teraz studenci zobaczą, jak te kompetencje będą się rozwijać przez dziesięć wykładów - od podstaw po zaawansowane umiejętności menedżerskie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🗂️ Struktura kursu (10 wykładów)" type="info">
+
+<KeyPoints title="📋 Podział tematyczny">
+- 🏗️ **Wykłady 1-3**: Podstawy bezpieczeństwa i metody analizy
+- ⚡ **Wykłady 4-6**: Bezpieczeństwo technologii (PV, wiatr, BESS, biogaz)
+- 📊 **Wykłady 7-9**: Systemy monitoringu, cyberbezpieczeństwo, analiza danych
+- 👥 **Wykład 10**: Zarządzanie bezpieczeństwem i kultura
+</KeyPoints>
+
+<SupportingDetails title="🔧 Progresja kompetencji">
+**Etap 1**: Teoretyczne podstawy → Definicje, metody analizy ryzyka
+**Etap 2**: Praktyczne zastosowania → Konkretne technologie i ich zagrożenia  
+**Etap 3**: Zaawansowane narzędzia → Monitoring, AI, predykcyjne utrzymanie
+**Etap 4**: Zarządzanie → Procedury, kultura bezpieczeństwa, liderstwo
+</SupportingDetails>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na strukturę kursu. **Logika struktury** jest progressywna - kurs prowadzi od podstaw teoretycznych do zaawansowanych kompetencji menedżerskich.
+
+**Pierwsze trzy wykłady** to fundament - studenci muszą zrozumieć podstawy metodologii bezpieczeństwa zanim przejdą do konkretnych technologii. Bez tego fundamentu nie będą potrafić poprawnie analizować zagrożeń w różnych systemach OZE.
+
+**Wykłady czwarty do szósty** to praktyczne zastosowania - każda technologia ma inne wyzwania bezpieczeństwa wymagające specyficznych podejść. **Wykłady siódmy do dziewiątego** to nowoczesne technologie - monitoring, sztuczna inteligencja, cyberbezpieczeństwo. **Wykład dziesiąty** to liderstwo - zarządzanie zespołami i kulturą bezpieczeństwa.
+
+Często studenci pytają, czy mogą zacząć od konkretnych technologii. Odpowiedź jest nie - najpierw trzeba zrozumieć podstawy metodologii bezpieczeństwa, które są uniwersalne dla wszystkich technologii.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="💡 Podsumowanie - Kluczowa zasada" type="tip">
+
+<KeyPoints title="🔑 Najważniejsza myśl">
+- 🛡️ **Aktywne zarządzanie ryzykiem** - nie tylko przestrzeganie przepisów
+- 🔄 **Proces ciągły** - od projektowania do likwidacji instalacji
+- 🎯 **Odpowiedzialność zawodowa** - każdy inżynier OZE odpowiada za bezpieczeństwo
+</KeyPoints>
+
+<InfoBox title="🎓 Gotowość do nauki">
+Po tym wprowadzeniu studenci rozumieją **kontekst branżowy**, podstawowe **pojęcia**, **specyfikę zagrożeń** w różnych technologiach i **cel kursu** - są gotowi do systematycznego nabywania kompetencji bezpieczeństwa w OZE.
+</InfoBox>
+
+<InstructorNotes>
+**Wykład kompletny** trwa piętnaście do osiemnastu minut i ma jasną strukturę. Najpierw wprowadzenie z celem uczenia się i motywacją przez trzy minuty. Potem kontekst branżowy przez cztery do pięciu minut na rozwój OZE i specyfikę instalacji.
+
+**Definicje** zajmują trzy do czterech minut - podstawowe pojęcia, kluczowa różnica między zagrożeniem a ryzykiem. **Zagrożenia technologii** to pięć do sześciu minut na specyfikę fotowoltaiki, wiatru, magazynów energii BESS i biogazu. **Przykład praktyczny** przez trzy do czterech minut - incydent w farmie PV, prawdziwa historia.
+
+**Cel przedmiotu** to dwa do trzech minut na kompetencje zawodowe. **Struktura kursu** to plan dziesięciu wykładów w ciągu dwóch do trzech minut. **Podsumowanie** zajmuje dwie minuty z kluczową zasadą.
+
+**Kluczowe osiągnięcie** to zrozumienie przez studentów, że bezpieczeństwo w OZE to **praktyczna umiejętność zawodowa**, nie abstrakcyjna teoria. Są zmotywowani do nauki konkretnych kompetencji, które będą im potrzebne w przyszłej pracy.
+
+**Następne kroki** to przygotowanie do pierwszego wykładu o metodach analizy ryzyka - studenci mają już właściwe podstawy terminologiczne i kontekstowe.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

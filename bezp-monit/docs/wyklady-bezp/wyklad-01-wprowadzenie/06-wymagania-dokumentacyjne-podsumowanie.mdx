@@ -1,0 +1,287 @@
+---
+title: "Wymagania dokumentacyjne - podsumowanie"
+sidebar_position: 6
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<LearningObjective>
+Po tej sekcji student potrafi zidentyfikować kluczowe dokumenty wymagane w procesie projektowania, budowy i eksploatacji instalacji OZE, rozumie zasady ich przechowywania oraz zna wymagania prawne dotyczące dokumentacji bezpieczeństwa.
+</LearningObjective>
+
+<Slide title="📋 Klasyfikacja dokumentacji w projekcie OZE" type="info">
+
+<KeyPoints title="📋 Dokumentacja projektowa">
+- ✅ **Dokumentacja wstępna** - analiza ryzyk, studium wykonalności
+- 🔥 **Dokumentacja wykonawcza** - projekt budowlany, specyfikacje
+- 💡 **Dokumentacja bezpieczeństwa** - ocena ryzyka, procedury awaryjne
+</KeyPoints>
+
+<SupportingDetails title="🔧 Szczegóły dokumentacji projektowej">
+- 📊 **Raport środowiskowy** - ocena oddziaływania na środowisko
+- 🎨 **Rysunki wykonawcze** - szczegółowe plany i przekroje
+- ⚙️ **Kalkulacje projektowe** - obliczenia wytrzymałościowe, elektryczne
+</SupportingDetails>
+
+<KeyConcept title="4 zasady dokumentacji projektowej">
+- **Kompletność** - każdy element instalacji ma odpowiednią dokumentację
+- **Aktualność** - dokumenty odzwierciedlają rzeczywisty stan
+- **Dostępność** - łatwy dostęp dla uprawnionych osób
+- **Przechowywanie** - zgodnie z wymogami prawnymi (min. 30 lat)
+</KeyConcept>
+
+<InstructorNotes>
+Dokumentacja to dowód - każdy inżynier musi wiedzieć co i jak dokumentować. To nie jest tylko formalność wymagana przez prawo, ale żywa pamięć projektu.
+
+Dokumentacja projektu OZE dzieli się na **trzy główne kategorie**, z których każda ma swoje specyficzne wymagania. **Dokumentacja wstępna** to analiza ryzyk i studium wykonalności - bez tego nie ma pozwolenia na budowę. **Dokumentacja wykonawcza** to projekt budowlany z wszystkimi specyfikacjami i rysunkami - bez niej nie można zamówić komponentów ani rozpocząć budowy. **Dokumentacja bezpieczeństwa** obejmuje ocenę ryzyka i procedury awaryjne.
+
+**Cztery zasady** gwarantują jakość dokumentacji. **Kompletność** oznacza, że każdy element instalacji ma odpowiednią dokumentację. **Aktualność** to odzwierciedlenie rzeczywistego stanu w dokumentach. **Dostępność** to łatwy dostęp dla uprawnionych osób. **Przechowywanie** zgodnie z wymogami prawnymi - minimum 30 lat dla dokumentacji wykonawczej.
+
+Projekt bez dokumentacji to jak dom bez fundamentów - nie można go zbudować ani eksploatować bezpiecznie. Dokumentacja to nie tylko wymóg prawny, ale narzędzie zarządzania ryzykiem przez cały cykl życia instalacji.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔨 Dokumentacja wykonawcza (faza budowy)" type="info">
+
+<KeyPoints title="📋 3 typy dokumentacji wykonawczej">
+- ✅ **Dokumentacja dostaw** - certyfikaty CE, protokoły odbioru
+- 🔥 **Dokumentacja wykonawcza** - protokoły testów, dokumentacja as-built
+- 💡 **Dokumentacja odbiorcza** - protokół odbioru technicznego, gwarancje
+</KeyPoints>
+
+<SupportingDetails title="🔧 Kluczowe elementy">
+- 📊 **Certyfikaty zgodności CE** - dla wszystkich komponentów
+- 🎨 **Protokoły testów** - funkcjonalnych i bezpieczeństwa
+- ⚙️ **Dokumentacja as-built** - rzeczywisty stan instalacji
+</SupportingDetails>
+
+<Example title="Dokumentacja farmy PV 20 MW - skala projektu">
+**Projekt (projektant)**:
+- Opis techniczny z analizą ryzyka (50 stron)
+- 25 planszy wykonawczych, specyfikacja dla 12k modułów PV
+- Kalkulacje wytrzymałości i ochrony odgromowej
+
+**Wykonanie (wykonawca)**:
+- 120 certyfikatów CE, 15 protokołów testów funkcjonalnych
+- Dokumentacja as-built z lokalizacją GPS stringów
+- 2000 zdjęć dokumentacyjnych montażu
+
+**Koszt dokumentacji**: €150k (0,75% wartości inwestycji)
+</Example>
+
+<InstructorNotes>
+Budowa to nie tylko montaż - to też dokumentowanie każdego kroku. Każdy element który montujemy, każdy test który przeprowadzamy musi być udokumentowany.
+
+**Dokumentacja wykonawcza** składa się z trzech warstw, które wzajemnie się uzupełniają. **Dostawy** to certyfikaty CE dla wszystkich komponentów, protokoły odbioru materiałów i deklaracje zgodności. To gwarancja, że zamówiliśmy to co powinno być w projekcie. **Wykonanie** to protokoły testów funkcjonalnych i bezpieczeństwa, dokumentacja as-built pokazująca rzeczywisty stan instalacji oraz zdjęcia dokumentacyjne każdego etapu montażu. **Odbiór** to protokół odbioru technicznego, potwierdzenie zgodności z normami i instrukcje eksploatacji.
+
+Przykład z praktyki - farma PV o mocy 20MW wymaga 120 certyfikatów CE, 2000 zdjęć dokumentacyjnych i dokumentacji as-built z lokalizacją GPS każdego stringu modułów. Koszt takiej dokumentacji to około 0,75% wartości całej inwestycji, ale bez niej nie ma gwarancji, ubezpieczenia ani zgodności z normami.
+
+Dokumentacja wykonawcza to dowód zgodności i jakości - to dokument, który będziemy pokazywać przez następne 20-30 lat eksploatacji instalacji.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📚 Dokumentacja eksploatacyjna" type="info">
+
+<KeyPoints title="📋 Dokumenty obowiązkowe w eksploatacji">
+- ✅ **Księga eksploatacji** - opis techniczny, procedury operacyjne
+- 🔥 **Dokumentacja konserwacji** - harmonogram, protokoły, raporty serwisowe
+- 💡 **Dokumentacja bezpieczeństwa** - rejestr incydentów, audyty
+</KeyPoints>
+
+<SupportingDetails title="🔧 Składniki księgi eksploatacji">
+- 📊 **Procedury operacyjne** - codzienne, tygodniowe, miesięczne
+- 🎨 **Instrukcje bezpieczeństwa** - dla personelu i gości
+- ⚙️ **Mapy sytuacyjne** - lokalizacja urządzeń i stref bezpieczeństwa
+</SupportingDetails>
+
+<KeyConcept title="Rejestr zdarzeń i incydentów">
+**Zakres rejestrowania**:
+- Wypadki przy pracy (zgodnie z BHP)
+- Awarie techniczne (przestoje > 1h)
+- Incydenty bezpieczeństwa (near-miss)
+- Zdarzenia zewnętrzne (wandalizm, katastrofy)
+
+**Retencja**: Minimum 5 lat, poważne incydenty - bezterminowo
+</KeyConcept>
+
+<InstructorNotes>
+Eksploatacja to 20+ lat - dokumentacja musi być kompletna i aktualna przez cały okres działania instalacji. To nie są papiery do archiwizacji, ale żywe dokumenty używane codziennie.
+
+**Dokumentacja eksploatacyjna** składa się z trzech głównych elementów, z których każdy ma swoje zastosowanie. **Księga eksploatacji** to serce dokumentacji - zawiera opis techniczny instalacji, procedury operacyjne, instrukcje bezpieczeństwa dla personelu i gości oraz mapy sytuacyjne z lokalizacją urządzeń i stref bezpieczeństwa. **Dokumentacja konserwacji** to harmonogram prac, protokoły wykonanych działań serwisowych, raporty serwisowe i historia wszystkich zmian w instalacji. **Dokumentacja bezpieczeństwa** to przede wszystkim **rejestr incydentów** - wszystkie zdarzenia od poważnych wypadków po incydenty bez ofiar, które są równie ważne do analizy.
+
+Rejestr incydentów musi być szczegółowy - zawierać datę, czas, dokładną lokalizację, opis zdarzenia, osoby zaangażowane i wszystkie podjęte działania. Ten dokument jest szczególnie ważny przy dochodzeniach przyczyn awarii i optymalizacji procedur bezpieczeństwa.
+
+Dokumentacja eksploatacyjna to "pamięć" instalacji - bez niej nie można skutecznie zarządzać, serwisować ani zabezpieczać. To fundament decyzji operacyjnych przez cały okres eksploatacji.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="⚖️ Wymagania prawne - przechowywanie dokumentacji" type="warning">
+
+<KeyPoints title="📋 Ustawa Prawo budowlane (art. 53)">
+- ✅ **Dokumentacja projektowa** - bezterminowo
+- 🔥 **Dokumentacja wykonawcza** - 30 lat
+- 💡 **Księga budowy/obiektu** - bezterminowo
+</KeyPoints>
+
+<SupportingDetails title="🔧 Odpowiedzialność za przechowywanie">
+- 📊 **Inwestor** - główna odpowiedzialność
+- 🎨 **Projektant** - dokumentacja projektowa przez 5 lat
+- ⚙️ **Wykonawca** - dokumentacja wykonawcza przez 3 lata
+</SupportingDetails>
+
+<WarningBox title="⚠️ Przepisy BHP i środowiskowe">
+**Obowiązkowe rejestry**:
+- **Rejestr wypadków** (BHP) - zgodnie z rozporządzeniem
+- **Karty charakterystyki** - dla substancji chemicznych
+- **Instrukcje BHP** - dla każdego stanowiska pracy
+- **Ewidencja odpadów** - wytwarzanie i przekazywanie
+</WarningBox>
+
+<KeyConcept title="Dokumentacja elektroniczna vs tradycyjna">
+**Zalety elektronicznej**:
+- Łatwiejsze wyszukiwanie, automatyczne backup
+- Praca zespołowa (cloud), powiadomienia o terminach
+
+**Wymagania prawne**:
+- **Podpis elektroniczny** - dla dokumentów prawnie wiążących
+- **Integralność** - zabezpieczenie przed modyfikacjami
+- **Zgodność z RODO** - ochrona danych osobowych
+</KeyConcept>
+
+<InstructorNotes>
+Prawo wymaga przechowywania dokumentów przez 30 lat - to nie sugestia, to obowiązek prawny z konkretnymi konsekwencjami za jego niedopełnienie.
+
+**Ustawa Prawo budowlane** definiuje bardzo konkretne wymagania czasowe przechowywania różnych typów dokumentacji. **Dokumentacja wykonawcza** musi być przechowywana przez minimum 30 lat, natomiast **dokumentacja projektowa** i **księgi obiektów** - bezterminowo. **Odpowiedzialność** za przechowywanie jest rozłożona - inwestor ma główną odpowiedzialność, projektant musi przechowywać dokumentację projektową przez 5 lat, a wykonawca dokumentację wykonawczą przez 3 lata.
+
+Dodatkowo przepisy **BHP** wymagają prowadzenia szeregu obowiązkowych rejestrów - wypadków, kart charakterystyk substancji chemicznych, instrukcji dla każdego stanowiska pracy oraz ewidencji odpadów. **Dokumentacja elektroniczna** ma oczywiście zalety organizacyjne, ale musi spełniać wymagania dotyczące podpisu elektronicznego, integralności danych i zgodności z RODO.
+
+Sytuacja z praktyki - brak dokumentacji sprzed 20 lat oznacza poważne problemy z gwarancjami, ubezpieczeniem i zgodnością prawną. Często prowadzi to do procesów sądowych i ogromnych kosztów związanych z odtwarzaniem dokumentacji.
+
+Przechowywanie dokumentacji to nie kwestia wygody czy organizacji biura - to prawny obowiązek z konkretnymi konsekwencjami karnymi i finansowymi.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="💻 Zarządzanie dokumentacją w praktyce" type="info">
+
+<KeyPoints title="📋 System zarządzania dokumentacją">
+- ✅ **Struktura katalogów** - 01_PLANOWANIE → 02_PROJEKTOWANIE → 03_WYKONANIE → 04_EKSPLOATACJA
+- 🔥 **Nazewnictwo plików** - ROK_MM_DD_PROJEKT_DZIAŁ_TYP_WERSJA.pdf
+- 💡 **Kontrola wersji** - system wersjonowania, dziennik zmian, archiwizacja
+</KeyPoints>
+
+<SupportingDetails title="🔧 Narzędzia informatyczne">
+- 📊 **DMS** (SharePoint, Confluence) - zarządzanie dokumentami
+- 🎨 **CAD Management** (Autodesk Vault, SolidWorks PDM) - dokumentacja techniczna
+- ⚙️ **Rozwiązania open source** (Nextcloud, GitLab) - alternatywy ekonomiczne
+</SupportingDetails>
+
+<InfoBox title="ℹ️ Wymagania techniczne">
+**Bezpieczeństwo i dostępność**:
+- **Szyfrowanie** danych w spoczynku i transicie
+- **Backup automatyczny** - minimum 3 kopie w różnych lokalizacjach
+- **Kontrola dostępu** według roli w projekcie
+- **Audit trail** - logi dostępu i modyfikacji
+</InfoBox>
+
+<Example title="Digitalizacja dokumentacji - case study">
+**Firma OZE: 50 projektów/rok, 300 pracowników**
+
+**Problem**: Dokumentacja papierowa, trudno wyszukiwalna, duplikaty
+
+**Rozwiązanie** (12 miesięcy): SharePoint Online, migracja 50k dokumentów
+
+**Rezultaty**: Czas wyszukiwania ↓93% (30→2 min), duplikaty ↓80%, ROI 300%
+</Example>
+
+<InstructorNotes>
+50,000 dokumentów w formie papierowej to prawdziwy koszmar organizacyjny - jak to zorganizować praktycznie? To pytanie zadaje sobie każda większa firma projektowa czy wykonawcza.
+
+**System zarządzania dokumentacją** to nie tylko katalogi na dysku - to przemyślana struktura organizacyjna. **Struktura katalogów** powinna odzwierciedlać fazy projektu od planowania, przez projektowanie, wykonanie, po eksploatację. **Standaryzowane nazewnictwo** plików pozwala szybko znaleźć każdy dokument - format ROK_MM_DD_PROJEKT_DZIAŁ_TYP_WERSJA otwiera się na automatyzację. **Kontrola wersji** to podstawa przy wieloosobowych zespołach projektowych.
+
+**Narzędzia informatyczne** to DMS - systemy zarządzania dokumentami jak SharePoint czy Confluence, **CAD Management** - specjalistyczne rozwiązania do dokumentacji technicznej, oraz **rozwiązania open source** - alternatywy ekonomiczne jak Nextcloud czy GitLab. **Wymagania techniczne** obejmują szyfrowanie danych, automatyczny backup, kontrolę dostępu według ról w projekcie i pełny audit trail dostępu i modyfikacji.
+
+Przykład z praktyki pokazuje, jak firma z 50 projektami rocznie zredukowała czas wyszukiwania dokumentów z 30 minut do 2 minut dzięki kompleksowej digitalizacji i wprowadzeniu odpowiednich systemów. To przekłada się na konkretne oszczędności czasu i eliminację błędów.
+
+Dobry system zarządzania dokumentacją to nie luksus dla większych firm - to absolutna konieczność przy dużych projektach OZE, gdzie liczba dokumentów może sięgać dziesiątek tysięcy.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🎯 Podsumowanie wykładu W1 - Fundamenty bezpieczeństwa OZE" type="success">
+
+<KeyPoints title="📋 5 kluczowych fundamentów bezpieczeństwa OZE">
+- ✅ **Kontekst branżowy** - rozwijający się sektor z unikalnymi zagrożeniami
+- 🔥 **Metodyki oceny ryzyka** - systematyczny approach, matryca P×S
+- 💡 **Ramy normatywne** - hierarchia dyrektyw UE → EN → IEC → PN
+- ⚙️ **Odpowiedzialność zawodowa** - multi-level responsibility, etyka
+- 🔒 **Dokumentacja** - dowód zgodności, 30-letnie przechowywanie
+</KeyPoints>
+
+<SuccessBox title="🚀 Przygotowanie do W2-W10">
+**Następne tematy**:
+- Konkretne metody analizy ryzyka (HAZID, FMEA, FTA)
+- Szczegółowe technologie bezpieczeństwa dla każdej technologii OZE
+- Praktyczne implementacje systemów bezpieczeństwa i monitoringu
+
+**Kompetencje do rozwinięcia**:
+- Systematic risk assessment
+- Znajomość relevant standards
+- Documentation management
+</SuccessBox>
+
+<InstructorNotes>
+To był tylko początek naszej przygody z bezpieczeństwem OZE - teraz zaczynamy prawdziwą pracę z konkretnymi metodami i technologiami.
+
+**Wykład W1** dał nam **pięć fundamentów** bezpieczeństwa OZE, na których będziemy budować całą resztę wiedzy. **Kontekst branżowy** pokazał, że to rozwijający się sektor z unikalnymi wyzwaniami technicznymi i organizacyjnymi. **Metodyki oceny ryzyka** wprowadziły systematyczne podejście przez matrycę P×S, które będziemy stosować we wszystkich analizach. **Ramy normatywne** to hierarchia od dyrektyw Unii Europejskiej po normy krajowe - każda decyzja projektowa musi się wpisywać w ten system.
+
+**Odpowiedzialność zawodowa** to wielopoziomowa odpowiedzialność inżyniera i etyka zawodowa - fundament każdego działania w branży OZE. **Dokumentacja** to dowód zgodności i podstawa wszystkich procesów zarządzania bezpieczeństwem przez cały cykl życia instalacji.
+
+W następnych wykładach przejdziemy od ogólnej teorii do konkretnej praktyki - będziemy realizować analizy HAZID, FMEA, FTA dla każdej technologii OZE - fotowoltaiki, wiatru, magazynów energii. Te fundamenty, które poznaliśmy, to podstawa - bez ich zrozumienia nie można skutecznie projektować, budować ani eksploatować instalacji OZE.
+
+W następnym wykładzie zaczynamy konkretną analizę ryzyka - wróćcie z pytaniami, bo teoria bez praktyki to tylko połowa sukcesu!
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<InstructorNotes title="🎓 Notatki wykładowcy - Przegląd całej sekcji">
+To sekcja szczególnie ważna dla studentów kończących pierwszy wykład - muszą zrozumieć, że dokumentacja to nie tylko formalność, ale fundament każdego projektu OZE.
+
+Całość zajmuje około 18-20 minut i jest ostatnią częścią wykładu W1. Zaczynam od klasyfikacji dokumentacji projektowej - studenci muszą zrozumieć różnicę między dokumentacją wstępną, wykonawczą i bezpieczeństwa. Dokumentacja eksploatacyjna to często nowość dla studentów - nie zdają sobie sprawy, że instalacje OZE wymagają bardzo szczegółowej dokumentacji przez cały okres eksploatacji. Wymagania prawne to szok - 30 lat przechowywania to nie żart. Zarządzanie dokumentacją pokazuję z praktycznej strony - jak to wygląda w rzeczywistych firmach.
+
+**Integracja wiedzy** to kluczowe - łączymy wszystkie tematy z W1 pokazując, że dokumentacja to wątek łączący kontekst branżowy, metodologie oceny ryzyka, ramy normatywne i odpowiedzialność zawodową. **Perspektywa praktyczna** pokazuje, jak to wygląda w rzeczywistości biznesowej - nie tylko teoria, ale konkretne przykłady i case studies.
+
+Studenci często zadają pytania o najważniejsze dokumenty dla inżyniera bezpieczeństwa - ocena ryzyka, protokoły testów, rejestr incydentów, procedury awaryjne i certyfikaty zgodności. Przygotowanie do audytu to kompleksowy proces - pełna lista dokumentacji, łatwy dostęp, przeszkolony personel. Kwestia dokumentacji elektronicznej budzi dyskusje - można, ale trzeba spełnić wymogi prawne dotyczące podpisu elektronicznego, integralności i backupu.
+</InstructorNotes>
+
+</SlideContainer>

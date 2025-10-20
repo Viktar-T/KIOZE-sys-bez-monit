@@ -1,0 +1,527 @@
+---
+title: "Poziomy ryzyka i metody oceny"
+sidebar_position: 3
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Poziomy ryzyka i metody oceny" type="info">
+
+<LearningObjective>
+Po tej sekcji student potrafi zastosować podstawowe metody oceny ryzyka, klasyfikować poziomy ryzyka oraz interpretować matryce ryzyka w kontekście instalacji OZE.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 📊 **Definicja ryzyka** - kombinacja prawdopodobieństwa i skutków
+- 🎯 **Klasyfikacja poziomów** - skale oceny i interpretacja
+- 📈 **Matryca ryzyka** - narzędzie wizualizacji P×S
+- 🔍 **Metody oceny** - jakościowe, półilościowe, ilościowe
+- 🛡️ **Zarządzanie ryzykiem** - hierarchia kontroli i plan ALARP
+</KeyPoints>
+
+<InstructorNotes>
+**Czas wykładu** to dwadzieścia do dwudziestu dwóch minut systematycznego wprowadzenia w ocenę ryzyka. Zacznę od pytania o ocenę ryzyka porażenia prądem w farmie PV o mocy pięćdziesięciu megawatów - to pokaże studentom, że bez systematycznego podejścia każdy będzie miał inną odpowiedź.
+
+**Kluczowe przesłanie** to fakt, że ocena ryzyka to **systematyczna metoda decyzyjna**, a nie intuicja czy przeczucie. Każdy inżynier OZE musi umieć zastosować standardowe narzędzia oceny ryzyka - to fundamentalna umiejętność zawodowa.
+
+Struktura wykładu prowadzi od podstawowej definicji ryzyka jako kombinacji prawdopodobieństwa i skutków, przez klasyfikacje na skalach pięciopunktowych, konstrukcję matryc ryzyka, różne metody oceny, aż po praktyczne zarządzanie ryzykiem w realnych instalacjach.
+
+**Zakończenie** podkreśla, że to fundamentalne umiejętności inżynierskie. Bez znajomości metod oceny ryzyka nie można projektować bezpiecznych instalacji OZE ani podejmować właściwych decyzji o środkach zabezpieczających.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📊 Podstawy oceny ryzyka" type="info">
+
+<KeyPoints title="🔑 Definicja ryzyka">
+- 📊 **Ryzyko** = kombinacja dwóch kluczowych elementów
+- 🎯 **Prawdopodobieństwo (P)** - jak często może wystąpić zdarzenie
+- 💥 **Skutki (S)** - jakie będą konsekwencje tego zdarzenia
+</KeyPoints>
+
+<SupportingDetails title="📐 Wzór podstawowy">
+**Ryzyko = Prawdopodobieństwo × Skutki**
+
+To nie jest matematyka abstrakcyjna - to praktyczne narzędzie inżynierskie do podejmowania decyzji bezpieczeństwa.
+</SupportingDetails>
+
+<KeyConcept title="Fundamentalna zasada">
+Ryzyko można **obliczyć, zmierzyć i porównać** - to pozwala na obiektywne decyzje o akceptacji lub konieczności redukcji ryzyka.
+</KeyConcept>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na podstawy oceny ryzyka. Zacznę od pytania do studentów o to, czy porażenie prądem w farmie PV to wysokie czy niskie ryzyko - to pokaże, że bez systematycznej oceny trudno odpowiedzieć jednoznacznie.
+
+**Kluczowa różnica** to rozróżnienie między ryzykiem a zagrożeniem. **Zagrożenie** to to, co może się stać - na przykład wysokie napięcie w instalacji. **Ryzyko** to kombinacja prawdopodobieństwa wystąpienia i konsekwencji - na przykład pięć procent prawdopodobieństwa rocznie i koszt stu tysięcy euro.
+
+Praktyczny przykład z łukiem elektrycznym w PV pokazuje tę różnicę. Łuk elektryczny to **zagrożenie**. **Ryzyko** zależy od częstotliwości występowania tego zjawiska i skutków finansowych oraz bezpieczeństwa ludzi.
+
+Teraz nauczymy się jak systematycznie oceniać prawdopodobieństwo i skutki, żeby móc podejmować obiektywne decyzje o bezpieczeństwie instalacji OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📈 Klasyfikacja prawdopodobieństwa" type="tip">
+
+<KeyPoints title="🎯 Skala prawdopodobieństwa (1-5)">
+- 🟢 **1 - Bardzo niskie**: < 1% rocznie (rzadkie zdarzenia)
+- 🟡 **2 - Niskie**: 1-10% rocznie (sporadyczne, w normalnych warunkach)
+- 🟠 **3 - Średnie**: 10-25% rocznie (występują w typowych okolicznościach)
+- 🔴 **4 - Wysokie**: 25-50% rocznie (częste w typowych warunkach)
+- ⚫ **5 - Bardzo wysokie**: > 50% rocznie (niemal pewne)
+</KeyPoints>
+
+<SupportingDetails title="📊 Praktyczne przykłady w OZE">
+**Poziom 1**: Uderzenie pioruna w farmę PV (< 0.1% rocznie)
+**Poziom 2**: Awaria inwertera (2-5% rocznie)
+**Poziom 3**: Degradacja modułów (15% po 25 latach)
+**Poziom 4**: Problemy z okablowaniem (30% w złych warunkach)
+**Poziom 5**: Przegrzanie bez chłodzenia (> 80% w upale)
+</SupportingDetails>
+
+<InfoBox title="💡 Kluczowa zasada">
+Prawdopodobieństwo **nie jest stałe** - zależy od stanu instalacji, warunków środowiskowych i jakości utrzymania.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na klasyfikację prawdopodobieństwa. Nie będę pokazywał tylko liczb - użyję konkretnych przykładów z branży OZE, które studenci mogą sobie wyobrazić i z którymi będą pracować zawodowo.
+
+**Ważne rozróżnienie** dotyczy tego, jak definiujemy prawdopodobieństwo. Uderzenie pioruna w **konkretną farmę** to bardzo niskie prawdopodobieństwo. Uderzenie pioruna w **jakąś farmę w regionie** to już średnie prawdopodobieństwo - to pokazuje, że kontekst ma znaczenie.
+
+Pytanie do studentów o ocenę prawdopodobieństwa **thermal runaway** w **BESS (Battery Energy Storage System)** pokaże różnice w podejściu, szczególnie że to nowa technologia z małą ilością danych historycznych.
+
+Gdy już znamy prawdopodobieństwo, musimy nauczyc się oceniać skutki - to druga składowa ryzyka, która jest równie ważna jak prawdopodobieństwo.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💰 Klasyfikacja skutków" type="warning">
+
+<KeyPoints title="💥 Skala skutków (1-5)">
+- 🟢 **1 - Minimalne**: €0-10k, brak kontuzji
+- 🟡 **2 - Niskie**: €10k-100k, drobne kontuzje
+- 🟠 **3 - Średnie**: €100k-1M, kontuzje wymagające leczenia
+- 🔴 **4 - Wysokie**: €1M-10M, poważne kontuzje, zagrożenie życia
+- ⚫ **5 - Katastrofalne**: >€10M, ofiary śmiertelne, szkody środowiskowe
+</KeyPoints>
+
+<SupportingDetails title="📊 Przykłady skutków w OZE">
+**Poziom 1**: Awaria jednego modułu PV, koszt €200, brak zagrożenia
+**Poziom 2**: Pożar stringa PV, koszt €50k, ewakuacja załogi
+**Poziom 3**: Awaria turbiny wiatrowej, koszt €500k, 2 tygodnie przestoju
+**Poziom 4**: Thermal runaway BESS, koszt €5M, zagrożenie okolicy
+**Poziom 5**: Katastrofa całej farmy, koszt €50M, ofiary śmiertelne
+</SupportingDetails>
+
+<WarningBox title="⚠️ Holistyczna ocena skutków">
+Ocena skutków uwzględnia **3 wymiary**: finansowe, ludzkie i środowiskowe. Nie można skupiać się tylko na kosztach!
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na klasyfikację skutków. Kluczowa myśl to fakt, że skutki to nie tylko pieniądze - **życie ludzkie i środowisko** są często ważniejsze niż koszty finansowe.
+
+Każdy poziom skutków powinien mieć **konkretny przykład z branży OZE**, który studenci mogą sobie wyobrazić. Używam realistycznych liczb z branży, żeby pokazać rzeczywiste konsekwencje awarii w instalacjach OZE.
+
+Skutki mają **różne wymiary**, które musimy uwzględniać holistycznie. **Wymiar finansowy** to koszty napraw, ubezpieczenia i utrata przychodów. **Wymiar ludzki** to kontuzje, trauma psychiczna i reputacja firmy. **Wymiar środowiskowy** to emisje, skażenie i wpływ na ekosystem.
+
+Pytanie do studentów o skutki pożaru w farmie PV o mocy stu megawatów pokaże, że trzeba myśleć o wszystkich aspektach jednocześnie, nie tylko o finansach.
+
+Teraz, gdy umiemy ocenić prawdopodobieństwo i skutki, możemy skonstruować matrycę ryzyka - praktyczne narzędzie do wizualizacji i porównywania różnych zagrożeń.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="📊 Matryca ryzyka - koncepcja" type="info">
+
+<KeyPoints title="🎯 Definicja matrycy">
+- 📈 **Narzędzie wizualizacji** - kombinacja P×S w jednej tabeli
+- 🎨 **Kategoryzacja ryzyka** - kolorowe strefy akceptacji
+- 📊 **Obiektywna ocena** - uniwersalne standardy branżowe
+</KeyPoints>
+
+<SupportingDetails title="📋 Matryca P×S">
+```
+         Skutki (S)
+       1  2  3  4  5
+P 1  | 1| 2| 3| 4| 5|
+r 2  | 2| 4| 6| 8|10|
+o 3  | 3| 6| 9|12|15|
+w 4  | 4| 8|12|16|20|
+d 5  | 5|10|15|20|25|
+```
+
+**Wzór**: Ryzyko = P × S (prawdopodobieństwo × skutki)
+</SupportingDetails>
+
+<InfoBox title="💡 Uniwersalność matrycy">
+Ta sama matryca służy do oceny **wszystkich rodzajów ryzyka** w OZE - od pożarów PV po awarie turbin wiatrowych.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na koncepcję matrycy ryzyka. Narysuję matrycę na tablicy i pokażę, jak się nią posługiwać - to wizualne narzędzie, które studenci muszą zrozumieć i umieć zastosować w praktyce.
+
+Kluczowa zasada to fakt, że matryca daje **jedną liczbę** - iloczyn prawdopodobieństwa i skutków. Ta liczba pozwala porównywać różne ryzyka obiektywnie i podejmować decyzje o priorytetach w zarządzaniu bezpieczeństwem.
+
+Praktyczny przykład pokazuje to w działaniu. **Ryzyko pożaru PV** to trzy razy trzy równa się dziewięć. **Ryzyko uderzenia pioruna** to jeden razy cztery równa się cztery. Pożar ma wyższy priorytet mimo niższych skutków, bo prawdopodobieństwo jest znacznie wyższe.
+
+Ale co oznacza wynik dziewięć? Teraz nauczymy się interpretować poziomy ryzyka i rozumieć, jakie działania należy podjąć przy różnych wartościach ryzyka.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="data" />
+
+<Slide title="🚦 Interpretacja poziomów ryzyka" type="warning">
+
+<KeyPoints title="🎨 Kategorie ryzyka">
+- 🟢 **1-4: NISKIE** - akceptowalne, monitoring
+- 🟡 **5-9: ŚREDNIE** - wymaga uwagi, plan redukcji  
+- 🟠 **10-16: WYSOKIE** - natychmiastowa uwaga
+- 🔴 **17-25: KRYTYCZNE** - niedopuszczalne, działanie teraz
+</KeyPoints>
+
+<SupportingDetails title="📋 Działania dla każdej kategorii">
+**Ryzyko NISKIE (1-4)**: Akceptowalne z regularnym monitorowaniem
+**Ryzyko ŚREDNIE (5-9)**: Wymaga planu redukcji w ciągu 6 miesięcy
+**Ryzyko WYSOKIE (10-16)**: Natychmiastowe działania redukcyjne
+**Ryzyko KRYTYCZNE (17-25)**: Natychmiastowe zatrzymanie/zastąpienie
+</SupportingDetails>
+
+<WarningBox title="⚠️ Krytyczna zasada">
+Nie ma **"ryzyka zerowego"** - każda instalacja ma jakieś ryzyko. Celem jest redukcja do **poziomu ALARP** (As Low As Reasonably Practicable).
+</WarningBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na interpretację poziomów ryzyka. Każda kategoria wymaga **konkretnych działań**, które muszą być jasno zdefiniowane i wykonalne w praktyce.
+
+**Ryzyko niskie** oznacza, że sprawdzamy regularnie, ale nie panikujemy. **Ryzyko średnie** wymaga zaplanowania redukcji w określonym czasie, ale nie w trybie awaryjnym. **Ryzyko wysokie** oznacza szybkie działania, może nawet wstrzymanie części operacji. **Ryzyko krytyczne** to natychmiastowe zatrzymanie i zastąpienie rozwiązaniem bezpieczniejszym.
+
+**ALARP (As Low As Reasonably Practicable)** to standard branżowy w zarządzaniu ryzykiem. Ryzyko musi być tak niskie, jak **rozsądnie praktyczne**. Nie można eliminować wszystkiego, ale można i należy minimalizować do akceptowalnego poziomu.
+
+Pytanie do studentów o to, co zrobić gdy ryzyko wynosi piętnaście - czyli jest wysokie - pokaże różnicę między teoretyczną oceną a praktycznymi działaniami, które trzeba podjąć w realnej sytuacji.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔥 Przykład: Zagrożenie pożarowe w farmie PV" type="warning">
+
+<KeyPoints title="📋 Scenariusz praktyczny">
+- ⚡ **Łuk elektryczny** w uszkodzonym connectorze MC4
+- 📊 **P = 3** (średnie prawdopodobieństwo: 10-25% rocznie)
+- 💥 **S = 3** (średnie skutki: €100k-1M, kontuzje)
+- 🎯 **Ryzyko = 9** → **ŚREDNIE** (plan redukcji wymagany)
+</KeyPoints>
+
+<SupportingDetails title="🔍 Uzasadnienie oceny">
+**Prawdopodobieństwo = 3**:
+- Uszkodzenia connectorów MC4 są częste w instalacjach PV
+- Błędy montażu, starzenie materiałów, warunki środowiskowe
+- Szacunkowo 15% instalacji ma problemy z connectorami rocznie
+
+**Skutki = 3**:
+- Pożar może objąć 5-10 stringów = strata ~€75 000
+- Ryzyko kontuzji dla obsługi przy próbach gaszenia
+- Potencjalne zagrożenie dla sąsiednich terenów (trawa)
+</SupportingDetails>
+
+<Example title="Działania redukcyjne">
+Aby obniżyć ryzyko z poziomu 9 (średnie) do 4-6:
+1. **Redukcja P** (3→2): Lepszy montaż, regularne przeglądy connectorów
+2. **Redukcja S** (3→2): Systemy gaszenia, monitoring temperatury
+3. **Kombinacja**: AFCI + monitoring + procedury = P=2, S=2 → Ryzyko=4
+</Example>
+
+<InstructorNotes>
+**Czas** to cztery do pięciu minut na praktyczny przykład zagrożenia pożarowego. To jest **kluczowy moment** wykładu - studenci widzą jak teoria przekłada się na praktykę. Użyję tablicy i matrycy, żeby pokazać krok po kroku cały proces oceny ryzyka.
+
+Ważne jest, żeby studenci zrozumieli, że **ocena nie jest arbitralna**. Każda skala - prawdopodobieństwo równa się trzy, skutki równa się trzy - ma konkretne uzasadnienie oparte na danych z branży, doświadczeniu ekspertów i analizie incydentów.
+
+Działania redukcyjne pokazują, że **ryzyko można obniżyć** zarówno przez redukcję prawdopodobieństwa, jak i przez redukcję skutków. To przygotowuje studentów do następnego tematu o hierarchii kontroli ryzyka.
+
+Pytanie do studentów o to, czy wynik dziewięć - czyli ryzyko średnie - jest akceptowalny dla farmy PV o mocy pięćdziesięciu megawatów pokaże różnice w akceptacji ryzyka w zależności od skali projektu i jego znaczenia.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📋 Metody oceny ryzyka" type="info">
+
+<KeyPoints title="🔍 Trzy główne metody">
+- 🎨 **Ocena jakościowa** - oparta na doświadczeniu ekspertów
+- ⚖️ **Ocena półilościowa** - kombinacja jakości + liczby (matryca P×S)  
+- 📊 **Ocena ilościowa** - precyzyjne dane liczbowe
+</KeyPoints>
+
+<InfoBox title="💡 Wybór metody">
+Każda metoda ma swoje miejsce w cyklu życia projektu OZE - od wstępnej oceny jakościowej po szczegółową analizę ilościową dla dużych instalacji.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na przegląd metod oceny ryzyka. To nie są "lepsze versus gorsze metody", ale **różne narzędzia** do różnych sytuacji w cyklu życia projektu.
+
+**Ocena jakościowa** służy do szybkiego przeglądu na początku projektu, kiedy mamy mało danych. **Ocena półilościowa** to metoda najczęściej używana w branży OZE - daje dobrą równowagę między precyzją a czasem wykonania. **Ocena ilościowa** jest stosowana w dużych projektach, przy wymaganiach ubezpieczeniowych i zgodności z przepisami.
+
+Każda metoda wymaga innego podejścia i różnych kompetencji zespołu. Teraz zobaczmy szczegóły każdej metody, żeby zrozumieć, kiedy i jak je stosować w praktyce zarządzania bezpieczeństwem instalacji OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📝 1. Ocena jakościowa" type="tip">
+
+<KeyPoints title="🎨 Charakterystyka metody">
+- 🧠 **Oparta na doświadczeniu** ekspertów branżowych
+- ⚡ **Szybka** do wykonania (1-2 dni)
+- 📊 **Jakościowa** - bez precyzyjnych liczb
+</KeyPoints>
+
+<SupportingDetails title="⚖️ Zalety i wady">
+**Zalety:**
+- Szybka do wykonania (1-2 dni zespół)
+- Wymaga minimalnych danych o instalacji
+- Intuicyjna dla zespołów eksperckich
+
+**Wady:**
+- Subiektywna - wyniki zależą od zespołu
+- Brak precyzji liczbowej do porównań
+- Trudna do zautomatyzowania i standaryzacji
+</SupportingDetails>
+
+<Example title="Zastosowanie w OZE">
+**Idealne dla**: Wstępna ocena ryzyka w fazie koncepcyjnej projektu, szybki screening wielu lokalizacji, wstępne porównanie technologii.
+</Example>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na ocenę jakościową. Kluczowe jest, że jakościowa nie równa się subiektywna - to **systematyczna metoda** oparta na wiedzy eksperckiej, a nie na przeczuciach czy intuicji.
+
+**HAZOP (Hazard and Operability Study)** to przykład oceny jakościowej - systematyczna, wymagająca profesjonalnej wiedzy, ale bez precyzyjnych liczb. To pokazuje, że metoda jakościowa też ma swoje standardy i procedury.
+
+Studenci muszą zrozumieć, że ocena jakościowa ma ograniczenia. Nie można jej użyć do precyzyjnego porównania ryzyka finansowego różnych projektów - do tego potrzebna będzie ocena ilościowa z konkretnymi liczbami.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚖️ 2. Ocena półilościowa" type="info">
+
+<KeyPoints title="🔢 Kompromis precyzji">
+- ⚖️ **Łączy jakość** eksperckiej oceny z **liczbami**
+- 📊 **Matryca P×S** = klasyczny przykład
+- 🎯 **Uniwersalna** dla większości projektów OZE
+</KeyPoints>
+
+<SupportingDetails title="📋 Elementy metody">
+- Jakościowa ocena prawdopodobieństwa (skala 1-5)
+- Jakościowa ocena skutków (skala 1-5)  
+- Obliczenie ryzyka jako iloczyn P × S
+- Kategoryzacja ryzyka według progu akceptacji
+</SupportingDetails>
+
+<SuccessBox title="✅ Złoty standard OZE">
+Ocena półilościowa to **najczęściej używana metoda** w branży OZE - dobra równowaga między precyzją a kosztem wykonania.
+</SuccessBox>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na ocenę półilościową. To nie jest "lepsza wersja jakościowej", ale **odrębna metoda** z własnymi zasadami i zastosowaniami w branży OZE.
+
+Większość projektów OZE używa właśnie tej metody oceny ryzyka. **HAZID (Hazard Identification)** i **FMEA (Failure Mode and Effects Analysis)** opierają się na podobnym podejściu - kombinacji eksperckiej oceny z systemem numerycznym.
+
+Przewaga oceny półilościowej polega na tym, że pozwala na porównanie ryzyka między projektami, ale nie wymaga kosztownych badań statystycznych ani długich analiz ilościowych. To sprawia, że jest praktyczna i ekonomicznie uzasadniona dla większości instalacji OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 3. Ocena ilościowa" type="success">
+
+<KeyPoints title="🎯 Najwyższa precyzja">
+- 📈 **Precyzyjne dane** liczbowe o prawdopodobieństwie
+- 💰 **Konkretne wartości** finansowe skutków
+- 📊 **Wartości liczbowe** ryzyka (€/rok, prawdopodobieństwa)
+</KeyPoints>
+
+<SupportingDetails title="🔢 Elementy metody">
+- **Prawdopodobieństwo**: częstości (np. 1×10⁻⁶/rok)
+- **Skutki**: konkretne wartości (€, liczba ofiar)  
+- **Ryzyko**: wartość finansowa (np. €10 000/rok)
+- **Porównanie**: umożliwia porównanie z budżetami bezpieczeństwa
+</SupportingDetails>
+
+<Example title="Zastosowanie w OZE">
+**Idealne dla**: Duże instalacje OZE (>50 MW), analizy ubezpieczeniowe, wymagania regulacyjne (SEVESO), optymalizacja kosztów bezpieczeństwa.
+</Example>
+
+<InstructorNotes>
+**Czas** to dwa do trzech minut na ocenę ilościową. Metoda ilościowa wymaga **znacznych danych historycznych** i **kosztownej** analizy, co oznacza, że nie każdy projekt OZE może sobie na nią pozwolić.
+
+Praktyczne ograniczenia są znaczące. Nie wszystkie technologie OZE, szczególnie te nowe jak **BESS (Battery Energy Storage System)**, mają wystarczające dane historyczne do precyzyjnej analizy ilościowej. Koszt analizy ilościowej może przewyższać korzyści, szczególnie w mniejszych projektach. Metoda wymaga specjalistycznych narzędzi i ekspertów z dziedziny analizy ryzyka.
+
+Teraz zobaczymy konkretny przykład analizy ilościowej, żeby zrozumieć, jak wygląda w praktyce i kiedy warto w nią inwestować.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📖 Przykład: Thermal runaway w BESS 10 MWh" type="warning">
+
+<KeyPoints title="📊 Analiza ilościowa - konkretne liczby">
+- 📈 **Prawdopodobieństwo**: 1×10⁻⁴/rok (1 incydent na 10 000 systemów)
+- 💰 **Skutki**: €6 000 000 (wymiana systemu + utrata produkcji)
+- 📊 **Ryzyko roczne**: €600/rok
+- ✅ **Wniosek**: Akceptowalne przy systemach redukcji
+</KeyPoints>
+
+<Example title="Szczegółowa analiza skutków">
+**Skutki finansowe:**
+- Koszt wymiany całego systemu BESS: €5 000 000
+- Utrata produkcji: €500 000/rok × 2 lata = €1 000 000
+- **Całkowite skutki = €6 000 000**
+
+**Obliczenie ryzyka:**
+Ryzyko = 1×10⁻⁴ × €6 000 000 = **€600/rok**
+
+**Interpretacja**: Przy inwestycji €5M, ryzyko €600/rok (0.012%) jest akceptowalne, ale wymaga wdrożenia systemów redukcji ryzyka (chłodzenie, monitoring, BMS).
+</Example>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na przykład analizy ilościowej. To pokazuje **różnicę** między metodą półilościową a ilościową - konkretne liczby przeciwko skalom jakościowym.
+
+Studenci muszą zrozumieć, że **sześćset euro rocznie** to rzeczywista wartość ryzyka, którą można porównać z kosztami redukcji ryzyka. To pozwala na obiektywne decyzje finansowe.
+
+Pytanie o to, czy warto wydać sto tysięcy euro na lepszy system chłodzenia, żeby zredukować ryzyko z sześciuset euro rocznie do stu euro rocznie, to praktyczny przykład procesu decyzyjnego w zarządzaniu ryzykiem.
+
+To pokazuje, jak inżynierowie podejmują decyzje o inwestycjach w bezpieczeństwo na podstawie analizy ryzyka - porównują koszty redukcji z korzyściami z obniżenia ryzyka.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🎯 Hierarchia kontroli ryzyka" type="info">
+
+<KeyPoints title="📋 5 poziomów kontroli (od najlepszej)">
+- 🏆 **1. Eliminacja** - usunięcie źródła zagrożenia
+- 🔄 **2. Substytucja** - zastąpienie bezpieczniejszym rozwiązaniem  
+- ⚙️ **3. Kontrola techniczna** - zabezpieczenia, systemy ochronne
+- 📋 **4. Kontrola administracyjna** - procedury, szkolenia
+- 👷 **5. Środki ochrony indywidualnej** - rękawice, hełmy (ostatnia linia obrony)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Przykłady w OZE">
+**Eliminacja**: Zastąpienie ogniw Li-ion ogniwami LiFePO₄ (mniej podatne na thermal runaway)
+**Substytucja**: Napięcia DC 600V zamiast 1500V w instalacji PV  
+**Techniczna**: System AFCI, BMS, monitoring temperatury
+**Administracyjna**: Procedury LOTO, szkolenia z obsługi BESS
+**Indywidualna**: Rękawice dielektryczne, hełmy bezpieczeństwa
+</SupportingDetails>
+
+<InfoBox title="💡 Kluczowa zasada">
+Zawsze zaczynamy od **wyższych poziomów** hierarchii - eliminacja jest lepsza niż środki ochrony indywidualnej. Kombinacja metod z różnych poziomów daje najlepsze rezultaty.
+</InfoBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na hierarchię kontroli ryzyka. Kluczowa zasada to fakt, że **kolejność ma znaczenie** - zaczynamy od eliminacji zagrożenia, nie od środków ochrony indywidualnej.
+
+W rzeczywistych projektach często używa się **kombinacji** metod z różnych poziomów hierarchii. Na przykład eliminacja części ryzyka przez zastąpienie technologii, plus kontrola techniczna w postaci systemów monitoringu, plus procedury administracyjne i środki ochrony indywidualnej.
+
+Pytanie do studentów o to, co zrobić gdy nie można wyeliminować zagrożenia całkowicie, pokaże potrzebę hierarchicznego podejścia - przechodzenia przez kolejne poziomy kontroli ryzyka.
+
+Teraz, gdy wiemy jak redukować ryzyko, zobaczmy jak systematycznie zarządzać całym procesem oceny i kontroli ryzyka w instalacjach OZE.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📋 Plan zarządzania ryzykiem" type="success">
+
+<KeyPoints title="🔄 Cykl zarządzania ryzykiem">
+- 🔍 **1. Identyfikacja** - znajdź wszystkie zagrożenia
+- 📊 **2. Ocena** - oceń prawdopodobieństwo i skutki
+- 🛡️ **3. Kontrola** - wybierz środki redukcji
+- ⚙️ **4. Implementacja** - wdróż środki i procedury
+- 📈 **5. Monitoring** - sprawdzaj skuteczność i aktualizuj
+</KeyPoints>
+
+<SupportingDetails title="🔄 Iteracyjny proces">
+**Cykl ciągły**: Monitoring wykazuje potrzebę aktualizacji → wracamy do identyfikacji → nowe ryzyka wymagają oceny → i tak dalej.
+
+**Częstotliwość**: Przegląd pełny co roku, aktualizacja przy każdej większej zmianie w instalacji.
+</SupportingDetails>
+
+<SuccessBox title="✅ Standard branżowy">
+Ten 5-krokowy proces to **standard branżowy** w zarządzaniu bezpieczeństwem - od małych instalacji po duże farmy przemysłowe.
+</SuccessBox>
+
+<InstructorNotes>
+**Czas** to trzy do czterech minut na plan zarządzania ryzykiem. Kluczowe przesłanie to fakt, że to nie jest jednorazowy proces - **zarządzanie ryzykiem to ciągła działalność**, która trwa przez cały cykl życia instalacji OZE.
+
+Praktyczne zastosowanie obejmuje różne sytuacje. **Roczne przeglądy** to absolutne minimum w branży. **Przy każdej większej zmianie** w instalacji - nowe komponenty, procedury, zmiany w organizacji - trzeba zaktualizować ocenę ryzyka. **Po każdym incydencie** trzeba przeanalizować, co można poprawić w systemie zarządzania ryzykiem.
+
+Pytanie do studentów o to, kiedy trzeba zaktualizować ocenę ryzyka, podkreśli ciągły charakter tego procesu i pokaże, że to nie jest jednorazowa analiza, ale żywy system zarządzania bezpieczeństwem.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚖️ Podsumowanie - Akceptacja ryzyka w OZE" type="tip">
+
+<KeyPoints title="🎯 Kluczowe przesłania">
+- 🛡️ **Ryzyko zerowe** nie istnieje - każda instalacja ma jakieś ryzyko
+- 📊 **ALARP** - As Low As Reasonably Practicable to standard branżowy
+- 💰 **Praktyczny próg**: < €10 000/rok na scenariusz dla instalacji OZE
+- 🔄 **Proces ciągły** - zarządzanie ryzykiem nie kończy się z projektem
+</KeyPoints>
+
+<KeyConcept title="Przesłanie końcowe">
+Ocena ryzyka to **systematyczne narzędzie inżynierskie** do podejmowania decyzji bezpieczeństwa. Każdy inżynier OZE musi umieć zastosować podstawowe metody oceny ryzyka - to fundamentalna umiejętność zawodowa.
+</KeyConcept>
+
+<InfoBox title="🎓 Gotowość do zastosowania">
+Po tym wykładzie studenci potrafią **zidentyfikować, ocenić i zarządzać ryzykiem** w instalacjach OZE używając standardowych narzędzi branżowych - matryc ryzyka, hierarchii kontroli i procesu ALARP.
+</InfoBox>
+
+<InstructorNotes>
+**Wykład kompletny** - dwadzieścia do dwudziestu dwóch minut systematycznego wprowadzenia w ocenę ryzyka. Struktura została zrealizowana od podstawowej definicji ryzyka jako kombinacji prawdopodobieństwa i skutków, przez klasyfikacje na skalach pięciopunktowych, konstrukcję matryc ryzyka, różne metody oceny, aż po praktyczne zarządzanie ryzykiem.
+
+Studenci przeszli przez wszystkie kluczowe etapy - od rozróżnienia między ryzykiem a zagrożeniem, przez ocenę prawdopodobieństwa i skutków, interpretację poziomów ryzyka, praktyczne przykłady z farmy PV i **BESS (Battery Energy Storage System)**, aż po hierarchię kontroli ryzyka i plan zarządzania.
+
+Kluczowe osiągnięcie to fakt, że studenci rozumieją, iż ocena ryzyka to **praktyczna umiejętność inżynierska**, a nie teoria akademicka. Są przygotowani do zastosowania standardowych narzędzi - matryc ryzyka, hierarchii kontroli i procesu **ALARP (As Low As Reasonably Practicable)** w rzeczywistych projektach OZE.
+
+Następne kroki to przygotowanie do szczegółowych metod analizy ryzyka - **HAZID (Hazard Identification)**, **HAZOP (Hazard and Operability Study)** i **FMEA (Failure Mode and Effects Analysis)**. Studenci mają już solidne podstawy teoretyczne i praktyczne do dalszego rozwoju kompetencji w zarządzaniu bezpieczeństwem instalacji OZE.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

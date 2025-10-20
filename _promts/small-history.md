@@ -111,4 +111,9 @@ Style:
 * [PLC i protokoły Modbus RTU/TCP](./02-plc-modbus.mdx)
 * [Serwery OPC UA: namespace&#39;y, tagi, bezpieczeństwo](./03-opc-ua-serwery.mdx)
 
-* [ ] on the bases of information from **@gpt-v1-50-50.md** build in the folder bezp-monit\docs\wyklady-bezp simular to bezp-monit\docs\wyklady structer with folder for each wyklad in the part "wykład (20 h, 10 × 2 h)" and builfd index.md file for each wyklad.
+* [X] on the bases of information from **@gpt-v1-50-50.md** build in the folder bezp-monit\docs\wyklady-bezp simular to bezp-monit\docs\wyklady structer with folder for each wyklad in the part "wykład (20 h, 10 × 2 h)" and builfd index.md file for each wyklad.
+* [ ] on the bases of information from @bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\index.md write logical, comprehensive content for the lecture. each punkt in "Struktura materiału" should be separate mdx file. The complexity level of the text should be beginer-middle. Write only for these parts:
+* [ ] implement **@4. slides-conversion.md** for all mdx files in bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie
+* [ ] implement **@4. slides-conversion.md** for all mdx files in bezp-monit\docs\wyklady-bezp\wyklad-02-analiza-ryzyka
+* [ ] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\01-...
+* [ ]
