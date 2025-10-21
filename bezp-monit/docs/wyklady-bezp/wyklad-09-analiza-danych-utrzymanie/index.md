@@ -9,15 +9,6 @@ title: "W9: Analiza danych i utrzymanie predykcyjne"
 
 Wykład omawia metody analizy danych eksploatacyjnych w instalacjach OZE, w tym trendowanie, progi alarmowe, alarmy wskaźnikowe, detekcję anomalii oraz przegląd narzędzi analitycznych. Prezentuje studia przypadków z rzeczywistych instalacji.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Analizować trendy danych eksploatacyjnych z instalacji OZE.
-2. Określać progi alarmowe na podstawie danych historycznych.
-3. Identyfikować alarmy wskaźnikowe i ich przyczyny.
-4. Stosować metody detekcji anomalii w danych.
-5. Wybrać odpowiednie narzędzia analityczne (Excel/Python/Grafana).
-6. Interpretować wyniki analizy w kontekście utrzymania maszyn.
-
 ## Struktura materiału
 
 1. [Trendowanie i analiza danych eksploatacyjnych](./01-trendowanie-analiza-danych-eksploatacyjnych.mdx)

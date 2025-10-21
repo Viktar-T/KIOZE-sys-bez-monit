@@ -1,0 +1,354 @@
+---
+title: "Zagrożenia mechaniczne i aerodynamiczne turbin"
+sidebar_position: 1
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Zagrożenia mechaniczne i aerodynamiczne turbin" type="info">
+
+<LearningObjective>
+Po tej sekcji student identyfikuje główne zagrożenia mechaniczne i aerodynamiczne w turbinach wiatrowych, rozumie mechanizmy ich powstawania i potrafi scharakteryzować podstawowe metody zapobiegania.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🔧 **Zagrożenia mechaniczne** - awarie łopatek, przekładni i generatorów
+- 💨 **Zagrożenia aerodynamiczne** - ekstremalne wiatry i obciążenia
+- 🌨️ **Zagrożenia środowiskowe** - oblodzenie i burze
+- 🛡️ **Metody zapobiegania** - systemy bezpieczeństwa i monitoring
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 15-20 minut
+
+**Przebieg**: Zacznę od wizualizacji - pokażę studentom zdjęcie pękniętej łopaty turbiny, to wprowadzi właściwy kontekst realności zagrożeń mechanicznych. Przejdę systematycznie przez każdy typ zagrożenia, zawsze łącząc teorię z praktycznymi przykładami.
+
+**Kluczowe przesłanie**: Turbiny wiatrowe to maszyny poddawane ekstremalnym obciążeniom przez cały czas eksploatacji. Awarie mechaniczne to nie "jeśli", ale "kiedy". Dobry inżynier musi rozumieć, jak identyfikować wczesne symptomy i jak projektować systemy zapobiegania.
+
+**Metody dydaktyczne**: 
+- Przykłady rzeczywistych awarii z Polskich i europejskich farm
+- Porównanie obciążeń - turbina MW wytrzymuje siły porównywalne z Boeing 747
+- Demonstracja systemów monitoringu - pokażę dane z CMS
+
+**Najczęstsze pytania**:
+- Q: Jak często dochodzi do awarii łopatek?
+- A: W Polsce średnio 1-2 przypadki rocznie na 100 turbin, ale konsekwencje są poważne.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🔧 Klasyfikacja zagrożeń mechanicznych" type="warning">
+
+<KeyPoints title="📊 Główne kategorie zagrożeń">
+- 🌪️ **Łopaty wirnika** - pęknięcia, uszkodzenia strukturalne
+- ⚙️ **Przekładnia i generator** - awarie łożysk, zużycie
+- 🏗️ **Konstrukcja wieży** - pękanie, korozja, fundament
+- 🔗 **Systemy połączeń** - luzy, uszkodzenia śrub
+</KeyPoints>
+
+<SupportingDetails title="🔍 Szczegółowa charakterystyka zagrożeń łopatek">
+**Pęknięcia strukturalne:**
+- Lokalizacja: korzeń łopaty, krawędź natarcia, środek ciężkości
+- Przyczyny: zmęczenie materiałów, koncentracja naprężeń
+- Skutki: oderwanie fragmentów, uszkodzenie turbiny, zagrożenie dla okolicy
+
+**Uszkodzenia powierzchniowe:**
+- Erozja krawędzi natarcia (głównie morskie farmy)
+- Uszkodzenia błyskawiczne podczas burz
+- Zabrudzenie zmieniające charakterystyki aerodynamiczne
+
+**Problemy z systemami pitch:**
+- Awarie siłowników zmiany kąta natarcia
+- Błędy w systemach kontroli
+- Blackout - brak zasilania systemów kontrolnych
+</SupportingDetails>
+
+<WarningBox title="⚠️ Krytyczne zagrożenie">
+Uszkodzenie łopaty może skutkować **oderwaniem kawałków metalu lub włókna szklanego** o masie do 500kg, które mogą zostać wyrzucone na odległość ponad 800m.
+</WarningBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Kontekst praktyczny**: W Polsce mamy około 6000 turbin wiatrowych, co oznacza 18000 łopatek. Nawet przy bardzo niskim współczynniku awaryjności 0.1% rocznie, to ponad 18 potencjalnych awarii rocznie.
+
+**Lokalizacje pęknięć** - korzeń łopaty to obszar największych naprężeń, tam pęknięcia są najczęstsze. Pokazuję studentom schemat rozkładu naprężeń i wyjaśniam, dlaczego niektóre obszary są bardziej narażone.
+
+**Efekty propagacji** - jeden mały pęknięcie może w ciągu tygodni doprowadzić do katastrofalnej awarii. To pokazuje krytyczne znaczenie wczesnego wykrywania.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Zagrożenia w przekładni i generatorze" type="info">
+
+<KeyPoints title="🔧 Awarie układu napędowego">
+- 🏗️ **Zużycie łożysk** - główna przyczyna przestojów
+- ⚡ **Awarie generatora** - problemy z izolacją, przegrzanie
+- 🔄 **Problemy z przekładnią** - uszkodzenia zębów, nieszczelności
+- 🌡️ **Zagrożenia termiczne** - przegrzanie, pożary
+</KeyPoints>
+
+<SupportingDetails title="📈 Statystyki awaryjności">
+**Najczęstsze przyczyny przestojów turbin:**
+1. **Awarie łożysk** (35%) - szczególnie w przekładniach
+2. **Problemy z generatorem** (20%) - głównie izolacja i systemy chłodzenia  
+3. **Awarie systemów kontrolnych** (18%) - pitch, yaw, SCADA
+4. **Uszkodzenia łopatek** (12%) - pęknięcia, uszkodzenia powierzchni
+5. **Problemy elektryczne** (15%) - transformatory, kable, połączenia
+
+**Czasy napraw:**
+- Wymiana łożysk: 2-3 tygodnie
+- Naprawa generatora: 1-2 tygodnie  
+- Wymiana łopaty: 3-4 tygodnie + specjalny sprzęt
+</SupportingDetails>
+
+<Example title="Praktyczny przykład - awaria łożyska">
+**Sytuacja**: Turbina 3MW, farma wiatrowa na Pomorzu Zachodnim
+- **Monitorowanie**: System CMS wykazał wzrost temperatury łożyska głównego
+- **Progresja**: W ciągu 72 godzin temperatura wzrosła z 85°C do 120°C
+- **Akcja**: Automatyczne zatrzymanie turbiny przy 130°C
+- **Skutek**: Zaplanowana wymiana łożyska vs. katastrofalna awaria
+- **Koszt**: 50 000 EUR vs. potencjalnie 500 000 EUR przy awarii katastrofalnej
+</Example>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**System CMS (Condition Monitoring System)** to klucz do unikania katastrof. Bez monitoringu, awaria łożyska kończy się zazwyczaj katastrofą. Z monitoringiem - mamy czas na planową wymianę.
+
+**Koszty awarii** - studenci muszą zrozumieć skalę finansową. Planowa wymiana to dziesiątki tysięcy euro, awaria katastrofalna to setki tysięcy plus straty z przestoju.
+
+**Progresja awarii** - pokazuję wykresy temperatury łożyska, jak awaria rozwija się w czasie. To uczy studentów, że monitoring to nie tylko "sprawdzanie", ale analiza trendów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💨 Zagrożenia aerodynamiczne i obciążenia wiatrem" type="warning">
+
+<KeyPoints title="🌪️ Główne zagrożenia aerodynamiczne">
+- 🌊 **Gusty wiatrowe** - nagłe zmiany prędkości i kierunku
+- 🔄 **Burzowe wiatry** - prędkości przekraczające 25 m/s
+- 🌊 **Turbulencje** - nieregularne przepływy powietrza
+- 🌀 **Wiry** - zjawiska aerodynamiczne przy nieprawidłowej orientacji
+</KeyPoints>
+
+<SupportingDetails title="📊 Charakterystyka obciążeń wiatrowych">
+**Klasyfikacja wiatrów według prędkości:**
+- **Normal operation**: 4-15 m/s - standardowa eksploatacja
+- **High wind**: 15-25 m/s - zwiększona czujność, możliwość zatrzymania
+- **Storm conditions**: 25-35 m/s - automatyczne zatrzymanie turbiny
+- **Extreme wind**: >35 m/s - awaryjne składowanie, ryzyko strukturalne
+
+**Obciążenia na łopaty (turbina 3MW):**
+- Siła aerodynamiczna: do 2 000 000 N przy wichurze
+- Moment obrotowy: do 4 000 000 Nm
+- Naprężenia w korzeniu łopaty: do 200 MPa
+</SupportingDetails>
+
+<WarningBox title="🚨 Skutki ekstremalnych wiatrów">
+**Prędkość wiatru 40 m/s** (144 km/h):
+- Siły na łopatach przekraczają 3x wartości projektowe
+- Ryzyko uszkodzenia struktury wieży
+- Możliwość oderwania łopaty lub przewrócenia turbiny
+</WarningBox>
+
+<KeyConcept title="Systemy ochrony przed ekstremalnymi wiatrami">
+Współczesne turbiny wyposażone są w **multiple redundant systems**:
+1. **System anemometrów** - pomiar prędkości wiatru w czasie rzeczywistym
+2. **System pitch** - natychmiastowe ustawienie łopatek w pozycję "feather"
+3. **Mechaniczne hamulce** - awaryjne zatrzymanie wirnika
+4. **System yaw** - odpowiednie ustawienie względem wiatru
+</KeyConcept>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Fizyka zagrożeń** - siła wiatru rośnie kwadratowo z prędkością. Wiatr 40 m/s to nie 2x silniejszy niż 20 m/s, ale 4x silniejszy. To pokazuje, dlaczego systemy bezpieczeństwa są tak ważne.
+
+**Przykład z Polski** - w grudniu 2017 roku wichura w północnej Polsce osiągnęła prędkości 45 m/s. Kilka turbin zostało uszkodzonych, ale większość przetrwała dzięki systemom bezpieczeństwa.
+
+**Redundancja systemów** - podkreślam, że nie można polegać na jednym systemie. Każdy element ma backup, a często nawet podwójny backup.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🌨️ Zagrożenia środowiskowe - oblodzenie i burze" type="note">
+
+<KeyPoints title="❄️ Problemy z oblodzeniem">
+- 🧊 **Oblodzenie łopatek** - zmniejszenie efektywności, wzrost masy
+- ⚖️ **Nierównomierne oblodzenie** - brak równowagi, wibracje
+- 🎯 **Rzuty lodem** - fragmenty lodu wyrzucane na odległość
+- 🛑 **Automatyczne zatrzymanie** - systemy wykrywania lodu
+</KeyPoints>
+
+<SupportingDetails title="🔬 Mechanizmy powstawania oblodzenia">
+**Warunki sprzyjające oblodzeniu:**
+- Temperatura: -5°C do +2°C
+- Wilgotność względna: >80%
+- Prędkość wiatru: 5-15 m/s (zbyt niska do odparowania)
+- Mgła, mżawka, deszcz przy ujemnej temperaturze
+
+**Efekty oblodzenia:**
+- **Masa**: warstwa lodu 5cm = dodatkowe 500kg na łopatę
+- **Aerodynamika**: zmiana profilu łopaty, spadek wydajności o 20-50%
+- **Wibracje**: nierównomierne oblodzenie powoduje brak równowagi
+- **Ryzyko**: fragmenty lodu wyrzucane na odległość do 400m
+</SupportingDetails>
+
+<Example title="System wykrywania oblodzenia - praktyka">
+**Systemy aktywne:**
+- **Ogrzewanie elektryczne** - kable grzejne w łopatach
+- **Ogrzewanie powietrzem** - ciepłe powietrze we wnętrzu łopaty
+- **Systemy anty-oblodzeniowe** - płyny zmniejszające temperaturę zamarzania
+
+**Systemy pasywne:**
+- **Monitoring wibracji** - wykrywanie zmian charakterystyk
+- **Pomiary mocy** - spadek wydajności wskazuje na oblodzenie
+- **Kamera termowizyjna** - wykrywanie zimnych punktów
+- **Akustyczne monitoring** - zmiana dźwięku pracy turbiny
+</Example>
+
+<InfoBox title="💡 Wymagania prawne">
+Zgodnie z **normą IEC 61400-1**, turbiny w regionach o ryzyku oblodzenia muszą mieć certyfikowane systemy bezpieczeństwa zapobiegające rzutom lodem na odległość większą niż 2,5x wysokość turbiny.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczne aspekty** - w Polsce oblodzenie to realne zagrożenie od października do marca, szczególnie w regionach górskich i nadmorskich. Studenci muszą zrozumieć, że to nie tylko problem wydajności, ale bezpieczeństwa.
+
+**Systemy active vs passive** - aktywne systemy (ogrzewanie) są skuteczne, ale kosztowne w eksploatacji. Pasywne (monitoring) są tańsze, ale wymagają odpowiedniego algorytmu wykrywania.
+
+**Normy bezpieczeństwa** - fragmenty lodu z 80-metrowej wysokości przy prędkości wylotowej łopaty to realne zagrożenie dla ludzi i mienia w promieniu 200 metrów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🛡️ Metody zapobiegania - systemy bezpieczeństwa" type="success">
+
+<KeyPoints title="🔧 Główne systemy ochrony">
+- 📊 **Condition Monitoring Systems (CMS)** - ciągły monitoring stanu
+- 🎛️ **Systemy kontroli** - pitch, yaw, hamulce
+- ⚡ **Systemy elektryczne** - UPS, redundancja zasilania
+- 🚨 **Systemy alarmowe** - powiadomienia, automatyczne zatrzymania
+</KeyPoints>
+
+<SupportingDetails title="📈 Architektura systemu CMS">
+**Komponenty systemu monitoringu:**
+- **Sensory wibracji** - akcelerometry na łożyskach, przekładniach
+- **Sensory temperatury** - monitoring łożysk, generatora, oleju
+- **Sensory akustyczne** - wykrywanie zmian charakterystyk dźwiękowych
+- **Anemometry** - pomiar prędkości i kierunku wiatru, turbulencji
+- **Sensory oblodzenia** - wykrywanie obecności lodu
+
+**Analiza danych:**
+- **Trending analysis** - analiza zmian w czasie
+- **Spectral analysis** - analiza częstotliwości drgań
+- **Machine learning** - predykcyjne wykrywanie awarii
+- **Threshold monitoring** - porównanie z wartościami granicznymi
+</SupportingDetails>
+
+<KeyConcept title="Zasada redundancji w systemach bezpieczeństwa">
+W każdej turbinie wiatrowej **kluczowe systemy bezpieczeństwa** mają **minimum podwójną redundancję**:
+- **Anemometry**: zwykle 3 niezależne czujniki wiatru
+- **System pitch**: mechaniczne hamulce + system pitch
+- **Zasilanie**: sieć + UPS + generatory awaryjne
+- **Komunikacja**: przewodowe + radiowe + satelitarne backupy
+</KeyConcept>
+
+<SuccessBox title="✅ Skuteczność systemów bezpieczeństwa">
+Modern turbines with proper CMS systems achieve:
+- **95% reduction** w katastrofalnych awariach łożysk
+- **80% reduction** w awariach łopatek
+- **75% extension** średniego czasu między awariami (MTBF)
+- **Early warning** 30-90 dni przed krytyczną awarią
+</SuccessBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczne korzyści** - system CMS to inwestycja, która zwraca się w ciągu 2-3 lat przez uniknięcie tylko jednej poważnej awarii. Studenci muszą zrozumieć, że to nie koszt, ale inwestycja w bezpieczeństwo i wydajność.
+
+**Redundancja** - w branży lotniczej mówi się "jeśli coś może się zepsuć, to się zepsuje". W turbinach wiatrowych to samo - każdy system krytyczny musi mieć backup.
+
+**Machine learning** - nowoczesne systemy używają AI do wykrywania subtelnych zmian, których nie zauważyłby człowiek. To przyszłość monitoringu predykcyjnego.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📊 Podsumowanie - Kluczowe zasady" type="tip">
+
+<KeyPoints title="🔑 Najważniejsze wnioski">
+- 🔍 **Wczesne wykrywanie** - system CMS to fundament bezpieczeństwa
+- 🔄 **Ciągły monitoring** - trendy są ważniejsze niż pojedyncze pomiary
+- 🛡️ **Redundancja systemów** - nie można polegać na jednym systemie
+- 📈 **Predykcyjne utrzymanie** - zapobieganie zamiast reagowania na awarie
+</KeyPoints>
+
+<InfoBox title="💡 Przewodnia myśl">
+**Bezpieczeństwo turbin wiatrowych** to nie tylko odpowiednie projektowanie, ale przede wszystkim **aktywny monitoring** i **systematyczna analiza danych**. Najniebezpieczniejsze są awarie, które postępują powoli i niepostrzeżenie.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Kluczowe przesłanie** - studenci muszą zrozumieć, że bezpieczeństwo w turbinach wiatrowych to nie statyczna lista wymagań, ale dynamiczny proces monitoringu i analizy. To inżynieria systemów w praktyce.
+
+**Następne kroki** - po zrozumieniu zagrożeń mechanicznych i aerodynamicznych, przejdziemy do systemów kontroli (pitch i yaw), które są odpowiedzią na te zagrożenia.
+
+**Pytania do przemyślenia** - jak zaprojektować system CMS dla farmy 50 turbin? Jakie dane są najważniejsze? Jak często aktualizować progów alarmowych?
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

@@ -1,0 +1,119 @@
+---
+title: "Integracja z systemami alarmowymi"
+sidebar_position: 5
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: Integracja i C&E" type="info">
+
+<LearningObjective>
+Student rozumie architekturę integracji BESS z FAS/GAS/EMS/SCADA, potrafi zdefiniować macierz przyczynowo‑skutkową i dobrać interfejsy (cyfrowe i protokoły) zapewniające niezawodność i cyberbezpieczeństwo.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Architektura systemowa i przepływy sygnałów
+- Interfejsy: cyfrowe, Modbus TCP, OPC UA
+- Macierz C&E i filozofia 2ooN
+- Zasilanie, redundancja, synchronizacja czasu
+- Testy FAT/SAT i próby okresowe
+</KeyPoints>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🏗️ Architektura integracji" type="info">
+
+<KeyPoints title="🌐 Warstwy i systemy">
+- BMS/PCS ↔ EMS (zarządzanie energią)
+- BMS/Detekcja ↔ FAS/GAS (alarmy i akcje bezpieczeństwa)
+- EMS/SCADA ↔ Operator (wizualizacja, raporty)
+</KeyPoints>
+
+<SupportingDetails title="🔒 Segmentacja i bezpieczeństwo">
+- Oddzielne sieci dla bezpieczeństwa i dla energii (VLAN/air‑gap)
+- Kontrola dostępu, rejestrowanie zdarzeń, backup konfiguracji
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔌 Interfejsy i protokoły" type="tip">
+
+<KeyPoints title="🛠️ Dobór">
+- Sygnały dyskretne (fail‑safe): e‑stop, trip, prealarm/alarm
+- Modbus TCP: rejestry pomiarowe i statusy
+- OPC UA: model informacyjny i bezpieczna publikacja
+</KeyPoints>
+
+<InfoBox title="ℹ️ Synchronizacja czasu">
+NTP/PTP na wszystkich urządzeniach – spójne logi i analiza incydentów.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧮 Macierz przyczynowo‑skutkowa (C&E)" type="warning">
+
+<KeyPoints title="📋 Zasady">
+- Prosta, czytelna tabela: zdarzenie → akcja
+- 2ooN dla krytycznych detekcji (redukcja fałszywych zadziałań)
+- Priorytety: prealarm → alarm → krytyczne odłączenie
+</KeyPoints>
+
+<Example title="Fragment C&E">
+- ASD prealarm + HF prealarm → włącz wentylację, derating PCS
+- Dym alarm 2ooN → blokada ładowania, przygotuj ewakuację energii
+- T rack > T_krytyczne (BMS) → odpadnięcie styczników, powiadom FAS
+</Example>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧪 Testy integracyjne i utrzymanie" type="success">
+
+<KeyPoints title="✅ Procedury">
+- FAT/SAT z udziałem wszystkich systemów (end‑to‑end)
+- Próby okresowe alarmów i zadziałań (checklisty)
+- Analiza incydentów/near‑miss → modyfikacja C&E i progów
+</KeyPoints>
+
+<InstructorNotes>
+Zachęć do wersjonowania macierzy C&E i utrzymywania „digital logbook” integracji – ułatwia audyty i wnioski po zdarzeniach.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="tip">
+
+<KeyPoints title="Kluczowe wnioski">
+- Integracja bezpieczeństwa wymaga prostych, przewidywalnych interfejsów
+- C&E musi być testowana tak często jak zmienia się konfiguracja systemu
+- Synchronizacja czasu i dobre logi to podstawa analizy zdarzeń
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>
+

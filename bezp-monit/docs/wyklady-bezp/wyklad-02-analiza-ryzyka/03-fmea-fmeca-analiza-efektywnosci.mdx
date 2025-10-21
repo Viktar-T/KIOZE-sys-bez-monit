@@ -189,10 +189,10 @@ Gdzie:
 
 **Severity (S)** - specyficzne dla OZE:
 - **10**: Awaria z ofiarami śmiertelnymi
-- **9**: Pożar/eksplozja z uszkodzeniem `>€1M`
-- **8**: Utrata `>50%` mocy na `>1 tydzień`
-- **7**: Utrata 10-50% mocy na `>1 tydzień`
-- **6**: Utrata `<10%` mocy na `>1 miesiąc`
+- **9**: Pożar/eksplozja z uszkodzeniem powyżej €1M
+- **8**: Utrata powyżej 50% mocy na więcej niż 1 tydzień
+- **7**: Utrata 10-50% mocy na więcej niż 1 tydzień
+- **6**: Utrata poniżej 10% mocy na więcej niż 1 miesiąc
 
 **Occurrence (O)** - częstotliwość awarii:
 - **Używanie danych branżowych**: IEA, NREL, operacyjne statystyki
@@ -257,34 +257,28 @@ Gdzie:
 </Example>
 
 <InstructorNotes title="📝 Notatki prowadzącego">
-**Czas**: 25-27 minut
-
-**Przebieg**:
-1. FMEA - definicja, proces, przykład inwertera PV (10 min)
-2. FMECA - różnice, metoda obliczania krytyczności (8 min)
-3. Praktyczne zastosowanie w OZE - specyfika, progi RPN (6 min)
-4. Follow-up i integracja z utrzymaniem (3 min)
+**Przebieg** prowadzi przez systematyczne wprowadzenie do metod analizy efektywności - od podstaw **FMEA** z definicją, procesem i praktycznym przykładem inwertera PV, przez **FMECA** z różnicami w podejściu i metodą obliczania krytyczności, do praktycznego zastosowania w OZE ze specyfiką technologii i progami RPN. Ważne jest podkreślenie, jak te analizy integrują się z systemami utrzymania.
 
 **Punkty kluczowe**:
-- **RPN to narzędzie, nie cel**: Ważne jest zrozumienie ryzyka, nie tylko liczby
-- **Dane są kluczowe**: FMECA wymaga dobrych danych o awariach
-- **Systematyczność**: FMEA to fundament dobrego systemu utrzymania
+- **RPN to narzędzie, nie cel**: Ważne jest **zrozumienie ryzyka**, nie tylko liczby. Studenci często skupiają się na obliczeniach, ale myślące podejście do oceny **Severity, Occurrence, Detection** jest kluczowe.
+- **Dane są kluczowe**: **FMECA** wymaga dobrych danych o awariach - w branży OZE to wyzwanie z powodu nowości technologii.
+- **Systematyczność**: **FMEA** to fundament dobrego systemu utrzymania, nie jednorazowa analiza, ale **ciągły proces** doskonalenia.
 
-**Ćwiczenie praktyczne** (jeśli czas):
-Podaj prosty komponent (np. pompa chłodnictwa BESS) i poproś studentów o przeprowadzenie mini-FMEA w grupach (15-20 min).
+**Ćwiczenie praktyczne**:
+Podaj prosty komponent (np. pompa chłodnictwa **BESS**) i poproś studentów o przeprowadzenie mini-FMEA w grupach. To pozwoli im zrozumieć praktyczną stronę metody i zobaczyć, jak różne perspektywy zespółu wpływają na ocenę **S×O×D**.
 
 **Materiały pomocnicze**:
-- Przykładowe arkusze FMEA/FMECA
-- Tabele wag dla S, O, D w kontekście OZE
-- Kalkulatory RPN i Criticality
+- Przykładowe arkusze **FMEA/FMECA** - struktura dokumentacji jest kluczowa dla praktycznego zastosowania
+- Tabele wag dla **S, O, D** w kontekście OZE - specyfika branży wymaga dostosowanych kryteriów
+- Kalkulatory **RPN** i **Criticality** - narzędzia obliczeniowe ułatwiają proces
 
 **Pytania studenckie**:
-- Q: Jak często aktualizować FMEA?
-- A: Co najmniej raz w roku, lub przy zmianach w systemie/operacji. Dla nowych technologii - częściej (co 6 miesięcy).
+- **Q**: Jak często aktualizować FMEA?
+- **A**: Co najmniej **raz w roku**, lub przy zmianach w systemie/operacji. Dla nowych technologii - częściej (**co 6 miesięcy**). To **żywy dokument**, nie archiwum.
 
-- Q: Co jeśli nie mamy danych o awariach dla nowych komponentów?
-- A: Używać danych z podobnych technologii, współpraca z producentami, modele prognostyczne, konserwatywne oszacowania.
+- **Q**: Co jeśli nie mamy danych o awariach dla nowych komponentów?
+- **A**: Używać danych z podobnych technologii, współpraca z producentami, modele prognostyczne, konserwatywne oszacowania. W OZE to **typowe wyzwanie** - kreatywność w szukaniu danych zastępczych.
 
-- Q: Czy można automatyzować FMEA?
-- A: Częściowo - templates, databases failure modes, ale ocena S/O/D wymaga eksperckiej wiedzy i kontekstu projektu.
+- **Q**: Czy można automatyzować FMEA?
+- **A**: Częściowo - templates, databases failure modes, ale ocena **S/O/D** wymaga eksperckiej wiedzy i kontekstu projektu. Automatyzacja to wsparcie, nie zastąpienie myślenia zespołu.
 </InstructorNotes>

@@ -115,5 +115,29 @@ Style:
 * [ ] on the bases of information from @bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\index.md write logical, comprehensive content for the lecture. each punkt in "Struktura materiału" should be separate mdx file. The complexity level of the text should be beginer-middle. Write only for these parts:
 * [ ] implement **@4. slides-conversion.md** for all mdx files in bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie
 * [ ] implement **@4. slides-conversion.md** for all mdx files in bezp-monit\docs\wyklady-bezp\wyklad-02-analiza-ryzyka
-* [ ] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\01-...
-* [ ]
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\01-...mdx. the text should be Ready to read by the lecturer.
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\02-statystyka-zdarzen-zrodla-zagrozen.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\\03-poziomy-ryzyka-metody-oceny.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\\04-normy-wytyczne-obowiazujace.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\\05-odpowiedzialnosc-inzyniera.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [X] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie\\06-wymagania-dokumentacyjne-podsumowanie.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [X] on the bases of information from @bezp-monit\docs\wyklady-bezp\wyklad-03-bezpieczenstwo-elektryczne-pv\index.md write logical, comprehensive content for the lecture. each punkt in "Struktura materiału" should be separate mdx file. The complexity level of the text should be beginer-middle. Write only for these parts:
+* [X] on the bases of information from @bezp-monit\docs\wyklady-bezp\wyklad-04-turbiny-wiatrowe-bezpieczenstwo write logical, comprehensive content for the lecture. each punkt in "Struktura materiału" should be separate mdx file. The complexity level of the text should be beginer-middle. Write only for these parts:
+
+* [Analiza drgań, temperatury i oleju](./05-analiza-drgan-temperatury-oleju.mdx)
+* [Case study: diagnostyka turbiny wiatrowej](./06-case-study-diagnostyka-turbiny.mdx)
+
+* [ ] implement @_promts\InstractorNotes-v2.md for bezp-monit\docs\wyklady-bezp\wyklad-03-bezpieczenstwo-elektryczne-pv\01-specyfika-zagrozen-elektrycznych-pv.mdx.
+  the text should be Ready to read by the lecturer.
+  Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* [ ] continue with the next file

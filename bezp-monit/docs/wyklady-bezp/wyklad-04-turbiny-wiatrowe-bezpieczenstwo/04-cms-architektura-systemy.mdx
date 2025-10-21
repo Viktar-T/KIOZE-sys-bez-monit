@@ -1,0 +1,646 @@
+---
+title: "Condition Monitoring Systems (CMS) - architektura"
+sidebar_position: 4
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Condition Monitoring Systems (CMS) - architektura" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie architekturę systemów monitoringu kondycji (CMS) w turbinach wiatrowych, potrafi scharakteryzować komponenty systemu, zna metody akwizycji danych i rozumie zasady integracji z systemami kontrolnymi i bezpieczeństwa.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🏗️ **Architektura CMS** - komponenty i struktura systemu
+- 📊 **Akwizycja danych** - sensory, zbieranie, przetwarzanie
+- 🔗 **Integracja systemowa** - połączenia z SCADA i systemami bezpieczeństwa
+- 📈 **Analiza predykcyjna** - przetwarzanie danych, alarmy, raportowanie
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 22-25 minut
+
+**Przebieg**: Zacznę od pytania "Jak inżynier może wiedzieć, że turbina ma problem, zanim się zepsuje?" - to wprowadzi w kontekst CMS jako systemu wczesnego ostrzegania. Przejdę systematycznie przez każdy element architektury, pokazując jak dane płyną od sensorów do decyzji operacyjnych.
+
+**Kluczowe przesłanie**: CMS to system nerwowy turbiny - zbiera informacje z całego organizmu i pozwala na wczesne wykrywanie problemów. Bez CMS turbiny wiatrowe byłyby "ślepe" na swoje własne problemy.
+
+**Metody dydaktyczne**:
+- Diagram architektury systemu CMS
+- Przykłady rzeczywistych danych z sensorów
+- Demonstracja interfejsów użytkownika CMS
+
+**Najczęstsze pytania**:
+- Q: Ile danych produkuje jedna turbina dziennie?
+- A: Typowa turbina 3MW generuje 50-100 GB danych dziennie z wszystkich sensorów CMS.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🏗️ Architektura systemu CMS" type="info">
+
+<KeyPoints title="🔧 Główne komponenty architektury CMS">
+- 📡 **Sensory i akwizycja** - pomiary wibracji, temperatury, akustyki
+- 💻 **Przetwarzanie danych** - edge computing, filtracja, normalizacja
+- 🌐 **Komunikacja** - protokoły, sieci, integracja z SCADA
+- 📊 **Analiza i raportowanie** - algorytmy, alarmy, wizualizacja
+</KeyPoints>
+
+<SupportingDetails title="📈 Struktura warstwowa systemu CMS">
+**Warstwa 1 - Sensoryczna (Data Acquisition Layer):**
+- **Akcelerometry**: 3-osiowe pomiary wibracji w 15+ lokalizacjach
+- **Sensory temperatury**: Termopary i RTD w kluczowych punktach
+- **Sensory akustyczne**: Mikrofony i czujniki ultradźwiękowe
+- **Sensory oleju**: Analiza właściwości oleju, cząstki metalu
+- **Sensory elektryczne**: Monitoring prądów i napięć
+
+**Warstwa 2 - Akwizycja i przetwarzanie (Edge Computing):**
+- **DAQ (Data Acquisition Units)**: 32-64 kanałów, częstotliwość 25.6 kHz
+- **Edge Controllers**: Lokalne przetwarzanie, preprocessing danych
+- **Data Loggers**: Buforowanie, kompresja, timestamp
+- **Local Analytics**: Wstępna analiza, prosta detekcja anomalii
+
+**Warstwa 3 - Komunikacja i sieć (Communication Layer):**
+- **Industrial Ethernet**: Przewodowa komunikacja w turbinie
+- **Modbus TCP/RTU**: Protokół komunikacyjny z SCADA
+- **OPC UA**: Standardowa integracja z systemami kontrolnymi
+- **4G/5G Backhaul**: Komunikacja z centrum zarządzania
+
+**Warstwa 4 - Centrum analityczne (Analytics & Control Center):**
+- **Centralne serwery**: Przechowywanie i analiza danych
+- **Machine Learning**: Algorytmy predykcyjne, detekcja wzorców
+- **SCADA Integration**: Integracja z systemami nadzoru
+- **Reporting & Dashboards**: Interfejsy użytkownika, raporty
+</SupportingDetails>
+
+<KeyConcept title="Zasady projektowania architektury CMS">
+**Modularność**: Każdy komponent może być niezależnie testowany i wymieniany
+**Skalowalność**: System musi obsłużyć od 1 do 1000+ turbin
+**Niezawodność**: Redundancja komunikacyjna i przetwarzania danych
+**Real-time processing**: Analiza w czasie rzeczywistym dla krytycznych parametrów
+**Long-term storage**: Przechowywanie danych przez 3-5 lat dla analiz trendów
+</KeyConcept>
+
+<Example title="Przykład - CMS dla farmy 50 turbin">
+**Specyfikacja techniczna**:
+```
+Sensory per turbina:
+- Akcelerometry: 18 sztuk × 3 osie = 54 kanały
+- Temperatury: 25 punktów pomiarowych
+- Akustyka: 6 mikrofonów, 4 czujniki ultradźwiękowe
+- Olej: 2 analizatory on-line
+
+Dane dzienne per turbina:
+- Raw data: ~80 GB (vibration + acoustic)
+- Processed data: ~5 GB (after compression & filtering)
+- Alarms & trends: ~50 MB (metadane i alerty)
+
+Total farma (50 turbin):
+- Raw daily data: 4 TB
+- Processed daily data: 250 GB
+- Annual storage need: ~90 TB (compressed)
+```
+
+**Koszty systemu**:
+- Hardware per turbina: €15,000-25,000
+- Software & licencje: €50,000 (farma)
+- Instalacja: €100,000 (farma)
+- **ROI**: 2-3 lata przez redukcję awarii
+</Example>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Skala danych** - studenci muszą zrozumieć, że CMS generuje ogromne ilości danych. To nie są pojedyncze pomiary, ale ciągły strumień z dziesiątek sensorów w każdej turbinie.
+
+**Edge computing** - kluczowa koncepcja: nie wszystko wysyła się do chmury. Lokalne przetwarzanie filtruje dane, wykrywa podstawowe anomalie i wysyła tylko to, co istotne.
+
+**Koszty vs. korzyści** - CMS to poważna inwestycja, ale jedna uniknięta awaria katastroficzna może pokryć koszty całego systemu dla połowy farmy.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Akwizycja danych - sensory i pomiary" type="warning">
+
+<KeyPoints title="🔍 Klasyfikacja sensorów CMS">
+- 🌊 **Sensory wibracji** - akcelerometry, prędkościomierze, przemieszczeń
+- 🌡️ **Sensory temperatury** - termopary, RTD, czujniki podczerwieni
+- 🔊 **Sensory akustyczne** - mikrofony, czujniki ultradźwiękowe, emisji akustycznej
+- 🧪 **Sensory oleju** - analiza składu, cząstki, lepkość
+</KeyPoints>
+
+<SupportingDetails title="📈 Szczegółowa charakterystyka sensorów wibracji">
+**Akcelerometry piezoelektryczne:**
+- **Zakres pomiarowy**: ±50g (typowe), do ±2000g dla ekstremalnych zastosowań
+- **Częstotliwość**: DC do 25kHz, z filtrem antyaliasingowym
+- **Rozdzielczość**: 16-bitowa, czasami 24-bitowa dla precyzyjnych pomiarów
+- **Lokalizacje**: Łożyska główne, przekładnia, generator (każdy w 3 osiach)
+
+**Sensory prędkości wibracji (Velocity sensors):**
+- **Zakres**: 0.1-1000 mm/s RMS
+- **Częstotliwość**: 10Hz-2kHz (dla niskich częstotliwości)
+- **Zastosowanie**: Monitoring struktury wieży, fundamentu
+
+**Sensory przemieszczeń (Proximity probes):**
+- **Typ**: Indukcyjne, eddy current
+- **Zakres**: 2-50mm przemieszczenia
+- **Precyzja**: ±10μm przy wysokich częstotliwościach
+- **Użycie**: Monitoring luzów w łożyskach, ekscentryczności wałów
+</SupportingDetails>
+
+<SupportingDetails title="🌡️ Systemy monitoringu temperatury">
+**Termopary (Type K, J):**
+- **Zakres**: -200°C do +1200°C
+- **Precyzja**: ±1.5°C w zakresie -40°C do +375°C
+- **Lokalizacje**: Łożyska, uzwojenia generatora, przekładnia
+
+**RTD (Resistance Temperature Detectors):**
+- **Typ**: Pt100, Pt1000 (platyna)
+- **Zakres**: -200°C do +850°C
+- **Precyzja**: ±0.1°C przy 0°C
+- **Zastosowanie**: Krytyczne pomiary, gdzie precyzja jest kluczowa
+
+**Kamery termowizyjne:**
+- **Rozdzielczość**: 320×240 pikseli minimum
+- **Zakres**: -40°C do +400°C
+- **Zastosowanie**: Monitoring powierzchniowy, detekcja gorących punktów
+</SupportingDetails>
+
+<Example title="Montaż i konfiguracja sensorów - praktyczny przykład">
+**Lokalizacja sensorów w turbinie 3MW:**
+
+**Na głównym wale (main shaft):**
+- Akcelerometr X, Y, Z na łożysku głównym
+- Proximity probe X, Y na wale (monitoring ekscentryczności)
+- Termopara w skrzyni łożyskowej
+
+**W przekładni (gear box):**
+- 6 akcelerometrów na różnych poziomach (input, intermediate, output)
+- 4 termopary dla różnych łożysk
+- Czujnik poziomu oleju z termometrem
+
+**Na generatorze:**
+- Akcelerometry na łożyskach (stator side, rotor side)
+- Termopary w uzwojeniach (3 fazy)
+- Czujnik temperatury łożyska
+
+**Akustyka:**
+- Mikrofon wewnątrz gondoli (monitoring ogólny)
+- 2 czujniki ultradźwiękowe na przekładni (detekcja powierzchniowego zużycia)
+
+**Parametry akwizycji**:
+```
+Sampling rate: 25.6 kHz (dla wibracji)
+Block size: 8192 samples (FFT size)
+Overlap: 75% (dla lepszej detekcji)
+Recording time: continuous + trigger events
+```
+</Example>
+
+<InfoBox title="💡 Kalibracja i utrzymanie sensorów">
+**Procedury kalibracyjne**:
+- **Roczna kalibracja** wszystkich sensorów akustycznych i wibracji
+- **Sprawdzanie połączeń** co 6 miesięcy (kable, złącza)
+- **Testy funkcjonalne** przy każdej inspekcji (end-to-end verification)
+- **Monitoring baseline** - porównanie z wartościami referencyjnymi
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Jakość danych** - podkreślam, że najczęstszym problemem w CMS nie są algorytmy analizy, ale jakość danych z sensorów. Złe zamontowanie, uszkodzone kable, brak kalibracji - to wszystko prowadzi do fałszywych alarmów lub, co gorsze, brak wykrycia rzeczywistych problemów.
+
+**Lokalizacje sensorów** - każda lokalizacja ma swoje uzasadnienie fizyczne. Studenci muszą rozumieć, że nie można postawić sensorów "gdzie popadnie" - każdy punkt ma specyficzną rolę w wykrywaniu konkretnych problemów.
+
+**Parametry akwizycji** - częstotliwość próbkowania musi być zgodna z twierdzeniem Nyquista. Dla detekcji problemów z częstotliwością do 10kHz potrzebujemy próbkowania co najmniej 20kHz, praktycznie 25.6kHz dla marginesu bezpieczeństwa.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="💻 Przetwarzanie danych i edge computing" type="info">
+
+<KeyPoints title="⚙️ Etapy przetwarzania danych">
+- 🔄 **Filtracja i normalizacja** - przygotowanie surowych danych
+- 📊 **Analiza częstotliwościowa** - FFT, spektrogramy, envelope analysis
+- 🎯 **Detekcja anomalii** - progi, trendy, machine learning
+- 📈 **Agregacja i kompresja** - redukcja objętości danych do transmisji
+</KeyPoints>
+
+<SupportingDetails title="📊 Metody analizy sygnałów wibracji">
+**Analiza częstotliwościowa (FFT Analysis):**
+- **FFT Size**: 8192, 16384 punktów (kompromis precyzja/czas)
+- **Windowing**: Hanning window (dla redukcji aliasingu)
+- **Overlap**: 75% (dla lepszej detekcji transientów)
+- **Frequency resolution**: 1.25 Hz przy 8192 punktach, 25.6 kHz sampling
+
+**Analiza envelope (High-frequency envelope detection):**
+- **Pasma częstotliwości**: 2-12 kHz, 12-25 kHz, >25 kHz
+- **Demodulation**: Hilbert transform dla wyodrębnienia sygnału modulującego
+- **Applications**: Detekcja problemów z łożyskami, pęknięć, zużycia powierzchniowego
+
+**Analiza cepstral (Cepstrum analysis):**
+- **Zastosowanie**: Analiza periodic structure w szumie
+- **Detection**: Problemów z zębami przekładni, łożyskami kulkowymi
+- **Advantage**: Odporne na szum tła, dobre dla wczesnej detekcji
+</SupportingDetails>
+
+<SupportingDetails title="🤖 Algorytmy detekcji anomalii">
+**Progi statyczne (Static thresholds):**
+- **RMS limits**: Znormalizowane limity dla różnych warunków pracy
+- **Peak detection**: Wykrywanie impulsów powyżej ustalonych progów
+- **Temperature limits**: Alarmy przy przekroczeniu temperatur bezpiecznych
+
+**Analiza trendów (Trend analysis):**
+- **Moving average**: Średnia krocząca z oknem 7-30 dni
+- **Growth rate**: Tempo zmian parametrów
+- **Seasonal adjustment**: Uwzględnienie zmian sezonowych
+
+**Machine Learning approaches:**
+- **PCA (Principal Component Analysis)**: Redukcja wymiarowości, detekcja outlierów
+- **Isolation Forest**: Detekcja anomalii bez potrzeby danych treningowych
+- **LSTM Networks**: Predykcja na podstawie sekwencji czasowej
+</SupportingDetails>
+
+<KeyConcept title="Edge Computing w CMS">
+**Zasada edge computing**: Przetwarzanie danych jak najbliżej źródła (sensorów) ma wiele korzyści:
+- **Redukcja przepustowości**: Tylko istotne dane są transmitowane
+- **Szybka reakcja**: Lokalne alarmy w czasie rzeczywistym
+- **Niezależność**: System działa nawet przy problemach komunikacyjnych
+- **Privacy**: Dane wrażliwe nie opuszczają turbiny bez przetworzenia
+</KeyConcept>
+
+<Example title="Przykład - Lokalne przetwarzanie w edge controller">
+**Input data** (na edge controllerze w turbinie):
+```
+Raw vibration data: 54 channels × 25.6 kHz = 1.38 MSamples/s
+Temperature data: 25 channels × 1 Hz = 25 Samples/s
+Acoustic data: 10 channels × 6.4 kHz = 64 kSamples/s
+
+Total raw data rate: ~45 MB/s per turbine
+```
+
+**Edge processing**:
+```
+1. FFT analysis (every 1 second):
+   - 8192 samples → 4096 frequency bins
+   - 54 channels → 221,184 values/second
+   - Compression ratio: 20:1
+
+2. Statistical features (every 10 seconds):
+   - RMS, Peak, Kurtosis, Crest factor
+   - 54 × 4 features = 216 values/10s
+   - Storage: 2.16 kB/10s per turbine
+
+3. Alarm checking (real-time):
+   - Compare with adaptive thresholds
+   - Generate alerts for transmission
+   - Store 1-minute averages
+```
+
+**Output** (do centrum):
+```
+Compressed FFT spectra: ~10 MB/day per turbine
+Statistical features: ~300 kB/day per turbine
+Alarms and events: ~50 kB/day per turbine
+
+Total transmission: ~10.4 MB/day per turbine (vs 4 TB raw)
+```
+</Example>
+
+<InfoBox title="💡 Optymalizacja obliczeń na edge">
+**Strategie efektywnego przetwarzania**:
+- **Selective processing**: Analiza tylko wybranych kanałów w czasie rzeczywistym
+- **Adaptive sampling**: Wyższa częstotliwość podczas anomalii
+- **Hardware acceleration**: DSP processors, FPGA dla FFT
+- **Data prioritization**: Krytyczne parametry przetwarzane pierwsze
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Matematyka jest kluczowa** - studenci muszą rozumieć podstawy analizy sygnałów. FFT to nie magia, ale narzędzie matematyczne do przekształcenia sygnału czasowego w częstotliwościowy.
+
+**Praktyczne aspekty** - pokazuję studentom, że teoretyczne algorytmy muszą być zaimplementowane w rzeczywistym sprzęcie z ograniczeniami obliczeniowymi. Edge computing to nie tylko modny termin, ale praktyczna potrzeba.
+
+**Machine Learning** - nowoczesne CMS coraz częściej używają AI, ale to nie zastępuje podstawowej analizy, tylko ją uzupełnia. Studenci muszą rozumieć, kiedy użyć prostego progu, a kiedy skomplikowanego algorytmu ML.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔗 Integracja z systemami SCADA i bezpieczeństwa" type="success">
+
+<KeyPoints title="🌐 Architektura integracyjna">
+- 🎛️ **SCADA Integration** - połączenia z systemami nadzoru
+- 🛡️ **Safety systems** - integracja z systemami bezpieczeństwa
+- 📡 **Communication protocols** - Modbus, OPC UA, IEC 61850
+- 🏢 **Cloud platforms** - integracja z chmurowymi platformami analitycznymi
+</KeyPoints>
+
+<SupportingDetails title="📊 Protokoły komunikacyjne CMS">
+**Modbus TCP/RTU**:
+- **Standard**: IEC 61158 (industrial communication)
+- **Application**: Głównie do transmisji alarmów i statusów
+- **Advantages**: Prosty, niezawodny, szeroko wspierany
+- **Limitations**: Ograniczona przepustowość dla dużych danych
+
+**OPC UA (Unified Architecture)**:
+- **Standard**: IEC 62541
+- **Zastosowanie**: Integracja z nowoczesnymi systemami SCADA
+- **Features**: Built-in security, data modeling, platform independent
+- **Advantages**: Semantyczna struktura danych, browsable information model
+
+**IEC 61850**:
+- **Standard**: Substation automation, rozszerzany na turbiny wiatrowe
+- **Benefits**: Strukturalne modelowanie danych, standardized naming
+- **Usage**: Coraz częściej w nowoczesnych farmach wiatrowych
+</SupportingDetails>
+
+<SupportingDetails title="🛡️ Integracja z systemami bezpieczeństwa">
+**Safety PLC Integration**:
+- **Input**: CMS alarmy jako input do safety PLC
+- **Logic**: Safety interlocks bazujące na danych CMS
+- **Output**: Automatyczne zatrzymania turbiny przy wykryciu krytycznych problemów
+
+**SCADA Safety Override**:
+- **Monitoring**: SCADA otrzymuje dane CMS jako dodatkowy input
+- **Visualization**: CMS alarms na HMI operatora
+- **Procedures**: Zintegrowane procedury reakcji na problemy CMS
+
+**Cloud Analytics**:
+- **Data Lake**: Przechowywanie danych historycznych z całej farmy
+- **Machine Learning**: Predykcyjne modele na poziomie całej populacji turbin
+- **Dashboard**: Centralne raportowanie i analizy dla managementu
+</SupportingDetails>
+
+<Example title="Integracja CMS-SCADA-Safety - Scenariusz rzeczywisty">
+**Architektura systemu** (farma 30 turbin):
+
+**Layer 1 - Turbine Level**:
+```
+CMS Edge Controller → Local Safety PLC → Turbine SCADA
+```
+
+**Layer 2 - Farm Level**:
+```
+Turbine SCADA → Farm SCADA → Safety Systems → Cloud Analytics
+```
+
+**Przykład przepływu danych** (alarm "Bearing temperature increasing"):
+
+**T+0**: CMS wykrywa wzrost temperatury łożyska o 15°C w ciągu 30 min
+**T+0.1s**: Edge controller generuje alarm level 2
+**T+0.5s**: Safety PLC otrzymuje alarm przez Modbus RTU
+**T+1s**: Turbine SCADA aktualizuje HMI z CMS status
+**T+2s**: Farm SCADA otrzymuje powiadomienie przez OPC UA
+**T+5s**: Operator widzi alarm na farm SCADA HMI
+**T+10s**: Data zapisana w cloud analytics dla trend analysis
+
+**Reakcja systemów**:
+- **Automatic**: Brak automatycznego zatrzymania (level 2 alarm)
+- **Operator**: Manual intervention required within 2 hours
+- **Planning**: Maintenance team notified for bearing inspection
+</Example>
+
+<KeyConcept title="Data fusion - integracja różnych źródeł danych">
+**CMS nie działa w izolacji** - jego siła tkwi w połączeniu z innymi systemami:
+- **SCADA data**: Parametry operacyjne (moc, wiatr, temperatura)
+- **Safety systems**: Status systemów bezpieczeństwa, pozycje hamulców
+- **Weather data**: Dane meteorologiczne dla kontekstu
+- **Maintenance records**: Historia napraw i konserwacji
+
+**Przykład data fusion**:
+Wysoka temperatura łożyska przy niskim wietrze = problem techniczny
+Wysoka temperatura przy silnym wietrze = normalne obciążenie
+</KeyConcept>
+
+<SuccessBox title="✅ Korzyści integracji systemowej">
+**Zintegrowane CMS-SCADA-Safety systemy zapewniają**:
+- **30% szybszą** reakcję na problemy (automatyczne powiadomienia)
+- **50% redukcję** fałszywych alarmów (kontekstowe dane)
+- **Unified dashboard** - jeden interfejs dla wszystkich systemów
+- **Predictive maintenance** - planowanie na podstawie trendów z całej farmy
+</SuccessBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Holistyczne podejście** - studenci muszą zrozumieć, że CMS to nie izolowany system, ale element większej ekosystemu. Integracja z SCADA i systemami bezpieczeństwa to nie opcja, ale konieczność.
+
+**Standardy branżowe** - protokoły jak OPC UA czy IEC 61850 to nie tylko techniczne rozwiązania, ale narzędzia zapewniające interoperacyjność między różnymi dostawcami.
+
+**Data fusion** - kluczowa koncepcja - więcej danych z różnych źródeł prowadzi do lepszych decyzji. CMS + SCADA + Weather + Maintenance records = znacznie lepsze wyniki niż każdy system osobno.
+
+**Praktyczne wdrożenie** - studenci będą musieli projektować takie integracje w swojej karierze. To nie są tylko teoretyczne rozważania.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📈 Analiza predykcyjna i algorytmy ML" type="tip">
+
+<KeyPoints title="🔮 Zaawansowane metody analityczne">
+- 📊 **Statistical methods** - analiza trendów, regresja, korelacje
+- 🤖 **Machine Learning** - klasyfikacja, regresja, clustering
+- 🧠 **Deep Learning** - sieci neuronowe, LSTM, CNN
+- 📈 **Digital Twins** - modelowanie matematyczne, symulacje
+</KeyPoints>
+
+<SupportingDetails title="📊 Klasyczne metody analizy danych">
+**Statistical Process Control (SPC)**:
+- **Control charts**: X-bar, R charts dla monitorowania parametrów
+- **Capability analysis**: Cp, Cpk indeksy dla oceny procesu
+- **Trend analysis**: Moving averages, exponential smoothing
+
+**Regression Analysis**:
+- **Linear regression**: Korelacja między parametrami operacyjnymi a kondycją
+- **Multiple regression**: Wpływ wielu czynników jednocześnie
+- **Polynomial regression**: Nieliniowe zależności (np. temperatura vs. moc)
+
+**Time Series Analysis**:
+- **ARIMA models**: AutoRegressive Integrated Moving Average
+- **Seasonal decomposition**: Uwzględnienie cykli sezonowych
+- **Fourier transforms**: Analiza częstotliwościowa w dziedzinie czasu
+</SupportingDetails>
+
+<SupportingDetails title="🤖 Machine Learning w CMS">
+**Supervised Learning**:
+- **Classification**: Predykcja typu awarii (bearing, gear, generator)
+- **Regression**: Predykcja czasu do awarii (Remaining Useful Life - RUL)
+- **Features**: RMS, kurtosis, spectral features, temperatura, obciążenie
+
+**Unsupervised Learning**:
+- **Clustering**: Grupowanie podobnych stanów turbiny
+- **Anomaly detection**: Isolation Forest, One-Class SVM
+- **Dimensionality reduction**: PCA, t-SNE dla wizualizacji
+
+**Algorytmy**:
+- **Random Forest**: Odporny na overfitting, dobra interpretowalność
+- **Support Vector Machines**: Skuteczny dla klasyfikacji i detekcji anomalii
+- **Neural Networks**: Multi-layer perceptron dla złożonych zależności
+</SupportingDetails>
+
+<Example title="Praktyczny przykład - Predykcja awarii łożyska">
+**Problem**: Predykcja awarii łożyska głównego w turbinie 3MW
+
+**Dane wejściowe** (6 miesięcy historycznych):
+```
+Features per day:
+- Vibration RMS (3 axes): mean, max, std
+- Temperature: mean, max, trend (15-day)
+- Power output: mean, variance
+- Operating hours: cumulative
+- Wind speed: mean, max, std
+
+Total: 42 features per turbine per day
+Target: RUL (days to failure) - ground truth from actual failures
+```
+
+**Model ML** (Random Forest Regressor):
+```python
+Features importance:
+1. Temperature trend (15-day): 34%
+2. Vibration RMS max (radial): 28%
+3. Power variance: 18%
+4. Vibration kurtosis: 12%
+5. Operating hours cumulative: 8%
+```
+
+**Wyniki modelu**:
+```
+- **Mean Absolute Error**: 12 dni (średni błąd predykcji)
+- **R² Score**: 0.78 (wyjaśnia 78% wariancji RUL)
+- **Early warning**: Wykrywa problemy 30-45 dni przed awarią
+- **False positive rate**: 8% (akceptowalne dla maintenance planning)
+```
+
+**Business impact**:
+- **Cost reduction**: 60% redukcja kosztów wymiany łożyska (planowana vs awaryjna)
+- **Uptime**: +15% availability przez lepsze planowanie
+- **Safety**: Eliminacja ryzyka katastrofalnej awarii
+</Example>
+
+<KeyConcept title="Digital Twin w monitoringu turbin">
+**Digital Twin** to cyfrowy model fizycznej turbiny, który:
+- **Mirrors** rzeczywisty stan i zachowanie turbiny
+- **Predicts** przyszłe stany na podstawie current conditions
+- **Simulates** różne scenariusze (maintenance, upgrades, failures)
+- **Optimizes** strategie utrzymania ruchu
+
+**Komponenty Digital Twin**:
+- **Physics-based models**: CFD, FEA, multi-body dynamics
+- **Data-driven models**: ML models uzupełniające modele fizyczne
+- **Real-time synchronization**: Aktualizacja na podstawie danych CMS
+</KeyConcept>
+
+<InfoBox title="💡 Best Practices dla ML w CMS">
+**Dane jakościowe**:
+- Minimum 18 miesięcy danych historycznych dla modeli ML
+- Labelling: Expert knowledge + automatyczna detekcja anomalii
+- Data preprocessing: Normalizacja, handling missing values
+
+**Modele**:
+- Start simple: Statistical methods przed ML
+- Cross-validation: Proper evaluation na unseen data
+- Interpretability: Zrozumiałe dla inżynierów maintenance
+- Continuous learning: Aktualizacja modeli z nowymi danymi
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**ML nie jest magiczny** - studenci muszą rozumieć, że machine learning to narzędzie, które wymaga dobrej jakości danych, właściwego problemu i eksperckiej wiedzy. To nie zastępuje inżynierów, tylko ich wspiera.
+
+**Praktyczne aspekty** - pokazuję, jak ML działa w rzeczywistym przykładzie. Studenci muszą widzieć konkretne liczby, nie tylko teoretyczne koncepcje.
+
+**Digital Twin** - to przyszłość CMS, ale wymaga ogromnych inwestycji w modele fizyczne i dane. Studenci muszą zrozumieć, że to długoterminowa strategia, nie szybka implementacja.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Podsumowanie - CMS jako system nerwowy turbiny" type="success">
+
+<KeyPoints title="🔑 Kluczowe osiągnięcia architektury CMS">
+- 🏗️ **Kompleksowa architektura** - od sensorów po analizy predykcyjne
+- 📡 **Efektywna akwizycja** - optymalizacja ilości i jakości danych
+- 💻 **Inteligentne przetwarzanie** - edge computing + cloud analytics
+- 🔗 **Pełna integracja** - SCADA, safety, cloud platforms
+</KeyPoints>
+
+<KeyConcept title="CMS jako integralna część systemu bezpieczeństwa">
+**CMS nie jest opcjonalny** - to fundamentalna część nowoczesnej turbiny wiatrowej. Bez CMS turbiny są "ślepe" na swoje problemy i reagują dopiero po wystąpieniu poważnych awarii. Z CMS - przewidują problemy i pozwalają na planowe, bezpieczne działania prewencyjne.
+</KeyConcept>
+
+<SuccessBox title="✅ Wskaźniki sukcesu nowoczesnych systemów CMS">
+**Zaawansowane farmy z kompletnym CMS osiągają**:
+- **95% redukcję** nieoczekiwanych awarii krytycznych
+- **40% redukcję** kosztów utrzymania ruchu
+- **25% wydłużenie** średniego czasu eksploatacji komponentów
+- **99.5% dostępność** turbin przy optymalnych kosztach
+</SuccessBox>
+
+<InfoBox title="🎓 Przygotowanie do analizy praktycznej">
+Po poznaniu architektury CMS przejdziemy do **konkretnych analiz** - drgań, temperatury i oleju. Studenci będą mogli zastosować wiedzę o architekturze do praktycznych problemów diagnostycznych.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Integracja wiedzy** - studenci mają teraz kompleksowy obraz systemów CMS: architektura, sensory, przetwarzanie danych, integracja i analizy predykcyjne. To fundament dla praktycznych zastosowań.
+
+**Applied knowledge** - następny wykład o analizie drgań, temperatury i oleju pozwoli studentom zastosować tę wiedzę architektoniczną do konkretnych problemów diagnostycznych.
+
+**Career readiness** - studenci będą mogli uczestniczyć w projektach CMS, zrozumieć specyfikacje, komunikować się z dostawcami systemów, planować wdrożenia CMS w farmach wiatrowych.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

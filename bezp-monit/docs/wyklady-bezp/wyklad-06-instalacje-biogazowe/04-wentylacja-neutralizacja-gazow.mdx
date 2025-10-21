@@ -1,0 +1,101 @@
+---
+sidebar_position: 4
+title: "Wentylacja i neutralizacja gazów"
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: bezpieczne odprowadzenie i neutralizacja" type="info">
+<LearningObjective>
+Po tej sekcji student potrafi zaprojektować wentylację ogólną i miejscową w biogazowni oraz dobrać metody neutralizacji gazów (H₂S, zapachowe związki siarki) z uwzględnieniem wymagań ATEX i skuteczności redukcji.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Rodzaje wentylacji: naturalna, mechaniczna, miejscowa wyciągowa
+- Parametry: krotność wymian, kierunki przepływu, strefowanie ATEX
+- Neutralizacja: biofiltry, płuczki (skrubery), utlenianie katalityczne/chemiczne
+- Integracja z detekcją gazów i ESD
+- Monitoring skuteczności i serwis
+</KeyPoints>
+
+<InstructorNotes>
+Podkreśl, że wentylacja wpływa na zasięgi stref Ex – dobre rozcieńczenie może obniżyć kategorię strefy. Zwróć uwagę na odporność korozyjną materiałów przy H₂S i wilgoci.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🌀 Projekt wentylacji" type="info">
+<KeyPoints title="Założenia projektowe">
+- Kontrola kierunków przepływu (od czystych do brudnych stref)
+- Zabezpieczenie urządzeń elektrycznych (oddzielenie od strumieni gazów)
+- Niezawodność: redundancja wentylatorów, zasilanie awaryjne
+</KeyPoints>
+
+<SupportingDetails title="Parametryzacja">
+- Dobór krotności wymian dla pomieszczeń technologicznych (wg wytycznych)
+- Punkty nawiewu/wywiewu z uwzględnieniem gęstości gazów (CH₄ – wyżej, H₂S – niżej)
+- Tłumienie hałasu, filtry przeciwkorozyjne, monitoring przepływu
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧪 Metody neutralizacji" type="tip">
+<KeyPoints title="Przegląd">
+- Biofiltry: biodegradacja związków siarki (H₂S) w złożu biologicznym
+- Płuczki chemiczne: absorpcja H₂S (np. NaOH/NaOCl) i neutralizacja
+- Adsorpcja: złoża żelazowe, węgiel impregnowany
+- Utlenianie katalityczne: redukcja odorów w strumieniach o niskich stężeniach
+</KeyPoints>
+
+<SupportingDetails title="Dobór technologii">
+Kieruj się stężeniami, przepływem, kosztami operacyjnymi i wymaganiami środowiskowymi. Zapewnij obejścia (bypass) i monitoring skuteczności.
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔗 Integracja z detekcją i ESD" type="info">
+<KeyPoints title="Sekwencje sterowania">
+- Alarm A1: zwiększenie wydatku wentylacji, powiadomienie personelu
+- Alarm A2: maksymalna wentylacja, odcięcie źródeł, procedura ESD
+- Rejestracja danych: trendowanie stężeń i przepływów, analiza nieskuteczności
+</KeyPoints>
+
+<Example title="Scenariusz">
+Wzrost CH₄ do 20% DGW → automatyczne zwiększenie wentylacji, kontrola zaworów strefowych, eskalacja alarmu do dyspozytorni.
+</Example>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="✅ Utrzymanie i bezpieczeństwo" type="success">
+<KeyPoints title="Checklist">
+- Przeglądy wentylatorów, pasów, łożysk; kontrola korozji
+- Kontrola filtrów i złoży (biofiltr/adsorber), regeneracja/wymiana
+- Testy awaryjnego zasilania i sekwencji ESD
+- Walidacja efektywności neutralizacji (pomiar H₂S na wylocie)
+</KeyPoints>
+
+<InstructorNotes>
+Zwróć uwagę na bezpieczeństwo prac serwisowych w strefach Ex, wyłączenia LOTO, detekcję przenośną podczas wejść do pomieszczeń o podwyższonym ryzyku.
+</InstructorNotes>
+</Slide>
+
+</SlideContainer>

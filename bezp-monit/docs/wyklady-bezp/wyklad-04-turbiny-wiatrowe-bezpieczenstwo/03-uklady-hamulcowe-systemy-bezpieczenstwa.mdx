@@ -1,0 +1,500 @@
+---
+title: "Układy hamulcowe i systemy bezpieczeństwa"
+sidebar_position: 3
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Układy hamulcowe i systemy bezpieczeństwa" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie funkcjonowanie układów hamulcowych w turbinach wiatrowych, identyfikuje główne systemy bezpieczeństwa, potrafi scharakteryzować procedury awaryjne i zna zasady redundancji w systemach krytycznych.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🛑 **Układy hamulcowe** - mechanizmy i typy hamulców
+- ⚡ **Systemy bezpieczeństwa** - wielopoziomowa ochrona
+- 🔄 **Redundancja systemów** - niezależne linie obrony
+- 🚨 **Procedury awaryjne** - reakcja na sytuacje krytyczne
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 20-25 minut
+
+**Przebieg**: Zacznę od pytania "Co się dzieje z turbiną, gdy wszystkie pozostałe systemy zawodzą?" - to wprowadzi w kontekst układów hamulcowych jako ostatniej linii obrony. Przejdę systematycznie przez każdy typ hamulców, podkreślając ich rolę w hierarchii bezpieczeństwa.
+
+**Kluczowe przesłanie**: Hamulce to ostatnia linia obrony przed katastrofą. Muszą działać niezależnie od wszystkich innych systemów i być w stanie zatrzymać turbinę w każdych warunkach.
+
+**Metody dydaktyczne**:
+- Diagram hierarchii systemów bezpieczeństwa
+- Przykłady rzeczywistych scenariuszy awaryjnych
+- Analiza kosztów awarii vs. kosztów systemów bezpieczeństwa
+
+**Najczęstsze pytania**:
+- Q: Czy hamulce mogą zatrzymać turbinę przy maksymalnej prędkości?
+- A: Zgodnie z normami IEC 61400, hamulce muszą być zdolne do zatrzymania turbiny z maksymalnej prędkości obrotowej w ciągu 15 sekund.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🛑 Typy układów hamulcowych" type="warning">
+
+<KeyPoints title="🔧 Klasyfikacja hamulców">
+- 🔄 **Hamulce aerodynamiczne** - pitch łopatek jako główne hamowanie
+- ⚙️ **Hamulce mechaniczne** - tarczowe, bębnowe, sprzęgłowe
+- 🔋 **Hamulce elektrodynamiczne** - prądy wirowe w generatorze
+- 🛡️ **Systemy awaryjne** - niezależne hamulce awaryjne
+</KeyPoints>
+
+<SupportingDetails title="📊 Charakterystyka hamulców aerodynamicznych">
+**System pitch jako hamulec podstawowy:**
+- **Szybkość reakcji**: < 3 sekundy do pełnego hamowania
+- **Siła hamowania**: Zmniejszenie mocy o 95-98%
+- **Zakres działania**: 0-25 m/s wiatru
+- **Energia**: Energia wiatrowa → pozycja feather łopatek
+
+**Zasada działania:**
+1. Wykrycie warunków wymagających zatrzymania
+2. Natychmiastowe wysłanie sygnału do siłowników pitch
+3. Obrót łopatek do pozycji feather (86-90°)
+4. Znaczne zmniejszenie współczynnika siły aerodynamicznej
+5. Ostateczne zatrzymanie wirnika
+
+**Ograniczenia:**
+- Wymaga sprawnego systemu pitch
+- Ograniczona skuteczność przy bardzo silnych wiatrach
+- Zależność od zasilania elektrycznego
+</SupportingDetails>
+
+<SupportingDetails title="⚙️ Hamulce mechaniczne - szczegółowa analiza">
+**Hamulce tarczowe (disc brakes):**
+- **Lokalizacja**: Na głównym wale, między generatorem a przekładnią
+- **Typ**: Hydrauliczne, pneumatyczne lub elektromechaniczne
+- **Moment hamujący**: 3-5x maksymalny moment nominalny turbiny
+- **Czas hamowania**: 10-15 sekund z maksymalnej prędkości
+
+**Hamulce sprzęgłowe:**
+- **Zastosowanie**: Głównie w turbinach z przekładnią
+- **Mechanizm**: Rozłączenie przekładni + hamulce na generatorze
+- **Zalety**: Ochrona przekładni przed przeciążeniem
+- **Wady**: Złożoność systemu, więcej elementów do konserwacji
+
+**Hamulce bębnowe:**
+- **Typowe zastosowanie**: Starsze turbiny < 2MW
+- **Zasada**: Cierne okładziny dociskane do bębna
+- **Utrzymanie**: Wymagają regularnej konserwacji okładzin
+</SupportingDetails>
+
+<WarningBox title="⚠️ Zasady projektowania hamulców">
+**Zgodnie z normą IEC 61400-1**, systemy hamulcowe muszą spełniać:
+- **Redundancja**: Minimum 2 niezależne systemy hamowania
+- **Niezależność**: Działanie niezależnie od systemów kontrolnych
+- **Energię**: Własne zasilanie awaryjne dla 72 godzin
+- **Testowanie**: Możliwość testów funkcjonalnych bez ryzyka
+</WarningBox>
+
+<Example title="Przykład - Awaria systemu pitch, aktywacja hamulców mechanicznych">
+**Scenariusz**: Turbina 3MW, awaria wszystkich siłowników pitch przy wietrze 20 m/s
+
+**Sekwencja awaryjna**:
+1. **T+0s**: Wykrycie awarii systemu pitch
+2. **T+0.1s**: Alarm w centrum kontroli
+3. **T+1s**: Automatyczna aktywacja hamulców mechanicznych
+4. **T+3s**: Hydrauliczne dociskanie okładzin do tarcz
+5. **T+12s**: Zatrzymanie wirnika (z maksymalnej prędkości obrotowej)
+6. **T+15s**: Potwierdzenie zatrzymania, turbina w trybie bezpiecznym
+
+**Parametry hamowania**:
+- Początkowa prędkość: 25 RPM (maksymalna)
+- Siła hamująca: 1,200,000 Nm momentu
+- Zużycie energii: 30 kWh na proces hamowania
+- Temperatura okładzin: wzrost do 180°C
+</Example>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Hierarchia hamowania** - studenci muszą zrozumieć, że systemy hamowania działają w hierarchii: najpierw pitch (najszybszy, najbardziej efektywny), potem hamulce mechaniczne (gdy pitch zawodzi), na końcu systemy awaryjne.
+
+**Fizyka hamowania** - pokazuję studentom obliczenia siły hamującej. Turbina 3MW przy 25 RPM to ogromny moment bezwładności. Hamulce muszą wygenerować moment przeciwny, żeby zatrzymać wirnik w rozsądnym czasie.
+
+**Temperatury i zużycie** - każde hamowanie generuje ciepło. Przy częstych hamowaniach (np. podczas burzy) może dojść do przegrzania okładzin hamulcowych. To pokazuje potrzebę systemów chłodzenia i monitorowania temperatury.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚡ Systemy bezpieczeństwa - architektura wielopoziomowa" type="info">
+
+<KeyPoints title="🛡️ Poziomy ochrony bezpieczeństwa">
+- 🥇 **Poziom 1**: Monitoring i wykrywanie zagrożeń
+- 🥈 **Poziom 2**: Systemy kontroli prewencyjnej (pitch, yaw)
+- 🥉 **Poziom 3**: Układy hamulcowe i zatrzymanie
+- 🚨 **Poziom 4**: Systemy awaryjne i komunikacja
+</KeyPoints>
+
+<SupportingDetails title="📊 Detalna architektura systemów bezpieczeństwa">
+**Poziom 1 - Wykrywanie i monitoring:**
+- **Sensory środowiskowe**: Anemometry, sensory oblodzenia, termometry
+- **Sensory mechaniczne**: Akcelerometry, sensory wibracji, tensometry
+- **Sensory elektryczne**: Monitoring prądów, napięć, mocy
+- **Systemy komunikacyjne**: SCADA, protokoły bezpieczeństwa, backup
+
+**Poziom 2 - Kontrola prewencyjna:**
+- **System pitch**: Kontrola kąta łopatek, redukcja obciążeń
+- **System yaw**: Optymalna orientacja, minimalizacja szkodliwych obciążeń
+- **Kontrola mocy**: Regulacja produkcji, unikanie przeciążeń
+- **Monitoring predykcyjny**: Wykrywanie wczesnych symptomów awarii
+
+**Poziom 3 - Hamowanie i zatrzymanie:**
+- **Hamulce podstawowe**: System pitch + hamulce mechaniczne
+- **Hamulce awaryjne**: Niezależne systemy hamulcowe
+- **Systemy blokady**: Zapewnienie utrzymania pozycji zatrzymanej
+- **Kontrola bezpieczeństwa**: Weryfikacja zatrzymania, alarmy
+
+**Poziom 4 - Reakcja awaryjna:**
+- **Komunikacja krytyczna**: Alarmy do centrum kontroli
+- **Ewakuacja**: Procedury bezpieczeństwa personelu
+- **Izolacja**: Odłączenie elektryczne, zabezpieczenie terenu
+- **Raportowanie**: Dokumentacja incydentu, analiza przyczyn
+</SupportingDetails>
+
+<KeyConcept title="Zasada fail-safe w systemach bezpieczeństwa">
+**Każdy poziom ochrony** musi być zaprojektowany zgodnie z zasadą **fail-safe**:
+- Przy awarii jakiegokolwiek elementu system **automatycznie przechodzi w stan bezpieczny**
+- **Brak zasilania = stan bezpieczny** - wszystkie hamulce aktywowane
+- **Brak komunikacji = zatrzymanie** - turbina nie może pracować bez łączności z centrum kontroli
+- **Niepewność co do stanu = zatrzymanie** - systemy muszą być deterministyczne
+</KeyConcept>
+
+<Example title="Przepływ danych w systemie bezpieczeństwa - przykład praktyczny">
+**Normalna praca** (wiatr 12 m/s):
+1. **Sensory**: Wysyłanie danych co 100ms
+2. **SCADA**: Analiza, porównanie z progami
+3. **Pitch control**: Optymalna pozycja łopatek
+4. **Monitoring**: Wszystkie parametry w normie
+
+**Sytuacja awaryjna** (wiatr 28 m/s, awaria pitch):
+1. **T+0s**: Anemometer → wartość >25 m/s → ALARM
+2. **T+0.1s**: SCADA → wykrywa awarię pitch → ESCALATION
+3. **T+0.5s**: System awaryjny → aktywacja hamulców mechanicznych
+4. **T+1s**: Backup communication → powiadomienie centrum
+5. **T+2s**: Safety PLC → potwierdzenie stanu bezpiecznego
+6. **T+15s**: Turbina zatrzymana → dokumentacja incydentu
+</Example>
+
+<InfoBox title="💡 Klasyfikacja zagrożeń według czasu reakcji">
+- **Krytyczne** (< 1 sekunda): Awaria pitch, ekstremalne wiatry
+- **Wysokie** (1-10 sekund): Awarie łożysk, problemy z generatorem  
+- **Średnie** (10 sekund - 1 minuta): Problemy z yaw, komunikacją
+- **Niskie** (> 1 minuta): Degradacja długoterminowa, planowane naprawy
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Wielopoziomowość** - studenci muszą zrozumieć, że bezpieczeństwo to nie jeden system, ale wiele poziomów ochrony działających równolegle i niezależnie. Każdy poziom ma inne zadanie i czas reakcji.
+
+**Fail-safe principle** - to fundamentalna zasada projektowania systemów bezpieczeństwa. System musi być bezpieczny nawet wtedy, gdy się zepsuje. Przykład: w samochodzie hamulec ręczny aktywuje się automatycznie, gdy puszczamy klamkę.
+
+**Czasy reakcji** - różne zagrożenia wymagają różnych czasów reakcji. Nie można mieć 15-sekundowej reakcji na awarię pitch, ale można mieć taką reakcję na problemy z komunikacją.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔄 Redundancja w systemach bezpieczeństwa" type="success">
+
+<KeyPoints title="🔧 Strategie redundancji">
+- 🔄 **Redundancja funkcjonalna** - różne sposoby wykonania tej samej funkcji
+- ⚡ **Redundancja sprzętowa** - podwójne, potrójne elementy
+- 🎯 **Redundancja czasowa** - reakcja w różnych czasach
+- 🌐 **Redundancja przestrzenna** - różne lokalizacje systemów
+</KeyPoints>
+
+<SupportingDetails title="📈 Przykłady redundantnych systemów">
+**Redundancja w systemach hamulcowych:**
+- **Hamulec główny**: System pitch + hydrauliczne hamulce tarczowe
+- **Hamulec awaryjny**: Pneumatyczne hamulce + mechaniczne blokady
+- **Hamulec zapasowy**: Elektromechaniczne hamulce sprzęgłowe
+- **Zasilanie**: Sieć + UPS + baterie + generatory awaryjne
+
+**Redundancja w systemach kontrolnych:**
+- **PLC główny**: Programowalny sterownik podstawowy
+- **PLC bezpieczeństwa**: Dedykowany safety PLC (Siemens S7-1500F)
+- **Hardware safety**: Przerywacze bezpieczeństwa, relé bezpieczeństwa
+- **Komunikacja**: Ethernet + Modbus RTU + GSM backup
+
+**Redundancja sensoryczna:**
+- **Anemometry**: 3 niezależne czujniki wiatru
+- **Pitch sensors**: 3 sensory pozycji na każdą łopatkę
+- **Temperature**: Wielopunktowe pomiary w kluczowych lokalizacjach
+- **Vibration**: Akcelerometry w różnych osiach i lokalizacjach
+</SupportingDetails>
+
+<SupportingDetails title="⚙️ Zasady projektowania redundantnych systemów">
+**Niezależność (Independence):**
+- Różne dostawcy komponentów tam, gdzie to możliwe
+- Niezależne ścieżki zasilania
+- Różne protokoły komunikacyjne
+- Fizyczne oddzielenie instalacji
+
+**Różnorodność (Diversity):**
+- Różne zasady fizyczne działania (hydrauliczne vs. pneumatyczne)
+- Różne technologie (optyczne vs. indukcyjne sensory)
+- Różne źródła informacji (sensory vs. modelowanie)
+
+**Monitorowanie redundancji:**
+- Ciągłe sprawdzanie spójności danych między systemami
+- Detekcja dysfunkcji elementów redundantnych
+- Alerting przy utracie redundancji
+- Automatyczne przełączanie na backup
+</SupportingDetails>
+
+<KeyConcept title="Reliability Engineering w turbinach wiatrowych">
+**Availability** = **Reliability** × **Maintainability** × **Redundancy Factor**
+
+Gdzie:
+- **Reliability** (R): Prawdopodobieństwo bezawaryjnej pracy
+- **Maintainability** (M): Szybkość i łatwość naprawy
+- **Redundancy Factor** (RF): Współczynnik zwiększenia dostępności przez redundancję
+
+**Przykład obliczenia**:
+- System główny: R=0.95, M=0.90 → Availability = 0.86
+- + Redundancja RF=0.98 → Final Availability = 0.94
+</KeyConcept>
+
+<Example title="Case study - Analiza redundancji w rzeczywistej turbinie">
+**Turbina**: 3MW, farma wiatrowa w północnej Polsce
+
+**System hamulcowy - analiza redundancji**:
+```
+Poziom 1: Pitch system (Primary)
+  - Availability: 99.2%
+  - MTBF: 8,760 godzin
+  - MTTR: 6 godzin
+
+Poziom 2: Mechanical brakes (Secondary)  
+  - Availability: 99.8%
+  - MTBF: 17,520 godzin
+  - MTTR: 12 godzin
+
+Poziom 3: Emergency brake (Backup)
+  - Availability: 99.9%
+  - MTBF: 35,040 godzin
+  - MTTR: 24 godziny
+
+Total System Availability: 99.99% (4.38 min przestoju/rok)
+```
+
+**Koszty vs. korzyści**:
+- Koszt systemów redundantnych: +15% ceny turbiny
+- Redukcja przestojów: -80% czasu offline
+- ROI: 3.2 lata
+</Example>
+
+<SuccessBox title="✅ Wskaźniki skuteczności redundantnych systemów">
+**Nowoczesne turbiny z właściwą redundancją osiągają:**
+- **99.9% availability** - mniej niż 8 godzin przestoju rocznie
+- **poniżej 1 catastrophic failure** per 1000 turbin/rok
+- **2x dłuższy** średni czas między awariami (MTBF)
+- **50% redukcja** kosztów utrzymania ruchu
+</SuccessBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Koszty redundancji** - studenci muszą zrozumieć, że redundancja to koszt, ale brak redundancji może kosztować znacznie więcej. Jeden dzień przestoju turbiny 3MW to strata 15-20 tysięcy euro.
+
+**Matematyka niezawodności** - pokazuję studentom podstawowe wzory na reliability. To nie tylko teoria, ale praktyczne narzędzie do projektowania systemów.
+
+**Przykłady z innych branż** - samoloty, elektrownie jądrowe, systemy bankowe - wszystkie mają redundancję, bo konsekwencje awarii są zbyt wysokie. Podobnie w turbinach wiatrowych.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🚨 Procedury awaryjne i zarządzanie kryzysowe" type="warning">
+
+<KeyPoints title="📋 Klasyfikacja sytuacji awaryjnych">
+- 🚨 **Stop 1** - Zatrzymanie planowane (konserwacja, burza)
+- ⚠️ **Stop 2** - Zatrzymanie awaryjne (problemy techniczne)
+- 🚨 **Stop 3** - Zatrzymanie krytyczne (zagrożenie bezpieczeństwa)
+- 🔥 **Emergency** - Sytuacja katastrofalna (pożar, uszkodzenie struktury)
+</KeyPoints>
+
+<SupportingDetails title="📊 Hierarchia odpowiedzi na incydenty">
+**Stop 1 - Zatrzymanie planowane:**
+- **Initiation**: Operator farmy, SCADA automatyczny
+- **Response time**: < 2 minuty
+- **Resources**: Standardowy personel techniczny
+- **Documentation**: Logowanie standardowe
+
+**Stop 2 - Zatrzymanie awaryjne:**
+- **Initiation**: Lokalne systemy bezpieczeństwa, EIC
+- **Response time**: < 30 sekund (automatyczne)
+- **Resources**: Technicy + inżynierowie (2-4 osoby)
+- **Documentation**: Szczegółowe raportowanie, analiza przyczyn
+
+**Stop 3 - Zatrzymanie krytyczne:**
+- **Initiation**: Safety PLC, krytyczne sensory
+- **Response time**: < 5 sekund
+- **Resources**: Pełny zespół awaryjny (6-8 osób)
+- **Documentation**: Pełna analiza incydentu, audyt bezpieczeństwa
+
+**Emergency - Sytuacja katastrofalna:**
+- **Initiation**: Wieloźródłowa detekcja, zewnętrzne alarmy
+- **Response time**: Natychmiastowa
+- **Resources**: Pełna ekipa awaryjna + służby zewnętrzne
+- **Documentation**: Pełne śledztwo, raport do organów nadzoru
+</SupportingDetails>
+
+<Example title="Procedura reakcji na awarię hamulców - szczegółowy scenariusz">
+**Inicjacja**: Turbina T7, alarm "Primary brake failure" + "Pitch system degraded"
+
+**Sekwencja reakcji**:
+
+**T+0 do T+30s - Automatyczna reakcja systemów**:
+1. **T+0s**: Safety PLC wykrywa awarię hamulca głównego
+2. **T+2s**: Automatyczne przełączenie na hamulec awaryjny
+3. **T+5s**: Aktywacja komunikacji awaryjnej (GSM backup)
+4. **T+10s**: Potwierdzenie zatrzymania turbiny
+5. **T+15s**: Blokada wszystkich systemów - turbina offline
+
+**T+30s do T+5min - Reakcja operatorów**:
+1. **T+30s**: Otrzymanie alarmu w centrum kontroli
+2. **T+1min**: Weryfikacja statusu przez operatora SCADA
+3. **T+2min**: Powiadomienie lokalnego zespołu technicznego
+4. **T+3min**: Decyzja o wysłaniu ekipy naprawczej
+5. **T+5min**: Ekipa w drodze do turbiny
+
+**T+5min do T+30min - Ocena i planowanie**:
+1. **T+5-10min**: Przybycie na miejsce, ocena bezpieczeństwa
+2. **T+10-20min**: Diagnostyka przyczyn awarii
+3. **T+20-30min**: Planowanie napraw, zamówienie części
+
+**Dokumentacja**:
+- **HSE Report**: Pełny raport bezpieczeństwa w ciągu 48h
+- **Technical Analysis**: Analiza techniczna w ciągu 72h  
+- **Preventive Actions**: Plan działań zapobiegawczych w ciągu 7 dni
+</Example>
+
+<WarningBox title="⚠️ Kluczowe zasady zarządzania kryzysem">
+**Personel musi pamiętać**:
+1. **Bezpieczeństwo ludzkie** zawsze ma pierwszeństwo
+2. **Dokumentacja** wszystkich działań jest obowiązkowa  
+3. **Komunikacja** z wszystkimi zainteresowanymi stronami
+4. **Analiza przyczyn** przed wznowieniem eksploatacji
+5. **Ściągawki** procedur awaryjnych w łatwo dostępnych miejscach
+</WarningBox>
+
+<InfoBox title="💡 Szkolenie personelu w procedurach awaryjnych">
+**Wymagane certyfikaty dla operatorów turbin**:
+- **GWO BST** (Basic Safety Training) - minimum
+- **GWO ART** (Advanced Rescue Training) - zalecane
+- **Wysokość** - uprawnienia do pracy na wysokości
+- **Pierwsza pomoc** - certyfikaty okresowe
+
+**Częstotliwość szkoleń**:
+- **Procedury podstawowe**: Co 6 miesięcy
+- **Symulacje awaryjne**: Co 3 miesiące  
+- **Certyfikaty bezpieczeństwa**: Corocznie
+- **Przegląd procedur**: Przy każdej zmianie systemu
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Realizm procedur** - studenci muszą zrozumieć, że procedury awaryjne to nie teoria, ale praktyczne narzędzia, które mogą zdecydować o życiu i śmierci. Każda sekunda w reakcji na awarię ma znaczenie.
+
+**Responsibility matrix** - kto, co, kiedy, jak. Studenci muszą zrozumieć strukturę odpowiedzialności w zespole awaryjnym.
+
+**Continuous improvement** - każda awaria to lekcja. Procedury muszą być ciągle aktualizowane na podstawie rzeczywistych doświadczeń. Analiza "lessons learned" to klucz do poprawy bezpieczeństwa.
+
+**Human factors** - pod wpływem stresu ludzie mogą działać irracjonalnie. Procedury muszą być proste, jednoznaczne i wielokrotnie ćwiczonych w symulacjach.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📊 Podsumowanie - Systemy bezpieczeństwa jako fundament" type="tip">
+
+<KeyPoints title="🔑 Najważniejsze wnioski">
+- 🛑 **Układy hamulcowe** to ostatnia linia obrony przed katastrofą
+- 🛡️ **Wielopoziomowość** systemów bezpieczeństwa zapewnia niezawodność
+- 🔄 **Redundancja** jest kluczowa dla ciągłości bezpiecznej eksploatacji
+- 🚨 **Procedury awaryjne** muszą być ćwiczonych i aktualizowane
+</KeyPoints>
+
+<KeyConcept title="Filozofia bezpieczeństwa w turbinach wiatrowych">
+**"Safety systems are not an afterthought - they are the foundation"** - systemy bezpieczeństwa nie są dodatkiem do turbiny, ale jej fundamentem. Każdy element projektowania, budowy i eksploatacji musi uwzględniać aspekty bezpieczeństwa od samego początku.
+</KeyConcept>
+
+<SuccessBox title="✅ Wskaźniki sukcesu nowoczesnych systemów bezpieczeństwa">
+**Zaawansowane farmy wiatrowe osiągają**:
+- **>99.9% uptime** z uwzględnieniem planowanych przestojów
+- **Zero** katastrofalnych awarii na 1000 turbin rocznie  
+- **poniżej 2%** nieplanowanych przestojów związanych z systemami bezpieczeństwa
+- **Certyfikacja ISO 45001** - standard zarządzania bezpieczeństwem pracy
+</SuccessBox>
+
+<InfoBox title="🎓 Następne kroki w nauce">
+Po poznaniu układów hamulcowych i systemów bezpieczeństwa przejdziemy do **architektury Condition Monitoring Systems (CMS)** - nowoczesnych systemów ciągłego monitoringu kondycji turbin.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Integracja wiedzy** - studenci mają teraz kompletny obraz systemów bezpieczeństwa turbin wiatrowych: od zagrożeń mechanicznych, przez systemy kontroli, do układów hamulcowych i procedur awaryjnych.
+
+**Praktyczne zastosowania** - ta wiedza będzie potrzebna przy projektowaniu farm wiatrowych, audytach bezpieczeństwa, zarządzaniu utrzymaniem ruchu.
+
+**Przygotowanie do CMS** - następny wykład o Condition Monitoring Systems to naturalna kontynuacja. Studenci już rozumieją, co i dlaczego trzeba monitorować, teraz nauczą się jak to robić zaawansowanymi metodami.
+
+**Krytyczne myślenie** - studenci powinni umieć ocenić systemy bezpieczeństwa w różnych turbinach, zidentyfikować słabe punkty i zaproponować ulepszenia.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

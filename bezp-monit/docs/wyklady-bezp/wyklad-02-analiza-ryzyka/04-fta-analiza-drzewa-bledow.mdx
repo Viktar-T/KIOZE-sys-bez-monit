@@ -335,34 +335,28 @@ Thermal Runaway = (Pojedyncza awaria ogniwa) AND (Brak wykrycia) AND (Brak inter
 </Example>
 
 <InstructorNotes title="📝 Notatki prowadzącego">
-**Czas**: 25-28 minut
-
-**Przebieg**:
-1. Wprowadzenie do FTA - definicja, zastosowania w OZE (8 min)
-2. Symbole i logika - bramki AND/OR, przykłady obliczeń (10 min)
-3. Proces budowania - 4 kroki, minimal cut sets (6 min)
-4. Praktyczne zastosowania - BESS, turbiny wiatrowe (4 min)
+**Przebieg** prowadzi przez systematyczne wprowadzenie do **FTA** - od definicji i zastosowań w OZE, przez symbole i logikę bramek **AND/OR** z praktycznymi przykładami obliczeń, do procesu budowania z 4 krokami i analizą minimal cut sets. Ważne jest podkreślenie praktycznych zastosowań w **BESS** i turbinach wiatrowych, które pokazują realną wartość metody.
 
 **Punkty kluczowe**:
-- **FTA to metoda dedukcyjna**: Od konsekwencji do przyczyn, przeciwieństwo FMEA
-- **Matematyka jest ważna**: Prawidłowe obliczenia AND/OR gates
-- **Minimal cut sets** są kluczowe dla priorytetyzacji działań
+- **FTA to metoda dedukcyjna**: Od konsekwencji do przyczyn, przeciwieństwo **FMEA**. Studenci muszą zrozumieć, że to **top-down approach** - zaczynamy od tego co nas najbardziej niepokoi.
+- **Matematyka jest ważna**: Prawidłowe obliczenia bramek **AND/OR** to podstawa wiarygodnej analizy. **P(A AND B) = P(A) × P(B)** to fundament, który często mylą studenci.
+- **Minimal cut sets** są kluczowe dla priorytetyzacji działań - pokazują najkrótsze ścieżki do awarii i pozwalają skupić zasoby tam, gdzie realnie można coś zmienić.
 
-**Ćwiczenie praktyczne** (opcjonalnie):
-Narysuj proste drzewo FTA na tablicy dla top event "pożar w pomieszczeniu BESS". Poproś studentów o identyfikację basic events.
+**Ćwiczenie praktyczne**:
+Narysuj proste drzewo **FTA** na tablicy dla top event "pożar w pomieszczeniu **BESS**". Poproś studentów o identyfikację basic events i pokaż jak **bramka AND** wymaga wszystkich trzech elementów: źródło ognia, materiał palny, utleniacz. To pomoże im zrozumieć praktyczną logikę drzewa.
 
 **Materiały pomocnicze**:
-- Wzory na prawdopodobieństwa bramek AND/OR
-- Przykładowe symbole FTA do narysowania
-- Checklist do weryfikacji kompletności drzewa
+- Wzory na prawdopodobieństwa bramek **AND/OR** - te formuły to podstawa, studenci muszą je znać na pamięć
+- Przykładowe symbole **FTA** do narysowania - wizualizacja pomaga zrozumieć strukturę
+- Checklist do weryfikacji kompletności drzewa - systematyczność to klucz do dobrej analizy
 
 **Pytania studenckie**:
-- Q: Jak głęboko rozwinąć drzewo FTA?
-- A: Do momentu, gdy basic events są niezależne i mamy dane o ich prawdopodobieństwach. Zwykle 3-5 poziomów.
+- **Q**: Jak głęboko rozwinąć drzewo FTA?
+- **A**: Do momentu, gdy basic events są **niezależne** i mamy dane o ich prawdopodobieństwach. Zwykle **3-5 poziomów** - więcej to nadmierna komplikacja, mniej to niepełna analiza.
 
-- Q: Co jeśli nie mamy danych o prawdopodobieństwach basic events?
-- A: Użyć eksperckich oszacowań, danych z podobnych systemów, konserwatywnych wartości. Ważna jest względna ważność, nie absolutne wartości.
+- **Q**: Co jeśli nie mamy danych o prawdopodobieństwach basic events?
+- **A**: Użyć eksperckich oszacowań, danych z podobnych systemów, konserwatywnych wartości. Ważna jest **względna ważność**, nie absolutne wartości. W OZE to typowe wyzwanie z powodu nowości technologii.
 
-- Q: Jak często aktualizować FTA?
-- A: Przy zmianach w systemie, nowych danych o awariach, lub co 3-5 lat. Software ułatwia aktualizacje.
+- **Q**: Jak często aktualizować FTA?
+- **A**: Przy zmianach w systemie, nowych danych o awariach, lub **co 3-5 lat**. Software ułatwia aktualizacje, ale najlepsze wyniki daje **interdyscyplinarny zespół** weryfikujący założenia.
 </InstructorNotes>

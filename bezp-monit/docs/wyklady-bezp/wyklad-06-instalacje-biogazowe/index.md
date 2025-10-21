@@ -9,15 +9,6 @@ title: "W6: Instalacje biogazowe i spalania biomasy"
 
 Wykład omawia wymagania ATEX dla instalacji biogazowych, klasyfikację stref zagrożonych wybuchem, dobór odpowiedniej aparatury elektrycznej, systemy detekcji gazów, wentylację oraz procedury związane z ucieczkami gazów i neutralizacją.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zastosować wymagania ATEX w projektowaniu instalacji biogazowych.
-2. Skategoryzować strefy zagrożone wybuchem zgodnie z normami ATEX.
-3. Dobrać odpowiednią aparaturę elektryczną dla stref zagrożonych.
-4. Zaprojektować systemy detekcji gazów toksycznych i wybuchowych.
-5. Zaplanować systemy wentylacji i neutralizacji gazów.
-6. Opracować procedury reagowania na ucieczki gazów.
-
 ## Struktura materiału
 
 1. [ATEX - klasyfikacja stref zagrożonych wybuchem](./01-atex-klasyfikacja-stref-zagrozonych.mdx)

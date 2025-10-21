@@ -1,0 +1,90 @@
+---
+sidebar_position: 6
+title: "Case study: incydent w biogazowni"
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: wnioski z realnego zdarzenia" type="info">
+<LearningObjective>
+Po tej sekcji student potrafi przeanalizować incydent w biogazowni metodą 5 Whys/FTA, zidentyfikować przyczyny źródłowe i zaproponować działania korygujące oraz prewencyjne.
+</LearningObjective>
+
+<KeyPoints title="📋 Kontekst">
+- Biogazownia rolnicza, linia odsiarczania H₂S
+- Przedmiot zdarzenia: nieszczelność na króćcu, wzrost stężenia H₂S/CH₄
+- Skutki: ewakuacja, krótkotrwałe zatrzymanie, brak obrażeń
+</KeyPoints>
+
+<InstructorNotes>
+Podkreśl wagę rzetelnej analizy powypadkowej. Zaznacz, że brak obrażeń nie oznacza, iż system był optymalny – to szansa na uczenie się.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🧪 Przebieg zdarzenia" type="warning">
+<KeyPoints title="Chronologia (skrót)">
+- 10:12: czujnik H₂S przy absorberze > 15 ppm (A2)
+- 10:12:30: automatyczne zwiększenie wentylacji, uruchomienie syren
+- 10:13: ewakuacja personelu, zamknięcie zaworu sekcyjnego
+- 10:15: mobilna detekcja potwierdza spadek stężenia
+- 10:40: inspekcja – nieszczelność na króćcu
+</KeyPoints>
+
+<SupportingDetails title="Dane z systemu">
+Trendy H₂S i CH₄, logi SCADA, czas reakcji urządzeń i ludzi.
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔍 Analiza przyczyn" type="info">
+<KeyPoints title="5 Whys / FTA (skrót)">
+- Dlaczego wzrost H₂S? → nieszczelność króćca
+- Dlaczego nieszczelność? → niewłaściwy moment dokręcania po serwisie
+- Dlaczego błąd serwisowy? → brak procedury momentów i checklisty LOTO
+- Dlaczego brak procedury? → nieaktualny standard utrzymaniowy
+- Dlaczego nieaktualny? → brak przeglądu po zmianie dostawcy uszczelek
+</KeyPoints>
+
+<InfoBox title="Wnioski">
+Przyczyną źródłową był brak aktualnej procedury serwisowej i kontroli jakości połączeń.
+</InfoBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="✅ Działania korygujące i prewencyjne" type="success">
+<KeyPoints title="CAPA">
+- Aktualizacja procedur serwisowych z tabelą momentów i checklistą
+- Szkolenie personelu i audyt powdrożeniowy
+- Dodatkowy detektor w strefie potencjalnej akumulacji gazu
+- Weryfikacja wydajności wentylacji w trybie alarmowym
+</KeyPoints>
+
+<Example title="Mierniki skuteczności">
+KPI: czas detekcji < 10 s, czas ewakuacji < 3 min, brak powtórzeń zdarzeń w 12 mies.
+</Example>
+
+<InstructorNotes>
+Zakończ podkreśleniem kultury uczenia się ze zdarzeń – transparentność, szybka implementacja CAPA, weryfikacja skuteczności.
+</InstructorNotes>
+</Slide>
+
+</SlideContainer>

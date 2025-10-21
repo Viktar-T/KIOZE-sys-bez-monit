@@ -9,15 +9,6 @@ title: "W4: Turbiny wiatrowe – bezpieczeństwo i diagnostyka"
 
 Wykład omawia zagrożenia mechaniczne i aerodynamiczne w turbinach wiatrowych, systemy kontroli (pitch/yaw), układy hamulcowe oraz zaawansowane systemy monitoringu kondycji (CMS) obejmujące pomiary drgań, temperatury i analizę oleju.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zidentyfikować zagrożenia mechaniczne i aerodynamiczne w turbinach wiatrowych.
-2. Opisać działanie systemów kontroli pitch i yaw.
-3. Scharakteryzować układy hamulcowe i ich niezawodność.
-4. Zinterpretować dane z systemów CMS (Condition Monitoring System).
-5. Zidentyfikować nieprawidłowości na podstawie analizy drgań i temperatury.
-6. Ocenić kondycję oleju w układach przekładniowych.
-
 ## Struktura materiału
 
 1. [Zagrożenia mechaniczne i aerodynamiczne turbin](./01-zagrozenia-mechaniczne-aerodynamiczne.mdx)

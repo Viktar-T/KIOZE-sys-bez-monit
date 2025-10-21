@@ -9,14 +9,6 @@ title: "W2: Metody analizy ryzyka w OZE"
 
 Wykład omawia metodologie analizy ryzyka stosowane w branży OZE, w tym HAZID/HAZOP, FMEA/FMECA, FTA, LOPA oraz koncepcję SIL. Prezentuje praktyczne przykłady zastosowań dla różnych typów instalacji.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zidentyfikować i zastosować metody analizy ryzyka (HAZID/HAZOP, FMEA/FMECA, FTA, LOPA).
-2. Obliczyć poziomy SIL dla systemów bezpieczeństwa.
-3. Przeprowadzić analizę ryzyka dla instalacji PV.
-4. Przeprowadzić analizę ryzyka dla turbin wiatrowych.
-5. Przeprowadzić analizę ryzyka dla instalacji biogazowych i magazynów energii.
-
 ## Struktura materiału
 
 1. [Wprowadzenie do metodologii analizy ryzyka](./01-metodologie-analizy-ryzyka.mdx)

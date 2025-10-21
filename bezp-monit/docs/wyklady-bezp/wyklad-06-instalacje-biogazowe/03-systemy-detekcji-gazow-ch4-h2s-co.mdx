@@ -1,0 +1,105 @@
+---
+sidebar_position: 3
+title: "Systemy detekcji gazów - CH4, H2S, CO"
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: skuteczna detekcja gazów" type="info">
+<LearningObjective>
+Po tej sekcji student potrafi dobrać czujniki i centrale detekcji gazów (CH₄, H₂S, CO) do zastosowań w biogazowniach, ustalić progi alarmowe, rozmieszczenie detektorów i integrację z wentylacją oraz ESD.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Właściwości gazów: CH₄ (palny), H₂S (toksyczny/palny), CO (toksyczny)
+- Typy czujników: półprzewodnikowe, elektrochemiczne, katalityczne (pellistor), NDIR
+- Progi alarmowe A1/A2, kalibracja, testy funkcjonalne
+- Rozmieszczenie czujników wg gęstości gazów i przepływów powietrza
+- Integracja: sygnalizacja, wentylacja, ESD, SCADA/PLC, rejestracja danych
+</KeyPoints>
+
+<InstructorNotes>
+Podkreśl różnice między czujnikami katalitycznymi (palne), elektrochemicznymi (toksyczne) i NDIR (stabilność dla CH₄/CO₂). Zwróć uwagę na wpływ temperatury, wilgotności, siarkowodoru na trwałość czujników.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🧪 Właściwości i zagrożenia gazów" type="warning">
+<SupportingDetails title="Charakterystyki">
+- CH₄: lżejszy od powietrza, DGW ≈ 4,4%, GZW ≈ 17%, zagrożenie wybuchem
+- H₂S: cięższy od powietrza, toksyczny (IDLH 100 ppm), korodujący, możliwy zapłon
+- CO: zbliżona gęstość do powietrza, silnie toksyczny (wiąże Hb)
+</SupportingDetails>
+
+<InfoBox title="Rozmieszczenie">
+- CH₄: detektory bliżej sufitu/wyższych stref
+- H₂S: detektory nisko/przy zagłębieniach
+- CO: strefa oddechowa (1,5–1,8 m)
+</InfoBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📟 Technologie czujników" type="info">
+<KeyPoints title="Dobór technologii">
+- Palne: katalityczne (pellistor) lub NDIR (mniej czułe na zatrucia)
+- Toksyczne: elektrochemiczne (H₂S, CO), okresowa wymiana sensorów
+- Samokontrola: testy kalibracyjne, czujniki referencyjne, diagnostyka dryftu
+</KeyPoints>
+
+<SupportingDetails title="Utrzymanie">
+Harmonogram kalibracji (np. co 3–6 miesięcy dla H₂S), testy bump, kontrola filtrów i osłon, rejestracja wyników w SCADA.
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🚨 Progi alarmowe i integracja" type="tip">
+<KeyPoints title="Progi i akcje">
+- A1 (ostrzeżenie): np. CH₄ 10% DGW, H₂S 5–10 ppm, CO 25–35 ppm
+- A2 (ewakuacja/ESD): np. CH₄ 20% DGW, H₂S 15–20 ppm, CO 50–100 ppm
+- Integracja: wysterowanie wentylacji, zaworów odcinających, sygnalizacji optyczno-akustycznej
+</KeyPoints>
+
+<Example title="Scenariusz">
+Detektor H₂S > 15 ppm → alarm A2 → zwiększenie wentylacji + uruchomienie syren → powiadomienie SCADA → sekwencja ESD w strefie.
+</Example>
+
+<WarningBox title="Uwaga">
+Progi należy dostosować do wytycznych lokalnych i oceny ryzyka. Unikaj fałszywych alarmów przez właściwą filtrację i lokalizację czujników.
+</WarningBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="✅ Projekt rozmieszczenia i testów" type="success">
+<KeyPoints title="Checklist">
+- Mapy przepływu powietrza, strefy akumulacji gazów
+- Wysokości montażu zgodne z gęstością gazu
+- Dostęp do czujników, osłony przeciwwilgociowe i przeciwwybuchowe
+- Harmonogram kalibracji i testów bump
+- Integracja z rejestracją danych i analizą trendów
+</KeyPoints>
+
+<InstructorNotes>
+Zakończ krótką checklistą projektową i utrzymaniową. Wskaż potrzebę redundancji czujników w krytycznych strefach i okresowych przeglądów skuteczności alarmowania.
+</InstructorNotes>
+</Slide>
+
+</SlideContainer>

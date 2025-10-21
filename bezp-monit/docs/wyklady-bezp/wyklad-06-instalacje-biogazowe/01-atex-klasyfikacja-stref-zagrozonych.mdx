@@ -1,0 +1,130 @@
+---
+sidebar_position: 1
+title: "ATEX - klasyfikacja stref zagrożonych wybuchem"
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: poprawna klasyfikacja stref" type="info">
+<LearningObjective>
+Po tej sekcji student potrafi wyjaśnić podstawy dyrektyw ATEX, wskazać źródła zapłonu w biogazowni, oraz przeprowadzić wstępną klasyfikację stref (0/1/2 dla gazów; 20/21/22 dla pyłów) wraz z dokumentacją założeń.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Ramy prawne: Dyrektywa 2014/34/UE (ATEX) i PN-EN 60079
+- Pojęcia: mieszanina wybuchowa, minimalna energia zapłonu, T-klasy
+- Strefy gazowe: 0, 1, 2; strefy pyłowe: 20, 21, 22
+- Etapy klasyfikacji: identyfikacja źródeł, ocena czasu i częstotliwości
+- Dokumentowanie: mapy stref, założenia, przeglądy okresowe
+</KeyPoints>
+
+<InstructorNotes>
+Podkreśl, że klasyfikacja stref to procedura inżynierska oparta na dowodach: analizy procesów, bilanse gazów, statystyki awarii. Przypomnij o kompatybilności z oceną ryzyka procesowego (HAZID/HAZOP) i wpływie na dobór aparatury (Ex). Użyj przykładów typowych lokalizacji stref w biogazowni.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📚 Podstawy ATEX i norm" type="info">
+<KeyConcept title="ATEX i PN-EN 60079">
+ATEX obejmuje wymagania dla urządzeń i systemów ochronnych przeznaczonych do pracy w atmosferach potencjalnie wybuchowych. PN-EN 60079 definiuje klasyfikację stref, grupy wybuchowości (I/II, IIA/IIB/IIC), poziomy ochrony (EPL) i metody badań.
+</KeyConcept>
+
+<SupportingDetails title="Definicje i parametry">
+- Atmosfera wybuchowa: mieszanina substancji palnych z powietrzem (gaz/pary/pyły) w warunkach, w których po zapłonie spalanie rozprzestrzenia się na całość mieszaniny.
+- Minimalna energia zapłonu (MIE) i temperatura zapłonu: kluczowe do oceny ryzyka.
+- Klasy temperaturowe (T1–T6): maksymalna dopuszczalna temp. powierzchni urządzeń.
+- EPL: Ga/Gb/Gc (gazy) oraz Da/Db/Dc (pyły) – pożądany poziom ochrony urządzeń.
+</SupportingDetails>
+
+<InstructorNotes>
+Wyjaśnij różnice między grupami IIA/IIB/IIC (narastająca surowość wymagań) i konsekwencje dla doboru obudów, uszczelnień, kabli. Zaznacz, że metan (CH₄) zwykle klasyfikowany jest w IIA, natomiast wodór (H₂) – IIC.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🗺️ Strefy: 0/1/2 (gazy) i 20/21/22 (pyły)" type="tip">
+<KeyPoints title="Klasyfikacja wg czasu obecności mieszaniny">
+- Strefa 0 / 20: mieszanina obecna stale, długo lub często
+- Strefa 1 / 21: prawdopodobna w normalnych warunkach pracy
+- Strefa 2 / 22: mało prawdopodobna i krótkotrwała
+</KeyPoints>
+
+<SupportingDetails title="Przykłady w biogazowni">
+- Kopuła zbiornika fermentacyjnego: możliwa strefa 1 wewnątrz, otoczenie króćców – 2
+- Strefy przy zaworach, kompresorach, odsiarczalniach – 1 lub 2 zależnie od scenariuszy
+- Magazyny biomasy pylistej: lokalnie 21/22, wewnątrz cyklonów/filtrów – 20/21
+</SupportingDetails>
+
+<InfoBox title="Dokumentowanie stref">
+Twórz mapy stref na rzutach instalacji, z opisem założeń (źródła emisji, wentylacja, czas ekspozycji). Aktualizuj po modyfikacjach procesu.
+</InfoBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔍 Procedura klasyfikacji: krok po kroku" type="info">
+<KeyPoints title="Etapy">
+- Identyfikuj źródła emisji (SE): stałe, drugorzędne, sporadyczne
+- Oszacuj ilość, tempo i prawdopodobieństwo uwolnienia gazu/pyłu
+- Oceń wentylację (naturalna/mechaniczna), rozcieńczenie i geometrię przestrzeni
+- Wyznacz zasięg stref (promienie/objętości) dla typowych scenariuszy
+- Określ klasy sprzętu, EPL i klasy temp. wynikające z klasyfikacji
+</KeyPoints>
+
+<SupportingDetails title="Wskazówki praktyczne">
+Używaj konserwatywnych założeń w niepewnych obszarach. Waliduj danymi z eksploatacji (detektory, logi incydentów). Stosuj normatywne tabele i kalkulatory branżowe zgodne z PN-EN 60079.
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🧪 Przykład: sekcja odsiarczania biogazu" type="warning">
+<KeyPoints title="Założenia">
+- Strumień CH₄ z domieszką H₂S (ppm–% w zależności od technologii)
+- Potencjalne nieszczelności na złączach, zaworach, absorbery żelazowe/chemiczne
+- Wentylacja mechaniczna kanałowa, monitorowanie H₂S i CH₄
+</KeyPoints>
+
+<Example title="Wynik klasyfikacji (przykładowy)">
+- Wokół absorbera: strefa 1 w promieniu do 1 m, strefa 2 do 3 m
+- Przy kolektorze i zaworach: strefa 2 lokalna, zależna od kierunku wentylacji
+- W pomieszczeniu: strefy obniżone przy skutecznej wentylacji i detekcji
+</Example>
+
+<WarningBox title="Uwaga">
+Przykład ma charakter ilustracyjny – rzeczywista klasyfikacja wymaga danych procesowych, audytu miejsca i zgodności z normami.
+</WarningBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="✅ Kontrola zmian i przeglądy" type="success">
+<KeyPoints title="Utrzymanie aktualności">
+- Przeglądy okresowe po remontach i zmianach procesu
+- Weryfikacja skuteczności wentylacji i detekcji gazów
+- Aktualizacja map stref, szkolenia personelu, audyty Ex
+</KeyPoints>
+
+<InstructorNotes>
+Zakończ akcentem na cykl życia dokumentacji stref: projekt → budowa → eksploatacja → zmiany. Podkreśl współpracę zespołu procesowego, elektrycznego i BHP. Wskaż, że klasyfikacja stref bezpośrednio determinuje dobór urządzeń Ex i koszty projektu.
+</InstructorNotes>
+</Slide>
+
+</SlideContainer>

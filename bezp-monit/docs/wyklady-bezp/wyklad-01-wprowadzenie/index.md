@@ -9,14 +9,6 @@ title: "W1: Wprowadzenie i ramy normatywne"
 
 Wykład wprowadza podstawowe pojęcia związane z bezpieczeństwem instalacji OZE, prezentuje statystykę zdarzeń i poziomy ryzyka. Omawia kluczowe normy i wytyczne oraz odpowiedzialność inżyniera w kontekście wymagań dokumentacyjnych.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zdefiniować podstawowe pojęcia związane z bezpieczeństwem w instalacjach OZE.
-2. Przeanalizować statystykę zdarzeń w różnych typach instalacji OZE.
-3. Scharakteryzować poziomy ryzyka i metody ich oceny.
-4. Zidentyfikować kluczowe normy i wytyczne obowiązujące w branży.
-5. Określić zakres odpowiedzialności inżyniera i wymagania dokumentacyjne.
-
 ## Struktura materiału
 
 1. [Wprowadzenie: bezpieczeństwo w OZE - kontekst branżowy](./01-wprowadzenie-kontekst-branzowy.mdx)

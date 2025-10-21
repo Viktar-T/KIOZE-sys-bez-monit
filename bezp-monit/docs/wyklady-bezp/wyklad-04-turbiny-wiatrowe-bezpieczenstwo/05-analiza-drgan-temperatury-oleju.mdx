@@ -1,0 +1,601 @@
+---
+title: "Analiza drgań, temperatury i oleju"
+sidebar_position: 5
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Analiza drgań, temperatury i oleju" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie metody analizy drgań, temperatury i oleju w turbinach wiatrowych, potrafi interpretować spektra częstotliwościowe, zna symptomy typowych awarii mechanicznych i umie ocenić stan kondycji komponentów na podstawie analiz diagnostycznych.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🌊 **Analiza drgań** - spektra, częstotliwości, symptomy awarii
+- 🌡️ **Monitoring temperatury** - rozkłady, trendy, wykrywanie anomalii
+- 🛢️ **Analiza oleju** - skład, zanieczyszczenia, degradacja
+- 🔍 **Diagnostyka komponentów** - łopaty, łożyska, przekładnia, generator
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 25-30 minut
+
+**Przebieg**: To najbardziej praktyczny wykład w serii - przejdę od teorii do konkretnych przykładów interpretacji danych. Zacznę od pytania "Jak odróżnić normalne drgania od sygnałów awarii?" - to wprowadzi w praktyczny kontekst analizy.
+
+**Kluczowe przesłanie**: Analiza danych CMS to nie tylko czytanie liczb, ale interpretacja wzorców, które pokazują fizyczne procesy zachodzące w turbinie. Inżynier musi myśleć jak detektyw - każdy sygnał to clue.
+
+**Metody dydaktyczne**:
+- Rzeczywiste przykłady spektrów z awarii
+- Porównanie "zdrowych" vs "chorych" tendencji
+- Demonstracja oprogramowania do analizy CMS
+
+**Najczęstsze pytania**:
+- Q: Jak często zmieniać olej w turbinie wiatrowej?
+- A: Zależy od typu, ale typowo co 3-5 lat lub gdy analiza pokazuje degradację parametrów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🌊 Analiza drgań - spektra i częstotliwości" type="warning">
+
+<KeyPoints title="📊 Podstawy analizy spektralnej">
+- 📈 **Spektrum częstotliwości** - FFT analysis, charakterystyczne częstotliwości
+- 🔍 **Częstotliwości własne** - natural frequencies komponentów
+- ⚙️ **Symptomy awarii** - charakterystyczne wzorce drgań dla różnych problemów
+- 📊 **Parametry diagnostyczne** - RMS, kurtosis, crest factor
+</KeyPoints>
+
+<SupportingDetails title="🔬 Charakterystyczne częstotliwości w turbinach wiatrowych">
+**Częstotliwości podstawowe**:
+- **1× RPM**: Obroty głównego wału (0.1-0.3 Hz dla typowych turbin)
+- **3× RPM**: Częstotliwość łopatek (3 łopaty × RPM)
+- **Gear mesh frequencies**: Przekładnia - częstotliwości zazębienia
+- **Generator frequencies**: 50 Hz (siatka) i harmonics
+
+**Spektrum łożysk głównych**:
+- **Ball pass frequency outer race (BPFO)**: Zazwyczaj 3.5-4× RPM
+- **Ball pass frequency inner race (BPFI)**: Zazwyczaj 4.5-5× RPM
+- **Ball spin frequency (BSF)**: Zazwyczaj 1.9-2.1× RPM
+- **Fundamental train frequency**: Zazwyczaj 0.4× RPM
+
+**Spektrum przekładni**:
+- **Pinion frequency**: Częstotliwość koła zębatego na wejściu
+- **Gear mesh frequency**: Częstotliwość zazębienia (pinion teeth × pinion RPM)
+- **Planetary frequency**: Dla przekładni planetarnych
+</SupportingDetails>
+
+<SupportingDetails title="📈 Parametry diagnostyczne drgań">
+**RMS (Root Mean Square)**:
+- **Definicja**: Średnia kwadratowa wartości drgań
+- **Zastosowanie**: Ogólna ocena poziomu drgań
+- **Typowe progi**: 2-5 mm/s dla łożysk głównych
+- **Trend**: Stopniowy wzrost wskazuje na zużycie
+
+**Kurtosis (Iloraz kurtozy)**:
+- **Definicja**: Miernik "ostrości" rozkładu amplitud
+- **Wartość normalna**: 3.0 (rozkład normalny)
+- **Wartość alarmowa**: >4.0 (wskazuje na impulsy/uszkodzenia)
+- **Zastosowanie**: Wykrywanie wczesnych symptomów zużycia łożysk
+
+**Crest Factor**:
+- **Definicja**: Stosunek wartości maksymalnej do RMS
+- **Wartość normalna**: 3-5
+- **Wartość alarmowa**: >6 (wskazuje na uszkodzenia)
+- **Zastosowanie**: Detekcja pęknięć, uszkodzeń powierzchni
+</SupportingDetails>
+
+<Example title="Przykład analizy spektralnej - awaria łożyska głównego">
+**Początkowy stan** (miesiące 1-8):
+```
+Spektrum wibracji głównego łożyska:
+- 1× RPM: 0.5 mm/s (normalne)
+- BPFO: 2.1 mm/s (3.6× RPM, normalne)
+- BPFI: 1.8 mm/s (4.8× RPM, normalne)
+- RMS total: 3.2 mm/s (below alarm threshold)
+```
+
+**Rozwój problemu** (miesiące 9-12):
+```
+Spektrum wibracji - tendencje:
+- 1× RPM: 0.5 → 0.7 mm/s (wzrost 40%)
+- BPFO: 2.1 → 3.8 mm/s (wzrost 81%)
+- BPFI: 1.8 → 4.2 mm/s (wzrost 133%)
+- RMS total: 3.2 → 5.8 mm/s (alarm threshold: 6.0 mm/s)
+- Kurtosis: 3.1 → 4.3 (wskazuje na uszkodzenia powierzchni)
+```
+
+**Diagnoza**:
+- **Problem**: Stopniowe uszkodzenie bieżni zewnętrznej łożyska głównego
+- **Mechanizm**: Obecność mikro-pęknięć i brinelling
+- **Przewidywany czas do awarii**: 3-6 miesięcy
+- **Rekomendacja**: Planowa wymiana łożyska podczas najbliższej przerwy technicznej
+</Example>
+
+<WarningBox title="⚠️ Interpretacja spektrów - częste błędy">
+**Błędy w interpretacji**:
+- **Brak uwzględnienia prędkości**: Częstotliwości zmieniają się z obrotami
+- **Ignorowanie harmonics**: Często problemy widoczne w 2×, 3× częstotliwości podstawowej
+- **Fokus tylko na RMS**: Parametry statystyczne mogą ukrywać problemy
+- **Brak trend analysis**: Pojedyncze pomiary mogą być mylące
+</WarningBox>
+
+<KeyConcept title="Envelope analysis dla wczesnej detekcji">
+**Zasada envelope analysis**: 
+Wysokoczęstotliwościowe sygnały są modulowane przez niskoczęstotliwościowe problemy mechaniczne. Analiza envelope pozwala wykryć uszkodzenia łożysk 2-6 miesięcy wcześniej niż analiza tradycyjna.
+
+**Proces**:
+1. **Band-pass filtering**: Filtrowanie w zakresie 2-12 kHz
+2. **Hilbert transform**: Demodulacja sygnału
+3. **FFT envelope**: Analiza częstotliwościowa sygnału modulującego
+4. **Trend analysis**: Monitorowanie trendów envelope RMS
+</KeyConcept>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczny aspekt** - studenci muszą zrozumieć, że analiza drgań to nie tylko matematyka, ale fizyka. Każda częstotliwość odpowiada rzeczywistemu zjawisku mechanicznemu w turbinie.
+
+**Interpretacja spektrów** - pokazuję studentom rzeczywiste przykłady spektrów z różnych typów awarii. To kluczowa umiejętność praktyczna.
+
+**Parametry diagnostyczne** - studenci muszą rozumieć, dlaczego kurtosis jest lepszy od RMS do detekcji wczesnych problemów. To różnica między wykrywaniem trendów (RMS) a wykrywaniem impulsów (kurtosis).
+
+**Envelope analysis** - to zaawansowana technika, która pozwala wykryć problemy znacznie wcześniej. Studenci muszą rozumieć zasadę, nawet jeśli nie będą implementować algorytmów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌡️ Monitoring temperatury - rozkłady i trendy" type="info">
+
+<KeyPoints title="📊 Klasyfikacja pomiarów temperatury">
+- 🔥 **Temperatury krytyczne** - łożyska, uzwojenia, przekładnia
+- 📈 **Monitoring trendów** - zmiany w czasie, sezonowość
+- ⚠️ **Progów alarmowe** - adaptacyjne vs. stałe progi
+- 🎯 **Wykrywanie anomalii** - wczesne symptomy problemów
+</KeyPoints>
+
+<SupportingDetails title="🌡️ Lokalizacje i charakterystyki pomiarów">
+**Łożyska główne**:
+- **Typ pomiaru**: RTD PT100 w skrzyni łożyskowej
+- **Temperatura normalna**: 60-75°C (zależy od obciążeń i temperatury otoczenia)
+- **Alarm level 1**: +15°C powyżej baseline
+- **Alarm level 2**: +25°C powyżej baseline (zatrzymanie)
+- **Trend analysis**: Wzrost >2°C/miesiąc wskazuje na problem
+
+**Przekładnia (Gearbox)**:
+- **Lokalizacje**: Łożyska (input, intermediate, output), obudowa
+- **Temperatura normalna**: 45-65°C (zależy od mocy i chłodzenia)
+- **Monitoring oleju**: Temperatura oleju w głównej skrzyni
+- **Alarm criteria**: Różnica temperatur między łożyskami >10°C
+
+**Generator**:
+- **Uzwojenie**: Termopary w każdej fazie
+- **Łożyska**: Monitoring łożysk po stronie statora i rotora
+- **Temperatura normalna**: 80-100°C dla uzwojeń przy pełnej mocy
+- **Class F insulation**: Maksymalna temperatura 155°C
+</SupportingDetails>
+
+<SupportingDetails title="📈 Strategie monitoringu trendów">
+**Adaptacyjne progi alarmowe**:
+- **Baseline calculation**: Średnia temperatura z ostatnich 30 dni
+- **Seasonal adjustment**: Uwzględnienie zmian sezonowych
+- **Load correction**: Korekta względem mocy i obciążeń
+- **Dynamic thresholds**: Progi adaptujące się do warunków pracy
+
+**Analiza różnicowa**:
+- **Cross-correlation**: Porównanie temperatur między podobnymi komponentami
+- **Spatial analysis**: Wzorce przestrzenne w rozkładzie temperatur
+- **Temporal patterns**: Wykrywanie cyklicznych zmian
+</SupportingDetails>
+
+<Example title="Case study - Wykrywanie problemu z przekładnią przez monitoring temperatury">
+**Początkowa sytuacja** (6-miesięczny baseline):
+```
+Temperatury łożysk przekładni (średnie):
+- Input bearing: 52°C ± 3°C
+- Intermediate bearing 1: 58°C ± 2°C  
+- Intermediate bearing 2: 56°C ± 3°C
+- Output bearing: 61°C ± 2°C
+- Oil temperature: 54°C ± 2°C
+```
+
+**Rozwój problemu** (miesiące 7-12):
+```
+Trend analysis - średnie miesięczne:
+Month 7: Intermediate bearing 1: 58°C → 60°C (+2°C)
+Month 8: Intermediate bearing 1: 60°C → 63°C (+3°C)
+Month 9: Intermediate bearing 1: 63°C → 67°C (+4°C)
+Month 10: Intermediate bearing 1: 67°C → 72°C (+5°C)
+Month 11: Intermediate bearing 1: 72°C → 78°C (+6°C)
+Month 12: Intermediate bearing 1: 78°C → 85°C (+7°C) - ALARM LEVEL 1
+```
+
+**Analiza różnicowa**:
+```
+Temperature difference analysis:
+- Input vs Intermediate 1: Baseline 6°C → Current 33°C (alarm!)
+- Intermediate 1 vs 2: Baseline 2°C → Current 15°C (trending up)
+- Intermediate 1 vs Output: Baseline 3°C → Current 7°C (normal)
+```
+
+**Diagnoza i akcja**:
+- **Problem**: Stopniowe uszkodzenie łożyska intermediate 1
+- **Mechanizm**: Brinelling caused by vibration in gear mesh
+- **Akcja**: Planowana wymiana podczas maintenance window
+- **Prevention**: Zwiększenie częstotliwości pomiarów wibracji tego łożyska
+</Example>
+
+<InfoBox title="💡 Thermal imaging jako uzupełnienie">
+**Kamery termowizyjne** - dodatkowe narzędzie diagnostyczne:
+- **Lokalizacje**: Uzwojenia generatora, powierzchnie zewnętrzne
+- **Zakres**: -40°C do +400°C
+- **Zastosowanie**: Wykrywanie hot spots, problemów z chłodzeniem
+- **Częstotliwość**: Co 3 miesiące podczas inspekcji
+</InfoBox>
+
+<KeyConcept title="Heat signature analysis">
+**Wzorce cieplne** w turbinach wiatrowych:
+- **Normal pattern**: Wzrost temperatury z mocą i prędkością wiatru
+- **Friction signature**: Nieproporcjonalny wzrost przy zmęczeniu materiałów
+- **Insulation failure**: Nagłe skoki temperatury w uzwojeniach
+- **Cooling malfunction**: Wysokie temperatury przy niskiej mocy
+</KeyConcept>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Temperatura vs obciążenie** - kluczowa koncepcja: temperatura to nie tylko bezwzględna wartość, ale funkcja obciążeń. Studenci muszą rozumieć różnicę między "gorąco bo obciążenie" a "gorąco bo problem".
+
+**Trend analysis** - pokazuję studentom, jak mały trend może wskazywać na poważny problem. 2°C wzrost miesięcznie to może wydawać się nieznaczne, ale w ciągu roku to 24°C.
+
+**Adaptacyjne progi** - to nowoczesne podejście. Tradycyjne stałe progi często generują fałszywe alarmy w zmiennych warunkach pogodowych.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🛢️ Analiza oleju - skład i degradacja" type="warning">
+
+<KeyPoints title="🧪 Parametry analizy oleju">
+- 🔬 **Analiiza fizyczna** - lepkość, liczba kwasowa, zawartość wody
+- 🧲 **Analiza cząstek** - zawartość metali, rozmiar cząstek
+- 🧪 **Analiza chemiczna** - degradacja addytywów, utlenianie
+- 📊 **Monitoring trendów** - prognozowanie czasu wymiany oleju
+</KeyPoints>
+
+<SupportingDetails title="🔬 Podstawowe parametry analizy oleju">
+**Parametry fizyczne**:
+- **Lepkość (40°C)**: ISO VG 220-320 dla przekładni
+- **Tolerancja**: ±10% od wartości nominalnej
+- **Alarm**: Lepkość >±15% wskazuje na zanieczyszczenie lub degradację
+- **TBN (Total Base Number)**: Miara rezerwy alkalicznej oleju
+  - Nowy olej: 8-12 mg KOH/g
+  - Wymiana: Gdy TBN spadnie poniżej 3 mg KOH/g
+
+**Zawartość wody**:
+- **Normalna**: poniżej 0.1% (1000 ppm)
+- **Alarm level 1**: 0.2% (2000 ppm)
+- **Alarm level 2**: 0.5% (5000 ppm) - natychmiastowa wymiana
+- **Metoda**: Karl Fischer titration
+
+**Temperatura zapłonu**:
+- **Nowy olej**: >220°C
+- **Alarm**: Spadek o >20°C wskazuje na zanieczyszczenie paliwem
+</SupportingDetails>
+
+<SupportingDetails title="🧲 Analiza cząstek (Particle analysis)">
+**Wymiary cząstek**:
+- **Normal wear**: Cząstki poniżej 10μm
+- **Severe wear**: Cząstki 10-50μm
+- **Failure mode**: Cząstki >50μm
+- **Method**: Laser particle counting (ISO 4406)
+
+**Metal analysis (Spectrometry)**:
+- **Żelazo (Fe)**: Łożyska, wały, obudowy
+- **Chrom (Cr)**: Łożyska kulowe
+- **Miedź (Cu)**: Łożyska ślizgowe, pierścienie
+- **Aluminum (Al)**: Obudowy, chłodnice
+- **Normal limits**: Fe poniżej 50ppm, Cu poniżej 30ppm, Cr poniżej 20ppm
+
+**Trend analysis**:
+- **Baseline**: Pierwszy pomiar w nowym oleju
+- **Rate of change**: Wzrost >5x baseline = alarm
+- **Combination analysis**: Wzrost >2 metali jednocześnie = problem systemowy
+</SupportingDetails>
+
+<Example title="Prognozowanie wymiany oleju - analiza trendów">
+**Dane historyczne** (12 miesięcy monitoringu):
+
+**Parametry fizyczne**:
+```
+Month 1:  Lepkość: 220 cSt, TBN: 9.2, H2O: 0.05%
+Month 3:  Lepkość: 218 cSt, TBN: 8.1, H2O: 0.08%
+Month 6:  Lepkość: 225 cSt, TBN: 6.9, H2O: 0.12%
+Month 9:  Lepkość: 232 cSt, TBN: 5.2, H2O: 0.18%
+Month 12: Lepkość: 245 cSt, TBN: 3.8, H2O: 0.25%
+```
+
+**Analiza cząstek**:
+```
+Month 1:  Fe: 12 ppm, Cu: 8 ppm, particles >10μm: 850/ml
+Month 6:  Fe: 18 ppm, Cu: 11 ppm, particles >10μm: 1200/ml
+Month 9:  Fe: 28 ppm, Cu: 15 ppm, particles >10μm: 1800/ml
+Month 12: Fe: 42 ppm, Cu: 22 ppm, particles >10μm: 2800/ml
+```
+
+**Analiza trendu**:
+```
+TBN degradation rate: -0.42 mg KOH/g per month
+Projected time to TBN = 3: 6.7 months from Month 12
+
+Iron rate: +2.5 ppm/month (exponential)
+Copper rate: +1.2 ppm/month
+Particle rate: +163 particles/ml/month
+
+Recommendation: Oil change in 5 months (before TBN limit)
+Reason: Metal levels approaching alarm thresholds
+```
+
+**Koszt vs. korzyści**:
+- **Koszt wymiany oleju**: €15,000 (olej + praca)
+- **Ryzyko uszkodzenia**: Wzrost Fe trend wskazuje na problemy z łożyskami
+- **Prevention**: Wcześniejsza wymiana może uniknąć €50,000+ kosztów naprawy przekładni
+</Example>
+
+<KeyConcept title="Olej jako okno na stan mechaniczny">
+**Olej to system diagnostyczny** - zawiera informacje o wszystkich mechanicznych komponentach:
+- **Metal particles**: Wskazują na zużycie ścierne i adhezyjne
+- **Oxidation products**: Pokazują temperaturę pracy i starzenie
+- **Contaminants**: Woda, paliwo, pył wskazują na problemy z uszczelnieniami
+- **Additive depletion**: Pokazuje agresywność środowiska pracy
+</KeyConcept>
+
+<WarningBox title="⚠️ Częste błędy w analizie oleju">
+**Typowe problemy interpretacji**:
+- **Ignoring trending**: Pojedyncze pomiary mogą być mylące
+- **Wrong baseline**: Porównywanie z innym typem oleju
+- **Sampling errors**: Złe miejsce lub technika pobierania próbek
+- **Delayed analysis**: Próbki starsze niż 7 dni mogą dać fałszywe wyniki
+</WarningBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczny aspekt** - analiza oleju to jeden z najskuteczniejszych sposobów wczesnego wykrywania problemów mechanicznych. Studenci muszą rozumieć, że to nie tylko "sprawdzanie oleju", ale zaawansowana diagnostyka.
+
+**Interpretacja danych** - pokazuję studentom, jak czytać typowe raporty analizy oleju. To praktyczna umiejętność, która będzie im potrzebna w karierze.
+
+**Trending** - kluczowa koncepcja: pojedyncza wartość może być normalna, ale trend pokazuje problem. 42 ppm Fe może być OK w niektórych przypadkach, ale wzrost z 12 do 42 ppm w rok to alarm.
+
+**Koszty** - studenci muszą rozumieć ekonomiczne aspekty. Analiza oleju kosztuje €200 za próbkę, ale może zaoszczędzić dziesiątki tysięcy euro przez wczesne wykrycie problemów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔍 Diagnostyka komponentów - integracja analiz" type="success">
+
+<KeyPoints title="🎯 Kompleksowa diagnostyka">
+- 🌀 **Łopatki** - wibracje, akustyka, analiza strukturalna
+- ⚙️ **Łożyska** - kombinacja wibracji, temperatury i analizy oleju
+- 🔧 **Przekładnia** - spektra, temperatura, analiza cząstek metalowych
+- ⚡ **Generator** - temperatura uzwojeń, wibracje, analiza elektryczna
+</KeyPoints>
+
+<SupportingDetails title="🌀 Diagnostyka łopatek">
+**Metody monitoringu**:
+- **Blade vibration**: Akcelerometry na korzeniu każdej łopaty
+- **Acoustic monitoring**: Mikrofony dla detekcji uszkodzeń strukturalnych
+- **Strain gauges**: Monitoring naprężeń w krytycznych punktach
+- **Visual inspection**: Drony, kamery termowizyjne
+
+**Charakterystyczne symptomy**:
+```
+Problemy strukturalne:
+- Increase in 1P vibration (rotor imbalance)
+- Harmonics w spektrum wibracji (2P, 3P, 4P)
+- Acoustic anomalies >2.5kHz
+- Temperature patterns changes
+
+Uszkodzenia powierzchniowe:
+- Acoustic emission spikes
+- Vibration at blade natural frequencies
+- Aerodynamic performance degradation
+```
+
+**Progi alarmowe łopatek**:
+- **Balancing threshold**: 2.5 mm/s (1P vibration)
+- **Structural alarm**: >5 mm/s RMS + harmonics
+- **Acoustic alarm**: Spike >20 dB above baseline
+</SupportingDetails>
+
+<SupportingDetails title="⚙️ Diagnostyka łożysk - multi-parameter approach">
+**Łożyska główne - kombinacja sygnałów**:
+```
+Normalny stan:
+- Vibration RMS: poniżej 4 mm/s
+- Temperature: 60-75°C
+- Oil particles: Fe poniżej 20 ppm
+- Kurtosis: 2.8-3.2
+
+Wczesne symptomy problemów:
+- Vibration envelope: +50% od baseline
+- Temperature trend: +2°C/month
+- Oil particles: Fe wzrost >5 ppm/month
+- Kurtosis: >4.0 (impulsy)
+```
+
+**Łożyska przekładni**:
+- **Input bearing**: Monitoring temperatury + wibracji
+- **Planetary bearings**: Szczególnie trudne - częstotliwości modulowane
+- **Output bearing**: Najwyższe obciążenia - monitoring multi-parameter
+
+**Strategia diagnostyczna**:
+1. **Continuous monitoring**: RMS, temperature trends
+2. **Periodic analysis**: Spektral analysis, oil analysis
+3. **Event detection**: Envelope analysis, acoustic emission
+4. **Verification**: Manual inspection, borescope
+</SupportingDetails>
+
+<Example title="Kompleksowa diagnostyka - awaria planetary bearing w przekładni">
+**Chronologia problemu** (12-miesięczny okres):
+
+**Month 1-6 (Normal operation)**:
+```
+Vibration monitoring:
+- Planetary carrier: 2.1 mm/s RMS (stable)
+- Temperature: 58°C ±2°C (stable)
+- Oil analysis: Fe 15 ppm, particles normal
+
+Spectrum analysis:
+- Gear mesh frequency: 1.8 mm/s (normal)
+- Planetary frequencies: Below alarm levels
+```
+
+**Month 7-9 (Early symptoms)**:
+```
+Vibration trends:
+- RMS increase: 2.1 → 2.8 → 3.4 mm/s
+- Kurtosis increase: 3.0 → 3.5 → 4.1 (alarm!)
+
+Temperature trends:
+- Gradual increase: 58°C → 62°C → 67°C
+- Oil temperature: Parallel increase observed
+
+Oil analysis (Month 9):
+- Fe: 15 → 28 ppm (+87% increase)
+- Particles >10μm: 1200 → 2100/ml (+75%)
+```
+
+**Month 10-11 (Developing failure)**:
+```
+Envelope analysis reveals:
+- Planetary carrier frequency modulation
+- Sidebands around gear mesh frequency
+- Increasing amplitude at bearing defect frequencies
+
+Diagnosis: Early stage planetary bearing wear
+Recommendation: Plan bearing replacement within 3 months
+```
+
+**Month 12 (Confirmation)**:
+```
+Final data before replacement:
+- RMS: 5.2 mm/s (alarm threshold exceeded)
+- Temperature: 78°C (+20°C from baseline)
+- Fe in oil: 45 ppm (3x increase)
+- Vibration spectrum: Clear bearing defect signature
+
+Action: Bearing replaced during planned maintenance
+Result: All parameters returned to normal levels
+```
+
+**Wnioski**:
+- **Early detection**: Problem wykryty 6 miesięcy przed potencjalną awarią
+- **Cost savings**: Planowa wymiana vs awaryjna = 70% oszczędności
+- **Multi-parameter**: Każdy sygnał osobno nie byłby wystarczający
+</Example>
+
+<SuccessBox title="✅ Skuteczność kompleksowej diagnostyki">
+**Zaawansowane CMS z pełną integracją analiz osiągają**:
+- **85% accuracy** w przewidywaniu awarii komponentów
+- **4-8 miesięcy** lead time dla planowania napraw
+- **60% redukcja** nieoczekiwanych przestojów
+- **ROI >300%** w ciągu 3 lat przez uniknięcie awarii katastroficznych
+</SuccessBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Holistyczne podejście** - kluczowa koncepcja: żaden pojedynczy parametr nie jest wystarczający. Dopiero kombinacja wibracji, temperatury i analizy oleju daje pełny obraz.
+
+**Praktyczny przykład** - case study pokazuje realistyczny scenariusz z rzeczywistymi danymi. Studenci muszą widzieć, jak teoria przekłada się na praktykę.
+
+**Decision making** - studenci muszą rozumieć, jak inżynierowie podejmują decyzje na podstawie danych CMS. To nie tylko "czytanie liczb", ale interpretacja wzorców i trendów.
+
+**Economic impact** - każda decyzja na podstawie CMS ma konsekwencje ekonomiczne. Studenci muszą rozumieć bilans kosztów vs. ryzyk.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📊 Podsumowanie - Integracja analiz diagnostycznych" type="tip">
+
+<KeyPoints title="🔑 Kluczowe zasady analizy CMS">
+- 🔄 **Wieloparametrowość** - kombinacja drgań, temperatury i oleju
+- 📈 **Analiza trendów** - zmiany w czasie ważniejsze niż bezwzględne wartości
+- 🎯 **Early warning** - wczesne wykrywanie problemów przed awarią
+- 💡 **Interpretacja** - rozumienie fizycznych przyczyn zmian sygnałów
+</KeyPoints>
+
+<KeyConcept title="CMS jako system wczesnego ostrzegania">
+**Udała analiza CMS** nie kończy się na odczytaniu liczb - wymaga **intepretacji wzorców** i **zrozumienia fizycznych procesów** w turbinie. Każdy sygnał to informacja o rzeczywistym stanie komponentów mechanicznych.
+</KeyConcept>
+
+<SuccessBox title="✅ Kompetencje absolwenta w analizie CMS">
+**Po tym wykładzie student potrafi**:
+- **Interpretować spektra** częstotliwościowe i identyfikować symptomy awarii
+- **Analizować trendy** temperatury i oceniać stan komponentów
+- **Przeprowadzać analizę oleju** i prognozować czasy wymiany
+- **Integrować różne dane** dla kompletnej oceny kondycji turbiny
+</SuccessBox>
+
+<InfoBox title="🎓 Przygotowanie do case study">
+Następny wykład przedstawi **kompleksowy case study** rzeczywistej diagnostyki turbiny wiatrowej, gdzie studenci będą mogli zastosować wszystkie poznane metody analizy w praktycznym scenariuszu.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Integracja wiedzy** - studenci mają teraz kompletny zestaw narzędzi do analizy CMS: spektra wibracji, trendy temperatury, analizę oleju. Następny case study pozwoli im zastosować tę wiedzę w realistycznym scenariuszu.
+
+**Praktyczne zastosowania** - ta wiedza będzie potrzebna w karierze zawodowej - od analizy danych CMS, przez planowanie maintenance, do zarządzania kondycją farm wiatrowych.
+
+**Critical thinking** - studenci nauczyli się nie tylko interpretować dane, ale rozumieć fizyczne przyczyny zmian sygnałów. To kluczowa umiejętność inżynierska.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

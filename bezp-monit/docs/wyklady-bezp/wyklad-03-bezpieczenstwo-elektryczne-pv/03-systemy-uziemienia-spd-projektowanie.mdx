@@ -1,0 +1,262 @@
+---
+title: "Systemy uziemienia i SPD - projektowanie"
+sidebar_position: 3
+---
+
+import { LearningObjective, KeyConcept, Example, WarningBox } from '@site/src/components/SlideComponents';
+
+# Systemy uziemienia i SPD - projektowanie
+
+<LearningObjective>
+Po tej sekcji student rozumie zasady projektowania systemów uziemienia w instalacjach PV oraz potrafi dobrać i zaprojektować odpowiednie ograniczniki przepięć (SPD). Student zna różnice między systemami TT, TN i IT oraz umie obliczyć parametry systemu uziemienia zgodnie z normami.
+</LearningObjective>
+
+## Podstawy systemów uziemienia w PV
+
+### Typy systemów uziemienia zgodnie z IEC 60364
+
+Instalacje PV wymagają szczególnej uwagi przy projektowaniu systemów uziemienia ze względu na:
+- **Wysokie napięcia DC** (do 1500V)
+- **Mieszane systemy** (DC + AC)
+- **Zagrożenia przepięciowe** od piorunów
+
+<KeyConcept title="Systemy uziemienia według IEC 60364">
+**TT (Terra-Terra)**: 
+- Transformator uziemiony, obudowa urządzenia uziemiona lokalnie
+- Stosowany w większości instalacji domowych
+- Wymaga RCD (Residual Current Device)
+
+**TN (Terra-Neutral)**: 
+- Transformator uziemiony, neutralny jest PE
+- TN-S: oddzielne przewody N i PE
+- TN-C-S: łączony PEN, rozdzielany na N i PE
+
+**IT (Insulated-Terra)**:
+- Transformator izolowany, obudowy lokalnie uziemione
+- Stosowany w szpitalach, górnictwie
+- Wymaga ciągłego monitoringu izolacji
+</KeyConcept>
+
+### Specyfika uziemienia w systemach PV
+
+#### Uziemienie struktury nośnej modułów PV
+
+**Wymagania normowe** (IEC 60364-7-712):
+- Wszystkie części przewodzące dostępne muszą być połączone z **strefą ekwipotencjalną**
+- Opór uziemienia struktury: < 10Ω (dla ochrony podstawowej)
+- **Oddzielny przewód uziemienia** (żółto-zielony, minimum 6mm²)
+
+<Example title="Projektowanie uziemienia farmy PV 5MW">
+**Analiza przypadku**: Farma PV na terenie poprzemysłowym, podłoże żwirowe, rezystywność gruntu 150 Ωm.
+
+**Struktura nośna**: 12 000 modułów PV na konstrukcji aluminiowej
+- **Łączna powierzchnia**: 15 hektarów
+- **Ilość stringów**: 400 strings × 30 modułów
+
+**Obliczanie uziemienia**:
+1. **Opór pojedynczego uziomu** (długość 2m, średnica 16mm):
+   $$R_{ziom} = \frac{\rho}{2\pi L} \ln\left(\frac{2L}{d}\right) = \frac{150}{2\pi \cdot 2} \ln\left(\frac{2 \cdot 2}{0.016}\right) = 75.7\Omega$$
+
+2. **Liczba uziomów potrzebnych** (cel: < 10Ω):
+   $$n \geq \frac{R_{ziom}}{R_{cel}} = \frac{75.7}{10} = 7.6 \approx 8 \text{ uziomów}$$
+
+3. **Konfiguracja**: Siatka 4×2 uziomów połączonych przewodem miedzianym 50mm²
+</Example>
+
+#### Uziemienie strony DC
+
+**Zasady podstawowe**:
+- **Biegun plus/minus** strony DC **NIE może** być bezpośrednio uziemiony (FAT - Functional Earth nie jest dozwolony)
+- **Monitoring uziemienia** - system ciągłej kontroli stanu izolacji
+- **Wyłączenie przy uszkodzeniu** - RCMU (Residual Current Monitoring Unit)
+
+<WarningBox title="⚠️ Krytyczne: Unipolar grounding">
+**ZABRONIONE** w systemach PV z transformatorless inwerterami:
+- Uziemienie bieguna (+) lub (-) strony DC
+- Może powodować: błędne działanie MPPT, prądy upływowe, zagrożenie porażenia
+
+**Dozwolone** tylko w systemach z transformer SEPV (Safely Earthed PV), ale wymaga specjalistycznych inwerterów i projektowania.
+</WarningBox>
+
+## Ograniczniki przepięć (SPD) w systemach PV
+
+### Podstawy działania SPD
+
+**Zasada działania SPD** (Surge Protection Device):
+1. **Stan normalny**: Wysoka impedancja, nie wpływa na pracę systemu
+2. **Przepięcie**: Impedancja spada do kilku ohmów, przewodzi prąd udarowy do uziemienia
+3. **Po wyładowaniu**: Powrót do wysokiej impedancji (dla varistorów) lub wyłączenie (dla wyładowników)
+
+<KeyConcept title="Klasyfikacja SPD według IEC 61643">
+**Klasa I (Type 1)** - Dla bezpośrednich wyładowań piorunowych:
+- Testowany prądem udarowym: Iimp = 5 kA (10/350μs)
+- Montaż: na wejściu instalacji, przed głównym tablicą
+
+**Klasa II (Type 2)** - Dla przepięć indukowanych i łączeniowych:
+- Testowany prądem udarowym: Imax = 20-40 kA (8/20μs)
+- Montaż: w podtablicach, przy chronionych urządzeniach
+
+**Klasa III (Type 3)** - Dla bardzo wrażliwych urządzeń:
+- Testowany prądem udarowym: In = 5 kA (8/20μs)
+- Montaż: bezpośrednio przy urządzeniu końcowym
+</KeyConcept>
+
+### Projektowanie SPD dla strony DC
+
+#### Parametry dobierania SPD DC
+
+**Napięcie pracy ciągłej Uc**:
+$$U_c \geq 1.15 \times U_{MPP\_max}$$
+
+Gdzie:
+- $U_{MPP\_max}$ = maksymalne napięcie MPPT przy najwyższej temperaturie eksploatacji
+- Dla typowego stringu 600V: $U_c \geq 690V$
+
+**Napięcie ochronne Up**:
+- Powinno być niższe niż wytrzymałość izolacji chronionego urządzenia
+- Typowo: $U_p < \frac{2}{3} \times U_{izolacja}$
+
+<Example title="Dobieranie SPD dla stringu PV 600V">
+**Parametry stringu**:
+- Napięcie nominalne: 600V DC
+- Napięcie w otwartym obwodzie (VOC): 705V DC
+- Maksymalne napięcie MPPT: 580V DC
+- Temperatura modułów: -25°C do +70°C
+
+**Obliczenia**:
+1. **Maksymalne VOC przy ekstremalnych temperaturach**:
+   $$VOC_{max} = VOC_{25°C} \times (1 + \alpha_T \times \Delta T)$$
+   $$VOC_{max} = 705V \times (1 + (-0.004/°C) \times (-25°C - 25°C))$$
+   $$VOC_{max} = 705V \times 1.2 = 846V$$
+
+2. **Wymagane Uc SPD**:
+   $$U_c \geq 1.15 \times 846V = 973V$$
+   
+3. **Wybór z katalogu**: SPD o parametrach:
+   - $U_c = 1000V$ DC
+   - $U_p = 2.5kV$ (przy 3kA)
+   - $I_{max} = 20kA$ (8/20μs)
+
+**Lokalizacja montażu**: W rozdzielnicy DC, przed falownikiem, jeden na każdy string lub grupa stringów.
+</Example>
+
+#### Konfiguracja SPD w różnych typach instalacji
+
+**Instalacje domowe (do 50kW)**:
+- **SPD Type 2** na wejściu DC inwertera
+- **SPD Type 2** na wyjściu AC inwertera (przed licznikiem)
+- **Klasa koordynacji**: 2+1 (jeden SPD główny, jeden w inwerterze)
+
+**Instalacje komercyjne (>50kW)**:
+- **SPD Type 1** na wejściu DC (ochrona przed piorunami)
+- **SPD Type 2** na każdym string combiner box
+- **SPD Type 2** na wyjściu AC inwerterów
+- **Monitoring SPD**: System SCADA z alarmami o starzeniu
+
+### Instalowanie i koordynacja SPD
+
+#### Zasady montażu SPD
+
+**Długość przewodów SPD**:
+- **Maksymalnie 50cm** łącznej długości przewodów (L1 + L2)
+- **Przewód minimum 16mm²** (miedź)
+- **Prostoliniowy przebieg** - unikać pętli indukcyjnych
+
+**Uziemienie SPD**:
+- **Bezpośrednie połączenie** z główną szyną wyrównawczą (GSU)
+- **Opór połączenia**: < 0.2Ω
+- **Użycie mufy śrubowej** z przewodami miedzianymi
+
+<Example title="Błędne vs prawidłowe montowanie SPD">
+**❌ Błędne montowanie**:
+```
+SPD ─5m─ GSU (za długi przewód = wyższe Up)
+String ─0.3m─ SPD ─4.7m─ GSU
+```
+
+**✅ Prawidłowe montowanie**:
+```
+SPD ─0.2m─ GSU (krótki przewód, niskie Up)
+String ─0.2m─ SPD ─0.2m─ GSU
+```
+
+**Efekt błędnego montowania**:
+- Wydłużanie przewodów o 5m → wzrost Up o ~1.5kV
+- Możliwe niewłaściwe zadziałanie ochrony
+- Zwiększone ryzyko uszkodzenia inwerterów
+</Example>
+
+#### Koordynacja SPD w kaskadzie
+
+**Zasady koordynacji**:
+1. **SPD Type 1** (główny) - na najwyższym poziomie napięciowym
+2. **SPD Type 2** (wtórny) - na niższych poziomach, z odstępem impedancji
+3. **SPD Type 3** (końcowy) - bezpośrednio przy chronionych urządzeniach
+
+**Wymagania koordynacji**:
+- **Klasa koordynacji**: Wszystkie SPD muszą być kompatybilne z producentem
+- **Testy koordynacji**: Zgodne z IEC 61643-11
+- **Monitoring starzenia**: Równomierne zużycie SPD w kaskadzie
+
+## Monitoring i konserwacja systemów uziemienia
+
+### Testowanie uziemienia
+
+**Parametry do kontroli**:
+- **Opór uziemienia**: < 10Ω (ochrona podstawowa), < 4Ω (główna szyna)
+- **Ciągłość przewodów**: < 0.2Ω
+- **Test prądem udarowym**: Simulacja wyładowania piorunowego
+
+**Częstotliwość testów**:
+- **Po montażu**: Każdy uziom i system uziemienia
+- **Rocznie**: Kontrola oporów i ciągłości
+- **Po każdej burzy**: Inspekcja wizualna i testy podstawowe
+
+### Monitoring SPD
+
+**Parametry monitoringu**:
+- **Liczba zadziałań**: Każde wyładowanie skraca żywotność
+- **Resztkowe napięcie**: Wzrost Uc podczas starzenia
+- **Status techniczny**: Informacja o końcu żywotności
+
+**Automatyzacja**:
+```text
+SCADA monitoring SPD:
+- Alarm przy liczbie zadziałań > 50% (varistory)
+- Alarm przy znacznym odchyleniu parametrów
+- Planowanie wymiany przed końcem żywotności
+```
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 18-22 minut
+
+**Przebieg**:
+1. Podstawy systemów uziemienia i specyfika PV (5 min)
+2. Projektowanie uziemienia struktury i strony DC (6 min)
+3. Podstawy SPD i parametry dobierania (6 min)
+4. Montaż i koordynacja SPD (3 min)
+5. Monitoring i konserwacja (2 min)
+
+**Punkty kluczowe**:
+- **Uziemienie ≠ uziemienie funkcjonalne**: W PV DC nie uziemiamy biegunów, tylko struktury
+- **SPD to nie opcjonalne**: Obowiązkowe w większości norm, szczególnie w eksponowanych lokalizacjach
+- **Geometria ma znaczenie**: Długość przewodów SPD drastycznie wpływa na skuteczność
+
+**Obliczenia praktyczne**:
+- Przykład obliczania liczby uziomów dla różnych typów gruntu
+- Dobieranie SPD na podstawie parametrów stringu (temperatura VOC)
+- Sprawdzanie koordynacji SPD (testy z oscyloskopem)
+
+**Pytania studentów**:
+- Q: Czy można uziemić biegun minus w systemie PV dla bezpieczeństwa?
+- A: ŻADNEGO uziemiania biegunów w systemach transformatorless! To powoduje prądy upływowe, może uszkodzić inwertery i zwiększa ryzyko porażenia. Uziemiamy tylko struktury i obudowy.
+
+- Q: Jak często wymieniać SPD?
+- A: Varistory (typ 2 w większości): średnio 10-15 lat, ale zależy od liczby wyładowań. Monitorować w SCADA lub wymieniać co 10 lat prewencyjnie. Wyładowniki iskrowe (typ 1): teoretycznie niezużywające, ale kontrolować stan mechaniczny.
+
+- Q: Czy jeden SPD wystarczy dla całej farmy PV?
+- A: Nie! Wymagana koordynacja wielopoziomowa: SPD główny (typ 1) + SPD w combiner box (typ 2) + SPD przy inwerterze. Każdy poziom chroni inne części instalacji przy różnych poziomach energii udarowej.
+
+</details>

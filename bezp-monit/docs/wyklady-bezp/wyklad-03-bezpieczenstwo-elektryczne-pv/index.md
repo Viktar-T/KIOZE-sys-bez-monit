@@ -9,15 +9,6 @@ title: "W3: Bezpieczeństwo elektryczne w PV"
 
 Wykład skupia się na zagrożeniach elektrycznych specyficznych dla instalacji fotowoltaicznych, w tym zagrożeniach DC, łuku elektrycznego, systemach uziemienia, ogranicznikach przepięć i doborze zabezpieczeń. Omawia również procedury eksploatacyjne i przeglądów.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zidentyfikować specyficzne zagrożenia elektryczne w instalacjach PV.
-2. Scharakteryzować zjawisko łuku elektrycznego i metody jego ograniczania.
-3. Zaprojektować system uziemienia dla instalacji PV.
-4. Dobrać ograniczniki przepięć (SPD) odpowiednie dla instalacji PV.
-5. Zaprojektować system zabezpieczeń i wyłączników ppoż.
-6. Opracować procedury eksploatacyjne i harmonogram przeglądów.
-
 ## Struktura materiału
 
 1. [Specyfika zagrożeń elektrycznych w PV](./01-specyfika-zagrozen-elektrycznych-pv.mdx)

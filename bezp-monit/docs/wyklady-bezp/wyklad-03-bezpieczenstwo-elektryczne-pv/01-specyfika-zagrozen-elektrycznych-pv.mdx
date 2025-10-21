@@ -1,0 +1,180 @@
+---
+title: "Specyfika zagrożeń elektrycznych w PV"
+sidebar_position: 1
+---
+
+import { LearningObjective, KeyConcept, Example, WarningBox } from '@site/src/components/SlideComponents';
+
+# Specyfika zagrożeń elektrycznych w PV
+
+<LearningObjective>
+Po tej sekcji student rozumie specyfikę zagrożeń elektrycznych charakterystycznych dla instalacji fotowoltaicznych. Student potrafi zidentyfikować różnice między zagrożeniami DC i AC oraz wyjaśnić przyczyny powstawania zagrożeń elektrycznych w systemach PV.
+</LearningObjective>
+
+## Wprowadzenie do zagrożeń elektrycznych w PV
+
+Instalacje fotowoltaiczne z natury swojej charakteryzują się **dwoma poziomami napięcia**:
+- **Strona DC (prąd stały)** - moduły PV generują napięcie DC (typowo 30-50V na moduł)
+- **Strona AC (prąd przemienny)** - inwertery konwertują na napięcie sieciowe (230V/400V w Polsce)
+
+Ta **hybrydowa natura** systemów PV tworzy specyficzne zagrożenia, które nie występują w tradycyjnych instalacjach elektrycznych.
+
+<WarningBox title="⚠️ Uwaga: Specyfika napięć DC">
+W przeciwieństwie do napięć AC, które się zerują co pół okresu, napięcie DC w systemach PV **nie ma naturalnego punktu zerowego**. To oznacza, że wyładowanie łuku elektrycznego trwa do momentu wyłączenia zasilania - co w przypadku uszkodzonej izolacji może trwać godzinami.
+</WarningBox>
+
+## Podstawowe zagrożenia elektryczne w PV
+
+### 1. Zagrożenia prądu stałego (DC)
+
+W systemach fotowoltaicznych mamy do czynienia z **wysokimi napięciami DC** od modułów PV:
+- **Typowe napięcia**: 600-1500V DC (systemy komercyjne i przemysłowe)
+- **Prądy**: Do 15-20A na string, setki amperów na poziomie farm PV
+- **Charakterystyka**: Brak naturalnego przejścia przez zero
+
+<KeyConcept title="Różnice między AC i DC">
+**Prąd przemienny (AC)**:
+- Przechodzi przez zero 50x na sekundę (50Hz)
+- Łuk elektryczny ma tendencję do samoczynnego zanikania
+- Typowe zabezpieczenia: bezpieczniki, wyłączniki różnicowoprądowe
+
+**Prąd stały (DC)**:
+- Brak przejścia przez zero
+- Łuk elektryczny **płonie tak długo, jak długo dostarczamy energię**
+- Wymaga specjalistycznych zabezpieczeń: AFCI, specjalne bezpieczniki DC
+</KeyConcept>
+
+#### Główne zagrożenia DC:
+
+**a) Łuk elektryczny DC**
+- Zapalenie łuku przy **30V DC** przy prądzie >0.5A
+- Temperatura łuku: **5000-15000°C**
+- Brak naturalnego zanikania
+- Możliwość zapalenia materiałów palnych (izolacje, kable, drewno)
+
+**b) Wysokie napięcie statyczne**
+- Systemy PV generują napięcie od rana (świt) do wieczora
+- Brak możliwości "odłączenia" - moduły zawsze generują prąd w dzień
+- Ryzyko porażenia przy konserwacji podczas dnia
+
+**c) Polaryzacja izolacji**
+- Stałe napięcie DC może powodować **migrację elektronów** w izolacji
+- Degradacja izolacji kablowej przy długotrwałej eksploatacji
+- Tworzenie się "ścieżek" przewodzących w materiale izolacyjnym
+
+### 2. Zagrożenia prądu przemiennego (AC)
+
+Strona AC systemu PV podlega standardowym normom instalacji elektrycznych, ale ma kilka specyfik:
+
+**a) Zwiększone ryzyko łuku podczas regulacji mocy**
+- Inwertery mogą **często przełączać** między poziomami mocy
+- Kontrola MPPT (Maximum Power Point Tracking) może powodować przepięcia
+
+**b) Problemy z uziemieniem**
+- Transformator separujący lub TL (transformatorless) inwertery
+- Potencjalne problemy z prądami upływowymi
+
+**c) Kompatybilność z siecią**
+- Zwarcia asymetryczne w sieci
+- Ryzyko **przepięć powrotnych** z sieci do układu PV
+
+## Specyficzne przyczyny zagrożeń w systemach PV
+
+### 1. Czynniki środowiskowe
+
+<Example title="Wpływ warunków atmosferycznych na zagrożenia">
+**Temperatura**:
+- Wysokie temperatury (lato, bezpośrednie nasłonecznienie dachu) → rozszerzanie kabli, poluzowanie połączeń
+- Niskie temperatury (zima) → kurczenie materiałów, zwiększone naprężenia mechaniczne
+
+**Wilgotność i korozja**:
+- Kondensacja w skrzynkach rozdzielczych
+- Korozja połączeń elektrycznych (szczególnie aluminiowych/cynkowych)
+
+**Promieniowanie UV**:
+- Degradacja izolacji kabli zewnętrznych
+- Kruszenie osłon przewodów po 10-15 latach eksploatacji
+</Example>
+
+### 2. Problemy techniczne
+
+**a) Błędy montażowe**
+- Nieprawidłowe dokręcenie connectorów MC4
+- Uszkodzenia izolacji podczas ciągnięcia kabli
+- Nieprawidłowe połączenia w rozdzielnicach DC
+
+**b) Starzenie się komponentów**
+- Degradacja izolacji modułów PV (PID - Potential Induced Degradation)
+- Starzenie się kabli i connectorów
+- Zużycie mechaniczne przy ruchach termicznych (rozszerzanie/ściskanie)
+
+**c) Problemy z kompatybilnością**
+- Niezgodność standardów: europejskie vs amerykańskie connectory
+- Różne typy inwerterów i ich wymagania dotyczące zabezpieczeń
+
+## Poziomy zagrożeń w zależności od skali instalacji
+
+### Instalacje domowe (do 50 kWp)
+
+**Charakterystyka zagrożeń**:
+- Napięcia DC: 300-600V
+- Relatywnie niska energia
+- Bliskość ludzi i budynków mieszkalnych
+
+**Główne ryzyka**:
+- Zagrożenie porażenia podczas konserwacji
+- Ryzyko pożaru przy uszkodzeniu izolacji
+- Ograniczony dostęp do kompetentnego personelu serwisowego
+
+### Instalacje komercyjne i przemysłowe (50 kWp - 10 MWp)
+
+**Charakterystyka zagrożeń**:
+- Napięcia DC: 600-1000V
+- Wysoka energia dostępna
+- Złożone systemy monitoringu i zabezpieczeń
+
+**Główne ryzyka**:
+- Łuk elektryczny o bardzo wysokiej energii
+- Skomplikowane systemy automatyki i sterowania
+- Wymagana specjalistyczna wiedza przy konserwacji
+
+### Farmy PV (powyżej 10 MWp)
+
+**Charakterystyka zagrożeń**:
+- Napięcia DC: 1000-1500V
+- Ogromna energia dostępna (setki MW)
+- Systemy wysokiego napięcia AC (własne stacje transformatorowe)
+
+**Główne ryzyka**:
+- Katastrofalne skutki awarii
+- Wymagania dotyczące kompetencji personelu (uprawnienia SEP)
+- Kompleksowe systemy bezpieczeństwa
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 15-18 minut
+
+**Przebieg**:
+1. Wprowadzenie: różnice między AC i DC (4 min)
+2. Główne zagrożenia DC - ze szczególnym naciskiem na łuk elektryczny (6 min)
+3. Zagrożenia AC i specyfika systemów PV (3 min)
+4. Czynniki środowiskowe i techniczne powodujące zagrożenia (3 min)
+5. Poziomy zagrożeń w zależności od skali instalacji (3 min)
+
+**Punkty kluczowe**:
+- **DC ≠ AC**: Podkreśl fundamentalną różnicę - brak przejścia przez zero w DC
+- **Łuk elektryczny to #1 zagrożenie**: Wysoka temperatura, brak samoistnego zanikania
+- **Skala ma znaczenie**: Od prostych zagrożeń w instalacjach domowych do zaawansowanych systemów bezpieczeństwa w farmach
+
+**Najczęstsze pytania studentów**:
+- Q: Czy można "wyłączyć" system PV w dzień?
+- A: Nie ma prostego wyłącznika "OFF" - moduły generują prąd gdy świeci słońce. Prawidłowe wyłączenie wymaga odłączenia stringów lub użycia specjalistycznych wyłączników AFCI.
+
+- Q: Dlaczego napięcia DC są wyższe niż AC w PV?
+- A: AC podlega ograniczeniom sieci (400V), ale DC może być wyższe dzięki szeregowemu połączeniu modułów. Wyższe napięcie = mniejszy prąd = mniejsze straty w kablach, ale większe zagrożenie łuku.
+
+- Q: Jak długo trwa łuk elektryczny w systemie PV?
+- A: Do momentu wyłączenia zasilania lub wyczerpania materiału palnego. W systemie bez AFCI może trwać godzinami - do momentu stopienia kabli lub interwencji straży pożarnej.
+
+</details>

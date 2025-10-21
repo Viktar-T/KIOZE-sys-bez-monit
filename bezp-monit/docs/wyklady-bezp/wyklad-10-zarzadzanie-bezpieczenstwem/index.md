@@ -9,15 +9,6 @@ title: "W10: Zarządzanie bezpieczeństwem i reagowanie na incydenty"
 
 Wykład podsumowuje zagadnienia związane z zarządzaniem bezpieczeństwem w instalacjach OZE, omawia procedury LOTO (Lockout/Tagout), plany awaryjne, łańcuchy komunikacji, raportowanie zdarzeń oraz budowanie kultury bezpieczeństwa w organizacji.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Opracować procedury LOTO dla instalacji OZE.
-2. Stworzyć plany awaryjne i procedury reagowania.
-3. Zaprojektować łańcuchy komunikacji w sytuacjach awaryjnych.
-4. Opracować systemy raportowania zdarzeń i incydentów.
-5. Wprowadzić elementy kultury bezpieczeństwa w organizacji.
-6. Zintegrować wszystkie aspekty bezpieczeństwa w spójny system zarządzania.
-
 ## Struktura materiału
 
 1. [Procedury LOTO w instalacjach OZE](./01-procedury-loto-instalacje-oze.mdx)

@@ -1,0 +1,120 @@
+---
+title: "Case study: incydent BESS - analiza przyczyn"
+sidebar_position: 6
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: Analiza przypadku" type="info">
+
+<LearningObjective>
+Student potrafi przeanalizować incydent w BESS metodą „od zdarzenia do przyczyn”, wskazać czynniki współprzyczynowe oraz zaproponować działania korygujące techniczne i organizacyjne.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Opis zdarzenia i stan wyjściowy
+- Analiza przyczyn (5×Why, FTA/Bow‑tie)
+- Co zadziałało, co zawiodło
+- Rekomendacje i plan działań
+</KeyPoints>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📖 Opis incydentu (przykład syntetyczny)" type="warning">
+
+<KeyPoints title="🧾 Zdarzenie">
+- Kontener BESS: wzrost T w jednym racku, dym w ASD
+- BMS: alarm OTP, odcięcie ładowania, później odpadnięcie styczników
+- FAS: alarm 2ooN, uruchomienie wentylacji awaryjnej
+- Brak propagacji do sąsiednich racków, brak obrażeń
+</KeyPoints>
+
+<SupportingDetails title="📅 Warunki i tło">
+- Wysoka temperatura otoczenia, obciążenie ładowaniem po szczycie PV
+- Serwis HVAC opóźniony, filtracja powietrza ograniczona
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔎 Analiza przyczyn" type="info">
+
+<KeyPoints title="5×Why + FTA">
+- Dlaczego wzrosła T? → Ograniczona wydajność HVAC + lokalne ogniwo o podwyższonym oporze
+- Dlaczego HVAC nieskuteczny? → Zabrudzone filtry, brak redundancji w trybie letnim
+- Dlaczego ogniwo miało wysoki opór? → Starzenie niejednorodne, brak predykcji SoH
+- Dlaczego alarm późny? → Zbyt szerokie okno SoC, progowe dT/dt niewrażliwe
+</KeyPoints>
+
+<SupportingDetails title="📈 Wnioski z danych">
+- Logi BMS: anomalia dV/dt w grupie ogniw na 2 dni przed zdarzeniem
+- Trendy HVAC: spadek przepływu powietrza o 30% w tygodniu poprzedzającym
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧰 Co zadziałało / co zawiodło" type="tip">
+
+<KeyPoints title="✅ Zadziałało">
+- Odcięcie ładowania i sekwencja bezpiecznego wyłączenia
+- Wentylacja awaryjna, brak propagacji
+</KeyPoints>
+
+<KeyPoints title="❌ Zawiodło">
+- Brak wczesnej diagnostyki SoH i alarmów predykcyjnych
+- Utrzymanie HVAC (filtry) i brak alarmu degradacji przepływu
+</KeyPoints>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🛡️ Rekomendacje" type="success">
+
+<KeyPoints title="🔧 Techniczne">
+- Dodanie czujników przepływu i presostatów z progiem prealarmu
+- Zacieśnienie okna SoC i progów dT/dt w BMS
+- Wdrożenie modeli SoH/diagnostyki anomalii (uczenie nadzorowane)
+- C&E: warunek 2ooN dla dym+HF przed odcięciem
+</KeyPoints>
+
+<SupportingDetails title="👥 Organizacyjne">
+- Harmonogram i rejestr przeglądów HVAC
+- Szkolenia operatorów dot. interpretacji prealarmów
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="tip">
+
+<KeyPoints title="Kluczowe wnioski">
+- Analiza incydentu ujawnia zarówno problemy techniczne, jak i procesowe
+- Wnioski należy przełożyć na modyfikację progów, C&E i utrzymania
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>
+

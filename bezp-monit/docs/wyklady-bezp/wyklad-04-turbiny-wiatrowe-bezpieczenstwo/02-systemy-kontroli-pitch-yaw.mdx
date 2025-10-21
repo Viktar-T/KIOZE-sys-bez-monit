@@ -1,0 +1,445 @@
+---
+title: "Systemy kontroli pitch i yaw"
+sidebar_position: 2
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Systemy kontroli pitch i yaw" type="info">
+
+<LearningObjective>
+Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt natarcia łopatek) i yaw (orientacja względem wiatru), potrafi identyfikować główne zagrożenia w tych systemach oraz zna podstawowe rozwiązania bezpieczeństwa.
+</LearningObjective>
+
+<KeyPoints title="📋 Główne tematy">
+- 🎛️ **System pitch** - kontrola kąta natarcia łopatek
+- 🧭 **System yaw** - orientacja turbiny względem wiatru  
+- ⚙️ **Mechanizmy wykonawcze** - siłowniki, przekładnie, silniki
+- 🛡️ **Systemy bezpieczeństwa** - redundancja, awaryjne zatrzymanie
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 18-22 minuty
+
+**Przebieg**: Zacznę od prostego pytania - "Co się stanie, gdy łopatka turbiny nie może się obrócić przy silnym wietrze?" To wprowadzi w kontekst dlaczego systemy kontroli są krytyczne dla bezpieczeństwa.
+
+**Kluczowe przesłanie**: Systemy pitch i yaw to oczy turbiny - bez nich turbina jest ślepa na warunki wiatrowe i staje się niebezpieczna. To nie tylko kwestia wydajności, ale przede wszystkim bezpieczeństwa.
+
+**Metody dydaktyczne**:
+- Animacja/wizualizacja działania systemów
+- Przykłady rzeczywistych awarii związanych z systemami kontroli
+- Porównanie różnych rozwiązań technologicznych
+
+**Najczęstsze pytania**:
+- Q: Dlaczego system pitch jest ważniejszy niż yaw w kwestii bezpieczeństwa?
+- A: Pitch kontroluje obciążenia, yaw kontroluje orientację - przy ekstremalnych wiatrach pitch jest krytyczny dla ochrony struktury.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🎛️ System Pitch - kontrola kąta natarcia" type="info">
+
+<KeyPoints title="🔧 Podstawowe elementy systemu pitch">
+- 🕹️ **Siłowniki pitch** - mechaniczne urządzenia obracające łopatki
+- 📊 **Sensory pozycji** - pomiar aktualnego kąta łopatek
+- 🎛️ **Układ kontrolny** - algorytmy sterowania i procedury bezpieczeństwa
+- ⚡ **Zasilanie awaryjne** - baterie UPS dla krytycznej funkcji
+</KeyPoints>
+
+<SupportingDetails title="📈 Zasady działania systemu pitch">
+**Pozycje łopatek:**
+- **Normal operation**: 0° do 25° - optymalna produkcja energii
+- **Feather position**: 86° do 90° - minimalne obciążenie, zatrzymanie
+- **Emergency position**: >90° - maksymalna pozycja bezpieczna
+
+**Tryby sterowania:**
+- **Power control**: regulacja mocy przez zmianę kąta
+- **Speed control**: kontrolowanie prędkości obrotowej
+- **Safety control**: awaryjne zatrzymanie przy ekstremalnych warunkach
+
+**Proces sterowania:**
+1. Monitoring parametrów (wiatr, moc, prędkość)
+2. Analiza algorytmów kontrolnych
+3. Wysyłanie sygnałów do siłowników
+4. Weryfikacja pozycji przez sensory
+5. Feedback loop - korekta sygnałów
+</SupportingDetails>
+
+<KeyConcept title="Zasada fail-safe w systemie pitch">
+W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **automatycznie** przechodzą w pozycję **feather** (90°), minimalizując obciążenia wiatrowe i zatrzymując turbinę bezpiecznie.
+</KeyConcept>
+
+<Example title="Sekwencja bezpiecznego zatrzymania">
+**Hipoteza**: Wiatr przekracza 25 m/s, turbina musi się zatrzymać
+
+**Sekwencja działań (czas rzeczywisty)**:
+1. **T+0s**: Anemometer wykrywa prędkość 25.5 m/s
+2. **T+0.1s**: System kontrolny wysyła sygnał STOP
+3. **T+0.5s**: Siłowniki zaczynają obracać łopatki do feather
+4. **T+3s**: Łopatki w pozycji 87° - moc spada do 0
+5. **T+8s**: Wirnik zatrzymany - turbina bezpieczna
+6. **T+15s**: Mechaniczne hamulce aktywowane (backup)
+</Example>
+
+<WarningBox title="⚠️ Krytyczne zagrożenie">
+**Total pitch failure** (awaria wszystkich systemów pitch) przy wietrze >30 m/s może prowadzić do:
+- Przyspieszenia wirnika do niebezpiecznych prędkości
+- Uszkodzenia struktury turbiny
+- Ryzyka oderwania łopatek
+</WarningBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas reakcji** - system pitch musi reagować w ułamkach sekund. Pokazuję studentom, że przy wietrze 30 m/s, opóźnienie reakcji o 5 sekund może oznaczać katastrofę.
+
+**Mechanizm fail-safe** - to kluczowa koncepcja. Studenci muszą zrozumieć, że systemy bezpieczeństwa muszą działać nawet wtedy, gdy wszystko inne się zepsuje. To wymaga niezależnego zasilania i mechanicznych zabezpieczeń.
+
+**Przykład z praktyki** - w 2019 roku w Danii awaria systemu pitch spowodowała, że turbina rozpadła się przy wietrze. To pokazuje, jak krytyczne są te systemy.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧭 System Yaw - orientacja względem wiatru" type="info">
+
+<KeyPoints title="🎯 Cele systemu yaw">
+- 🧭 **Optymalna orientacja** - ustawienie wirnika prostopadle do wiatru
+- 🔄 **Komunikacja z wiatrem** - śledzenie zmian kierunku
+- ⚖️ **Minimalizacja obciążeń** - równomierne obciążenie łopatek
+- 🛡️ **Procedury bezpieczeństwa** - ochrona przed ekstremalnymi kątami
+</KeyPoints>
+
+<SupportingDetails title="🔧 Elementy składowe systemu yaw">
+**Mechanizmy wykonawcze:**
+- **Yaw motors** - silniki przemieszczające gondolę
+- **Yaw brakes** - hamulce utrzymujące pozycję
+- **Slew drive** - przekładnia redukująca prędkość obrotową
+- **Gear reduction** - zmniejszenie prędkości obrotowej
+
+**Sensory i monitoring:**
+- **Wind vane** - czujnik kierunku wiatru na gondoli
+- **Position sensors** - monitoring aktualnej pozycji gondoli
+- **Load sensors** - pomiar nierównomiernych obciążeń
+- **Motor feedback** - informacje zwrotne z silników yaw
+</SupportingDetails>
+
+<SupportingDetails title="⚙️ Algorytmy sterowania yaw">
+**Algorytmy podstawowe:**
+- **Active yawing** - ciągłe śledzenie optymalnej pozycji
+- **Delta position control** - korekta tylko przy znaczących zmianach kierunku  
+- **Load balancing** - minimalizacja różnic w obciążeniach łopatek
+
+**Ograniczenia systemu:**
+- **Maximum rotation speed**: 0.6°/s (ochrona przed nadmierną prędkością)
+- **Maximum angle**: ±30° od kierunku wiatru
+- **Emergency stop**: zatrzymanie przy ekstremalnych warunkach
+
+**Procedury awaryjne:**
+- **Yaw brake engagement** - natychmiastowe zatrzymanie
+- **Manual override** - możliwość ręcznego sterowania
+- **Position memory** - zapamiętywanie ostatniej bezpiecznej pozycji
+</SupportingDetails>
+
+<InfoBox title="💡 Optymalizacja vs bezpieczeństwo">
+System yaw **nie jest** systemem bezpieczeństwa w tym samym sensie co pitch. Jego głównym celem jest **maksymalizacja wydajności**, ale **zawodność yaw** może prowadzić do zwiększonych obciążeń strukturalnych i szybszego zużycia.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Różnica w priorytetach** - system pitch to bezpieczeństwo, system yaw to wydajność. Studenci muszą to rozróżnić. Yaw failure nie zatrzyma turbiny natychmiast, ale zmniejszy jej wydajność i może prowadzić do szybszego zużycia.
+
+**Prędkość obrotów** - 0.6°/s to wolno, ale to zamierzone. Szybkie obroty gondoli mogłyby uszkodzić kable i generować niepotrzebne obciążenia.
+
+**Monotoniczność vs efficiency** - student musi rozumieć, że yaw nie musi być idealnie zsynchronizowany z wiatrem w każdej sekundzie. Ważne jest, żeby średnio był optymalnie ustawiony.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚡ Zasilanie awaryjne i redundancja systemów" type="warning">
+
+<KeyPoints title="🔋 Systemy zasilania awaryjnego">
+- 🔋 **UPS (Uninterruptible Power Supply)** - baterie dla systemów krytycznych
+- ⚡ **Generatory awaryjne** - silniki spalinowe jako backup
+- 🔌 **Redundantne zasilanie** - alternatywne źródła energii
+- 🛡️ **Klasyfikacja obciążeń** - priorytety zasilania
+</KeyPoints>
+
+<SupportingDetails title="📊 Architektura zasilania awaryjnego">
+**Klasyfikacja systemów według krytyczności:**
+1. **Poziom 1 - Krytyczne** (zawsze zasilane):
+   - System pitch (siłowniki + kontrolery)
+   - Sensory bezpieczeństwa (anemometry, pozycjonery)
+   - System komunikacji awaryjnej
+   - **Zasilanie**: UPS + generator awaryjny
+
+2. **Poziom 2 - Ważne** (zasilanie przez 30 min):
+   - System yaw
+   - Monitoring i diagnostyka
+   - Systemy chłodzenia generatora
+   - **Zasilanie**: UPS battery
+
+3. **Poziom 3 - Standardowe** (zasilanie sieciowe):
+   - Oświetlenie, ogrzewanie
+   - Systemy komfortu
+   - **Zasilanie**: standardowa sieć
+</SupportingDetails>
+
+<Example title="Przypadek testowy - blackout farmy">
+**Scenariusz**: Utrata zasilania sieciowego farmy wiatrowej w czasie burzy
+
+**Sekwencja bezpieczna**:
+1. **T+0s**: Wykrycie utraty zasilania sieciowego
+2. **T+0.1s**: Automatyczne przełączenie na UPS
+3. **T+5s**: Rozruch generatora awaryjnego
+4. **T+30s**: Generator osiąga pełne obroty
+5. **T+35s**: Całkowite zasilanie krytycznych systemów
+
+**Testy systemów awaryjnych:**
+- **Miesięczne testy UPS** - sprawdzenie baterii
+- **Kwartalne testy generatora** - pełny cykl rozruchu
+- **Roczne testy blackout** - symulacja rzeczywistych warunków
+</Example>
+
+<WarningBox title="⚠️ Krytyczne zagrożenie zasilania">
+**Brak redundancji** w zasilaniu systemów pitch może prowadzić do:
+- Niemożności zatrzymania turbiny przy silnym wietrze
+- Ryzyka uszkodzenia struktury w przypadku awarii mechanicznej
+- Zwiększenia zasięgu skutków awarii na inne turbiny farmy
+</WarningBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczne aspekty** - UPS musi wystarczyć na minimum 15 minut, bo tyle trwa standardowy rozruch generatora awaryjnego. Studenci muszą zrozumieć, że to nie tylko "power backup", ale element systemu bezpieczeństwa.
+
+**Testowanie** - systemy awaryjne muszą być regularnie testowane. Baterie UPS tracą pojemność, generatory mogą się nie uruchomić. Bez testów system awaryjny może zawodzić wtedy, gdy jest potrzebny.
+
+**Koszty vs bezpieczeństwo** - redundantne zasilanie to koszt, ale brak redundancji może kosztować dziesiątki milionów euro przy awarii katastroficznej.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🔧 Diagnostyka i monitorowanie systemów kontroli" type="info">
+
+<KeyPoints title="📊 Parametry monitorowania">
+- 📈 **Stan siłowników pitch** - pozycja, ciśnienie hydrauliczne/pneumatyczne
+- 🔄 **System yaw** - pozycja gondoli, prędkość obrotów, moment obrotowy
+- ⚡ **Systemy zasilania** - napięcie, natężenie, stan baterii UPS
+- 🎛️ **Systemy kontrolne** - sygnały we/wy, komunikacja, błędy
+</KeyPoints>
+
+<SupportingDetails title="🔍 Metody diagnostyki">
+**Monitoring ciągły:**
+- **Pitch position tracking** - śledzenie pozycji każdej łopatki
+- **Yaw response time** - czas reakcji na zmiany wiatru
+- **Power consumption** - zużycie energii przez systemy kontrolne
+- **Communication health** - spójność transmisji danych
+
+**Wykrywanie anomalii:**
+- **Trend analysis** - analiza długoterminowych zmian parametrów
+- **Threshold monitoring** - porównanie z wartościami granicznymi
+- **Comparative analysis** - porównanie między łopatkami/turbinami
+- **Pattern recognition** - rozpoznawanie charakterystycznych wzorców awarii
+</SupportingDetails>
+
+<KeyConcept title="Predictive maintenance w systemach kontroli">
+Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
+- **Machine Learning** do przewidywania awarii siłowników
+- **Digital Twin** do symulacji różnych scenariuszy
+- **IoT sensors** do ciągłego monitoringu stanu
+- **Edge computing** do analizy danych w czasie rzeczywistym
+</KeyConcept>
+
+<Example title="Przykład diagnostyki - degradacja siłownika pitch">
+**Scenariusz monitoringu** (3-miesięczny okres):
+- **Tydzień 1**: Ciśnienie hydrauliczne 210 bar (nominalne)
+- **Tydzień 8**: Spadek do 205 bar - pierwsze oznaki degradacji
+- **Tydzień 12**: 200 bar - przekroczenie progu alarmowego
+- **Tydzień 15**: Planowana wymiana - uniknięcie awarii
+
+**Parametry analizowane**:
+- Ciśnienie hydrauliczne
+- Czas reakcji siłownika
+- Pozycjonowanie i dokładność
+- Temperatura oleju
+- Poziom hałasu
+</Example>
+
+<InfoBox title="💡 Korzyści monitoringu predykcyjnego">
+**Wczesne wykrywanie** problemów z systemami kontroli pozwala na:
+- **40% redukcję** czasu przestoju związanych z systemami pitch/yaw
+- **60% redukcję** kosztów napraw przez lepsze planowanie
+- **Zwiększenie bezpieczeństwa** przez eliminację nagłych awarii
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Praktyczne wdrożenie** - systemy CBM wymagają inwestycji w sensory i oprogramowanie, ale zwracają się w ciągu 2-3 lat przez uniknięcie awarii krytycznych.
+
+**Machine learning** - nowoczesne systemy uczą się charakterystyk danej turbiny i potrafią przewidzieć awarie, których nie wykryłyby tradycyjne progi alarmowe.
+
+**Standardy branżowe** - IEC 61400-25 definiuje protokoły komunikacyjne dla systemów monitoringu, co umożliwia interoperacyjność między różnymi dostawcami.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🚨 Procedury awaryjne i reakcja na incydenty" type="warning">
+
+<KeyPoints title="⚠️ Scenariusze awaryjne">
+- 🎛️ **Total pitch failure** - awaria wszystkich systemów pitch
+- 🧭 **Yaw system locked** - zablokowanie systemu orientacji
+- ⚡ **Power failure** - utrata zasilania krytycznych systemów
+- 🔧 **Mechanical failure** - awarie mechaniczne siłowników
+</KeyPoints>
+
+<SupportingDetails title="📋 Procedury reagowania na awarie">
+**Awarie systemu pitch:**
+1. **Immediate response** (0-30 sekund):
+   - Automatyczne zatrzymanie turbiny przez hamulce mechaniczne
+   - Alarm do centrum kontroli
+   - Włączenie systemu awaryjnego zasilania
+
+2. **Safety assessment** (30 sekund - 5 minut):
+   - Weryfikacja bezpiecznej pozycji turbiny
+   - Ocena zagrożenia dla personelu i mienia
+   - Decyzja o ewakuacji obszaru
+
+3. **Repair planning** (5-30 minut):
+   - Diagnoza przyczyn awarii
+   - Planowanie napraw z uwzględnieniem warunków pogodowych
+   - Koordynacja z ekipami naprawczymi
+
+**Awarie systemu yaw:**
+- Mniejsze zagrożenie bezpośrednie
+- Wymagają planowanej naprawy w sprzyjających warunkach
+- Możliwość tymczasowej eksploatacji z ograniczoną wydajnością
+</SupportingDetails>
+
+<WarningBox title="🚨 Kluczowe zasady bezpieczeństwa">
+**W przypadku awarii systemów kontroli:**
+1. **Nigdy** nie próbuj naprawy przy wietrze >15 m/s
+2. **Zawsze** upewnij się, że turbina jest w bezpiecznej pozycji
+3. **Natychmiast** poinformuj centrum kontroli o awarii
+4. **Sprawdź** czy obszar w promieniu 500m jest wolny od ludzi
+</WarningBox>
+
+<Example title="Case study - awaria systemu pitch w farmie wiatrowej">
+**Farma**: 20 turbin 3MW, region pomorski
+**Data**: Styczeń 2020, temperatura -10°C
+
+**Sekwencja incydentu**:
+1. **08:15** - Turbina T15 - alarm "Pitch system failure"
+2. **08:16** - Automatyczne zatrzymanie przez hamulce mechaniczne
+3. **08:17** - Alert w centrum kontroli farmy
+4. **08:20** - Weryfikacja: wszyscy pracownicy poza zasięgiem
+5. **08:25** - Diagnoza: zamarznięcie oleju hydraulicznego w siłownikach
+6. **14:00** - Odlodzenie i wymiana filtra oleju
+7. **16:30** - Turbina ponownie w eksploatacji
+
+**Koszty**:
+- Straty produkcji: 8h x 3MW = 24 MWh
+- Koszt naprawy: 5,000 EUR
+- **Total**: ~15,000 EUR (vs. potencjalne uszkodzenie struktury: >500,000 EUR)
+</Example>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Procedury vs fakty** - studenci muszą zrozumieć różnicę między procedurami awaryjnymi a rzeczywistym czasem reakcji. Teoretyczne procedury mogą nie uwzględniać warunków pogodowych, dostępności ekip naprawczych, itp.
+
+**Koszty awarii** - przykład pokazuje, że szybka reakcja i odpowiednie procedury mogą znacząco ograniczyć skutki finansowe awarii.
+
+**Learning from incidents** - każda awaria to okazja do ulepszenia systemów i procedur. W tym przypadku wprowadzono podgrzewanie oleju hydraulicznego w sezonie zimowym.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Podsumowanie - Systemy kontroli jako fundament bezpieczeństwa" type="success">
+
+<KeyPoints title="🔑 Kluczowe wnioski">
+- 🎛️ **System pitch** to najważniejszy element bezpieczeństwa turbiny
+- 🧭 **System yaw** wpływa na wydajność i długoterminową niezawodność
+- 🔋 **Redundancja zasilania** jest krytyczna dla funkcjonowania systemów
+- 📊 **Monitoring predykcyjny** pozwala unikać nagłych awarii
+</KeyPoints>
+
+<SuccessBox title="✅ Sukces operacyjny">
+Nowoczesne turbiny z właściwie zaprojektowanymi systemami kontroli osiągają:
+- **99.5% availability** - czas dostępności do produkcji
+- **poniżej 10 unexpected stops** - nieprzewidziane zatrzymania rocznie
+- **15-20 lat** średni czas eksploatacji przed modernizacją
+</SuccessBox>
+
+<KeyConcept title="Filozofia bezpieczeństwa systemów kontroli">
+**"Control systems are the nervous system of a wind turbine"** - systemy kontroli to nie tylko elementy techniczne, ale **zdolność turbiny do reagowania na zmieniające się warunki** i **ochrony samej siebie** przed szkodami.
+</KeyConcept>
+
+<InfoBox title="🎓 Następne kroki">
+Po poznaniu systemów kontroli przejdziemy do **układów hamulcowych i systemów bezpieczeństwa** - ostatniej linii obrony przed awariami strukturalnymi.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Kulminacja wykładu** - systemy kontroli to serce bezpieczeństwa turbiny. Bez nich turbina nie może reagować na zmieniające się warunki i staje się niebezpieczna.
+
+**Integracja wiedzy** - studenci mają teraz pełny obraz jak zagrożenia mechaniczne i aerodynamiczne (poprzedni wykład) łączą się z systemami kontroli (ten wykład). To fundament do zrozumienia układów hamulcowych (następny wykład).
+
+**Praktyczne zastosowania** - studenci będą mogli wykorzystać tę wiedzę do projektowania systemów monitoringu i procedur operacyjnych.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

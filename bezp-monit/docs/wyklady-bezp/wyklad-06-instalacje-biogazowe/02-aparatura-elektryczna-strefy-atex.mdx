@@ -1,0 +1,113 @@
+---
+sidebar_position: 2
+title: "Aparatura elektryczna dla stref ATEX"
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: poprawny dobór aparatury Ex" type="info">
+<LearningObjective>
+Po tej sekcji student rozumie oznaczenia przeciwwybuchowe (Ex), potrafi dobrać aparaturę elektryczną do stref 0/1/2 (gazy) i 20/21/22 (pyły), w tym wybrać właściwe EPL, klasy temperaturowe oraz rodzaje zabezpieczeń (Ex d, Ex e, Ex i, Ex n, Ex t).
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Oznaczenia Ex i struktura znakowania zgodna z PN-EN 60079
+- Poziomy ochrony EPL (Ga/Gb/Gc, Da/Db/Dc) i ich relacja do stref
+- Klasy temperaturowe T1–T6 i grupy IIA/IIB/IIC
+- Typy zabezpieczeń: Ex d (ognioodporność), Ex e (zwiększone bezpieczeństwo), Ex i (iskrobezpieczeństwo), Ex t (pyły)
+- Kable, przepusty, skrzynki zaciskowe, silniki, osprzęt sterowniczy
+</KeyPoints>
+
+<InstructorNotes>
+Podkreśl, że dobór urządzeń Ex wynika bezpośrednio z klasyfikacji stref. Zwróć uwagę na kompatybilność całych łańcuchów (złącza, kable, dławnice). Przypomnij o dokumentacji zgodności (certyfikaty, deklaracje) i okresowych przeglądach.
+</InstructorNotes>
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🔎 Oznaczenia Ex – jak czytać etykietę" type="info">
+<KeyConcept title="Przykład znakowania">
+II 2G Ex d IIB T4 Gb — wskazuje grupę urządzeń II, kategorię 2G (strefa 1), ochronę Ex d (ognioodporność), grupę gazową IIB, klasę temperaturową T4 i poziom ochrony Gb.
+</KeyConcept>
+
+<SupportingDetails title="Elementy oznaczenia">
+- Grupa urządzeń (I – kopalnie; II – pozostałe)
+- Kategoria (1/2/3 dla G – gazy i D – pyły)
+- Rodzaj ochrony (Ex d/e/i/n/t …)
+- Grupa gazowa (IIA/IIB/IIC) i klasa T
+- EPL (Ga/Gb/Gc lub Da/Db/Dc)
+</SupportingDetails>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧰 Dobór urządzeń do stref" type="tip">
+<KeyPoints title="Zasady">
+- Strefa 0/20: urządzenia o EPL Ga/Da, zwykle Ex i lub specjalne rozwiązania
+- Strefa 1/21: EPL Gb/Db, typowo Ex d, Ex e, Ex i, Ex t
+- Strefa 2/22: EPL Gc/Dc, rozwiązania Ex n, Ex ec, Ex tc
+</KeyPoints>
+
+<SupportingDetails title="Przykłady">
+- Silniki: Ex d lub Ex e w strefie 1; Ex n w strefie 2 (z ograniczeniami)
+- Oświetlenie: oprawy Ex d/Ex e/Ex t zależnie od medium i strefy
+- Skrzynki połączeniowe: certyfikowane obudowy, właściwe dławnice kablowe Ex
+- Przyciski/wyłączniki: osprzęt sterowniczy Ex o odpowiednim EPL i IP
+</SupportingDetails>
+
+<InfoBox title="Kable i dławnice">
+Stosuj kable z odpowiednimi powłokami i promieniami gięcia, dławnice Ex z wkładkami uszczelniającymi do danego medium (gaz/pył), zachowuj minimalne długości odcinków niechronionych.
+</InfoBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧪 Przykład doboru: strefa 1 przy kompresorze" type="warning">
+<KeyPoints title="Warunki">
+- Strefa 1 (prawdopodobna obecność mieszaniny)
+- Gaz: CH₄ (IIA), wymagana klasa T4
+- Urządzenia: silnik, czujniki ciśnienia, skrzynka zaciskowa, oświetlenie
+</KeyPoints>
+
+<Example title="Dobór">
+- Silnik: II 2G Ex d IIA T4 Gb
+- Czujniki: II 2G Ex ia IIA T4 Ga/Gb (pętla iskrobezpieczna)
+- Skrzynka: II 2G Ex e IIA T4 Gb + dławnice Ex e/Ex d
+- Oświetlenie: II 2G Ex e IIA T4 Gb lub Ex d
+</Example>
+
+<WarningBox title="Uwaga">
+Sprawdź kompatybilność łączników, dławnic i kabli z obudową oraz wymagane certyfikaty. Uwzględnij temperaturę otoczenia i warunki środowiskowe (IP, korozja).
+</WarningBox>
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="✅ Eksploatacja i przeglądy" type="success">
+<KeyPoints title="Utrzymanie zgodności">
+- Przeglądy okresowe zgodne z PN-EN 60079-17
+- Kontrola uszczelnień, korozji, integralności przewodów i dławnic
+- Walidacja oznaczeń, dokumentacji i świadectw zgodności
+</KeyPoints>
+
+<InstructorNotes>
+Zakończ praktyczną listą kontrolną: przeglądy wizualne i szczegółowe, kontrola momentów dokręcania, weryfikacja klas T względem temperatury procesowej, aktualizacja planów utrzymania ruchu dla stref Ex.
+</InstructorNotes>
+</Slide>
+
+</SlideContainer>

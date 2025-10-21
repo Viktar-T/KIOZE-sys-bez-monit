@@ -9,15 +9,6 @@ title: "W8: Cyberbezpieczeństwo OT/ICS"
 
 Wykład omawia specyficzne zagrożenia cybernetyczne w systemach automatyki przemysłowej (OT/ICS), wektory ataku, zasady segmentacji sieci i stref bezpieczeństwa, bezpieczny dostęp zdalny, systemy kopii zapasowych oraz podstawy standardu IEC 62443.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Zidentyfikować specyficzne zagrożenia cybernetyczne w systemach OT/ICS.
-2. Scharakteryzować główne wektory ataku na infrastrukturę energetyczną.
-3. Zaprojektować segmentację sieci i strefy bezpieczeństwa.
-4. Zaimplementować bezpieczny dostęp zdalny do systemów przemysłowych.
-5. Zaprojektować systemy kopii zapasowych i procedury odzyskiwania.
-6. Zastosować podstawy standardu IEC 62443 w praktyce.
-
 ## Struktura materiału
 
 1. [Cyberzagrożenia w systemach przemysłowych](./01-cyberzagrozenia-systemy-przemyslowe.mdx)

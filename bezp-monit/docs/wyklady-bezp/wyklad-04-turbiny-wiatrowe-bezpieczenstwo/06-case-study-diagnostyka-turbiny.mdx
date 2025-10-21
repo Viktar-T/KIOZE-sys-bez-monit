@@ -1,0 +1,679 @@
+---
+title: "Case study: diagnostyka turbiny wiatrowej"
+sidebar_position: 6
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Case study: diagnostyka turbiny wiatrowej" type="info">
+
+<LearningObjective>
+Po tej sekcji student potrafi zastosować kompleksową analizę diagnostyczną turbiny wiatrowej, łączyć dane z różnych źródeł monitoringu, podejmować decyzje operacyjne na podstawie analiz CMS oraz planować działania prewencyjne i naprawcze.
+</LearningObjective>
+
+<KeyPoints title="📋 Scenariusz case study">
+- 🏭 **Farma wiatrowa**: 25 turbin 3MW w centralnej Polsce
+- 🔧 **Problem**: Degradacja systemu przekładni w turbinie T12
+- 📊 **Dane**: 18-miesięczny monitoring CMS + awaryjne zatrzymania
+- 🎯 **Cel**: Analiza przyczyn, decyzje operacyjne, planowanie napraw
+</KeyPoints>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 30-35 minut
+
+**Przebieg**: To kulminacyjny wykład całego cyklu - studenci zastosują wszystkie poznane metody w realistycznym scenariuszu. Zacznę od przedstawienia sytuacji wyjściowej, potem przejdę systematycznie przez analizę danych, diagnozę i planowanie działań.
+
+**Metody dydaktyczne**:
+- Interaktywna analiza rzeczywistych danych CMS
+- Podejmowanie decyzji w czasie rzeczywistym
+- Porównanie różnych opcji działania i ich konsekwencji
+- Analiza kosztów i korzyści różnych strategii
+
+**Kluczowe przesłanie**: Inżynier bezpieczeństwa musi łączyć analityczne umiejętności z decyzyjnością biznesową. Dane CMS to tylko punkt wyjścia - klucz to interpretacja i akcja.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🏭 Charakterystyka farmy i problemu" type="warning">
+
+<KeyPoints title="📊 Specyfikacja techniczna">
+- 🌪️ **Farma**: 25 × 3MW Vestas V115, moc całkowita 75MW
+- 📍 **Lokalizacja**: Centralna Polska, region o wysokim potencjale wiatrowym
+- ⏰ **Eksploatacja**: 5 lat, 24h/7 monitoring CMS
+- 🚨 **Problem**: Turbina T12 - degradacja przekładni, 3 awaryjne zatrzymania
+</KeyPoints>
+
+<SupportingDetails title="🔧 Specyfikacja turbiny T12">
+**Parametry techniczne**:
+- **Model**: Vestas V115-3.0 MW
+- **Średnica wirnika**: 115m, 3 łopaty
+- **Wysokość wieży**: 93m steel tower
+- **Przekładnia**: Planetary + helical gear, ratio 1:104
+- **Generator**: Permanent magnet synchronous, direct drive variant z przekładnią
+- **CMS**: Siemens SCM System, 54 kanałów wibracji, 25 temperatur, olej online
+
+**Historia eksploatacji**:
+- **Commissioning**: Czerwiec 2019
+- **Pierwsza awaria**: Lipiec 2020 (12 miesięcy eksploatacji)
+- **Druga awaria**: Luty 2021 (20 miesięcy eksploatacji)  
+- **Trzecia awaria**: Sierpień 2021 (26 miesięcy eksploatacji)
+- **Analiza**: Wrzesień 2021 (po trzeciej awarii)
+</SupportingDetails>
+
+<SupportingDetails title="📈 Charakterystyka problemu - początkowy opis">
+**Pierwsza awaria** (Lipiec 2020):
+- **Typ**: Nieoczekiwane zatrzymanie przy wietrze 18 m/s
+- **Alarm**: "High vibration planetary gearbox"
+- **Czas naprawy**: 3 tygodnie
+- **Skutek**: Wymiana łożyska planetary carrier
+- **Koszt**: €45,000
+
+**Druga awaria** (Luty 2021):
+- **Typ**: Alarm "Gearbox oil temperature high"
+- **Warunki**: Wiatr 22 m/s, temperatura otoczenia -15°C
+- **Akcja**: Awaryjne zatrzymanie, wymiana filtra oleju
+- **Koszt**: €8,000
+
+**Trzecia awaria** (Sierpień 2021):
+- **Typ**: "Planetary gear vibration alarm"
+- **Warunki**: Normalne warunki operacyjne (12 m/s)
+- **Status**: Turbina offline, wymagająca analizy CMS
+- **Problem**: Czy to powtarzający się problem, czy nowa awaria?
+</SupportingDetails>
+
+<WarningBox title="⚠️ Kontekst biznesowy problemu">
+**Konsekwencje dla farmy**:
+- **Utrata przychodów**: 3MW × €80/MWh × 24h/dzień = €5,760/dzień offline
+- **Koszty napraw**: Łącznie €53,000 w 2 lata (vs. planowe maintenance €15,000)
+- **Ryzyko**: Pattern failure może dotyczyć innych turbin w farmie
+- **Decyzja**: Wymiana całej przekładni vs. naprawa progressive?
+</WarningBox>
+
+<Example title="Initial assessment - porównanie z farmą">
+**Analiza porównawcza** (dane z 25 turbin, T12 vs. średnia farmy):
+
+**Availability statistics**:
+```
+Turbina T12:     94.2% availability (vs. 97.8% średnia farmy)
+Unexpected stops: 3 in 2 years (vs. 0.8 średnia farmy)
+Maintenance cost: €53,000 (vs. €28,000 średnia farmy)
+```
+
+**CMS baseline comparison** (18-miesięczne dane):
+```
+Vibration levels (planetary gear):
+T12: 4.2 mm/s RMS (vs. 3.1 mm/s średnia farmy)
+Temperature (gearbox):
+T12: 72°C średnia (vs. 65°C średnia farmy)
+Oil quality:
+T12: Fe 45 ppm (vs. 18 ppm średnia farmy)
+```
+
+**Wstępny wniosek**: T12 wykazuje systematycznie gorsze parametry od początku eksploatacji
+</Example>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Kontekst problemu** - studenci muszą zrozumieć, że nie mówimy o pojedynczej awarii, ale o systematycznym problemie, który wymaga głębszej analizy. Trzy awarie w 2 lata to pattern, nie zbieg okoliczności.
+
+**Business impact** - pokazuję studentom skalę finansową problemu. To nie tylko techniczne wyzwanie, ale biznesowe - każdy dzień przestoju to realne straty.
+
+**Comparative analysis** - porównanie z resztą farmy pokazuje, że T12 ma systemowy problem. Studenci muszą myśleć o przyczynach - dlaczego właśnie ta turbina?
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📊 Analiza danych CMS - 18-miesięczna historia" type="info">
+
+<KeyPoints title="🔍 Główne obszary analizy">
+- 🌊 **Analiza wibracji** - spektra, trendy, envelope analysis
+- 🌡️ **Monitoring temperatury** - przekładnia, łożyska, olej
+- 🛢️ **Analiza oleju** - skład, zanieczyszczenia, degradacja addytywów
+- 📈 **Analiza trendów** - correlation analysis, pattern recognition
+</KeyPoints>
+
+<SupportingDetails title="🌊 Analiza wibracji - planetary gearbox">
+**Trend analysis (18 miesięcy)**:
+
+**RMS vibration trends**:
+```
+Month 1-6:  Stable at 3.2-3.5 mm/s
+Month 7-12: Gradual increase to 4.1 mm/s
+Month 13-18: Rapid increase to 6.8 mm/s (alarm threshold: 6.0 mm/s)
+```
+
+**Spectral analysis changes**:
+```
+Baseline (Month 1-6):
+- Planetary carrier frequency (PCF): 1.1 mm/s
+- Gear mesh frequency (GMF): 2.2 mm/s  
+- Sidebands: Minimal, poniżej 0.3 mm/s
+
+Degradation phase (Month 13-18):
+- PCF: 1.1 → 2.8 mm/s (+155%)
+- GMF: 2.2 → 4.1 mm/s (+86%)
+- Sidebands around GMF: 0.3 → 1.4 mm/s (+367%)
+- New frequency components: 2×PCF, 3×PCF (modulation)
+```
+
+**Envelope analysis**:
+```
+High-frequency envelope (2-12 kHz):
+- Month 1-6: Stable baseline 0.8 mm/s
+- Month 13-18: Progressive increase to 2.1 mm/s
+- Pattern: Sporadic spikes developing into continuous elevated levels
+```
+</SupportingDetails>
+
+<SupportingDetails title="🌡️ Analiza temperatury - correlation analysis">
+**Temperature correlation with loads**:
+
+**Normal correlation** (Month 1-12):
+```
+Gearbox temp = 45°C + (Power_MW × 8°C/MW)
+R² = 0.89 (good correlation)
+```
+
+**Degraded correlation** (Month 13-18):
+```
+Gearbox temp = 58°C + (Power_MW × 12°C/MW)
+R² = 0.72 (degraded correlation)
+Excess temperature: +13°C regardless of load
+```
+
+**Detailed temperature analysis**:
+```
+Planetary carrier bearing:
+- Normal: 55-65°C (seasonal variation)
+- Month 16: 75°C average (+20°C anomaly)
+- Month 18: 85°C pre-failure level
+
+Oil temperature correlation:
+- Gearbox temp vs Oil temp: Strong correlation until Month 14
+- Month 15-18: Gearbox heating faster than oil circulation can handle
+```
+
+**Critical finding**: Heat buildup indicates lubrication problems
+</SupportingDetails>
+
+<Example title="Oil analysis - progressive degradation pattern">
+**Chemiczne analizy oleju** (co 3 miesiące):
+
+**Physical properties trend**:
+```
+Viscosity (40°C):
+Month 6:  220 cSt (nominal)
+Month 9:  218 cSt (stable)
+Month 12: 235 cSt (+7% - first alarm)
+Month 15: 268 cSt (+22% - alarm level exceeded)
+Month 18: 312 cSt (+42% - critical level)
+
+TBN (Total Base Number):
+Month 6:  8.2 mg KOH/g (fresh oil baseline)
+Month 12: 6.1 mg KOH/g (acceptable degradation)
+Month 15: 3.8 mg KOH/g (alarm threshold)
+Month 18: 2.2 mg KOH/g (critical - oil failing)
+```
+
+**Wear metals analysis**:
+```
+Iron (Fe) - primary wear indicator:
+Month 6:  12 ppm (normal)
+Month 9:  18 ppm (+50%)
+Month 12: 35 ppm (+192%)
+Month 15: 68 ppm (+467%)
+Month 18: 125 ppm (+942% - critical failure level)
+
+Copper (Cu) - bearing/carrying material:
+Month 6:  8 ppm
+Month 18: 42 ppm (+425% - bearing wear confirmed)
+
+Chromium (Cr) - hardened steel components:
+Month 6:  5 ppm
+Month 18: 28 ppm (+460% - gear wear confirmed)
+```
+
+**Particle count (ISO 4406)**:
+```
+Month 6:  18/16/13 (clean oil)
+Month 12: 20/17/14 (slight degradation)
+Month 15: 22/19/16 (contamination increasing)
+Month 18: 26/23/19 (critical contamination level)
+
+Size distribution analysis:
+- >14 μm particles: 15x increase
+- >6 μm particles: 8x increase
+- Pattern: Indicates severe wear, not just contamination
+```
+</Example>
+
+<KeyConcept title="Root cause analysis - integrated findings">
+**Synthesis of all CMS data** reveals **progressive gear mesh degradation**:
+
+**Timeline of deterioration**:
+1. **Month 6-9**: Early gear mesh wear detectable only in envelope analysis
+2. **Month 9-12**: Vibration sidebands appear, oil viscosity starts increasing  
+3. **Month 12-15**: Temperature correlation degrades, metal particles escalate
+4. **Month 15-18**: All parameters exceed alarm levels, failure imminent
+
+**Primary failure mechanism**: **Micro-pitting in planetary gear teeth**
+- Caused by: Insufficient lubrication under high loads
+- Accelerated by: Misalignment or load distribution problems
+- Confirmed by: Progressive metal particles (Cr) and vibration sidebands
+</KeyConcept>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Data integration** - studenci widzą, jak różne sygnały CMS opowiadają tę samą historię. Nie wystarczy analizować jeden parametr - trzeba łączyć wibracje, temperaturę i olej.
+
+**Progressive failure** - pokazuję, jak awaria rozwija się stopniowo przez 18 miesięcy. Studenci muszą rozumieć, że wczesne wykrycie (miesiąc 6-9) mogło zaoszczędzić setki tysięcy euro.
+
+**Root cause** - micro-pitting to specyficzny problem przekładni planetarnych. Studenci muszą zrozumieć, dlaczego występuje i jak go wykryć wcześnie.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🎯 Podejmowanie decyzji - opcje naprawcze" type="warning">
+
+<KeyPoints title="💰 Analiza opcji technicznych i finansowych">
+- 🔧 **Opcja A**: Wymiana kompletnej przekładni (€180,000)
+- 🛠️ **Opcja B**: Naprawa planetary gear set (€85,000)
+- 🔄 **Opcja C**: Tymczasowa naprawa + monitoring (€25,000)
+- ⏰ **Opcja D**: Odroczenie - kontynuacja z monitoring (€0 + ryzyko)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Opcja A - Wymiana kompletnej przekładni">
+**Specyfikacja techniczna**:
+- **Kompletna przekładnia**: Vestas-approved replacement unit
+- **Gwarancja**: 2 lata pełna gwarancja
+- **Czas realizacji**: 4-6 tygodni (planowanie + dostawa + montaż)
+- **Downtime**: 3 tygodnie (vs. inne opcje 1-2 tygodnie)
+
+**Analiza finansowa**:
+```
+Koszty bezpośrednie:
+- Przekładnia: €160,000
+- Montaż + commissioning: €20,000
+- Total: €180,000
+
+Koszty przestoju (3 tygodnie):
+- Utrata przychodów: €5,760/dzień × 21 dni = €120,960
+
+Total cost: €300,960
+
+Benefits:
+- Zero risk of repeat failure
+- Full warranty coverage
+- Improved efficiency (new components)
+- 15+ years expected life
+```
+
+**Risks**:
+- **Low risk**: Proven technology, warranty coverage
+- **Timeline risk**: Supply chain delays possible
+</SupportingDetails>
+
+<SupportingDetails title="🛠️ Opcja B - Naprawa planetary gear set">
+**Specyfikacja techniczna**:
+- **Scope**: Planetary carrier + gears replacement
+- **Provider**: Certified gearbox repair specialist
+- **Timeline**: 2-3 tygodnie naprawy + 1 tydzień montażu
+- **Warranty**: 18 miesięcy na naprawione komponenty
+
+**Analiza finansowa**:
+```
+Koszty bezpośrednie:
+- Planetary gear kit: €65,000  
+- Labor + parts: €20,000
+- Total: €85,000
+
+Koszty przestoju (4 tygodnie):
+- Utrata przychodów: €5,760/dzień × 28 dni = €161,280
+
+Total cost: €246,280
+
+Benefits:
+- 60% cost savings vs. complete replacement
+- Maintains some original components
+- Reasonable warranty period
+```
+
+**Risks**:
+- **Medium risk**: Other gearbox components may fail later
+- **Support**: Limited long-term parts availability for repaired units
+</SupportingDetails>
+
+<Example title="Opcja C - Tymczasowa naprawa + intensywny monitoring">
+**Scenariusz konserwatywny**:
+
+**Tymczasowe działania**:
+- **Oil change**: Clean oil + enhanced additive package (€3,000)
+- **Filter upgrade**: High-efficiency filtration system (€5,000)
+- **Load reduction**: Operate at 85% maximum power (€8,000 revenue impact/month)
+- **Enhanced monitoring**: Weekly oil analysis + bi-weekly vibration (€2,000/month)
+
+**Finansowe**:
+```
+Immediate cost: €8,000 (oil + filters)
+Monthly cost: €2,000 (monitoring)
+Expected life extension: 6-12 months
+
+Total cost first year: €32,000
+Revenue impact (85% power): €8,640/month = €103,680/year
+
+Total annual impact: €135,680
+```
+
+**Strategic considerations**:
+- **Bridge solution**: Buys time for planned replacement
+- **Learning opportunity**: Data collection for improved maintenance strategy
+- **Risk management**: Controlled degradation vs. sudden failure
+</Example>
+
+<KeyConcept title="Decision matrix - integrated evaluation">
+**Kryteria oceny opcji**:
+
+**Technical criteria** (weight 30%):
+- Opcja A: 10/10 (complete reliability)
+- Opcja B: 7/10 (good for 5+ years)  
+- Opcja C: 4/10 (temporary solution)
+
+**Financial criteria** (weight 40%):
+- Opcja A: 6/10 (high cost, long-term value)
+- Opcja B: 8/10 (balanced cost-benefit)
+- Opcja C: 7/10 (low immediate cost, ongoing expenses)
+
+**Risk criteria** (weight 30%):
+- Opcja A: 10/10 (minimal risk)
+- Opcja B: 6/10 (medium-term risk)
+- Opcja C: 3/10 (high ongoing risk)
+
+**Weighted decision**: Opcja B (7.4/10) emerges as optimal balance
+</KeyConcept>
+
+<WarningBox title="⚠️ Rekomendacja końcowa">
+**Rekomendacja**: **Opcja B - Naprawa planetary gear set**
+
+**Uzasadnienie**:
+1. **Cost-effectiveness**: 60% oszczędności vs. kompletna wymiana
+2. **Technical adequacy**: Rozwiązuje główną przyczynę problemu
+3. **Timeline**: Realistyczny harmonogram 4 tygodni
+4. **Risk management**: Adekwatna gwarancja przy rozsądnym koszcie
+
+**Action plan**: 
+- Immediate oil change as bridge measure
+- Order planetary gear kit (8-week lead time)
+- Plan replacement during low-wind season (January)
+- Enhanced monitoring post-repair for first 6 months
+</WarningBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Decision making process** - studenci widzą, jak inżynierowie podejmują decyzje biznesowe na podstawie analiz technicznych. To nie tylko "najlepsze techniczne rozwiązanie", ale balans techniki, kosztów i ryzyka.
+
+**Matrix evaluation** - pokazuję systematyczne podejście do oceny opcji. Studenci muszą rozumieć, że różne kryteria mają różne wagi w zależności od kontekstu biznesowego.
+
+**Real-world constraints** - timeline, gwarancje, dostępność części - to rzeczywiste ograniczenia, które wpływają na decyzje. Studenci muszą myśleć praktycznie.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="📈 Implementacja i monitoring post-naprawy" type="success">
+
+<KeyPoints title="🔄 Plan implementacji i weryfikacji">
+- ⚙️ **Immediate actions** - natychmiastowe działania stabilizujące
+- 📅 **Implementation plan** - harmonogram naprawy planetary gear set
+- 📊 **Post-repair monitoring** - wzmocniony monitoring przez 6 miesięcy
+- 🎯 **Success metrics** - wskaźniki sukcesu i długoterminowa ocena
+</KeyPoints>
+
+<SupportingDetails title="⚙️ Immediate actions (pierwsze 2 tygodnie)">
+**Stabilizacja sytuacji**:
+```
+Week 1:
+- Emergency oil change with premium filter (€3,000)
+- Load reduction to 85% maximum power
+- Daily vibration and temperature monitoring
+- Contract signed for planetary gear kit (€65,000)
+
+Week 2:
+- Enhanced oil analysis setup (weekly sampling)
+- Vibration baseline recording at reduced load
+- Preparation of replacement timeline
+- Communication with turbine operator about power reduction
+```
+
+**Krótkoterminowe cele**:
+- **Stabilize temperatures**: Target poniżej 70°C gearbox temperature
+- **Monitor vibration**: Ensure levels don't exceed 7.0 mm/s threshold
+- **Oil quality**: Prevent further TBN degradation
+- **Safety**: Avoid unexpected shutdown during lead time for parts
+</SupportingDetails>
+
+<SupportingDetails title="📅 Implementation timeline (4-miesięczny plan)">
+**Month 1 - Preparation phase**:
+```
+- Parts procurement confirmation
+- Technical team coordination (Vestas + local contractor)
+- Preparation of special tools and crane equipment
+- Risk assessment and safety procedures
+```
+
+**Month 2 - Low wind season preparation**:
+```
+- Weather window identification (January - typically low wind)
+- Mobilization of replacement team
+- Pre-replacement vibration and oil baseline
+- Final parts delivery and quality check
+```
+
+**Month 3 - Implementation (January)**:
+```
+Week 1: Turbine shutdown, gearbox removal, inspection
+Week 2: Planetary gear replacement, quality control
+Week 3: Reinstallation, commissioning, initial testing
+Week 4: Performance verification, baseline establishment
+```
+
+**Month 4 - Post-implementation monitoring**:
+```
+- Daily monitoring for first 2 weeks
+- Weekly comprehensive analysis (vibration + oil + temperature)
+- Performance comparison with farm average
+- Documentation and lessons learned
+```
+</SupportingDetails>
+
+<Example title="Post-repair monitoring protocol - 6-miesięczny plan">
+**Monitoring intensywność** (pierwszych 6 miesięcy post-repair):
+
+**Daily monitoring** (tylko pierwszy miesiąc):
+```
+Morning checklist:
+- Vibration levels: All planetary frequencies
+- Temperature: Gearbox vs. farm average
+- Power output: Efficiency comparison
+- Alarm status: Any new warnings?
+```
+
+**Weekly comprehensive analysis**:
+```
+Vibration spectrum analysis:
+- PCF (Planetary Carrier Frequency): Target poniżej 1.5 mm/s
+- GMF (Gear Mesh Frequency): Target poniżej 2.5 mm/s  
+- Sidebands: Should be minimal poniżej 0.5 mm/s
+- Overall RMS: Target poniżej 4.0 mm/s
+
+Oil analysis (first 3 months monthly, then quarterly):
+- Physical properties: Viscosity, TBN
+- Wear metals: Fe, Cu, Cr levels
+- Particle count: ISO 4406 classification
+```
+
+**Monthly reporting**:
+```
+Performance metrics:
+- Availability: Compare with pre-repair (target: >97%)
+- Power efficiency: vs. nameplate and farm average
+- Maintenance costs: Track any follow-up issues
+
+Trend analysis:
+- Are all parameters stable and improving?
+- Early warning detection: Any degradation patterns?
+- Comparison with other farm turbines for validation
+```
+
+**Success criteria** (6-month assessment):
+```
+Technical success:
+- Vibration levels within normal range for all planetary frequencies
+- Temperature correlation restored (R² >0.85)
+- Oil quality maintained without rapid degradation
+- Zero unexpected shutdowns
+
+Business success:
+- Availability restored to >97% (vs. 94.2% pre-repair)
+- ROI calculation: Repair cost vs. avoided revenue loss
+- Lessons learned documented for other turbines in farm
+```
+</Example>
+
+<SuccessBox title="✅ Expected outcomes and long-term outlook">
+**6-miesięczne wskaźniki sukcesu**:
+- **Vibration levels**: All parameters within normal ranges
+- **Temperature stability**: Consistent correlation with load
+- **Oil quality**: Stable TBN, minimal metal content increase
+- **Availability**: >97% (vs. 94.2% pre-repair)
+
+**Long-term expectations** (5+ year outlook):
+- **Gearbox life**: 10+ additional years expected
+- **Maintenance cost**: Return to farm average levels
+- **Risk reduction**: Eliminated pattern failure risk
+- **Knowledge**: Improved maintenance strategy for other turbines
+</SuccessBox>
+
+<KeyConcept title="Lessons learned and preventive strategy">
+**Wnioski dla całej farmy**:
+
+**Early detection opportunities**:
+- **Month 6-9**: Envelope analysis showed early signs (could have triggered investigation)
+- **Month 12**: Oil viscosity increase + vibration sidebands (could have planned repair)
+- **Month 15**: Multiple parameters exceeded thresholds (should have initiated action)
+
+**Improved maintenance strategy**:
+- **Enhanced oil monitoring**: Bi-monthly analysis for all turbines
+- **Vibration envelope**: Monthly envelope analysis for planetary gearboxes
+- **Temperature trending**: Automated correlation analysis with load
+- **Cross-turbine comparison**: Benchmark individual turbines against farm average
+
+**Preventive measures for other turbines**:
+- **Load optimization**: Avoid excessive loads during high wind periods
+- **Oil quality**: Premium oil with enhanced additive packages
+- **Monitoring frequency**: Increased CMS analysis frequency for aging turbines
+</KeyConcept>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Implementation planning** - studenci widzą, jak teoria przekłada się na praktykę. Plan implementacji to nie tylko "zrobić naprawę", ale kompleksowe zarządzanie projektem z harmonogramem, monitoringiem i oceną sukcesu.
+
+**Monitoring protocol** - to kluczowa część: jak sprawdzić, czy naprawa była udana? Studenci muszą rozumieć, że monitoring nie kończy się po naprawie, ale jest częścią długoterminowej strategii.
+
+**Lessons learned** - każda awaria to okazja do uczenia. Studenci widzą, jak wyciągać wnioski na przyszłość i jak uniknąć podobnych problemów w innych turbinach.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="📊 Podsumowanie case study - kompetencje inżyniera bezpieczeństwa" type="tip">
+
+<KeyPoints title="🎯 Kluczowe kompetencje pokazane w case study">
+- 📊 **Analiza danych** - integracja wieloparametrowego monitoringu CMS
+- 🧠 **Diagnostyka** - root cause analysis i przewidywanie rozwoju awarii
+- 💰 **Analiza kosztów** - ocena opcji technicznych i biznesowych
+- 🎯 **Podejmowanie decyzji** - wybór optymalnej strategii naprawczej
+</KeyPoints>
+
+<KeyConcept title="Kompleksowe podejście do bezpieczeństwa turbin">
+**Ten case study pokazuje**, że bezpieczeństwo turbin wiatrowych to nie tylko reakcja na awarie, ale **proaktywne zarządzanie ryzykiem** poprzez integrację:
+- **Technicznych analiz** (CMS, diagnostyka)
+- **Ekonomicznych ocen** (cost-benefit analysis)
+- **Operacyjnych decyzji** (risk management)
+- **Długoterminowych strategii** (preventive maintenance)
+</KeyConcept>
+
+<SuccessBox title="✅ Kompetencje absolwenta po case study">
+**Po tym case study student potrafi**:
+- **Przeprowadzić kompleksową analizę** danych CMS w realistycznym scenariuszu
+- **Zidentyfikować wzorce awarii** i przewidzieć ich rozwój
+- **Ocenić opcje techniczne** z perspektywy biznesowej i operacyjnej
+- **Zaprojektować strategię naprawczą** z monitoringiem i oceną sukcesu
+- **Wyciągnąć wnioski** dla poprawy procesów utrzymania ruchu
+</SuccessBox>
+
+<InfoBox title="🎓 Przygotowanie do praktyki zawodowej">
+Ten case study przygotowuje studentów do rzeczywistych wyzwań w branży wiatrowej, gdzie **inżynier bezpieczeństwa** musi łączyć wiedzę techniczną z umiejętnościami analitycznymi i decyzyjnymi w kontekście biznesowym.
+</InfoBox>
+
+<InstructorNotes>
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Career readiness** - studenci mają teraz kompletny obraz tego, jak wygląda praca inżyniera bezpieczeństwa w branży wiatrowej. To nie tylko teoria, ale praktyczne umiejętności zawodowe.
+
+**Integration of knowledge** - case study wykorzystuje wszystkie elementy z poprzednich wykładów: zagrożenia mechaniczne, systemy kontroli, układy hamulcowe, architektura CMS, analiza drgań i temperatury.
+
+**Decision making framework** - studenci nauczyli się systematycznego podejścia do podejmowania decyzji w złożonych sytuacjach techniczno-biznesowych.
+
+**Continuous learning** - każdy case study to lekcja na przyszłość. Studenci zrozumieli znaczenie dokumentowania i wyciągania wniosków z incydentów.
+
+</details>
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

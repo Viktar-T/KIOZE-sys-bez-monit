@@ -9,15 +9,6 @@ title: "W5: Magazyny energii (BESS) – bezpieczeństwo"
 
 Wykład omawia systemy zarządzania bateriami (BMS), zjawisko runaway termicznego, systemy detekcji gazów i pożaru w magazynach energii, organizację stref technicznych oraz integrację z systemami alarmowymi i bezpieczeństwa.
 
-Po ukończeniu wykładu student potrafi:
-
-1. Opisać funkcje i architekturę systemów BMS.
-2. Zidentyfikować przyczyny i mechanizmy runaway termicznego.
-3. Zaprojektować systemy detekcji gazów i pożaru dla BESS.
-4. Zaplanować organizację stref technicznych z uwzględnieniem bezpieczeństwa.
-5. Zintegrować systemy BESS z systemami alarmowymi i bezpieczeństwa.
-6. Opracować procedury reagowania na zagrożenia w magazynach energii.
-
 ## Struktura materiału
 
 1. [BMS - architektura i funkcje bezpieczeństwa](./01-bms-architektura-funkcje-bezpieczenstwa.mdx)

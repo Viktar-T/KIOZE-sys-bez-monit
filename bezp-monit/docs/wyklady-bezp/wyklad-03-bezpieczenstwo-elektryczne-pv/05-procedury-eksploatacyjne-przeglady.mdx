@@ -1,0 +1,299 @@
+---
+title: "Procedury eksploatacyjne i przeglądy"
+sidebar_position: 5
+---
+
+import { LearningObjective, KeyConcept, Example, WarningBox } from '@site/src/components/SlideComponents';
+
+# Procedury eksploatacyjne i przeglądy
+
+<LearningObjective>
+Po tej sekcji student zna obowiązkowe procedury eksploatacyjne dla instalacji PV oraz potrafi zaplanować i wykonać przeglądy bezpieczeństwa zgodnie z normą IEC 62446-1. Student rozumie znaczenie dokumentacji eksploatacyjnej i potrafi zidentyfikować typowe problemy podczas przeglądów.
+</LearningObjective>
+
+## Wprowadzenie do procedur eksploatacyjnych
+
+### Podstawy prawne i normowe
+
+Eksploatacja instalacji PV podlega **ścisłym regulacjom** wynikającym zarówno z przepisów prawa budowlanego, jak i norm technicznych stosowanych w branży energetycznej.
+
+<KeyConcept title="Kluczowe dokumenty normowe">
+**IEC 62446-1**: Procedury przeglądów i dokumentacji instalacji PV
+**PN-HD 60364-7-712**: Wymagania instalacyjne dla systemów PV
+**IEC 61724**: Monitoring wydajności instalacji PV
+**Kodeks Energetyczny (UE)**: Wymagania bezpieczeństwa i efektywności
+</KeyConcept>
+
+**Główne cele procedur eksploatacyjnych**:
+- **Zapewnienie bezpieczeństwa** ludzi i mienia
+- **Utrzymanie wydajności** instalacji na poziomie projektowym
+- **Zgodność z przepisami** i umowami (PPA, OSP)
+- **Minimalizacja ryzyka** awarii i przestojów
+
+### Klasyfikacja przeglądów
+
+**Typy przeglądów** według częstotliwości i zakresu:
+1. **Przegląd odbiorczy** - po zakończeniu budowy
+2. **Przegląd okresowy** - regularne kontrole zgodnie z harmonogramem
+3. **Przegląd doraźny** - po wystąpieniu awarii lub zdarzeń niepożądanych
+4. **Przegląd specjalistyczny** - przed ważnymi decyzjami (refinansowanie, sprzedaż)
+
+## Przegląd odbiorczy (Commissioning)
+
+### Zakres przeglądu odbiorczego
+
+**Dokumentacja wymagana**:
+- **Protokół odbioru technicznego** instalacji elektrycznej
+- **Certyfikaty** modułów PV i inwerterów
+- **Pomiary elektryczne** (rezystancja izolacji, ciągłość uziemienia)
+- **Testy funkcjonalne** wszystkich systemów bezpieczeństwa
+- **Dokumentacja fotograficzna** krytycznych elementów
+
+<Example title="Lista kontrolna przeglądu odbiorczego farmy PV 10MW">
+**Część elektryczna (DC)**:
+- [ ] Pomiar rezystancji izolacji kabli DC: >1MΩ przy 1000V DC
+- [ ] Test ciągłości połączeń string-ów: każdy string sprawdzony
+- [ ] Pomiar napięć VOC: zgodność z projektem (±5%)
+- [ ] Test wyłączników DC: sprawdzenie działania mechanicznego
+- [ ] Badanie SPD: testy wyłączania przy symulowanych przepięciach
+
+**Część elektryczna (AC)**:
+- [ ] Pomiar rezystancji uziemienia: poniżej 4Ω dla głównej szyny
+- [ ] Test wyłączników różnicowoprądowych: czas zadziałania poniżej 30ms
+- [ ] Kontrola systemu automatyki: testy wszystkich funkcji SCADA
+- [ ] Synchronizacja z siecią: testy częstotliwości i napięcia
+
+**Część mechaniczna**:
+- [ ] Kontrola montażu modułów: dokręcenie, brak uszkodzeń
+- [ ] Sprawdzenie konstrukcji nośnej: brak korozji, stabilność
+- [ ] Kontrola kablowania: prawidłowe prowadzenie, oznaczenia
+
+**Czas realizacji**: 3-5 dni dla farmy 10MW
+**Koszt**: €15,000-25,000 (0.15-0.25% CAPEX)
+</Example>
+
+### Protokół pomiarów elektrycznych
+
+**Wymagane pomiary** zgodnie z IEC 62446-1:
+
+**1. Rezystancja izolacji**:
+$$R_{izolacji} = \frac{U_{pomiarowy}}{I_{upływowy}} > 1 \text{ M}\Omega$$
+
+**2. Ciągłość uziemienia**:
+$$R_{uziemienia} = \frac{U_{pomiarowy}}{I_{pomiarowy}} < 4 \Omega$$
+
+**3. Pomiar napięć string-ów**:
+$$\Delta U = |U_{rzeczywiste} - U_{projektowe}| < 5\% U_{projektowe}$$
+
+<WarningBox title="⚠️ Krytyczne pomiary">
+**Bez pozytywnych wyników poniższych pomiarów** instalacja **NIE MOŻE** zostać uruchomiona:
+- Rezystancja izolacji < 1MΩ dla całej strony DC
+- Rezystancja uziemienia > 4Ω dla głównej szyny wyrównawczej
+- Działanie wyłączników różnicowoprądowych w czasie > 300ms
+</WarningBox>
+
+## Przeglądy okresowe
+
+### Harmonogram przeglądów
+
+**Częstotliwość** według typu instalacji:
+
+| Typ instalacji | Przegląd podstawowy | Przegląd szczegółowy | Inspekcja wizualna |
+|---|---|---|---|
+| **Domowa (< 50kW)** | Rocznie | Co 3 lata | Półrocznie |
+| **Komercyjna (50-500kW)** | Półrocznie | Rocznie | Miesięcznie |
+| **Przemysłowa (> 500kW)** | Kwartalnie | Półrocznie | Dwutygodniowo |
+
+### Scope przeglądu podstawowego
+
+**Inspekcja wizualna** (czas: 1-2 godziny):
+- Stan modułów PV (pęknięcia, hot spots, zabrudzenie)
+- Prawidłowość oznaczeń i oznakowania
+- Dostępność wyłączników awaryjnych
+- Stan konstrukcji nośnej
+
+**Pomiary elektryczne** (czas: 2-4 godziny):
+- Rezystancja izolacji (selektywnie - kilka string-ów)
+- Pomiar napięć DC string-ów
+- Test wyłączników ppoż. (próba mechaniczna)
+- Kontrola logów alarmowych w SCADA
+
+**Dokumentacja**:
+- Protokół przeglądu z wynikami pomiarów
+- Lista stwierdzonych nieprawidłowości
+- Rekomendacje napraw i ulepszeń
+- Termin następnego przeglądu
+
+<Example title="Przykład przeglądu półrocznego - Farma PV 5MW">
+**Data**: 15.03.2023, **Czas**: 8 godzin, **Zespół**: 3 osoby
+
+**Stwierdzone problemy**:
+1. **String K15-R08**: Spadek napięcia o 12% (647V vs 735V projektowe)
+   - **Diagnoza**: Luźny connector MC4 przy module 15
+   - **Akcja**: Dokręcenie, ponowny pomiar ✅
+
+2. **Moduły w rzędzie M**: Wizualnie zauważalne hot-spots (termowizja)
+   - **Diagnoza**: Delaminacja tylnej folii w 3 modułach
+   - **Akcja**: Plan wymiany podczas następnego przeglądu ⚠️
+
+3. **SPD w combiner box #23**: Status LED wskazuje na koniec żywotności
+   - **Diagnoza**: Liczba zadziałań przekroczyła 75% limitu
+   - **Akcja**: Wymiana w ciągu 30 dni 🔴
+
+**Koszty napraw**: €2,850 (0.06% CAPEX rocznie)
+**Ryzyko unikalne**: Minimalne dzięki wczesnemu wykryciu
+</Example>
+
+### Przegląd szczegółowy
+
+**Dodatkowe elementy** (realizowany co roku lub co 2 lata):
+
+**Pomiary termowizyjne**:
+- **Cel**: Wykrycie hot-spots, uszkodzeń modułów, problemów z połączeniami
+- **Sprzęt**: Kamera termowizyjna wysokiej rozdzielczości
+- **Warunki**: Bezpośrednie nasłonecznienie, brak wiatru
+- **Pomiary**: Każdy moduł indywidualnie lub próbka reprezentatywna
+
+**Testy wytrzymałościowe**:
+- **Szczelność**: Test IP rating skrzynek rozdzielczych
+- **Mechaniczne**: Sprawdzenie solidności montażu konstrukcji
+- **Elektryczne**: Symulowane przepięcia dla testu SPD
+
+**Analityka wydajności**:
+- **PR Analysis**: Porównanie z projektowymi wskaźnikami
+- **Degradation Rate**: Tempo degradacji modułów
+- **Availability**: Dostępność systemu i przyczyny przestojów
+
+## Przemysł operacyjny i monitoring
+
+### System SCADA i monitoring bezpieczeństwa
+
+**Monitorowane parametry bezpieczeństwa**:
+
+| Parametr | Zakres alarmowy | Działanie |
+|---|---|---|
+| **Ground Fault Current** | >30mA | Alarm + opcjonalne wyłączenie |
+| **String Voltage** | ±15% od nominalnego | Alarm + lokalizacja stringu |
+| **SPD Status** | End of life | Alarm + wymiana zaplanowana |
+| **Insulation Resistance** | poniżej 0.5MΩ | Alarm krytyczny + wyłączenie |
+| **Fire Detection** | Smoke/Heat sensors | Wyłączenie automatyczne |
+
+### Procedury awaryjne
+
+**Alarm krytyczny** - procedura natychmiastowa:
+1. **Automatyczne działanie** (czas: poniżej 30s):
+   - Wyłączenie odpowiednich wyłączników DC
+   - Powiadomienie operatora (SMS, email)
+   - Zapisanie logów zdarzenia
+
+2. **Działanie operatora** (czas: poniżej 15 min):
+   - Weryfikacja alarmu i lokalizacja problemu
+   - Powiadomienie odpowiednich służb
+   - Wprowadzenie danych do systemu zarządzania
+
+3. **Działanie serwisowe** (czas: poniżej 4 godziny):
+   - Diagnostyka techniczna problemu
+   - Naprawa lub wymiana elementów
+   - Testy i ponowne uruchomienie
+
+<Example title="Procedura przy alarmie Ground Fault w farmie PV">
+**Czas**: 14:23 **Lokalizacja**: Inwerter #47, String K12
+
+**Sekwencja automatyczna**:
+1. **14:23:10**: Wykrycie prądu upływowego 85mA
+2. **14:23:15**: Alarm w SCADA + SMS do operatora
+3. **14:23:30**: Automatyczne wyłączenie String Disconnect K12
+4. **14:23:45**: Logowanie zdarzenia w systemie
+
+**Działanie operatora**:
+1. **14:25**: Weryfikacja alarmu w SCADA
+2. **14:26**: Powiadomienie zespołu serwisowego
+3. **14:27**: Sprawdzenie lokalizacji problemu (kamera dachowa)
+
+**Działanie serwisu**:
+1. **15:15**: Przybycie na miejsce
+2. **15:30**: Diagnoza: uszkodzona izolacja kabla DC w komórce K12-R15
+3. **16:45**: Naprawa (wymiana sekcji kabla 2m)
+4. **17:00**: Testy, pomiar rezystancji izolacji, uruchomienie
+
+**Czas całkowity**: 2h 37min
+**Strata produkcji**: ~800 kWh (€40 przy €50/MWh)
+</Example>
+
+## Dokumentacja i raportowanie
+
+### System dokumentacji
+
+**Dokumenty wymagane**:
+- **Księga eksploatacji**: Wszystkie pomiary, przeglądy, naprawy
+- **Procedury operacyjne**: Opisane procedury dla typowych sytuacji
+- **Harmonogramy konserwacji**: Planowane działania prewencyjne
+- **Analiza trendów**: Monitoring degradacji i efektów starzenia
+
+**Format dokumentacji**:
+```text
+Raport przeglądu miesięcznego - Marzec 2023
+Instalacja: Farma PV Wrocław-Olimpia 5MW
+
+1. PODSUMOWANIE EKSPLOATACJI
+   - Produkcja: 825.4 MWh (plan: 850 MWh)
+   - PR średni: 85.2% (plan: >87%)
+   - Availability: 99.1% (plan: >99%)
+
+2. ZDARZENIA I ALARMY
+   - Liczba alarmów: 3 (vs 2 w lutym)
+   - Czas przestoju: 2.3h (planowy: 0h)
+   - Koszt przestoju: €115
+
+3. PRZEGLĄDY I POMIARY
+   - Inspekcja wizualna: 100% modułów OK
+   - Pomiary termowizyjne: 12 modułów z hot-spots
+   - Test SPD: 2 szt. do wymiany
+
+4. REKOMENDACJE
+   - Wymiana 12 modułów (plan na maj)
+   - Wymiana 2x SPD (plan na kwiecień)
+   - Mycie modułów (plan na kwiecień)
+```
+
+### Raportowanie dla operatorów sieci
+
+**Wymagania OSP** (Operator Systemu Przesyłowego):
+- **Dostępność**: Raportowanie co 15 minut
+- **Produkcja**: Bilansowanie energii w interwałach godzinowych
+- **Zdarzenia**: Powiadomienie o awariach >1h w ciągu 24h
+- **Planowane przestoje**: 48h z wyprzedzeniem
+
+<details>
+<summary>📝 Notatki prowadzącego</summary>
+
+**Czas**: 22-25 minut
+
+**Przebieg**:
+1. Podstawy prawne i normowe (4 min)
+2. Przegląd odbiorczy i jego znaczenie (6 min)
+3. Harmonogramy przeglądów okresowych (5 min)
+4. Systemy monitoringu i procedury awaryjne (7 min)
+5. Dokumentacja i raportowanie (3 min)
+
+**Punkty kluczowe**:
+- **Przeglądy to nie koszt, ale inwestycja**: Zapobieganie dużo tańsze niż naprawy
+- **Dokumentacja jest kluczowa**: Dla audytów bankowych, sprzedaży, refinansowania
+- **Monitoring 24/7**: SCADA to konieczność, nie opcja w nowoczesnych instalacjach
+
+**Demonstracja praktyczna**:
+- Pokaz protokołów pomiarowych z realnych instalacji
+- Prezentacja systemu SCADA z alarmami
+- Analiza przykładowych raportów miesięcznych
+
+**Pytania studentów**:
+- Q: Czy można wykonać przegląd instalacji PV samemu?
+- A: Podstawowa inspekcja wizualna - tak (sprawdzenie modułów, oznaczeń). Pomiary elektryczne - tylko przez osoby z odpowiednimi uprawnieniami SEP (kwalifikacja E lub D). Pomiary termowizyjne - wymagają certyfikatu operatora kamery termowizyjnej.
+
+- Q: Jak często powinno się myć moduły PV?
+- A: Zależy od lokalizacji. Tereny miejskie/przemysłowe: 2-3x rocznie. Tereny rolnicze: 1x rocznie. Pustynne: nawet co 1-2 miesiące. Monitoring PR pozwala określić optymalną częstotliwość - gdy PR spada o >3pp, czas na mycie.
+
+- Q: Co z instalacjami na dachach domów jednorodzinnych?
+- A: Wymagania te same, ale przeglądy mogą być wykonywane rzadziej (co 2-3 lata szczegółowy). Ważne: właściciel odpowiada za bezpieczeństwo i może być pociągnięty do odpowiedzialności za wypadki. Zalecane ubezpieczenie OC z pokryciem instalacji PV.
+
+</details>
