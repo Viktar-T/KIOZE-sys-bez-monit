@@ -10,11 +10,12 @@ Rewrite only the `InstructorNotes` for each slide for the file or directory.
 
 **Output Rules**
 
-* Keep MDX structure, order, IDs, imports, code, math  **unchanged** .
-* Rewrite existing `InstructorNotes` content (create if missing).
-* Use **bold** for key points.
-* Prefer short paragraphs; no lists unless the slide is a list.
-* Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
+* Keep the **MDX structure, order, IDs, imports, code, and math** exactly  **unchanged** .
+* **Rewrite** the existing `InstructorNotes` section — or  **create it if missing** .
+* The `InstructorNotes` should **expand and explain** the content of the slide.
+* Use **bold text** to highlight key ideas.
+* Write in **short, clear paragraphs** — avoid lists unless the slide itself is a list.
+* **Do not mention time** (e.g., avoid phrases like “This will take four to five minutes.”)
 
 **Derive From Slide**
 
