@@ -335,34 +335,11 @@ Thermal Runaway = (Pojedyncza awaria ogniwa) AND (Brak wykrycia) AND (Brak inter
 </Example>
 
 <InstructorNotes title="📝 Notatki prowadzącego">
-**Czas**: 25-28 minut
+Podaj intuicję: FTA (Fault Tree Analysis) jest dedukcyjne — zaczyna od zdarzenia szczytowego i rozkłada je na kombinacje przyczyn, używając bramek AND/OR. To przeciwieństwo FMEA, które idzie „od dołu” (od failure modes do skutków).
 
-**Przebieg**:
-1. Wprowadzenie do FTA - definicja, zastosowania w OZE (8 min)
-2. Symbole i logika - bramki AND/OR, przykłady obliczeń (10 min)
-3. Proces budowania - 4 kroki, minimal cut sets (6 min)
-4. Praktyczne zastosowania - BESS, turbiny wiatrowe (4 min)
+Wyjaśnij podstawowe symbole i zasady niezależności zdarzeń wejściowych. Na prostym przykładzie pożaru inwertera PV pokaż, jak obliczenia dla bramek AND i OR prowadzą do oszacowania prawdopodobieństwa top event oraz jak wyznaczać minimal cut sets (minimalne kombinacje awarii prowadzące do zdarzenia).
 
-**Punkty kluczowe**:
-- **FTA to metoda dedukcyjna**: Od konsekwencji do przyczyn, przeciwieństwo FMEA
-- **Matematyka jest ważna**: Prawidłowe obliczenia AND/OR gates
-- **Minimal cut sets** są kluczowe dla priorytetyzacji działań
+Podkreśl praktykę: najpierw zdefiniuj dobre top event (konkretne, mierzalne, o jasnych granicach systemu), potem systematycznie rozwijaj drzewo i weryfikuj kompletność. Zwróć uwagę na common cause failures i zależności — uproszczenia są dopuszczalne, ale trzeba je zaznaczać.
 
-**Ćwiczenie praktyczne** (opcjonalnie):
-Narysuj proste drzewo FTA na tablicy dla top event "pożar w pomieszczeniu BESS". Poproś studentów o identyfikację basic events.
-
-**Materiały pomocnicze**:
-- Wzory na prawdopodobieństwa bramek AND/OR
-- Przykładowe symbole FTA do narysowania
-- Checklist do weryfikacji kompletności drzewa
-
-**Pytania studenckie**:
-- Q: Jak głęboko rozwinąć drzewo FTA?
-- A: Do momentu, gdy basic events są niezależne i mamy dane o ich prawdopodobieństwach. Zwykle 3-5 poziomów.
-
-- Q: Co jeśli nie mamy danych o prawdopodobieństwach basic events?
-- A: Użyć eksperckich oszacowań, danych z podobnych systemów, konserwatywnych wartości. Ważna jest względna ważność, nie absolutne wartości.
-
-- Q: Jak często aktualizować FTA?
-- A: Przy zmianach w systemie, nowych danych o awariach, lub co 3-5 lat. Software ułatwia aktualizacje.
+Połącz FTA z innymi metodami: wyniki FMEA zasilają FTA (przyczyny), a FTA dostarcza modele do analiz ilościowych i priorytetyzacji działań. Dla OZE wskaż typowe top events: thermal runaway w BESS, pożary PV, pęknięcie łopatki, zdarzenia w strefach ATEX.
 </InstructorNotes>

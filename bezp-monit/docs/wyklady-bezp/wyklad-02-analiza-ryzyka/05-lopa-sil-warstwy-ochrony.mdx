@@ -313,34 +313,9 @@ Required PFD = 1×10⁻⁶ / 5×10⁻⁶ = 0.2
 - **Komponenty**: Wymagane certyfikowane
 
 <InstructorNotes title="📝 Notatki prowadzącego">
-**Czas**: 28-30 minut
+Zdefiniuj LOPA jako półilościową ocenę warstw ochrony między zdarzeniem inicjującym a konsekwencją. Wprowadź pojęcia IPL (niezależna warstwa ochrony), PFD (Probability of Failure on Demand) i RRF (Risk Reduction Factor) oraz pokaż związek z wymaganym poziomem SIL.
 
-**Przebieg**:
-1. Wprowadzenie do LOPA - definicja, proces, warstwy ochrony (10 min)
-2. Szczegółowe omówienie 5 warstw ochrony (8 min)
-3. SIL - definicja, poziomy, proces określania (8 min)
-4. Praktyczne zastosowania w OZE - BESS, biogaz, PV (4 min)
+Przeprowadź słuchaczy przez kroki: zdefiniowany scenariusz, częstotliwość zdarzenia inicjującego, identyfikacja warstw (BPCS, SIS, ochrona fizyczna, działania awaryjne), weryfikacja niezależności, obliczenie ryzyka rezydualnego i porównanie z akceptowalnym poziomem (ALARP). Podkreśl, że warstwy muszą być rzeczywiście niezależne i testowane.
 
-**Punkty kluczowe**:
-- **LOPA = systematyczna ocena warstw**: Nie wszystkie zabezpieczenia są niezależne
-- **SIL to poziom wymagany**: Opiera się na obliczeniach ryzyka, nie na "wyczuciu"
-- **Praktyczny aspekt**: Studenci muszą rozumieć, jak implementować systemy SIL
-
-**Ćwiczenie praktyczne** (opcjonalnie):
-Pokaż prosty przykład LOPA na tablicy. Poproś studentów o obliczenie wymaganego SIL.
-
-**Materiały pomocnicze**:
-- Tabela poziomów SIL z PFD ranges
-- Przykłady architektur SIS dla różnych poziomów SIL
-- Checklist do weryfikacji niezależności warstw
-
-**Pytania studenckie**:
-- Q: Jak często testować systemy SIL?
-- A: Zależy od poziomu SIL i wymagań procesowych. Typowo SIL 1: rocznie, SIL 2: półrocznie, SIL 3: miesięcznie.
-
-- Q: Co jeśli istniejące warstwy ochrony nie wystarczają do osiągnięcia target SIL?
-- A: Dodatkowe warstwy SIS, redesign procesu (inherent safety), lub akceptacja wyższego ryzyka (rare, wymaga uzasadnienia).
-
-- Q: Czy można łączyć różne funkcje bezpieczeństwa w jednym systemie SIS?
-- A: Tak, ale każda funkcja musi spełniać swoje wymagania SIL niezależnie. Wspólne komponenty mogą wpływać na SIL.
+Odnieś zasady do przykładów OZE: BESS (thermal runaway) — wymagania dotyczące SIS i testów funkcjonalnych; biogaz (ATEX) — detekcja gazów i wentylacja; PV — ochrona przed łukiem elektrycznym (AFCI). Zaznacz, że wymagany SIL wynika z rachunku ryzyka, a nie z intuicyjnych ocen.
 </InstructorNotes>
