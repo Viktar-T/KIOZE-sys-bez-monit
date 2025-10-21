@@ -1,0 +1,148 @@
+---
+title: "Runaway termiczny - mechanizmy i zapobieganie"
+sidebar_position: 2
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: Thermal Runaway" type="info">
+
+<LearningObjective>
+Student rozumie mechanizmy powstawania runaway termicznego w ogniwach Li‑ion, potrafi wskazać czynniki wyzwalające i wskaźniki wczesnego ostrzegania oraz zna środki projektowe i operacyjne ograniczające ryzyko i propagację.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Mechanizmy fizykochemiczne w ogniwie
+- Łańcuch zdarzeń i propagacja między ogniwami
+- Wykrywanie wczesnych symptomów (dT/dt, gazy)
+- Zapobieganie projektowe i operacyjne
+- Testy typu (UL 9540A) i walidacja
+</KeyPoints>
+
+<InstructorNotes>
+Unikaj demonizowania technologii – celem jest zrozumienie mechanizmów i sposobów kontroli ryzyka, nie straszenie.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🧪 Mechanizmy fizykochemiczne w ogniwie Li‑ion" type="info">
+
+<KeyPoints title="🔬 Co się dzieje wewnątrz">
+- Degradacja SEI i reaktywność elektrolitu w podwyższonej T
+- Plating litu przy przeładowaniu/niskiej T → ryzyko zwarć
+- Uszkodzenia separatora → lokalne zwarcia termiczne
+- Reakcje egzotermiczne katody/anody → wzrost temperatury
+</KeyPoints>
+
+<SupportingDetails title="📈 Dodatnie sprzężenie zwrotne">
+Wzrost temperatury przyspiesza reakcje egzotermiczne → jeszcze większy wzrost T → utrata kontroli (runaway).
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧩 Łańcuch zdarzeń i propagacja" type="warning">
+
+<KeyPoints title="⚠️ Wyzwalacze">
+- Przeładowanie / głębokie rozładowanie
+- Nadmierny prąd / zwarcie zewnętrzne
+- Uszkodzenia mechaniczne / wibracje
+- Zewnętrzne źródło ciepła / awaria HVAC
+</KeyPoints>
+
+<SupportingDetails title="🔥 Propagacja w module/racku">
+- Przewodzenie cieplne i konwekcja w kontenerze
+- Uwolnienie gazów (m.in. HF, CO, H₂) i wzrost ciśnienia
+- Możliwość deflagracji przy niewłaściwej wentylacji
+</SupportingDetails>
+
+<WarningBox title="⚠️ Kluczowa uwaga">
+Celem projektu jest spowolnienie/ograniczenie propagacji i zapewnienie bezpiecznej ewakuacji energii.
+</WarningBox>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="👀 Wczesne wskaźniki i detekcja" type="tip">
+
+<KeyPoints title="📊 Sygnały ostrzegawcze">
+- dT/dt i gradienty temperatur między czujnikami
+- Anomalie napięcia przy stałym prądzie (dV/dt)
+- Emisja gazów: HF/CO (czujniki elektrochemiczne/NDIR)
+- Zmiana ciśnienia w obudowie (presostaty)
+</KeyPoints>
+
+<SupportingDetails title="🧭 Integracja z BMS/FAS">
+Prealarmy uruchamiają derating i wentylację; alarmy – blokadę ładowania i procedurę bezpiecznego wyłączenia.
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🛡️ Zapobieganie i ograniczanie skutków" type="success">
+
+<KeyPoints title="🏗️ Środki projektowe">
+- Dobór chemii o wyższej stabilności termicznej (np. LFP)
+- Przegrody termiczne, odstępy, niepalne materiały konstrukcyjne
+- Zdefiniowane progi BMS + testy end‑to‑end z PCS i FAS
+- Skuteczna wentylacja normalna i awaryjna (purge)
+- Układy odciążania ciśnienia (panel/klapy)
+</KeyPoints>
+
+<SupportingDetails title="🔧 Środki operacyjne">
+- Limity C‑rate, polityka ładowania (SoC windows)
+- Diagnostyka predykcyjna SoH, przeglądy i inspekcje
+- Procedury reakcji na alarmy i szkolenia ekip
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📚 Testy i certyfikacja (UL 9540A)" type="info">
+
+<KeyPoints title="🧾 Na czym polegają testy">
+- Inicjowanie termicznego zdarzenia na poziomie ogniwa/modułu/racka
+- Ocena propagacji, gazów, płomieni i ciśnienia
+- Dane wejściowe do projektu wentylacji i barier
+</KeyPoints>
+
+<InfoBox title="ℹ️ Wykorzystanie wyników">
+Wyniki UL 9540A kalibrują progi i macierze C&E oraz projekt wentylacji i tłumienia propagacji w konkretnym systemie.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="tip">
+
+<KeyPoints title="Kluczowe wnioski">
+- Runaway to efekt dodatniego sprzężenia cieplnego
+- Najważniejsze są wczesna detekcja i ograniczanie propagacji
+- Projekt, BMS i procedury muszą być spójnie przetestowane
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>

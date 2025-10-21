@@ -1,0 +1,124 @@
+---
+title: "Organizacja i strefowanie przestrzeni technicznej"
+sidebar_position: 4
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: Organizacja przestrzeni BESS" type="info">
+
+<LearningObjective>
+Student potrafi zaplanować układ kontenera/pomieszczenia BESS, zdefiniować strefy funkcjonalne, drogi ewakuacji, wentylację i wymagane oznakowanie zgodnie z dobrymi praktykami i NFPA 855.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Strefy funkcjonalne i odległości separacji
+- Dostępność serwisowa i ewakuacja
+- HVAC/wentylacja normalna i awaryjna
+- Oznakowanie i urządzenia bezpieczeństwa
+- Klasyfikacja stref (ATEX – gdy uzasadnione)
+</KeyPoints>
+
+<InstructorNotes>
+Użyj prostego szkicu: drzwi serwisowe, korytarz techniczny, raki bateryjne, wentylatory, panel odciążania ciśnienia, e‑stop przy wejściu.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🗺️ Strefy i separacja" type="info">
+
+<KeyPoints title="🏷️ Podział">
+- Strefa bateryjna (raki/moduły)
+- Korytarz serwisowy (min. szerokości wg przepisów lokalnych)
+- Strefa urządzeń pomocniczych (HVAC, PCS, sterowanie)
+- Strefy odciążania ciśnienia/klapy
+</KeyPoints>
+
+<SupportingDetails title="📐 Separacje zewnętrzne">
+- Odległości od budynków/infrastruktury wg NFPA 855 i lokalnych przepisów
+- Uwzględnienie kierunków dominujących wiatrów i ewakuacji gazów
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🚪 Dostęp, ewakuacja, oznakowanie" type="tip">
+
+<KeyPoints title="🚨 Wymagania">
+- Drzwi zewnętrzne otwierane na zewnątrz, bez przeszkód
+- E‑stop i odłącznik awaryjny przy wejściu (opisany, plombowany)
+- Oświetlenie awaryjne, oznaczone drogi ewakuacji
+- Tablice ostrzegawcze: HV, ryzyko gazów/toksyczności, zakaz wstępu
+</KeyPoints>
+
+<SupportingDetails title="🔧 Procedury LOTO">
+- Standardy lockout/tagout dla prac serwisowych
+- Kontrola dostępu (klucze, rejestr wejść)
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌬️ HVAC i wentylacja" type="warning">
+
+<KeyPoints title="🛠️ Założenia projektowe">
+- Redundancja (N+1) dla krytycznych elementów HVAC
+- Normalna wymiana powietrza dla temperatury i wilgotności
+- Tryb awaryjny (purge) uruchamiany prealarmem/alarme
+</KeyPoints>
+
+<SupportingDetails title="📈 Sterowanie i monitorowanie">
+- Integracja z BMS i detekcją gazów/pożaru
+- Monitoring różnicy ciśnień i przepływu powietrza
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="💥 Klasyfikacja stref (ATEX) – gdy uzasadnione" type="info">
+
+<KeyPoints title="📋 Podejście">
+- Analiza ryzyka emisji palnych/toksycznych gazów
+- Dobór urządzeń w wykonaniu Ex tylko po klasyfikacji
+- Unikanie zapłonu: eliminacja źródeł, kontrola ładunków ESD
+</KeyPoints>
+
+<InfoBox title="ℹ️ Uwaga praktyczna">
+Nie wszystkie BESS wymagają ATEX – decyzja wynika z analizy ryzyka i charakteru gazów wydzielanych w testach typu.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="success">
+
+<KeyPoints title="Kluczowe wnioski">
+- Jasny podział stref poprawia bezpieczeństwo i serwisowalność
+- Ewakuacja i E‑stop muszą być intuicyjne i dostępne
+- HVAC/ventilation projektuje się w oparciu o wyniki testów typu
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>
