@@ -1,0 +1,127 @@
+---
+title: "Systemy detekcji gazów i pożaru"
+sidebar_position: 3
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: Detekcja gazów i pożaru" type="info">
+
+<LearningObjective>
+Student potrafi dobrać czujniki gazów i systemy detekcji pożaru dla BESS, rozmieścić je zgodnie z dobrymi praktykami oraz powiązać z wentylacją, BMS i systemami alarmowymi.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Profile gazów i techniki detekcji
+- Detekcja pożaru: punktowa vs. zasysająca (ASD)
+- Integracja z wentylacją i macierzą C&E
+- Testy, kalibracje i utrzymanie
+</KeyPoints>
+
+<InstructorNotes>
+Zaznacz różnice środowisk pracy: kontener, pomieszczenie bateryjne, szafa. Inne są prądy powietrza, zapylenie i fałszywe alarmy.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧪 Gazy i dobór czujników" type="info">
+
+<KeyPoints title="🧭 Co detektować">
+- HF (produkt uboczny rozkładu elektrolitu)
+- CO/CO₂ (spalanie/utlenianie), H₂ (w niektórych scenariuszach)
+- Tlen (O₂) – nadzór duszności/pożaru (opcjonalnie)
+</KeyPoints>
+
+<SupportingDetails title="🧰 Technologie czujników">
+- Elektrochemiczne (HF/CO), NDIR (CO₂), katalityczne/IR (H₂)
+- Próbkowanie punktowe vs. systemy zasysające (ASD/AGD)
+- Rozmieszczenie: strefy górne (gazy lekkie) i dolne (cięższe)
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔥 Detekcja pożaru w BESS" type="warning">
+
+<KeyPoints title="📟 Rozwiązania">
+- ASD (aspirating smoke detection) o wysokiej czułości
+- Czujki punktowe dymu/temperatury jako uzupełnienie
+- Detekcja płomienia w przestrzeniach otwartych (opcjonalnie)
+</KeyPoints>
+
+<SupportingDetails title="🧩 Integracja i logika">
+- Prealarm: zwiększenie wentylacji, monitoring BMS
+- Alarm: blokada ładowania, przygotowanie ewakuacji energii
+- Zadziałanie gaśnic: tylko zgodnie z projektem i testami typu systemu
+</SupportingDetails>
+
+<WarningBox title="⚠️ Fałszywe alarmy">
+Kurz/chłód/skraplanie mogą powodować alarmy – dobór czujników i ich lokalizacja są kluczowe.
+</WarningBox>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🌬️ Wentylacja i odprowadzanie gazów" type="tip">
+
+<KeyPoints title="🛠️ Założenia">
+- Wentylacja normalna: utrzymanie temperatury/rozcieńczanie śladowe
+- Wentylacja awaryjna (purge): szybkie rozcieńczenie gazów
+- Sterowanie: prealarm/Alarm → stopnie wentylacji i klapy
+</KeyPoints>
+
+<SupportingDetails title="📐 Projektowanie">
+- Strumień powietrza i kierunek przepływu zgodny z testami typu
+- Unikanie kieszeni gazowych – odpowiednie wloty/wyloty
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔧 Utrzymanie i testy" type="success">
+
+<KeyPoints title="🧪 Procedury">
+- Kalibracje okresowe czujników gazu (wg producenta)
+- Testy dymowe i próby integracyjne (end‑to‑end)
+- Rejestracja i analiza fałszywych alarmów → korekty
+</KeyPoints>
+
+<InfoBox title="ℹ️ Dokumentacja">
+Protokoły testów, mapy czujników, konfiguracje progów – muszą być aktualne i przeglądane po każdej zmianie.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="tip">
+
+<KeyPoints title="Kluczowe wnioski">
+- Detekcja gazów i pożaru powinna być warstwowa i zintegrowana
+- ASD + czujniki gazów + BMS tworzą spójny system ostrzegania
+- Testy integracyjne są konieczne, by uniknąć niespodzianek w eksploatacji
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>

@@ -1,0 +1,162 @@
+---
+title: "BMS - architektura i funkcje bezpieczeństwa"
+sidebar_position: 1
+---
+
+import { 
+  SlideContainer, 
+  Slide, 
+  KeyPoints, 
+  SupportingDetails, 
+  InstructorNotes,
+  VisualSeparator,
+  InfoBox,
+  WarningBox,
+  SuccessBox,
+  LearningObjective,
+  KeyConcept,
+  Example
+} from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="🎯 Cel sekcji: BMS w systemach BESS" type="info">
+
+<LearningObjective>
+Po tej części student rozumie architekturę BMS na poziomie ogniwa–modułu–raka–systemu, potrafi wyjaśnić kluczowe funkcje bezpieczeństwa (OVP/UVP, OCP, OTP, IMD, precharge) oraz wie, jak BMS integruje się z EMS/SCADA i systemami alarmowymi.
+</LearningObjective>
+
+<KeyPoints title="📋 Zakres">
+- Rola BMS w BESS i granice odpowiedzialności
+- Warstwowa architektura: cell → module → rack → system
+- Funkcje bezpieczeństwa i sekwencje awaryjne
+- Interfejsy komunikacyjne i integracja z nadrzędnymi systemami
+- Normy i wytyczne stosowane w praktyce
+</KeyPoints>
+
+<InstructorNotes>
+Akcentuj różnicę między BMS (bezpieczeństwo i kondycja baterii) a EMS (zarządzanie energią) oraz PCS (przekształtnik mocy). Podkreśl, że BMS jest elementem bezpieczeństwa funkcjonalnego – błędne ustawienia progów mogą skutkować incydentem.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="🔧 Rola BMS i granice odpowiedzialności" type="info">
+
+<KeyPoints title="🧭 Co robi BMS">
+- Monitoruje napięcie, prąd, temperaturę, izolację (IMD)
+- Szacuje SoC/SoH, balansuje ogniwa (passive/active balancing)
+- Steruje stycznikami i obwodem precharge
+- Realizuje odłączenie awaryjne i bezpieczne wyłączenie
+- Rejestruje zdarzenia, prowadzi dzienniki usterek
+</KeyPoints>
+
+<SupportingDetails title="🧩 Co NIE jest BMS">
+- Nie planuje pracy magazynu – to rola EMS
+- Nie zastępuje zabezpieczeń instalacyjnych (bezpieczniki, SPD)
+- Nie jest systemem gaśniczym – współpracuje z nim przez interfejsy
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🏗️ Architektura warstwowa BMS" type="tip">
+
+<KeyPoints title="📐 Poziomy">
+- Cell monitoring unit (CMU): pomiar napięć/temperatur pojedynczych ogniw
+- Module BMS: balansowanie, agregacja danych
+- Rack BMS: sterowanie stycznikami, IMD, precharge
+- System/Cluster BMS: logika bezpieczeństwa, komunikacja z EMS/PCS
+</KeyPoints>
+
+<SupportingDetails title="🔗 Komunikacja i redundancja">
+- Interfejsy: CAN, RS-485/Modbus, Ethernet (Modbus TCP/OPC UA)
+- Redundancja czujników temperatury i ścieżek zasilania BMS
+- Synchronizacja czasu (NTP/PTP) dla spójnych logów zdarzeń
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="🛡️ Kluczowe funkcje bezpieczeństwa" type="warning">
+
+<KeyPoints title="⚠️ Progi i działania">
+- OVP/UVP: ochrona przed przeładowaniem i głębokim rozładowaniem
+- OCP/OCD: ograniczenie prądu i wyłączenie przy zwarciu
+- OTP/UTP: reakcje na przegrzanie i zbyt niską temperaturę
+- IMD: nadzór rezystancji izolacji w obwodach HV DC
+- Precharge: kontrolowane ładowanie pojemności DC-link
+</KeyPoints>
+
+<InfoBox title="ℹ️ Sekwencje awaryjne">
+Typowa kolejność: alarm → redukcja mocy (derating) → rozłączenie ładowania/rozładowania → odpadnięcie styczników → powiadomienie systemów nadrzędnych.
+</InfoBox>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧠 Integracja z EMS/SCADA i systemami alarmowymi" type="info">
+
+<KeyPoints title="🌐 Interfejsy i sygnały">
+- Protokoły: Modbus TCP, OPC UA; sygnały dyskretne (fail-safe)
+- Powiązania z FAS/GAS: prealarm, alarm, e-stop, wentylacja
+- Macierz przyczynowo-skutkowa: 2ooN dla detekcji, jednoznaczne akcje
+- Rejestry zdarzeń do analizy po incydencie (root cause)
+</KeyPoints>
+
+<SupportingDetails title="🔒 Zasilanie i niezawodność">
+- Zasilanie podtrzymane UPS dla BMS i elementów peryferyjnych
+- Watchdog i mechanizmy bezpiecznego restartu
+</SupportingDetails>
+
+</Slide>
+
+<VisualSeparator type="technical" />
+
+<Slide title="📚 Normy i dobre praktyki" type="success">
+
+<KeyPoints title="🧾 Odniesienia">
+- NFPA 855 – projektowanie i lokalizacja BESS
+- UL 9540/9540A – system + testy propagacji runaway
+- IEC 62619/62933 – wymagania ogniw/pakietów i systemów magazynowania
+- IEC 61508/61511 – bezpieczeństwo funkcjonalne (koncepcyjnie dla logiki BMS)
+- UN 38.3 – wymagania transportowe dla ogniw/modułów
+</KeyPoints>
+
+<InstructorNotes>
+Wyjaśnij, że poziomy progów w BMS muszą wynikać z danych producenta ogniw i testów typu (UL 9540A). Zachęć do tworzenia prostej macierzy C&E między BMS, FAS, wentylacją i PCS.
+</InstructorNotes>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="🧪 Przykład: sekwencja przy wzroście temperatury" type="success">
+
+<Example title="Od prealarmu do bezpiecznego wyłączenia">
+- T>55°C (prealarm): derating mocy, intensyfikacja chłodzenia
+- T>60°C (alarm): blokada ładowania, utrzymanie rozładowania do bezpiecznego poziomu
+- T>65°C (krytyczne): odpadnięcie styczników, powiadomienie FAS/SCADA
+- Po zdarzeniu: analiza logów BMS, korekta progów/kalibracji
+</Example>
+
+</Slide>
+
+<VisualSeparator type="energy" />
+
+<Slide title="✅ Podsumowanie" type="tip">
+
+<KeyPoints title="Kluczowe wnioski">
+- BMS to „strażnik bezpieczeństwa” pakietu baterii
+- Architektura warstwowa upraszcza diagnostykę i izolowanie usterek
+- Progi ochronne i sekwencje muszą być przetestowane end‑to‑end
+- Integracja z EMS/FAS opiera się na jasnej macierzy C&E
+</KeyPoints>
+
+</Slide>
+
+</SlideContainer>
