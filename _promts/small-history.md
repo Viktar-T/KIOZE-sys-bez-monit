@@ -143,4 +143,21 @@ Style:
 * [ ] continue with the next file
 * [ ] In this chat we will update the content of bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie. lets start from "01-...". first three slides will be:
 
-1. embeded youtube video. For InstructorNotes. infor about statistics.
+1. create the first slide. On slide: embeded youtube video https://www.youtube.com/watch?v=-eCqMjbNQTA. then prezent shortly importent statistics from @_promts\stat\1-wind.md. For InstructorNotes. write Ready to speak by the lecturer infront of the students. information from https://www.youtube.com/watch?v=-eCqMjbNQTA
+
+2. build simular slide for PV.
+video: https://youtu.be/9FtOgsZZzww?list=PL2L80_p73SoAWm_q79fdZ_CFRmaKsNakQ&t=5.
+statistic: _promts\stat\2-PV.md.
+
+3. build simular slide for biogaz.
+video: https://youtu.be/FI1FjNTqyKo.
+statistic: _promts\stat\3-biogaz.md.
+
+4. build simular slide for BESS.
+video: https://youtu.be/_tyCV5RpLIY.
+statistic: _promts\stat\4-storages(BESS).md.
+
+5. update InstructorNotes only for @03-poziomy-ryzyka-metody-oceny.mdx . Instractions how to write InstructorNotes are here @InstractorNotes-v2.md .
+
+6. update only InstructorNotes for @04-normy-wytyczne-obowiazujace.mdx . Instractions how to write InstructorNotes are here @InstractorNotes-v2.md .
+
