@@ -25,12 +25,17 @@ function HomepageHeader() {
           </p>
         </div>
         
-        {/* Call to Action Button */}
+        {/* Call to Action Buttons */}
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/category/wyk%C5%82ady---bezpiecze%C5%84stwo">
-            Rozpocznij naukę 📚
+            Wykłady 📚
+          </Link>
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/category/%C4%87wiczenia">
+            Ćwiczenia 🛠️
           </Link>
         </div>
       </div>

@@ -141,3 +141,6 @@ Style:
   the text should be Ready to read by the lecturer.
   Dont write about time. for instance dont write "To będzie cztery do pięciu minut."
 * [ ] continue with the next file
+* [ ] In this chat we will update the content of bezp-monit\docs\wyklady-bezp\wyklad-01-wprowadzenie. lets start from "01-...". first three slides will be:
+
+1. embeded youtube video. For InstructorNotes. infor about statistics.

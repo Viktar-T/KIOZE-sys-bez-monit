@@ -97,6 +97,11 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -113,7 +118,6 @@ const config = {
             position: 'left',
             label: 'Dokumentacja',
           },
-          {to: '/blog', label: 'Zadania', position: 'left'},
           {
             href: 'https://github.com/vtaustyka/KIOZE-sys-bez-monit',
             label: 'GitHub',
@@ -139,10 +143,6 @@ const config = {
               {
                 label: 'Literatura',
                 to: '/docs/literatura',
-              },
-              {
-                label: 'Projekty',
-                to: '/blog',
               },
             ],
           },
