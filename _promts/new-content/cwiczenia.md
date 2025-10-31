@@ -1,0 +1,2 @@
+the task is to build five "cwiczenia" (tasks) for students for the classes "Systemy bezpieczeństwa i monitorowania instalacji OZE". 
+The goal to build skills in monitoring. Focus on monitoring. Students dont have IT background.
