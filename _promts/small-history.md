@@ -161,3 +161,9 @@ statistic: _promts\stat\4-storages(BESS).md.
 
 6. update only InstructorNotes for @04-normy-wytyczne-obowiazujace.mdx . Instractions how to write InstructorNotes are here @InstractorNotes-v2.md .
 
+7. Przyjmij, że pełna specyfikacja kursu znajduje się w kontekście @cwiczenia-contekst.md. 
+zbuduj Sekcja A. 
+
+Przyjmij, że pełna specyfikacja kursu znajduje się w kontekście @cwiczenia-contekst.md. Kurs jest stwożony. Deeply analyse all created content, folders, files. Find and solve inconsystences with @cwiczenia-contekst.md. Analyse what could be improved. Improve all possible aspects.
+
+

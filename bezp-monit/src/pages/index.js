@@ -34,7 +34,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--primary button--lg"
-            to="/docs/category/%C4%87wiczenia">
+            to="/docs/category/cwiczenia">
             Ćwiczenia 🛠️
           </Link>
         </div>
