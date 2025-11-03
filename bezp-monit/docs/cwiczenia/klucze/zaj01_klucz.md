@@ -147,3 +147,4 @@ Jeśli alarm KRYTYCZNY:
 **Wersja**: 1.0
 
 
+
