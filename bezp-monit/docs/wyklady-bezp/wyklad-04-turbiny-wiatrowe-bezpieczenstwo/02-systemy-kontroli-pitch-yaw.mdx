@@ -34,8 +34,6 @@ Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt nata
 </KeyPoints>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Czas**: 18-22 minuty
 
@@ -51,8 +49,6 @@ Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt nata
 **Najczęstsze pytania**:
 - Q: Dlaczego system pitch jest ważniejszy niż yaw w kwestii bezpieczeństwa?
 - A: Pitch kontroluje obciążenia, yaw kontroluje orientację - przy ekstremalnych wiatrach pitch jest krytyczny dla ochrony struktury.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -111,16 +107,12 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 </WarningBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Czas reakcji** - system pitch musi reagować w ułamkach sekund. Pokazuję studentom, że przy wietrze 30 m/s, opóźnienie reakcji o 5 sekund może oznaczać katastrofę.
 
 **Mechanizm fail-safe** - to kluczowa koncepcja. Studenci muszą zrozumieć, że systemy bezpieczeństwa muszą działać nawet wtedy, gdy wszystko inne się zepsuje. To wymaga niezależnego zasilania i mechanicznych zabezpieczeń.
 
 **Przykład z praktyki** - w 2019 roku w Danii awaria systemu pitch spowodowała, że turbina rozpadła się przy wietrze. To pokazuje, jak krytyczne są te systemy.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -172,16 +164,12 @@ System yaw **nie jest** systemem bezpieczeństwa w tym samym sensie co pitch. Je
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Różnica w priorytetach** - system pitch to bezpieczeństwo, system yaw to wydajność. Studenci muszą to rozróżnić. Yaw failure nie zatrzyma turbiny natychmiast, ale zmniejszy jej wydajność i może prowadzić do szybszego zużycia.
 
 **Prędkość obrotów** - 0.6°/s to wolno, ale to zamierzone. Szybkie obroty gondoli mogłyby uszkodzić kable i generować niepotrzebne obciążenia.
 
 **Monotoniczność vs efficiency** - student musi rozumieć, że yaw nie musi być idealnie zsynchronizowany z wiatrem w każdej sekundzie. Ważne jest, żeby średnio był optymalnie ustawiony.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -190,68 +178,13 @@ System yaw **nie jest** systemem bezpieczeństwa w tym samym sensie co pitch. Je
 
 <Slide title="⚡ Zasilanie awaryjne i redundancja systemów" type="warning">
 
-<KeyPoints title="🔋 Systemy zasilania awaryjnego">
-- 🔋 **UPS (Uninterruptible Power Supply)** - baterie dla systemów krytycznych
-- ⚡ **Generatory awaryjne** - silniki spalinowe jako backup
-- 🔌 **Redundantne zasilanie** - alternatywne źródła energii
-- 🛡️ **Klasyfikacja obciążeń** - priorytety zasilania
+<KeyPoints title="Zakres w tej sekcji">
+- **Pitch/Yaw**: minimalne wymagania zasilania awaryjnego (UPS, priorytety)
 </KeyPoints>
 
-<SupportingDetails title="📊 Architektura zasilania awaryjnego">
-**Klasyfikacja systemów według krytyczności:**
-1. **Poziom 1 - Krytyczne** (zawsze zasilane):
-   - System pitch (siłowniki + kontrolery)
-   - Sensory bezpieczeństwa (anemometry, pozycjonery)
-   - System komunikacji awaryjnej
-   - **Zasilanie**: UPS + generator awaryjny
-
-2. **Poziom 2 - Ważne** (zasilanie przez 30 min):
-   - System yaw
-   - Monitoring i diagnostyka
-   - Systemy chłodzenia generatora
-   - **Zasilanie**: UPS battery
-
-3. **Poziom 3 - Standardowe** (zasilanie sieciowe):
-   - Oświetlenie, ogrzewanie
-   - Systemy komfortu
-   - **Zasilanie**: standardowa sieć
-</SupportingDetails>
-
-<Example title="Przypadek testowy - blackout farmy">
-**Scenariusz**: Utrata zasilania sieciowego farmy wiatrowej w czasie burzy
-
-**Sekwencja bezpieczna**:
-1. **T+0s**: Wykrycie utraty zasilania sieciowego
-2. **T+0.1s**: Automatyczne przełączenie na UPS
-3. **T+5s**: Rozruch generatora awaryjnego
-4. **T+30s**: Generator osiąga pełne obroty
-5. **T+35s**: Całkowite zasilanie krytycznych systemów
-
-**Testy systemów awaryjnych:**
-- **Miesięczne testy UPS** - sprawdzenie baterii
-- **Kwartalne testy generatora** - pełny cykl rozruchu
-- **Roczne testy blackout** - symulacja rzeczywistych warunków
-</Example>
-
-<WarningBox title="⚠️ Krytyczne zagrożenie zasilania">
-**Brak redundancji** w zasilaniu systemów pitch może prowadzić do:
-- Niemożności zatrzymania turbiny przy silnym wietrze
-- Ryzyka uszkodzenia struktury w przypadku awarii mechanicznej
-- Zwiększenia zasięgu skutków awarii na inne turbiny farmy
-</WarningBox>
-
-<InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
-
-**Praktyczne aspekty** - UPS musi wystarczyć na minimum 15 minut, bo tyle trwa standardowy rozruch generatora awaryjnego. Studenci muszą zrozumieć, że to nie tylko "power backup", ale element systemu bezpieczeństwa.
-
-**Testowanie** - systemy awaryjne muszą być regularnie testowane. Baterie UPS tracą pojemność, generatory mogą się nie uruchomić. Bez testów system awaryjny może zawodzić wtedy, gdy jest potrzebny.
-
-**Koszty vs bezpieczeństwo** - redundantne zasilanie to koszt, ale brak redundancji może kosztować dziesiątki milionów euro przy awarii katastroficznej.
-
-</details>
-</InstructorNotes>
+<InfoBox title="Głębsze omówienie w kolejnej sekcji">
+Pełną architekturę zasilania i redundancji omawia wykład „Układy hamulcowe i systemy bezpieczeństwa”.
+</InfoBox>
 
 </Slide>
 
@@ -311,16 +244,12 @@ Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Praktyczne wdrożenie** - systemy CBM wymagają inwestycji w sensory i oprogramowanie, ale zwracają się w ciągu 2-3 lat przez uniknięcie awarii krytycznych.
 
 **Machine learning** - nowoczesne systemy uczą się charakterystyk danej turbiny i potrafią przewidzieć awarie, których nie wykryłyby tradycyjne progi alarmowe.
 
 **Standardy branżowe** - IEC 61400-25 definiuje protokoły komunikacyjne dla systemów monitoringu, co umożliwia interoperacyjność między różnymi dostawcami.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -329,75 +258,13 @@ Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 
 <Slide title="🚨 Procedury awaryjne i reakcja na incydenty" type="warning">
 
-<KeyPoints title="⚠️ Scenariusze awaryjne">
-- 🎛️ **Total pitch failure** - awaria wszystkich systemów pitch
-- 🧭 **Yaw system locked** - zablokowanie systemu orientacji
-- ⚡ **Power failure** - utrata zasilania krytycznych systemów
-- 🔧 **Mechanical failure** - awarie mechaniczne siłowników
+<KeyPoints title="Zakres w tej sekcji">
+- Interakcja systemów pitch/yaw z procedurami awaryjnymi
 </KeyPoints>
 
-<SupportingDetails title="📋 Procedury reagowania na awarie">
-**Awarie systemu pitch:**
-1. **Immediate response** (0-30 sekund):
-   - Automatyczne zatrzymanie turbiny przez hamulce mechaniczne
-   - Alarm do centrum kontroli
-   - Włączenie systemu awaryjnego zasilania
-
-2. **Safety assessment** (30 sekund - 5 minut):
-   - Weryfikacja bezpiecznej pozycji turbiny
-   - Ocena zagrożenia dla personelu i mienia
-   - Decyzja o ewakuacji obszaru
-
-3. **Repair planning** (5-30 minut):
-   - Diagnoza przyczyn awarii
-   - Planowanie napraw z uwzględnieniem warunków pogodowych
-   - Koordynacja z ekipami naprawczymi
-
-**Awarie systemu yaw:**
-- Mniejsze zagrożenie bezpośrednie
-- Wymagają planowanej naprawy w sprzyjających warunkach
-- Możliwość tymczasowej eksploatacji z ograniczoną wydajnością
-</SupportingDetails>
-
-<WarningBox title="🚨 Kluczowe zasady bezpieczeństwa">
-**W przypadku awarii systemów kontroli:**
-1. **Nigdy** nie próbuj naprawy przy wietrze >15 m/s
-2. **Zawsze** upewnij się, że turbina jest w bezpiecznej pozycji
-3. **Natychmiast** poinformuj centrum kontroli o awarii
-4. **Sprawdź** czy obszar w promieniu 500m jest wolny od ludzi
-</WarningBox>
-
-<Example title="Case study - awaria systemu pitch w farmie wiatrowej">
-**Farma**: 20 turbin 3MW, region pomorski
-**Data**: Styczeń 2020, temperatura -10°C
-
-**Sekwencja incydentu**:
-1. **08:15** - Turbina T15 - alarm "Pitch system failure"
-2. **08:16** - Automatyczne zatrzymanie przez hamulce mechaniczne
-3. **08:17** - Alert w centrum kontroli farmy
-4. **08:20** - Weryfikacja: wszyscy pracownicy poza zasięgiem
-5. **08:25** - Diagnoza: zamarznięcie oleju hydraulicznego w siłownikach
-6. **14:00** - Odlodzenie i wymiana filtra oleju
-7. **16:30** - Turbina ponownie w eksploatacji
-
-**Koszty**:
-- Straty produkcji: 8h x 3MW = 24 MWh
-- Koszt naprawy: 5,000 EUR
-- **Total**: ~15,000 EUR (vs. potencjalne uszkodzenie struktury: >500,000 EUR)
-</Example>
-
-<InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
-
-**Procedury vs fakty** - studenci muszą zrozumieć różnicę między procedurami awaryjnymi a rzeczywistym czasem reakcji. Teoretyczne procedury mogą nie uwzględniać warunków pogodowych, dostępności ekip naprawczych, itp.
-
-**Koszty awarii** - przykład pokazuje, że szybka reakcja i odpowiednie procedury mogą znacząco ograniczyć skutki finansowe awarii.
-
-**Learning from incidents** - każda awaria to okazja do ulepszenia systemów i procedur. W tym przypadku wprowadzono podgrzewanie oleju hydraulicznego w sezonie zimowym.
-
-</details>
-</InstructorNotes>
+<InfoBox title="Szczegóły procedur">
+Szczegółowe procedury i zarządzanie kryzysowe omówione są w „Układy hamulcowe i systemy bezpieczeństwa”.
+</InfoBox>
 
 </Slide>
 
@@ -428,16 +295,12 @@ Po poznaniu systemów kontroli przejdziemy do **układów hamulcowych i systemó
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Kulminacja wykładu** - systemy kontroli to serce bezpieczeństwa turbiny. Bez nich turbina nie może reagować na zmieniające się warunki i staje się niebezpieczna.
 
 **Integracja wiedzy** - studenci mają teraz pełny obraz jak zagrożenia mechaniczne i aerodynamiczne (poprzedni wykład) łączą się z systemami kontroli (ten wykład). To fundament do zrozumienia układów hamulcowych (następny wykład).
 
 **Praktyczne zastosowania** - studenci będą mogli wykorzystać tę wiedzę do projektowania systemów monitoringu i procedur operacyjnych.
-
-</details>
 </InstructorNotes>
 
 </Slide>

@@ -34,8 +34,6 @@ Po tej sekcji student rozumie architekturę systemów monitoringu kondycji (CMS)
 </KeyPoints>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Czas**: 22-25 minut
 
@@ -51,8 +49,6 @@ Po tej sekcji student rozumie architekturę systemów monitoringu kondycji (CMS)
 **Najczęstsze pytania**:
 - Q: Ile danych produkuje jedna turbina dziennie?
 - A: Typowa turbina 3MW generuje 50-100 GB danych dziennie z wszystkich sensorów CMS.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -131,16 +127,12 @@ Total farma (50 turbin):
 </Example>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Skala danych** - studenci muszą zrozumieć, że CMS generuje ogromne ilości danych. To nie są pojedyncze pomiary, ale ciągły strumień z dziesiątek sensorów w każdej turbinie.
 
 **Edge computing** - kluczowa koncepcja: nie wszystko wysyła się do chmury. Lokalne przetwarzanie filtruje dane, wykrywa podstawowe anomalie i wysyła tylko to, co istotne.
 
 **Koszty vs. korzyści** - CMS to poważna inwestycja, ale jedna uniknięta awaria katastroficzna może pokryć koszty całego systemu dla połowy farmy.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -233,16 +225,12 @@ Recording time: continuous + trigger events
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Jakość danych** - podkreślam, że najczęstszym problemem w CMS nie są algorytmy analizy, ale jakość danych z sensorów. Złe zamontowanie, uszkodzone kable, brak kalibracji - to wszystko prowadzi do fałszywych alarmów lub, co gorsze, brak wykrycia rzeczywistych problemów.
 
 **Lokalizacje sensorów** - każda lokalizacja ma swoje uzasadnienie fizyczne. Studenci muszą rozumieć, że nie można postawić sensorów "gdzie popadnie" - każdy punkt ma specyficzną rolę w wykrywaniu konkretnych problemów.
 
 **Parametry akwizycji** - częstotliwość próbkowania musi być zgodna z twierdzeniem Nyquista. Dla detekcji problemów z częstotliwością do 10kHz potrzebujemy próbkowania co najmniej 20kHz, praktycznie 25.6kHz dla marginesu bezpieczeństwa.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -348,16 +336,12 @@ Total transmission: ~10.4 MB/day per turbine (vs 4 TB raw)
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Matematyka jest kluczowa** - studenci muszą rozumieć podstawy analizy sygnałów. FFT to nie magia, ale narzędzie matematyczne do przekształcenia sygnału czasowego w częstotliwościowy.
 
 **Praktyczne aspekty** - pokazuję studentom, że teoretyczne algorytmy muszą być zaimplementowane w rzeczywistym sprzęcie z ograniczeniami obliczeniowymi. Edge computing to nie tylko modny termin, ale praktyczna potrzeba.
 
 **Machine Learning** - nowoczesne CMS coraz częściej używają AI, ale to nie zastępuje podstawowej analizy, tylko ją uzupełnia. Studenci muszą rozumieć, kiedy użyć prostego progu, a kiedy skomplikowanego algorytmu ML.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -375,7 +359,7 @@ Total transmission: ~10.4 MB/day per turbine (vs 4 TB raw)
 
 <SupportingDetails title="📊 Protokoły komunikacyjne CMS">
 **Modbus TCP/RTU**:
-- **Standard**: IEC 61158 (industrial communication)
+ - **Status**: Otwarty protokół przemysłowy (Modbus Organization)
 - **Application**: Głównie do transmisji alarmów i statusów
 - **Advantages**: Prosty, niezawodny, szeroko wspierany
 - **Limitations**: Ograniczona przepustowość dla dużych danych
@@ -459,8 +443,6 @@ Wysoka temperatura przy silnym wietrze = normalne obciążenie
 </SuccessBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Holistyczne podejście** - studenci muszą zrozumieć, że CMS to nie izolowany system, ale element większej ekosystemu. Integracja z SCADA i systemami bezpieczeństwa to nie opcja, ale konieczność.
 
@@ -469,8 +451,6 @@ Wysoka temperatura przy silnym wietrze = normalne obciążenie
 **Data fusion** - kluczowa koncepcja - więcej danych z różnych źródeł prowadzi do lepszych decyzji. CMS + SCADA + Weather + Maintenance records = znacznie lepsze wyniki niż każdy system osobno.
 
 **Praktyczne wdrożenie** - studenci będą musieli projektować takie integracje w swojej karierze. To nie są tylko teoretyczne rozważania.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -587,16 +567,12 @@ Features importance:
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **ML nie jest magiczny** - studenci muszą rozumieć, że machine learning to narzędzie, które wymaga dobrej jakości danych, właściwego problemu i eksperckiej wiedzy. To nie zastępuje inżynierów, tylko ich wspiera.
 
 **Praktyczne aspekty** - pokazuję, jak ML działa w rzeczywistym przykładzie. Studenci muszą widzieć konkretne liczby, nie tylko teoretyczne koncepcje.
 
 **Digital Twin** - to przyszłość CMS, ale wymaga ogromnych inwestycji w modele fizyczne i dane. Studenci muszą zrozumieć, że to długoterminowa strategia, nie szybka implementacja.
-
-</details>
 </InstructorNotes>
 
 </Slide>
@@ -629,16 +605,12 @@ Po poznaniu architektury CMS przejdziemy do **konkretnych analiz** - drgań, tem
 </InfoBox>
 
 <InstructorNotes>
-<details>
-<summary>📝 Notatki prowadzącego</summary>
 
 **Integracja wiedzy** - studenci mają teraz kompleksowy obraz systemów CMS: architektura, sensory, przetwarzanie danych, integracja i analizy predykcyjne. To fundament dla praktycznych zastosowań.
 
 **Applied knowledge** - następny wykład o analizie drgań, temperatury i oleju pozwoli studentom zastosować tę wiedzę architektoniczną do konkretnych problemów diagnostycznych.
 
 **Career readiness** - studenci będą mogli uczestniczyć w projektach CMS, zrozumieć specyfikacje, komunikować się z dostawcami systemów, planować wdrożenia CMS w farmach wiatrowych.
-
-</details>
 </InstructorNotes>
 
 </Slide>
