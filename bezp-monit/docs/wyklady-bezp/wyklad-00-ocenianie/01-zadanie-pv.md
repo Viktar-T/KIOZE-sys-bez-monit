@@ -53,6 +53,8 @@ Należy opisać, w jaki sposób dana instalacja PV jest zabezpieczona:
   - szkolenia personelu i służb zewnętrznych (np. straży pożarnej),
   - harmonogram przeglądów i kontroli.
 
+**Uwaga:** Sprawozdanie **obowiązkowo musi zawierać zdjęcia i schematy** ilustrujące opisywane elementy systemu bezpieczeństwa (np. zdjęcia zabezpieczeń elektrycznych, schematy jednokreskowe, zdjęcia systemów monitorowania, schematy rozmieszczenia czujników).
+
 ### 1.4. Odniesienie do norm i przepisów
 
 - wskazanie **kluczowych norm i przepisów** dotyczących instalacji PV (np. PN-HD 60364-7-712, IEC 62446-1, wytyczne ppoż. dla PV, przepisy krajowe),
@@ -67,7 +69,7 @@ Należy opisać, w jaki sposób dana instalacja PV jest zabezpieczona:
 - identyfikacja **słabych punktów**:
   - brakujące zabezpieczenia,
   - niejasne procedury,
-  - problemy z monitorowaniem (np. brak rejestracji danych, brak alarmów, zbyt wysokie/niske progi).
+  - problemy z monitorowaniem (np. brak rejestracji danych, brak alarmów, zbyt wysokie/niskie progi).
 
 Ocena powinna mieć charakter **krytyczny, ale rzeczowy**, oparty na literaturze, normach i dobrych praktykach inżynierskich.
 
@@ -106,6 +108,8 @@ Należy stosować **spójny sposób cytowania** (np. APA, IEEE lub zgodny z wyty
 - **Format pliku i nazewnictwo**:
   - plik w formacie **PDF**,
   - sugerowana nazwa pliku (część PV): `Nazwisko_Imię_OZE_bezpieczenstwo_Zadanie_PV.pdf`.
+- **Sposób oddania zadania**:
+  - zadanie **musi być wysłane przez MS Teams (zadania)** w odpowiednim kanale przedmiotu.
 
 ## 3. Kryteria oceniania (rubryka)
 

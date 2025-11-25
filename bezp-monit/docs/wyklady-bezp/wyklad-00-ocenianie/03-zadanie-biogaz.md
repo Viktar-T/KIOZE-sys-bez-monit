@@ -62,6 +62,8 @@ Należy opisać, w jaki sposób dana biogazownia jest zabezpieczona:
   - szkolenia personelu z zakresu ATEX, BHP i pierwszej pomocy,
   - harmonogram przeglądów i kalibracji detektorów gazów oraz innych urządzeń zabezpieczających.
 
+**Uwaga:** Sprawozdanie **obowiązkowo musi zawierać zdjęcia i schematy** ilustrujące opisywane elementy systemu bezpieczeństwa (np. zdjęcia detektorów gazów, schematy instalacji detekcji, zdjęcia zabezpieczeń przeciwwybuchowych, schematy rozmieszczenia czujników i stref ATEX).
+
 ### 1.4. Odniesienie do norm i przepisów
 
 - wskazanie **kluczowych norm i przepisów** dotyczących biogazowni i pracy w strefach zagrożonych wybuchem, np.:
@@ -118,6 +120,8 @@ Należy stosować **spójny sposób cytowania** (np. APA, IEEE lub zgodny z wyty
 - **Format pliku i nazewnictwo**:
   - plik w formacie **PDF**,
   - sugerowana nazwa pliku (część biogazowa): `Nazwisko_Imię_OZE_bezpieczenstwo_Zadanie_Biogaz.pdf`.
+- **Sposób oddania zadania**:
+  - zadanie **musi być wysłane przez MS Teams (zadania)** w odpowiednim kanale przedmiotu.
 
 ## 3. Kryteria oceniania (rubryka)
 

@@ -55,6 +55,8 @@ Należy opisać, w jaki sposób dana turbina/farma wiatrowa jest zabezpieczona:
   - szkolenia personelu serwisowego,
   - harmonogram przeglądów, diagnostyki drganiowej, wymian eksploatacyjnych.
 
+**Uwaga:** Sprawozdanie **obowiązkowo musi zawierać zdjęcia i schematy** ilustrujące opisywane elementy systemu bezpieczeństwa (np. zdjęcia układów hamulcowych, schematy układów pitch/yaw, zdjęcia systemów CMS, schematy rozmieszczenia czujników).
+
 ### 1.4. Odniesienie do norm i przepisów
 
 - wskazanie **kluczowych norm i przepisów** dotyczących turbin wiatrowych/farm wiatrowych (np. seria IEC 61400, przepisy krajowe dot. farm wiatrowych, BHP pracy na wysokości),
@@ -108,6 +110,8 @@ Należy stosować **spójny sposób cytowania** (np. APA, IEEE lub zgodny z wyty
 - **Format pliku i nazewnictwo**:
   - plik w formacie **PDF**,
   - sugerowana nazwa pliku (część wiatrowa): `Nazwisko_Imię_OZE_bezpieczenstwo_Zadanie_Wiatr.pdf`.
+- **Sposób oddania zadania**:
+  - zadanie **musi być wysłane przez MS Teams (zadania)** w odpowiednim kanale przedmiotu.
 
 ## 3. Kryteria oceniania (rubryka)
 

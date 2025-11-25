@@ -5,7 +5,7 @@ title: "Zadanie: analiza systemów bezpieczeństwa i monitorowania instalacji OZ
 
 # Zadanie do zaliczenia wykładów – analiza systemów bezpieczeństwa i monitorowania instalacji OZE
 
-Te zadania sa **pracą indywidualną** realizowaną w ramach przedmiotu „Systemy bezpieczeństwa i monitorowania instalacji OZE”.
+Te zadania są **pracą indywidualną** realizowaną w ramach przedmiotu „Systemy bezpieczeństwa i monitorowania instalacji OZE”.
 
 ## 1. Cel dydaktyczny
 
@@ -40,3 +40,13 @@ Poniżej znajdują się odrębne opisy zadań dla każdej z wymaganych instalacj
 - [Zadanie dla turbiny wiatrowej lub farmy wiatrowej](./02-zadanie-wiatr.md)
 - [Zadanie dla biogazowni rolniczej lub biogazowni komunalnej](./03-zadanie-biogaz.md)
 
+## 4. Zgłaszanie zadań w MS Teams
+
+Po przygotowaniu każdego sprawozdania należy **zgłosić zadanie w odpowiednim kanale MS Teams**:
+
+1. **Znajdź odpowiednie zadanie** w kanale przedmiotu (zadania są oznaczone jako: Zadanie PV, Zadanie Wiatr, Zadanie Biogaz).
+2. **Prześlij plik PDF** zgodnie z wymaganiami formalnymi (patrz sekcja 2 w każdym zadaniu szczegółowym).
+3. **Upewnij się, że nazwa pliku** jest zgodna z wymaganiami (np. `Nazwisko_Imię_OZE_bezpieczenstwo_Zadanie_PV.pdf`).
+4. **Sprawdź termin oddania** — każdy z trzech plików powinien być przesłany do końca grudnia.
+
+W razie pytań lub problemów technicznych skontaktuj się z prowadzącym przez MS Teams lub e-mail.
