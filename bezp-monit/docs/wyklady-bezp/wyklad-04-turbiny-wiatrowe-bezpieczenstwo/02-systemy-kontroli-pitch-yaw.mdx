@@ -26,6 +26,7 @@ import {
 Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt natarcia łopatek) i yaw (orientacja względem wiatru), potrafi identyfikować główne zagrożenia w tych systemach oraz zna podstawowe rozwiązania bezpieczeństwa.
 </LearningObjective>
 
+
 <KeyPoints title="📋 Główne tematy">
 - 🎛️ **System pitch** - kontrola kąta natarcia łopatek
 - 🧭 **System yaw** - orientacja turbiny względem wiatru  
@@ -33,29 +34,19 @@ Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt nata
 - 🛡️ **Systemy bezpieczeństwa** - redundancja, awaryjne zatrzymanie
 </KeyPoints>
 
+
 <InstructorNotes>
 
-**Czas**: 18-22 minuty
+**Co się stanie, jeśli łopatka nie może się obrócić przy silnym wietrze?** To pytanie wprowadza nas w temat systemów kontroli. **Pitch i yaw to w praktyce „oczy i mięśnie" turbiny** – bez nich turbina nie widzi, skąd wieje wiatr i nie potrafi na to zareagować. W tej części bardziej interesuje nas **bezpieczeństwo i konsekwencje awarii**, a nie tylko czysta teoria sterowania.
 
-**Przebieg**: Zacznę od prostego pytania - "Co się stanie, gdy łopatka turbiny nie może się obrócić przy silnym wietrze?" To wprowadzi w kontekst dlaczego systemy kontroli są krytyczne dla bezpieczeństwa.
-
-**Kluczowe przesłanie**: Systemy pitch i yaw to oczy turbiny - bez nich turbina jest ślepa na warunki wiatrowe i staje się niebezpieczna. To nie tylko kwestia wydajności, ale przede wszystkim bezpieczeństwa.
-
-**Metody dydaktyczne**:
-- Animacja/wizualizacja działania systemów
-- Przykłady rzeczywistych awarii związanych z systemami kontroli
-- Porównanie różnych rozwiązań technologicznych
-
-**Najczęstsze pytania**:
-- Q: Dlaczego system pitch jest ważniejszy niż yaw w kwestii bezpieczeństwa?
-- A: Pitch kontroluje obciążenia, yaw kontroluje orientację - przy ekstremalnych wiatrach pitch jest krytyczny dla ochrony struktury.
+W języku „dla operatora": **pitch = bezpieczeństwo i obciążenia**, **yaw = ustawienie do wiatru i wydajność**. W dalszej części wrócimy do konkretnych przykładów awarii, w których te systemy odegrały kluczową rolę.
 </InstructorNotes>
 
 </Slide>
 
 <VisualSeparator type="energy" />
 
-<Slide title="🎛️ System Pitch - kontrola kąta natarcia" type="info">
+<Slide title="🎛️ System Pitch - rola i elementy" type="info">
 
 <KeyPoints title="🔧 Podstawowe elementy systemu pitch">
 - 🕹️ **Siłowniki pitch** - mechaniczne urządzenia obracające łopatki
@@ -64,18 +55,86 @@ Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt nata
 - ⚡ **Zasilanie awaryjne** - baterie UPS dla krytycznej funkcji
 </KeyPoints>
 
-<SupportingDetails title="📈 Zasady działania systemu pitch">
+<InstructorNotes>
+
+Te cztery punkty razem tworzą **pełny obraz systemu pitch**, a nie cztery oddzielne „klocki". Użyjmy prostej analogii: **siłowniki to „ręce"**, sensory to **„oczy"**, układ kontrolny to **„mózg"**, a zasilanie awaryjne to **„serce"**, które musi działać nawet wtedy, gdy cała reszta ma problem.
+
+W praktyce każdy z tych elementów może być pojedynczym punktem krytycznym – awaria jednego z nich często oznacza, że **cały system pitch przestaje spełniać swoją funkcję bezpieczeństwa**. **Który z tych elementów wydaje się wam najsłabszym ogniwem i dlaczego?**
+</InstructorNotes>
+
+<SupportingDetails title="📈 Zasady działania systemu pitch - pozycje łopatek">
 **Pozycje łopatek:**
 - **Normal operation**: 0° do 25° - optymalna produkcja energii
 - **Feather position**: 86° do 90° - minimalne obciążenie, zatrzymanie
 - **Emergency position**: >90° - maksymalna pozycja bezpieczna
+</SupportingDetails>
 
+<InstructorNotes>
+
+Te trzy pozycje to **„alfabet bezpieczeństwa pitch"**. W prostych słowach: 0–25° to **„praca"**, 86–90° to **„stop"**, a >90° to **„awaryjne zatrzymanie"**. Analogia do samochodu: normal operation to jazda, feather to hamulec, a emergency to hamulec awaryjny.
+
+Kluczowe nie są tylko same wartości kątów, ale **szybkość i niezawodność przejścia między nimi**. Przy silnych wiatrach opóźnienie nawet o kilka sekund może przełożyć się na niebezpieczne obciążenia całej konstrukcji turbiny.
+</InstructorNotes>
+
+<div style={{width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px'}}>
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Schemat niezależnego systemu pitch](./img/02.R1.1.png)
+  </div>
+
+**Rysunek 1.1, Schemat niezależnego systemu pitch.**
+
+<InstructorNotes>
+
+Rysunek przedstawia szczegółowy schemat niezależnego systemu pitch z siłownikami hydraulicznymi umieszczonymi przy piaście turbiny. Każda z trzech łopatek posiada indywidualny siłownik hydrauliczny, co zapewnia niezależną kontrolę kąta natarcia każdej łopatki. Schemat ilustruje połączenia hydrauliczne rozdzielające ciśnienie do poszczególnych siłowników oraz mechaniczne ogniwa przekazujące ruch siłownika na obrót łopatki. Taka architektura umożliwia precyzyjną optymalizację wydajności przy zmiennych prędkościach wiatru i zapewnia redundancję - awaria jednego siłownika nie uniemożliwia kontroli pozostałych łopatek.
+
+Na Rysunku 1.1 widzimy **niezależny system pitch** – każda łopatka ma swój siłownik hydrauliczny. Taka architektura daje bezpieczeństwo: awaria jednego siłownika nie „paraliżuje" całej turbiny. Sieć przewodów hydraulicznych dzieli ciśnienie między siłowniki.
+
+</InstructorNotes>
+  
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Konfiguracja łożyska pitch i przekładni](./img/02.R1.2.png)
+  </div>
+
+**Rysunek 1.2, Konfiguracja łożyska pitch i przekładni**
+
+<InstructorNotes>
+
+Ilustracja techniczna przedstawia kluczowe komponenty mechaniczne systemu kontroli pitch - łożysko pitch oraz przekładnię redukcyjną. Mechanizm przekładni przekształca ruch siłownika w obrót łopatki, jednocześnie redukując prędkość obrotową, ale zwiększając moment obrotowy, co umożliwia małemu siłownikowi obracanie ciężkiej łopatki. Łożysko pitch musi wytrzymać ogromne obciążenia osiowe i promieniowe podczas pracy turbiny, będąc krytycznym elementem dla bezpieczeństwa i niezawodności systemu. Cały układ jest zaprojektowany w kompaktowej formie, aby zmieścić się przy nasadzie łopatki, gdzie przestrzeń jest bardzo ograniczona.
+
+Na Rysunku 1.2 widzimy **mechanizm przekładni i łożysko pitch**. Przekładnia redukuje prędkość, ale **mnoży moment obrotowy**, dzięki czemu niewielki siłownik może poruszyć bardzo ciężką łopatą. **Dlaczego nie możemy po prostu połączyć siłownika bezpośrednio z łopatką, bez przekładni?**
+
+</InstructorNotes>
+  
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Fotografia systemu siłowników hydraulicznych pitch](./img/02.R1.3.png)
+  </div>
+
+**Rysunek 1.3, Fotografia systemu siłowników hydraulicznych pitch**
+
+<InstructorNotes>
+
+Fotografia przedstawia rzeczywistą implementację systemu siłowników hydraulicznych pitch zainstalowanego w piaście turbiny wiatrowej. Widoczna jest kompaktowa konstrukcja całego układu, który musi zmieścić się w ograniczonej przestrzeni piaste. Obraz pokazuje cylinder hydrauliczny jako główny element wykonawczy generujący siłę potrzebną do obracania łopatki, przewody ciśnieniowe odporne na wibracje i ekstremalne temperatury, oraz połączenie mechaniczne z łożyskiem pitch. To praktyczne zastosowanie mechanizmów kontroli pitch w nowoczesnych instalacjach turbinowych, pokazujące wyzwania techniczne związane z instalacją systemu w ciasnej przestrzeni.
+
+Rysunek 1.3 to **zderzenie z rzeczywistością** – w piaście jest bardzo ciasno i wszystkie elementy muszą być kompaktowe. Przewody i miejsca mocowania siłowników muszą wytrzymać wibracje, ekstremalne temperatury i umożliwiać serwisowanie w tak ograniczonej przestrzeni.
+
+**Które elementy tego systemu wydają się wam najbardziej narażone na awarie i dlaczego?**
+
+</InstructorNotes>
+</div>
+
+</Slide>
+
+<VisualSeparator type="default" />
+
+<Slide title="⚙️ Sterowanie pitch i bezpieczne zatrzymanie" type="info">
+
+<SupportingDetails title="🔁 Tryby i proces sterowania">
 **Tryby sterowania:**
 - **Power control**: regulacja mocy przez zmianę kąta
 - **Speed control**: kontrolowanie prędkości obrotowej
 - **Safety control**: awaryjne zatrzymanie przy ekstremalnych warunkach
 
-**Proces sterowania:**
+**Proces sterowania (pętla regulacji):**
 1. Monitoring parametrów (wiatr, moc, prędkość)
 2. Analiza algorytmów kontrolnych
 3. Wysyłanie sygnałów do siłowników
@@ -83,9 +142,23 @@ Po tej sekcji student rozumie funkcjonowanie systemów kontroli pitch (kąt nata
 5. Feedback loop - korekta sygnałów
 </SupportingDetails>
 
+<InstructorNotes>
+
+Te trzy tryby to trzy różne „perspektywy" patrzenia na ten sam system. **Power control** wiąże się z ekonomią i produkcją energii, **speed control** ze stabilnością pracy generatora, a **safety control** z przeżyciem turbiny w trudnych warunkach.
+
+Cały układ pracuje w klasycznej **pętli sprzężenia zwrotnego**: czujniki mierzą, sterownik analizuje, siłowniki reagują i wszystko wraca jako informacja zwrotna. Tutaj naprawdę liczą się **sekundy, a czasem ułamki sekund** – zbyt powolna reakcja może oznaczać nie tylko spadek mocy, ale realne zagrożenie dla konstrukcji.
+</InstructorNotes>
+
 <KeyConcept title="Zasada fail-safe w systemie pitch">
 W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **automatycznie** przechodzą w pozycję **feather** (90°), minimalizując obciążenia wiatrowe i zatrzymując turbinę bezpiecznie.
 </KeyConcept>
+
+<InstructorNotes>
+
+**„Fail-safe" to filozofia, nie tylko detal konstrukcyjny**. Gdy coś się psuje, system ma sam przejść w stan bezpieczny, bez udziału człowieka. W przypadku pitch oznacza to automatyczne przejście łopatek do pozycji feather i szybkie odciążenie turbiny.
+
+Fail-safe opiera się na **prostych, możliwie niezawodnych mechanizmach**: sprężynach, zaworach bezpieczeństwa, niezależnym zasilaniu z baterii czy UPS. To nie jest „miły dodatek", tylko **wymóg norm i dobrej praktyki inżynierskiej**, szczególnie w instalacjach OZE podłączonych do systemu elektroenergetycznego.
+</InstructorNotes>
 
 <Example title="Sekwencja bezpiecznego zatrzymania">
 **Hipoteza**: Wiatr przekracza 25 m/s, turbina musi się zatrzymać
@@ -99,6 +172,13 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 6. **T+15s**: Mechaniczne hamulce aktywowane (backup)
 </Example>
 
+<InstructorNotes>
+
+To krótka historia „w zwolnionym tempie": od momentu, gdy anemometr „zauważa" przekroczenie progu, do chwili pełnego zatrzymania wirnika. **Od T+0s do T+8s mija zaledwie kilka sekund**, a w tym czasie system musi wykonać serię bardzo konkretnych kroków.
+
+**Opóźnienia w tej sekwencji są naprawdę niebezpieczne** – jeśli reakcja pitch nastąpi za późno, łopaty zdążą się rozpędzić do poziomów, przy których trudno już cokolwiek uratować. **Co by się stało, gdyby sygnał STOP dotarł pięć sekund później niż w tym przykładzie?**
+</InstructorNotes>
+
 <WarningBox title="⚠️ Krytyczne zagrożenie">
 **Total pitch failure** (awaria wszystkich systemów pitch) przy wietrze >30 m/s może prowadzić do:
 - Przyspieszenia wirnika do niebezpiecznych prędkości
@@ -108,11 +188,11 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 
 <InstructorNotes>
 
-**Czas reakcji** - system pitch musi reagować w ułamkach sekund. Pokazuję studentom, że przy wietrze 30 m/s, opóźnienie reakcji o 5 sekund może oznaczać katastrofę.
+Liczby z przykładu: decyzja w milisekundach, ruch łopat w kilka sekund, pełne zatrzymanie w kilkanaście sekund. System bezpieczeństwa nie działa „abstrakcyjnie", tylko w bardzo konkretnych ramach czasowych.
 
-**Mechanizm fail-safe** - to kluczowa koncepcja. Studenci muszą zrozumieć, że systemy bezpieczeństwa muszą działać nawet wtedy, gdy wszystko inne się zepsuje. To wymaga niezależnego zasilania i mechanicznych zabezpieczeń.
+Przypomnijmy ideę **fail-safe** – gdy pojawia się problem, turbina ma sama przejść w stan bezpieczny, bez czekania na operatora. Niezależne zasilanie, sprężyny i zawory bezpieczeństwa to elementy, które to umożliwiają. Szczegóły konstrukcyjne omówimy później.
 
-**Przykład z praktyki** - w 2019 roku w Danii awaria systemu pitch spowodowała, że turbina rozpadła się przy wietrze. To pokazuje, jak krytyczne są te systemy.
+W 2019 roku awaria pitch w jednej z turbin w Danii doprowadziła do jej zniszczenia przy silnym wietrze – zawiódł właśnie mechanizm przejścia do feather. **Jakie sygnały z systemu CMS byłyby najlepszym wczesnym wskaźnikiem problemów z pitch?**
 </InstructorNotes>
 
 </Slide>
@@ -128,6 +208,13 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 - 🛡️ **Procedury bezpieczeństwa** - ochrona przed ekstremalnymi kątami
 </KeyPoints>
 
+<InstructorNotes>
+
+**Yaw to system optymalizacji, a nie główny system bezpieczeństwa**. Pitch decyduje o tym, czy turbina „przeżyje" ekstremalne warunki, natomiast yaw dba o to, żeby była dobrze ustawiona do wiatru i długo, efektywnie pracowała.
+
+**Równomierne obciążenie łopatek** jest kluczowe. Jeśli turbina jest stale „skręcona" względem wiatru, jedna strona wirnika dostaje większe obciążenia niż druga – to przekłada się na szybsze zużycie łożysk, przekładni i samych łopat.
+</InstructorNotes>
+
 <SupportingDetails title="🔧 Elementy składowe systemu yaw">
 **Mechanizmy wykonawcze:**
 - **Yaw motors** - silniki przemieszczające gondolę
@@ -141,6 +228,40 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 - **Load sensors** - pomiar nierównomiernych obciążeń
 - **Motor feedback** - informacje zwrotne z silników yaw
 </SupportingDetails>
+
+<InstructorNotes>
+
+Yaw to w dużej mierze **„mechanika ciężka"**: silniki obracają gondolę, hamulce ją trzymają, a przekładnie dbają o to, żeby ruch był wolny i kontrolowany. Zbyt szybki obrót gondoli byłby niebezpieczny zarówno dla konstrukcji, jak i dla kabli przechodzących przez wieżę.
+
+**Wiatrowskaz (wind vane)** to w praktyce „oczy systemu yaw" – bez poprawnego sygnału o kierunku wiatru sterownik nie wie, w którą stronę ustawiać gondolę. **Co się stanie, jeśli wiatrowskaz zostanie oblodzony lub mechanicznie uszkodzony?**
+</InstructorNotes>
+
+<div style={{width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px'}}>
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Architektura systemu yaw](./img/02.R2.1.png)
+  </div>
+
+**Rysunek 2.1, Architektura systemu yaw**
+
+<InstructorNotes>
+
+Schemat przedstawia kompleksową architekturę systemu yaw z wieloma silnikami yaw rozmieszczonymi równomiernie wokół podstawy gondoli. Wszystkie silniki współpracują z zębatym pierścieniem yaw, tworząc zintegrowany system napędowy. Ilustracja pokazuje również hamulce yaw aktywne podczas braku obrotu gondoli, czujniki pozycji monitorujące aktualną orientację oraz kompletny układ mechaniczny napędu yaw. Wielosilnikowa redundancja zapewnia niezawodność systemu - awaria jednego silnika nie uniemożliwia obracania gondoli przez pozostałe silniki, co jest kluczowe dla ciągłości pracy turbiny we wszystkich warunkach wiatrowych.
+
+</InstructorNotes>
+  
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Komponenty systemu kontroli yaw](./img/02.R2.2.png)
+  </div>
+
+**Rysunek 2.2, Komponenty systemu kontroli yaw**
+
+<InstructorNotes>
+
+Schemat techniczny przedstawia szczegółowe komponenty systemu kontroli yaw - silniki elektryczne, przekładnie redukcyjne oraz mechanizmy hamulcowe rozmieszczone równomiernie wokół obwodu gondoli. Rozproszony układ wielu napędów yaw zapewnia równomierne rozłożenie siły obrotowej i stabilność pozycjonowania. Kluczowym elementem jest synchronizacja wszystkich silników - muszą one działać z tą samą prędkością i momentem obrotowym, w przeciwnym razie może dojść do zablokowania mechanizmu lub uszkodzenia zębatego pierścienia. Przekładnie redukują prędkość obrotową, ale zwiększają moment obrotowy, umożliwiając precyzyjne pozycjonowanie ciężkiej gondoli względem kierunku wiatru.
+
+</InstructorNotes>
+</div>
+
 
 <SupportingDetails title="⚙️ Algorytmy sterowania yaw">
 **Algorytmy podstawowe:**
@@ -159,17 +280,22 @@ W przypadku **awarii zasilania lub systemu kontrolnego**, wszystkie łopatki **a
 - **Position memory** - zapamiętywanie ostatniej bezpiecznej pozycji
 </SupportingDetails>
 
+<InstructorNotes>
+
+Algorytmy yaw to **ciągłe szukanie kompromisu** między dokładnym ustawieniem do wiatru a zużyciem mechanizmów. Active yawing daje najlepszą orientację, ale oznacza częste ruchy i szybsze zużycie. Delta position control ogranicza liczbę ruchów, reagując dopiero, gdy zmiana kierunku wiatru jest istotna.
+
+Wartość **0,6°/s** to celowo „powolny" ruch – dzięki temu nie szarpiemy gondolą, nie niszczymy kabli i nie dokładamy turbiny zbędnych obciążeń dynamicznych. To jak wolne, kontrolowane obracanie dużego dźwigu, a nie szybki ruch małego silniczka.
+</InstructorNotes>
+
 <InfoBox title="💡 Optymalizacja vs bezpieczeństwo">
 System yaw **nie jest** systemem bezpieczeństwa w tym samym sensie co pitch. Jego głównym celem jest **maksymalizacja wydajności**, ale **zawodność yaw** może prowadzić do zwiększonych obciążeń strukturalnych i szybszego zużycia.
 </InfoBox>
 
 <InstructorNotes>
 
-**Różnica w priorytetach** - system pitch to bezpieczeństwo, system yaw to wydajność. Studenci muszą to rozróżnić. Yaw failure nie zatrzyma turbiny natychmiast, ale zmniejszy jej wydajność i może prowadzić do szybszego zużycia.
+Podsumujmy: **pitch = bezpieczeństwo, yaw = wydajność i komfort pracy turbiny**. Awaria yaw nie zatrzyma turbiny od razu, ale w dłuższej perspektywie „zjada" jej żywotność przez nierównomierne obciążenia.
 
-**Prędkość obrotów** - 0.6°/s to wolno, ale to zamierzone. Szybkie obroty gondoli mogłyby uszkodzić kable i generować niepotrzebne obciążenia.
-
-**Monotoniczność vs efficiency** - student musi rozumieć, że yaw nie musi być idealnie zsynchronizowany z wiatrem w każdej sekundzie. Ważne jest, żeby średnio był optymalnie ustawiony.
+Prędkość obrotu yaw to około **0,6°/s**. **Czy yaw powinien ruszać się cały czas, gdy kierunek wiatru lekko drży?** Yaw **nie musi gonić każdej małej fluktuacji**, ważne jest dobre ustawienie w średnim czasie i rozsądne zużycie mechanizmów.
 </InstructorNotes>
 
 </Slide>
@@ -183,8 +309,15 @@ System yaw **nie jest** systemem bezpieczeństwa w tym samym sensie co pitch. Je
 </KeyPoints>
 
 <InfoBox title="Głębsze omówienie w kolejnej sekcji">
-Pełną architekturę zasilania i redundancji omawia wykład „Układy hamulcowe i systemy bezpieczeństwa”.
+Pełną architekturę zasilania i redundancji omawia wykład „Układy hamulcowe i systemy bezpieczeństwa".
 </InfoBox>
+
+<InstructorNotes>
+
+Ten slajd jest **łącznikiem z kolejnym wykładem o hamulcach i zasilaniu awaryjnym**. Bez niezależnego zasilania system pitch może po prostu „nie zdążyć" zareagować, kiedy sieć zewnętrzna już padnie.
+
+Szczegóły architektury zasilania – układ UPS, baterie, priorytety odbiorników – będą omawiane osobno. Ważna myśl: **system bezpieczeństwa, który traci zasilanie jako pierwszy, tak naprawdę nie jest systemem bezpieczeństwa**.
+</InstructorNotes>
 
 </Slide>
 
@@ -198,6 +331,13 @@ Pełną architekturę zasilania i redundancji omawia wykład „Układy hamulcow
 - ⚡ **Systemy zasilania** - napięcie, natężenie, stan baterii UPS
 - 🎛️ **Systemy kontrolne** - sygnały we/wy, komunikacja, błędy
 </KeyPoints>
+
+<InstructorNotes>
+
+Te parametry to w praktyce **„panel kontrolny zdrowia" systemów pitch i yaw**. Szczególnie ważne jest monitorowanie **pozycji i ciśnienia** w siłownikach pitch – niewielkie odchylenia i powolne spadki ciśnienia często są pierwszym sygnałem, że coś zaczyna się psuć.
+
+**Stan baterii UPS** jest krytyczny. Jeśli bateria jest rozładowana, to w chwili zaniku zasilania system bezpieczeństwa po prostu nie ma z czego „żyć". Monitoring techniczny to realne decyzje serwisowe, a nie tylko ładne wykresy.
+</InstructorNotes>
 
 <SupportingDetails title="🔍 Metody diagnostyki">
 **Monitoring ciągły:**
@@ -213,6 +353,45 @@ Pełną architekturę zasilania i redundancji omawia wykład „Układy hamulcow
 - **Pattern recognition** - rozpoznawanie charakterystycznych wzorców awarii
 </SupportingDetails>
 
+<InstructorNotes>
+
+Ewolucja podejścia do diagnostyki: od prostych progów alarmowych, przez analizę trendów, aż po **rozpoznawanie wzorców i metody uczenia maszynowego**. Same wartości „tu i teraz" często niewiele mówią – dopiero **trend w czasie** odsłania powolną degradację.
+
+Bardziej zaawansowane metody nie zastępują prostych progów, tylko je uzupełniają. Operator wciąż potrzebuje jasnego, prostego alarmu, ale w tle może działać analityka, która ostrzega dużo wcześniej, zanim przekroczone zostaną klasyczne granice.
+</InstructorNotes>
+
+<div style={{width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px'}}>
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Interfejs monitorowania SCADA turbiny wiatrowej](./img/02.R3.1.png)
+  </div>
+
+**Rysunek 3.1, Interfejs monitorowania SCADA turbiny wiatrowej**
+
+<InstructorNotes>
+
+Zrzut ekranu przedstawia interfejs systemu SCADA (Supervisory Control and Data Acquisition) umożliwiający centralne monitorowanie i zarządzanie farmą wiatrową. Interfejs wyświetla parametry operacyjne w czasie rzeczywistym dla wielu turbin jednocześnie, w tym prędkość wirnika, moc wyjściową, kąty pitch i pozycję yaw, aktualizowane co kilka sekund. Wskaźniki statusu w kolorach (zielony - normalna praca, żółty - ostrzeżenie, czerwony - alarm) umożliwiają szybką identyfikację problemów w całej flocie turbin. System automatycznie wykrywa anomalie i generuje powiadomienia alarmowe, co pozwala operatorom na natychmiastową reakcję na problemy operacyjne i efektywne zarządzanie farmą wiatrową z jednego miejsca.
+
+SCADA to **„okno operatora na całą farmę"**. Z jednego ekranu widać wiele turbin, ich moc, prędkość, kąty pitch i ustawienie yaw. Kolory statusu – zielony, żółty, czerwony – oraz automatyczne alarmy pozwalają szybko zidentyfikować problemy.
+
+</InstructorNotes>
+  
+  <div style={{width: '90%', margin: '0 auto'}}>
+    ![Ekran HMI parametrów kontroli pitch](./img/02.R3.2.png)
+  </div>
+
+**Rysunek 3.2, Ekran HMI parametrów kontroli pitch**
+
+<InstructorNotes>
+
+Ekran HMI (Human-Machine Interface) przedstawia szczegółowy widok parametrów kontroli pitch, służący do diagnostyki głębokiej systemu. Interfejs zawiera graficzną reprezentację pozycji każdej z trzech łopat, umożliwiając wykrycie nierównomierności mogących wskazywać na problemy z siłownikami. Wyświetlane są odczyty ciśnienia hydraulicznego - kluczowy parametr diagnostyczny pozwalający wykryć degradację siłownika przed awarią, oraz wartości zadane kąta pitch w porównaniu z rzeczywistymi pozycjami. Wykresy trendów pokazują zmiany parametrów w czasie, umożliwiając analizę długoterminową i wykrycie powolnych zmian niewidocznych w pojedynczych pomiarach. Analiza danych historycznych pozwala na porównanie aktualnej wydajności z historycznymi wzorcami i przewidywanie potencjalnych problemów.
+
+Rysunek 3.2 to przykład **diagnostyki w głąb jednego systemu**. Operator widzi dokładne pozycje łopat, ciśnienie w układzie hydraulicznym i wartości zadane, a także wykresy trendów i dane historyczne. Takie widoki pozwalają wychwycić problemy z siłownikami pitch, zanim dojdzie do awarii.
+
+Nowoczesne systemy SCADA to nie tylko kolorowe wykresy, ale **realne narzędzia decyzyjne**. Operator musi umieć połączyć informacje z wielu ekranów i na tej podstawie podjąć decyzję – od zmiany trybu pracy po zatrzymanie turbiny.
+
+</InstructorNotes>
+</div>
+
 <KeyConcept title="Predictive maintenance w systemach kontroli">
 Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 - **Machine Learning** do przewidywania awarii siłowników
@@ -220,6 +399,13 @@ Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 - **IoT sensors** do ciągłego monitoringu stanu
 - **Edge computing** do analizy danych w czasie rzeczywistym
 </KeyConcept>
+
+<InstructorNotes>
+
+**Diagnostyka to dziś coś więcej niż progi i wykresy**. Uczenie maszynowe potrafi wychwycić wzorce zużycia, których człowiek nie zauważy na pierwszy rzut oka, a cyfrowy bliźniak (digital twin) pozwala „przetestować" różne scenariusze bez ryzyka dla prawdziwej turbiny.
+
+To nie jest science fiction – takie rozwiązania są już stosowane w nowoczesnych farmach wiatrowych. Inżynier OZE coraz częściej musi rozumieć zarówno **mechanikę i elektrykę**, jak i **dane oraz algorytmy**, bo wszystko zaczyna się łączyć w jednym systemie.
+</InstructorNotes>
 
 <Example title="Przykład diagnostyki - degradacja siłownika pitch">
 **Scenariusz monitoringu** (3-miesięczny okres):
@@ -236,12 +422,26 @@ Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 - Poziom hałasu
 </Example>
 
+<InstructorNotes>
+
+To krótkie **case study z serwisu turbiny**. Tydzień 1 – wszystko w normie. Tydzień 8 – pierwsze, jeszcze „niegroźne" odchylenia. Tydzień 12 i 15 – decyzja o planowanej wymianie.
+
+Dzięki analizie trendów udało się **uniknąć nagłej awarii** i zatrzymania turbiny w złym momencie. **Jakie inne parametry – oprócz ciśnienia – warto obserwować przy ocenie stanu siłownika?** Czas reakcji, temperatura oleju, hałas to przykłady.
+</InstructorNotes>
+
 <InfoBox title="💡 Korzyści monitoringu predykcyjnego">
 **Wczesne wykrywanie** problemów z systemami kontroli pozwala na:
 - **40% redukcję** czasu przestoju związanych z systemami pitch/yaw
 - **60% redukcję** kosztów napraw przez lepsze planowanie
 - **Zwiększenie bezpieczeństwa** przez eliminację nagłych awarii
 </InfoBox>
+
+<InstructorNotes>
+
+Na tym slajdzie pojawiają się **konkretne liczby**, a nie ogólne hasła: mniej przestojów, niższe koszty, wyższe bezpieczeństwo. Takie wyniki pochodzą z realnych wdrożeń na farmach wiatrowych, a nie z idealizowanych modeli.
+
+W praktyce najbardziej liczy się **uniknięcie nagłych, niekontrolowanych awarii** – to one są najdroższe i najbardziej niebezpieczne dla ludzi oraz infrastruktury. Monitoring predykcyjny ma sprawić, żeby jak najwięcej interwencji było **planowanych**, a nie „gaszących pożar".
+</InstructorNotes>
 
 <InstructorNotes>
 
@@ -263,8 +463,15 @@ Nowoczesne systemy **Condition-Based Maintenance (CBM)** wykorzystują:
 </KeyPoints>
 
 <InfoBox title="Szczegóły procedur">
-Szczegółowe procedury i zarządzanie kryzysowe omówione są w „Układy hamulcowe i systemy bezpieczeństwa”.
+Szczegółowe procedury i zarządzanie kryzysowe omówione są w „Układy hamulcowe i systemy bezpieczeństwa".
 </InfoBox>
+
+<InstructorNotes>
+
+Ten slajd domyka wątek kontroli i **otwiera drzwi do rozmowy o procedurach awaryjnych**. Nawet najlepiej zaprojektowane systemy pitch i yaw są tylko częścią większej układanki: liczą się też procedury, szkolenia załogi i organizacja pracy.
+
+W kolejnym wykładzie skupimy się już bardziej na **hamulcach, procedurach E‑STOP i zarządzaniu incydentami**, a ten slajd pokazuje, jak systemy kontroli wpisują się w całą architekturę bezpieczeństwa.
+</InstructorNotes>
 
 </Slide>
 
@@ -279,6 +486,13 @@ Szczegółowe procedury i zarządzanie kryzysowe omówione są w „Układy hamu
 - 📊 **Monitoring predykcyjny** pozwala unikać nagłych awarii
 </KeyPoints>
 
+<InstructorNotes>
+
+Cztery wnioski to **„cztery filary systemu kontroli"**. Pitch to przede wszystkim bezpieczeństwo konstrukcji, yaw – wydajność i równomierne obciążenia, redundancja zasilania – niezawodność, a monitoring predykcyjny – przewidywalność i spokój w eksploatacji.
+
+Spróbujmy połączyć te punkty z przykładami z wcześniejszych slajdów: gdzie widać rolę pitch, gdzie yaw, a gdzie w praktyce „zadziałał" monitoring.
+</InstructorNotes>
+
 <SuccessBox title="✅ Sukces operacyjny">
 Nowoczesne turbiny z właściwie zaprojektowanymi systemami kontroli osiągają:
 - **99.5% availability** - czas dostępności do produkcji
@@ -286,9 +500,23 @@ Nowoczesne turbiny z właściwie zaprojektowanymi systemami kontroli osiągają:
 - **15-20 lat** średni czas eksploatacji przed modernizacją
 </SuccessBox>
 
+<InstructorNotes>
+
+Liczby na tym slajdzie to w praktyce **cele dla nowoczesnych farm wiatrowych**: bardzo wysoka dostępność, niewiele nieplanowanych zatrzymań i długi czas eksploatacji przed modernizacją. Takie wyniki nie biorą się z jednego „magicznego" rozwiązania, tylko z dobrze działającego całego systemu kontroli.
+
+Osiągnięcie 15–20 lat pracy bez poważnych problemów wymaga zarówno dobrego projektu, jak i konsekwentnego monitoringu oraz serwisu. **System kontroli to inwestycja, która realnie się zwraca**.
+</InstructorNotes>
+
 <KeyConcept title="Filozofia bezpieczeństwa systemów kontroli">
 **"Control systems are the nervous system of a wind turbine"** - systemy kontroli to nie tylko elementy techniczne, ale **zdolność turbiny do reagowania na zmieniające się warunki** i **ochrony samej siebie** przed szkodami.
 </KeyConcept>
+
+<InstructorNotes>
+
+**Systemy kontroli są jak układ nerwowy turbiny** – zbierają informacje, przetwarzają je i wysyłają sygnały do „mięśni", czyli układów wykonawczych. Bez tego układu turbina jest tylko dużą, drogą konstrukcją mechaniczną.
+
+W projektowaniu nowoczesnych turbin nie chodzi już tylko o „moc i sprawność", ale właśnie o **zdolność inteligentnego reagowania na zmieniające się warunki**. To jest fundament filozofii bezpieczeństwa, do której będziemy wracać także przy innych instalacjach OZE.
+</InstructorNotes>
 
 <InfoBox title="🎓 Następne kroki">
 Po poznaniu systemów kontroli przejdziemy do **układów hamulcowych i systemów bezpieczeństwa** - ostatniej linii obrony przed awariami strukturalnymi.
@@ -296,11 +524,11 @@ Po poznaniu systemów kontroli przejdziemy do **układów hamulcowych i systemó
 
 <InstructorNotes>
 
-**Kulminacja wykładu** - systemy kontroli to serce bezpieczeństwa turbiny. Bez nich turbina nie może reagować na zmieniające się warunki i staje się niebezpieczna.
+**Systemy kontroli są sercem bezpieczeństwa turbiny**. Bez nich konstrukcja nie potrafi reagować na zmieniający się wiatr i zaczyna być realnym zagrożeniem, a nie źródłem „zielonej" energii.
 
-**Integracja wiedzy** - studenci mają teraz pełny obraz jak zagrożenia mechaniczne i aerodynamiczne (poprzedni wykład) łączą się z systemami kontroli (ten wykład). To fundament do zrozumienia układów hamulcowych (następny wykład).
+W poprzednim wykładzie mówiliśmy o zagrożeniach mechanicznych i aerodynamicznych, a teraz zobaczyliśmy, jak systemy kontroli pozwalają tym zagrożeniom przeciwdziałać. Kolejnym krokiem będą układy hamulcowe i procedury, czyli „ostatnia linia obrony".
 
-**Praktyczne zastosowania** - studenci będą mogli wykorzystać tę wiedzę do projektowania systemów monitoringu i procedur operacyjnych.
+**Jak zaprojektowalibyście prosty system monitoringu pitch/yaw i jakie procedury operacyjne uważacie za absolutne minimum na farmie wiatrowej?**
 </InstructorNotes>
 
 </Slide>

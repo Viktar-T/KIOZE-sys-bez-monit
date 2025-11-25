@@ -1,12 +1,12 @@
 **Task**
 
-Write or rewrite the `InstructorNotes` for each slide for the file. 
+Write or rewrite the `InstructorNotes` for each section of the slide for each slide for the file. 
 
 **Language & Voice**
 
-* Output in **Polish** (natural academic, B2–C1).
+* Output in **Polish**.
 * Spoken, easy to understande, lecturer-ready, clear, engaging.
-* Ready to oral communication by the lecturer in class.
+* Ready to oral communication by the lecturer in class. Dont use "mów spokojnie", "Podkreśl", "Na koniec" or simular phrases. Text should be ready to read infront of students.
 
 **Output Rules**
 
@@ -16,7 +16,7 @@ Write or rewrite the `InstructorNotes` for each slide for the file.
 
 **Derive From Slide**
 
-* Use visible slide content/context `InstructorNotes`.
+* Use visible slide content/context.
 * Add short descriptions for abbreviations.
 * Add short descriptions for new concepts.
 
