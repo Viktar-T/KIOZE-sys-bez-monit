@@ -132,9 +132,9 @@ Warto zwrócić uwagę, że hamulce mechaniczne zwykle **nie pracują w normalne
 
 <InstructorNotes>
 
-Przekrój pokazuje szczegóły konstrukcji hamulca tarczowego umieszczonego na wale głównym turbiny, między generatorem a przekładnią. Widzimy tarczę hamulcową (typowa średnica 500-1500 mm w zależności od rozmiaru turbiny), zaciski hydrauliczne z wieloma tłokami, okładziny cierne o wysokiej pojemności termicznej oraz system mocowania do wału głównego. Konstrukcja zacisku wykorzystuje mechanizm sprężynowo-zamykany, hydraulicznie-otwierany, zapewniający działanie fail-safe – hamulec aktywuje się automatycznie przy utracie ciśnienia hydraulicznego, co zapewnia krytyczną ochronę bezpieczeństwa.
+Rysunek pokazuje szczegóły konstrukcji hamulca tarczowego umieszczonego na wale głównym turbiny, między generatorem a przekładnią. Widzimy tarczę hamulcową (typowa średnica 500-1500 mm w zależności od rozmiaru turbiny), zaciski hydrauliczne z wieloma tłokami, okładziny cierne o wysokiej pojemności termicznej oraz system mocowania do wału głównego. Konstrukcja zacisku wykorzystuje mechanizm sprężynowo-zamykany, hydraulicznie-otwierany (co to znaczy?), zapewniający działanie fail-safe – hamulec aktywuje się automatycznie przy utracie ciśnienia hydraulicznego, co zapewnia krytyczną ochronę bezpieczeństwa.
 
-To nie jest tylko schemat, ale rzeczywista konstrukcja stosowana w turbinach wiatrowych. Kluczowy element to **mechanizm fail-safe**: hamulec zamyka się sprężynowo, a otwiera się hydraulicznie. To oznacza, że gdy zanika ciśnienie hydrauliczne – z jakiegokolwiek powodu – hamulec automatycznie się zamyka. To nie jest opcja, ale **wymóg bezpieczeństwa**.
+To jest rzeczywista konstrukcja stosowana w turbinach wiatrowych. Kluczowy element to **mechanizm fail-safe**: hamulec zamyka się sprężynowo, a otwiera się hydraulicznie. To oznacza, że gdy zanika ciśnienie hydrauliczne – z jakiegokolwiek powodu – hamulec automatycznie się zamyka. To nie jest opcja, ale **wymóg bezpieczeństwa**.
 
 Nowoczesne konstrukcje zawierają czujniki zużycia, systemy monitorowania okładzin oraz powłoki odporne na korozję, niezbędne w zastosowaniach offshore i w trudnych warunkach środowiskowych. **Dlaczego konstrukcja normalnie zamknięta jest tak ważna w systemach bezpieczeństwa turbin?** W sytuacji awaryjnej nie możemy polegać na zasilaniu zewnętrznym. Hamulec musi działać nawet wtedy, gdy wszystko inne zawiedzie.
 
@@ -186,7 +186,7 @@ Kluczowy jest też wymóg **możliwości testów bez ryzyka** – system trzeba 
 **Parametry hamowania**:
 - Początkowa prędkość: 25 RPM (maksymalna)
 - Siła hamująca: 1,200,000 Nm momentu
-- Zużycie energii: 30 kWh na proces hamowania
+- Zużycie energii: 10 kWh na proces hamowania
 - Temperatura okładzin: wzrost do 180°C
 </Example>
 
@@ -252,16 +252,6 @@ To jest **szczegółowa architektura** – każdy poziom składa się z konkretn
 Warto zauważyć, że wiele elementów pojawia się na kilku poziomach – na przykład SCADA i komunikacja krytyczna są obecne zarówno przy monitoringu, jak i przy reakcji awaryjnej. To pokazuje, że system bezpieczeństwa nie jest zbiorem niezależnych klocków, ale **spójną siecią współpracujących modułów**, które razem tworzą obronę wielowarstwową.
 </InstructorNotes>
 
-{/* TODO: Dodać obraz ./img/03-architektura-systemu-bezpieczenstwa.png */}
-<div style={{width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#f5f5f5', borderRadius: '8px', textAlign: 'center'}}>
-  <p style={{color: '#666', fontStyle: 'italic'}}>Miejsce na rysunek: Architektura wielopoziomowego systemu bezpieczeństwa turbiny</p>
-</div>
-
-**Rysunek 3. Architektura wielopoziomowego systemu bezpieczeństwa turbiny wiatrowej – od sensorów i SCADA po układy hamulcowe i procedury awaryjne.**
-
-**Rysunek 3, Architektura wielopoziomowego systemu bezpieczeństwa turbiny**
-
-Schemat przedstawia kompleksową architekturę bezpieczeństwa z czterema poziomami ochrony. Poziom 1 obejmuje sensory środowiskowe, mechaniczne i elektryczne oraz systemy komunikacyjne SCADA. Poziom 2 to kontrola prewencyjna przez systemy pitch i yaw oraz monitoring predykcyjny. Poziom 3 to układy hamulcowe i systemy blokady zapewniające zatrzymanie turbiny. Poziom 4 to reakcja awaryjna z komunikacją krytyczną, procedurami ewakuacji i raportowaniem. Przepływ informacji od sensorów przez SCADA do hamulców i procedur pokazuje, jak każdy poziom współpracuje z pozostałymi, tworząc spójną architekturę bezpieczeństwa.
 
 <KeyConcept title="Zasada fail-safe w systemach bezpieczeństwa">
 **Każdy poziom ochrony** musi być zaprojektowany zgodnie z zasadą **fail-safe**:
@@ -310,9 +300,8 @@ Warto zwrócić uwagę, że w scenariuszu awaryjnym każdy z elementów – anem
 
 Ta klasyfikacja pokazuje **priorytety czasowe**. **Krytyczne** zagrożenia wymagają reakcji w **milisekundach**, **wysokie** w **sekundach**, **średnie** w **minutach**, a **niskie** mogą czekać. Systemy bezpieczeństwa muszą być zaprojektowane pod **najgorszy scenariusz** – krytyczne zagrożenia, w których liczy się każda setna sekundy.
 
-Można to powiązać z konkretnymi przykładami: awaria pitch przy silnym wietrze to zagrożenie krytyczne, problemy z generatorem to zagrożenie wysokie, a powolna degradacja łożysk to zwykle zagrożenie średnie lub niskie. **Bezpieczeństwo to system**, a nie pojedyncze urządzenie. Cztery poziomy ochrony tworzą **spójną architekturę**, w której awaria jednego elementu nie powinna prowadzić od razu do katastrofy. Na Rysunku 3 widzimy przepływ informacji: od sensorów, przez SCADA, aż po hamulce i procedury.
+Można to powiązać z konkretnymi przykładami: awaria pitch przy silnym wietrze to zagrożenie krytyczne, problemy z generatorem to zagrożenie wysokie, a powolna degradacja łożysk to zwykle zagrożenie średnie lub niskie. 
 
-**Na którym poziomie tej architektury najczęściej zawodzą systemy w praktyce?** To dobry punkt wyjścia do dyskusji o **błędach ludzkich, komunikacji i procedurach**. **Fail-safe** oznacza, że w razie wątpliwości turbina **ma się zatrzymać**, a nie kontynuować pracę.
 </InstructorNotes>
 
 </Slide>
@@ -335,30 +324,47 @@ Te cztery strategie pokazują **różne podejścia** do redundancji. **Funkcjona
 Można to odnieść do turbiny: hamulec aerodynamiczny i mechaniczny to redundancja funkcjonalna, podwójne zasilanie i dwa PLC to redundancja sprzętowa, szybka reakcja automatyki i wolniejsza reakcja operatora to redundancja czasowa, a różne lokalizacje czujników i szaf sterowniczych – redundancja przestrzenna. Wspólnie tworzą one **sieć zabezpieczeń**, która znacznie zmniejsza ryzyko pojedynczego punktu krytycznego.
 </InstructorNotes>
 
-<SupportingDetails title="📈 Przykłady redundantnych systemów">
-**Redundancja w systemach hamulcowych:**
-- **Hamulec główny**: System pitch + hydrauliczne hamulce tarczowe
-- **Hamulec awaryjny**: Pneumatyczne hamulce + mechaniczne blokady
-- **Hamulec zapasowy**: Elektromechaniczne hamulce sprzęgłowe
-- **Zasilanie**: Sieć + UPS + baterie + generatory awaryjne
+<SupportingDetails title="🛑 Redundancja w systemach hamulcowych">
+**Hamulec główny (operacyjny):**
+- Aerodynamiczny system pitch – podstawowy sposób zatrzymania wirnika, wspomagany hydraulicznymi hamulcami tarczowymi (postojowymi).
 
-**Redundancja w systemach kontrolnych:**
-- **PLC główny**: Programowalny sterownik podstawowy
-- **PLC bezpieczeństwa**: Dedykowany safety PLC (Siemens S7-1500F)
-- **Hardware safety**: Przerywacze bezpieczeństwa, relé bezpieczeństwa
-- **Komunikacja**: Ethernet + Modbus RTU + GSM backup
+**Hamulec awaryjny:**
+- Sprężynowe hamulce tarczowe fail-safe (hydrauliczne lub pneumatyczne) + mechaniczne blokady / sworznie blokujące wirnik lub układ yaw.
 
-**Redundancja sensoryczna:**
-- **Anemometry**: 3 niezależne czujniki wiatru
-- **Pitch sensors**: 3 sensory pozycji na każdą łopatkę
-- **Temperature**: Wielopunktowe pomiary w kluczowych lokalizacjach
-- **Vibration**: Akcelerometry w różnych osiach i lokalizacjach
+**Hamulec zapasowy / postojowy:**
+- Elektromechaniczne hamulce sprzęgłowe w przekładni lub generatorze, używane do długotrwałego unieruchomienia.
+
+**Zasilanie układów hamulcowych:**
+- Sieć + UPS + baterie + awaryjny generator (tak, aby możliwe było zadziałanie hamulców nawet przy zaniku zasilania zewnętrznego).
 </SupportingDetails>
 
-<InstructorNotes>
+<SupportingDetails title="🎛️ Redundancja w systemach kontrolnych">
+**PLC główny:**
+- Programowalny sterownik odpowiedzialny za normalne sterowanie turbiną.
 
-Te przykłady pokazują **konkretne zastosowania** redundancji. **Hamulce** mają trzy poziomy (główny, awaryjny, zapasowy), **kontrolne** mają PLC główny i safety PLC, a **sensoryczne** mają wielokrotne czujniki. **3 anemometry** to standard – jeśli jeden zawiedzie, pozostałe działają. **Zasilanie** ma potrójną redundancję: sieć, **UPS** (Uninterruptible Power Supply, czyli zasilacz awaryjny, który zapewnia krótkotrwałe zasilanie, gdy główne źródło energii zawiedzie), baterie i generatory awaryjne.
-</InstructorNotes>
+**PLC bezpieczeństwa:**
+- Dedykowany safety PLC (np. Siemens S7-1500F) realizujący funkcje awaryjne i nadzorujące.
+
+**Hardware safety:**
+- Wyłączniki bezpieczeństwa, przekaźniki bezpieczeństwa, twarde obwody E-STOP.
+
+**Komunikacja:**
+- Przemysłowy Ethernet (np. Profinet) + Modbus RTU / inne łącza szeregowe + GSM/LTE jako łącze zapasowe do systemu SCADA.
+</SupportingDetails>
+
+<SupportingDetails title="📊 Redundancja sensoryczna">
+**Anemometry:**
+- Min. 3 niezależne czujniki wiatru (np. dwa czaszowe + jeden ultradźwiękowy).
+
+**Pitch sensors:**
+- 3 czujniki położenia dla każdej łopatki (redundancja 2oo3).
+
+**Temperature:**
+- Wielopunktowe pomiary temperatury w kluczowych lokalizacjach (generator, przekładnia, łożyska, szafa sterownicza).
+
+**Vibration:**
+- Akcelerometry w różnych osiach i lokalizacjach (łożyska główne, przekładnia, góra wieży).
+</SupportingDetails>
 
 <SupportingDetails title="⚙️ Zasady projektowania redundantnych systemów">
 **Niezależność (Independence):**
@@ -420,60 +426,64 @@ W systemach bezpieczeństwa turbin wiatrowych ta topologia łączy wiele czujnik
 </InstructorNotes>
 </div>
 
-<KeyConcept title="Reliability Engineering w turbinach wiatrowych">
-**Availability** = **Reliability** × **Maintainability** × **Redundancy Factor**
+<SupportingDetails title="📊 Availability – formalnie">
+**W klasycznym reliability engineering** (model wykładniczy, pojedynczy element z naprawami):
 
-Gdzie:
-- **Reliability** (R): Prawdopodobieństwo bezawaryjnej pracy
-- **Maintainability** (M): Szybkość i łatwość naprawy
-- **Redundancy Factor** (RF): Współczynnik zwiększenia dostępności przez redundancję
-
-**Przykład obliczenia**:
-- System główny: R=0.95, M=0.90 → Availability = 0.86
-- + Redundancja RF=0.98 → Final Availability = 0.94
-</KeyConcept>
-
-<InstructorNotes>
-
-To jest **matematyka niezawodności**. Availability to iloczyn Reliability, Maintainability i Redundancy Factor. **Redundancja zwiększa dostępność** – z 0.86 do 0.94 w przykładzie. To nie jest teoria, ale **praktyczne narzędzie** do projektowania systemów, które pozwala policzyć, czy dodatkowy poziom zabezpieczeń ma sens ekonomiczny.
-
-Warto, żeby student potrafił nie tylko obliczyć wskaźnik, ale też **zinterpretować wynik**: czy 0.94 to dużo, czy mało w kontekście farmy wiatrowej? Jak zmieniłyby się te wartości, gdyby skrócić czas napraw (lepsze utrzymanie ruchu) albo dodać jeszcze jeden poziom redundancji? Takie pytania pojawiają się przy realnych decyzjach inwestycyjnych.
-</InstructorNotes>
-
-<Example title="Case study - Analiza redundancji w rzeczywistej turbinie">
-**Turbina**: 3MW, farma wiatrowa w północnej Polsce
-
-**System hamulcowy - analiza redundancji**:
 ```
-Poziom 1: Pitch system (Primary)
-  - Availability: 99.2%
-  - MTBF: 8,760 godzin
-  - MTTR: 6 godzin
-
-Poziom 2: Mechanical brakes (Secondary)  
-  - Availability: 99.8%
-  - MTBF: 17,520 godzin
-  - MTTR: 12 godzin
-
-Poziom 3: Emergency brake (Backup)
-  - Availability: 99.9%
-  - MTBF: 35,040 godzin
-  - MTTR: 24 godziny
-
-Total System Availability: 99.99% (4.38 min przestoju/rok)
+A = MTBF / (MTBF + MTTR)
 ```
+
+gdzie:
+- **MTBF** – średni czas między awariami (Mean Time Between Failures)
+- **MTTR** – średni czas naprawy (Mean Time To Repair)
+
+W praktyce farm wiatrowych często definiuje się availability czasową lub energetyczną (ile energii mogła wyprodukować vs ile faktycznie wyprodukowała przy uwzględnieniu przestojów technicznych).
+
+**Przykład liczbowy:**
+- MTBF = 1000 h, MTTR = 10 h
+```
+A = 1000 / (1000 + 10) ≈ 0,99
+```
+→ turbina jest dostępna ~99% czasu.
+</SupportingDetails>
+
+<Example title="Case study – Analiza redundancji w rzeczywistej turbinie">
+**Turbina**: 3 MW, farma wiatrowa w północnej Polsce
+
+**System hamulcowy – analiza redundancji**:
+
+**Poziom 1: Pitch system (primary – aerodynamiczny)**
+- MTBF: 8 760 godzin (~1 rok)
+- MTTR: 72 godziny
+- Availability: ≈ 99,2%
+
+**Poziom 2: Mechanical brakes (secondary – hamulce tarczowe)**
+- MTBF: 17 520 godzin (~2 lata)
+- MTTR: 36 godzin
+- Availability: ≈ 99,8%
+
+**Poziom 3: Emergency brake / mechanical lock (backup)**
+- MTBF: 35 040 godzin (~4 lata)
+- MTTR: 36 godzin
+- Availability: ≈ 99,9%
+
+**Total System Availability** (uproszczone założenie):
+- ≈ 99,99%
+- odpowiada to ok. 52,6 min przestoju/rok
+
+*Uwaga: przy takich trzech poziomach działających w logice „co najmniej jeden musi być sprawny" efektywna dostępność funkcji bezpiecznego zatrzymania jest praktycznie 100% (>> 99,99%) – warto zaznaczyć, że 99,99% traktujemy tu jako wartość uproszczoną dydaktycznie, a nie wynik dokładnego modelu.*
 
 **Koszty vs. korzyści**:
 - Koszt systemów redundantnych: +15% ceny turbiny
-- Redukcja przestojów: -80% czasu offline
-- ROI: 3.2 lata
+- Redukcja przestojów: ~80% mniej czasu offline
+- Szacowany ROI: ~3,2 roku
 </Example>
 
 <InstructorNotes>
 
-To jest **realny case study** z farmy w Polsce. **99.99% dostępności** oznacza tylko **4.38 min przestoju rocznie** – to bardzo dobry wynik jak na system hamulcowy turbiny 3MW. **ROI 3.2 lata** pokazuje, że redundancja się **zwraca** – koszt +15% ceny turbiny, ale redukcja przestojów -80%.
+To jest **realny case study** z farmy w Polsce. **99,99% dostępności** oznacza ok. **52,6 min przestoju rocznie** – to bardzo dobry wynik jak na system hamulcowy turbiny 3MW. Warto podkreślić, że przy trzech poziomach redundancji działających w logice „co najmniej jeden musi być sprawny", efektywna dostępność jest praktycznie 100% (>> 99,99%). **Szacowany ROI ~3,2 roku** pokazuje, że redundancja się **zwraca** – koszt +15% ceny turbiny, ale redukcja przestojów ~80%.
 
-Ten przykład łączy **dane techniczne** (Availability, MTBF, MTTR) z **danymi ekonomicznymi** (koszty przestojów, czas zwrotu inwestycji). Dzięki temu widać, że inżynier bezpieczeństwa musi myśleć nie tylko o normach i ryzyku, ale też o opłacalności rozwiązań, które proponuje.
+Ten przykład łączy **dane techniczne** (Availability, MTBF, MTTR) z **danymi ekonomicznymi** (koszty przestojów, czas zwrotu inwestycji). Dzięki temu widać, że inżynier bezpieczeństwa musi myśleć nie tylko o normach i ryzyku, ale też o opłacalności rozwiązań, które proponuje. Wartość 99,99% traktujemy tu jako uproszczenie dydaktyczne, a nie wynik dokładnego modelu matematycznego.
 </InstructorNotes>
 
 <SuccessBox title="✅ Wskaźniki skuteczności redundantnych systemów">
@@ -583,16 +593,8 @@ To jest **szczegółowy scenariusz** reakcji na awarię. Od automatycznej reakcj
 Warto zwrócić uwagę na **podział odpowiedzialności**: pierwsze sekundy należą do automatyki, kolejne minuty do operatorów i zespołu technicznego, a ostatni etap do osób odpowiedzialnych za bezpieczeństwo i zarządzanie ryzykiem. Ten opis można traktować jako wzorzec do tworzenia własnych procedur awaryjnych dla innych typów awarii.
 </InstructorNotes>
 
-{/* TODO: Dodać obraz ./img/03-timeline-reakcji-awaria-hamulcow.png */}
-<div style={{width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#f5f5f5', borderRadius: '8px', textAlign: 'center'}}>
-  <p style={{color: '#666', fontStyle: 'italic'}}>Miejsce na rysunek: Oś czasu reakcji na awarię układu hamulcowego</p>
-</div>
 
-**Rysunek 5. Oś czasu reakcji na awarię układu hamulcowego w turbinie – od detekcji przez Safety PLC do działań zespołu serwisowego i raportowania.**
 
-**Rysunek 5, Oś czasu reakcji na awarię układu hamulcowego**
-
-Oś czasu pokazuje sekwencję reakcji na awarię układu hamulcowego od momentu detekcji przez Safety PLC do działań zespołu serwisowego i raportowania. W pierwszej fazie (T+0 do T+30s) systemy automatycznie reagują: wykrycie awarii, przełączenie na hamulec awaryjny, aktywacja komunikacji backup i blokada systemów. W drugiej fazie (T+30s do T+5min) operatorzy w centrum kontroli weryfikują sytuację i wysyłają ekipę naprawczą. W trzeciej fazie (T+5min do T+30min) zespół techniczny ocenia sytuację, przeprowadza diagnostykę i planuje naprawy. Cały proces kończy się dokumentacją: raportem bezpieczeństwa, analizą techniczną i planem działań zapobiegawczych.
 
 <WarningBox title="⚠️ Kluczowe zasady zarządzania kryzysem">
 **Personel musi pamiętać**:
@@ -628,7 +630,7 @@ Te zasady brzmią prosto, ale w praktyce to właśnie tutaj najczęściej pojawi
 
 To pokazuje **wymagania** dla personelu. **GWO BST** to minimum – Basic Safety Training, które daje podstawowe umiejętności z zakresu bezpieczeństwa. **Częstotliwość szkoleń** jest kluczowa – procedury podstawowe co 6 miesięcy, symulacje co 3 miesiące, certyfikaty corocznie. **Dlaczego symulacje awaryjne są ważniejsze niż tylko teoretyczne szkolenia?** Bo w sytuacji stresowej reagujemy tym, co mamy przećwiczone, a nie tym, co kiedyś przeczytaliśmy w instrukcji.
 
-**Najlepsze procedury niewiele dają, jeśli nikt ich nie ćwiczy**. Na Rysunku 5 widzimy oś czasu reakcji – gdzie najłatwiej o opóźnienia: czy w automatycznej reakcji systemu, czy w decyzjach ludzi? **Który etap tej sekwencji można ćwiczyć w symulatorze, a który wymaga realnych ćwiczeń terenowych?** Ważna jest rola **szkoleń GWO** i prostych, czytelnych „ściągawek" z procedurami w gondoli i na wieży, które pomagają działać szybko i zgodnie z ustalonym wzorcem.
+**Najlepsze procedury niewiele dają, jeśli nikt ich nie ćwiczy**.
 </InstructorNotes>
 
 </Slide>
@@ -652,7 +654,7 @@ Warto spojrzeć wstecz na przykłady z wcześniejszych slajdów i przypisać je 
 </InstructorNotes>
 
 <KeyConcept title="Filozofia bezpieczeństwa w turbinach wiatrowych">
-**"Safety systems are not an afterthought - they are the foundation"** - systemy bezpieczeństwa nie są dodatkiem do turbiny, ale jej fundamentem. Każdy element projektowania, budowy i eksploatacji musi uwzględniać aspekty bezpieczeństwa od samego początku.
+**Systemy bezpieczeństwa nie są dodatkiem do turbiny, ale jej fundamentem.** Każdy element projektowania, budowy i eksploatacji musi uwzględniać aspekty bezpieczeństwa od samego początku.
 </KeyConcept>
 
 <InstructorNotes>
