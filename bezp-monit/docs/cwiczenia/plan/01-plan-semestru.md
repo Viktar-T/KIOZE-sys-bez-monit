@@ -35,18 +35,18 @@ Po zakończeniu całego cyklu ćwiczeń laboratoryjnych student:
 
 | Nr | Tytuł zajęć | Urządzenie | Główne cele dydaktyczne | Produkty końcowe | Punkty oceny |
 |---|---|---|---|---|---|
-| **1** | [**Monitoring instalacji PV (Stacja ładowania hulajnóg)**](#zajęcia-1-monitoring-instalacji-pv-10-pkt) | PV Stacja | • Analiza krzywej mocy DC/AC<br />• Obliczanie sprawności systemu<br />• Identyfikacja przerwy w pracy | • Wykres P(t)<br />• Obliczenia sprawności<br />• Raport anomalii | 10 pkt |
-| **2** | [**Turbina wiatrowa VAWT z magazynem energii**](#zajęcia-2-turbina-vawt-z-magazynem-10-pkt) | VAWT + BESS | • Analiza krzywej mocy turbiny<br />• Obliczanie współczynnika Cₚ<br />• Monitoring magazynu energii | • Wykres P(v)<br />• Obliczenia Cₚ<br />• Analiza SOC | 10 pkt |
-| **3** | [**Monitoring biogazowni**](#zajęcia-3-monitoring-biogazowni-12-pkt) | Biogazownia | • Analiza składu gazów<br />• Wykrywanie toksyczności H₂S<br />• Kontrola temperatury fermentacji | • Tabela składu gazów<br />• Wykres alarmów H₂S<br />• Protokół BHP | 12 pkt |
-| **4** | [**Monitoring pompy ciepła**](#zajęcia-4-monitoring-pompy-ciepła-12-pkt) | Pompa ciepła | • Obliczanie COP<br />• Identyfikacja nadmiernego odszraniania<br />• Analiza krzywej grzania | • Wykres COP vs T<br />• Wykres różnicy ciśnień<br />• Identyfikacja optymalnego zakresu | 12 pkt |
-| **5** | [**Monitoring magazynu energii BESS**](#zajęcia-5-monitoring-magazynu-energii-bess-12-pkt) | BESS | • Analiza cykli ładowania/rozładowania<br />• Monitoring SOH<br />• Identyfikacja nierównowagi cel | • Wykres SOC(t)<br />• Analiza degradacji<br />• Raport bezpieczeństwa | 12 pkt |
+| **1** | [**Monitoring instalacji PV (Stacja ładowania hulajnóg)**](#zadanie-1-monitoring-instalacji-pv-10-pkt) | PV Stacja | • Analiza krzywej mocy DC/AC<br />• Obliczanie sprawności systemu<br />• Identyfikacja przerwy w pracy | • Wykres P(t)<br />• Obliczenia sprawności<br />• Raport anomalii | 10 pkt |
+| **2** | [**Turbina wiatrowa VAWT z magazynem energii**](#zadanie-2-turbina-vawt-z-magazynem-10-pkt) | VAWT + BESS | • Analiza krzywej mocy turbiny<br />• Obliczanie współczynnika Cₚ<br />• Monitoring magazynu energii | • Wykres P(v)<br />• Obliczenia Cₚ<br />• Analiza SOC | 10 pkt |
+| **3** | [**Monitoring biogazowni**](#zadanie-3-monitoring-biogazowni-12-pkt) | Biogazownia | • Analiza składu gazów<br />• Wykrywanie toksyczności H₂S<br />• Kontrola temperatury fermentacji | • Tabela składu gazów<br />• Wykres alarmów H₂S<br />• Protokół BHP | 12 pkt |
+| **4** | [**Monitoring pompy ciepła**](#zadanie-4-monitoring-pompy-ciepła-12-pkt) | Pompa ciepła | • Obliczanie COP<br />• Identyfikacja nadmiernego odszraniania<br />• Analiza krzywej grzania | • Wykres COP vs T<br />• Wykres różnicy ciśnień<br />• Identyfikacja optymalnego zakresu | 12 pkt |
+| **5** | [**Monitoring magazynu energii BESS**](#zadanie-5-monitoring-magazynu-energii-bess-12-pkt) | BESS | • Analiza cykli ładowania/rozładowania<br />• Monitoring SOH<br />• Identyfikacja nierównowagi cel | • Wykres SOC(t)<br />• Analiza degradacji<br />• Raport bezpieczeństwa | 12 pkt |
 | **SUMA** | - | - | - | - | **56 pkt** |
 
 ---
 
 ## 📝 Szczegółowy opis zajęć
 
-### **Zajęcia 1: Monitoring instalacji PV** (10 pkt)
+### **Zadanie 1: Monitoring instalacji PV** (10 pkt)
 **Długość**: 90 min | **Urządzenie**: Stacja ładowania hulajnóg + panele PV
 
 #### Cele szczegółowe
@@ -72,7 +72,7 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 
 ---
 
-### **Zajęcia 2: Turbina wiatrowa VAWT z magazynem** (10 pkt)
+### **Zadanie 2: Turbina wiatrowa VAWT z magazynem** (10 pkt)
 **Długość**: 90 min | **Urządzenie**: Turbina wiatrowa VAWT 10 kW + magazyn LiFePO₄ 20 kWh
 
 #### Cele szczegółowe
@@ -97,7 +97,7 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 
 ---
 
-### **Zajęcia 3: Monitoring biogazowni** (12 pkt)
+### **Zadanie 3: Monitoring biogazowni** (12 pkt)
 **Długość**: 90 min | **Urządzenie**: Mała biogazownia
 
 #### Cele szczegółowe
@@ -129,7 +129,7 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 
 ---
 
-### **Zajęcia 4: Monitoring pompy ciepła** (12 pkt)
+### **Zadanie 4: Monitoring pompy ciepła** (12 pkt)
 **Długość**: 90 min | **Urządzenie**: Pompa ciepła (Heat Pump)
 
 #### Cele szczegółowe
@@ -160,7 +160,7 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 
 ---
 
-### **Zajęcia 5: Monitoring magazynu energii BESS** (12 pkt)
+### **Zadanie 5: Monitoring magazynu energii BESS** (12 pkt)
 **Długość**: 90 min | **Urządzenie**: Magazyn energii BESS
 
 #### Cele szczegółowe
