@@ -11,16 +11,16 @@ Poznanie struktury materiałów laboratoryjnych i urządzeń dostępnych na kate
 
 ## 📚 Struktura materiałów
 
-Dział **Ćwiczenia laboratoryjne** zawiera kompletny pakiet materiałów dydaktycznych do 10 spotkań laboratoryjnych (90 minut każde). Materiały są zaprojektowane dla studentów **bez zaplecza programistycznego** i skupiają się na praktycznym zastosowaniu koncepcji monitoringu i bezpieczeństwa w instalacjach OZE.
+Dział **Ćwiczenia laboratoryjne** zawiera kompletny pakiet materiałów dydaktycznych do 5 spotkań laboratoryjnych (90 minut każde). Materiały są zaprojektowane dla studentów **bez zaplecza programistycznego** i skupiają się na praktycznym zastosowaniu koncepcji monitoringu i bezpieczeństwa w instalacjach OZE.
 
 ### 🗂️ Organizacja materiałów
 
 #### **1. Plan zajęć** 📅
-- Harmonogram 10 spotkań laboratoryjnych
+- Harmonogram zajęć laboratoryjnych
 - Cele dydaktyczne, produkty końcowe i kryteria oceny
 
 #### **2. Karty ćwiczeń** 📋
-- **10 kart głównych** — po jednej na każde zajęcia (numeracja `zajecia-01` do `zajecia-10`)
+- **5 kart głównych** — po jednej na każde zajęcia (numeracja `zajecia-02` do `zajecia-06`)
 - **5 kart tematycznych** — szczegółowa dokumentacja poszczególnych urządzeń:
   - Stacja ładowania hulajnóg + panele PV
   - Instalacja hybrydowa: PV + turbina wiatrowa
@@ -73,30 +73,18 @@ Każda karta ćwiczeń zawiera link do **syntetycznego zbioru danych CSV** z rea
 Wszystkie materiały są **self-contained** — zawierają wszystko niezbędne do wykonania ćwiczenia bez konieczności korzystania z internetu lub dodatkowych źródeł.
 :::
 
-### 📊 Obowiązkowe elementy kursu
-
-#### **Test wstępny (Zajęcia 1)**
-5 pytań sprawdzających poziom wiedzy podstawowej
-
-#### **Mini-projekt końcowy (Zajęcia 10)**
-Projekt progu alarmowego i procedury reakcji dla dowolnego urządzenia
-
-#### **Test końcowy (Zajęcia 10)**
-Post-test wiedzy nabytej podczas zajęć
-
 ### ✅ Kryteria zaliczenia
 
 - **Minimum 60% punktów** z kart ćwiczeń
 - Uzupełnienie wszystkich kart (poziom P obowiązkowy, R i W jako bonus)
 - Aktywne uczestnictwo w zajęciach
-- Wykonanie mini-projektu końcowego
 
 ---
 
 ## 🚀 Jak zacząć?
 
 1. Przeczytaj **Plan zajęć** aby poznać harmonogram
-2. Rozpocznij od **Zajęć 1** — wprowadzenie i przegląd urządzeń
+2. Rozpocznij od **Zajęć 2** — Monitoring instalacji PV
 3. Przed każdymi zajęciami zapoznaj się z odpowiednią **Kartą ćwiczeń** i dokumentacją urządzenia
 4. Pobierz **Szablon BHP** i **Formularz raportu** przed rozpoczęciem pracy
 

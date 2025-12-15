@@ -22,20 +22,15 @@ bezp-monit/
 │       │
 │       ├── karty/                       # 📋 Karty ćwiczeń
 │       │   ├── _category_.json
-│       │   ├── zajecia-01-wprowadzenie.md         # ✅ Utworzone
-│       │   ├── zajecia-02-pv-stacja-hulajnog.md   # ⏳ Do utworzenia
+│       │   ├── zajecia-02-pv-stacja-hulajnog.md   # ✅ Utworzone
 │       │   ├── zajecia-03-pv-wiatr-hybryda.md
 │       │   ├── zajecia-04-biogazownia-mala.md
 │       │   ├── zajecia-05-pompa-ciepla.md
 │       │   ├── zajecia-06-bess.md
-│       │   ├── zajecia-07-analiza-trendow-i-progi.md
-│       │   ├── zajecia-08-bezpieczenstwo-i-incydenty.md
-│       │   ├── zajecia-09-kalibracja-i-walidacja-danych.md
-│       │   ├── zajecia-10-posttest-i-miniprojekt.md
 │       │   │
 │       │   └── urzadzenia/              # 🔧 Dokumentacja urządzeń
 │       │       ├── _category_.json
-│       │       ├── pv-stacja-hulajnog.md       # ⏳ Do utworzenia
+│       │       ├── pv-stacja-hulajnog.md       # ✅ Utworzone
 │       │       ├── pv-wiatr-hybryda.md
 │       │       ├── biogazownia-mala.md
 │       │       ├── pompa-ciepla.md
@@ -49,16 +44,12 @@ bezp-monit/
 │       │
 │       ├── klucze/                      # ✅ Klucze odpowiedzi
 │       │   ├── _category_.json
-│       │   ├── zaj01_klucz.md                  # ✅ Utworzone
 │       │   ├── zaj02_klucz.md                  # ✅ Utworzone
 │       │   ├── zaj03_klucz.md                  # ✅ Utworzone
 │       │   ├── zaj04_klucz.md                  # ✅ Utworzone
 │       │   ├── zaj05_klucz.md                  # ✅ Utworzone
 │       │   ├── zaj06_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj07_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj08_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj09_klucz.md                  # ✅ Utworzone
-│       │   └── zaj10_klucz.md                  # ✅ Utworzone
+│       │   └── (kolejne klucze w przygotowaniu)
 │       │
 │       └── rubryki/                     # 📊 Rubryki oceniania
 │           ├── _category_.json
@@ -70,25 +61,21 @@ bezp-monit/
         ├── README.md                    # Opis katalogu
         │
         ├── dane/                        # 💾 Zbiory danych CSV
-        │   ├── zaj01_wprowadzenie.csv
         │   ├── zaj02_pv-stacja-hulajnog.csv
         │   ├── zaj03_pv-wiatr-hybryda.csv
         │   ├── zaj04_biogazownia-mala.csv
         │   ├── zaj05_pompa-ciepla.csv
         │   ├── zaj06_bess.csv
-        │   ├── zaj07_analiza-trendow.csv
-        │   ├── zaj08_bezpieczenstwo-i-incydenty.csv
-        │   ├── zaj09_kalibracja-i-walidacja.csv
-        │   ├── zaj10_posttest-miniprojekt.csv
-        │   ├── urz_pv-stacja-hulajnog.csv
-        │   ├── urz_pv-wiatr-hybryda.csv
-        │   ├── urz_biogazownia-mala.csv
-        │   ├── urz_pompa-ciepla.csv
-        │   └── urz_bess.csv
+        │   │
+        │   └── urzadzenia/              # 🔧 Dokumentacja urządzeń
+        │       ├── urz_pv-stacja-hulajnog.csv
+        │       ├── urz_pv-wiatr-hybryda.csv
+        │       ├── urz_biogazownia-mala.csv
+        │       ├── urz_pompa-ciepla.csv
+        │       └── urz_bess.csv
         │
         └── img/                         # 🖼️ Obrazy i diagramy
             └── (placeholders do dodania)
-```
 
 ## 📋 Status implementacji
 
@@ -121,51 +108,31 @@ bezp-monit/
 - [x] `docs/cwiczenia/szablony/formularz-raportu-incydentu.md`
 - [x] `docs/cwiczenia/szablony/karta-oceny.md`
 
-### ✅ Sekcja D - Dane CSV (15 plików)
-- [x] `static/cwiczenia/dane/zaj01_wprowadzenie.csv`
+### ✅ Sekcja D - Dane CSV (5 plików)
 - [x] `static/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv`
 - [x] `static/cwiczenia/dane/zaj03_pv-wiatr-hybryda.csv`
 - [x] `static/cwiczenia/dane/zaj04_biogazownia-mala.csv`
 - [x] `static/cwiczenia/dane/zaj05_pompa-ciepla.csv`
 - [x] `static/cwiczenia/dane/zaj06_bess.csv`
-- [x] `static/cwiczenia/dane/zaj07_analiza-trendow.csv`
-- [x] `static/cwiczenia/dane/zaj08_bezpieczenstwo-i-incydenty.csv`
-- [x] `static/cwiczenia/dane/zaj09_kalibracja-i-walidacja.csv`
-- [x] `static/cwiczenia/dane/zaj10_posttest-miniprojekt.csv`
-- [x] `static/cwiczenia/dane/urz_pv-stacja-hulajnog.csv`
-- [x] `static/cwiczenia/dane/urz_pv-wiatr-hybryda.csv`
-- [x] `static/cwiczenia/dane/urz_biogazownia-mala.csv`
-- [x] `static/cwiczenia/dane/urz_pompa-ciepla.csv`
-- [x] `static/cwiczenia/dane/urz_bess.csv`
 
-### ✅ Sekcja E - Klucze odpowiedzi (10 kluczy)
-- [x] `docs/cwiczenia/klucze/zaj01_klucz.md`
+### ✅ Sekcja E - Klucze odpowiedzi (5 kluczy)
 - [x] `docs/cwiczenia/klucze/zaj02_klucz.md`
 - [x] `docs/cwiczenia/klucze/zaj03_klucz.md`
 - [x] `docs/cwiczenia/klucze/zaj04_klucz.md`
 - [x] `docs/cwiczenia/klucze/zaj05_klucz.md`
 - [x] `docs/cwiczenia/klucze/zaj06_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj07_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj08_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj09_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj10_klucz.md`
 
 ### ⏳ Do utworzenia (treści merytoryczne)
 
-#### Sekcja B - Karty ćwiczeń (10 kart)
-- [x] `docs/cwiczenia/karty/zajecia-01-wprowadzenie.md`
-- [ ] `docs/cwiczenia/karty/zajecia-02-pv-stacja-hulajnog.md`
+#### Sekcja B - Karty ćwiczeń (5 kart)
+- [x] `docs/cwiczenia/karty/zajecia-02-pv-stacja-hulajnog.md`
 - [ ] `docs/cwiczenia/karty/zajecia-03-pv-wiatr-hybryda.md`
 - [ ] `docs/cwiczenia/karty/zajecia-04-biogazownia-mala.md`
 - [ ] `docs/cwiczenia/karty/zajecia-05-pompa-ciepla.md`
 - [ ] `docs/cwiczenia/karty/zajecia-06-bess.md`
-- [ ] `docs/cwiczenia/karty/zajecia-07-analiza-trendow-i-progi.md`
-- [ ] `docs/cwiczenia/karty/zajecia-08-bezpieczenstwo-i-incydenty.md`
-- [ ] `docs/cwiczenia/karty/zajecia-09-kalibracja-i-walidacja-danych.md`
-- [ ] `docs/cwiczenia/karty/zajecia-10-posttest-i-miniprojekt.md`
 
 #### Sekcja B - Dokumentacja urządzeń (5 kart)
-- [ ] `docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog.md`
+- [x] `docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog.md`
 - [ ] `docs/cwiczenia/karty/urzadzenia/pv-wiatr-hybryda.md`
 - [ ] `docs/cwiczenia/karty/urzadzenia/biogazownia-mala.md`
 - [ ] `docs/cwiczenia/karty/urzadzenia/pompa-ciepla.md`
@@ -183,14 +150,12 @@ bezp-monit/
 - Prefiksy numeryczne dla kolejności: `01-`, `02-`, etc.
 
 ### Pliki CSV
-- Małe litery, myślniki
-- Prefiksy: `zajXX_` (karty ćwiczeń) lub `urz_` (dokumentacja urządzeń)
-- Separator: średnik `;`
-- Kodowanie: UTF-8
+ - Małe litery, myślniki
+ - Prefiksy: `zajXX_` (karty ćwiczeń) lub `urz_` (dokumentacja urządzeń)
 
 ### Kategorie Docusaurus
-- Każdy podkatalog zawiera `_category_.json` dla właściwej organizacji w nawigacji
-- Konfiguracja `collapsed: true/false` dla eksploracji
+ - Każdy podkatalog zawiera `_category_.json` dla właściwej organizacji w nawigacji
+ - Konfiguracja `collapsed: true/false` dla eksploracji
 
 ## 📝 Nagłówek YAML
 
