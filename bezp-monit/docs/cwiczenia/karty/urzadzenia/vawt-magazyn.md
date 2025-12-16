@@ -137,5 +137,4 @@ tags: ["urzadzenie","vawt","wiatr","magazyn-energii","bess"]
 Dane w katalogu `/cwiczenia/dane/` są **syntetyczne** (dydaktyczne). Zakresy mocy w plikach CSV mogą być dobrane pod ćwiczenie i nie muszą odpowiadać mocy znamionowej konkretnego modelu.
 
 ## Dane
-- [Zbiór danych (urządzenie)](/cwiczenia/dane/urz_vawt-magazyn.csv)
-
+- [Opis laboratoryjny (zewnętrzny)](https://docs-plat-edu-bad.vercel.app/docs/laboratories-and-equipment/wind/2.1-wind-big-vertical-storage)

@@ -11,16 +11,11 @@ Wszystkie zbiory danych syntetycznych są dostępne w katalogu `/cwiczenia/dane/
 
 | Karta ćwiczeń | Plik CSV | Zakresy danych | Liczba wierszy | Anomalie |
 |---|---|---|---|---|
-| **Zajęcia 2: PV (Stacja hulajnóg)** | [`zaj02_pv-stacja-hulajnog.csv`](/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv) | PV: 0–920 W/m², 250–450V, 0–6A, `moc_DC` 0–2,6kW, `moc_AC` 0–2,2kW, `temp_modulu` 15–65°C | 117 (3 dni) | OVER_TEMP, ZACIENIENIE, OGRANICZENIE_AC, AWARIA_INWERTERA, AWARIA_CZUJNIKA_TEMP |
-| **Zajęcia 3: VAWT + Magazyn** | [`zaj03_vawt-magazyn.csv`](/cwiczenia/dane/zaj03_vawt-magazyn.csv) | Wiatr: 0-25 m/s, moc: 0-10 kW, SOC: 10-95%, temp: 10-45°C | 120 (3 dni) | NADPREDKOSC, NISKI_SOC, PRZEGRZANIE_BATERII, PRZEGRZANIE_GENERATORA, NIEROWNOSC_CEL |
-| **Zajęcia 4: Biogazownia** | [`zaj04_biogazownia-mala.csv`](/cwiczenia/dane/zaj04_biogazownia-mala.csv) | CH₄: 50-65%, CO₂: 35-45%, H₂S: 0-250 ppm, temp: 35-40°C | 60 | Wysokie H₂S, spadek temp. |
-| **Zajęcia 5: Pompa ciepła** | [`zaj05_pompa-ciepla.csv`](/cwiczenia/dane/zaj05_pompa-ciepla.csv) | T: 20-55°C, COP: 2.5-4.5, moc: 2-8kW | 60 | Niskie/niskie ciśnienie |
-| **Zajęcia 6: BESS** | [`zaj06_bess.csv`](/cwiczenia/dane/zaj06_bess.csv) | SOC: 20-95%, SOH: 85-100%, temp: 15-35°C | 80 | Nierównowaga cel, nadtemp. |
-| **📱 Urządzenie: PV Stacja** | [`urz_pv-stacja-hulajnog.csv`](/cwiczenia/dane/urz_pv-stacja-hulajnog.csv) | Szeroki zakres czasowy | 120 | Różne anomalie |
-| **💨 Urządzenie: VAWT+Magazyn** | [`urz_vawt-magazyn.csv`](/cwiczenia/dane/urz_vawt-magazyn.csv) | Różne warunki wiatrowe | 120 | Nadprędkość, niski SOC |
-| **🦠 Urządzenie: Biogazownia** | [`urz_biogazownia-mala.csv`](/cwiczenia/dane/urz_biogazownia-mala.csv) | Cykle fermentacyjne | 120 | Skoki gazów |
-| **🔥 Urządzenie: Pompa** | [`urz_pompa-ciepla.csv`](/cwiczenia/dane/urz_pompa-ciepla.csv) | Różne tryby pracy | 120 | Spadki COP |
-| **🔋 Urządzenie: BESS** | [`urz_bess.csv`](/cwiczenia/dane/urz_bess.csv) | Cykle ładowania/rozładowania | 120 | Degradacja SOH |
+| **Zadanie 1: PV (Stacja hulajnóg)** | [`zad01_pv-stacja-hulajnog.csv`](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv) | PV: 0–920 W/m², 250–450V, 0–6A, `moc_DC` 0–2,6kW, `moc_AC` 0–2,2kW, `temp_modulu` 15–65°C | 117 (3 dni) | OVER_TEMP, ZACIENIENIE, OGRANICZENIE_AC, AWARIA_INWERTERA, AWARIA_CZUJNIKA_TEMP |
+| **Zadanie 2: VAWT + Magazyn** | [`zad02_vawt-magazyn.csv`](/cwiczenia/dane/zad02_vawt-magazyn.csv) | Wiatr: 0-25 m/s, moc: 0-10 kW, SOC: 10-95%, temp: 10-45°C | 120 (3 dni) | NADPREDKOSC, NISKI_SOC, PRZEGRZANIE_BATERII, PRZEGRZANIE_GENERATORA, NIEROWNOSC_CEL |
+| **Zadanie 3: Biogazownia** | [`zad03_biogazownia-mala.csv`](/cwiczenia/dane/zad03_biogazownia-mala.csv) | CH₄: 52–62%, CO₂: 36–41%, H₂S: 22–145 ppm, temp: 32.6–36.2°C | 62 (3 dni) | `H2S_WYSOKIE`, spadek temp./pH, status VENT w Dniu 3 |
+| **Zadanie 4: Pompa ciepła** | [`zad04_pompa-ciepla.csv`](/cwiczenia/dane/zad04_pompa-ciepla.csv) | T_zewn: -12–22°C, COP: 0.9–4.2, T_zasil 29–52°C, ciśnienia 20.0–25.5/2.8–4.4 bar | 48 (2 dni) | ODSRZANIANIE, COP_NISKI (LIMIT/STOP przy mrozie) |
+| **Zadanie 5: BESS** | [`zad05_bess.csv`](/cwiczenia/dane/zad05_bess.csv) | SOC: 10–95%, SOH: 95–98%, temp: 18–52°C, U_pakietu: 339.8–401.3 V | 48 (2 dni) | NISKI_SOC, NADTEMP_NIEROWNOSC (deltaU do 0.30 V) |
 
 ## 📋 Format danych CSV
 
@@ -50,7 +45,7 @@ Każdy plik zawiera **1-2 wiersze z `alarm=TAK`** oraz kilka wierszy z wartości
 
 Dane są fizycznie spójne:
 - **Moc elektryczna**: `moc ≈ napiecie × prad × sprawnosc`
-- **COP pompy**: zakres 2.0-4.5 (realistyczne dla pomp ciepła)
+- **COP pompy**: zakres 0.9-4.2 (realistyczne dla pomp ciepła)
 - **SOC BESS**: zakres 10-95% (progi bezpieczeństwa)
 - **Temperatury**: odpowiednie dla każdego typu instalacji
 - **Składy gazów**: CH₄ + CO₂ + inne ≈ 100%

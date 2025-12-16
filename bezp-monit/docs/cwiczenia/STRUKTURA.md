@@ -22,11 +22,11 @@ bezp-monit/
 │       │
 │       ├── karty/                       # 📋 Karty ćwiczeń
 │       │   ├── _category_.json
-│       │   ├── zajecia-02-pv-stacja-hulajnog.md   # ✅ Utworzone
-│       │   ├── zajecia-03-pv-wiatr-hybryda.md
-│       │   ├── zajecia-04-biogazownia-mala.md
-│       │   ├── zajecia-05-pompa-ciepla.md
-│       │   ├── zajecia-06-bess.md
+│       │   ├── zadanie-01-pv-stacja-hulajnog.md   # ✅ Utworzone
+│       │   ├── zadanie-02-vawt-magazyn.md
+│       │   ├── zadanie-03-biogazownia-mala.md
+│       │   ├── zadanie-04-pompa-ciepla.md
+│       │   ├── zadanie-05-bess.md
 │       │   │
 │       │   └── urzadzenia/              # 🔧 Dokumentacja urządzeń
 │       │       ├── _category_.json
@@ -44,11 +44,11 @@ bezp-monit/
 │       │
 │       ├── klucze/                      # ✅ Klucze odpowiedzi
 │       │   ├── _category_.json
-│       │   ├── zaj02_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj03_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj04_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj05_klucz.md                  # ✅ Utworzone
-│       │   ├── zaj06_klucz.md                  # ✅ Utworzone
+│       │   ├── zad01_klucz.md                  # ✅ Utworzone
+│       │   ├── zad02_klucz.md                  # ✅ Utworzone
+│       │   ├── zad03_klucz.md                  # ✅ Utworzone
+│       │   ├── zad04_klucz.md                  # ✅ Utworzone
+│       │   ├── zad05_klucz.md                  # ✅ Utworzone
 │       │   └── (kolejne klucze w przygotowaniu)
 │       │
 │       └── rubryki/                     # 📊 Rubryki oceniania
@@ -61,19 +61,12 @@ bezp-monit/
         ├── README.md                    # Opis katalogu
         │
         ├── dane/                        # 💾 Zbiory danych CSV
-        │   ├── zaj02_pv-stacja-hulajnog.csv
-        │   ├── zaj03_pv-wiatr-hybryda.csv
-        │   ├── zaj04_biogazownia-mala.csv
-        │   ├── zaj05_pompa-ciepla.csv
-        │   ├── zaj06_bess.csv
-        │   │
-        │   └── urzadzenia/              # 🔧 Dokumentacja urządzeń
-        │       ├── urz_pv-stacja-hulajnog.csv
-        │       ├── urz_pv-wiatr-hybryda.csv
-        │       ├── urz_biogazownia-mala.csv
-        │       ├── urz_pompa-ciepla.csv
-        │       └── urz_bess.csv
-        │
+│       │   ├── zad01_pv-stacja-hulajnog.csv
+│       │   ├── zad02_vawt-magazyn.csv
+│       │   ├── zad03_biogazownia-mala.csv
+│       │   ├── zad04_pompa-ciepla.csv
+│       │   ├── zad05_bess.csv
+│       │   │
         └── img/                         # 🖼️ Obrazy i diagramy
             └── (placeholders do dodania)
 
@@ -109,34 +102,34 @@ bezp-monit/
 - [x] `docs/cwiczenia/szablony/karta-oceny.md`
 
 ### ✅ Sekcja D - Dane CSV (5 plików)
-- [x] `static/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv`
-- [x] `static/cwiczenia/dane/zaj03_pv-wiatr-hybryda.csv`
-- [x] `static/cwiczenia/dane/zaj04_biogazownia-mala.csv`
-- [x] `static/cwiczenia/dane/zaj05_pompa-ciepla.csv`
-- [x] `static/cwiczenia/dane/zaj06_bess.csv`
+- [x] `static/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv`
+- [x] `static/cwiczenia/dane/zad02_vawt-magazyn.csv`
+- [x] `static/cwiczenia/dane/zad03_biogazownia-mala.csv`
+- [x] `static/cwiczenia/dane/zad04_pompa-ciepla.csv`
+- [x] `static/cwiczenia/dane/zad05_bess.csv`
 
 ### ✅ Sekcja E - Klucze odpowiedzi (5 kluczy)
-- [x] `docs/cwiczenia/klucze/zaj02_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj03_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj04_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj05_klucz.md`
-- [x] `docs/cwiczenia/klucze/zaj06_klucz.md`
+- [x] `docs/cwiczenia/klucze/zad01_klucz.md`
+- [x] `docs/cwiczenia/klucze/zad02_klucz.md`
+- [x] `docs/cwiczenia/klucze/zad03_klucz.md`
+- [x] `docs/cwiczenia/klucze/zad04_klucz.md`
+- [x] `docs/cwiczenia/klucze/zad05_klucz.md`
 
 ### ⏳ Do utworzenia (treści merytoryczne)
 
 #### Sekcja B - Karty ćwiczeń (5 kart)
-- [x] `docs/cwiczenia/karty/zajecia-02-pv-stacja-hulajnog.md`
-- [ ] `docs/cwiczenia/karty/zajecia-03-pv-wiatr-hybryda.md`
-- [ ] `docs/cwiczenia/karty/zajecia-04-biogazownia-mala.md`
-- [ ] `docs/cwiczenia/karty/zajecia-05-pompa-ciepla.md`
-- [ ] `docs/cwiczenia/karty/zajecia-06-bess.md`
+- [x] `docs/cwiczenia/karty/zadanie-01-pv-stacja-hulajnog.md`
+- [x] `docs/cwiczenia/karty/zadanie-02-vawt-magazyn.md`
+- [x] `docs/cwiczenia/karty/zadanie-03-biogazownia-mala.md`
+- [x] `docs/cwiczenia/karty/zadanie-04-pompa-ciepla.md`
+- [x] `docs/cwiczenia/karty/zadanie-05-bess.md`
 
 #### Sekcja B - Dokumentacja urządzeń (5 kart)
 - [x] `docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog.md`
-- [ ] `docs/cwiczenia/karty/urzadzenia/pv-wiatr-hybryda.md`
-- [ ] `docs/cwiczenia/karty/urzadzenia/biogazownia-mala.md`
-- [ ] `docs/cwiczenia/karty/urzadzenia/pompa-ciepla.md`
-- [ ] `docs/cwiczenia/karty/urzadzenia/bess.md`
+- [x] `docs/cwiczenia/karty/urzadzenia/pv-wiatr-hybryda.md`
+- [x] `docs/cwiczenia/karty/urzadzenia/biogazownia-mala.md`
+- [x] `docs/cwiczenia/karty/urzadzenia/pompa-ciepla.md`
+- [x] `docs/cwiczenia/karty/urzadzenia/bess.md`
 
 ### ✅ Rubryki (2 rubryki)
 - [x] `docs/cwiczenia/rubryki/rubryka-oceny-standard.md`
@@ -151,7 +144,7 @@ bezp-monit/
 
 ### Pliki CSV
  - Małe litery, myślniki
- - Prefiksy: `zajXX_` (karty ćwiczeń) lub `urz_` (dokumentacja urządzeń)
+ - Prefiksy: `zadXX_` (dane do zadań)
 
 ### Kategorie Docusaurus
  - Każdy podkatalog zawiera `_category_.json` dla właściwej organizacji w nawigacji

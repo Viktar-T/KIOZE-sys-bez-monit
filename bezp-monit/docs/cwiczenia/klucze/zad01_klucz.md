@@ -1,10 +1,10 @@
 ---
-title: "Klucz odpowiedzi — Zajęcia 02"
+title: "Klucz odpowiedzi — Zadanie 1"
 description: "Wzorcowe odpowiedzi - Monitoring instalacji PV"
 section: "E-klucze"
 ---
 
-# Klucz odpowiedzi — Zajęcia 02: Monitoring instalacji PV
+# Klucz odpowiedzi — Zadanie 1: Monitoring instalacji PV
 
 ## Zadania P/R/W
 

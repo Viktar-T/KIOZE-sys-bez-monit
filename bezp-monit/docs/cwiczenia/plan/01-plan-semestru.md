@@ -8,35 +8,15 @@ duration_min: 90
 tags: ["plan-zajec", "harmonogram", "laboratoria"]
 ---
 
-# 📅 Plan semestru — ćwiczenia laboratoryjne
+# 📅 Plan semestru — ćwiczenia audytoryjne
 
-## Parametryzacja kursu
-
-- **Czas na zajęcia**: 90 min (`CZAS_ZAJEC = 90`)
-- **Wielkość grupy**: 3–4 osoby (`ROZMIAR_GRUPY = 3-4`)
-- **Poziom trudności**: domyślnie średni (`TRUDNOSC = Średnia`)
-- **Liczba spotkań**: 5 (łącznie 7,5 godzin)
-- **Liczba urządzeń**: 5 (PV stacja hulajnóg, VAWT+magazyn, Biogazownia, Pompa ciepła, BESS)
-
-## 🎯 Cele ogólne kursu
-
-Po zakończeniu całego cyklu ćwiczeń laboratoryjnych student:
-
-1. **Rozumie** różne typy czujników i metody akwizycji danych w instalacjach OZE
-2. **Potrafi** odczytać i zinterpretować dane pomiarowe z systemów monitorowania
-3. **Identyfikuje** zagrożenia bezpieczeństwa charakterystyczne dla każdego typu instalacji
-4. **Umie** zastosować podstawowe metody analizy trendów i wykrywania anomalii
-5. **Projektuje** progi alarmowe i procedury reakcji na incydenty
-6. **Weryfikuje** jakość danych pomiarowych i identyfikuje błędy systematyczne
-
----
 
 ## 📊 Plan zajęć — tabela zbiorcza
 
 | Nr | Tytuł zajęć | Urządzenie | Główne cele dydaktyczne | Produkty końcowe | Punkty oceny |
 |---|---|---|---|---|---|
 | **1** | [**Monitoring instalacji PV (Stacja ładowania hulajnóg)**](#zadanie-1-monitoring-instalacji-pv-10-pkt) | PV Stacja | • Analiza krzywej mocy DC/AC<br />• Obliczanie sprawności systemu<br />• Identyfikacja przerwy w pracy | • Wykres P(t)<br />• Obliczenia sprawności<br />• Raport anomalii | 10 pkt |
-| **2** | [**Turbina wiatrowa VAWT z magazynem energii**](#zadanie-2-turbina-vawt-z-magazynem-10-pkt) | VAWT + BESS | • Analiza krzywej mocy turbiny<br />• Obliczanie współczynnika Cₚ<br />• Monitoring magazynu energii | • Wykres P(v)<br />• Obliczenia Cₚ<br />• Analiza SOC | 10 pkt |
+| **2** | [**Turbina wiatrowa VAWT z magazynem energii**](#zadanie-2-turbina-wiatrowa-vawt-z-magazynem-10-pkt) | VAWT + BESS | • Analiza krzywej mocy turbiny<br />• Obliczanie współczynnika Cₚ<br />• Monitoring magazynu energii | • Wykres P(v)<br />• Obliczenia Cₚ<br />• Analiza SOC | 10 pkt |
 | **3** | [**Monitoring biogazowni**](#zadanie-3-monitoring-biogazowni-12-pkt) | Biogazownia | • Analiza składu gazów<br />• Wykrywanie toksyczności H₂S<br />• Kontrola temperatury fermentacji | • Tabela składu gazów<br />• Wykres alarmów H₂S<br />• Protokół BHP | 12 pkt |
 | **4** | [**Monitoring pompy ciepła**](#zadanie-4-monitoring-pompy-ciepła-12-pkt) | Pompa ciepła | • Obliczanie COP<br />• Identyfikacja nadmiernego odszraniania<br />• Analiza krzywej grzania | • Wykres COP vs T<br />• Wykres różnicy ciśnień<br />• Identyfikacja optymalnego zakresu | 12 pkt |
 | **5** | [**Monitoring magazynu energii BESS**](#zadanie-5-monitoring-magazynu-energii-bess-12-pkt) | BESS | • Analiza cykli ładowania/rozładowania<br />• Monitoring SOH<br />• Identyfikacja nierównowagi cel | • Wykres SOC(t)<br />• Analiza degradacji<br />• Raport bezpieczeństwa | 12 pkt |
@@ -59,16 +39,16 @@ Po zakończeniu całego cyklu ćwiczeń laboratoryjnych student:
 #### Produkty końcowe
 - Sprawozdanie (PDF): opis instalacji + wykresy + obliczenia + wnioski BHP
 - Arkusz (XLSX/ODS): dane + obliczenia sprawności + wykresy
-- Nazewnictwo plików: `zaj01_<nazwisko>_<imie>.pdf` oraz `zaj01_<nazwisko>_<imie>.xlsx`
+- Nazewnictwo plików: `zad01_<nazwisko>_<imie>.pdf` oraz `zad01_<nazwisko>_<imie>.xlsx`
 
 #### Kryteria oceny
 Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują się w karcie zajęć.
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zajecia-01-pv-stacja-hulajnog)
+- [Karta zajęć](/docs/cwiczenia/karty/zadanie-01-pv-stacja-hulajnog)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog)
-- [Dane](/cwiczenia/dane/zaj01_pv-stacja-hulajnog.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj01_klucz)
+- [Dane](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad01_klucz)
 
 ---
 
@@ -84,16 +64,17 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 #### Produkty końcowe
 - Sprawozdanie (PDF): opis instalacji + wykresy + obliczenia + wnioski BHP
 - Arkusz (XLSX/ODS): dane + obliczenia Cₚ + wykresy
-- Nazewnictwo plików: `zaj02_<nazwisko>_<imie>.pdf` oraz `zaj02_<nazwisko>_<imie>.xlsx`
+- Nazewnictwo plików: `zad02_<nazwisko>_<imie>.pdf` oraz `zad02_<nazwisko>_<imie>.xlsx`
 
 #### Kryteria oceny
 Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują się w karcie zajęć.
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zajecia-02-vawt-magazyn)
+- [Karta zajęć](/docs/cwiczenia/karty/zadanie-02-vawt-magazyn)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/vawt-magazyn)
-- [Dane](/cwiczenia/dane/zaj02_vawt-magazyn.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj02_klucz)
+- [Dane](/cwiczenia/dane/zad02_vawt-magazyn.csv)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad02_klucz)
+- [Opis laboratoryjny (zewnętrzny)](https://docs-plat-edu-bad.vercel.app/docs/laboratories-and-equipment/wind/2.1-wind-big-vertical-storage)
 
 ---
 
@@ -121,11 +102,11 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 | **SUMA** | **6** | **8** | **8** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zajecia-03-biogazownia-mala)
+- [Karta zajęć](/docs/cwiczenia/karty/zadanie-03-biogazownia-mala)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/biogazownia-mala)
-- [Dane](/cwiczenia/dane/zaj03_biogazownia-mala.csv)
+- [Dane](/cwiczenia/dane/zad03_biogazownia-mala.csv)
 - [Formularz raportu](/docs/cwiczenia/szablony/formularz-raportu-incydentu)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj03_klucz)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad03_klucz)
 
 ---
 
@@ -140,7 +121,7 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 #### Produkty końcowe
 - [x] Wykres COP(T_zewn) pokazujący zakres pracy
 - [x] Wykres różnicy ciśnień lub częstotliwości odszraniania
-- [x] Tabela wartości progowych (COP_min, T_max_odszerani)
+- [x] Tabela wartości progowych (COP_min, T_max_odszraniania)
 - [x] Raport z wnioskami (R) lub plan optymalizacji (W)
 
 #### Kryteria oceny
@@ -153,10 +134,10 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 | **SUMA** | **5** | **8** | **8** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zajecia-04-pompa-ciepla)
+- [Karta zajęć](/docs/cwiczenia/karty/zadanie-04-pompa-ciepla)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pompa-ciepla)
-- [Dane](/cwiczenia/dane/zaj04_pompa-ciepla.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj04_klucz)
+- [Dane](/cwiczenia/dane/zad04_pompa-ciepla.csv)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad04_klucz)
 
 ---
 
@@ -175,19 +156,18 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [x] Raport bezpieczeństwa (R) lub plan naprawy (W)
 
 #### Kryteria oceny
-| Kryterium | P | R | W |
-|---|---|---|---|
-| Wykres SOC(t) | 3 | 2 | 1 |
-| Analiza degradacji | 1 | 3 | 2 |
-| Identyfikacja anomalii | 1 | 2 | 3 |
-| Raport/plan | - | 1 | 2 |
-| **SUMA** | **5** | **8** | **8** |
+| Kryterium | Punkty |
+|---|---:|
+| Wykresy SOC/SOH/temp/deltaU | 4 |
+| Analiza cykli i degradacji | 4 |
+| Plan reakcji i progi | 4 |
+| **SUMA** | **12** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zajecia-05-bess)
+- [Karta zajęć](/docs/cwiczenia/karty/zadanie-05-bess)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/bess)
-- [Dane](/cwiczenia/dane/zaj05_bess.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj05_klucz)
+- [Dane](/cwiczenia/dane/zad05_bess.csv)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad05_klucz)
 
 ---
 

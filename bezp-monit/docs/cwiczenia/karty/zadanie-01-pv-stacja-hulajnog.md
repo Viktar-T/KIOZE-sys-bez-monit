@@ -1,5 +1,5 @@
 ---
-title: "Zajęcia 02 — Stacja ładowania hulajnóg + PV"
+title: "Zadanie 1 — Monitoring instalacji PV (Stacja ładowania hulajnóg)"
 course: "Systemy bezpieczeństwa i monitorowania instalacji OZE"
 version: "1.2"
 section: "B-karty"
@@ -8,15 +8,15 @@ level: "Średnia"
 tags: ["pv","stacja-hulajnog","monitoring","bezpieczenstwo"]
 links:
   data:
-    - "/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv"
+    - "/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv"
   key:
-    - "/docs/cwiczenia/klucze/zaj02_klucz"
+    - "/docs/cwiczenia/klucze/zad01_klucz"
 ---
 
-# Zajęcia 02 — Stacja ładowania hulajnóg + PV
+# Zadanie 1 — Monitoring instalacji PV (Stacja ładowania hulajnóg)
 
 ## Szybki start (5 min)
-1. Otwórz: [Dane CSV](/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv)
+1. Otwórz: [Dane CSV](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
 2. Otwórz plik CSV w arkuszu lub narzędziu analitycznym.
 3. Zrób wykresy: `moc_DC[kW](t)` i `moc_AC[kW](t)`
 4. Policz sprawność: η = P_AC / P_DC × 100% i zaznacz wiersze z `alarm=TAK`
@@ -36,9 +36,9 @@ links:
 - Stacja: status gniazd, licznik energii
 
 ## Materiały
-- [Dane CSV](/cwiczenia/dane/zaj02_pv-stacja-hulajnog.csv)
+- [Dane CSV](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj02_klucz)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad01_klucz)
 
 ## Słownik kolumn (data dictionary)
 | Kolumna | Znaczenie | Jednostka | Typowy zakres | Uwagi |
@@ -47,14 +47,14 @@ links:
 | `naslonecznienie[W/m2]` | natężenie promieniowania | W/m2 | 0–900 | wpływa na produkcję |
 | `napiecie_DC[V]` | napięcie po stronie DC | V | 250–450 | zależne od MPPT |
 | `prad_DC[A]` | prąd po stronie DC | A | 0–10 | rośnie z nasłonecznieniem |
-| `moc_DC[kW]` | moc DC (wejście inwertera) | kW | 0–4,0 | zwykle > `moc_AC` |
-| `moc_AC[kW]` | moc AC (wyjście inwertera) | kW | 0–3,5 | użyj do energii |
+| `moc_DC[kW]` | moc DC (wejście inwertera) | kW | 0–2,6 | zwykle > `moc_AC` |
+| `moc_AC[kW]` | moc AC (wyjście inwertera) | kW | 0–2,2 | użyj do energii |
 | `temp_modulu[C]` | temperatura modułu | °C | 15–65 | wysoka temp. obniża uzysk |
 | `alarm` | znacznik anomalii | TAK/NIE | - | w tym ćwiczeniu traktuj jako „wymaga komentarza” |
 | `przyczyna` | etykieta przyczyny/anomalii | - | OK / ... | przy `alarm=TAK` wskazuje typ zdarzenia |
 | `severity` | istotność zdarzenia | - | OK/INFO/WARN/ALARM | ułatwia priorytetyzację |
 | `status_inwertera` | stan pracy inwertera | - | ON/LIMITING/FAULT/STANDBY | powiąż ze spadkami mocy AC |
-| `energia_AC[kWh]` | energia w interwale | kWh | 0–1 | energia dla danego kroku czasu |
+| `energia_AC[kWh]` | energia w interwale | kWh | 0–0,55 | energia dla danego kroku czasu |
 
 ## Zagrożenia i środki
 | Ryzyko | P×S | Środki |
@@ -68,7 +68,7 @@ Analiza dobowej krzywej mocy PV i sprawności inwertera w danych wielodniowych. 
 ## Instrukcja krok po kroku
 1. Otwórz plik CSV w arkuszu.
 2. Utwórz wykresy P_DC(t) i P_AC(t).
-3. Policz η_inwertera = P_AC / P_DC.
+3. Policz η_inwertera = P_AC / P_DC (filtr: P_DC > 0,1 kW).
 4. Zaznacz punkty z `alarm=TAK` i opisz kontekst.
 5. Dla `alarm=TAK` odczytaj `przyczyna`, `severity` i `status_inwertera` oraz porównaj je z `moc_AC[kW]`.
 6. Porównaj `temp_modulu[C]` z mocą — wskaż wpływ przegrzania.
@@ -77,7 +77,7 @@ Analiza dobowej krzywej mocy PV i sprawności inwertera w danych wielodniowych. 
 ## Co oddać (format)
 - Sprawozdanie (PDF): opis instalacji + wykresy + obliczenia + wnioski BHP
 - Arkusz (XLSX/ODS): dane + obliczenia sprawności + wykresy
-- Nazewnictwo plików: `zaj02_<nazwisko>_<imie>.pdf` oraz `zaj02_<nazwisko>_<imie>.xlsx`
+- Nazewnictwo plików: `zad01_<nazwisko>_<imie>.pdf` oraz `zad01_<nazwisko>_<imie>.xlsx`
 
 ## Szablon sprawozdania (proponowany układ)
 1. **Cel ćwiczenia** (2–4 zdania)

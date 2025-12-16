@@ -19,7 +19,3 @@ tags: ["urzadzenie","biogaz","H2S"]
 ## Procedury BHP
 - Detektory gazów, wentylacja wymuszona, respirator
 - Zakaz źródeł zapłonu
-
-## Dane
-- [Zbiór danych (urzadzenie)](/cwiczenia/dane/urz_biogazownia-mala.csv)
-

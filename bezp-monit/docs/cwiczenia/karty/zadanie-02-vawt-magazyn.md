@@ -1,5 +1,5 @@
 ---
-title: "Zajęcia 03 — Turbina wiatrowa VAWT z magazynem energii"
+title: "Zadanie 2 — Turbina wiatrowa VAWT z magazynem energii"
 course: "Systemy bezpieczeństwa i monitorowania instalacji OZE"
 version: "1.0"
 section: "B-karty"
@@ -8,19 +8,22 @@ level: "Średnia"
 tags: ["vawt","wiatr","magazyn-energii","bess","monitoring","bezpieczenstwo"]
 links:
   data:
-    - "/cwiczenia/dane/zaj03_vawt-magazyn.csv"
+    - "/cwiczenia/dane/zad02_vawt-magazyn.csv"
   key:
-    - "/docs/cwiczenia/klucze/zaj03_klucz"
+    - "/docs/cwiczenia/klucze/zad02_klucz"
 ---
 
-# Zajęcia 03 — Turbina wiatrowa VAWT z magazynem energii
+# Zadanie 2 — Turbina wiatrowa VAWT z magazynem energii
 
 ## Szybki start (5 min)
-1. Otwórz: [Dane CSV](/cwiczenia/dane/zaj03_vawt-magazyn.csv)
-2. Otwórz plik CSV w arkuszu lub narzędziu analitycznym.
-3. Zrób wykresy: `moc_turbiny[kW](t)` i `predkosc_wiatru[m/s](t)`
-4. Policz współczynnik mocy: Cₚ = P / (0.5 × ρ × A × v³) i zaznacz wiersze z `alarm=TAK`
-5. Oddaj sprawozdanie + arkusz zgodnie z sekcją „Co oddać (format)"
+1. Otwórz: [Dane CSV](/cwiczenia/dane/zad02_vawt-magazyn.csv)
+2. Przygotuj 3 wykresy na wspólnej osi czasu (30-min interwał):  
+   - `moc_AC[kW](t)` + zaznaczone punkty `alarm=TAK`  
+   - `predkosc_wiatru[m/s](t)`  
+   - `SOC[%](t)` (oddzielny wykres)
+3. Zrób wykres zależności `moc_AC[kW]` vs `predkosc_wiatru[m/s]` (krzywa mocy).
+4. Policz Cₚ = P / (0.5 × ρ × A × v³) dla min. 5 punktów (filtr: v ≥ 3 m/s) i zaznacz wiersze z `alarm=TAK`.
+5. Oddaj sprawozdanie + arkusz zgodnie z sekcją „Co oddać (format)”.
 
 ## Cele
 - Zrozumieć parametry turbiny VAWT: prędkość wiatru, obroty, moc wyjściowa
@@ -37,21 +40,29 @@ links:
 - Falownik: moc AC [kW], status, alarmy
 
 ## Materiały
-- [Dane CSV](/cwiczenia/dane/zaj03_vawt-magazyn.csv)
+- [Dane CSV](/cwiczenia/dane/zad02_vawt-magazyn.csv)
 - [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/vawt-magazyn)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj03_klucz)
+- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad02_klucz)
+
+## Założenia do obliczeń
+- Interwał próbkowania: **co 30 min** (zgodnie z CSV).  
+- Do Cₚ używamy **`moc_AC[kW]`** (wyjście falownika).  
+- Konwersja: `P[W] = moc_AC[kW] × 1000`.  
+- Stałe: `ρ = 1,225 kg/m³`, `A = 18 m²`.  
+- Licz Cₚ tylko dla `predkosc_wiatru >= 3 m/s`, żeby uniknąć dzielenia przez ~0.  
+- Oczekiwany zakres dydaktyczny: `0,10–0,45` (wartości powyżej ~0,6 traktuj jako artefakt lub błąd).
 
 ## Słownik kolumn (data dictionary)
 | Kolumna | Znaczenie | Jednostka | Typowy zakres | Uwagi |
 |---|---|---|---|---|
-| `czas` | znacznik czasu pomiaru | - | kilka dni; 00:00–23:45 (co 15 min) | format `YYYY-MM-DD HH:MM` |
+| `czas` | znacznik czasu pomiaru | - | kilka dni; co 30 min | format `YYYY-MM-DD HH:MM` |
 | `predkosc_wiatru[m/s]` | prędkość wiatru | m/s | 0–25 | cut-in: 2.5, znamionowa: 11, cut-out: 25 |
 | `kierunek_wiatru[deg]` | kierunek wiatru | ° | 0–360 | 0=N, 90=E, 180=S, 270=W |
 | `obroty[rpm]` | prędkość obrotowa wirnika | rpm | 0–160 | zakres roboczy: 30–160 rpm |
 | `napiecie_DC[V]` | napięcie szyny DC | V | 300–450 | wyjście z generatora PMSG |
 | `prad_DC[A]` | prąd DC | A | 0–35 | zależny od mocy i napięcia |
 | `moc_turbiny[kW]` | moc wyjściowa turbiny | kW | 0–10 | moc znamionowa: 10 kW |
-| `moc_AC[kW]` | moc AC (wyjście falownika) | kW | 0–10 | do sieci lub odbiorników |
+| `moc_AC[kW]` | moc AC (wyjście falownika) | kW | 0–8 | używaj do Cₚ i krzywej mocy |
 | `SOC[%]` | stan naładowania baterii | % | 10–95 | progi bezpieczeństwa |
 | `SOH[%]` | stan zdrowia baterii | % | 85–100 | degradacja w czasie |
 | `temp_baterii[C]` | temperatura pakietu baterii | °C | 10–45 | optymalna: 20–35°C |
@@ -60,7 +71,7 @@ links:
 | `przyczyna` | etykieta przyczyny/anomalii | - | OK / ... | przy `alarm=TAK` wskazuje typ zdarzenia |
 | `severity` | istotność zdarzenia | - | OK/INFO/WARN/ALARM | priorytetyzacja |
 | `status_turbiny` | stan pracy turbiny | - | RUNNING/BRAKING/STOPPED/FAULT | powiąż ze spadkami mocy |
-| `energia_AC[kWh]` | energia w interwale | kWh | 0–2.5 | energia dla danego kroku czasu |
+| `energia_AC[kWh]` | energia w interwale | kWh | 0–4.0 | energia dla danego kroku czasu |
 
 ## Zagrożenia i środki
 | Ryzyko | P×S | Środki |
@@ -76,18 +87,19 @@ Analiza pracy turbiny VAWT w zmiennych warunkach wiatrowych. Zależność mocy o
 
 ## Instrukcja krok po kroku
 1. Otwórz plik CSV w arkuszu.
-2. Utwórz wykres `moc_turbiny[kW](t)` i `predkosc_wiatru[m/s](t)` (dwie osie Y).
-3. Oblicz współczynnik mocy Cₚ dla wybranych punktów: Cₚ = P / (0.5 × 1.225 × 18 × v³).
-4. Utwórz wykres `SOC[%](t)` — zidentyfikuj cykle ładowania/rozładowania.
-5. Zaznacz punkty z `alarm=TAK` i opisz kontekst.
-6. Dla `alarm=TAK` odczytaj `przyczyna`, `severity` i `status_turbiny`.
-7. Porównaj `temp_baterii[C]` i `temp_generatora[C]` z progami alarmowymi.
-8. Zapisz hipotezy przyczyn anomalii (nadprędkość, niski SOC, przegrzanie).
+2. Utwórz wykresy na jednej osi czasu: `moc_AC[kW](t)` + markery `alarm=TAK`, oraz `predkosc_wiatru[m/s](t)` (druga oś Y).
+3. Utwórz wykres zależności `moc_AC[kW]` vs `predkosc_wiatru[m/s]` (krzywa mocy).
+4. Oblicz Cₚ dla min. 5 punktów (v ≥ 3 m/s) według: `Cₚ = (moc_AC[kW]*1000) / (0.5 × 1.225 × 18 × v³)`.
+5. Utwórz wykres `SOC[%](t)` — zidentyfikuj cykle ładowania/rozładowania.
+6. Policz dla każdego dnia: `suma(energia_AC[kWh])` oraz `ΔSOC = SOC_koniec - SOC_start`; oceń spójność (czy duża produkcja podnosi SOC).
+7. Zaznacz punkty z `alarm=TAK`; dla każdego alarmu odczytaj `przyczyna`, `severity`, `status_turbiny` i opisz, co widać na wykresach (v, P, SOC, T_bat, T_gen).
+8. Porównaj `temp_baterii[C]` i `temp_generatora[C]` z progami alarmowymi; zapisz hipotezy przyczyn (nadprędkość, niski SOC, przegrzanie, awaria).
 
 ## Co oddać (format)
-- Sprawozdanie (PDF): opis instalacji + wykresy + obliczenia + wnioski BHP
-- Arkusz (XLSX/ODS): dane + obliczenia Cₚ + wykresy
-- Nazewnictwo plików: `zaj03_<nazwisko>_<imie>.pdf` oraz `zaj03_<nazwisko>_<imie>.xlsx`
+- Sprawozdanie (PDF): opis instalacji + wykresy + obliczenia + wnioski BHP.
+- Arkusz (XLSX/ODS): dane + obliczenia Cₚ (min. 5 punktów) + wykresy + bilans dobowy `energia_AC` i `ΔSOC`.
+- Tabela anomalii (w sprawozdaniu lub arkuszu): czas, `przyczyna`, `severity`, `status_turbiny`, opis na wykresach, proponowana reakcja.
+- Nazewnictwo plików: `zad02_<nazwisko>_<imie>.pdf` oraz `zad02_<nazwisko>_<imie>.xlsx`
 
 ## Szablon sprawozdania (proponowany układ)
 1. **Cel ćwiczenia** (2–4 zdania)
@@ -111,12 +123,13 @@ Analiza pracy turbiny VAWT w zmiennych warunkach wiatrowych. Zależność mocy o
 5) Co wpływa na żywotność baterii LiFePO₄? A) Głębokość rozładowania, B) Kolor obudowy, C) Kierunek wiatru.  
 Otwarte: Wyjaśnij wpływ prędkości wiatru na moc (zależność sześcienna); Podaj 2 przyczyny spadku Cₚ.
 
-## Kryteria zaliczenia
+## Kryteria zaliczenia (10 pkt)
 | Kryterium | Punkty | Warunek |
 |---|---|---|
-| Wykresy P(t), v(t), SOC(t) | 3 | Czytelność, etykiety |
-| Obliczenia Cₚ | 4 | Poprawność i interpretacja |
-| Diagnoza anomalii | 3 | Spójny plan reakcji |
+| Wykresy P(t), v(t), SOC(t), P(v) | 3 | Czytelność, jednostki, oznaczenie alarmów |
+| Obliczenia Cₚ | 4 | ≥5 punktów, poprawny wzór (kW→W, ρ, A), filtr v≥3 m/s, interpretacja zakresu |
+| Diagnoza anomalii | 2 | Min. 2 zdarzenia: opis na wykresach + `przyczyna/severity/status` |
+| Bilans energii/SOC | 1 | Suma `energia_AC` per dzień + ΔSOC i krótka interpretacja |
 
 ## Rubryka (0–3)
 | Dokładność | Bezpieczeństwo | Interpretacja | Współpraca |

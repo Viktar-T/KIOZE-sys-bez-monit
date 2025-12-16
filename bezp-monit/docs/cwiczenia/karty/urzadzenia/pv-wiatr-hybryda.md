@@ -21,7 +21,3 @@ tags: ["urzadzenie","pv-wiatr","hybryda"]
 ## Procedury BHP
 - Strefy bezpieczeństwa wokół turbiny
 - Zatrzymanie i blokada przed dostępem
-
-## Dane
-- [Zbiór danych (urzadzenie)](/cwiczenia/dane/urz_pv-wiatr-hybryda.csv)
-

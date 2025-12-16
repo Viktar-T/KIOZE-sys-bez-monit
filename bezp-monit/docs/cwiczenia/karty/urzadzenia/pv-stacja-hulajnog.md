@@ -59,6 +59,3 @@ tags: ["urzadzenie","pv","stacja-hulajnog"]
 
 ## Uwaga o danych
 Dane w katalogu `/cwiczenia/dane/` są **syntetyczne** (dydaktyczne). Zakresy mocy w plikach CSV mogą być dobrane pod ćwiczenie i nie muszą odpowiadać mocy znamionowej konkretnego modelu inwertera.
-
-## Dane
-- [Zbiór danych (urzadzenie)](/cwiczenia/dane/urz_pv-stacja-hulajnog.csv)
