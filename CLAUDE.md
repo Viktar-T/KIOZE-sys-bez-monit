@@ -3,12 +3,13 @@
 Course website for **"Systemy bezpieczeństwa i monitorowania instalacji OZE"** (Odnawialne źródła energii, semester 5: lectures 20 h, exercises 10 h). Content is in Polish. The lecturer presents from this site in class and students use it for self-study.
 
 - Site: Docusaurus 3 in `bezp-monit/`, live at https://bezp-monit.vercel.app
-- Deployment: Vercel builds the `main` branch (Node 22.x); GitHub Actions builds every push to `main` and every pull request (`.github/workflows/build.yml`)
+- Deployment: Vercel builds the `main` branch; GitHub Actions builds every push to `main` and every pull request (`.github/workflows/build.yml`)
+- Node: 24 (`.nvmrc`). `engines` in `package.json` (`>=20.0 <26`) overrides the Node version in the Vercel project settings, so Vercel builds with 24.x and does not jump to a new major version on its own.
 - The teaching content belongs to the lecturer. When working on the app, do not rewrite lecture or exercise text unless asked.
 
 ## Commands
 
-Run in `bezp-monit/` (Node 22, see `.nvmrc`):
+Run in `bezp-monit/` (Node 24, see `.nvmrc`):
 
 - `npm ci`: install dependencies
 - `npm start`: dev server at http://localhost:3000. Shows draft pages; search does not work here.

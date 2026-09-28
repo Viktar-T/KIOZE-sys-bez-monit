@@ -8,7 +8,7 @@ Conventions for writing content and working on the site are in [`CLAUDE.md`](../
 
 ## Requirements
 
-- Node.js 22 (see `.nvmrc`, the same version Vercel uses)
+- Node.js 24 (see `.nvmrc`; Vercel builds with Node 24.x). Versions 20–25 work too.
 - npm
 
 ## Local development
