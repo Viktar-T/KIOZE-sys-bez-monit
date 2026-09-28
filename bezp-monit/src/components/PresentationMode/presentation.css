@@ -1,0 +1,66 @@
+/*
+ * Presentation mode (src/components/PresentationMode), active while <html> has [data-pm].
+ * The doc content becomes a full-screen view that shows one slide at a time:
+ * elements of the current slide carry [data-pm-current], their ancestors
+ * [data-pm-path]; everything else in the content is hidden.
+ */
+
+html[data-pm] {
+  /* Text sized in rem grows with the screen, for projectors */
+  --ifm-font-size-base: clamp(16px, 1.25vw, 28px);
+}
+
+html[data-pm] body {
+  overflow: hidden;
+}
+
+html[data-pm] .navbar,
+html[data-pm] .footer {
+  display: none;
+}
+
+html[data-pm] .theme-doc-markdown {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--ifm-z-index-fixed) + 10);
+  overflow-y: auto;
+  padding: 2.5rem max(4vw, 1.5rem) 5rem;
+  /* --ifm-background-color is transparent in light mode */
+  background-color: #ffffff;
+}
+
+html[data-pm][data-theme='dark'] .theme-doc-markdown {
+  background-color: var(--ifm-background-color);
+}
+
+html[data-pm] .theme-doc-markdown:focus {
+  outline: none;
+}
+
+html[data-pm] .theme-doc-markdown > :not([data-pm-current]):not([data-pm-path]),
+html[data-pm] [data-pm-path] > :not([data-pm-current]):not([data-pm-path]) {
+  display: none !important;
+}
+
+/* Instructor notes stay hidden until the lecturer presses N */
+html[data-pm]:not([data-pm-show-notes]) [data-pm-notes] {
+  display: none !important;
+}
+
+html[data-pm] .slide-container {
+  margin: 0;
+  padding: 0;
+}
+
+html[data-pm] .slide-card[data-pm-current] {
+  max-width: 1600px;
+  min-height: calc(100vh - 7.5rem);
+  margin: 0 auto;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Hash links next to headings are only noise on a slide */
+html[data-pm] .theme-doc-markdown .hash-link {
+  display: none;
+}

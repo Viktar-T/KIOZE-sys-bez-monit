@@ -2,6 +2,8 @@
 title: "Klucz odpowiedzi — Zadanie 5: Monitoring magazynu energii BESS"
 section: "E-klucze"
 version: "1.1"
+# Klucz tylko dla prowadzącego: widoczny w `npm start`, pomijany na stronie
+draft: true
 ---
 
 # Klucz — Zadanie 5: Monitoring magazynu energii BESS (12 pkt)

@@ -35,7 +35,6 @@ links:
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad05_bess.csv)
 - [Dokumentacja urządzenia](./urzadzenia/bess.md)
-- [Klucz odpowiedzi](../klucze/zad05_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał: **1 h**.

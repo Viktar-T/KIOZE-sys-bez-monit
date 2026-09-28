@@ -4,6 +4,8 @@ Course website for "Systemy bezpieczeństwa i monitorowania instalacji OZE" (Odn
 
 Live site: https://bezp-monit.vercel.app
 
+Conventions for writing content and working on the site are in [`CLAUDE.md`](../CLAUDE.md).
+
 ## Requirements
 
 - Node.js 22 (see `.nvmrc`, the same version Vercel uses)
@@ -16,7 +18,7 @@ npm ci
 npm start
 ```
 
-`npm start` runs a dev server with live reload at http://localhost:3000. Pages marked `draft: true` in their front matter are shown only here, not on the live site.
+`npm start` runs a dev server with live reload at http://localhost:3000. Pages marked `draft: true` in their front matter are shown only here, not on the live site: the answer keys (`docs/cwiczenia/klucze/`) and the reference pages in `docs/web-tech-info/`. Search does not work in the dev server.
 
 ## Build
 
@@ -25,23 +27,16 @@ npm run build
 npm run serve
 ```
 
-The build fails on broken links, so run it before pushing. `npm run serve` previews the production build locally.
+The build fails on broken links, so run it before pushing. `npm run serve` previews the production build locally, including search.
 
-## Project layout
+## Site sections
 
-- `docs/wyklady-bezp/` — lectures (current series)
-- `docs/wyklady/` — earlier lecture series on monitoring
-- `docs/cwiczenia/` — exercises: plan, cards, answer keys, rubrics, templates
-- `docs/literatura/` — literature
-- `docs/web-tech-info/` — reference pages for authors (drafts, not published)
-- `src/components/` — MDX components used in lectures (slides, quizzes, literature list)
-- `src/css/custom.css` — global styles
-- `static/` — images and downloadable files (`static/cwiczenia/dane/*.csv`)
+- **Wykłady**: `docs/wyklady-bezp/` (current lectures) and the course introduction `docs/intro.md`
+- **Ćwiczenia**: `docs/cwiczenia/` (plan, task cards, data, templates, rubrics)
+- **Literatura**: `docs/literatura/index.md`
+- **Archiwum**: `docs/wyklady/`, the earlier lecture series on monitoring
 
-## Writing content
-
-- Link to other pages by file path, for example `[Plan semestru](../plan/01-plan-semestru.md)`. The build checks these links and they keep working when URLs change. Links written as `/docs/...` URLs break, because Docusaurus removes number prefixes such as `01-` from URLs.
-- Admonitions with a title use the form `:::tip Tytuł` … `:::`.
+Lecture and exercise pages have a **▶ Prezentacja** button: one slide per screen, arrow keys to move, N for instructor notes, F for fullscreen, Esc to exit.
 
 ## Deployment
 

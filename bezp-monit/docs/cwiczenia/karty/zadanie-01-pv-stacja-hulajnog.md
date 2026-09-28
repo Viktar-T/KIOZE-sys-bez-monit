@@ -38,7 +38,6 @@ links:
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
 - [Dokumentacja urządzenia](./urzadzenia/pv-stacja-hulajnog.md)
-- [Klucz odpowiedzi](../klucze/zad01_klucz.md)
 
 ## Słownik kolumn (data dictionary)
 | Kolumna | Znaczenie | Jednostka | Typowy zakres | Uwagi |

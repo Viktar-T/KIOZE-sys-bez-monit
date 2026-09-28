@@ -2,6 +2,8 @@
 title: "Klucz odpowiedzi — Zadanie 3: Monitoring biogazowni"
 section: "E-klucze"
 version: "1.1"
+# Klucz tylko dla prowadzącego: widoczny w `npm start`, pomijany na stronie
+draft: true
 ---
 
 # Klucz — Zadanie 3: Monitoring biogazowni (12 pkt)

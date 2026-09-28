@@ -2,6 +2,8 @@
 title: "Klucz odpowiedzi — Zadanie 1"
 description: "Wzorcowe odpowiedzi - Monitoring instalacji PV"
 section: "E-klucze"
+# Klucz tylko dla prowadzącego: widoczny w `npm start`, pomijany na stronie
+draft: true
 ---
 
 # Klucz odpowiedzi — Zadanie 1: Monitoring instalacji PV

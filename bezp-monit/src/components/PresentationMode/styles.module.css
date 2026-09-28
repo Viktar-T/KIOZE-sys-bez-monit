@@ -1,0 +1,90 @@
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.toolbar[hidden] {
+  display: none;
+}
+
+/* Presenting needs a big screen */
+@media (max-width: 996px) {
+  .toolbar {
+    display: none;
+  }
+}
+
+.startButton {
+  white-space: nowrap;
+}
+
+/* Sizes in px: in presentation mode rem grows with the screen */
+.controls {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: calc(var(--ifm-z-index-fixed) + 20);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  line-height: 1.2;
+  opacity: 0.45;
+  transition: opacity 0.2s ease;
+}
+
+.controls:hover,
+.controls:focus-within {
+  opacity: 1;
+}
+
+.controls button {
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  cursor: pointer;
+}
+
+.controls button:hover:not(:disabled) {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.controls button[aria-pressed='true'] {
+  background-color: var(--ifm-color-primary);
+  color: #ffffff;
+}
+
+.counter {
+  min-width: 64px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.overflow {
+  color: var(--ifm-color-warning-dark);
+  font-weight: 700;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: calc(var(--ifm-z-index-fixed) + 20);
+  height: 4px;
+  background-color: var(--ifm-color-primary);
+  transition: width 0.2s ease;
+}

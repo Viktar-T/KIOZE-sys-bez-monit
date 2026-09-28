@@ -35,7 +35,6 @@ links:
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad04_pompa-ciepla.csv)
 - [Dokumentacja urządzenia](./urzadzenia/pompa-ciepla.md)
-- [Klucz odpowiedzi](../klucze/zad04_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał: **1 h**.  

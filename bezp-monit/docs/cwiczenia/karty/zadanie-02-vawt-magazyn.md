@@ -42,7 +42,6 @@ links:
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad02_vawt-magazyn.csv)
 - [Dokumentacja urządzenia](./urzadzenia/vawt-magazyn.md)
-- [Klucz odpowiedzi](../klucze/zad02_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał próbkowania: **co 30 min** (zgodnie z CSV).  

@@ -77,6 +77,126 @@
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Sections with lecture and exercise cards */
+
+.section {
+  padding: 3rem 0;
+}
+
+.sectionAlt {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  margin: 0;
+}
+
+.sectionLink {
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background-color: var(--ifm-background-surface-color);
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  color: inherit;
+  text-decoration: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.badge {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: rgba(46, 133, 85, 0.12);
+  color: #1c5236;
+}
+
+:global([data-theme='dark']) .badge {
+  background-color: rgba(37, 194, 160, 0.15);
+  color: #4fddbf;
+}
+
+.cardMeta {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.cardText {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-800);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.section .links:first-child {
+  margin-top: 0;
+}
+
+.linkPill {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  font-weight: 600;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.linkPill:hover {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

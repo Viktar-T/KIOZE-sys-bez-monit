@@ -2,6 +2,8 @@
 title: "Klucz odpowiedzi — Zadanie 4: Monitoring pompy ciepła"
 section: "E-klucze"
 version: "1.1"
+# Klucz tylko dla prowadzącego: widoczny w `npm start`, pomijany na stronie
+draft: true
 ---
 
 # Klucz — Zadanie 4: Monitoring pompy ciepła (12 pkt)

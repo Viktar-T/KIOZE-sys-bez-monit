@@ -7,6 +7,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import remarkSlideTitles from './src/remark/slide-titles.js';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -56,7 +57,42 @@ const config = {
     },
   },
 
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      // Local full-text search, the index is built with `npm run build`
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        // Polish text with many English technical terms
+        language: ['pl', 'en'],
+        indexBlog: false,
+        docsRouteBasePath: '/docs',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        searchResultLimits: 10,
+        // The archive (docs/wyklady) would make up most of the index
+        ignoreFiles: [/^docs\/wyklady(\/|$)/],
+      },
+    ],
+  ],
+
+  plugins: [
+    // Lecture and exercise lists for the homepage
+    './src/plugins/course-overview.js',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        // Addresses of the section index pages before the sidebars were split
+        redirects: [
+          {from: '/docs/category/wykłady---bezpieczeństwo', to: '/docs/wyklady-bezp'},
+          {from: '/docs/category/wykłady', to: '/docs/wyklady'},
+          {from: '/docs/category/cwiczenia', to: '/docs/cwiczenia'},
+          {from: '/docs/category/literatura', to: '/docs/literatura'},
+        ],
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -66,6 +102,8 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           path: 'docs',
+          // Slide titles become "##" headings (anchors, table of contents)
+          beforeDefaultRemarkPlugins: [remarkSlideTitles],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           // "Edit this page" links
@@ -101,9 +139,27 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'wykladySidebar',
             position: 'left',
-            label: 'Dokumentacja',
+            label: 'Wykłady',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'cwiczeniaSidebar',
+            position: 'left',
+            label: 'Ćwiczenia',
+          },
+          {
+            type: 'doc',
+            docId: 'literatura/index',
+            position: 'left',
+            label: 'Literatura',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'archiwumSidebar',
+            position: 'left',
+            label: 'Archiwum',
           },
           {
             href: repoUrl,
@@ -116,11 +172,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Dokumenty',
+            title: 'Kurs',
             items: [
               {
                 label: 'Wprowadzenie',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Wykłady',
+                to: '/docs/wyklady-bezp',
+              },
+              {
+                label: 'Ćwiczenia',
+                to: '/docs/cwiczenia',
               },
             ],
           },
@@ -130,6 +194,14 @@ const config = {
               {
                 label: 'Literatura',
                 to: '/docs/literatura',
+              },
+              {
+                label: 'Dane do ćwiczeń',
+                to: '/docs/cwiczenia/dane',
+              },
+              {
+                label: 'Archiwum wykładów',
+                to: '/docs/wyklady',
               },
             ],
           },

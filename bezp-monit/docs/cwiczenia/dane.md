@@ -1,6 +1,7 @@
 ---
 title: "Zbiory danych syntetycznych"
 description: "Opis i dostępność zbiorów danych CSV dla ćwiczeń laboratoryjnych"
+sidebar_position: 3
 ---
 
 ## 📊 Dostępność danych
@@ -65,15 +66,10 @@ Każda karta ćwiczeń zawiera instrukcje krok po kroku dotyczące:
 
 Wszystkie dane są **syntetyczne** — wygenerowane komputerowo dla celów dydaktycznych. Nie pochodzą z rzeczywistych instalacji, ale są realistyczne pod względem zakresów, trendów i anomalii.
 
-:::tip Wskazówka praktyczna
-Po wykonaniu zadania porównaj swoje wyniki z **Kluczem odpowiedzi** w sekcji `/cwiczenia/klucze/`
-:::
-
 ## 🔗 Szybkie linki
 
 - [Plan zajęć](./plan/01-plan-semestru.md)
 - [Karty ćwiczeń](/docs/cwiczenia/karty)
-- [Klucze odpowiedzi](/docs/cwiczenia/klucze)
 
 ---
 

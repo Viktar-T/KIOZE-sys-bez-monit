@@ -3,7 +3,7 @@ title: "Pakiet zajęć — kompendium A→B→C→F"
 course: "Systemy bezpieczeństwa i monitorowania instalacji OZE"
 version: "1.0"
 section: "A-plan"
-description: "Zbiorczy pakiet: plan, karty ćwiczeń, szablony, rubryki i klucze"
+description: "Zbiorczy pakiet: plan, karty ćwiczeń, szablony i rubryki"
 ---
 
 # Pakiet zajęć — kompendium
@@ -19,9 +19,6 @@ description: "Zbiorczy pakiet: plan, karty ćwiczeń, szablony, rubryki i klucze
 - [Lista kontrolna BHP](../szablony/checklista-bhp.md)
 - [Formularz raportu incydentu](../szablony/formularz-raportu-incydentu.md)
 - [Karta oceny](../szablony/karta-oceny.md)
-
-## Klucze odpowiedzi (E)
-- [Indeks kluczy](/docs/cwiczenia/klucze)
 
 ## Rubryki (F)
 - [Rubryka oceny — standard](../rubryki/rubryka-oceny-standard.md)

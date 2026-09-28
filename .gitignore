@@ -1,0 +1,5 @@
+# Third-party papers used as sources: keep them local, not in the public repo
+_promts/**/*.pdf
+
+# Build caches (e.g. when a dev server is started from the repository root)
+node_modules/

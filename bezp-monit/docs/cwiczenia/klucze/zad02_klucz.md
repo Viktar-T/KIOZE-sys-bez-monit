@@ -2,6 +2,8 @@
 title: "Klucz odpowiedzi — Zadanie 2"
 description: "Wzorcowe odpowiedzi - Turbina wiatrowa VAWT z magazynem energii"
 section: "E-klucze"
+# Klucz tylko dla prowadzącego: widoczny w `npm start`, pomijany na stronie
+draft: true
 ---
 
 # Klucz odpowiedzi — Zadanie 2: Turbina wiatrowa VAWT z magazynem energii

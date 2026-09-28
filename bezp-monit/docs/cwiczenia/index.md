@@ -1,6 +1,7 @@
 ---
 title: "Ćwiczenia laboratoryjne — wprowadzenie"
 description: "Materiały do zajęć laboratoryjnych z systemów bezpieczeństwa i monitorowania instalacji OZE"
+sidebar_position: 0
 ---
 
 import { LearningObjective } from '@site/src/components/SlideComponents';
@@ -46,10 +47,7 @@ Szczegółowe opisy 5 urządzeń dostępnych na katedrze, wraz z:
 - Formularz raportu incydentu
 - Karta oceny
 
-#### **5. Klucze odpowiedzi** ✅
-Wzorcowe odpowiedzi do zadań z kart ćwiczeń (osobne pliki dla każdej karty)
-
-#### **6. Rubryki oceniania** 📊
+#### **5. Rubryki oceniania** 📊
 Standardowe kryteria oceny i zasady zaliczenia
 
 ### 🎯 Zasady pracy

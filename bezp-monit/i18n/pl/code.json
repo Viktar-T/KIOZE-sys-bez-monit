@@ -1,0 +1,33 @@
+{
+  "theme.SearchBar.label": {
+    "message": "Szukaj",
+    "description": "Search box label and placeholder (local search plugin)"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "Brak wyników"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Zobacz wszystkie wyniki"
+  },
+  "theme.SearchBar.searchInContext": {
+    "message": "Zobacz wszystkie wyniki w \"{context}\""
+  },
+  "theme.SearchBar.seeAllOutsideContext": {
+    "message": "Zobacz wszystkie wyniki poza \"{context}\""
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "Jeden dokument znaleziony|{count} dokumenty znalezione|{count} dokumentów znalezionych"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Szukaj w materiałach kursu"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Wyniki wyszukiwania dla \"{query}\""
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Nie znaleziono żadnych wyników"
+  },
+  "theme.SearchPage.searchContext.everywhere": {
+    "message": "Wszędzie"
+  }
+}

@@ -39,7 +39,6 @@ links:
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad03_biogazownia-mala.csv)
 - [Dokumentacja urządzenia](./urzadzenia/biogazownia-mala.md)
-- [Klucz odpowiedzi](../klucze/zad03_klucz.md)
 - [Formularz raportu incydentu](../szablony/formularz-raportu-incydentu.md)
 
 ## Założenia do obliczeń

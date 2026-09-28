@@ -27,7 +27,6 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zaj03_pv-wiatr-hybryda.csv)
-- Klucz odpowiedzi
 
 ## Zagrożenia i środki
 | Ryzyko | P×S | Środki |

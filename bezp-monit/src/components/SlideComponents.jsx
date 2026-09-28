@@ -14,20 +14,24 @@ export const SlideContainer = ({ children, className, ...props }) => (
 /**
  * Individual slide card component
  * Creates a styled slide with optional type (info, tip, warning, danger, note)
- * 
+ *
+ * In docs, a string `title` is turned into a "##" heading inside the slide
+ * at build time (src/remark/slide-titles.js), so it gets an anchor and a
+ * table of contents entry. The `title` prop below is only a fallback.
+ *
  * @param {string} title - Slide title
  * @param {string} type - Slide type: 'info', 'tip', 'warning', 'danger', 'note', 'default'
  * @param {ReactNode} children - Slide content
  */
-export const Slide = ({ 
-  title, 
-  children, 
+export const Slide = ({
+  title,
+  children,
   type = 'default',
   className,
-  ...props 
+  ...props
 }) => (
   <div className={clsx('slide-card', `slide-${type}`, className)} {...props}>
-    {title && <h1 className="slide-title">{title}</h1>}
+    {title && <h2 className="slide-title">{title}</h2>}
     <div className="slide-content">
       {children}
     </div>

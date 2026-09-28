@@ -202,6 +202,12 @@
   gap: 1rem;
 }
 
+/* The slide title is the first heading inside the slide content */
+.slide-content > .slide-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
 /* ============================================
    4. CONTENT BOXES STYLES
    ============================================ */

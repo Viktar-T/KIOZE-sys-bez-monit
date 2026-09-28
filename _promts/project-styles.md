@@ -5,8 +5,9 @@ Niniejszy dokument definiuje jednoznaczne zasady stylowania, których LLM MUSI p
 
 ## Podstawy (MUST)
 - Twórz treści po polsku, w tonie akademickim (5. semestr OZE), z właściwą terminologią.
-- W MDX używaj wyłącznie globalnych klas z `src/css/custom.css` (np. `slide-card`, `instructor-notes`).
-- W komponentach React stosuj CSS Modules (`*.module.css`) i import `styles` (np. `styles.featureCard`).
+- Slajdy, bloki i notatki twórz komponentami z `@site/src/components/SlideComponents` (`<SlideContainer>`, `<Slide>`, `<KeyPoints>`, `<InstructorNotes>` …), nie ręcznym HTML. Tytuł `<Slide title="…">` staje się nagłówkiem `##` (spis treści, odnośniki), a każdy `<Slide>` jest jednym ekranem w trybie prezentacji.
+- Globalne klasy z `src/css/custom.css` stosuj w MDX tylko do układów (siatki, kolumny, karty).
+- W komponentach React stosuj CSS Modules (`*.module.css`) i import `styles` (np. `styles.card`).
 - Korzystaj ze zmiennych Infima (`var(--ifm-...)`) dla kolorów/obramowań/akcentów.
 - Zapewnij kompatybilność z trybem ciemnym – jeżeli dodajesz niestandardowe tła/obramowania, przewidź wariant `[data-theme='dark']`.
 - Zachowaj responsywność (co najmniej breakpoint ≤ 768 px), opieraj układy na flex/grid.
@@ -27,19 +28,15 @@ Niniejszy dokument definiuje jednoznaczne zasady stylowania, których LLM MUSI p
 - Progres i formularze:
   - `progress-section`, `progress-item`, `progress-label`, `progress-bar`, `progress-fill`.
   - `form-group`, `radio-label`.
-- Komponenty slajdów:
-  - Kontener: `slide-container`, `slide-card`, `slide-title`, `slide-content`.
-  - Warianty: `slide-info`, `slide-tip`, `slide-warning`, `slide-danger`, `slide-success`.
-  - Bloki: `key-points-box` (+ `-title`, `-content`), `supporting-details-box` (+ `-title`, `-content`), `warning-box`, `success-box`, `info-box`.
-  - Nawigacja/progres: `slide-navigation`, `slide-nav-button`, `slide-progress`, `slide-progress-bar`, `slide-progress-fill`, `slide-progress-text`.
-  - Separatory: `slide-separator`, `visual-separator`.
-- Notatki prowadzącego:
-  - Kontener: `instructor-notes` (na `<details>`),
-  - Nagłówek: `instructor-notes-summary`,
-  - Treść: `instructor-notes-content`.
+- Klasy komponentów slajdów (ustawiane przez komponenty, nie wpisuj ich ręcznie):
+  - Kontener: `slide-container`, `slide-card`, `slide-title`, `slide-content` (`<SlideContainer>`, `<Slide>`).
+  - Warianty: `slide-info`, `slide-tip`, `slide-warning`, `slide-danger`, `slide-success` (`<Slide type="…">`).
+  - Bloki: `key-points-box`, `supporting-details-box`, `warning-box`, `success-box`, `info-box` (`<KeyPoints>`, `<SupportingDetails>`, `<WarningBox>`, `<SuccessBox>`, `<InfoBox>`).
+  - Separator: `visual-separator` (`<VisualSeparator type="…">`).
+  - Notatki prowadzącego: `instructor-notes` (`<InstructorNotes>`).
 
 ## Zasady użycia (DO / DON’T)
-- DO: łączyć klasy globalne z semantyką slajdów (np. `slide-card slide-tip`).
+- DO: slajd = `<Slide title="…" type="tip">` wewnątrz `<SlideContainer>`; tytuł to zwykły tekst, krótki i niepowtarzalny.
 - DO: używać list max. 5–7 punktów na slajd; każdy slajd z jedną tezą.
 - DO: w komponentach React używać klas z `*.module.css` przez `styles.<className>`.
 - DON’T: stosować nieznanych klas globalnych; trzymaj się katalogu powyżej.
@@ -47,38 +44,32 @@ Niniejszy dokument definiuje jednoznaczne zasady stylowania, których LLM MUSI p
 - DON’T: obcinać tytułów; upewnij się, że tekst się zawija.
 
 ## Wzorce wyjścia (MDX)
-Przykład slajdu „wskazówka” z kluczowymi punktami:
+Przykład slajdu „wskazówka” z kluczowymi punktami i notatkami prowadzącego:
 ```mdx
-<div className="slide-card slide-tip">
-  <div className="slide-title">Dobór oprogramowania dla instalacji PV</div>
-  <div className="slide-content">
-    <div className="key-points-box">
-      <div className="key-points-title">Najważniejsze kryteria</div>
-      <div className="key-points-content">
-        <ul>
-          <li>Modele produkcji energii i dane meteorologiczne</li>
-          <li>Modelowanie zacienienia i geometrii</li>
-          <li>Biblioteki komponentów (moduły, inwertery)</li>
-          <li>Walidacja wyników i raportowanie</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+import { SlideContainer, Slide, KeyPoints, InstructorNotes } from '@site/src/components/SlideComponents';
+
+<SlideContainer>
+
+<Slide title="Dobór oprogramowania dla instalacji PV" type="tip">
+
+<KeyPoints title="Najważniejsze kryteria">
+- Modele produkcji energii i dane meteorologiczne
+- Modelowanie zacienienia i geometrii
+- Biblioteki komponentów (moduły, inwertery)
+- Walidacja wyników i raportowanie
+</KeyPoints>
+
+<InstructorNotes title="Uwagi metodyczne">
+- Porównaj wyniki z danymi pomiarowymi (PVGIS / lokalne stacje).
+- Omów wpływ zacienienia godzinowego na uzysk roczny.
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
 ```
 
-Notatki prowadzącego w `<details>`:
-```mdx
-<details className="instructor-notes">
-  <summary className="instructor-notes-summary">Uwagi metodyczne</summary>
-  <div className="instructor-notes-content">
-    <ul>
-      <li>Porównaj wyniki z danymi pomiarowymi (PVGIS / lokalne stacje).</li>
-      <li>Omów wpływ zacienienia godzinowego na uzysk roczny.</li>
-    </ul>
-  </div>
-</details>
-```
+Notatki prowadzącego są ukryte w trybie prezentacji (klawisz N je pokazuje) i dostępne dla studentów po rozwinięciu na zwykłej stronie.
 
 Układ 2-kolumnowy dla porównań:
 ```mdx
@@ -101,16 +92,17 @@ Układ 2-kolumnowy dla porównań:
 ```
 
 ## Wzorce wyjścia (React + CSS Modules)
-Plik: `src/components/HomepageFeatures/styles.module.css` zawiera m.in. `.featureCard` i `.featureSvg`.
+Plik: `src/pages/index.module.css` (strona główna) zawiera m.in. `.card`, `.grid` i `.badge`.
 Użycie:
 ```jsx
-import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
+import styles from './index.module.css';
 
-export function FeatureCard({children, href}) {
+export function Card({children, to}) {
   return (
-    <a className={styles.featureCard} href={href}>
+    <Link className={styles.card} to={to}>
       {children}
-    </a>
+    </Link>
   );
 }
 ```

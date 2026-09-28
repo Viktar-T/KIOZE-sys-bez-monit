@@ -48,7 +48,6 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [Karta zajęć](../karty/zadanie-01-pv-stacja-hulajnog.md)
 - [Dokumentacja urządzenia](../karty/urzadzenia/pv-stacja-hulajnog.md)
 - [Dane](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
-- [Klucz odpowiedzi](../klucze/zad01_klucz.md)
 
 ---
 
@@ -73,7 +72,6 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [Karta zajęć](../karty/zadanie-02-vawt-magazyn.md)
 - [Dokumentacja urządzenia](../karty/urzadzenia/vawt-magazyn.md)
 - [Dane](/cwiczenia/dane/zad02_vawt-magazyn.csv)
-- [Klucz odpowiedzi](../klucze/zad02_klucz.md)
 - [Opis laboratoryjny (zewnętrzny)](https://docs-plat-edu-bad.vercel.app/docs/laboratories-and-equipment/wind/2.1-wind-big-vertical-storage)
 
 ---
@@ -106,7 +104,6 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [Dokumentacja urządzenia](../karty/urzadzenia/biogazownia-mala.md)
 - [Dane](/cwiczenia/dane/zad03_biogazownia-mala.csv)
 - [Formularz raportu](../szablony/formularz-raportu-incydentu.md)
-- [Klucz odpowiedzi](../klucze/zad03_klucz.md)
 
 ---
 
@@ -137,7 +134,6 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [Karta zajęć](../karty/zadanie-04-pompa-ciepla.md)
 - [Dokumentacja urządzenia](../karty/urzadzenia/pompa-ciepla.md)
 - [Dane](/cwiczenia/dane/zad04_pompa-ciepla.csv)
-- [Klucz odpowiedzi](../klucze/zad04_klucz.md)
 
 ---
 
@@ -167,7 +163,6 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 - [Karta zajęć](../karty/zadanie-05-bess.md)
 - [Dokumentacja urządzenia](../karty/urzadzenia/bess.md)
 - [Dane](/cwiczenia/dane/zad05_bess.csv)
-- [Klucz odpowiedzi](../klucze/zad05_klucz.md)
 
 ---
 
