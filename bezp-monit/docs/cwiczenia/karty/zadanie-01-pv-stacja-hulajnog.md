@@ -37,8 +37,8 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad01_klucz)
+- [Dokumentacja urządzenia](./urzadzenia/pv-stacja-hulajnog.md)
+- [Klucz odpowiedzi](../klucze/zad01_klucz.md)
 
 ## Słownik kolumn (data dictionary)
 | Kolumna | Znaczenie | Jednostka | Typowy zakres | Uwagi |
@@ -119,5 +119,5 @@ Otwarte: Wyjaśnij wpływ temp. na moc; Podaj 2 źródła spadku η.
 MPPT, PR, CF, LOTO, DC arc
 
 ---
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)
 

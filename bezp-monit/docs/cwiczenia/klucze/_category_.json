@@ -1,5 +1,10 @@
 {
   "label": "Klucze odpowiedzi",
   "position": 5,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/cwiczenia/klucze",
+    "description": "Wzorcowe odpowiedzi do zadań"
+  }
 }

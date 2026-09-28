@@ -182,7 +182,7 @@ Sumuje punkty: `Dokładność + Bezpieczeństwo + Interpretacja + Współpraca =
 - **Poziom W**: Dodaj **+6 pkt bonus** (SUMA końcowa = SUMA podstawowa + 6)
 
 ### Krok 4: Podsumowanie
-Wpisz sumę końcową w [Kartę oceny](/docs/cwiczenia/szablony/karta-oceny)
+Wpisz sumę końcową w [Kartę oceny](../szablony/karta-oceny.md)
 
 ---
 
@@ -229,9 +229,9 @@ Wpisz sumę końcową w [Kartę oceny](/docs/cwiczenia/szablony/karta-oceny)
 
 ## 🔗 Powiązania
 
-- [Karta oceny](/docs/cwiczenia/szablony/karta-oceny) — formularz użycia rubryki
-- [Kryteria zaliczenia](/docs/cwiczenia/rubryki/kryteria-zaliczenia) — reguły zaliczenia kursu
-- [Plan semestru](/docs/cwiczenia/plan/01-plan-semestru) — punkty za poszczególne zajęcia
+- [Karta oceny](../szablony/karta-oceny.md) — formularz użycia rubryki
+- [Kryteria zaliczenia](./kryteria-zaliczenia.md) — reguły zaliczenia kursu
+- [Plan semestru](../plan/01-plan-semestru.md) — punkty za poszczególne zajęcia
 
 ---
 

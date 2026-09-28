@@ -11,12 +11,12 @@ Wykład omawia metody analizy danych eksploatacyjnych w instalacjach OZE, w tym 
 
 ## Struktura materiału
 
-1. [Trendowanie i analiza danych eksploatacyjnych](./01-trendowanie-analiza-danych-eksploatacyjnych.mdx)
-2. [Progi alarmowe - metody określania](./02-progi-alarmowe-metody-okreslania.mdx)
-3. [Alarmy wskaźnikowe - interpretacja i diagnostyka](./03-alarmy-wskaznikowe-interpretacja-diagnostyka.mdx)
-4. [Detekcja anomalii - metody i algorytmy](./04-detekcja-anomalii-metody-algorytmy.mdx)
-5. [Narzędzia analityczne - Excel/Python/Grafana](./05-narzedzia-analityczne-excel-python-grafana.mdx)
-6. [Case studies: analiza rzeczywistych danych](./06-case-studies-analiza-rzeczywistych-danych.mdx)
+1. Trendowanie i analiza danych eksploatacyjnych
+2. Progi alarmowe - metody określania
+3. Alarmy wskaźnikowe - interpretacja i diagnostyka
+4. Detekcja anomalii - metody i algorytmy
+5. Narzędzia analityczne - Excel/Python/Grafana
+6. Case studies: analiza rzeczywistych danych
 
 ## Literatura skrócona
 

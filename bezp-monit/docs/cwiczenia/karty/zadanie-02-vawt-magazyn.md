@@ -41,8 +41,8 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad02_vawt-magazyn.csv)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/vawt-magazyn)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad02_klucz)
+- [Dokumentacja urządzenia](./urzadzenia/vawt-magazyn.md)
+- [Klucz odpowiedzi](../klucze/zad02_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał próbkowania: **co 30 min** (zgodnie z CSV).  
@@ -143,5 +143,5 @@ Otwarte: Wyjaśnij wpływ prędkości wiatru na moc (zależność sześcienna); 
 VAWT, MPPT, TSR, Cₚ, SOC, SOH, PMSG, LiFePO₄, BMS, cut-in, cut-out
 
 ---
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)
 

@@ -1,41 +1,48 @@
-# Website
+# Systemy bezpieczeństwa i monitorowania instalacji OZE
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Course website for "Systemy bezpieczeństwa i monitorowania instalacji OZE" (Odnawialne źródła energii, semester 5), built with [Docusaurus](https://docusaurus.io/) 3.
 
-## Installation
+Live site: https://bezp-monit.vercel.app
+
+## Requirements
+
+- Node.js 22 (see `.nvmrc`, the same version Vercel uses)
+- npm
+
+## Local development
 
 ```bash
-yarn
+npm ci
+npm start
 ```
 
-## Local Development
-
-```bash
-yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+`npm start` runs a dev server with live reload at http://localhost:3000. Pages marked `draft: true` in their front matter are shown only here, not on the live site.
 
 ## Build
 
 ```bash
-yarn build
+npm run build
+npm run serve
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+The build fails on broken links, so run it before pushing. `npm run serve` previews the production build locally.
+
+## Project layout
+
+- `docs/wyklady-bezp/` — lectures (current series)
+- `docs/wyklady/` — earlier lecture series on monitoring
+- `docs/cwiczenia/` — exercises: plan, cards, answer keys, rubrics, templates
+- `docs/literatura/` — literature
+- `docs/web-tech-info/` — reference pages for authors (drafts, not published)
+- `src/components/` — MDX components used in lectures (slides, quizzes, literature list)
+- `src/css/custom.css` — global styles
+- `static/` — images and downloadable files (`static/cwiczenia/dane/*.csv`)
+
+## Writing content
+
+- Link to other pages by file path, for example `[Plan semestru](../plan/01-plan-semestru.md)`. The build checks these links and they keep working when URLs change. Links written as `/docs/...` URLs break, because Docusaurus removes number prefixes such as `01-` from URLs.
+- Admonitions with a title use the form `:::tip Tytuł` … `:::`.
 
 ## Deployment
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Vercel deploys the `main` branch. GitHub Actions builds every push to `main` and every pull request (`.github/workflows/build.yml`).

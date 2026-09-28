@@ -12,7 +12,7 @@ Wykład wprowadza podstawowe pojęcia związane z bezpieczeństwem instalacji OZ
 ## Struktura materiału
 
 1. [Wprowadzenie: bezpieczeństwo w OZE - kontekst branżowy](./01-wprowadzenie-kontekst-branzowy.mdx)
-2. [Statystyka zdarzeń i źródła zagrożeń](./02-statystyka-zdarzen-zrodla-zagrozen.mdx)
+2. Statystyka zdarzeń i źródła zagrożeń
 3. [Poziomy ryzyka i metody oceny](./03-poziomy-ryzyka-metody-oceny.mdx)
 4. [Przegląd norm i wytycznych](./04-normy-wytyczne-obowiazujace.mdx)
 5. [Odpowiedzialność inżyniera i kultura bezpieczeństwa](./05-odpowiedzialnosc-inzyniera.mdx)

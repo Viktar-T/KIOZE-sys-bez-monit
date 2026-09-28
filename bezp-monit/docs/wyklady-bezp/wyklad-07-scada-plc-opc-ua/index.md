@@ -11,12 +11,12 @@ Wykład omawia architekturę systemów monitoringu SCADA, protokoły komunikacyj
 
 ## Struktura materiału
 
-1. [Architektura systemów monitoringu SCADA](./01-architektura-systemow-scada.mdx)
-2. [Protokoły komunikacyjne - Modbus/TCP, OPC UA](./02-protokoly-komunikacyjne-modbus-opc.mdx)
-3. [Redundancja i wysoka dostępność](./03-redundancja-wysoka-dostepnosc.mdx)
-4. [Rejestrator zdarzeń i systemy alarmowe](./04-rejestrator-zdarzen-systemy-alarmowe.mdx)
-5. [Projektowanie list alarmów i progów](./05-projektowanie-list-alarmow-progow.mdx)
-6. [KPI i metryki dla systemów OZE](./06-kpi-metryki-systemy-oze.mdx)
+1. Architektura systemów monitoringu SCADA
+2. Protokoły komunikacyjne - Modbus/TCP, OPC UA
+3. Redundancja i wysoka dostępność
+4. Rejestrator zdarzeń i systemy alarmowe
+5. Projektowanie list alarmów i progów
+6. KPI i metryki dla systemów OZE
 
 ## Literatura skrócona
 

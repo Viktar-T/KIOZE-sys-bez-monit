@@ -8,9 +8,73 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  /* Ensure homepage hero uses intended gradient and text color on Vercel */
-  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary-dark));
+  /* Fixed dark green in both color modes, so the white text keeps its contrast */
+  background: linear-gradient(135deg, #2e8555, #1c5236);
   color: #ffffff;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.95;
+}
+
+.heroInfo {
+  margin: 2rem auto;
+  max-width: 600px;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+
+.heroInfo p {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.heroButton {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.heroButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.heroButtonPrimary,
+.heroButtonPrimary:hover {
+  background-color: #ffffff;
+  color: #1c5236;
+}
+
+.heroButtonSecondary,
+.heroButtonSecondary:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.heroButtonSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 @media screen and (max-width: 996px) {
@@ -19,25 +83,17 @@
   }
 }
 
-.hero__info {
-  margin: 2rem 0;
-  font-size: 1.1rem;
-}
-
-.hero__info strong {
-  color: var(--ifm-color-primary-lightest);
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
 @media (max-width: 768px) {
-  .hero__info {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .heroInfo {
     font-size: 1rem;
-    padding: 0 1rem;
+    padding: 0.75rem 1rem;
   }
 }

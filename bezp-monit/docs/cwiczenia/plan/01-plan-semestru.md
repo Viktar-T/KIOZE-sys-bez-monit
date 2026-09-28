@@ -45,10 +45,10 @@ tags: ["plan-zajec", "harmonogram", "laboratoria"]
 Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują się w karcie zajęć.
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zadanie-01-pv-stacja-hulajnog)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog)
+- [Karta zajęć](../karty/zadanie-01-pv-stacja-hulajnog.md)
+- [Dokumentacja urządzenia](../karty/urzadzenia/pv-stacja-hulajnog.md)
 - [Dane](/cwiczenia/dane/zad01_pv-stacja-hulajnog.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad01_klucz)
+- [Klucz odpowiedzi](../klucze/zad01_klucz.md)
 
 ---
 
@@ -70,10 +70,10 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują się w karcie zajęć.
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zadanie-02-vawt-magazyn)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/vawt-magazyn)
+- [Karta zajęć](../karty/zadanie-02-vawt-magazyn.md)
+- [Dokumentacja urządzenia](../karty/urzadzenia/vawt-magazyn.md)
 - [Dane](/cwiczenia/dane/zad02_vawt-magazyn.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad02_klucz)
+- [Klucz odpowiedzi](../klucze/zad02_klucz.md)
 - [Opis laboratoryjny (zewnętrzny)](https://docs-plat-edu-bad.vercel.app/docs/laboratories-and-equipment/wind/2.1-wind-big-vertical-storage)
 
 ---
@@ -102,11 +102,11 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 | **SUMA** | **6** | **8** | **8** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zadanie-03-biogazownia-mala)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/biogazownia-mala)
+- [Karta zajęć](../karty/zadanie-03-biogazownia-mala.md)
+- [Dokumentacja urządzenia](../karty/urzadzenia/biogazownia-mala.md)
 - [Dane](/cwiczenia/dane/zad03_biogazownia-mala.csv)
-- [Formularz raportu](/docs/cwiczenia/szablony/formularz-raportu-incydentu)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad03_klucz)
+- [Formularz raportu](../szablony/formularz-raportu-incydentu.md)
+- [Klucz odpowiedzi](../klucze/zad03_klucz.md)
 
 ---
 
@@ -134,10 +134,10 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 | **SUMA** | **5** | **8** | **8** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zadanie-04-pompa-ciepla)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pompa-ciepla)
+- [Karta zajęć](../karty/zadanie-04-pompa-ciepla.md)
+- [Dokumentacja urządzenia](../karty/urzadzenia/pompa-ciepla.md)
 - [Dane](/cwiczenia/dane/zad04_pompa-ciepla.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad04_klucz)
+- [Klucz odpowiedzi](../klucze/zad04_klucz.md)
 
 ---
 
@@ -164,10 +164,10 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 | **SUMA** | **12** |
 
 #### Materiały
-- [Karta zajęć](/docs/cwiczenia/karty/zadanie-05-bess)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/bess)
+- [Karta zajęć](../karty/zadanie-05-bess.md)
+- [Dokumentacja urządzenia](../karty/urzadzenia/bess.md)
 - [Dane](/cwiczenia/dane/zad05_bess.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad05_klucz)
+- [Klucz odpowiedzi](../klucze/zad05_klucz.md)
 
 ---
 
@@ -197,17 +197,17 @@ Szczegółowa instrukcja, format oddania oraz punktacja (**10 pkt**) znajdują s
 ## 🔗 Materiały dodatkowe
 
 ### Przydatne linki
-- [Wprowadzenie do ćwiczeń](/docs/cwiczenia/index)
-- [Opis zbiorów danych](/docs/cwiczenia/dane)
-- [Rubryki oceniania](/docs/cwiczenia/rubryki/rubryka-oceny-standard)
-- [Kryteria zaliczenia](/docs/cwiczenia/rubryki/kryteria-zaliczenia)
+- [Wprowadzenie do ćwiczeń](../index.md)
+- [Opis zbiorów danych](../dane.md)
+- [Rubryki oceniania](../rubryki/rubryka-oceny-standard.md)
+- [Kryteria zaliczenia](../rubryki/kryteria-zaliczenia.md)
 
 ### Dokumentacja urządzeń
-- [Stacja ładowania hulajnóg + PV](/docs/cwiczenia/karty/urzadzenia/pv-stacja-hulajnog)
-- [Turbina VAWT z magazynem](/docs/cwiczenia/karty/urzadzenia/vawt-magazyn)
-- [Mała biogazownia](/docs/cwiczenia/karty/urzadzenia/biogazownia-mala)
-- [Pompa ciepła](/docs/cwiczenia/karty/urzadzenia/pompa-ciepla)
-- [Magazyn energii BESS](/docs/cwiczenia/karty/urzadzenia/bess)
+- [Stacja ładowania hulajnóg + PV](../karty/urzadzenia/pv-stacja-hulajnog.md)
+- [Turbina VAWT z magazynem](../karty/urzadzenia/vawt-magazyn.md)
+- [Mała biogazownia](../karty/urzadzenia/biogazownia-mala.md)
+- [Pompa ciepła](../karty/urzadzenia/pompa-ciepla.md)
+- [Magazyn energii BESS](../karty/urzadzenia/bess.md)
 
 ---
 

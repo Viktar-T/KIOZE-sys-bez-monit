@@ -9,26 +9,26 @@ description: "Zbiorczy pakiet: plan, karty ćwiczeń, szablony, rubryki i klucze
 # Pakiet zajęć — kompendium
 
 ## Plan
-- [Plan semestru](/docs/cwiczenia/plan/01-plan-semestru)
+- [Plan semestru](../plan/01-plan-semestru.md)
 
 ## Karty ćwiczeń (B)
-- [Karty — indeks](/docs/cwiczenia/karty/)
+- [Karty — indeks](/docs/cwiczenia/karty)
 - Zajęcia 01–10: dostępne w katalogu `docs/cwiczenia/karty/`
 
 ## Szablony (C)
-- [Lista kontrolna BHP](/docs/cwiczenia/szablony/checklista-bhp)
-- [Formularz raportu incydentu](/docs/cwiczenia/szablony/formularz-raportu-incydentu)
-- [Karta oceny](/docs/cwiczenia/szablony/karta-oceny)
+- [Lista kontrolna BHP](../szablony/checklista-bhp.md)
+- [Formularz raportu incydentu](../szablony/formularz-raportu-incydentu.md)
+- [Karta oceny](../szablony/karta-oceny.md)
 
 ## Klucze odpowiedzi (E)
-- [Indeks kluczy](/docs/cwiczenia/klucze/)
+- [Indeks kluczy](/docs/cwiczenia/klucze)
 
 ## Rubryki (F)
-- [Rubryka oceny — standard](/docs/cwiczenia/rubryki/rubryka-oceny-standard)
-- [Kryteria zaliczenia](/docs/cwiczenia/rubryki/kryteria-zaliczenia)
+- [Rubryka oceny — standard](../rubryki/rubryka-oceny-standard.md)
+- [Kryteria zaliczenia](../rubryki/kryteria-zaliczenia.md)
 
 ## Dane (D)
-- [Opis i mapowanie zbiorów CSV](/docs/cwiczenia/dane)
+- [Opis i mapowanie zbiorów CSV](../dane.md)
 - Pliki do pobrania: `/cwiczenia/dane/` (15 plików CSV)
 
 ---

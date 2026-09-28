@@ -34,8 +34,8 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad04_pompa-ciepla.csv)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/pompa-ciepla)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad04_klucz)
+- [Dokumentacja urządzenia](./urzadzenia/pompa-ciepla.md)
+- [Klucz odpowiedzi](../klucze/zad04_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał: **1 h**.  
@@ -91,4 +91,4 @@ links:
 | Plan reakcji / progi | 4 | COP_min, defrost, ciśnienia, działania operacyjne |
 
 ## ---
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)

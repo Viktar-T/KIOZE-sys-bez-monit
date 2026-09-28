@@ -27,7 +27,7 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zaj03_pv-wiatr-hybryda.csv)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zaj03_klucz)
+- Klucz odpowiedzi
 
 ## Zagrożenia i środki
 | Ryzyko | P×S | Środki |
@@ -51,5 +51,5 @@ links:
 Wykresy (3), Bilans (4), Progi i procedura (3).
 
 ---
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)
 

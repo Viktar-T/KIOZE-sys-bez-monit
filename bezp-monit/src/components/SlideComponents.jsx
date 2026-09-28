@@ -122,18 +122,6 @@ export const InstructorNotes = ({ children, title = "🎓 Notatki wykładowcy (K
 );
 
 /**
- * Slide separator component
- * Creates visual separation between major topics
- */
-export const SlideSeparator = ({ emoji = "🎯", text = "➡️" }) => (
-  <div className="slide-separator">
-    <span className="slide-separator-emoji">{emoji}</span>
-    <span className="slide-separator-text">{text}</span>
-    <span className="slide-separator-emoji">{emoji}</span>
-  </div>
-);
-
-/**
  * Visual separator for different content types
  * Themed separators for different lecture topics
  * 
@@ -153,55 +141,6 @@ export const VisualSeparator = ({ type = "default" }) => {
     </div>
   );
 };
-
-/**
- * Progress indicator component
- * Shows progress through a lecture or course
- * 
- * @param {number} current - Current position
- * @param {number} total - Total items
- */
-export const SlideProgress = ({ current, total, className, ...props }) => (
-  <div className={clsx('slide-progress', className)} {...props}>
-    <div className="slide-progress-bar">
-      <div 
-        className="slide-progress-fill" 
-        style={{ width: `${(current / total) * 100}%` }}
-      />
-    </div>
-    <span className="slide-progress-text">
-      {current} / {total}
-    </span>
-  </div>
-);
-
-/**
- * Navigation component for slides
- * Provides previous/next navigation buttons
- * 
- * @param {function} onPrevious - Handler for previous button
- * @param {function} onNext - Handler for next button
- * @param {boolean} hasPrevious - Whether previous button should be enabled
- * @param {boolean} hasNext - Whether next button should be enabled
- */
-export const SlideNavigation = ({ onPrevious, onNext, hasPrevious, hasNext, className, ...props }) => (
-  <div className={clsx('slide-navigation', className)} {...props}>
-    <button 
-      className="slide-nav-button slide-nav-prev"
-      onClick={onPrevious}
-      disabled={!hasPrevious}
-    >
-      ← Poprzedni
-    </button>
-    <button 
-      className="slide-nav-button slide-nav-next"
-      onClick={onNext}
-      disabled={!hasNext}
-    >
-      Następny →
-    </button>
-  </div>
-);
 
 /**
  * Learning Objective component

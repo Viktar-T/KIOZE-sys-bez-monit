@@ -11,12 +11,12 @@ Wykład podsumowuje zagadnienia związane z zarządzaniem bezpieczeństwem w ins
 
 ## Struktura materiału
 
-1. [Procedury LOTO w instalacjach OZE](./01-procedury-loto-instalacje-oze.mdx)
-2. [Plany awaryjne i procedury reagowania](./02-plany-awaryjne-procedury-reagowania.mdx)
-3. [Łańcuchy komunikacji i zarządzanie kryzysowe](./03-lancuchy-komunikacji-zarzadzanie-kryzysowe.mdx)
-4. [Systemy raportowania i rejestracji zdarzeń](./04-systemy-raportowania-rejestracji-zdarzen.mdx)
-5. [Kultura bezpieczeństwa i programy szkoleniowe](./05-kultura-bezpieczenstwa-programy-szkoleniowe.mdx)
-6. [Integracja systemów bezpieczeństwa - podsumowanie](./06-integracja-systemow-bezpieczenstwa-podsumowanie.mdx)
+1. Procedury LOTO w instalacjach OZE
+2. Plany awaryjne i procedury reagowania
+3. Łańcuchy komunikacji i zarządzanie kryzysowe
+4. Systemy raportowania i rejestracji zdarzeń
+5. Kultura bezpieczeństwa i programy szkoleniowe
+6. Integracja systemów bezpieczeństwa - podsumowanie
 
 ## Literatura skrócona
 

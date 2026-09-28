@@ -10,6 +10,8 @@ import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const repoUrl = 'https://github.com/Viktar-T/KIOZE-sys-bez-monit';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Systemy bezpieczeństwa i monitorowania instalacji OZE',
@@ -18,7 +20,8 @@ const config = {
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    // Also turns on the faster Rspack/SWC build (needs @docusaurus/faster)
+    v4: true,
   },
 
   // Set the production url of your site here (Vercel deployment)
@@ -26,13 +29,11 @@ const config = {
   // On Vercel, the site is served from root
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'vtaustyka', // Usually your GitHub org/user name.
-  projectName: 'KIOZE-sys-bez-monit', // Usually your repo name.
+  organizationName: 'Viktar-T',
+  projectName: 'KIOZE-sys-bez-monit',
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // Fail the build instead of publishing broken links
+  onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -42,11 +43,19 @@ const config = {
     locales: ['pl'],
   },
 
-  // Enable Mermaid diagrams
   markdown: {
+    // Enable Mermaid diagrams
     mermaid: true,
+    // Docs use the `:::tip Tytuł` admonition title syntax, which `future.v4`
+    // disables by default (the new syntax is `:::tip[Tytuł]`)
+    mdx1Compat: {
+      admonitions: true,
+    },
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
-  
+
   themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
@@ -57,34 +66,12 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           path: 'docs',
-          exclude: [
-            '**/bezp-monit/**', 
-            '**/wyklady/*/README.md',
-            '**/wyklad-04-standardy-integracja/*.mdx',
-            '**/wyklad-05-jakosc-danych-strumienie/*.mdx'
-          ],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/vtaustyka/KIOZE-sys-bez-monit/tree/main/bezp-monit/',
+          // "Edit this page" links
+          editUrl: `${repoUrl}/tree/main/bezp-monit/`,
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/vtaustyka/KIOZE-sys-bez-monit/tree/main/bezp-monit/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -95,8 +82,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      // Link preview image (Teams, e-mail, social media)
+      image: 'img/social-card.png',
       docs: {
         sidebar: {
           autoCollapseCategories: true,
@@ -119,7 +106,7 @@ const config = {
             label: 'Dokumentacja',
           },
           {
-            href: 'https://github.com/vtaustyka/KIOZE-sys-bez-monit',
+            href: repoUrl,
             label: 'GitHub',
             position: 'right',
           },
@@ -151,7 +138,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/vtaustyka/KIOZE-sys-bez-monit',
+                href: repoUrl,
               },
             ],
           },
@@ -163,16 +150,6 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-  
-  stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
-    },
-  ],
 };
 
 export default config;

@@ -243,10 +243,10 @@ Student **automatycznie nie zalicza kursu** jeśli:
 
 ## 🔗 Materiały powiązane
 
-- [Rubryka oceny standardowa](/docs/cwiczenia/rubryki/rubryka-oceny-standard)
-- [Karta oceny](/docs/cwiczenia/szablony/karta-oceny)
-- [Plan semestru](/docs/cwiczenia/plan/01-plan-semestru)
-- [Wprowadzenie do ćwiczeń](/docs/cwiczenia/index)
+- [Rubryka oceny standardowa](./rubryka-oceny-standard.md)
+- [Karta oceny](../szablony/karta-oceny.md)
+- [Plan semestru](../plan/01-plan-semestru.md)
+- [Wprowadzenie do ćwiczeń](../index.md)
 
 ---
 

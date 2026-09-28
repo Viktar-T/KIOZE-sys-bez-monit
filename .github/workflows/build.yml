@@ -1,0 +1,33 @@
+# Builds the course website on every push to main and every pull request,
+# so broken links and MDX errors show up before Vercel deploys.
+name: Build site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bezp-monit/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'bezp-monit/**'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bezp-monit
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: bezp-monit/.nvmrc
+          cache: npm
+          cache-dependency-path: bezp-monit/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run build

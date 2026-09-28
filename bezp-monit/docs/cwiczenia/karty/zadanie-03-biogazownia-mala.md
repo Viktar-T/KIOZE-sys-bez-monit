@@ -38,9 +38,9 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad03_biogazownia-mala.csv)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/biogazownia-mala)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad03_klucz)
-- [Formularz raportu incydentu](/docs/cwiczenia/szablony/formularz-raportu-incydentu)
+- [Dokumentacja urządzenia](./urzadzenia/biogazownia-mala.md)
+- [Klucz odpowiedzi](../klucze/zad03_klucz.md)
+- [Formularz raportu incydentu](../szablony/formularz-raportu-incydentu.md)
 
 ## Założenia do obliczeń
 - Interwał: **1 h** (w pliku).  
@@ -111,4 +111,4 @@ Analiza składu biogazu i parametrów procesu. Wykrywanie toksyczności H₂S i 
 | Plan reakcji | 4 | Działania adekwatne do przyczyn i severity |
 
 ## --- 
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)

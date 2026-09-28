@@ -5,7 +5,15 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  font-size: 3.5rem;
+  line-height: 1;
+  background-color: var(--ifm-color-emphasis-100);
 }

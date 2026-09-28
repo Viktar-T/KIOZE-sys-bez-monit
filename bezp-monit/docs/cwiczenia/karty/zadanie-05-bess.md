@@ -34,8 +34,8 @@ links:
 
 ## Materiały
 - [Dane CSV](/cwiczenia/dane/zad05_bess.csv)
-- [Dokumentacja urządzenia](/docs/cwiczenia/karty/urzadzenia/bess)
-- [Klucz odpowiedzi](/docs/cwiczenia/klucze/zad05_klucz)
+- [Dokumentacja urządzenia](./urzadzenia/bess.md)
+- [Klucz odpowiedzi](../klucze/zad05_klucz.md)
 
 ## Założenia do obliczeń
 - Interwał: **1 h**.
@@ -98,4 +98,4 @@ links:
 | Plan reakcji i progi | 4 | progi + działania adekwatne do przyczyn i severity |
 
 ---
-Powrót: [/docs/cwiczenia/plan/01-plan-semestru](/docs/cwiczenia/plan/01-plan-semestru)
+Powrót: [Plan semestru — ćwiczenia laboratoryjne](../plan/01-plan-semestru.md)

@@ -12,28 +12,27 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
+        <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        
+        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{siteConfig.tagline}</p>
+
         {/* Course Format Information */}
-        <div className="hero__info">
+        <div className={styles.heroInfo}>
           <p>
-            <strong>Format kursu:</strong> 
-            Wykłady (20h) • Zajęcia audytoryjne (10h)
+            <strong>Format kursu:</strong> Wykłady (20h) • Zajęcia audytoryjne (10h)
           </p>
         </div>
-        
+
         {/* Call to Action Buttons */}
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className={clsx('button button--lg', styles.heroButton, styles.heroButtonPrimary)}
             to="/docs/category/wyk%C5%82ady---bezpiecze%C5%84stwo">
             Wykłady 📚
           </Link>
           <Link
-            className="button button--primary button--lg"
+            className={clsx('button button--lg', styles.heroButton, styles.heroButtonSecondary)}
             to="/docs/category/cwiczenia">
             Ćwiczenia 🛠️
           </Link>

@@ -11,12 +11,12 @@ Wykład omawia specyficzne zagrożenia cybernetyczne w systemach automatyki prze
 
 ## Struktura materiału
 
-1. [Cyberzagrożenia w systemach przemysłowych](./01-cyberzagrozenia-systemy-przemyslowe.mdx)
-2. [Wektory ataku na infrastrukturę energetyczną](./02-wektory-ataku-infrastruktura-energetyczna.mdx)
-3. [Segmentacja sieci i strefy bezpieczeństwa](./03-segmentacja-sieci-strefy-bezpieczenstwa.mdx)
-4. [Bezpieczny dostęp zdalny](./04-bezpieczny-dostep-zdalny.mdx)
-5. [Systemy kopii zapasowych i odzyskiwania](./05-systemy-kopii-zapasowych-odzyskiwanie.mdx)
-6. [IEC 62443 - implementacja w praktyce](./06-iec-62443-implementacja-praktyka.mdx)
+1. Cyberzagrożenia w systemach przemysłowych
+2. Wektory ataku na infrastrukturę energetyczną
+3. Segmentacja sieci i strefy bezpieczeństwa
+4. Bezpieczny dostęp zdalny
+5. Systemy kopii zapasowych i odzyskiwania
+6. IEC 62443 - implementacja w praktyce
 
 ## Literatura skrócona
 

@@ -5,6 +5,9 @@
  * work well for content-centric websites.
  */
 
+/* KaTeX styles bundled from the installed package (same version as rehype-katex) */
+@import 'katex/dist/katex.min.css';
+
 /* ============================================
    1. CSS VARIABLES - THEME COLORS
    ============================================ */
@@ -46,9 +49,8 @@
   --ifm-code-padding-vertical: 0.2rem;
   --ifm-code-border-radius: 4px;
 
-  /* Navbar */
+  /* Navbar (background comes from the theme, so it follows dark mode) */
   --ifm-navbar-height: 60px;
-  --ifm-navbar-background-color: #ffffff;
   --ifm-navbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   /* Footer */
@@ -351,17 +353,8 @@
 }
 
 /* ============================================
-   6. SLIDE SEPARATORS & NAVIGATION
+   6. SLIDE SEPARATORS
    ============================================ */
-
-/* Slide Separators */
-.slide-separator {
-  text-align: center;
-  margin: 2rem 0;
-  padding: 1rem;
-  font-size: 1.5rem;
-  color: #6c757d;
-}
 
 .visual-separator {
   text-align: center;
@@ -372,73 +365,6 @@
   background: #f8f9fa;
   border-radius: 8px;
   border: 1px solid #dee2e6;
-}
-
-/* Slide Progress */
-.slide-progress {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  padding: 0.8rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-}
-
-.slide-progress-bar {
-  flex: 1;
-  height: 8px;
-  background: #e9ecef;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.slide-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4CAF50, #45a049);
-  transition: width 0.3s ease;
-}
-
-.slide-progress-text {
-  font-size: 0.9rem;
-  color: #6c757d;
-  font-weight: 500;
-}
-
-/* Slide Navigation */
-.slide-navigation {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-}
-
-.slide-nav-button {
-  padding: 0.8rem 1.5rem;
-  border: 2px solid #4CAF50;
-  background: #ffffff;
-  color: #4CAF50;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.slide-nav-button:hover:not(:disabled) {
-  background: #4CAF50;
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-.slide-nav-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  border-color: #6c757d;
-  color: #6c757d;
 }
 
 /* ============================================
@@ -453,10 +379,44 @@
   border: 2px solid var(--ifm-color-primary);
 }
 
+/* Resets the default <fieldset> look, the container provides the frame */
+.quiz-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 .quiz-question {
+  display: block;
+  width: 100%;
+  padding: 0;
   color: var(--ifm-color-primary);
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
+  font-weight: var(--ifm-heading-font-weight);
+  line-height: var(--ifm-heading-line-height);
+}
+
+.quiz-counter {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.quiz-score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--ifm-color-primary);
+  font-size: 1.1rem;
+}
+
+.quiz-score .quiz-reset-button {
+  margin-top: 0;
 }
 
 .quiz-options {
@@ -624,51 +584,6 @@
 }
 
 /* ============================================
-   9. TABBED CONTENT STYLES
-   ============================================ */
-
-.tabbed-container {
-  margin: 2rem 0;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.tab-buttons {
-  display: flex;
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.tab-button {
-  flex: 1;
-  padding: 1rem;
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  color: #495057;
-}
-
-.tab-button:hover {
-  background-color: #e9ecef;
-}
-
-.tab-button-active {
-  background-color: #ffffff;
-  border-bottom-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
-  font-weight: 600;
-}
-
-.tab-content {
-  padding: 1.5rem;
-  background-color: #ffffff;
-}
-
-/* ============================================
    10. TABLES
    ============================================ */
 
@@ -698,86 +613,6 @@ table tbody td {
 
 table tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.02);
-}
-
-/* ============================================
-   11. ADMONITIONS (INFO BOXES)
-   ============================================ */
-
-.admonition {
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid;
-}
-
-.admonition h5 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Tip */
-.admonition-tip {
-  background-color: #e7f3ff;
-  border-color: #1976d2;
-}
-
-.admonition-tip h5 {
-  color: #1565c0;
-}
-
-/* Info */
-.admonition-info {
-  background-color: #e3f2fd;
-  border-color: #0288d1;
-}
-
-.admonition-info h5 {
-  color: #01579b;
-}
-
-/* Caution */
-.admonition-caution {
-  background-color: #fff3e0;
-  border-color: #f57c00;
-}
-
-.admonition-caution h5 {
-  color: #e65100;
-}
-
-/* Warning */
-.admonition-warning {
-  background-color: #fff8e1;
-  border-color: #ffa726;
-}
-
-.admonition-warning h5 {
-  color: #ff6f00;
-}
-
-/* Danger */
-.admonition-danger {
-  background-color: #ffebee;
-  border-color: #e53935;
-}
-
-.admonition-danger h5 {
-  color: #c62828;
-}
-
-/* Note */
-.admonition-note {
-  background-color: #f5f5f5;
-  border-color: #757575;
-}
-
-.admonition-note h5 {
-  color: #424242;
 }
 
 /* ============================================
@@ -870,64 +705,9 @@ table tbody tr:hover {
 }
 
 /* ============================================
-   15. HOMEPAGE CUSTOMIZATION
+   15. HOMEPAGE
+   Homepage styles live in src/pages/index.module.css
    ============================================ */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary-dark));
-  color: white;
-}
-
-.hero__title {
-  font-size: 3rem;
-  font-weight: 800;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.hero__subtitle {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  opacity: 0.95;
-}
-
-.hero__info {
-  margin: 2rem auto;
-  max-width: 600px;
-  font-size: 1.1rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-}
-
-.hero__info strong {
-  color: var(--ifm-color-primary-lightest);
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.button--lg {
-  font-size: 1.25rem;
-  padding: 1rem 2rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.button--lg:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
 
 /* ============================================
   15b. LAYOUT AND GRID UTILITIES (from project-styles.md)
@@ -1087,34 +867,7 @@ table tbody tr:hover {
   .slide-title {
     font-size: 1.5rem;
   }
-  
-  .slide-navigation {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  
-  .slide-nav-button {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .hero__title {
-    font-size: 2rem;
-  }
-  
-  .hero__subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .hero__info {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-  }
-  
-  .tab-buttons {
-    flex-direction: column;
-  }
-  
+
   .quiz-container {
     padding: 1.5rem;
   }
@@ -1213,6 +966,26 @@ table tbody tr:hover {
   border-color: #68d391;
 }
 
+/* Answer states must beat the dark .quiz-option background above */
+[data-theme='dark'] .quiz-option.quiz-option-selected {
+  border-color: var(--ifm-color-primary);
+  background-color: rgba(37, 194, 160, 0.15);
+}
+
+[data-theme='dark'] .quiz-option.quiz-option-correct {
+  border-color: #48bb78;
+  background-color: rgba(72, 187, 120, 0.25);
+}
+
+[data-theme='dark'] .quiz-option.quiz-option-wrong {
+  border-color: #f56565;
+  background-color: rgba(245, 101, 101, 0.25);
+}
+
+[data-theme='dark'] .quiz-explanation {
+  background-color: rgba(33, 150, 243, 0.15);
+}
+
 [data-theme='dark'] .literature-item {
   background-color: rgba(255, 255, 255, 0.05);
 }
@@ -1221,21 +994,15 @@ table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme='dark'] .tab-buttons {
-  background-color: #2d3748;
-}
-
-[data-theme='dark'] .tab-button {
+[data-theme='dark'] .visual-separator {
+  background: #2d3748;
+  border-color: #4a5568;
   color: #e2e8f0;
 }
 
-[data-theme='dark'] .tab-button-active {
-  background-color: #1a202c;
-}
-
-[data-theme='dark'] .tab-content {
-  background-color: #1a202c;
-  color: #e2e8f0;
+/* White header text needs a darker background than the dark-mode primary */
+[data-theme='dark'] table thead {
+  background-color: #1f6f5c;
 }
 
 [data-theme='dark'] table tbody tr:hover {

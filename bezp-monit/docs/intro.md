@@ -64,7 +64,7 @@ Po ukończeniu kursu studenci będą potrafili:
 
 ## Rozpoczęcie nauki
 
-Zacznij od [Wykład 1: Architektura systemów monitoringu](./wyklady/) (dostępny wkrótce), aby rozpocząć swoją podróż edukacyjną w świecie systemów monitorowania OZE.
+Zacznij od [Wykład 1: Architektura systemów monitoringu](./wyklady/wyklad-01-architektura-w1/index.md) (dostępny wkrótce), aby rozpocząć swoją podróż edukacyjną w świecie systemów monitorowania OZE.
 
 ## Organizacja zajęć
 
@@ -98,7 +98,7 @@ Zacznij od [Wykład 1: Architektura systemów monitoringu](./wyklady/) (dostępn
 - **PLC Simulator**: Do symulacji urządzeń przemysłowych
 
 ### Zalecana literatura
-Zobacz sekcję [Literatura](./literatura/) dla pełnej listy zasobów, standardów przemysłowych i referencji.
+Zobacz sekcję [Literatura](./literatura/index.md) dla pełnej listy zasobów, standardów przemysłowych i referencji.
 
 ## Kontakt
 

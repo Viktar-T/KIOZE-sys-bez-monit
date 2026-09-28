@@ -71,9 +71,9 @@ Po wykonaniu zadania porównaj swoje wyniki z **Kluczem odpowiedzi** w sekcji `/
 
 ## 🔗 Szybkie linki
 
-- [Plan zajęć](/docs/cwiczenia/plan/01-plan-semestru)
-- [Karty ćwiczeń](/docs/cwiczenia/karty/)
-- [Klucze odpowiedzi](/docs/cwiczenia/klucze/)
+- [Plan zajęć](./plan/01-plan-semestru.md)
+- [Karty ćwiczeń](/docs/cwiczenia/karty)
+- [Klucze odpowiedzi](/docs/cwiczenia/klucze)
 
 ---
 

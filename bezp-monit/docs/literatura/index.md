@@ -66,9 +66,9 @@ title: Literatura i Zasoby
 
 ## 📄 Dodatkowe materiały
 
-- **Prezentacje z wykładów**: Dostępne w sekcji [Wykłady](../wyklady/)
-- **Zestawy ćwiczeń**: Zobacz [Ćwiczenia](../cwiczenia/)
-- **Szablony projektów**: Dostępne w [Projektach](../projekty/)
+- **Prezentacje z wykładów**: Dostępne w sekcji [Wykłady](/docs/category/wyk%C5%82ady---bezpiecze%C5%84stwo)
+- **Zestawy ćwiczeń**: Zobacz [Ćwiczenia](../cwiczenia/index.md)
+- **Szablony projektów**: Dostępne w Projektach
 
 ---
 
