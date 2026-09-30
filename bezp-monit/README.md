@@ -41,3 +41,14 @@ Lecture and exercise pages have a **▶ Prezentacja** button: one slide per scre
 ## Deployment
 
 Vercel deploys the `main` branch. GitHub Actions builds every push to `main` and every pull request (`.github/workflows/build.yml`).
+
+## Dependency overrides
+
+`overrides` in `package.json` force patched versions of indirect dependencies, so that `npm audit` reports no vulnerabilities:
+
+- `mermaid` `^11.17.2`: patched 11.x. `@docusaurus/theme-mermaid` accepts any version from 11.6, which lets npm install Mermaid 12, a breaking release (Safari 17.4+, new default layout).
+- `lodash-es` `^4.18.1`: `chevrotain`, a Mermaid dependency, pins the vulnerable 4.17.23.
+- `serialize-javascript` `^7.1.2`: the webpack plugins inside `@docusaurus/bundler` pin 6.x. 7.x only adds the requirement Node 20+.
+- `uuid` `^11.1.1` for `sockjs` (dev server only): `sockjs` pins 8.x.
+
+After upgrading Docusaurus, check with `npm audit` whether an override is still needed and remove the ones that are not. Do not run `npm audit fix --force`: it "fixes" `serialize-javascript` by downgrading Docusaurus.
