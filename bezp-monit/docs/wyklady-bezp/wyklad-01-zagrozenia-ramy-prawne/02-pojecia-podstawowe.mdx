@@ -1,0 +1,149 @@
+---
+title: "Pojęcia podstawowe: zagrożenie i ryzyko"
+sidebar_position: 2
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+
+<LearningObjective>
+
+Student rozróżnia zagrożenie, sytuację zagrożenia, zdarzenie niebezpieczne, szkodę, ryzyko, ryzyko tolerowane i ryzyko resztkowe oraz stosuje kolejność środków zmniejszania ryzyka według ISO 12100.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Zagrożenie, sytuacja zagrożenia, szkoda" type="info">
+
+| Termin (ang.) | Definicja wg ISO/IEC Guide 51:2014 | Przykład z fotowoltaiki, PV (ilustracyjny) |
+|---|---|---|
+| **szkoda** (harm) | uraz lub pogorszenie zdrowia ludzi albo szkoda w mieniu lub środowisku | porażenie strażaka, spalony dach |
+| **zagrożenie** (hazard) | potencjalne źródło szkody | napięcie DC (prądu stałego) na przewodach stringu |
+| **sytuacja zagrożenia** (hazardous situation) | okoliczność, w której ludzie, mienie lub środowisko są narażeni na co najmniej jedno zagrożenie | strażak na dachu z instalacją PV w ciągu dnia |
+| **zdarzenie niebezpieczne** (hazardous event) | zdarzenie, które może spowodować szkodę | dotknięcie przewodu z uszkodzoną izolacją |
+
+- Definicje w tłumaczeniu roboczym. Łańcuch: zagrożenie, narażenie (sytuacja zagrożenia) i zdarzenie niebezpieczne prowadzą do szkody. Samo zagrożenie szkody nie wywołuje.
+- ISO 12100:2010 (bezpieczeństwo maszyn) zawęża szkodę do ludzi: uraz fizyczny lub pogorszenie zdrowia.
+- Polskie brzmienie „potencjalne źródło szkody (urazu lub innego pogorszenia stanu zdrowia)” pochodzi z PN-EN ISO 12100-1:2005 (za CIOP-PIB, Centralnym Instytutem Ochrony Pracy — Państwowym Instytutem Badawczym). To wydanie jest nieaktualne: ISO 12100:2010 zastąpiła ISO 12100-1:2003. Aktualne polskie wydanie sprawdź w katalogu PKN (Polskiego Komitetu Normalizacyjnego).
+- ISO 12100:2010 jest w rewizji: projekt ISO/DIS 12100.3 (wydanie 2), głosowanie zamknięte 15.09.2026.
+
+Źródło: [ISO/IEC Guide 51:2014, fragment udostępniony](https://cdn.standards.iteh.ai/samples/53940/eed8e9480a434fd2810d25c5cd95458e/ISO-IEC-Guide-51-2014.pdf); [ISO 12100:2010, fragment udostępniony](https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf); [ISO, ISO 12100:2010](https://www.iso.org/standard/51528.html); [ISO, ISO/DIS 12100.3](https://www.iso.org/standard/88578.html); [CIOP-PIB](http://archiwum.ciop.pl/20840.html)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Te pojęcia wydają się oczywiste, ale w praktyce ciągle się je myli. Napięcie na przewodach PV jest zagrożeniem przez cały dzień, przez całe życie instalacji. Szkoda nie następuje jednak, dopóki nikt nie jest narażony. Sytuacja zagrożenia pojawia się, gdy na dach wchodzi strażak albo serwisant. Zdarzenie niebezpieczne to konkretny moment, na przykład dotknięcie przewodu z uszkodzoną izolacją.
+
+Ten podział przyda się w W2, bo metody analizy ryzyka rozkładają scenariusz właśnie na takie ogniwa. Proszę też zauważyć różnicę zakresu: Guide 51 obejmuje szkody w mieniu i środowisku, a norma maszynowa ISO 12100 tylko szkody u ludzi.
+
+Pytanie do sali: co w kontenerze magazynu energii jest zagrożeniem, a co sytuacją zagrożenia? Typowe nieporozumienie: „zagrożenie” i „ryzyko” to synonimy. Zagrożenie to źródło, a ryzyko to miara.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Ryzyko w dwóch ujęciach" type="info">
+
+- **Ryzyko** w ujęciu bezpieczeństwa to kombinacja prawdopodobieństwa wystąpienia szkody i ciężkości tej szkody (ISO/IEC Guide 51:2014, ISO 12100:2010).
+- **Ryzyko** w ujęciu zarządczym to wpływ niepewności na cele (ISO 31000:2018). Dotyczy celów organizacji, np. terminu lub budżetu, a nie tylko szkody.
+- **Ryzyko resztkowe** to ryzyko pozostające po zastosowaniu środków ochronnych (ISO 12100:2010).
+- **Ryzyko tolerowane** to poziom ryzyka akceptowany w danym kontekście na podstawie aktualnych wartości społecznych. Guide 51 traktuje ryzyko „akceptowalne” i „tolerowane” jako synonimy.
+- **Bezpieczeństwo** to brak ryzyka, którego nie można tolerować (Guide 51). „Bezpieczne” nie znaczy więc „bez ryzyka”.
+- W tym kursie ryzyko rozumiemy jak w Guide 51 i ISO 12100. ISO 31000:2018 opisuje proces zarządzania ryzykiem ([W2](../wyklad-02-analiza-ryzyka/index.md)); jest aktualna, a jej wydanie 3 jest na etapie projektu komitetu (ISO/CD 31000, konsultacje zamknięte 1.03.2026).
+
+Źródło: [ISO/IEC Guide 51:2014, fragment udostępniony](https://cdn.standards.iteh.ai/samples/53940/eed8e9480a434fd2810d25c5cd95458e/ISO-IEC-Guide-51-2014.pdf); [ISO 12100:2010, fragment udostępniony](https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf); [ISO, 2018](https://www.iso.org/news/ref2263.html); [ISO 31000:2018](https://www.iso.org/standard/65694.html); [ISO/CD 31000](https://www.iso.org/standard/88574.html)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Słowo „ryzyko” funkcjonuje w dwóch światach. Inżynier bezpieczeństwa pyta, jak często i jak poważnie ktoś może ucierpieć. Menedżer stosujący ISO 31000 pyta, jak niepewność wpływa na cele firmy, na przykład na termin oddania farmy albo przychód. Oba ujęcia są poprawne, ale nie wolno ich mieszać w jednym dokumencie.
+
+Najważniejsze zdanie na slajdzie to definicja bezpieczeństwa. Bezpieczeństwo nie oznacza zera ryzyka, tylko brak ryzyka nietolerowanego. Zawsze zostaje ryzyko resztkowe i trzeba uczciwie poinformować o nim użytkownika.
+
+Pytanie do sali: kto decyduje, jakie ryzyko jest tolerowane? Guide 51 odpowiada: kontekst i aktualne wartości społeczne; w praktyce, i to jest moja ocena, wyrażają je prawo, normy i regulator. Typowe nieporozumienie: „instalacja z certyfikatem ma zerowe ryzyko”.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Hierarchia zmniejszania ryzyka" type="tip">
+
+ISO 12100:2010 wymaga stosowania środków ochronnych w ustalonej kolejności (metoda trzech kroków):
+
+1. **Rozwiązania konstrukcyjne bezpieczne same w sobie**: usunięcie zagrożenia lub zmniejszenie ryzyka przez wybór rozwiązania projektowego.
+2. **Techniczne środki ochronne**: osłony, urządzenia ochronne i uzupełniające środki ochronne, gdy krok 1 nie wystarcza.
+3. **Informacje dotyczące użytkowania**: wskazanie ryzyka, które pozostaje po krokach 1 i 2.
+
+Po stronie użytkownika dochodzą organizacja pracy, szkolenia i środki ochrony indywidualnej. Dyrektywa 89/391/EWG daje pierwszeństwo środkom ochrony zbiorowej przed środkami ochrony indywidualnej.
+
+| Krok | Przykład w odnawialnych źródłach energii, OZE (ilustracyjny) |
+|---|---|
+| 1 | BESS (Battery Energy Storage System — bateryjny magazyn energii) w kontenerach na zewnątrz, z odstępami, zamiast jednej hali; według WECC (Western Electricity Coordinating Council, 2025) większość nowych BESS ma taką konstrukcję, co odzwierciedla wnioski z wcześniejszych awarii |
+| 2 | detekcja łuku DC w PV; detekcja gazu z wentylacją w kontenerze BESS |
+| 3 | oznakowanie instalacji PV; plan instalacji dla ekip ratowniczych (dla PV powyżej 6,5 kW wymaga go Prawo budowlane, art. 29 ust. 4 pkt 3 lit. c) |
+| Użytkownik | procedura wejścia do kontenera BESS po alarmie (jej brak wskazał DNV GL po pożarze w McMicken) |
+
+Źródło: [Görnemann, CEN-CENELEC, 2019](https://www.cencenelec.eu/media/CEN-CENELEC/Areas%20of%20Work/CENELEC%20sectors/Mechanical%20and%20Machines/Documents/Quicklinks/eniso12100relationmachinerydirective.pdf); [ISO 12100:2010, fragment udostępniony](https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf); [EU-OSHA, dyrektywa 89/391/EWG](https://osha.europa.eu/en/legislation/directives/the-osh-framework-directive/1); [WECC, 2025](https://www.wecc.org/sites/default/files/documents/progress_report/2025/Moss%20Landing%20BESS%20Fire%20Report%20Final%2012.22.25.pdf); [DNV GL, 2020](https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23); [ISAP, Prawo budowlane, Dz.U. 2026 poz. 524](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000524)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Kolejność kroków nie jest przypadkowa. Najpierw pytamy, czy da się tak zaprojektować instalację, żeby zagrożenie w ogóle nie wystąpiło albo było mniejsze. Dopiero potem dokładamy zabezpieczenia techniczne, a na końcu ostrzeżenia i instrukcje. Instrukcja jest najsłabszym środkiem, bo zależy od tego, czy ktoś ją przeczyta i zastosuje.
+
+Przykłady w tabeli są ilustracyjne, ale nawiązują do raportów po pożarach magazynów. Rozmieszczenie magazynu w osobnych kontenerach zmienia sam projekt, więc to krok pierwszy. Detekcja gazu z wentylacją to krok drugi, a procedura wejścia to środek organizacyjny użytkownika.
+
+Typowe nieporozumienie: „dodamy monitoring i będzie bezpiecznie”. Monitoring sam niczego nie wyłącza; do jego roli wrócimy w części piątej. Pytanie do sali: do którego kroku zaliczycie wyłącznik awaryjny instalacji PV dla strażaków?
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Ryzyko tolerowane i ALARP" type="info">
+
+- Brytyjski urząd HSE (Health and Safety Executive — urząd ds. bezpieczeństwa i higieny pracy) w dokumencie R2P2 (Reducing Risks, Protecting People, 2001) opisuje ramy tolerowalności ryzyka z trzema obszarami: **nietolerowanym**, **tolerowanym pod warunkiem ALARP** i **powszechnie akceptowanym**.
+- **ALARP** (As Low As Reasonably Practicable — tak nisko, jak jest to rozsądnie wykonalne): ryzyko porównuje się z nakładem czasu, pieniędzy i trudu potrzebnym do jego zmniejszenia.
+- Z zastosowania środka można zrezygnować tylko przy **rażącej dysproporcji** między nakładem a zmniejszeniem ryzyka (wyrok Edwards v National Coal Board, 1949).
+- ALARP nie oznacza ryzyka zerowego (HSE).
+- HSE proponuje kryteria liczbowe tylko dla nielicznych kategorii ryzyka: indywidualnego ryzyka śmierci na rok i wypadków z wieloma ofiarami; wartości i sposób ich użycia omawiamy w [W2](../wyklad-02-analiza-ryzyka/index.md).
+- Casson Moreno i in. (2016) oceniają profil ryzyka sektora biogazu jako nie do pominięcia, typowy dla obszaru ALARP.
+
+Źródło: [HSE, R2P2](https://assets.publishing.service.gov.uk/media/6634988fcf3b5081b14f30cd/IQ8.10.J_Document_9_Health_and_Safety_Executive__Reducing_risks__protecting_people__HSE_s_decision-making_process__2001.pdf); [HSE, SPC/Permissioning/37](https://www.hse.gov.uk/foi/internalops/hid_circs/permissioning/spc_perm_37/); [HSE, ALARP at a glance](https://www.hse.gov.uk/enforce/expert/alarpglance.htm); [Casson Moreno i in., 2016](https://doi.org/10.1016/j.renene.2015.10.017)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Skoro ryzyko zawsze zostaje, trzeba zdecydować, kiedy wystarczy. Pokażę schemat brytyjskiego urzędu HSE. Na górze jest obszar, w którym żadna korzyść nie usprawiedliwia ryzyka. Na dole jest obszar ryzyka tak małego, że nie trzeba go dalej zmniejszać. Pomiędzy nimi leży obszar tolerowany, w którym obowiązuje zasada ALARP: zmniejszamy ryzyko tak długo, aż koszt kolejnego kroku staje się rażąco nieproporcjonalny do korzyści.
+
+Słowo „rażąco” jest ważne. Nie wystarczy, że zabezpieczenie jest drogie; musi być drogie w sposób wyraźnie niewspółmierny do zmniejszenia ryzyka. Liczbowe granice obszarów pokażemy w W2.
+
+Pytanie do sali: czy argument „to zabezpieczenie dużo kosztuje” wystarcza, żeby z niego zrezygnować? Typowe nieporozumienie: ryzyko w obszarze tolerowanym nie wymaga już żadnych działań.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+1. ISO/IEC (2014). *ISO/IEC Guide 51:2014 Safety aspects — Guidelines for their inclusion in standards*, wyd. 3 (fragment udostępniony przez dystrybutora norm). [https://cdn.standards.iteh.ai/samples/53940/eed8e9480a434fd2810d25c5cd95458e/ISO-IEC-Guide-51-2014.pdf](https://cdn.standards.iteh.ai/samples/53940/eed8e9480a434fd2810d25c5cd95458e/ISO-IEC-Guide-51-2014.pdf)
+2. ISO (2010). *ISO 12100:2010 Safety of machinery — General principles for design — Risk assessment and risk reduction* (fragment udostępniony przez dystrybutora norm). [https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf](https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf)
+3. ISO (b.d.). *ISO 12100:2010* — karta normy (status: do rewizji). [https://www.iso.org/standard/51528.html](https://www.iso.org/standard/51528.html)
+4. ISO (2026). *ISO/DIS 12100.3 Safety of machinery — General principles for design — Risk assessment and risk reduction* (projekt wyd. 2). [https://www.iso.org/standard/88578.html](https://www.iso.org/standard/88578.html)
+5. CIOP-PIB (b.d.). *Zagrożenia zawodowe — Podstawowa terminologia* (definicje wg wycofanej PN-EN ISO 12100-1:2005). [http://archiwum.ciop.pl/20840.html](http://archiwum.ciop.pl/20840.html)
+6. ISO (2018). *The new ISO 31000 keeps risk management simple* (15.02.2018). [https://www.iso.org/news/ref2263.html](https://www.iso.org/news/ref2263.html)
+7. ISO (2018). *ISO 31000:2018 Risk management — Guidelines* — karta normy. [https://www.iso.org/standard/65694.html](https://www.iso.org/standard/65694.html)
+8. ISO (2026). *ISO/CD 31000 Risk management — Guidelines* (projekt wyd. 3). [https://www.iso.org/standard/88574.html](https://www.iso.org/standard/88574.html)
+9. Görnemann O. (2019). *EN ISO 12100 and its relation to the Machinery Directive*. CEN-CENELEC. [https://www.cencenelec.eu/media/CEN-CENELEC/Areas%20of%20Work/CENELEC%20sectors/Mechanical%20and%20Machines/Documents/Quicklinks/eniso12100relationmachinerydirective.pdf](https://www.cencenelec.eu/media/CEN-CENELEC/Areas%20of%20Work/CENELEC%20sectors/Mechanical%20and%20Machines/Documents/Quicklinks/eniso12100relationmachinerydirective.pdf)
+10. EU-OSHA (b.d.). *Directive 89/391/EEC — OSH „Framework Directive”*. [https://osha.europa.eu/en/legislation/directives/the-osh-framework-directive/1](https://osha.europa.eu/en/legislation/directives/the-osh-framework-directive/1)
+11. WECC (2025). *Moss Landing BESS Fire Report* (22.12.2025). [https://www.wecc.org/sites/default/files/documents/progress_report/2025/Moss%20Landing%20BESS%20Fire%20Report%20Final%2012.22.25.pdf](https://www.wecc.org/sites/default/files/documents/progress_report/2025/Moss%20Landing%20BESS%20Fire%20Report%20Final%2012.22.25.pdf)
+12. Hill D.M. (DNV GL) (2020). *McMicken Battery Energy Storage System Event — Technical Analysis and Recommendations*, dok. 10209302-HOU-R-01. APS. [https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23](https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23)
+13. Marszałek Sejmu RP (2026). *Obwieszczenie z 27.03.2026 w sprawie ogłoszenia jednolitego tekstu ustawy — Prawo budowlane*, Dz.U. 2026 poz. 524. ISAP. [https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000524](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000524)
+14. Health and Safety Executive (2001). *Reducing risks, protecting people: HSE's decision-making process* (R2P2). HSE Books; kopia dokumentu HSE udostępniona na GOV.UK. [https://assets.publishing.service.gov.uk/media/6634988fcf3b5081b14f30cd/IQ8.10.J_Document_9_Health_and_Safety_Executive__Reducing_risks__protecting_people__HSE_s_decision-making_process__2001.pdf](https://assets.publishing.service.gov.uk/media/6634988fcf3b5081b14f30cd/IQ8.10.J_Document_9_Health_and_Safety_Executive__Reducing_risks__protecting_people__HSE_s_decision-making_process__2001.pdf)
+15. Health and Safety Executive (b.d.). *Guidance on ALARP Decisions in COMAH* (SPC/Permissioning/37, wytyczne wycofane). [https://www.hse.gov.uk/foi/internalops/hid_circs/permissioning/spc_perm_37/](https://www.hse.gov.uk/foi/internalops/hid_circs/permissioning/spc_perm_37/)
+16. Health and Safety Executive (b.d.). *ALARP „at a glance”*. [https://www.hse.gov.uk/enforce/expert/alarpglance.htm](https://www.hse.gov.uk/enforce/expert/alarpglance.htm)
+17. Casson Moreno V., Papasidero S., Scarponi G.E., Guglielmi D., Cozzani V. (2016). Analysis of accidents in biogas production and upgrading. *Renewable Energy* 96B: 1127–1134. [https://doi.org/10.1016/j.renene.2015.10.017](https://doi.org/10.1016/j.renene.2015.10.017)

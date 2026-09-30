@@ -1,0 +1,140 @@
+---
+title: "Podsumowanie i quiz"
+sidebar_position: 6
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { InteractiveQuiz } from '@site/src/components/InteractiveQuiz';
+
+<LearningObjective>
+
+Po tej części student potrafi streścić główne wnioski wykładu i sprawdzić swoje rozumienie na pytaniach kontrolnych.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Najważniejsze wnioski" type="success">
+
+- Każda technologia ma swoje zagrożenie dominujące: w PV napięcie DC z oświetlonych modułów, którego nie usuwa rozłącznik przy falowniku; w energetyce wiatrowej wysokość; w BESS niekontrolowany wzrost temperatury i gazy; w biogazowni CH₄ i H₂S.
+- Pożary i awarie częściej wynikają z montażu, integracji i organizacji niż z wad samych modułów lub ogniw (BRE, EPRI, UBA).
+- Statystykę wypadków czytamy z mianownikiem i ze źródłem pierwotnym. Obecność PV na miejscu zdarzenia nie oznacza, że PV je spowodowała.
+- Bezpieczeństwo to brak ryzyka nietolerowanego, nie brak ryzyka. Kolejność środków: projekt, technika, informacja.
+- Prawo dzieli odpowiedzialność: producent odpowiada za wyrób (CE), operator za użytkowanie (BHP, DZPW, KSC). W IX 2026 wiele przepisów się zmienia (magazyny energii w Prawie budowlanym, projekt nowych WT), więc odróżniamy akty obowiązujące od projektów.
+- **Monitoring nie jest warstwą ochrony.** Warstwa ochrony musi być skuteczna, niezależna i audytowalna. Monitoring wspiera warstwy: ostrzega, diagnozuje i rejestruje.
+
+Źródło: [część 1](./01-zagrozenia-w-instalacjach-oze.mdx); [część 2](./02-pojecia-podstawowe.mdx); [część 3](./03-ramy-prawne-ue-i-polska.mdx); [część 5](./05-monitoring-a-warstwy-ochrony.mdx)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Na koniec sześć zdań, które warto zabrać z tego wykładu. Pierwsze dwa mówią o zagrożeniach: każda technologia ma swoje główne zagrożenie, a większość awarii to skutek ludzkich decyzji przy montażu, integracji i eksploatacji. Trzecie dotyczy krytycznego czytania danych. Czwarte i piąte porządkują pojęcia i odpowiedzialność prawną. Szóste jest osią całego przedmiotu: monitoring i ochrona to dwie różne rzeczy, które muszą ze sobą współpracować.
+
+W W2 przejdziemy od opisu do liczb. Poznamy metody, którymi systematycznie szuka się zagrożeń, oraz metody, którymi liczy się, ile ryzyka zdejmuje każda warstwa ochrony.
+
+Pytanie na koniec: który z omówionych dziś przypadków najbardziej zmienił wasze wyobrażenie o bezpieczeństwie OZE i dlaczego?
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Sprawdź się" type="tip">
+
+<InteractiveQuiz questions={[
+  { question: "Dlaczego otwarcie rozłącznika DC przy falowniku nie usuwa napięcia z przewodów PV na dachu w ciągu dnia?", options: ["Rozłącznik ma zbyt małą zdolność łączeniową", "Oświetlone moduły same wytwarzają napięcie, więc przewody przed rozłącznikiem pozostają pod napięciem", "Falownik podtrzymuje napięcie DC energią z sieci", "Przepisy zabraniają otwierania rozłącznika pod obciążeniem"], correctAnswer: 1, explanation: "Moduł PV działa jak źródło prądowe. Rozłącznik odcina tylko odcinek za sobą, a moduły i przewody stringów na dachu pozostają pod napięciem, dopóki pada światło." },
+  { question: "Który element był według raportu BRE (Wielka Brytania, 2015–2018) najczęściej wskazywany w pożarach spowodowanych przez instalację PV?", options: ["Rozłączniki DC", "Moduły PV", "Kable po stronie AC", "Liczniki energii"], correctAnswer: 0, explanation: "Rozłączniki DC były najczęściej wskazywanym elementem, często z powodu wody dostającej się przez źle skierowane dławnice. Najczęstszą rozpoznaną przyczyną źródłową był zły montaż." },
+  { question: "Które zdanie o ogniwach LFP i NCM jest zgodne z badaniem Shen i in. (2023)?", options: ["Ogniwa LFP nie wydzielają gazów palnych", "Ogniwa NCM są stabilniejsze termicznie niż LFP", "Ogniwa LFP wydzielają mniej gazu, ale bogatszego w wodór, co zwiększa zagrożenie wybuchem tego gazu", "Chemia katody nie wpływa na skład gazów"], correctAnswer: 2, explanation: "Według autorów LFP ma lepszą stabilność termiczną i wydziela mniej gazu, ale gaz ma wysoki udział wodoru. W rankingu zagrożenia według dolnej granicy wybuchowości LFP był najwyżej." },
+  { question: "Czym różni się zagrożenie od ryzyka w ujęciu ISO/IEC Guide 51?", options: ["Zagrożenie to potencjalne źródło szkody, a ryzyko to kombinacja prawdopodobieństwa i ciężkości szkody", "Zagrożenie to prawdopodobieństwo szkody, a ryzyko to jej źródło", "To synonimy stosowane zamiennie", "Ryzyko dotyczy tylko szkód w mieniu, a zagrożenie tylko ludzi"], correctAnswer: 0, explanation: "Zagrożenie jest źródłem, na przykład napięciem DC. Ryzyko jest miarą, która łączy prawdopodobieństwo wystąpienia szkody z jej ciężkością." },
+  { question: "Który środek ISO 12100 stawia na pierwszym miejscu w metodzie trzech kroków?", options: ["Informacje dla użytkownika", "Środki ochrony indywidualnej", "Osłony i urządzenia ochronne", "Rozwiązania konstrukcyjne bezpieczne same w sobie"], correctAnswer: 3, explanation: "Najpierw usuwa się zagrożenie lub zmniejsza ryzyko przez projekt, potem stosuje techniczne środki ochronne, a na końcu informuje o ryzyku resztkowym." },
+  { question: "Kto odpowiada za podział biogazowni na strefy zagrożenia wybuchem i prowadzenie dokumentu zabezpieczenia przed wybuchem?", options: ["Producent urządzeń z certyfikatem ATEX", "Pracodawca, czyli operator instalacji", "Państwowa Straż Pożarna", "Urząd Dozoru Technicznego"], correctAnswer: 1, explanation: "Dyrektywa 1999/92/WE (art. 7 i 8) nakłada te obowiązki na pracodawcę. Certyfikat ATEX dotyczy wyrobu, a nie klasyfikacji stref w konkretnym zakładzie." },
+  { question: "Jaki był status rewizji kodeksu sieci RfG we wrześniu 2026 r.?", options: ["Obowiązuje od 2025 r.", "Przyjęta, stosowana od 2027 r.", "Projekt aktu delegowanego po konsultacjach; przyjęcie planowane w IV kwartale 2026 r.", "Wycofana przez Komisję Europejską"], correctAnswer: 2, explanation: "Projekt był konsultowany od 8.07 do 25.08.2026, a jego przyjęcie zaplanowano na IV kwartał 2026 r. Obowiązuje nadal rozporządzenie (UE) 2016/631." },
+  { question: "Które trzy kryteria CCPS musi spełnić niezależna warstwa ochrony?", options: ["Skuteczność, niezależność, audytowalność", "Niski koszt, szybkość, zdalny dostęp", "Znak CE, redundancja, cyfrowy interfejs", "Monitorowanie, raportowanie, archiwizacja"], correctAnswer: 0, explanation: "Warstwa musi zapobiegać skutkowi, działać niezależnie od zdarzenia inicjującego i innych warstw oraz dać się zwalidować, przetestować i udokumentować." },
+  { question: "W McMicken BMS zarejestrował spadek napięcia ogniwa, a niecałą minutę później system ochrony odłączył baterię. Dlaczego nie zapobiegło to wypadkowi?", options: ["BMS był wyłączony w chwili awarii", "Pomiar napięcia był wykonywany w złym punkcie", "BMS wywołał iskrę, która spowodowała wybuch", "Wewnętrznego zwarcia w ogniwie nie zatrzyma ani pomiar, ani odłączenie baterii; zabrakło niezależnych warstw: barier termicznych, detekcji gazu z wentylacją i procedury wejścia"], correctAnswer: 3, explanation: "Wewnętrznego zwarcia w ogniwie nie zatrzyma ani pomiar, ani odłączenie baterii; zabrakło niezależnych warstw: barier termicznych, detekcji gazu z wentylacją i procedury wejścia. DNV GL wskazał brak barier termicznych, wentylacji i procedur awaryjnych." },
+  { question: "PSP odnotowała w 2024 r. 808 zdarzeń, w których raporcie pojawia się „fotowoltaika”. Jaki wniosek jest poprawny?", options: ["Instalacje PV spowodowały w 2024 r. 808 pożarów", "Liczba pokazuje obecność PV na miejscu zdarzenia; do oceny ryzyka potrzebne są przyczyny i liczba instalacji", "Ryzyko pożaru na jedną instalację PV wzrosło w 2024 r.", "Instalacje PV są bezpieczniejsze od instalacji AC"], correctAnswer: 1, explanation: "PSP zastrzega, że dane oznaczają obecność PV, a nie przyczynę. Bez przyczyny i mianownika, czyli liczby instalacji, nie da się ocenić ryzyka." },
+]} />
+
+Źródło: [część 1](./01-zagrozenia-w-instalacjach-oze.mdx); [część 2](./02-pojecia-podstawowe.mdx); [część 3](./03-ramy-prawne-ue-i-polska.mdx); [część 5](./05-monitoring-a-warstwy-ochrony.mdx)
+
+<InstructorNotes>
+
+Czas: ~3 min
+
+Quiz można zrobić wspólnie na sali: wyświetlam pytanie, daję pół minuty i proszę o podniesienie ręki przy wybranej odpowiedzi. Na wykładzie wystarczy przejść przez trzy lub cztery pytania, a resztę studenci rozwiążą samodzielnie.
+
+Szczególnie warto omówić pytanie o McMicken i pytanie o dane PSP. Pierwsze sprawdza, czy rozróżnienie monitoringu i ochrony zostało zrozumiane. Drugie sprawdza krytyczne czytanie statystyki.
+
+Typowy błąd w pytaniu o strefy Ex to wskazanie producenta urządzeń. Warto wtedy przypomnieć zasadę: prawo produktowe dotyczy wyrobu, a prawo pracy jego użytkowania.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+Wybór najważniejszych źródeł wykładu. Pełne listy znajdują się na końcu każdej części.
+
+### Zdarzenia i statystyki
+
+1. Fraunhofer ISE, *Fire Protection in Photovoltaic Systems – Facts replace Fiction*, 12.02.2013. https://www.ise.fraunhofer.de/en/press-media/press-releases/2013/fire-protection-in-photovoltaic-systems.html
+2. BRE National Solar Centre, *Fire and Solar PV Systems – Investigations and Evidence*, Issue 2.9, 2018, BEIS. https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/786882/Fires_and_solar_PV_systems-Investigations_Evidence_Issue_2.9.pdf
+3. Bednarczyk Ł., *Fotowoltaika pod lupą*, Przegląd Pożarniczy, 2022. https://www.ppoz.pl/czytelnia/ratownictwo-i-ochrona-ludnosci/Fotowoltaika-pod-lupa/idn:2751
+4. Energy Institute (G+), *Offshore wind safety improves despite strong sector expansion*, 11.06.2026. https://www.energyinst.org/exploring-energy/resources/news-centre/media-releases/offshore-wind-safety-improves-despite-strong-sector-expansion
+5. EU-OSHA, *Occupational safety and health in the wind energy sector*, 2013. https://osha.europa.eu/sites/default/files/OSH%20in%20Wind%20energy%20sector.pdf
+6. Uadiale S. i in., *Overview of Problems and Solutions in Fire Protection Engineering of Wind Turbines*, Fire Safety Science 11, 2014, IAFSS. https://publications.iafss.org/publications/fss/11/983/view/fss_11-983.pdf
+7. EPRI, *2024 White Paper: Insights from EPRI's BESS Failure Incident Database – Analysis of Failure Root Cause*, 2024. https://restservice.epri.com/publicdownload/000000003002030360/0/Product
+8. DNV GL (Hill D.M.) dla APS, *McMicken Battery Energy Storage System Event – Technical Analysis and Recommendations*, 2020. https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23
+9. WECC, *Moss Landing BESS Fire Report*, 22.12.2025. https://www.wecc.org/sites/default/files/documents/progress_report/2025/Moss%20Landing%20BESS%20Fire%20Report%20Final%2012.22.25.pdf
+10. KW PSP Poznań, *Pożar magazynu energii w Czajkowie*, 7.05.2026. https://www.gov.pl/web/kwpsp-poznan/pozar-magazynu-energii-w-czajkowie
+11. Umweltbundesamt, *Informationspapier: Zur Sicherheit bei Biogasanlagen*, 2006. https://www.umweltbundesamt.de/system/files/medien/publikation/long/3097.pdf
+12. Casson Moreno V. i in., *Analysis of accidents in biogas production and upgrading*, Renewable Energy 96B, 2016, Elsevier. https://doi.org/10.1016/j.renene.2015.10.017
+13. Feng X. i in., *Time Sequence Map for Interpreting the Thermal Runaway Mechanism of Lithium-Ion Batteries With LiNixCoyMnzO2 Cathode*, Frontiers in Energy Research, 2018. https://doi.org/10.3389/fenrg.2018.00126
+14. Shen H. i in., *Thermal Runaway Characteristics and Gas Composition Analysis of Lithium-Ion Batteries with Different LFP and NCM Cathode Materials under Inert Atmosphere*, Electronics 12(7):1603, 2023. https://doi.org/10.3390/electronics12071603
+15. PSE S.A., *Raport 2025 KSE*, 2026. https://www.pse.pl/dane-systemowe/funkcjonowanie-kse/raporty-roczne-z-funkcjonowania-kse-za-rok
+16. URE, *Raport URE: w Polsce mamy już ponad 1,6 mln mikroinstalacji OZE*, 19.03.2026. https://www.ure.gov.pl/pl/urzad/informacje-ogolne/aktualnosci/13173,Raport-URE-w-Polsce-mamy-juz-ponad-16-mln-mikroinstalacji-OZE.html
+
+### Prawo UE
+
+17. Komisja Europejska, *The „Blue Guide” on the implementation of EU product rules 2022*, 2022. https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A52022XC0629%2804%29
+18. Komisja Europejska, *Machinery* (rozporządzenie (UE) 2023/1230). https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en
+19. Rozporządzenie delegowane Komisji (UE) 2023/2444 (data stosowania rozporządzenia 2022/30). https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2444
+20. Dyrektywa 1999/92/WE (atmosfery wybuchowe w miejscu pracy). https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:31999L0092
+21. Dyrektywa 2012/18/UE (Seveso III). https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32012L0018
+22. Komisja Europejska, *Cyber Resilience Act – summary*. https://digital-strategy.ec.europa.eu/en/policies/cra-summary
+23. Rozporządzenie Komisji (UE) 2016/631 (RfG). https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0631
+24. Komisja Europejska, inicjatywa 14165 (rewizja RfG). https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14165-Revision-of-the-Network-Code-on-Requirements-for-Grid-Connection-of-Generators_en
+
+### Prawo polskie
+
+25. gov.pl, *Nowelizacja ustawy o krajowym systemie cyberbezpieczeństwa*, 2026. https://www.gov.pl/web/baza-wiedzy/nowelizacja-ustawy-o-krajowym-systemie-cyberbezpieczenstwa
+26. Obwieszczenie Marszałka Sejmu RP z 27.03.2026 w sprawie ogłoszenia jednolitego tekstu ustawy – Prawo budowlane, Dz.U. 2026 poz. 524, ISAP. https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000524
+27. Ustawa z 4.12.2025 o zmianie ustawy – Prawo budowlane oraz niektórych innych ustaw (magazyny energii), Dz.U. 2025 poz. 1847, ISAP. https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250001847
+28. Rządowe Centrum Legislacji, projekt rozporządzenia w sprawie warunków technicznych, jakim powinny odpowiadać budynki (projekt 12412604, wersja z 6.08.2026). https://legislacja.gov.pl/projekt/12412604
+29. Rozporządzenie Ministra Gospodarki z 8.07.2010 (atmosfera wybuchowa w miejscu pracy), Dz.U. 2010 nr 138 poz. 931, ISAP. https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20101380931
+30. Rozporządzenie MRPiPS z 12.06.2018 (NDS), Dz.U. 2018 poz. 1286, ISAP. https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20180001286
+31. Rozporządzenie MKiŚ z 1.07.2022 (świadectwa kwalifikacyjne), Dz.U. 2022 poz. 1392. https://www.ure.gov.pl/download/9/12973/1392.pdf
+32. Rozporządzenie Rady Ministrów z 7.12.2012 (urządzenia podlegające dozorowi technicznemu), Dz.U. 2012 poz. 1468, ISAP. https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=wdu20120001468
+
+### Normy
+
+33. IEC, *IEC 60364-7-712:2025*. https://webstore.iec.ch/en/publication/65748
+34. IEC, *IEC 63027:2023*. https://webstore.iec.ch/en/publication/27362
+35. IEC, *IEC 61400-1:2019/AMD1:2025*. https://webstore.iec.ch/en/publication/86420
+36. IEC, *IEC 62933-5-2:2025*. https://webstore.iec.ch/en/publication/68297
+37. IEC, *IEC 60079-29-0:2025*. https://webstore.iec.ch/en/publication/77173
+38. IEC, *IEC 61511 SER* (pakiet z 10.07.2026, zawiera wyd. 2016+AMD1:2017). https://webstore.iec.ch/en/publication/5527
+39. ISO/IEC, *ISO/IEC Guide 51:2014* (fragment udostępniony przez dystrybutora norm). https://cdn.standards.iteh.ai/samples/53940/eed8e9480a434fd2810d25c5cd95458e/ISO-IEC-Guide-51-2014.pdf
+40. ISO, *ISO 12100:2010* (fragment udostępniony przez dystrybutora norm). https://cdn.standards.iteh.ai/samples/51528/510735adf40846879b3a026ecf6956a2/ISO-12100-2010.pdf
+41. IEC, *IEC 62682:2022*. https://webstore.iec.ch/en/publication/65543
+
+### Koncepcje ochrony
+
+42. University of Michigan, SAFEChE, *LOPA tutorial*. https://safeche.engin.umich.edu/tutorials/lopa-tutorial
+43. Reason J., *Human error: models and management*, BMJ 320(7237), 2000, s. 768–770. https://doi.org/10.1136/bmj.320.7237.768
+44. HSL dla HSE, *A review of Layers of Protection Analysis (LOPA) analyses of overfill of fuel storage tanks*, RR716, 2009. https://www.hse.gov.uk/research/rrpdf/rr716.pdf
+45. Derbyshire A.W., *The long awaited IEC 61511 edition 2 and what it means for the process industry*, IChemE Hazards 26, 2016. https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf
+46. DNV, *DNV-SE-0439 Certification of condition monitoring*, wyd. 06.2016 (zm. 10.2021). https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/
+47. HSE, *ALARP „at a glance”*. https://www.hse.gov.uk/enforce/expert/alarpglance.htm
+48. Görnemann O., *EN ISO 12100 and its relation to the Machinery Directive*, 2019, CEN-CENELEC. https://www.cencenelec.eu/media/CEN-CENELEC/Areas%20of%20Work/CENELEC%20sectors/Mechanical%20and%20Machines/Documents/Quicklinks/eniso12100relationmachinerydirective.pdf

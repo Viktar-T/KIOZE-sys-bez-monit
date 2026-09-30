@@ -71,8 +71,6 @@ const config = {
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
         searchResultLimits: 10,
-        // The archive (docs/wyklady) would make up most of the index
-        ignoreFiles: [/^docs\/wyklady(\/|$)/],
       },
     ],
   ],
@@ -86,7 +84,9 @@ const config = {
         // Addresses of the section index pages before the sidebars were split
         redirects: [
           {from: '/docs/category/wykłady---bezpieczeństwo', to: '/docs/wyklady-bezp'},
-          {from: '/docs/category/wykłady', to: '/docs/wyklady'},
+          {from: '/docs/category/wykłady', to: '/docs/wyklady-bezp'},
+          // Archived monitoring lecture series (moved to archiwum/2025-26/)
+          {from: '/docs/wyklady', to: '/docs/wyklady-bezp'},
           {from: '/docs/category/cwiczenia', to: '/docs/cwiczenia'},
           {from: '/docs/category/literatura', to: '/docs/literatura'},
         ],
@@ -156,12 +156,6 @@ const config = {
             label: 'Literatura',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'archiwumSidebar',
-            position: 'left',
-            label: 'Archiwum',
-          },
-          {
             href: repoUrl,
             label: 'GitHub',
             position: 'right',
@@ -198,10 +192,6 @@ const config = {
               {
                 label: 'Dane do ćwiczeń',
                 to: '/docs/cwiczenia/dane',
-              },
-              {
-                label: 'Archiwum wykładów',
-                to: '/docs/wyklady',
               },
             ],
           },

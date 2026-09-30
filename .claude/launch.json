@@ -1,0 +1,31 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bezp-monit-serve",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "bezp-monit/node_modules/@docusaurus/core/bin/docusaurus.mjs",
+        "serve",
+        "bezp-monit",
+        "--port",
+        "3100",
+        "--no-open"
+      ],
+      "port": 3100
+    },
+    {
+      "name": "bezp-monit-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "bezp-monit/node_modules/@docusaurus/core/bin/docusaurus.mjs",
+        "start",
+        "bezp-monit",
+        "--port",
+        "3200",
+        "--no-open"
+      ],
+      "port": 3200
+    }
+  ]
+}

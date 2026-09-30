@@ -1,0 +1,254 @@
+---
+title: "Modele i schematy"
+sidebar_position: 2
+draft: true
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { Claim, Replaces, HierarchyFunnel, AlarpCarrot, OnionLayers, SwissCheese, BowTie } from '@site/src/components/viz';
+
+<LearningObjective>
+
+Część testowa: modele pojęciowe z W1 i W2 (hierarchia środków, ALARP, cebula, ser szwajcarski, bow-tie) narysowane według konwencji z literatury oraz trzy nowe typy diagramów Mermaid.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Hierarchia środków jako lejek" type="tip">
+
+<Claim>Najpierw projekt, potem technika, na końcu informacja. Im niżej, tym bardziej wszystko zależy od człowieka.</Claim>
+
+<HierarchyFunnel source="ISO 12100:2010 (metoda trzech kroków); dyrektywa 89/391/EWG; WECC 2025; DNV GL 2020" />
+
+<Replaces>Zastępuje listę i tabelę ze slajdu „Hierarchia zmniejszania ryzyka” (W1, część 2).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** odwrócona piramida (jak w hierarchii środków NIOSH), ale z krokami ISO 12100. Szerokość poziomu oznacza skuteczność. Przykład z OZE stoi obok poziomu, którego dotyczy (etykiety na rysunku, a nie w osobnej tabeli: efekt *spatial contiguity*). Przerywana linia oddziela środki projektanta od środków użytkownika.
+
+```jsx
+<HierarchyFunnel source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="ALARP: gdzie leży nasz scenariusz" type="info">
+
+<Claim>Ryzyko tolerowane nie jest „wystarczająco małe”. Trzeba wykazać, że dalsze zmniejszanie byłoby rażąco nieproporcjonalne.</Claim>
+
+<AlarpCarrot source="HSE, R2P2 (2001), wartości za Foster (2000); HSE, ALARP at a glance" />
+
+<Replaces>Zastępuje opis słowny ze slajdu „Ryzyko tolerowane i ALARP” (W1, część 2) i liczby ze slajdu „Kryteria tolerowalności ryzyka” (W2, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** klasyczny trójkąt HSE (szerokość = wielkość ryzyka) z osią logarytmiczną ryzyka indywidualnego. Przełącznik „Pracownicy / Osoby postronne” przesuwa górną granicę z 10⁻³ na 10⁻⁴ na rok. Suwak ustawia ryzyko scenariusza; pod rysunkiem pojawia się wniosek.
+
+**Na wykładzie:** ustaw 3 × 10⁻⁴ i zapytaj, czy to akceptowalne. Dla pracowników tak (z ALARP), dla sąsiadów magazynu nie.
+
+```jsx
+<AlarpCarrot source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Warstwy ochrony: cebula z grupami" type="info">
+
+<Claim>Monitoring należy do tej samej grupy co zwykłe sterowanie. Gdy zawiedzie sterownik, często zawodzi razem z nim.</Claim>
+
+<OnionLayers source="CCPS (za U. Michigan SAFEChE); IEC 61511-1, rys. 9 (za Goteti, Purdue P2SAC 2020)" />
+
+<Replaces>Zastępuje schemat blokowy ze slajdu „Warstwy ochrony w modelu cebuli” (W1, część 5).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** prawdziwa „cebula” zamiast listy strzałek. Pierścienie mają kolory czterech grup z IEC 61511-1, więc od razu widać, które warstwy zapobiegają zdarzeniu, a które ograniczają skutki. Najechanie na pierścień lub nazwę podświetla warstwę i pokazuje przykład z OZE.
+
+```jsx
+<OnionLayers source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="McMicken 2019 w modelu sera szwajcarskiego" type="danger">
+
+<Claim>W McMicken dziury w sześciu warstwach ustawiły się w jednej linii. Jedna dobrze dobrana warstwa przerwałaby ścieżkę.</Claim>
+
+<SwissCheese source="DNV GL, 2020; UL FSRI, 2020; Reason, 2000" />
+
+<Replaces>Zastępuje tabelę ze slajdu „McMicken 2019 warstwa po warstwie” (W1, część 5).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** model Reasona narysowany na danych z raportu DNV GL. Plastry przerywane to warstwy, których nie było. Strzałka przechodzi „za” plastrami i jest widoczna tylko przez otwory. Pod rysunkiem oś czasu zdarzenia.
+
+**Na wykładzie:** to odpowiedź na pytanie z notatek: „którą jedną warstwę dodalibyście?”. Studenci wybierają przycisk, a my sprawdzamy trzy kryteria warstwy ochrony.
+
+```jsx
+<SwissCheese source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Bow-tie ze stanem barier" type="tip">
+
+<Claim>Zamarznięte zamknięcie hydrauliczne wyłącza barierę bez żadnego sygnału. Dlatego czynnik degradacji ma własny środek kontroli.</Claim>
+
+<BowTie source="TRAS 120 (KAS, 2019); CCPS i Energy Institute, Bow Ties in Risk Management (2018)" />
+
+<Replaces>Zastępuje diagram Mermaid ze slajdu „Bow-tie dla zbiornika biogazu” (W2, część 4).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** bow-tie w konwencji CCPS i Energy Institute: zagrożenie nad węzłem, przyczyny po lewej, skutki po prawej, czynnik degradacji pod barierą, którą osłabia. Kolor bariery to jej stan (zielona, żółta, czerwona zawsze z ikoną ✓ ! ✕).
+
+**Na wykładzie:** zaznacz „Mróz” (bariera nadal zielona, bo działa ochrona przed mrozem), odznacz ochronę (bariera czerwona), dodaj awarię pętli BPCS: ścieżka staje się otwarta.
+
+```jsx
+<BowTie source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Przyczyny pożarów PV: diagram Ishikawy" type="info">
+
+<Claim>Dane z trzech krajów wskazują w tym samym kierunku: połączenia DC i jakość montażu.</Claim>
+
+```mermaid
+ishikawa
+    Pożar spowodowany przez instalację PV
+    Montaż
+        główna rozpoznana przyczyna w UK
+        28,9% zdarzeń w PL
+        luźne lub źle zaciśnięte złącze DC
+    Komponenty
+        21,1% zdarzeń w PL: wady wyrobu
+        ok. 1/3 szkód w DE
+    Projekt
+        ok. 1/3 szkód w DE
+    Otoczenie
+        woda przez dławnice skierowane do góry: 7 przypadków w UK
+    Nieustalona
+        34,3% zdarzeń w PL
+        28 z 80 pożarów w UK
+```
+
+Źródło: BRE NSC, 2018; Bednarczyk, 2022; Fraunhofer ISE i TÜV Rheinland, 2015.
+
+<Replaces>Nowy typ diagramu Mermaid (`ishikawa`, od wersji 11.13) dla slajdu „PV: co mówią dane o pożarach” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** diagram Ishikawy (rybiej ości) jest wbudowany w Mermaid 11.13 i nowsze, więc nie wymaga żadnego komponentu. Pierwsza linia to skutek (głowa ryby), wcięcie o jeden poziom to kategoria, o dwa poziomy to przyczyna.
+
+````md
+```mermaid
+ishikawa
+    Pożar spowodowany przez instalację PV
+    Montaż
+        28,9% zdarzeń w PL
+```
+````
+
+Uwaga: nie ustawiamy motywu (`theme`) w nagłówku diagramu, bo wyłącza to przełączanie trybu jasnego i ciemnego.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Dobór metody: diagram kwadrantowy" type="tip">
+
+<Claim>Na etapie koncepcji pracują metody jakościowe; liczby pojawiają się, gdy jest już projekt.</Claim>
+
+```mermaid
+quadrantChart
+    title Metody oceny ryzyka: etap projektu i charakter wyniku
+    x-axis Koncepcja --> Projekt i eksploatacja
+    y-axis Jakościowa --> Ilościowa
+    quadrant-1 Liczby dla gotowego projektu
+    quadrant-2 Liczby we wczesnym etapie
+    quadrant-3 Wczesna identyfikacja
+    quadrant-4 Identyfikacja w projekcie
+    HAZID: [0.1, 0.12]
+    SWIFT: [0.22, 0.22]
+    HAZOP: [0.55, 0.18]
+    FMEA: [0.8, 0.38]
+    Bow-tie: [0.66, 0.44]
+    LOPA: [0.6, 0.66]
+    ETA: [0.72, 0.82]
+    FTA: [0.86, 0.9]
+```
+
+Położenie metod na osiach to ilustracja dydaktyczna, a nie klasyfikacja z IEC 31010:2019.
+
+<Replaces>Nowy widok tabeli ze slajdu „Dobór metody według IEC 31010” (W2, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** `quadrantChart` z Mermaid. Dobry do porównań „dwie cechy naraz”, gdy dokładne wartości nie są ważne. Kolumny tabeli z oryginału („typowy etap”, „pytanie”) zamieniają się w dwie osie.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Terminy prawne na osi czasu" type="warning">
+
+<Claim>Jesienią 2026 r. kilka terminów zbiega się naraz; oś czasu pokazuje, co już obowiązuje, a co dopiero nadejdzie.</Claim>
+
+```mermaid
+---
+config:
+  gantt:
+    fontSize: 14
+    sectionFontSize: 14
+    barHeight: 24
+    barGap: 6
+    topPadding: 50
+    leftPadding: 110
+    useWidth: 820
+---
+gantt
+    title Wybrane terminy prawne (stan IX 2026)
+    dateFormat YYYY-MM-DD
+    axisFormat %m.%Y
+    section NIS2 i KSC
+    Nowelizacja KSC w mocy          :milestone, 2026-04-03, 0d
+    Wniosek o wpis do wykazu        :crit, milestone, 2026-10-03, 0d
+    Wdrożenie SZBI                  :active, 2026-04-03, 2027-04-03
+    Pierwszy audyt podmiotów kluczowych :milestone, 2028-04-03, 0d
+    section CRA
+    Zgłaszanie podatności 24 h      :milestone, 2026-09-11, 0d
+    Pełne stosowanie CRA            :milestone, 2027-12-11, 0d
+    section Maszyny
+    Dyrektywa 2006/42/WE            :done, 2025-06-01, 2027-01-19
+    Rozporządzenie 2023/1230        :2027-01-20, 2028-06-30
+    section Budownictwo
+    Okres przejściowy WT            :active, 2026-09-20, 2028-03-20
+```
+
+Źródło: gov.pl, nowelizacja KSC; KE, CRA; EUR-Lex, 2023/1230; ISAP, Dz.U. 2026 poz. 1161.
+
+<Replaces>Nowy widok dat z tabel na slajdach „Cyberbezpieczeństwo i przyłączenie do sieci”, „Prawo produktowe” i „Warunki techniczne…” (W1, część 3).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** `gantt` z Mermaid. Czerwona pionowa linia to dzisiejsza data z przeglądarki, więc slajd sam się aktualizuje. Kamienie milowe (romby) to terminy, paski to okresy.
+
+**Uwaga:** paski dla dyrektywy i rozporządzenia maszynowego pokazują tylko fragment okresu obowiązywania (oś od 2025 r.).
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

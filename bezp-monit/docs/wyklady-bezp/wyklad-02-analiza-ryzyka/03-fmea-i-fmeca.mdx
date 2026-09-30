@@ -1,0 +1,223 @@
+---
+title: "FMEA i FMECA"
+sidebar_position: 3
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+
+<LearningObjective>
+
+Student buduje arkusz FMEA według IEC 60812:2018, oblicza RPN, wyjaśnia, dlaczego RPN może błędnie szeregować rodzaje uszkodzeń, i łączy ocenę wykrywalności z monitoringiem oraz planem utrzymania ruchu.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="FMEA według IEC 60812:2018" type="info">
+
+- **FMEA** (Failure Modes and Effects Analysis — analiza rodzajów i skutków uszkodzeń) sprawdza, jak może uszkodzić się każdy element i co z tego wynika. **FMECA** (Failure Modes, Effects and Criticality Analysis — analiza rodzajów, skutków i krytyczności uszkodzeń) dodaje ocenę krytyczności.
+- IEC 60812:2018 (wyd. 3.0 z 10.08.2018, komitet IEC TC 56) zastąpiła wydanie z 2006 r. i jest aktualna. Norma jest ogólna: obejmuje sprzęt, oprogramowanie i procesy z udziałem człowieka, ale nie daje szczegółowych wytycznych dla zastosowań bezpieczeństwa.
+- **Rodzaj uszkodzenia**: sposób, w jaki następuje uszkodzenie. **Skutek uszkodzenia**: konsekwencja uszkodzenia w obrębie elementu lub poza nim. **Metoda wykrywania**: środek, dzięki któremu uszkodzenie lub jego początek staje się widoczny (tłumaczenie robocze definicji normy).
+- Kroki 5.3.2–5.3.9: podział na elementy → funkcje i wymagania → rodzaje uszkodzeń → metody wykrywania i istniejące środki → skutki lokalne i końcowe → przyczyny → ocena ważności → działania. W typowym arkuszu kolumny układa się w tej kolejności (ocena własna).
+- Do szeregowania stosuje się oceny: S — ciężkość (ang. severity), O — występowanie (ang. occurrence) i D — wykrywalność (ang. detectability; wyższa ocena oznacza trudniejsze wykrycie). IEC 60812 używa ich w metodzie RPN (zał. B.4), w definicjach mówi o ciężkości i prawdopodobieństwie (ang. likelihood) i nie narzuca skal.
+- FMEA idzie zwykle „od dołu”: od elementu do skutku w systemie. FTA (Fault Tree Analysis — analiza drzewa niezdatności; [część 4](./04-fta-eta-i-bow-tie.mdx)) idzie „od góry”: od zdarzenia do przyczyn.
+
+Źródło: [IEC Webstore, IEC 60812:2018](https://webstore.iec.ch/en/publication/26359); [IEC 60812:2018, próbka normy](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+FMEA to najbardziej „inżynierska” z dzisiejszych metod. Bierzemy urządzenie, dzielimy je na elementy i dla każdego pytamy: jak może się zepsuć, po czym to poznamy, co się wtedy stanie i dlaczego do tego dochodzi. Kolejność kroków w normie dobrze oddaje logikę arkusza, choć układ kolumn bywa różny.
+
+Przykład z fotowoltaiki: wentylator chłodzący falownika. Rodzaj uszkodzenia: wentylator się nie obraca. Skutek lokalny: przegrzanie modułu mocy; skutek końcowy: ograniczenie mocy albo wyłączenie falownika. Pytanie do sali: jeśli zatarło się łożysko wentylatora, to jest rodzaj uszkodzenia czy przyczyna? Typowe nieporozumienie: FMEA wystarczy do oceny funkcji bezpieczeństwa. Norma sama zastrzega, że jest ogólna i nie daje wytycznych dla zastosowań bezpieczeństwa; FMEA jest tu wkładem, a nie całą analizą.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Skale S, O, D na przykładzie turbin wiatrowych" type="info">
+
+- IEC 60812:2018 nie narzuca jednej skali: definiowanie skal opisuje załącznik B.2. Każda FMEA musi więc podać swoje skale, a wyniki z różnych badań nie są porównywalne.
+- Przykład z literatury: skale Tavnera i in. (2010), zmodyfikowana norma wojskowa MIL-STD-1629A; tych samych skal używają Shafiee i Dinmohammadi (2014).
+
+| Ciężkość S | Występowanie O (prawdopodobieństwo p) | Wykrywalność D |
+|---|---|---|
+| 1 drobna: produkcja możliwa, pilna naprawa | 1 skrajnie mało prawdopodobne: p &lt; 0,001 | 1 wykrycie prawie pewne: wykrywa monitoring |
+| 2 marginalna: ograniczona produkcja | 2 odległe: 0,001–0,01 | 4 wysoka |
+| 3 krytyczna: utrata produkcji | 3 okazjonalne: 0,01–0,10 | 7 niska |
+| 4 katastrofalna: poważne uszkodzenie turbiny | 5 częste: p &gt; 0,10 | 10 wykrycie prawie niemożliwe: brak znanych metod monitorowania |
+
+- **RPN** (Risk Priority Number — liczba priorytetu ryzyka) = S × O × D; w tych skalach maksimum to 4 × 5 × 10 = 200.
+- 64 kombinacje (S, O, D) dają tylko 39 różnych wartości RPN; średnia wynosi 37,8, a mediana 22,5 (obliczenia własne).
+- Skala D jest wprost powiązana z monitoringiem: ocena 1 oznacza, że uszkodzenie wykrywa monitoring.
+
+Źródło: [Tavner i in., 2010](https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf); [Shafiee i Dinmohammadi, 2014](https://www.mdpi.com/1996-1073/7/2/619/htm); [IEC 60812:2018, próbka normy](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+W wielu podręcznikach widzicie skale od 1 do 10. Norma takiej skali nie narzuca, więc pokazuję skale z opublikowanych badań turbin wiatrowych. Są krótsze i nieliniowe: występowanie ma stopnie 1, 2, 3 i 5, a wykrywalność 1, 4, 7 i 10. Tavner i współautorzy proponowali też skale wykładnicze, tak aby zmiana o jeden stopień w każdym kryterium tak samo zmieniała RPN.
+
+Najważniejsza obserwacja: ocena wykrywalności 1 oznacza, że uszkodzenie wykrywa monitoring. To bezpośredni związek FMEA z naszym przedmiotem. Pytanie do sali: jaka jest największa możliwa wartość RPN w tych skalach? Cztery razy pięć razy dziesięć, czyli 200. Typowe nieporozumienie: RPN równy 84 w jednym raporcie i 84 w innym znaczą to samo. Przy różnych skalach te liczby są nieporównywalne.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="RPN i jego wady" type="warning">
+
+- Dla skal 1–10 istnieje 1000 kombinacji (S, O, D), ale tylko 120 różnych wartości RPN. Wartości 60, 72 i 120 powstają z 24 różnych kombinacji każda; między 900 a 1000 nie ma żadnej wartości.
+- Średni RPN wszystkich kombinacji to 166,4, a mediana 105. Reguła „RPN &gt; 100 → działanie” obejmuje więc ponad połowę wszystkich kombinacji (501 z 1000).
+
+**Przykład ilustracyjny — dane umowne.** Oceny S, O i D przypisałem umownie dwóm rodzajom uszkodzeń w magazynie energii i w instalacji fotowoltaicznej.
+
+| Rodzaj uszkodzenia | S | O | D | RPN |
+|---|---|---|---|---|
+| Czujnik H₂ w kontenerze BESS nie wykrywa gazu | 10 | 3 | 4 | 120 |
+| Zabrudzenie modułów PV obniża uzysk | 2 | 10 | 6 | 120 |
+
+- Skróty: BESS (Battery Energy Storage System — bateryjny magazyn energii); PV — fotowoltaika.
+- Ten sam RPN, a skutki zupełnie różne: zagrożenie wybuchem i strata produkcji. S, O i D to stopnie na skalach porządkowych, a ich iloczyn gubi informację o ciężkości (ocena własna).
+- IEC 60812:2018 dodała alternatywny sposób obliczania RPN (zał. B.4.3) i metodę macierzy krytyczności. Liu i in. (2013) przeglądają 75 prac z lat 1992–2012, które proponują inne metody oceny; krytykę RPN podejmuje też Bowles (2003).
+
+Źródło: obliczenia własne; [IEC Webstore, IEC 60812:2018](https://webstore.iec.ch/en/publication/26359); [IEC 60812:2018, próbka normy](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf); [Liu i in., 2013](https://doi.org/10.1016/j.eswa.2012.08.010); [Bowles, 2003](https://doi.org/10.1109/RAMS.2003.1182019)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+RPN jest popularny, bo jest prosty: trzy liczby i jedno mnożenie. Kłopot w tym, że oceny S, O i D to stopnie na skalach porządkowych, a nie wielkości fizyczne. Policzyłem wszystkie tysiąc kombinacji dla skal od 1 do 10: wychodzi tylko 120 różnych wyników, a niektóre wartości powstają na 24 sposoby. Ten sam RPN może więc oznaczać zupełnie różne ryzyka.
+
+Przykład jest umowny, ale nie przypadkowy: w opublikowanej analizie magazynu energii uszkodzenie czujnika wodoru trafiło do najwyższej kategorii ryzyka, o czym na ostatnim slajdzie. Tutaj ten czujnik ma taki sam RPN jak brudne moduły PV. Pytanie do sali: który problem usuniecie najpierw i dlaczego? Typowe nieporozumienie: wystarczy ustawić próg RPN równy 100. Taki próg obejmuje ponad połowę wszystkich możliwych kombinacji.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Priorytet działania i macierz krytyczności" type="info">
+
+- Podręcznik AIAG i VDA (wyd. 1, czerwiec 2019; obecny drugi druk uwzględnia tylko erratę, bez nowej treści) dzieli FMEA na 7 kroków: planowanie i przygotowanie, analiza struktury, analiza funkcji, analiza uszkodzeń, analiza ryzyka, optymalizacja, dokumentacja wyników (wg Barsalou, 2020).
+- RPN zastąpiono **priorytetem działania** — AP (Action Priority): trójkę (S, O, D) odczytuje się z tablicy zamiast mnożyć; wynik to priorytet wysoki (H), średni (M) lub niski (L).
+- Największą wagę ma ciężkość, potem występowanie, na końcu wykrywalność, więc rzadkie uszkodzenie zagrażające bezpieczeństwu zwykle nie przegra z częstym i błahym (wg Barsalou, 2020). Tablic AP nie przytaczamy: trzeba korzystać z oryginału podręcznika.
+- Podręcznik obejmuje FMEA konstrukcji, FMEA procesu i uzupełniającą FMEA monitorowania i reakcji systemu (ang. Supplemental FMEA for Monitoring and System Response, FMEA-MSR).
+- **Macierz krytyczności** w FMECA (IEC 60812, zał. B.3): ciężkość skutku zestawiona z prawdopodobieństwem. Miary krytyczności zwykle łączą ciężkość skutku z co najmniej jedną inną cechą rodzaju uszkodzenia (3.1.15).
+- Środki zapobiegawcze obniżają ocenę O, a środki wykrywające — ocenę D; monitoring jest środkiem wykrywającym (ocena własna).
+
+Źródło: [Barsalou, 2020](https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf); [AIAG, FMEAAV-1](https://www.aiag.org/training-and-resources/manuals/details/FMEAAV-1); [VDA QMC](https://webshop.vda.de/QMC/en/aiag-vda-fmea-handbook_eng); [IEC 60812:2018, próbka normy](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Wspólny podręcznik motoryzacyjnych organizacji AIAG i VDA z 2019 roku zastąpił mnożenie S, O i D tablicą priorytetów. Opisuję go za artykułem konferencyjnym, bo podręcznik jest płatny. Logika jest prosta: najpierw ciężkość, potem częstość, a dopiero na końcu wykrywalność. Dla nas ciekawa jest część o monitorowaniu i reakcji systemu, bo już z nazwy dotyczy monitorowania.
+
+Druga odpowiedź to FMECA z macierzą krytyczności: na jednej osi ciężkość, na drugiej prawdopodobieństwo. Przypomina matrycę ryzyka z części pierwszej i ma podobne ograniczenia, ale nie miesza wykrywalności z ryzykiem. Pytanie do sali: czy lepszy monitoring zmniejsza ciężkość skutku? Nie, zwiększa tylko szansę wykrycia. Typowe nieporozumienie: tablica AP to nowa miara ryzyka. To priorytet działań, a nie ryzyko.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Przykład z OZE: FMEA turbin wiatrowych" type="tip">
+
+Shafiee i Dinmohammadi (2014), tabl. 7 — oceny O / S / D → RPN (ranga):
+
+| Podzespół | Turbina lądowa | Turbina morska |
+|---|---|---|
+| Wieża | 5 / 3 / 7 → 105 (1) | 5 / 4 / 7 → 140 (1) |
+| Przekładnia | 3 / 4 / 7 → 84 (2) | 5 / 3 / 7 → 105 (2) |
+| Łopaty wirnika | 5 / 2 / 7 → 70 (3) | 5 / 3 / 7 → 105 (2) |
+| Generator | 3 / 3 / 7 → 63 (4) | 5 / 2 / 7 → 70 (5) |
+| Przekształtnik | 2 / 4 / 7 → 56 (5) | 3 / 4 / 7 → 84 (4) |
+
+- OZE — odnawialne źródła energii. Kolejność ocen jak w artykule: występowanie, ciężkość, wykrywalność; iloczyny i rangi sprawdziłem (obliczenia własne).
+- Remisy: przekładnia i łopaty turbiny morskiej mają RPN 105 i tę samą rangę 2; tyle samo ma wieża turbiny lądowej.
+- Pięć pokazanych podzespołów ma D = 7; w pełnej tabeli D przyjmuje wartości 1, 4 lub 7. Autorzy założyli ten sam system monitorowania stanu na lądzie i na morzu, więc D nie różnicuje porównania ląd–morze, ale różnicuje ranking podzespołów.
+- Na lądzie wieża jest pierwsza dzięki ocenie występowania (O = 5), a nie ciężkości: przekładnia ma S = 4, ale O = 3. Na morzu O = 5 mają też przekładnia, łopaty i generator, a wieżę wyróżnia S = 4.
+- Tavner i in. (2010) porównali trzy koncepcje napędu: w koncepcjach z generatorem indukcyjnym dwustronnie zasilanym (DFIG, Doubly-Fed Induction Generator) i z jego wersją bezszczotkową największy udział w RPN ma przekładnia, a w koncepcji z przekształtnikiem hydraulicznym — ten przekształtnik.
+
+Źródło: [Shafiee i Dinmohammadi, 2014](https://www.mdpi.com/1996-1073/7/2/619/htm); [Tavner i in., 2010](https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+To prawdziwe wartości z otwartego artykułu. Proszę przeliczyć jeden wiersz: wieża turbiny lądowej to pięć razy trzy razy siedem, czyli 105. Na morzu autorzy przypisali wieży wyższą ciężkość i RPN rośnie do 140.
+
+Dwie obserwacje. Po pierwsze remisy: w rankingu morskim przekładnia i łopaty mają ten sam RPN, więc ranking nie rozstrzyga, co jest pilniejsze. Po drugie wykrywalność: autorzy założyli ten sam system monitorowania stanu na lądzie i na morzu, więc D nie zmienia porównania ląd–morze. Gdyby przekładni przypisać lepszy monitoring drgań, jej ocena D mogłaby spaść i ranking by się zmienił. Pytanie do sali: dlaczego wieża jest na pierwszym miejscu, skoro wieże psują się rzadko? Odpowiedź na następnym slajdzie. Typowe nieporozumienie: pierwsze miejsce w rankingu to najczęstsze uszkodzenie.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Ranking FMEA a dane z eksploatacji" type="info">
+
+- Carroll i in. (2016): ok. 350 turbin morskich, 1768 turbinolat; średnio 8,3 awarii na turbinę rocznie = 6,2 drobnych napraw + 1,1 poważnych napraw + 0,3 poważnych wymian + 0,7 awarii bez danych o koszcie.
+- Awarie na turbinę na rok: układ zmiany kąta łopat i hydraulika 1,076; generator 0,999; przekładnia 0,633; wieża i fundament 0,185, czyli ok. 5,8 razy rzadziej niż układ zmiany kąta łopat i hydraulika (obliczenia własne).
+- Poważna wymiana przekładni: wg wykresów w artykule średnio ok. 231 h naprawy i ok. 230 000 EUR kosztów materiałów. Rzadko, ale bardzo kosztownie: to argument za macierzą krytyczności, a nie za jednym RPN.
+- Walgern i in. (2026): ponad 1000 turbin lądowych i morskich, ponad 4200 lat pracy; 3,3 (ląd) i 4,3 (morze) awarii na turbinę rocznie; najwięcej awarii na MW rocznie ma układ wirnika (z układem zmiany kąta łopat), potem sterowanie; za krytyczne autorzy uznają układ zmiany kąta łopat, sterowanie i przekształtnik. Liczb bezwzględnych nie porównujemy z Carrollem, bo definicje awarii są inne.
+- Wniosek: ranking RPN odzwierciedla oceny ekspertów, a nie zmierzone częstości (różne populacje turbin, więc to ilustracja, nie sprzeczność). Tavner i in. (2010) piszą, że iloczyn występowania i wykrywalności zaniża intensywność awarii obserwowaną w terenie.
+- PV: w FMEA Colli (2015) najwyższy RPN mają falownik i system uziemienia (wg wniosków artykułu); według przeglądu Hacke i in. (2018) falowniki odpowiadają za 43–70% zgłoszeń serwisowych farm PV.
+
+Źródło: [Carroll i in., 2016](https://strathprints.strath.ac.uk/54141/1/Carroll_etal_WE_2015_Failure_rate_repair_time_and_unscheduled_O_and_M_cost_analysis_of_offshore.pdf); [Walgern i in., 2026](https://wes.copernicus.org/articles/11/1553/2026/); [Tavner i in., 2010](https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf); [Colli, 2015](https://www.sciencedirect.com/science/article/abs/pii/S1364032115005262); [Hacke i in., 2018](https://www.sciencedirect.com/science/article/abs/pii/S1364032117311103); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Ranking FMEA odzwierciedla oceny ekspertów, a nie zmierzone częstości. Dane z prawie dwóch tysięcy turbinolat pokazują inny obraz: najczęściej psuje się układ zmiany kąta łopat z hydrauliką i generator, a wieża należy do najrzadszych pozycji. Nowy zbiór danych z 2026 roku, obejmujący też farmy lądowe, również stawia na pierwszym miejscu układ wirnika z układem zmiany kąta łopat. Skala występowania w FMEA kończy się na p powyżej 0,10, więc nie odróżnia 0,2 od jednej awarii na rok.
+
+Przekładnia to dobry przykład dla macierzy krytyczności: rzadko, ale bardzo kosztownie. Godziny i koszty odczytano z wykresów, więc traktujemy je jako przybliżone. Pytanie do sali: dlaczego nie wolno zestawić 8,3 z 3,3 awarii na turbinę jako trendu? Typowe nieporozumienie: FMEA zastępuje zbieranie danych o awariach. Jest odwrotnie: dobra FMEA wymaga danych.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Od FMEA do utrzymania ruchu i monitoringu" type="success">
+
+- IEC 60300-3-11:2009 (wyd. 2.0, jest aktualna) opisuje RCM (Reliability Centred Maintenance — obsługa ukierunkowana na niezawodność). Na jej rysunku 1 wynikiem analizy uszkodzeń funkcjonalnych jest FMEA lub FMECA.
+- Politykę postępowania z uszkodzeniami wybiera się w rozdz. 7.4; odstępy zadań norma omawia osobno dla monitorowania stanu (7.5.2), planowej wymiany i odnowy (7.5.3) oraz wykrywania uszkodzeń (7.5.4). **Przedział P-F** (3.1.22) to czas od chwili, gdy uszkodzenie potencjalne staje się wykrywalne, do uszkodzenia funkcjonalnego.
+- **Rodzaj uszkodzenia ukrytego** (3.1.11): jego skutki w normalnych warunkach nie są widoczne dla operatora. Ujawnia go **zadanie wykrywania uszkodzeń** (3.1.9), czyli zaplanowana inspekcja lub test. Uszkodzenie czujnika gazu, którego nie wykrywa jego autodiagnostyka, jest ukryte: czujnik milczy, a monitoring procesu tego nie pokaże (ocena własna).
+
+**Przykład ilustracyjny — dane umowne.** Wiersz przekładni turbiny lądowej z tabl. 7 Shafiee i Dinmohammadi z umownie dodanym CMS (Condition Monitoring System — system monitorowania stanu), który obniża D z 7 do 1: RPN spada z 3 × 4 × 7 = 84 do 3 × 4 × 1 = 12. W logice AP sama lepsza wykrywalność nie „wyzeruje” jednak uszkodzenia ciężkiego i częstego (ocena własna).
+
+- BESS: Rosewater i in. (Sandia, 2020, SAND2020-9360) analizują zagrożenia magazynów sieciowych metodą STPA (System-Theoretic Process Analysis — analiza procesu oparta na teorii systemów), a nie FMEA; czujniki gazów z odgazowania ogniw mogą „w niektórych przypadkach” wyprzedzić klasyczny czujnik dymu o 5–30 min.
+- W FMEA magazynu z bateriami drugiego życia (Hernandez i Paglioni, 2025, referat konferencyjny) najwyższą kategorię ryzyka mają uszkodzenia czujnika H₂, czujnika dymu i agregatu chłodniczego, a nie ogniwa. EPRI (Electric Power Research Institute, 2024) przypisuje kategorii ogniwo lub moduł (ang. Cell/Module) 3 z 26 incydentów o ustalonej przyczynie (11%; [W1, część 1](../wyklad-01-zagrozenia-ramy-prawne/01-zagrozenia-w-instalacjach-oze.mdx)).
+- CMS nie zastępuje niezależnych systemów bezpieczeństwa (DNVGL-SE-0439:2016, 4.1; obecne wydanie DNV-SE-0439: 2016-06, zmienione 2021-10) — [W1, część 5](../wyklad-01-zagrozenia-ramy-prawne/05-monitoring-a-warstwy-ochrony.mdx).
+
+Źródło: [IEC 60300-3-11:2009, próbka normy](https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf); [IEC Webstore, IEC 60300-3-11:2009](https://webstore.iec.ch/en/publication/1296); [Shafiee i Dinmohammadi, 2014](https://www.mdpi.com/1996-1073/7/2/619/htm); [Rosewater i in., Sandia 2020](https://www.osti.gov/servlets/purl/1662020/); [Hernandez i Paglioni, 2025](https://rpsonline.com.sg/proceedings/esrel-sra-e2025/pdf/ESREL-SRA-E2025-P3853.pdf); [EPRI, 2024](https://restservice.epri.com/publicdownload/000000003002030360/0/Product); [DNV-SE-0439](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+FMEA nie kończy się na tabeli. W normie RCM jej wynik jest wejściem do planu utrzymania ruchu. Jeśli uszkodzenie daje sygnał ostrzegawczy z wyprzedzeniem, na przykład rosnące drgania łożyska, sensowne jest monitorowanie stanu. Jeśli uszkodzenie jest ukryte, na przykład uszkodzenie czujnika gazu niewykryte przez jego autodiagnostykę, monitoring procesu go nie pokaże, bo czujnik po prostu milczy. Wtedy potrzebny jest okresowy test.
+
+W magazynach energii kilka niezależnych źródeł, i to jest moja synteza, wskazuje to samo: najwięcej ryzyka wnoszą detekcja, chłodzenie i sterowanie, a nie same ogniwa. Pytanie do sali: czy CMS turbiny może ją zatrzymać przy nadmiernej prędkości obrotowej? Nie: DNV zastrzega, że CMS nie zastępuje niezależnego systemu bezpieczeństwa. Typowe nieporozumienie: lepsza wykrywalność rozwiązuje problem ciężkiego uszkodzenia.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+1. IEC (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*, wyd. 3.0. [https://webstore.iec.ch/en/publication/26359](https://webstore.iec.ch/en/publication/26359); próbka normy: [https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf)
+2. Tavner P.J., Higgins A., Arabian H., Long H., Feng Y. (2010). Using an FMEA method to compare prospective wind turbine design reliabilities. European Wind Energy Conference EWEC 2010. [https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf](https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf)
+3. Shafiee M., Dinmohammadi F. (2014). An FMEA-based risk assessment approach for wind turbine systems: a comparative study of onshore and offshore. *Energies* 7(2): 619–642. [https://doi.org/10.3390/en7020619](https://doi.org/10.3390/en7020619)
+4. Liu H.-C., Liu L., Liu N. (2013). Risk evaluation approaches in failure mode and effects analysis: a literature review. *Expert Systems with Applications* 40(2): 828–838. [https://doi.org/10.1016/j.eswa.2012.08.010](https://doi.org/10.1016/j.eswa.2012.08.010)
+5. Bowles J.B. (2003). An assessment of RPN prioritization in a failure modes effects and criticality analysis. *Annual Reliability and Maintainability Symposium*, 380–386. [https://doi.org/10.1109/RAMS.2003.1182019](https://doi.org/10.1109/RAMS.2003.1182019)
+6. Barsalou M. (2020). DFMEAs with the new AIAG/VDA FMEA Handbook. Proc. 4th ICQEM, University of Minho. [https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf](https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf)
+7. AIAG (b.d.). *AIAG & VDA FMEA Handbook* (FMEAAV-1), wyd. 1, drugi druk. [https://www.aiag.org/training-and-resources/manuals/details/FMEAAV-1](https://www.aiag.org/training-and-resources/manuals/details/FMEAAV-1)
+8. VDA QMC (b.d.). *AIAG & VDA FMEA-Handbook*, wyd. 1 (czerwiec 2019). [https://webshop.vda.de/QMC/en/aiag-vda-fmea-handbook_eng](https://webshop.vda.de/QMC/en/aiag-vda-fmea-handbook_eng)
+9. Carroll J., McDonald A., McMillan D. (2016). Failure rate, repair time and unscheduled O&M cost analysis of offshore wind turbines. *Wind Energy* 19(6): 1107–1119. [https://doi.org/10.1002/we.1887](https://doi.org/10.1002/we.1887); wersja autorska: [https://strathprints.strath.ac.uk/54141/1/Carroll_etal_WE_2015_Failure_rate_repair_time_and_unscheduled_O_and_M_cost_analysis_of_offshore.pdf](https://strathprints.strath.ac.uk/54141/1/Carroll_etal_WE_2015_Failure_rate_repair_time_and_unscheduled_O_and_M_cost_analysis_of_offshore.pdf)
+10. Walgern J., Stratmann N., Horn M., Then N.W.Y., Menzel M., Anderson F., Kolios A., Fischer K. (2026). Reliability and O&M key performance indicators of onshore and offshore wind turbines based on field-data analysis. *Wind Energy Science* 11: 1553–1568. [https://doi.org/10.5194/wes-11-1553-2026](https://doi.org/10.5194/wes-11-1553-2026)
+11. Colli A. (2015). Failure mode and effect analysis for photovoltaic systems. *Renewable and Sustainable Energy Reviews* 50: 804–809. [https://doi.org/10.1016/j.rser.2015.05.056](https://doi.org/10.1016/j.rser.2015.05.056)
+12. Hacke P., Lokanath S., Williams P., Vasan A., Sochor P., TamizhMani G., Shinohara H., Kurtz S. (2018). A status review of photovoltaic power conversion equipment reliability, safety, and quality assurance protocols. *Renewable and Sustainable Energy Reviews* 82(1): 1097–1112. [https://doi.org/10.1016/j.rser.2017.07.043](https://doi.org/10.1016/j.rser.2017.07.043)
+13. IEC (2009). *IEC 60300-3-11:2009 Dependability management — Part 3-11: Application guide — Reliability centred maintenance*, wyd. 2.0. [https://webstore.iec.ch/en/publication/1296](https://webstore.iec.ch/en/publication/1296); próbka normy: [https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf](https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf)
+14. Rosewater D., Lamb J., Hewson J., Viswanathan V., Paiss M., Choi D., Jaiswal A. (2020). *Grid-scale energy storage hazard analysis & design objectives for system safety* (SAND2020-9360). Sandia National Laboratories. [https://www.osti.gov/servlets/purl/1662020/](https://www.osti.gov/servlets/purl/1662020/)
+15. Hernandez H., Paglioni V.P. (2025). Failure Mode and Effects Analysis for a battery storage system using second life lithium-ion batteries. Referat konferencyjny, Proc. ESREL-SRA-E 2025. [https://rpsonline.com.sg/proceedings/esrel-sra-e2025/pdf/ESREL-SRA-E2025-P3853.pdf](https://rpsonline.com.sg/proceedings/esrel-sra-e2025/pdf/ESREL-SRA-E2025-P3853.pdf)
+16. EPRI, TWAICE, PNNL (2024). *2024 White Paper: Insights from EPRI's Battery Energy Storage Systems (BESS) Failure Incident Database — Analysis of Failure Root Cause*, raport 3002030360. [https://restservice.epri.com/publicdownload/000000003002030360/0/Product](https://restservice.epri.com/publicdownload/000000003002030360/0/Product)
+17. DNV (2016, zm. 2021). *DNV-SE-0439 Certification of condition monitoring*, wyd. 2016-06, zm. 2021-10 (tekst sprawdzony w wydaniu DNVGL-SE-0439:2016). [https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/)

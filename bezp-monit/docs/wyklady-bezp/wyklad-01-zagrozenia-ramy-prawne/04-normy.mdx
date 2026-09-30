@@ -1,0 +1,177 @@
+---
+title: "Normy: mapa i aktualne wydania"
+sidebar_position: 4
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+
+<LearningObjective>
+
+Student odróżnia normę od przepisu, wyjaśnia znaczenie normy zharmonizowanej i odnajduje aktualne wydanie normy dla PV, energetyki wiatrowej, magazynów energii i biogazowni (katalogi IEC i ISO sprawdzone 28–29.09.2026).
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Normy a prawo" type="info">
+
+- **Norma jest dokumentem dobrowolnym.** Wiążąca staje się dopiero wtedy, gdy odwoła się do niej przepis. Przykład: projekt nowych warunków technicznych (WT) z 6.08.2026 (§ 305 ust. 3) wymaga w instalacji PV (fotowoltaicznej) urządzenia do wykrywania i przerywania łuku DC (prądu stałego) spełniającego wymagania Polskiej Normy — **to projekt, nie prawo**.
+- **Norma zharmonizowana** (norma europejska EN przyjęta na zlecenie Komisji Europejskiej) daje domniemanie zgodności z wymaganiami zasadniczymi aktu UE po opublikowaniu jej odniesienia w Dzienniku Urzędowym UE, ale jej stosowanie też jest dobrowolne (Blue Guide 2022).
+- Poziomy oznaczeń: IEC (International Electrotechnical Commission — Międzynarodowa Komisja Elektrotechniczna) i ISO (International Organization for Standardization — Międzynarodowa Organizacja Normalizacyjna) → EN (normy europejskie, opracowywane przez europejskie organizacje normalizacyjne CEN, CENELEC i ETSI) → PN-EN, wydawane przez PKN (Polski Komitet Normalizacyjny). Rok przy EN lub PN-EN może różnić się od roku IEC.
+- **Wydanie ma znaczenie**: podajemy rok i zmiany, np. IEC 61400-1:2019+AMD1:2025, czyli wydanie z 2019 r. ze zmianą 1 (Amendment 1) z 2025 r.
+- Przykład: EN 1127-1:2011 wycofano z wykazu norm zharmonizowanych z dyrektywą ATEX 2014/34/UE 1.02.2022; na wykazie jest EN 1127-1:2019.
+- O normach mówimy, że są **aktualne** albo **wycofane**, a nie „obowiązujące”. Wydanie sprawdzamy w katalogu wydawcy, a polskie wydanie w katalogu PKN.
+
+Źródło: [KE, Blue Guide 2022](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A52022XC0629%2804%29); [KE, normy zharmonizowane](https://single-market-economy.ec.europa.eu/single-market/goods/european-standards/harmonised-standards_en); [KE, wykaz norm ATEX](https://single-market-economy.ec.europa.eu/single-market/european-standards/harmonised-standards/equipment-explosive-atmospheres-atex_en); [RCL, projekt WT z 6.08.2026 (DOCX)](https://legislacja.gov.pl/docs//582/12412604/13216444/dokument791486.docx); [IEC 61400-1 AMD1:2025](https://webstore.iec.ch/en/publication/86420)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Najpierw status norm. Norma sama nie jest prawem. Producent, który nie zastosował konkretnej normy, może inaczej wykazać spełnienie wymagań; norma zharmonizowana tylko to ułatwia, bo daje domniemanie zgodności. Wiążąca staje się wtedy, gdy przepis się do niej odwoła. Projekt nowych WT odsyła przy detekcji łuku do Polskiej Normy; jej numer, zapewne odpowiednik IEC 63027, sprawdźcie w katalogu PKN.
+
+Druga sprawa to wydania. Zapis „zgodnie z IEC 61400-1” bez roku jest w dokumentacji błędem, bo między wydaniami zmieniają się wymagania. Typowe nieporozumienie: „ta norma obowiązuje”. O normie mówimy, że jest aktualna albo wycofana. Pytanie do sali: gdzie sprawdzicie, czy dana norma EN jest zharmonizowana z konkretną dyrektywą? W Dzienniku Urzędowym UE, w decyzjach wykonawczych Komisji; pomocniczo w zestawieniu, które Komisja prowadzi dla tej dyrektywy.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Normy dla fotowoltaiki i energetyki wiatrowej" type="info">
+
+| Norma (wydanie) | Zakres | Zmiana 2024–2026 |
+|---|---|---|
+| IEC 60364-7-712:2025 | instalacje elektryczne PV od modułów do punktu połączenia z pozostałą częścią instalacji | wyd. 3 (21.10.2025); nowe m.in. magazyny energii i praca wyspowa |
+| IEC 62548-1:2023+AMD1:2025 | projektowanie układów PV: okablowanie DC, zabezpieczenia, łączniki, uziemienie | zmiana 1 (15.12.2025) |
+| IEC 63027:2023 | wykrywanie i przerywanie łuku DC w instalacjach PV | — |
+| IEC 61400-1:2019+AMD1:2025 | wymagania projektowe turbin wiatrowych | zmiana 1 (18.12.2025) |
+| IEC 61400-24:2019+AMD1:2024 | ochrona odgromowa turbin wiatrowych | zmiana 1 (13.11.2024) |
+| ISO 20816-21:2025 | pomiar i ocena drgań turbin wiatrowych o osi poziomej | zastąpiła ISO 10816-21:2015 |
+
+- Ponadto dla PV: IEC 62446-1:2016+AMD1:2018 (dokumentacja, badania odbiorcze i inspekcja), IEC 61730-1/-2:2023 (bezpieczeństwo modułów), IEC 61724-1:2021 (monitorowanie wydajności).
+- IEC 62109-1:2010 (bezpieczeństwo przekształtników PV): wydanie 2 jako FDIS (Final Draft International Standard — ostateczny projekt normy międzynarodowej) w głosowaniu od 4.09 do 16.10.2026.
+- Ponadto dla wiatru: IEC TS 61400-30:2023 (TS, Technical Specification — specyfikacja techniczna; ogólne zasady bezpiecznego projektowania turbin, nie bezpieczeństwo funkcjonalne) i DNV-ST-0438 (systemy sterowania i zabezpieczeń turbin; wyd. 2016-04, zm. 2021-11).
+
+Źródło: [IEC 60364-7-712:2025](https://webstore.iec.ch/en/publication/65748); [IEC 62548-1 AMD1:2025](https://webstore.iec.ch/en/publication/98955); [IEC 63027:2023](https://webstore.iec.ch/en/publication/27362); [IEC 61400-1 AMD1:2025](https://webstore.iec.ch/en/publication/86420); [IEC 61400-24 AMD1:2024](https://webstore.iec.ch/en/publication/80793); [ISO 20816-21:2025](https://www.iso.org/standard/84280.html); [IEC 62446-1:2016](https://webstore.iec.ch/en/publication/24057); [IEC 62446-1 AMD1:2018](https://webstore.iec.ch/en/publication/61011); [IEC 61730-1:2023](https://webstore.iec.ch/en/publication/59803); [IEC 61730-2:2023](https://webstore.iec.ch/en/publication/63895); [IEC 61724-1:2021](https://webstore.iec.ch/en/publication/65561); [IEC 62109-1:2026 PRV](https://webstore.iec.ch/en/publication/116681); [IEC TS 61400-30:2023](https://webstore.iec.ch/en/publication/31267); [DNV-ST-0438](https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+W fotowoltaice najważniejsza jest norma instalacyjna IEC 60364-7-712. Jej trzecie wydanie z października 2025 roku obejmuje także magazyny energii współpracujące z PV i pracę wyspową, więc łączy tematy W6 i W8. Norma dla przekształtników PV, IEC 62109-1, pochodzi z 2010 roku, a drugie wydanie jest w głosowaniu do 16 października 2026 roku. W dniu wykładu warto sprawdzić, czy już się ukazało.
+
+W energetyce wiatrowej podstawą jest IEC 61400-1 ze zmianą z grudnia 2025 roku. Drgania oceniamy teraz według ISO 20816-21, bo poprzednią normę zastąpiono. Typowe nieporozumienie dotyczy IEC TS 61400-30: z nazwy wygląda na normę bezpieczeństwa funkcjonalnego, a opisuje ogólne zasady bezpiecznego projektowania turbin. Pytanie do sali: jakie wydanie IEC 61400-1 wpiszecie do specyfikacji przetargowej na turbinę? Pełne oznaczenie: 2019 ze zmianą 1 z 2025 roku.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Normy dla magazynów energii i atmosfer wybuchowych" type="info">
+
+| Norma (wydanie) | Zakres | Zmiana 2024–2026 |
+|---|---|---|
+| IEC 62933-5-1:2024 | bezpieczeństwo systemów magazynowania energii przyłączonych do sieci: wymagania ogólne | pierwsze wydanie jako norma (wcześniej TS z 2017 r.) |
+| IEC 62933-5-2:2025 | bezpieczeństwo elektrochemicznych magazynów energii przyłączonych do sieci | wyd. 2 (9.12.2025) |
+| IEC 62619:2022 | bezpieczeństwo przemysłowych ogniw i baterii litowych, także stacjonarnych | — |
+| IEC 60079-10-1:2020 | klasyfikacja przestrzeni zagrożonych wybuchem gazów | — |
+| IEC 60079-14:2024 | projektowanie i montaż instalacji elektrycznych w strefach zagrożenia wybuchem | wyd. 6 (30.08.2024) |
+| IEC 60079-29-0:2025 | detektory gazów: wymagania ogólne i metody badań | zastąpiła IEC 60079-29-1 i -29-4 (27.11.2025) |
+
+- Ponadto: IEC 62485-5:2020 (bezpieczna eksploatacja stacjonarnych baterii litowo-jonowych) i ISO/IEC 80079-20-1:2017 (dane materiałowe gazów; zastąpiła IEC 60079-20-1).
+- EN 1127-1:2019 jest normą zharmonizowaną z dyrektywą ATEX 2014/34/UE.
+- Normy USA: UL 9540A (UL Standards & Engagement) wyd. 6 (13.03.2026; metoda badania propagacji niekontrolowanego wzrostu temperatury w BESS — Battery Energy Storage System, bateryjnym magazynie energii) i NFPA 855 wyd. 2026 (instalowanie stacjonarnych magazynów energii; NFPA — National Fire Protection Association, amerykańskie stowarzyszenie ochrony przeciwpożarowej).
+
+Źródło: [IEC 62933-5-1:2024](https://webstore.iec.ch/en/publication/72239); [IEC 62933-5-2:2025](https://webstore.iec.ch/en/publication/68297); [IEC 62619:2022](https://webstore.iec.ch/en/publication/64073); [IEC 60079-10-1:2020](https://webstore.iec.ch/en/publication/63327); [IEC 60079-14:2024](https://webstore.iec.ch/en/publication/66049); [IEC 60079-29-0:2025](https://webstore.iec.ch/en/publication/77173); [IEC 62485-5:2020](https://webstore.iec.ch/en/publication/29086); [ISO/IEC 80079-20-1:2017](https://webstore.iec.ch/en/publication/26577); [KE, wykaz norm ATEX](https://single-market-economy.ec.europa.eu/single-market/european-standards/harmonised-standards/equipment-explosive-atmospheres-atex_en); [UL 9540A wyd. 6](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL9540A_6_S_20260313); [NFPA 855](https://www.nfpa.org/product/nfpa-855-standard/p0855code/nfpa-855-standard-for-the-installation-of-stationary-energy-storage-systems-2026/85526); [DNV GL, raport McMicken, 2020](https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+W magazynach energii w ciągu dwóch lat zmieniło się prawie wszystko. Seria IEC 62933-5 dostała nowe wydania, a w Stanach Zjednoczonych nowe wydania mają UL 9540A i NFPA 855. Materiały cytujące specyfikację techniczną z 2017 roku są nieaktualne. UL 9540A to badania na poziomie ogniwa, modułu, jednostki i instalacji, które pokazują, czy dochodzi do niekontrolowanego wzrostu temperatury i jak groźne są jego skutki.
+
+W biogazowni pracujemy z serią IEC 60079: część 10-1 służy do klasyfikacji stref, część 14 do projektowania instalacji elektrycznej, a nowa część 29-0 dotyczy detektorów gazu. W listopadzie 2025 roku zastąpiła części 29-1 i 29-4: numer się zmienił, choć temat został. Pytanie: czy NFPA 855 jest w Polsce wymagana? Nie, to norma amerykańska, ale odwołuje się do niej na przykład raport DNV GL po pożarze magazynu McMicken, więc jest ważnym punktem odniesienia.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Normy wspólne dla wszystkich technologii" type="info">
+
+- **Bezpieczeństwo funkcjonalne** to część ogólnego bezpieczeństwa, która zależy od poprawnego działania systemów elektrycznych, elektronicznych i programowalnych związanych z bezpieczeństwem oraz innych środków zmniejszania ryzyka (pojęcie z serii IEC 61508). Funkcji bezpieczeństwa przypisuje się **SIL** (Safety Integrity Level — poziom nienaruszalności bezpieczeństwa); dobór SIL omawiamy w [W2](../wyklad-02-analiza-ryzyka/index.md).
+
+| Obszar | Normy (wydanie) | Stan IX 2026 |
+|---|---|---|
+| Bezpieczeństwo funkcjonalne | IEC 61508:2010 (cz. 1–7); IEC 61511:2016+AMD1:2017 (SIS w przemyśle procesowym) | IEC 61508 wyd. 3 w przygotowaniu (projekt CDV z 2025 r., wg DIN Media); IEC 61511 wyd. 3 nieopublikowane |
+| Maszyny, w tym turbiny wiatrowe | ISO 13849-1:2023; IEC 62061:2021+AMD1:2024+AMD2:2026 | zmiana 2 do IEC 62061 z 20.03.2026 |
+| Pojęcia i zarządzanie ryzykiem | ISO 12100:2010; ISO/IEC Guide 51:2014; ISO 31000:2018; IEC 31010:2019; ISO 31073:2022 | ISO/DIS 12100.3 (wyd. 2): głosowanie zamknięte 15.09.2026; ISO 31000 wyd. 3 na etapie CD |
+| Alarmy | IEC 62682:2022; ANSI/ISA-18.2-2016; EEMUA 191 wyd. 4 (2024) | aktualne |
+| Cyberbezpieczeństwo OT | IEC 62443-2-1:2024; IEC 62443-3-3:2013; IEC 62443-4-2:2019 | 2-1: wyd. 2 z 7.08.2024 |
+| Komunikacja w energetyce | seria IEC 62351 | części z lat 2007–2026, m.in. nowe wydania 2023–2026 |
+
+- Skróty: SIS (Safety Instrumented System — przyrządowy system bezpieczeństwa); OT (Operational Technology — technika operacyjna, czyli systemy sterowania i automatyki); CDV (Committee Draft for Vote — projekt komitetu do głosowania), DIS (Draft International Standard — projekt normy międzynarodowej), CD (Committee Draft — projekt komitetu); ANSI/ISA — norma amerykańska; EEMUA — wytyczne stowarzyszenia branżowego, nie organu normalizacyjnego.
+
+Źródło: [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515); [DIN Media, projekt DIN EN IEC 61508-4](https://www.dinmedia.de/en/draft-standard/din-en-iec-61508-4/404501704); [IEC 61511 SER 2026](https://webstore.iec.ch/en/publication/5527); [ISO 13849-1:2023](https://www.iso.org/standard/73481.html); [IEC 62061 AMD2:2026](https://webstore.iec.ch/en/publication/92835); [ISO 12100:2010](https://www.iso.org/standard/51528.html); [ISO/DIS 12100.3](https://www.iso.org/standard/88578.html); [ISO/IEC Guide 51:2014](https://www.iso.org/standard/53940.html); [ISO 31000:2018](https://www.iso.org/standard/65694.html); [ISO/CD 31000](https://www.iso.org/standard/88574.html); [IEC 31010:2019](https://webstore.iec.ch/en/publication/59809); [ISO 31073:2022](https://www.iso.org/standard/79637.html); [ISO Guide 73:2009](https://www.iso.org/standard/44651.html); [IEC 62682:2022](https://webstore.iec.ch/en/publication/65543); [ISA-18](https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards); [EEMUA 191](https://www.eemua.org/Products/Publications/Print/EEMUA-Publication-191.aspx); [IEC 62443-2-1:2024](https://webstore.iec.ch/en/publication/62883); [IEC 62443-3-3:2013](https://webstore.iec.ch/en/publication/7033); [IEC 62443-4-2:2019](https://webstore.iec.ch/en/publication/34421); [IEC 62351 SER 2026](https://webstore.iec.ch/en/publication/6912)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Te normy są wspólne dla wszystkich technologii. IEC 61508 to norma podstawowa bezpieczeństwa funkcjonalnego, a IEC 61511 stosuje jej zasady w przemyśle procesowym, a biogazownia ma wiele cech instalacji procesowej. W maszynach, także w turbinach, stosuje się ISO 13849-1 albo IEC 62061. IEC 61508 i IEC 61511 są aktualne w wydaniach z 2010 i 2016 roku; nowe wydania są w przygotowaniu. Słownik ryzyka to dziś ISO 31073, który zastąpił wycofany ISO Guide 73.
+
+Alarmy omówimy w W5. IEC 62351 zabezpiecza protokoły komunikacyjne energetyki, które poznacie w W4, a serię IEC 62443 i całe cyberbezpieczeństwo OT w W10. Typowe nieporozumienie: „SIL to cecha urządzenia”. SIL przypisuje się funkcji bezpieczeństwa, a nie pojedynczemu czujnikowi. Pytanie do sali: dlaczego norma o cyberbezpieczeństwie trafia do przedmiotu o bezpieczeństwie technicznym? Bo atak może wyłączyć zabezpieczenie albo zmienić jego nastawę.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+1. Komisja Europejska (2022). *The „Blue Guide” on the implementation of EU product rules 2022* (2022/C 247/01). Dz.Urz. UE C 247, 29.06.2022. [https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A52022XC0629%2804%29](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A52022XC0629%2804%29)
+2. Komisja Europejska (b.d.). *Harmonised standards*. [https://single-market-economy.ec.europa.eu/single-market/goods/european-standards/harmonised-standards_en](https://single-market-economy.ec.europa.eu/single-market/goods/european-standards/harmonised-standards_en)
+3. Komisja Europejska (b.d.). *Equipment for explosive atmospheres (ATEX) — harmonised standards* (wykaz norm zharmonizowanych). [https://single-market-economy.ec.europa.eu/single-market/european-standards/harmonised-standards/equipment-explosive-atmospheres-atex_en](https://single-market-economy.ec.europa.eu/single-market/european-standards/harmonised-standards/equipment-explosive-atmospheres-atex_en)
+4. Rządowe Centrum Legislacji (2026). *Projekt z dnia 6 sierpnia 2026 r. rozporządzenia w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie* (projekt 12412604, DOCX). [https://legislacja.gov.pl/docs//582/12412604/13216444/dokument791486.docx](https://legislacja.gov.pl/docs//582/12412604/13216444/dokument791486.docx)
+5. IEC (2025). *IEC 60364-7-712:2025 Low-voltage electrical installations – Part 7-712: Requirements for special installations or locations – Solar photovoltaic (PV) power supply installations*, wyd. 3.0. [https://webstore.iec.ch/en/publication/65748](https://webstore.iec.ch/en/publication/65748)
+6. IEC (2025). *IEC 62548-1:2023/AMD1:2025 Photovoltaic (PV) arrays – Part 1: Design requirements*, zmiana 1. [https://webstore.iec.ch/en/publication/98955](https://webstore.iec.ch/en/publication/98955)
+7. IEC (2023). *IEC 63027:2023 Photovoltaic power systems – DC arc detection and interruption*. [https://webstore.iec.ch/en/publication/27362](https://webstore.iec.ch/en/publication/27362)
+8. IEC (2025). *IEC 61400-1:2019/AMD1:2025 Wind energy generation systems – Part 1: Design requirements*, zmiana 1. [https://webstore.iec.ch/en/publication/86420](https://webstore.iec.ch/en/publication/86420)
+9. IEC (2024). *IEC 61400-24:2019/AMD1:2024 Wind energy generation systems – Part 24: Lightning protection*, zmiana 1. [https://webstore.iec.ch/en/publication/80793](https://webstore.iec.ch/en/publication/80793)
+10. ISO (2025). *ISO 20816-21:2025 Mechanical vibration — Measurement and evaluation of machine vibration — Part 21: Horizontal axis wind turbines*. [https://www.iso.org/standard/84280.html](https://www.iso.org/standard/84280.html)
+11. IEC (2016). *IEC 62446-1:2016 Photovoltaic (PV) systems – Requirements for testing, documentation and maintenance – Part 1: Grid connected systems – Documentation, commissioning tests and inspection*. [https://webstore.iec.ch/en/publication/24057](https://webstore.iec.ch/en/publication/24057); zmiana 1 (2018): [https://webstore.iec.ch/en/publication/61011](https://webstore.iec.ch/en/publication/61011)
+12. IEC (2023). *IEC 61730-1:2023 Photovoltaic (PV) module safety qualification – Part 1: Requirements for construction*, wyd. 3.0. [https://webstore.iec.ch/en/publication/59803](https://webstore.iec.ch/en/publication/59803)
+13. IEC (2023). *IEC 61730-2:2023 Photovoltaic (PV) module safety qualification – Part 2: Requirements for testing*, wyd. 3.0. [https://webstore.iec.ch/en/publication/63895](https://webstore.iec.ch/en/publication/63895)
+14. IEC (2021). *IEC 61724-1:2021 Photovoltaic system performance – Part 1: Monitoring*, wyd. 2.0. [https://webstore.iec.ch/en/publication/65561](https://webstore.iec.ch/en/publication/65561)
+15. IEC (2026). *IEC 62109-1:2026 PRV Photovoltaic power systems – Safety – Power conversion equipment – Part 1: General requirements*, wyd. 2.0, wersja przedpublikacyjna (FDIS). [https://webstore.iec.ch/en/publication/116681](https://webstore.iec.ch/en/publication/116681)
+16. IEC (2023). *IEC TS 61400-30:2023 Wind energy generation systems – Part 30: Safety of wind turbine generators – General principles for design*. [https://webstore.iec.ch/en/publication/31267](https://webstore.iec.ch/en/publication/31267)
+17. DNV (2021). *DNV-ST-0438 Control and protection systems for wind turbines*, wyd. 2016-04, zm. 2021-11. [https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/](https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/)
+18. IEC (2024). *IEC 62933-5-1:2024 Electrical energy storage (EES) systems – Part 5-1: Safety considerations for grid-integrated EES systems – General specification*. [https://webstore.iec.ch/en/publication/72239](https://webstore.iec.ch/en/publication/72239)
+19. IEC (2025). *IEC 62933-5-2:2025 Electrical energy storage (EES) systems – Part 5-2: Safety requirements for grid-integrated EES systems – Electrochemical-based systems*, wyd. 2.0. [https://webstore.iec.ch/en/publication/68297](https://webstore.iec.ch/en/publication/68297)
+20. IEC (2022). *IEC 62619:2022 Safety requirements for secondary lithium cells and batteries, for use in industrial applications*, wyd. 2.0. [https://webstore.iec.ch/en/publication/64073](https://webstore.iec.ch/en/publication/64073)
+21. IEC (2020). *IEC 60079-10-1:2020 Explosive atmospheres – Part 10-1: Classification of areas – Explosive gas atmospheres*, wyd. 3.0. [https://webstore.iec.ch/en/publication/63327](https://webstore.iec.ch/en/publication/63327)
+22. IEC (2024). *IEC 60079-14:2024 Explosive atmospheres – Part 14: Electrical installation design, selection and installation of equipment, including initial inspection*, wyd. 6.0. [https://webstore.iec.ch/en/publication/66049](https://webstore.iec.ch/en/publication/66049)
+23. IEC (2025). *IEC 60079-29-0:2025 Explosive atmospheres – Part 29-0: Gas detection equipment – General requirements and test methods*. [https://webstore.iec.ch/en/publication/77173](https://webstore.iec.ch/en/publication/77173)
+24. IEC (2020). *IEC 62485-5:2020 Safety requirements for secondary batteries and battery installations – Part 5: Safe operation of stationary lithium ion batteries*. [https://webstore.iec.ch/en/publication/29086](https://webstore.iec.ch/en/publication/29086)
+25. ISO/IEC (2017). *ISO/IEC 80079-20-1:2017 Explosive atmospheres – Part 20-1: Material characteristics for gas and vapour classification – Test methods and data*. [https://webstore.iec.ch/en/publication/26577](https://webstore.iec.ch/en/publication/26577)
+26. UL Standards & Engagement (2026). *UL 9540A Test Method for Evaluating Thermal Runaway Fire Propagation in Battery Energy Storage Systems*, wyd. 6. [https://www.shopulstandards.com/ProductDetail.aspx?productId=UL9540A_6_S_20260313](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL9540A_6_S_20260313)
+27. NFPA (2026). *NFPA 855 Standard for the Installation of Stationary Energy Storage Systems*, wyd. 2026. [https://www.nfpa.org/product/nfpa-855-standard/p0855code/nfpa-855-standard-for-the-installation-of-stationary-energy-storage-systems-2026/85526](https://www.nfpa.org/product/nfpa-855-standard/p0855code/nfpa-855-standard-for-the-installation-of-stationary-energy-storage-systems-2026/85526)
+28. DNV GL dla Arizona Public Service (2020). *McMicken Battery Energy Storage System Event — Technical Analysis and Recommendations*. [https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23](https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23)
+29. IEC (2010). *IEC 61508-1:2010 Functional safety of electrical/electronic/programmable electronic safety-related systems – Part 1: General requirements*, wyd. 2.0. [https://webstore.iec.ch/en/publication/5515](https://webstore.iec.ch/en/publication/5515)
+30. DIN Media (2026). *DIN EN IEC 61508-4:2026-09; VDE 0803-4:2026-09 (projekt) — na podstawie IEC 65A/1166/CDV:2025*. [https://www.dinmedia.de/en/draft-standard/din-en-iec-61508-4/404501704](https://www.dinmedia.de/en/draft-standard/din-en-iec-61508-4/404501704)
+31. IEC (2026). *IEC 61511:2026 SER Functional safety – Safety instrumented systems for the process industry sector* (pakiet z 10.07.2026, zawiera wyd. 2016+AMD1:2017). [https://webstore.iec.ch/en/publication/5527](https://webstore.iec.ch/en/publication/5527)
+32. ISO (2023). *ISO 13849-1:2023 Safety of machinery — Safety-related parts of control systems — Part 1: General principles for design*, wyd. 4. [https://www.iso.org/standard/73481.html](https://www.iso.org/standard/73481.html)
+33. IEC (2026). *IEC 62061:2021/AMD2:2026 Safety of machinery – Functional safety of safety-related control systems*, zmiana 2. [https://webstore.iec.ch/en/publication/92835](https://webstore.iec.ch/en/publication/92835)
+34. ISO (2010). *ISO 12100:2010 Safety of machinery — General principles for design — Risk assessment and risk reduction*. [https://www.iso.org/standard/51528.html](https://www.iso.org/standard/51528.html)
+35. ISO (2026). *ISO/DIS 12100.3 Safety of machinery — General principles for design — Risk assessment and risk reduction* (projekt wyd. 2). [https://www.iso.org/standard/88578.html](https://www.iso.org/standard/88578.html)
+36. ISO/IEC (2014). *ISO/IEC Guide 51:2014 Safety aspects — Guidelines for their inclusion in standards*. [https://www.iso.org/standard/53940.html](https://www.iso.org/standard/53940.html)
+37. ISO (2018). *ISO 31000:2018 Risk management — Guidelines*. [https://www.iso.org/standard/65694.html](https://www.iso.org/standard/65694.html)
+38. ISO (2026). *ISO/CD 31000 Risk management — Guidelines* (projekt wyd. 3). [https://www.iso.org/standard/88574.html](https://www.iso.org/standard/88574.html)
+39. IEC/ISO (2019). *IEC 31010:2019 Risk management — Risk assessment techniques*, wyd. 2.0. [https://webstore.iec.ch/en/publication/59809](https://webstore.iec.ch/en/publication/59809)
+40. ISO (2022). *ISO 31073:2022 Risk management — Vocabulary*. [https://www.iso.org/standard/79637.html](https://www.iso.org/standard/79637.html)
+41. IEC (2022). *IEC 62682:2022 Management of alarm systems for the process industries*, wyd. 2.0. [https://webstore.iec.ch/en/publication/65543](https://webstore.iec.ch/en/publication/65543)
+42. ISA (b.d.). *ISA-18 Series of Standards* (ANSI/ISA-18.2-2016). [https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards](https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards)
+43. EEMUA (2024). *Publication 191: Alarm systems — a guide to design, management and procurement*, wyd. 4. [https://www.eemua.org/Products/Publications/Print/EEMUA-Publication-191.aspx](https://www.eemua.org/Products/Publications/Print/EEMUA-Publication-191.aspx)
+44. IEC (2024). *IEC 62443-2-1:2024 Security for industrial automation and control systems – Part 2-1: Security program requirements for IACS asset owners*, wyd. 2.0. [https://webstore.iec.ch/en/publication/62883](https://webstore.iec.ch/en/publication/62883)
+45. IEC (2013). *IEC 62443-3-3:2013 Industrial communication networks – Network and system security – Part 3-3: System security requirements and security levels*. [https://webstore.iec.ch/en/publication/7033](https://webstore.iec.ch/en/publication/7033)
+46. IEC (2019). *IEC 62443-4-2:2019 Security for industrial automation and control systems – Part 4-2: Technical security requirements for IACS components*. [https://webstore.iec.ch/en/publication/34421](https://webstore.iec.ch/en/publication/34421)
+47. IEC (2026). *IEC 62351:2026 SER Power systems management and associated information exchange – Data and communications security* (pakiet z 30.07.2026). [https://webstore.iec.ch/en/publication/6912](https://webstore.iec.ch/en/publication/6912)
+48. ISO (2009). *ISO Guide 73:2009 Risk management — Vocabulary* (wycofany 2.11.2023; zastąpiony przez ISO 31073:2022). [https://www.iso.org/standard/44651.html](https://www.iso.org/standard/44651.html)

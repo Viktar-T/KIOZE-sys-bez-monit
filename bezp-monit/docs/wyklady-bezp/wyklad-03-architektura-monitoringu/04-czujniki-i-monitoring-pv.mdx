@@ -1,0 +1,237 @@
+---
+title: "Czujniki w instalacjach OZE i klasy monitoringu PV"
+sidebar_position: 4
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+
+<LearningObjective>
+
+Student dobiera czujniki promieniowania, temperatury, wielkości elektrycznych i wiatru do celu pomiaru, opisuje zasady działania czujników drgań, pomiarów w systemie zarządzania baterią (BMS) i detektorów gazu oraz dobiera klasę monitoringu fotowoltaiki (PV) według IEC 61724-1:2021.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Promieniowanie: piranometry i urządzenia referencyjne" type="info">
+
+- ISO 9060:2018 (wyd. 2 z 14.11.2018, zastąpiła wydanie z 1990 r.; potwierdzona w przeglądzie systematycznym w 2024 r.) klasyfikuje przyrządy do pomiaru promieniowania słonecznego całkowitego i bezpośredniego w zakresie widma od ok. 0,3 µm do 3–4 µm.
+- Klasy piranometrów A, B i C (dawniej: wzorzec wtórny, pierwsza klasa, druga klasa) — nazwy wg producenta czujników (Hukseflux). Raport IEA PVPS T13-03 (2014; IEA PVPS — program fotowoltaiczny Międzynarodowej Agencji Energetycznej) używa jeszcze starych nazw: zaleca piranometry pierwszej klasy lub wzorce wtórne albo porównywalne czujniki krystaliczne.
+- Dwie rodziny czujników: **piranometr termoelektryczny** (z termostosem, ang. thermopile) i **urządzenie referencyjne PV** (ogniwo lub moduł wzorcowy, wymagania: IEC 60904-2:2023, wyd. 4). IEC 61724-1:2021 (3.17) definiuje urządzenie referencyjne dopasowane widmowo: jego charakterystyka widmowa jest tak zbliżona do modułów w polu, że błędy niedopasowania widmowego są małe (tłumaczenie własne).
+- Niepewności rozszerzone U95 wg Reda (2011, raport NREL — National Renewable Energy Laboratory), tabl. 10 („półprzewodnikowy” oznacza tu piranometr z fotodiodą, a nie ogniwo referencyjne — zasada podręcznikowa):
+
+| Czujnik | U95 przy stałej czułości | U95 przy czułości zależnej od kąta zenitalnego |
+|---|---|---|
+| piranometr termoelektryczny | 4,1% | 2,6% |
+| piranometr półprzewodnikowy | 8,0% | 4,0% |
+
+- W tabl. 3 tego raportu składnik „czułość widmowa” wynosi 1% dla piranometru termoelektrycznego i 5% dla półprzewodnikowego.
+- Zabrudzenie czujnika (Fuke i Kottantharayil 2025, stacja IIT Bombay, Indie): piranometry brudziły się w tempie 36–48% tempa zabrudzenia modułów, przez co tempo zabrudzenia modułów wyznaczone z PR (ang. performance ratio — wskaźnik wydajności) było zaniżone o 30–43%, a optymalny moment mycia wykrywano z opóźnieniem.
+
+Źródło: [ISO 9060:2018](https://www.iso.org/standard/67464.html); [Hukseflux, klasyfikacja ISO 9060](https://www.hukx.com/uploads/ISO-9060-pyranometer-classification.pdf?v=1765534259); [IEA PVPS T13-03:2014](https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_T13-D2_3_Analytical_Monitoring_of_PV_Systems_Final.pdf); [IEC 60904-2:2023](https://webstore.iec.ch/en/publication/68536); [IEC 61724-1:2021, próbka normy](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf); [Reda, NREL 2011](https://docs.nlr.gov/docs/fy11osti/52194.pdf); [Fuke i Kottantharayil, 2025](https://doi.org/10.1016/j.solener.2025.113634)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Natężenie promieniowania jest mianownikiem wskaźnika wydajności, więc błąd czujnika przechodzi wprost na ocenę całej instalacji. Mamy dwie rodziny czujników. Piranometr termoelektryczny reaguje na całe widmo słoneczne, a urządzenie referencyjne dopasowane widmowo widzi światło podobnie jak moduły. Raport NREL pokazuje dwie rzeczy. Przy stałej czułości piranometr półprzewodnikowy ma prawie dwa razy większą niepewność niż termoelektryczny. Wzorcowanie z uwzględnieniem kąta zenitalnego wyraźnie zmniejsza niepewność obu. Przykład z Indii jest najbardziej praktyczny: brudny czujnik zaniża promieniowanie, więc brudna instalacja wygląda na czystszą, niż jest.
+
+Pytanie do sali: jak zauważyć, że piranometr jest brudny, skoro nie mamy drugiego czujnika? Typowe nieporozumienie: klasa A piranometru według ISO 9060 i klasa A monitoringu według IEC 61724-1 to to samo.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Temperatura modułu i otoczenia" type="info">
+
+- IEC 61724-1:2021, zał. B (informacyjny): dobór i mocowanie czujnika temperatury modułu; rys. B.1–B.3 pokazują mocowanie stałe, mocowanie tymczasowe i odciążenie przewodów czujnika. IEC 61724-1:2021 powołuje normatywnie IEC 60904-5 (równoważna temperatura ogniwa wyznaczana z napięcia obwodu otwartego); sposób jej użycia trzeba sprawdzić w tekście normy.
+- Model Sandia (PVPMC — PV Performance Modeling Collaborative) dla temperatury tylnej powierzchni modułu $T_m$ i temperatury ogniwa $T_c$:
+
+$$
+T_m = E \cdot e^{\,a + b \cdot WS} + T_a, \qquad T_c = T_m + \frac{E}{E_0}\,\Delta T, \qquad E_0 = 1000\ \mathrm{W/m^2}
+$$
+
+- $E$ — natężenie promieniowania w płaszczyźnie modułów [W/m²]; $WS$ — prędkość wiatru [m/s]; $T_a$ — temperatura otoczenia [°C]; $a$, $b$ — współczynniki dla typu modułu i sposobu montażu; $\Delta T$ — różnica temperatur ogniwa i modułu. Dlatego temperaturę modułu warto mierzyć razem z temperaturą otoczenia i prędkością wiatru (ocena własna).
+
+**Przykład ilustracyjny — dane umowne.** Współczynniki $a = -3{,}56$ i $b = -0{,}0750$ s/m pochodzą z tabeli Sandia (moduł szkło/ogniwo/folia polimerowa, konstrukcja otwarta), a $E$ = 800 W/m² i $T_a$ = 20 °C przyjęto umownie. Przy $WS$ = 1 m/s $T_m \approx 41{,}1$ °C, a przy $WS$ = 5 m/s $T_m \approx 35{,}6$ °C: sam wiatr zmienia temperaturę modułu o ok. 5,5 °C.
+
+- Wg raportu IEA PVPS T13-28:2024 IEC 61724-1 zaleca wymianę lub ponowne wzorcowanie czujników temperatury, w klasie A co dwa lata; raport radzi też unikać umieszczania czujników przy krawędziach modułów i pól.
+- [Zadanie 1](../../cwiczenia/karty/zadanie-01-pv-stacja-hulajnog.md) ma kolumnę temperatury modułu, ale nie ma temperatury otoczenia ani prędkości wiatru, więc na tych danych modelu Sandia nie da się sprawdzić (ocena własna).
+
+Źródło: [IEC 61724-1:2021, próbka normy](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf); [Sandia PVPMC, model temperatury modułu](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/module-temperature/sandia-module-temperature-model/); [Sandia PVPMC, model temperatury ogniwa](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/cell-temperature/sandia-cell-temperature-model/); [IEA PVPS T13-28:2024](https://iea-pvps.org/wp-content/uploads/2024/12/IEA-PVPS-T13-28-2024-REPORT-Technical-and-Economic-KPIs.pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Temperatura modułu wpływa na jego moc, a mierzy się ją najczęściej czujnikiem przyklejonym do tylnej powierzchni. Norma poświęca temu cały załącznik, bo źle przymocowany czujnik mierzy raczej powietrze niż moduł. Model Sandia pokazuje, od czego ta temperatura zależy: od promieniowania, temperatury otoczenia i wiatru. W przykładzie ten sam moduł przy tym samym słońcu różni się o ponad pięć stopni tylko z powodu wiatru. Bez wiatru i temperatury otoczenia nie wiemy, czy wysoka temperatura modułu jest normalna, czy świadczy o problemie, na przykład o słabej wentylacji pod modułami.
+
+Pytanie do sali: czego brakuje w danych z Zadania 1, żeby ocenić, czy moduł nie jest za gorący? Typowe nieporozumienie: temperatura tylnej powierzchni modułu to temperatura ogniwa.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Prąd, napięcie i energia" type="info">
+
+- **Przekładnik prądowy** (prąd przemienny): prąd wtórny jest proporcjonalny do pierwotnego; prądu stałego przekładnik nie mierzy (Tang i in. 2024). Aktualna jest IEC 61869-2:2012 (wyd. 1.0, z arkuszem interpretacyjnym z 2022 r.); klasy dokładności odczytuje się z normy i z tabliczki przekładnika.
+- Prąd stały (łańcuchy PV, magazyny energii) — porównanie wg przeglądu Tang i in. (2024):
+
+| Czujnik | Zasada | Mocne strony i ograniczenia |
+|---|---|---|
+| bocznik | napięcie na rezystorze proporcjonalne do prądu | tani i prosty; straty mocy i brak izolacji galwanicznej przy dużych prądach |
+| czujnik Halla, pętla otwarta | pole magnetyczne prądu wytwarza napięcie Halla | wrażliwy na zewnętrzne pola magnetyczne, wymaga ekranowania |
+| czujnik Halla, pętla zamknięta | pole kompensowane przez uzwojenie | małe lub zerowe przesunięcie magnetyczne, duża dokładność i liniowość |
+| czujnik typu fluxgate | wykrywanie pola w nasycanym rdzeniu | mały dryft zera i duża dokładność; w wersjach niskoczęstotliwościowych ograniczone pasmo; większy pobór prądu |
+
+- IEC 61724-1:2021 powołuje normatywnie (bez daty wydania) IEC 61557-12 (urządzenia do pomiaru i monitorowania mocy, PMD — ang. power metering and monitoring devices) i IEC 62053-22 (statyczne liczniki energii czynnej prądu przemiennego klas 0,1S, 0,2S i 0,5S). Wymagania dla pomiarów elektrycznych są w tabl. 5 (poziom falownika) i tabl. 6 (cała instalacja).
+- Pomiary wbudowane w falownik służą przede wszystkim jego sterowaniu; do rozliczania gwarancji wydajności potrzebny jest pomiar o znanej i udokumentowanej klasie dokładności (ocena własna).
+- Liczniki rozliczeniowe należą do metrologii prawnej: [część 1](./01-cele-architektura-i-czas.mdx).
+
+Źródło: [IEC 61869-2:2012](https://webstore.iec.ch/en/publication/6050); [Tang i in., 2024](https://doi.org/10.1007/s42452-024-06059-x); [IEC 61724-1:2021, próbka normy](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Po stronie prądu przemiennego mamy klasyczne przekładniki, które znacie z elektrotechniki. Po stronie prądu stałego, w łańcuchach PV i w magazynach, przekładnik nie zadziała, bo potrzebuje zmiennego strumienia. Zostają bocznik, czujniki Halla i czujniki typu fluxgate. Bocznik jest tani, ale się grzeje i nie oddziela obwodu pomiarowego od wysokiego napięcia. Czujnik Halla w pętli otwartej łatwo zakłócić, a stałe przesunięcie zera w BMS kumuluje się, gdy stan naładowania liczy się przez całkowanie prądu. Norma PV odsyła do norm liczników i analizatorów mocy, więc w projekcie trzeba podać klasę każdego przyrządu.
+
+Pytanie do sali: czy do rozliczenia gwarancji wydajności wystarczą dane z falownika? Typowe nieporozumienie: przekładnik prądowy zmierzy prąd łańcucha PV.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Wiatr: anemometry i ich wzorcowanie" type="info">
+
+- **Anemometr czaszowy**: prędkość obrotowa wirnika jest w przybliżeniu proporcjonalna do prędkości wiatru. **Anemometr ultradźwiękowy**: mierzy czas przelotu impulsów ultradźwiękowych w obu kierunkach, nie ma części ruchomych i daje wektor wiatru (zasady podręcznikowe).
+- W 2022 r. serię IEC 61400-12 przebudowano: IEC 61400-12-1:2022 (wyd. 3.0 z 5.09.2022, z poprawką z 05.2025) opisuje pomiar krzywej mocy, IEC 61400-12-2:2022 (wyd. 2.0) wariant z anemometrem na gondoli, a IEC 61400-50-1:2022 (wyd. 1.0 z 16.11.2022) pomiar wiatru. Razem zastąpiły IEC 61400-12-1:2017 i IEC 61400-12-2:2013.
+- IEC 61400-50-1:2022 opisuje klasyfikację i ocenę anemometrów czaszowych i ultradźwiękowych (rozdz. 6–7), wzorcowanie w tunelu aerodynamicznym z analizą niepewności (rozdz. 8) i porównanie anemometrów na miejscu pomiaru (rozdz. 9).
+- MEASNET (międzynarodowa sieć instytutów pomiarowych energetyki wiatrowej), procedura wzorcowania anemometrów, wersja 3 (10.12.2020): stosuje zał. F IEC 61400-12-1 (wyd. 2, 2017); podstawowy zakres 4–16 m/s, współczynnik wzorcowania wyznacza się względem rurek Pitota, wynikiem jest regresja liniowa (nachylenie i przesunięcie). Od maja 2025 r. jest też procedura wzorcowania czujników kierunku wiatru (wersja 1).
+- Anemometry czaszowe tracą właściwości z wiekiem (Pindado i in. 2012), stąd okresowe wzorcowanie ([część 3](./03-niepewnosc-i-wzorcowanie.mdx)).
+- Oblodzenie (IEA Wind TCP Task 19, 2018; TCP — program współpracy technologicznej Międzynarodowej Agencji Energetycznej): lód może spowolnić lub zatrzymać anemometry i wiatrowskazy; nawet w pełni ogrzewane czujniki nie zawsze pozostają wolne od lodu; anemometry ultradźwiękowe mogą być odporniejsze, ale wymagają wzorcowania i ogrzewania, a przy oblodzeniu mogą zarówno zawyżać, jak i zaniżać prędkość.
+- Anemometr na gondoli pracuje za wirnikiem w zaburzonym przepływie, więc jego wskazanie trzeba przeliczać na prędkość wiatru niezaburzonego (zasada podręcznikowa); turbiny wiatrowe szczegółowo w W7.
+
+Źródło: [IEC 61400-12-1:2022](https://webstore.iec.ch/en/publication/68499); [IEC 61400-12-1:2022, próbka normy](https://cdn.standards.iteh.ai/samples/105156/3a4f433b403c4d9bababf32e1b9b13f3/IEC-61400-12-1-2022.pdf); [IEC 61400-12-2:2022](https://webstore.iec.ch/en/publication/68500); [IEC 61400-50-1:2022](https://webstore.iec.ch/en/publication/69216); [IEC 61400-50-1:2022, próbka normy](https://cdn.standards.iteh.ai/samples/105556/722392eb3aa44751a32a7172b86f7ced/IEC-61400-50-1-2022.pdf); [MEASNET, wzorcowanie anemometrów, wersja 3](https://measnet.com/wp-content/uploads/2026/06/MEASNET_Anemometer-Calibration-Procedure_Version-3_10122020.pdf); [MEASNET, wzorcowanie czujników kierunku wiatru, wersja 1](https://measnet.com/wp-content/uploads/2026/06/3a2792c3-2cfd-4ec3-88a8-775c349e4e7d.pdf); [Pindado i in., 2012](https://doi.org/10.3390/en5051664); [IEA Wind TCP Task 19, 2018](https://iea-wind.org/wp-content/uploads/2021/09/Lehtomaki-et-al.-2018-Available-Technologies-for-Wind-Energy-in-Cold-Climates-report-2-nd-edition-2018.pdf)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Wiatr mierzymy dwoma rodzajami przyrządów. Anemometr czaszowy jest prosty i dobrze poznany, ale ma ruchome części, które się zużywają. Anemometr ultradźwiękowy nie ma części ruchomych i od razu podaje kierunek. W 2022 roku serię norm przebudowano: krzywa mocy, wariant z anemometrem na gondoli i sam pomiar wiatru mają teraz osobne części, a klasyfikacja i wzorcowanie anemometrów trafiły do IEC 61400-50-1. Wzorcowanie odbywa się w tunelu aerodynamicznym według procedury MEASNET. Dla bezpieczeństwa i monitoringu najciekawsze jest oblodzenie: lód może zatrzymać anemometr, a wtedy system widzi ciszę, choć wieje.
+
+Pytanie do sali: co zobaczy system monitoringu turbiny, gdy anemometr zamarznie? Płaską linię albo zerową prędkość, a to jest sygnał uszkodzenia, o czym w części 5. Typowe nieporozumienie: ogrzewany czujnik nie może się oblodzić.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Drgania, BMS i detektory gazu: zasady działania" type="info">
+
+| Pomiar | Zasada działania | Na co uważać | Więcej |
+|---|---|---|---|
+| drgania: akcelerometr piezoelektryczny | masa sejsmiczna naciska na element piezoelektryczny, ładunek jest proporcjonalny do przyspieszenia | pasmo ogranicza rezonans po zamocowaniu; potrzebne próbkowanie rzędu kHz ([część 2](./02-tor-pomiarowy.mdx)) | W7 |
+| BMS (Battery Management System — system zarządzania baterią): napięcie, prąd, temperatura | pomiar napięć ogniw, prądu i temperatury, na których BMS opiera odłączenie | kalibracja i dryf ([część 3](./03-niepewnosc-i-wzorcowanie.mdx)) | W8 |
+| gaz: czujnik katalityczny | ciepło reakcji gazu z tlenem na katalizatorze zmienia rezystancję drutu platynowego | potrzebuje ponad 10% tlenu; zatrucie (silikony, H₂S); niejednoznaczny powyżej górnej granicy wybuchowości (GGW) | W8, W9 |
+| gaz: czujnik podczerwieni (IR) | pochłanianie promieniowania podczerwonego przez cząsteczki gazu | nie wykrywa wodoru; wrażliwy na ciśnienie; nie ulega zatruciu | W8, W9 |
+| gaz: czujnik elektrochemiczny | reakcje na elektrodzie zmieniają jej właściwości elektryczne | zakresy wg HSE (2004): tlen 0–100%, gazy toksyczne 0–1000 ppm; starzenie ([część 3](./03-niepewnosc-i-wzorcowanie.mdx)) | W8, W9 |
+
+- Wg definicji IEC 62619:2022 (wyd. 2.0) BMS ([W1, część 5](../wyklad-01-zagrozenia-ramy-prawne/05-monitoring-a-warstwy-ochrony.mdx)) ma funkcje sterowania prądem przy przeładowaniu, przetężeniu, nadmiernym rozładowaniu i przegrzaniu oraz monitoruje lub zarządza stanem baterii (tłumaczenie własne); pkt 8.2.2–8.2.4 dotyczą kontroli przeładowania (napięcie, prąd) i przegrzania.
+- HSE (Health and Safety Executive, brytyjski urząd BHP; ulotka z 2004 r.): czas odpowiedzi T90 to czas, po którym wskazanie osiąga 90% wartości końcowej po skokowej zmianie stężenia. Wzorcowanie wykonuje się zwykle mieszaniną gazu wzorcowego z butli.
+- OSHA (Occupational Safety and Health Administration — amerykański urząd BHP), biuletyn SHIB z aktualizacją z 26.11.2024, przenośne mierniki gazu: test funkcjonalny (ang. bump test) potwierdza, że gaz dociera do czujników i że działają wszystkie alarmy. „Pełne wzorcowanie” w rozumieniu OSHA to dostosowanie wskazania do certyfikowanego gazu wzorcowego, czyli w języku VIM adiustacja (ocena własna).
+
+Źródło: [IEC 62619:2022, próbka normy](https://cdn.standards.iteh.ai/samples/102658/921553c48a634ba292a91f563b8c7aec/IEC-62619-2022.pdf); [HSE, 2004](https://www.hse.gov.uk/pubns/gasdetector.pdf); [OSHA SHIB, 2024](https://www.osha.gov/publications/shib093013)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Ten slajd to tylko mapa, bo każdy z tych czujników ma swój wykład. Akcelerometr zamienia przyspieszenie na ładunek, a sposób zamocowania decyduje o tym, jakie częstotliwości w ogóle zobaczymy. BMS mierzy napięcia, prąd i temperaturę i na tej podstawie sam odłącza baterię, więc jego pomiary muszą być wzorcowane. Przy detektorach gazu najważniejsze jest to, że każda zasada ma swoją słabość: czujnik katalityczny może ulec zatruciu siarkowodorem, a czujnik podczerwieni nie widzi wodoru. Test funkcjonalny z gazem sprawdza, czy czujnik w ogóle reaguje.
+
+Pytanie do sali: jakiego czujnika nie użyjecie do wykrywania wodoru w kontenerze BESS? Typowe nieporozumienie: detektor, który pokazuje zero, na pewno działa.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Klasy monitoringu PV według IEC 61724-1:2021" type="info">
+
+- IEC 61724-1:2021 (wyd. 2.0 z 21.07.2021; [W1, część 4](../wyklad-01-zagrozenia-ramy-prawne/04-normy.mdx)) jest aktualna. Zakres (pkt 1): terminologia, wyposażenie i metody monitorowania i analizy wydajności systemów PV (tłumaczenie własne).
+- Wprowadzenie: dokument definiuje klasy systemów monitorowania wydajności PV i służy jako wskazówka przy wyborze systemu monitoringu (tłumaczenie własne).
+- **Wydanie 2021 ma tylko klasy A i B.** Przedmowa: systemy monitoringu klasy C usunięto; wprowadzono monitoring systemów z modułami dwustronnymi, zaktualizowano wymagania dla czujników promieniowania i pomiar zabrudzenia.
+- Klasa A — wysoka dokładność, instalacje wielkoskalowe i duże komercyjne; klasa B — średnia dokładność, instalacje dachowe oraz małe i średnie komercyjne. Tak opisuje je producent czujników (Hukseflux); tego zdania nie cytujemy z tekstu normy. Sam wstęp normy mówi, że większe systemy PV powinny mieć więcej punktów monitoringu i czujniki o większej dokładności (tłumaczenie własne).
+- Tabele normy: 1 — interwały próbkowania i zapisu; 2 — mierzone wielkości i wymagania; 3 — mnożnik, do którego odsyła tabl. 2; 4 — wymagania dla czujników promieniowania; 5 i 6 — pomiary elektryczne falownika i całej instalacji. Wg producenta czujników norma podaje też zalecaną minimalną liczbę przyrządów zależną od wielkości instalacji. Wartości liczbowe trzeba odczytać z tekstu normy.
+- Źródła mieszają wydania: Lindig i in. (2020) opisują trzy klasy z wydania 2017, a raport IEA PVPS T13-28:2024 nadal pisze o klasie C. Zawsze podawaj wydanie normy. Data stabilności (2026) została osiągnięta: sprawdź przed zajęciami, czy nie ukazało się wydanie 3.
+
+Źródło: [IEC 61724-1:2021](https://webstore.iec.ch/en/publication/65561); [IEC 61724-1:2021, próbka normy](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf); [Hukseflux, IEC 61724-1:2021 — co nowego](https://www.hukx.com/uploads/iec-61724-1-2021-version-what-is-new.pdf); [Hukseflux, krótkie objaśnienie IEC 61724-1:2021](https://www.hukx.com/us/applications/the-iec-61724-12021-standard-for-pv-monitoring-systems-a-quick-explanation); [Lindig i in., 2020](https://doi.org/10.3390/en13195099); [IEA PVPS T13-28:2024](https://iea-pvps.org/wp-content/uploads/2024/12/IEA-PVPS-T13-28-2024-REPORT-Technical-and-Economic-KPIs.pdf)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+IEC 61724-1 to podstawowa norma monitoringu wydajności PV. Najważniejsza wiadomość: wydanie z 2021 roku ma tylko dwie klasy, A i B. Klasa C zniknęła, choć w wielu materiałach, nawet w raporcie IEA z 2024 roku, wciąż ją znajdziecie. To dobra lekcja czytania źródeł: zawsze sprawdzajcie, o którym wydaniu mowa. Klasa nie mówi, że instalacja jest dobra, tylko jak dokładnie i jak kompletnie ją mierzymy. Konkretnych liczb z tabel celowo nie podaję, bo nie znaleźliśmy ich w wiarygodnym otwartym źródle; do projektu potrzebny jest tekst normy.
+
+Pytanie do sali: dla kogo ma sens klasa A, a dla kogo wystarczy klasa B? Typowe nieporozumienie: klasa monitoringu to klasa piranometru.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Od wymagań do projektu monitoringu PV" type="success">
+
+Zestawienie dydaktyczne (ocena własna) — naziemna farma PV z gwarantowanym wskaźnikiem wydajności PR, bez liczb umownych:
+
+| Krok | Decyzja projektowa | Podstawa |
+|---|---|---|
+| cel i klasa | ocena gwarancji i wykrywanie usterek → klasa A (wg producentów czujników: duże instalacje) | IEC 61724-1:2021, wprowadzenie; poprzedni slajd |
+| wielkości i liczba czujników | lista wielkości z tabl. 2; minimalna liczba czujników wg normy (tabl. 2 i 3 — sprawdzić w tekście) | tekst normy |
+| czujniki | piranometr wg ISO 9060:2018 albo urządzenie referencyjne dopasowane widmowo; temperatura modułu i otoczenia, wiatr; licznik energii | slajdy 1–3; tabl. 4–6 normy |
+| próbkowanie i zapis | próbkowanie co 1 s lub częściej, zapis średnich co 5–15 min; wymagania klasy: tabl. 1 IEC 61724-1:2021 | IEA PVPS T13-03; tekst normy |
+| eksploatacja | czyszczenie czujników promieniowania co 1–2 tygodnie; wzorcowanie co 2 lata przy dwóch porównywanych czujnikach, rozważyć co rok przy jednym | IEA PVPS T13-03 |
+| czas i dostępność | znaczniki czasu w UTC (Coordinated Universal Time — uniwersalny czas koordynowany; [część 1](./01-cele-architektura-i-czas.mdx)); dostępność danych co najmniej 99%, poniżej 95% — system akwizycji niskiej jakości | część 1 (UTC); IEA PVPS T13-03 (dostępność) |
+
+- [Zadanie 1](../../cwiczenia/karty/zadanie-01-pv-stacja-hulajnog.md): zapisy co 15 min to najdłuższy interwał, jaki dopuszcza dobra praktyka T13-03; czy spełniają wymagania klasy A lub B, nie da się rozstrzygnąć bez tabl. 1 normy (ocena własna).
+- Podobny układ opisują Lindig i in. (2020): dane pogodowe zapisywano co minutę, a elektryczne co 15 min, więc uśredniono je do wspólnego interwału.
+
+Źródło: [IEC 61724-1:2021, próbka normy](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf); [IEA PVPS T13-03:2014](https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_T13-D2_3_Analytical_Monitoring_of_PV_Systems_Final.pdf); [Lindig i in., 2020](https://doi.org/10.3390/en13195099); zestawienie dydaktyczne (ocena własna)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Składamy wszystko w jeden tok projektowania. Zaczynamy od celu, a nie od katalogu czujników: jeśli inwestor ma gwarantowany wskaźnik wydajności, spór o kilka procent będzie rozstrzygany na podstawie naszych danych, więc wybieramy klasę A. Z klasy wynikają wielkości, liczba i rodzaj czujników, potem interwały, a na końcu eksploatacja, o której projektanci często zapominają. Ostatni wiersz łączy PV z pierwszą częścią wykładu: bez wspólnego czasu i bez kompletnych danych nawet najlepsze czujniki nie wystarczą.
+
+Pytanie do sali: dane z Zadania 1 są zapisywane co 15 minut; co tracimy przy tak długim interwale? Krótkie zdarzenia, na przykład przelotne zachmurzenie albo chwilowe ograniczenie mocy. Typowe nieporozumienie: projekt monitoringu to lista czujników.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+1. ISO (2018). *ISO 9060:2018 Solar energy — Specification and classification of instruments for measuring hemispherical solar and direct solar radiation*, wyd. 2. [https://www.iso.org/standard/67464.html](https://www.iso.org/standard/67464.html)
+2. Hukseflux (b.d.). *ISO 9060 pyranometer classification* (materiał producenta). [https://www.hukx.com/uploads/ISO-9060-pyranometer-classification.pdf?v=1765534259](https://www.hukx.com/uploads/ISO-9060-pyranometer-classification.pdf?v=1765534259)
+3. Woyte A., Richter M., Moser D., Reich N., Green M., Mau S., Beyer H.G. (2014). *Analytical Monitoring of Grid-connected Photovoltaic Systems: Good Practices for Monitoring and Performance Analysis* (Report IEA-PVPS T13-03:2014). IEA PVPS. [https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_T13-D2_3_Analytical_Monitoring_of_PV_Systems_Final.pdf](https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_T13-D2_3_Analytical_Monitoring_of_PV_Systems_Final.pdf)
+4. IEC (2023). *IEC 60904-2:2023 Photovoltaic devices — Part 2: Requirements for photovoltaic reference devices*, wyd. 4.0. [https://webstore.iec.ch/en/publication/68536](https://webstore.iec.ch/en/publication/68536)
+5. IEC (2021). *IEC 61724-1:2021 Photovoltaic system performance — Part 1: Monitoring*, wyd. 2.0. [https://webstore.iec.ch/en/publication/65561](https://webstore.iec.ch/en/publication/65561); próbka normy (iTeh): [https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf](https://cdn.standards.iteh.ai/samples/103495/100a1ea212914dd38ba72a9138af4ce1/IEC-61724-1-2021.pdf)
+6. Reda I. (2011). *Method to Calculate Uncertainties in Measuring Shortwave Solar Irradiance Using Thermopile and Semiconductor Solar Radiometers* (NREL/TP-3B10-52194). National Renewable Energy Laboratory. [https://docs.nlr.gov/docs/fy11osti/52194.pdf](https://docs.nlr.gov/docs/fy11osti/52194.pdf); rekord OSTI: [https://www.osti.gov/biblio/1021250](https://www.osti.gov/biblio/1021250)
+7. Fuke P., Kottantharayil A. (2025). Effect of pyranometer soiling on the PV performance ratio evaluation and correction methods. *Solar Energy* 298: 113634. [https://doi.org/10.1016/j.solener.2025.113634](https://doi.org/10.1016/j.solener.2025.113634)
+8. Sandia National Laboratories, PVPMC (b.d.). *Sandia Module Temperature Model*. [https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/module-temperature/sandia-module-temperature-model/](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/module-temperature/sandia-module-temperature-model/); *Sandia Cell Temperature Model*: [https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/cell-temperature/sandia-cell-temperature-model/](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/cell-temperature/sandia-cell-temperature-model/)
+9. IEA PVPS Task 13 (2024). *Best practice guidelines for the use of economic and technical KPIs* (Report IEA-PVPS T13-28:2024). [https://iea-pvps.org/wp-content/uploads/2024/12/IEA-PVPS-T13-28-2024-REPORT-Technical-and-Economic-KPIs.pdf](https://iea-pvps.org/wp-content/uploads/2024/12/IEA-PVPS-T13-28-2024-REPORT-Technical-and-Economic-KPIs.pdf)
+10. IEC (2012). *IEC 61869-2:2012 Instrument transformers — Part 2: Additional requirements for current transformers*, wyd. 1.0. [https://webstore.iec.ch/en/publication/6050](https://webstore.iec.ch/en/publication/6050)
+11. Tang C., Liang J., Zhu Q., Lu X., Shu J., Jiang C. (2024). Review of the current transducer techniques. *Discover Applied Sciences* 6: 351. [https://doi.org/10.1007/s42452-024-06059-x](https://doi.org/10.1007/s42452-024-06059-x)
+12. IEC (2022). *IEC 61400-12-1:2022 Wind energy generation systems — Part 12-1: Power performance measurements of electricity producing wind turbines*, wyd. 3.0. [https://webstore.iec.ch/en/publication/68499](https://webstore.iec.ch/en/publication/68499); próbka normy (iTeh): [https://cdn.standards.iteh.ai/samples/105156/3a4f433b403c4d9bababf32e1b9b13f3/IEC-61400-12-1-2022.pdf](https://cdn.standards.iteh.ai/samples/105156/3a4f433b403c4d9bababf32e1b9b13f3/IEC-61400-12-1-2022.pdf)
+13. MEASNET (2020). *Anemometer Calibration Procedure*, wersja 3 z 10.12.2020. [https://measnet.com/wp-content/uploads/2026/06/MEASNET_Anemometer-Calibration-Procedure_Version-3_10122020.pdf](https://measnet.com/wp-content/uploads/2026/06/MEASNET_Anemometer-Calibration-Procedure_Version-3_10122020.pdf)
+14. MEASNET (2025). *Wind Direction Sensor Calibration Procedure*, wersja 1. [https://measnet.com/wp-content/uploads/2026/06/3a2792c3-2cfd-4ec3-88a8-775c349e4e7d.pdf](https://measnet.com/wp-content/uploads/2026/06/3a2792c3-2cfd-4ec3-88a8-775c349e4e7d.pdf)
+15. Pindado S., Barrero-Gil A., Sanz A. (2012). Cup Anemometers' Loss of Performance Due to Ageing Processes, and Its Effect on Annual Energy Production (AEP) Estimates. *Energies* 5(5): 1664. [https://doi.org/10.3390/en5051664](https://doi.org/10.3390/en5051664)
+16. Lehtomäki V. i in. (red.) (2018). *Available Technologies for Wind Energy in Cold Climates — report*, wyd. 2. IEA Wind TCP Task 19. [https://iea-wind.org/wp-content/uploads/2021/09/Lehtomaki-et-al.-2018-Available-Technologies-for-Wind-Energy-in-Cold-Climates-report-2-nd-edition-2018.pdf](https://iea-wind.org/wp-content/uploads/2021/09/Lehtomaki-et-al.-2018-Available-Technologies-for-Wind-Energy-in-Cold-Climates-report-2-nd-edition-2018.pdf)
+17. IEC (2022). *IEC 62619:2022 Safety requirements for secondary lithium cells and batteries, for use in industrial applications*, wyd. 2.0, próbka normy (iTeh). [https://cdn.standards.iteh.ai/samples/102658/921553c48a634ba292a91f563b8c7aec/IEC-62619-2022.pdf](https://cdn.standards.iteh.ai/samples/102658/921553c48a634ba292a91f563b8c7aec/IEC-62619-2022.pdf)
+18. HSE (2004). *The selection and use of flammable gas detectors* (ulotka 11/04). Health and Safety Executive. [https://www.hse.gov.uk/pubns/gasdetector.pdf](https://www.hse.gov.uk/pubns/gasdetector.pdf)
+19. OSHA (2024). *Calibrating and Testing Direct-Reading Portable Gas Monitors* (Safety and Health Information Bulletin z 30.09.2013, aktualizacja 26.11.2024). [https://www.osha.gov/publications/shib093013](https://www.osha.gov/publications/shib093013)
+20. Hukseflux (b.d.). *The IEC 61724-1 standard for PV system performance monitoring — 2021 version, what is new* (materiał producenta). [https://www.hukx.com/uploads/iec-61724-1-2021-version-what-is-new.pdf](https://www.hukx.com/uploads/iec-61724-1-2021-version-what-is-new.pdf)
+21. Hukseflux (b.d.). *The IEC 61724-1:2021 standard for PV monitoring systems: a quick explanation* (materiał producenta). [https://www.hukx.com/us/applications/the-iec-61724-12021-standard-for-pv-monitoring-systems-a-quick-explanation](https://www.hukx.com/us/applications/the-iec-61724-12021-standard-for-pv-monitoring-systems-a-quick-explanation)
+22. Lindig S., Louwen A., Moser D., Topic M. (2020). Outdoor PV System Monitoring—Input Data Quality, Data Imputation and Filtering Approaches. *Energies* 13(19): 5099. [https://doi.org/10.3390/en13195099](https://doi.org/10.3390/en13195099)
+23. IEC (2022). *IEC 61400-12-2:2022 Wind energy generation systems — Part 12-2: Power performance of electricity producing wind turbines based on nacelle anemometry*, wyd. 2.0. [https://webstore.iec.ch/en/publication/68500](https://webstore.iec.ch/en/publication/68500)
+24. IEC (2022). *IEC 61400-50-1:2022 Wind energy generation systems — Part 50-1: Wind measurement — Application of meteorological mast, nacelle and spinner mounted instruments*, wyd. 1.0. [https://webstore.iec.ch/en/publication/69216](https://webstore.iec.ch/en/publication/69216); próbka normy (iTeh): [https://cdn.standards.iteh.ai/samples/105556/722392eb3aa44751a32a7172b86f7ced/IEC-61400-50-1-2022.pdf](https://cdn.standards.iteh.ai/samples/105556/722392eb3aa44751a32a7172b86f7ced/IEC-61400-50-1-2022.pdf)

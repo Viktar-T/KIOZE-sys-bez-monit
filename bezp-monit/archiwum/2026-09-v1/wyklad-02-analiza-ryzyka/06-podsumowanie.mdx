@@ -1,0 +1,125 @@
+---
+title: "Podsumowanie i quiz"
+sidebar_position: 6
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { InteractiveQuiz } from '@site/src/components/InteractiveQuiz';
+
+<LearningObjective>
+
+Student dobiera metodę analizy do pytania i wskazuje, jak wynik analizy staje się wymaganiem dla monitoringu i zabezpieczeń.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Która metoda do jakiego pytania" type="success">
+
+| Metoda | Pytanie | Wynik | Co dalej |
+|---|---|---|---|
+| HAZID, SWIFT | Jakie zagrożenia dotyczą obiektu? | rejestr zagrożeń | wybór węzłów i urządzeń do dalszej analizy |
+| HAZOP | Jakie odchylenia są możliwe i czy zabezpieczenia wystarczą? | arkusz z zaleceniami | scenariusze do LOPA, lista alarmów i blokad |
+| FMEA, FMECA | Jak zawodzi element i co z tego wynika? | ranking rodzajów uszkodzeń | plan utrzymania ruchu, monitorowanie stanu, testy |
+| FTA, ETA | Jak często dochodzi do zdarzenia i jakie są jego skutki? | prawdopodobieństwo, minimalne przekroje | usunięcie pojedynczych punktów uszkodzeń, ograniczenie β |
+| bow-tie | Jakie bariery chronią i co je osłabia? | mapa barier i czynników degradacji | nadzór nad barierami |
+| LOPA, SIL | Czy warstwy ochrony wystarczą? | wymagane RRF i SIL | specyfikacja SIF, interwały testów |
+
+Źródło: [IEC 31010:2019, podgląd ASSP](https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2); [IEC 61882:2016, próbka normy](https://cdn.standards.iteh.ai/samples/20730/64bc0f1bde424e8083959f2d3c4567a2/IEC-61882-2016.pdf); [IEC 60812:2018, próbka normy](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf); [Willey, 2014](https://www.sciencedirect.com/science/article/pii/S1877705814017263)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Ta tabela zbiera cały wykład. Proszę czytać ją wierszami: każda metoda odpowiada na inne pytanie i daje inny wynik. Metody nie konkurują ze sobą, tylko tworzą łańcuch. HAZID wskazuje, gdzie patrzeć. HAZOP i FMEA znajdują scenariusze i rodzaje uszkodzeń. Drzewa liczą częstości i pokazują słabe punkty, a LOPA rozstrzyga, czy ochrony jest dość.
+
+W projektach dyplomowych błędem jest wybór metody „bo jest znana”, bez sprawdzenia, czy odpowiada na postawione pytanie. Pytanie do sali: którą metodą sprawdzicie, czy dwa detektory gazu w kontenerze naprawdę się uzupełniają? Drzewem niezdatności z uwzględnieniem uszkodzeń spowodowanych wspólną przyczyną. Typowe nieporozumienie: im bardziej ilościowa metoda, tym lepsza. Liczby są tak dobre jak dane i założenia.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Od analizy do projektu monitoringu i zabezpieczeń" type="info">
+
+- **Lista alarmów i racjonalizacja**: każdy alarm z HAZOP lub LOPA musi mieć przyczynę, oczekiwaną reakcję i czas na nią (ISA-18.2; IEC 62682:2022, rozdz. 9) — W5.
+- **Macierz przyczynowo-skutkowa**: zapis, który sygnał (gaz, temperatura, dym) uruchamia które działanie (wentylacja, odłączenie, gaszenie) — W8, magazyny energii.
+- **Specyfikacja SIF**: funkcja, nastawy, czas zadziałania, wymagane PFDavg i interwał testów $T_1$ wynikające z LOPA.
+- **Testy sprawdzające** wykrywają uszkodzenia ukryte; wydanie 2 IEC 61511 wymaga m.in. testu po naprawie (wg Derbyshire'a 2016).
+- **Wymagania dla monitorowania stanu** z FMEA i RCM, np. łożysko główne, przekładnia i generator jako obowiązkowy zakres certyfikowanego CMS turbiny (DNVGL-SE-0439:2016) — W7.
+- **Tor pomiarowy**: co mierzyć, gdzie i z jaką dokładnością, żeby alarmy i funkcje działały zgodnie z założeniami analiz — W3.
+
+Źródło: [ISA InTech, 2020](https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks); [IEC 62682:2022, próbka normy](https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf); [Derbyshire, 2016](https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf); [DNV-SE-0439](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/)
+
+<InstructorNotes>
+
+Czas: ~3 min
+
+To zapowiedź reszty semestru. Analizy ryzyka nie są celem samym w sobie: produkują wymagania. Z HAZOP i LOPA wynika lista alarmów, którą w W5 będziemy racjonalizować, i funkcje bezpieczeństwa, które trzeba wyspecyfikować i regularnie testować. Z FMEA wynikają wymagania dla monitorowania stanu, na przykład zakres czujników drgań w turbinie, o czym w W7. W magazynach energii zapiszemy zależności między sygnałami a działaniami w macierzy przyczynowo-skutkowej.
+
+Pod slajdami jest quiz z dziesięcioma pytaniami, w tym trzema obliczeniowymi. Proszę go rozwiązać samodzielnie przed kolejnym wykładem. Pytanie na koniec: który wynik dzisiejszych analiz najbardziej wpływa na projekt toru pomiarowego? Wymagane PFDavg i czas zadziałania funkcji bezpieczeństwa, bo określają jakość i niezależność czujników.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Sprawdź się
+
+<InteractiveQuiz questions={[
+  { question: "Do której grupy technik IEC 31010:2019 należy HAZOP, a zatem w którym kroku procesu ISO 31000 jest głównie stosowany?", options: ["Ewaluacja ryzyka", "Identyfikacja ryzyka", "Postępowanie z ryzykiem", "Rejestrowanie i raportowanie"], correctAnswer: 1, explanation: "IEC 31010:2019 wymienia HAZOP (B.2.4) wśród technik identyfikacji ryzyka. HAZOP wskazuje scenariusze; ich ocenę ilościową robią inne metody, np. LOPA lub FTA." },
+  { question: "Które słowo przewodnie IEC 61882:2016 oznacza „logiczne przeciwieństwo zamierzenia projektowego”?", options: ["INNY NIŻ (OTHER THAN)", "BRAK (NO)", "ODWROTNIE (REVERSE)", "MNIEJ (LESS)"], correctAnswer: 2, explanation: "REVERSE to logiczne przeciwieństwo zamierzenia, np. przepływ wsteczny. OTHER THAN oznacza całkowite zastąpienie, NO — całkowite zaprzeczenie, LESS — ilościowy spadek." },
+  { question: "Dwa rodzaje uszkodzeń mają oceny S = 10, O = 3, D = 4 oraz S = 2, O = 10, D = 6. Co wynika z porównania RPN?", options: ["Pierwszy ma RPN wyższy o rząd wielkości", "Oba mają RPN = 120, mimo zupełnie różnej ciężkości skutków", "Drugi ma wyższy RPN, więc jest groźniejszy", "Dla skal 1–10 RPN nie jest zdefiniowany"], correctAnswer: 1, explanation: "10 × 3 × 4 = 120 i 2 × 10 × 6 = 120. RPN nie rozróżnia zagrożenia wybuchem od straty produkcji; dlatego stosuje się macierz krytyczności lub priorytet działania (AP), w którym ciężkość ma największą wagę." },
+  { question: "Bramka OR ma trzy niezależne wejścia o prawdopodobieństwach 0,01; 0,02 i 0,05. Ile wynosi dokładne prawdopodobieństwo wyjścia?", options: ["0,0800", "0,0783", "0,00001", "0,0500"], correctAnswer: 1, explanation: "P = 1 − 0,99 × 0,98 × 0,95 = 0,0783. Suma 0,08 to przybliżenie zdarzeń rzadkich, które zawyża wynik o ok. 2 %. Iloczyn 0,00001 byłby wynikiem bramki AND." },
+  { question: "Dlaczego para identycznych detektorów gazu w układzie 1oo2 zawodzi zwykle częściej, niż wynika z iloczynu q × q?", options: ["Bo bramkę AND oblicza się jako sumę prawdopodobieństw", "Bo uszkodzenia spowodowane wspólną przyczyną (współczynnik β) łamią założenie niezależności", "Bo w układzie 1oo2 muszą zadziałać oba detektory", "Bo przybliżenie zdarzeń rzadkich zaniża wynik"], correctAnswer: 1, explanation: "Wspólne zasilanie, ta sama kalibracja czy to samo środowisko mogą unieruchomić oba kanały naraz. W modelu β część wspólna β·q jest liniowa i szybko dominuje nad składnikiem niezależnym ((1 − β)q)²." },
+  { question: "LOPA: IEF = 0,2 na rok, jedna niezależna warstwa ochrony o PFD = 0,01, kryterium organizacji 10⁻⁵ na rok. Jaki SIL musi mieć dodatkowa funkcja bezpieczeństwa?", options: ["SIL 1", "SIL 2", "SIL 3", "Dodatkowa funkcja nie jest potrzebna"], correctAnswer: 1, explanation: "f = 0,2 × 0,01 = 2 × 10⁻³ na rok. Wymagane RRF = 2 × 10⁻³ / 10⁻⁵ = 200, czyli PFDavg ≤ 5 × 10⁻³, co mieści się w przedziale SIL 2 (od 10⁻³ do 10⁻²). Funkcja musi osiągnąć właśnie PFDavg ≤ 5 × 10⁻³; nie wystarczy dowolna wartość z przedziału SIL 2." },
+  { question: "Funkcja 1oo1 ma λDU = 1 × 10⁻⁶ na godzinę i test sprawdzający raz w roku (8760 h). Ile wynosi w przybliżeniu PFDavg?", options: ["8,76 × 10⁻³ (przedział SIL 2)", "4,38 × 10⁻³ (przedział SIL 2)", "4,38 × 10⁻² (przedział SIL 1)", "1,0 × 10⁻⁶ (przedział SIL 4)"], correctAnswer: 1, explanation: "PFDavg ≈ λDU × T1 / 2 = 10⁻⁶ × 8760 / 2 = 4,38 × 10⁻³, czyli przedział SIL 2; osiągnięcie SIL wymaga też spełnienia ograniczeń architektury i zdolności systematycznej. Wydłużenie interwału testów do dwóch lat podwoiłoby PFDavg." },
+  { question: "Jaką największą redukcję ryzyka można przypisać warstwie ochrony realizowanej przez podstawowy system sterowania (BPCS), który nie jest projektowany według IEC 61511 (wydanie 2016)?", options: ["≤ 10", "≤ 100", "≤ 1000", "Dowolną, jeśli sterownik jest redundantny"], correctAnswer: 0, explanation: "Według omówienia wydania 2 normy (Derbyshire 2016) redukcja ryzyka przypisywana warstwie BPCS nie może przekraczać 10, czyli PFD ≥ 0,1. Większe wymagania realizuje się w przyrządowym systemie bezpieczeństwa." },
+  { question: "Które z poniższych nie jest barierą w rozumieniu metody bow-tie (CCPS i Energy Institute 2018)?", options: ["Automatyczny start pochodni przy wzroście napełnienia", "Mechaniczne zabezpieczenie nadciśnieniowe", "Program szkoleń operatorów", "Detekcja gazu z automatycznym uruchomieniem wentylacji"], correctAnswer: 2, explanation: "Szkolenia, zarządzanie zmianą czy audyty wpływają na skuteczność barier, ale same nie są barierami. Bariera musi być skuteczna, niezależna i audytowalna, a bariera aktywna realizuje ciąg: wykryj, zdecyduj, działaj." },
+  { question: "Co wykazał Cox (2008) w odniesieniu do matryc ryzyka?", options: ["Są dokładniejsze niż analizy ilościowe", "Mogą przypisać wyższą kategorię ilościowo mniejszemu ryzyku", "Zawsze poprawnie porównują pary zagrożeń", "Nadają się do optymalnego rozdziału środków na redukcję ryzyka"], correctAnswer: 1, explanation: "Cox pokazał słabą rozdzielczość matryc, możliwość błędnego uszeregowania ryzyk i nieprzydatność do rozdziału środków. Matrycy należy więc używać ostrożnie, kalibrować ją i opisywać założenia. IEC 31010:2019 zalicza ją do technik rejestrowania i raportowania (B.10.3)." },
+]} />
+
+## Źródła
+
+### Proces zarządzania ryzykiem i kryteria
+
+1. International Organization for Standardization (2018). *ISO 31000:2018 Risk management — Guidelines*. [https://www.iso.org/standard/65694.html](https://www.iso.org/standard/65694.html)
+2. IEC/ISO (2019). *IEC 31010:2019 Risk management — Risk assessment techniques*, wyd. 2.0. [https://webstore.iec.ch/en/publication/59809](https://webstore.iec.ch/en/publication/59809); podgląd (ASSP): [https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2](https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2)
+3. Foster R.B. (HSE) (2000). Reducing Risks, Protecting People — A Harmonised Approach. IRPA-10, referat P-10-158. [https://www.irpa.net/irpa10/cdrom/00637.pdf](https://www.irpa.net/irpa10/cdrom/00637.pdf)
+4. Cox L.A. Jr. (2008). What's wrong with risk matrices? *Risk Analysis* 28(2): 497–512. [https://doi.org/10.1111/j.1539-6924.2008.01030.x](https://doi.org/10.1111/j.1539-6924.2008.01030.x)
+5. Baybutt P. (2018). Guidelines for designing risk matrices. *Process Safety Progress* 37(1): 49–55. [https://doi.org/10.1002/prs.11905](https://doi.org/10.1002/prs.11905)
+
+### HAZID i HAZOP
+
+1. International Organization for Standardization (2016). *ISO 17776:2016* — karta normy. [https://www.iso.org/standard/63062.html](https://www.iso.org/standard/63062.html)
+2. IEC (2016). *IEC 61882:2016 Hazard and operability studies (HAZOP studies) — Application guide*, próbka. [https://cdn.standards.iteh.ai/samples/20730/64bc0f1bde424e8083959f2d3c4567a2/IEC-61882-2016.pdf](https://cdn.standards.iteh.ai/samples/20730/64bc0f1bde424e8083959f2d3c4567a2/IEC-61882-2016.pdf)
+3. BMU / Kommission für Anlagensicherheit (2018, zm. 2019). *TRAS 120 Sicherheitstechnische Anforderungen an Biogasanlagen*. [https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf](https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf)
+4. Jenkins A., Gornall L., Cripps H. (2012). Lessons for safe design and operation of anaerobic digesters. IChemE Symposium Series 158. [https://www.icheme.org/media/9063/xxiii-paper-67.pdf](https://www.icheme.org/media/9063/xxiii-paper-67.pdf)
+
+### FMEA i FMECA
+
+1. IEC (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*, wyd. 3.0. [https://webstore.iec.ch/en/publication/26359](https://webstore.iec.ch/en/publication/26359)
+2. Barsalou M. (2020). DFMEAs with the new AIAG/VDA FMEA Handbook. Proc. 4th ICQEM. [https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf](https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf)
+3. Shafiee M., Dinmohammadi F. (2014). An FMEA-based risk assessment approach for wind turbine systems. *Energies* 7(2): 619–642. [https://doi.org/10.3390/en7020619](https://doi.org/10.3390/en7020619)
+4. IEC (2009). *IEC 60300-3-11:2009 Reliability centred maintenance*, próbka. [https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf](https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf)
+5. DNV GL (2016). *DNVGL-SE-0439 Certification of condition monitoring* (obecnie DNV-SE-0439, wyd. 2016-06, zm. 2021-10). [https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/)
+
+### FTA, ETA i bow-tie
+
+1. Vesely W.E., Goldberg F.F., Roberts N.H., Haasl D.F. (1981). *Fault Tree Handbook* (NUREG-0492). U.S. NRC. [https://www.nrc.gov/docs/ML1007/ML100780465.pdf](https://www.nrc.gov/docs/ML1007/ML100780465.pdf)
+2. Stamatelatos M., Vesely W. i in. (2002). *Fault Tree Handbook with Aerospace Applications*, wersja 1.1. NASA. [https://extapps.ksc.nasa.gov/Reliability/Documents/Fault_Tree_Handbook_with_Aerospace_Applications_August_2002.pdf](https://extapps.ksc.nasa.gov/Reliability/Documents/Fault_Tree_Handbook_with_Aerospace_Applications_August_2002.pdf)
+3. CCPS, Energy Institute (2018). *Bow Ties in Risk Management: A Concept Book for Process Safety*. Wiley. [https://www.aiche.org/ccps/resources/publications/books/bow-ties-risk-management-concept-book-process-safety](https://www.aiche.org/ccps/resources/publications/books/bow-ties-risk-management-concept-book-process-safety)
+4. Johnson M., Manton M., Cowley C., Scanlon M. (2018). Bow Ties in Risk Management; using the new CCPS-EI book to avoid pitfalls. IChemE Symposium Series 163. [https://www.icheme.org/media/16937/hazards-28-paper-31.pdf](https://www.icheme.org/media/16937/hazards-28-paper-31.pdf)
+
+### LOPA i SIL
+
+1. Willey R.J. (2014). Layer of Protection Analysis. *Procedia Engineering* 84: 12–22. [https://doi.org/10.1016/j.proeng.2014.10.405](https://doi.org/10.1016/j.proeng.2014.10.405)
+2. Chambers C., Wilday J., Turner S. (2009). *A review of Layers of Protection Analysis (LOPA) analyses of overfill of fuel storage tanks* (RR716). HSL dla HSE. [https://www.hse.gov.uk/research/rrpdf/rr716.pdf](https://www.hse.gov.uk/research/rrpdf/rr716.pdf)
+3. Derbyshire A.W. (2016). The long awaited IEC 61511 edition 2 and what it means for the process industry. IChemE Symposium Series 161. [https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf](https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf)
+4. King A.G. (2014). SIL determination and high demand mode. IChemE Symposium Series 159. [https://www.icheme.org/media/8914/xxiv-paper-18.pdf](https://www.icheme.org/media/8914/xxiv-paper-18.pdf)
+5. Lundteigen, Rausand (NTNU) (b.d.). *PFDavg with IEC 61508 formulas* — slajdy do rozdz. 8 książki *Reliability of Safety-Critical Systems*. [https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac)
+
+### Alarmy i monitoring
+
+1. Dunn D.G., Sands N.P. (2020). Alarm management questions that everyone asks. *ISA InTech*. [https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks](https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks)
+2. IEC (2022). *IEC 62682:2022 Management of alarm systems for the process industries*, próbka. [https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf](https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf)

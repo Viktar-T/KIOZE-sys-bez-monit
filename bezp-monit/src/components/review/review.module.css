@@ -1,0 +1,313 @@
+/* Review page for visual and media options (draft pages in docs/propozycje) */
+
+.intro {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 0.4rem 0 0.4rem 0.9rem;
+  margin-bottom: 1.2rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.slide {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 1rem 1.1rem 1.1rem;
+  margin: 1.4rem 0 2rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.slideHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.slideId {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.05rem 0.5rem;
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.slideTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.now {
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.7rem;
+}
+
+.sectionLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  margin: 1rem 0 0.4rem;
+}
+
+.options {
+  /* one option per row, at the width it will have on the slide */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.option,
+.candidate {
+  border: 2px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem 0.8rem;
+  min-width: 0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selected {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+}
+
+.optionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.optionName {
+  font-weight: 700;
+}
+
+.optionKind {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.optionSummary {
+  font-size: 0.86rem;
+  color: var(--ifm-color-emphasis-800);
+  margin-bottom: 0.4rem;
+}
+
+.pick {
+  appearance: none;
+  flex: none;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: transparent;
+  border-radius: 6px;
+  padding: 0.2rem 0.65rem;
+  cursor: pointer;
+}
+
+.pick[aria-pressed='true'] {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-content-inverse);
+}
+
+.candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.9rem;
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.thumbMissing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  border: 1px dashed var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.meta {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ifm-color-emphasis-800);
+  margin-top: 0.45rem;
+}
+
+.meta a {
+  word-break: break-all;
+}
+
+.learn {
+  font-size: 0.85rem;
+  margin: 0.35rem 0;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid;
+}
+
+.ok {
+  color: #0a6b0a;
+  border-color: #0ca30c;
+  background: #e3f5e3;
+}
+
+.check {
+  color: #6b4e00;
+  border-color: #fab219;
+  background: #fdf3d6;
+}
+
+.bad {
+  color: #a52626;
+  border-color: #d03b3b;
+  background: #f9e1e1;
+}
+
+[data-theme='dark'] .ok {
+  color: #9be29b;
+  background: #173a1f;
+}
+
+[data-theme='dark'] .check {
+  color: #ffd98a;
+  background: #3f3416;
+}
+
+[data-theme='dark'] .bad {
+  color: #ffadad;
+  background: #472023;
+}
+
+.place {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.placeBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+}
+
+.placeBtn + .placeBtn {
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.placeBtn[aria-pressed='true'] {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-content-inverse);
+}
+
+.visualPick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.4rem;
+  font-size: 0.88rem;
+}
+
+.note {
+  width: 100%;
+  min-height: 3.2rem;
+  margin-top: 0.4rem;
+  font: inherit;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-color-emphasis-0);
+  color: var(--ifm-font-color-base);
+}
+
+.panel {
+  position: sticky;
+  bottom: 0.75rem;
+  z-index: 20;
+  margin: 2rem 0 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+}
+
+.panelRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.panelBtn {
+  appearance: none;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+.panelPrimary {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-content-inverse);
+}
+
+.yaml {
+  width: 100%;
+  min-height: 12rem;
+  margin-top: 0.6rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-color-emphasis-0);
+  color: var(--ifm-font-color-base);
+}

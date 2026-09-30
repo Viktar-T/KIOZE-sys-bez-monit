@@ -1,0 +1,316 @@
+---
+title: "LOPA i SIL"
+sidebar_position: 5
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+
+<LearningObjective>
+
+Student przeprowadza prostą analizę LOPA, wyznacza wymagany współczynnik zmniejszenia ryzyka i SIL, oblicza PFDavg funkcji 1oo1 i 1oo2 oraz ocenia, jak decyzje o uznaniu warstw ochrony zmieniają wynik.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="LOPA: scenariusz i równanie" type="info">
+
+- **LOPA** (Layer of Protection Analysis — analiza warstw ochrony) to uproszczona ocena ryzyka jednej pary: jedna przyczyna, jeden skutek (Willey 2014). Metodę opisała CCPS (Center for Chemical Process Safety) w 2001 r., a zdarzenia inicjujące i warstwy ochrony rozwinęła w wytycznych z 2015 r. IEC 31010:2019 wymienia LOPA w B.4.4, a IEC 61511-3:2016 opisuje ją w zał. F.
+- **Scenariusz** to jedno **zdarzenie inicjujące**, jeden skutek i lista warstw ochrony między nimi. Inna przyczyna tego samego skutku to osobny scenariusz, bo może omijać inne warstwy.
+- Równanie (Willey 2014):
+
+$$
+f_i^{C} = IEF_i \times PFD_{i1} \times PFD_{i2} \times \dots \times PFD_{ij}
+$$
+
+- $f_i^{C}$ — częstość skutku scenariusza $i$ [1/rok]; $IEF_i$ (Initiating Event Frequency — częstość zdarzenia inicjującego) [1/rok]; $PFD_{ij}$ (Probability of Failure on Demand — prawdopodobieństwo niezadziałania na żądanie) niezależnej warstwy ochrony $j$, czyli IPL (Independent Protection Layer — niezależna warstwa ochrony); w obliczeniach używa się PFDavg, czyli średniego prawdopodobieństwa niebezpiecznego uszkodzenia na żądanie.
+- **Modyfikatory warunkowe** (ang. conditional modifier), np. prawdopodobieństwo zapłonu albo obecności ludzi, dopisuje się tylko z uzasadnieniem; raport RR716 dla brytyjskiego urzędu HSE (Health and Safety Executive) pokazuje ich nadużywanie (następny slajd).
+- Porównanie z docelową (tolerowaną) częstością scenariusza $f_{tol}$ daje wymagany **RRF** (Risk Reduction Factor — współczynnik zmniejszenia ryzyka) nowej warstwy: $RRF = f_i^{C} / f_{tol}$. Dla jednej warstwy $RRF = 1/PFD_{avg}$.
+- Model cebuli z [W1, część 5](../wyklad-01-zagrozenia-ramy-prawne/05-monitoring-a-warstwy-ochrony.mdx) staje się tu tabelą częstości i prawdopodobieństw.
+
+Źródło: [Willey, 2014](https://doi.org/10.1016/j.proeng.2014.10.405); [CCPS, 2001](https://ccps.aiche.org/publications/books/layer-protection-analysis-simplified-process-risk-assessment); [CCPS, 2015](https://doi.org/10.1002/9781118948743); [IEC 31010:2019, podgląd ASSP](https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2); [IEC 61511-3:2016, podgląd ANSI/ISA](https://webstore.ansi.org/preview-pages/ISA/preview_ANSI+ISA+61511.3-2018+(IEC+61511-3-2016).pdf); [HSE RR716, 2009](https://www.hse.gov.uk/research/rrpdf/rr716.pdf)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+LOPA odpowiada na pytanie, które zostawia HAZOP: czy istniejące zabezpieczenia wystarczą. Bierzemy jeden scenariusz, czyli jedną przyczynę i jeden skutek. Częstość przyczyny mnożymy przez prawdopodobieństwa, że zawiodą kolejne niezależne warstwy, a wynik porównujemy z celem organizacji. Jeśli wynik jest za wysoki, iloraz mówi, ile musi dać nowa warstwa, najczęściej przyrządowa funkcja bezpieczeństwa. Moim zdaniem najłatwiej myśleć o LOPA jak o jednej gałęzi drzewa zdarzeń z części czwartej.
+
+Pytanie do sali: dlaczego scenariusz ma mieć tylko jedno zdarzenie inicjujące? Bo różne przyczyny mogą omijać różne warstwy; awaria sterownika wyłącza inne zabezpieczenia niż błąd operatora. Typowe nieporozumienie: LOPA to pełna ilościowa analiza ryzyka. To metoda uproszczona, a jej wynik jest tak dobry jak wartości wejściowe i decyzje o uznaniu warstw.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Warstwy ochrony w LOPA: typowe błędy" type="warning">
+
+- Przypomnienie z W1: warstwę uznajemy za IPL, jeśli jest skuteczna, niezależna i audytowalna; BPCS (Basic Process Control System — podstawowy system sterowania procesem) niezaprojektowany według IEC 61511 dostaje najwyżej RRF 10, a alarm z reakcją operatora PFD nie mniejsze niż 0,1 ([W1, część 5](../wyklad-01-zagrozenia-ramy-prawne/05-monitoring-a-warstwy-ochrony.mdx)).
+- Laboratorium HSL (Health and Safety Laboratory) przejrzało dla HSE analizy LOPA przepełnienia zbiorników paliw (RR716, 2009). Powtarzające się błędy:
+
+| Błąd | Co stwierdzono |
+|---|---|
+| dwie „niezależne” warstwy na jednym sprzęcie | wspólny sterownik PLC (Programmable Logic Controller — programowalny sterownik logiczny) wprowadza uszkodzenie spowodowane wspólną przyczyną (RR716, pkt 3.5.2); awaria wspólnego zaworu unieruchomiłaby obie warstwy alarmowe (Chambers i Pearson 2011) |
+| kryterium bez uzasadnienia | brak uzasadnienia przyjętych kryteriów (firma A, pkt 2.2; podobnie firma C) |
+| niejasny zakres celu | nie wiadomo, czy cel obejmuje całe ryzyko osoby, czy jeden zbiornik i jedno zagrożenie (firma E, pkt 6.2) |
+| podwójne liczenie | prawdopodobieństwo śmierci może już być zawarte w kryterium, więc modyfikator warunkowy może być nieuprawniony (firma B, pkt 3.4) |
+| zaniżone dane wejściowe | prawdopodobieństwa zapłonu 0,09 i 0,08 dla dużych uwolnień benzyny uznano za nierealistycznie niskie (pkt 3.4 i 6.4); rozbicie zdarzenia inicjującego na podzadania daje bardzo małe częstości |
+
+- Alarm z operatorem działa jak bramka OR: zawieść może sprzęt niezależnego alarmu (0,1) albo człowiek (0,1), więc PFD warstwy $= 1 - 0{,}9 \times 0{,}9 = 0{,}19$. RR716 ocenia, że 0,19 dla takiej warstwy może być rozsądne jako wartość minimalna (pkt 2.5.1).
+- „Wnioski z LOPA są wrażliwe na wszystkie założenia wejściowe” (RR716, pkt 2.6), a analizę wrażliwości wykonywano rzadko.
+
+Źródło: [HSE RR716, 2009](https://www.hse.gov.uk/research/rrpdf/rr716.pdf); [Chambers i Pearson, 2011](https://www.icheme.org/media/9286/xxii-paper-75.pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Kryteria warstwy ochrony znacie z W1, więc dziś patrzymy, jak łamie się je w praktyce. Laboratorium brytyjskiego urzędu HSE przejrzało prawdziwe analizy LOPA dla przepełnienia zbiorników paliw i u różnych firm znalazło te same błędy. Najgroźniejszy jest pierwszy: dwie warstwy niezależne tylko na papierze, bo korzystają z tego samego sterownika albo zaworu. Wtedy mnożenie ich PFD jest nieuprawnione. Druga grupa dotyczy kryteriów: liczba bez uzasadnienia, bez informacji, czy dotyczy jednego scenariusza, czy całego ryzyka człowieka, albo z prawdopodobieństwem śmierci policzonym dwa razy.
+
+Pytanie do sali: dlaczego alarm z operatorem daje 0,19, a nie 0,1? Bo zawieść może czujnik albo człowiek, czyli to bramka OR. Typowe nieporozumienie: każde zabezpieczenie wpisane do arkusza HAZOP jest niezależną warstwą ochrony.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Typowe wartości IEF i PFD" type="info">
+
+Wartości ogólne według samouczka LOPA programu SAFEChE (University of Michigan), który podaje je za podręcznikiem Crowla i Louvara (2019). To nie są dane konkretnego obiektu.
+
+| Pozycja | Rodzaj | Wartość |
+|---|---|---|
+| Awaria pętli regulacji BPCS | IEF | 10⁻¹ /rok |
+| Błąd operatora | IEF | 10⁻² na okazję (częstość = 10⁻² × liczba okazji w roku) |
+| BPCS jako warstwa ochrony | PFD | 10⁻¹ |
+| Alarm z reakcją operatora | PFD | 10⁻¹ |
+| Zawór bezpieczeństwa lub membrana bezpieczeństwa | PFD | 10⁻² |
+| Obwałowanie | PFD | 10⁻² |
+
+- Dla BPCS niezgodnego z normą, który jest zdarzeniem inicjującym (stawia żądanie warstwie ochrony), pierwsze wydanie IEC 61511 nie pozwalało przyjąć intensywności niebezpiecznych uszkodzeń mniejszej niż 10⁻⁵ /h (cyt. w RR716): 10⁻⁵ /h × 8760 h = 0,0876 /rok, czyli ok. 0,1 /rok. Chambers i Pearson (2011) opisują to jako ok. jedną awarię na jedenaście lat.
+- IEC 61511-3:2016 (zał. F) ma własne tablice: F.3 (prawdopodobieństwo zainicjowania) i F.4 (typowe warstwy ochrony i ich PFDavg). Ich wartości trzeba sprawdzić w tekście normy; tu ich nie cytujemy.
+- RR716: firmy (m.in. A i D) brały prawdopodobieństwa błędu człowieka z tablicy F.3 pierwszego wydania normy (BS EN 61511-3) bez uzasadnienia. Wartość z tabeli to punkt wyjścia, a warunki jej stosowania trzeba wykazać dla obiektu (ocena własna).
+
+Źródło: [SAFEChE, samouczek LOPA](https://safeche.engin.umich.edu/tutorials/lopa-tutorial); [HSE RR716, 2009](https://www.hse.gov.uk/research/rrpdf/rr716.pdf); [Chambers i Pearson, 2011](https://www.icheme.org/media/9286/xxii-paper-75.pdf); [IEC 61511-3:2016, podgląd ANSI/ISA](https://webstore.ansi.org/preview-pages/ISA/preview_ANSI+ISA+61511.3-2018+(IEC+61511-3-2016).pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Te wartości pojawiają się w niemal każdym szkoleniu LOPA. Cytuję je za materiałem dydaktycznym Uniwersytetu Michigan, który powołuje się na podręcznik Crowla i Louvara. To wartości ogólne, a nie dane z waszej instalacji. Proszę zwrócić uwagę na jednostki: awaria pętli sterowania to częstość na rok, a błąd operatora to prawdopodobieństwo na jedną czynność, więc częstość zależy od liczby czynności w roku.
+
+Wartość 0,1 na rok dla pętli sterowania jest zgodna z ograniczeniem pierwszego wydania IEC 61511, opisanym w raporcie HSE: dziesięć do minus piątej na godzinę to po przeliczeniu mniej więcej jedna awaria na jedenaście lat. Pytanie do sali: czy możemy przyjąć dla operatora 0,01, bo „nasi operatorzy są bardzo dobrzy”? Nie bez uzasadnienia. Typowe nieporozumienie: wartość z tabeli wolno wpisać bez sprawdzenia warunków.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Przykład LOPA: nadciśnienie w zbiorniku biogazu" type="tip">
+
+**Przykład ilustracyjny — dane umowne.** Scenariusz zbudowano z wartości ogólnych z poprzedniego slajdu i z wymagań TRAS 120, a kryterium jest założeniem organizacji.
+
+- Scenariusz: awaria pętli BPCS (pomiar napełnienia sterujący odbiorem gazu i startem pochodni) → przepełnienie i nadciśnienie → rozerwanie membranowego zbiornika gazu i nagłe uwolnienie całej zawartości → pożar lub wybuch chmury gazu z możliwą ofiarą śmiertelną. Zachowawczo każda awaria pętli prowadzi do przepełnienia (bez modyfikatora warunkowego).
+- Wypływ przez zabezpieczenie nadciśnieniowe w wyznaczonym miejscu to osobny scenariusz. Niemiecka reguła techniczna TRAS 120 (KAS, Kommission für Anlagensicherheit; 2018, korekta 2019) mówi o uwolnieniu biogazu z zabezpieczenia nadciśnieniowego (2.6.3(3)) i nazywa te zabezpieczenia urządzeniami służącymi wyłącznie zapobieganiu niedopuszczalnym ciśnieniom (2.1(14)).
+- $IEF = 0{,}1$ /rok (awaria pętli BPCS, wartość ogólna). Kryterium $f_{tol} = 5 \times 10^{-6}$ /rok to założenie organizacji. Mieści się między celami dla pojedynczego scenariusza LOPA, które omawiają Stanley i in. (2018): 10⁻⁵ /rok (środek obszaru ALARP) i 10⁻⁶ /rok ([część 1](./01-proces-zarzadzania-ryzykiem.mdx)).
+
+| Warstwa | Czy to IPL? | PFD |
+|---|---|---|
+| Pochodnia uruchamiana przez BPCS | nie: ten sam BPCS jest przyczyną | 1 |
+| Mechaniczne zabezpieczenie nadciśnieniowe z zamknięciem cieczowym | tak: działa bez zasilania i sterowania | 0,01 (wartość ogólna jak dla zaworu; wymaga uzasadnienia) |
+| Alarm i operator, wariant A: instalacja bez stałej obsługi | nie: nikt nie zareaguje w dostępnym czasie | 1 |
+| Alarm i operator, wariant B: niezależny czujnik, obsługa, procedura | tak | 0,1 |
+
+- Zamknięcie cieczowe może zamarznąć. TRAS 120 (2.1(6)) wymaga eksploatacji części z kondensatem lub mieszaninami wodnymi w sposób zabezpieczony przed mrozem; odniesienie tego do zamknięcia cieczowego to ocena własna.
+
+Źródło: [KAS, TRAS 120](https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf); [SAFEChE, samouczek LOPA](https://safeche.engin.umich.edu/tutorials/lopa-tutorial); [Stanley i in., 2018](https://www.icheme.org/media/16956/hazards-28-paper-50.pdf)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Wracamy do zbiornika biogazu z HAZOP. Zdarzeniem inicjującym jest awaria pętli sterowania, która mierzy napełnienie i uruchamia odbiór gazu oraz pochodnię. Skutkiem jest rozerwanie zbiornika i nagłe uwolnienie całego gazu; wypływ przez zabezpieczenie w wyznaczonym miejscu to inny scenariusz. Kryterium pięć razy dziesięć do minus szóstej na rok przyjąłem jako decyzję organizacji; mieści się w zakresie, który dla pojedynczego scenariusza proponują Stanley i współautorzy.
+
+Teraz najważniejsze: przegląd warstw. Pochodnię uruchamia ten sam system, który uległ awarii, więc nie jest niezależna. Zabezpieczenie mechaniczne działa bez prądu i sterowania, więc tak, ale jego 0,01 trzeba uzasadnić, choćby zimą. Alarm z operatorem zależy od organizacji: w biogazowni bez stałej obsługi w nocy nikt nie zareaguje. Pytanie do sali: co musiałoby się zmienić, żeby uznać operatora? Niezależny czujnik, obsada i procedura.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Przykład LOPA: luka i wymagany SIL" type="tip">
+
+**Przykład ilustracyjny — dane umowne.** Ciąg dalszy przykładu ze zbiornikiem biogazu; intensywność uszkodzeń $\lambda_{DU}$ przyjęto umownie.
+
+- Wariant A: $f = 0{,}1 \times 1 \times 0{,}01 \times 1 = 10^{-3}$ /rok; $RRF = 10^{-3} / (5 \times 10^{-6}) = 200$; wymagane $PFD_{avg} \le 1/200 = 5 \times 10^{-3}$, czyli przedział **SIL 2**; SIL (Safety Integrity Level — poziom nienaruszalności bezpieczeństwa) i jego przedziały: następny slajd.
+- Wariant B: $f = 0{,}1 \times 1 \times 0{,}01 \times 0{,}1 = 10^{-4}$ /rok; $RRF = 20$; wymagane $PFD_{avg} \le 5 \times 10^{-2}$, czyli przedział **SIL 1**. Różnica wynika wyłącznie z organizacji pracy. Przy PFD warstwy alarmowej 0,19 (RR716, slajd o typowych błędach) byłoby $f = 1{,}9 \times 10^{-4}$ /rok i $RRF = 38$, nadal SIL 1.
+- Nowa **SIF** (Safety Instrumented Function — przyrządowa funkcja bezpieczeństwa): niezależny pomiar napełnienia → sterownik bezpieczeństwa → automatyczne uruchomienie pochodni. Odpowiada TRAS 120 (2.6.3(3)): urządzenia wykrywające niedopuszczalne napełnienie mają być oddzielone od pomiaru napełnienia, a osiągnięcie napełnienia minimalnego i maksymalnego ma zgłaszać system ochronny. Projekt bazowy przykładu tego nie spełnia.
+- Sprawdzenie wariantu A dla funkcji 1oo1 (one out of one — jeden z jednego) z intensywnością niebezpiecznych uszkodzeń niewykrywanych $\lambda_{DU} = 2 \times 10^{-6}$ /h (wzór na slajdzie o PFDavg 1oo1): test co rok daje $PFD_{avg} = 8{,}76 \times 10^{-3}$, czyli wartość w przedziale SIL 2, ale $f = 10^{-3} \times 8{,}76 \times 10^{-3} = 8{,}76 \times 10^{-6}$ /rok > $5 \times 10^{-6}$ /rok. Test co 6 miesięcy: $4{,}38 \times 10^{-3}$ i $f = 4{,}38 \times 10^{-6}$ /rok ≤ $5 \times 10^{-6}$ /rok. **Przedział SIL to za mało — liczy się wymagane PFDavg.**
+- Wrażliwość: nieuzasadnione prawdopodobieństwo zapłonu 0,1 obniżyłoby w wariancie A częstość do 10⁻⁴ /rok, a wymagany RRF do 20 (SIL 1). RR716 uznał 0,08 i 0,09 za nierealistycznie niskie dla dużych uwolnień benzyny, a 0,1 dla nafty za prawdopodobnie zachowawcze (pkt 2.4): wartość zależy od substancji i wielkości uwolnienia.
+- Wniosek (ocena własna): decyzje o uznaniu warstw i modyfikatorów zmieniają wymagany SIL bardziej niż precyzja obliczeń.
+
+Źródło: [Willey, 2014](https://doi.org/10.1016/j.proeng.2014.10.405); [KAS, TRAS 120](https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf); [HSE RR716, 2009](https://www.hse.gov.uk/research/rrpdf/rr716.pdf); [King, 2014](https://www.icheme.org/media/8914/xxiv-paper-18.pdf); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Liczymy. W wariancie A zostaje tylko zabezpieczenie mechaniczne, więc częstość wynosi jedną tysięczną na rok. Do kryterium brakuje czynnika dwieście, więc nowa funkcja musi mieć PFDavg nie większe niż pięć tysięcznych. Proszę spojrzeć na sprawdzenie: funkcja testowana raz w roku ma PFDavg w przedziale SIL 2, a mimo to wymagania nie spełnia. Wystarcza dopiero test co pół roku albo, przy teście co rok, funkcja o intensywności uszkodzeń nie większej niż około 1,14 razy dziesięć do minus szóstej na godzinę.
+
+W wariancie B operator daje dodatkowy czynnik dziesięć i wystarcza SIL 1. Gdyby ktoś dopisał zapłon 0,1 bez uzasadnienia, wymagany poziom spadłby o stopień. Pytanie do sali: czy wynik SIL 2 znaczy, że wystarczy kupić sterownik z certyfikatem SIL 2? Nie: wymaganie dotyczy całej funkcji, od czujnika po zawór.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="SIL: tryby pracy i miary" type="info">
+
+**SIL**, czyli poziom nienaruszalności bezpieczeństwa (pojęcie z [W1, część 4](../wyklad-01-zagrozenia-ramy-prawne/04-normy.mdx)), to przedział wymaganej nienaruszalności funkcji bezpieczeństwa:
+
+| SIL | Tryb niskiego zapotrzebowania: PFDavg | Tryb wysokiego zapotrzebowania lub ciągły: PFH [1/h] | RRF = 1/PFDavg |
+|---|---|---|---|
+| 4 | ≥ 10⁻⁵ i &lt; 10⁻⁴ | ≥ 10⁻⁹ i &lt; 10⁻⁸ | powyżej 10 000 do 100 000 |
+| 3 | ≥ 10⁻⁴ i &lt; 10⁻³ | ≥ 10⁻⁸ i &lt; 10⁻⁷ | powyżej 1000 do 10 000 |
+| 2 | ≥ 10⁻³ i &lt; 10⁻² | ≥ 10⁻⁷ i &lt; 10⁻⁶ | powyżej 100 do 1000 |
+| 1 | ≥ 10⁻² i &lt; 10⁻¹ | ≥ 10⁻⁶ i &lt; 10⁻⁵ | powyżej 10 do 100 |
+
+- Przedziały: IEC 61508-1:2010, tabl. 2 i 3 (wg Kinga, 2014). IEC 61511-1:2016 podaje wymagania w tabl. 4 (PFDavg) i 5 (średnia częstość niebezpiecznych uszkodzeń SIF).
+- **PFDavg** — średnie prawdopodobieństwo niebezpiecznego uszkodzenia na żądanie; **PFH** — średnia częstość niebezpiecznych uszkodzeń na godzinę.
+- Tryby według IEC 61508 (wg Kinga, 2014): **tryb niskiego zapotrzebowania** — żądanie zadziałania nie częściej niż raz w roku; **tryb wysokiego zapotrzebowania** — częściej niż raz w roku; **tryb ciągły** — funkcja bezpieczeństwa działa jako ciągła funkcja sterowania.
+- SIL dotyczy całej funkcji (czujnik, sterownik, element wykonawczy), a nie jednego urządzenia. Poza PFDavg lub PFH trzeba spełnić ograniczenia architektury i wymagania zdolności systematycznej.
+- Stan norm (IX 2026): IEC 61508:2010 (wyd. 2) jest aktualna; wydanie 3 jest na etapie projektów do głosowania (CDV) z 2025 r., a 61508 Association spodziewała się go „na początku 2027 r.”. IEC 61511-1:2016+AMD1:2017 jest aktualna; pakiet IEC 61511:2026 SER z 10.07.2026 zawiera to samo wydanie. Normy są dobrowolne ([W1, część 4](../wyklad-01-zagrozenia-ramy-prawne/04-normy.mdx)).
+
+Źródło: [King, 2014](https://www.icheme.org/media/8914/xxiv-paper-18.pdf); [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515); [IEC 61511-1:2016, próbka normy](https://cdn.standards.iteh.ai/samples/20175/f68c8f8865b14e3c8f453f4e8bc8070d/IEC-61511-1-2016.pdf); [VDE Verlag, projekt E DIN EN IEC 61508-1](https://www.vde-verlag.de/standards/1800749/e-din-en-iec-61508-1-vde-0803-1-2025-12.html); [61508 Association](https://61508.org/knowledge/standards-development/); [IEC 61511:2026 SER](https://webstore.iec.ch/en/publication/5527); obliczenia własne (RRF)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+SIL to przedział, a nie pojedyncza liczba. Każdy kolejny poziom oznacza dziesięciokrotnie mniejsze dopuszczalne PFDavg. Tryb pracy zależy od tego, jak często funkcja jest wzywana. Zabezpieczenie zbiornika biogazu przed przepełnieniem powinno działać rzadko, więc liczymy PFDavg. Funkcja maszyny wzywana wiele razy dziennie pracuje w trybie wysokiego zapotrzebowania i wtedy liczy się częstość niebezpiecznych uszkodzeń na godzinę.
+
+Pytanie do sali: w którym przedziale jest funkcja o PFDavg równym dokładnie 0,01? W przedziale SIL 1, bo SIL 2 wymaga wartości mniejszej niż 0,01; dlatego w przykładach unikamy wyników na granicy. Typowe nieporozumienie: SIL to cecha urządzenia. SIL dotyczy całej funkcji bezpieczeństwa, a samo PFDavg nie wystarcza.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="PFDavg funkcji 1oo1 i interwał testów" type="info">
+
+- Uproszczony wzór IEC 61508-6 w ujęciu Lundteigena i Rausanda (NTNU) dla architektury **1oo1** (jeden kanał), przy wykładniczych rozkładach czasu do uszkodzenia i czasu naprawy:
+
+$$
+PFD_{avg} = \lambda_{DU}\left(\frac{T_1}{2} + MRT\right) + \lambda_{DD}\,MTTR \;\approx\; \frac{\lambda_{DU}\,T_1}{2}
+$$
+
+- $\lambda_{DU}$ — intensywność niebezpiecznych uszkodzeń niewykrywanych przez diagnostykę; $\lambda_{DD}$ — wykrywanych; $T_1$ — interwał **testów sprawdzających** (ang. proof test); MRT (Mean Repair Time — średni czas naprawy) i MTTR (Mean Time To Restoration — średni czas przywrócenia). Przybliżenie zakłada $\lambda_{DD} = 0$ i MRT = 0.
+
+**Przykład ilustracyjny — dane umowne.** Przyjęto $\lambda_{DU} = 2 \times 10^{-6}$ /h, jak w przykładzie LOPA.
+
+| $T_1$ | $PFD_{avg}$ | Przedział |
+|---|---|---|
+| 6 miesięcy (4380 h) | 4,38 × 10⁻³ | SIL 2 |
+| 1 rok (8760 h) | 8,76 × 10⁻³ | SIL 2 |
+| 2 lata (17 520 h) | 1,75 × 10⁻² | SIL 1 |
+
+- Dodanie $\lambda_{DD} = 10^{-6}$ /h przy MTTR = 8 h daje 8,768 × 10⁻³ zamiast 8,76 × 10⁻³, czyli zmianę pomijalną.
+- Dane rzeczywiste (RR716, pkt 6.5.2): pływakowy lub wypornościowy czujnik poziomu w alarmie HH, 19,3 × 10⁻⁶ /h, czyli ok. 0,17 /rok; przy teście raz w roku PFD ≈ 0,17/2 ≈ 0,085. RR716 zaznacza jednak, że czujnika nie wolno oceniać w oderwaniu od całego układu (alarm, okablowanie), więc ta wartość wydaje się zbyt niska, a dla tej warstwy nie można przyjąć PFD mniejszego niż 0,1.
+- Istnieją inne zestawy wzorów przybliżonych (np. autorzy z DNV stosują inne niż IEC 61508-6; Brissaud i Oliveira 2015), więc zawsze podaje się, którego się użyło. W tym wykładzie: uproszczone wzory IEC 61508-6 jak wyżej.
+
+Źródło: [Lundteigen i Rausand, NTNU, rozdz. 8](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac); [HSE RR716, 2009](https://www.hse.gov.uk/research/rrpdf/rr716.pdf); [Brissaud i Oliveira, 2015](https://arxiv.org/abs/1501.06487); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Wzór jest zaskakująco prosty. Uszkodzenie, którego diagnostyka nie wykrywa, czeka ukryte do najbliższego testu sprawdzającego. Średnio czeka połowę interwału, stąd dzielenie przez dwa. Z tego wynika praktyczna reguła: PFDavg rośnie liniowo z interwałem testów. Ta sama funkcja testowana co pół roku ma wartość w przedziale SIL 2 z zapasem, a testowana co dwa lata spada do przedziału SIL 1.
+
+Przykład z raportu HSE jest prawdziwy: pływakowy czujnik poziomu o intensywności niebezpiecznych uszkodzeń około 0,17 na rok, testowany raz w roku, daje PFD około 0,085. Autorzy dodają jednak, że liczy się cały układ z alarmem i okablowaniem, więc PFD poniżej 0,1 nie wolno przyjąć; to ta sama granica co w W1. Pytanie do sali: kto w biogazowni odpowiada za to, żeby test odbył się w terminie? Eksploatacja, a termin musi wynikać z dokumentacji funkcji. Typowe nieporozumienie: funkcja bezpieczeństwa ma swój SIL na zawsze. Bez testów PFD stale rośnie.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Redundancja 1oo2 i współczynnik β" type="warning">
+
+- **1oo2** (one out of two — jeden z dwóch): funkcja zadziała, jeśli zadziała którykolwiek z dwóch kanałów; w drzewie niezdatności to bramka AND uszkodzeń kanałów ([część 4](./04-fta-eta-i-bow-tie.mdx)).
+- Uproszczenie wzorów IEC 61508-6 (wg Lundteigena i Rausanda) dla $\lambda_{DD} = 0$ i MRT = 0, z modelem współczynnika β dla CCF (Common Cause Failure — uszkodzenie spowodowane wspólną przyczyną) z części 4:
+
+$$
+PFD_{avg}^{1oo2} \approx \frac{\left((1-\beta)\,\lambda_{DU}\,T_1\right)^2}{3} + \beta\,\frac{\lambda_{DU}\,T_1}{2}
+$$
+
+**Przykład ilustracyjny — dane umowne.** Przyjęto $\lambda_{DU} = 2 \times 10^{-6}$ /h, $T_1$ = 1 rok i umowne wartości β.
+
+| β | Część niezależna | Część wspólna | $PFD_{avg}$ 1oo2 |
+|---|---|---|---|
+| 0 | 1,02 × 10⁻⁴ | 0 | 1,02 × 10⁻⁴ |
+| 0,02 | 9,83 × 10⁻⁵ | 1,75 × 10⁻⁴ | 2,73 × 10⁻⁴ |
+| 0,05 | 9,23 × 10⁻⁵ | 4,38 × 10⁻⁴ | 5,30 × 10⁻⁴ |
+| 0,10 | 8,29 × 10⁻⁵ | 8,76 × 10⁻⁴ | 9,59 × 10⁻⁴ |
+
+- Bez uszkodzeń wspólnych 1oo2 poprawia wynik ok. 86 razy względem 1oo1 (8,76 × 10⁻³); przy β = 0,10 tylko ok. 9 razy, a część wspólna to 91% wyniku.
+- IEC 61508-6 (zał. D, wg Rausanda i Lundteigena) wyznacza β z listy kontrolnej 37 pytań: 1–10% dla czujników i elementów wykonawczych, 0,5–5% dla układów logicznych. Niezerowe wartości β z tabeli (0,02–0,10) leżą w zakresie dla czujników; β = 0 to przypadek odniesienia.
+- Lista kontrolna β w IEC 62061 obejmuje m.in. separację, różnorodność, złożoność i środowisko (wg NTNU). Wniosek jak w części 4: redundancja bez różnorodności i separacji daje mniej, niż sugeruje iloczyn.
+
+Źródło: [Lundteigen i Rausand, NTNU, rozdz. 8](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac); [Rausand i Lundteigen, NTNU, rozdz. 10](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+10+-+CCF+definition+and+classification/b6b58f95-3d5a-4860-9b6f-a54493786bdd); obliczenia własne
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+To ten sam wniosek co w drzewie niezdatności, tylko w języku bezpieczeństwa funkcjonalnego. Dwa kanały bez uszkodzeń wspólnych dają poprawę prawie o dwa rzędy wielkości, bo część niezależna zależy od kwadratu. Część wspólna jest liniowa, taka jak dla jednego kanału pomnożona przez beta. Już przy dziesięciu procentach dominuje i zjada większość korzyści. Wynik 9,59 razy dziesięć do minus czwartej leży w przedziale SIL 3, ale samo PFDavg nie przesądza o SIL.
+
+W praktyce trzeba walczyć o niskie beta: różne czujniki, różne ścieżki kablowe, osobne zasilanie. Pytanie do sali: czy dwa identyczne czujniki ciśnienia na jednym króćcu to dobra redundancja? Nie, bo zatkanie króćca unieruchamia oba naraz. Typowe nieporozumienie: redundancja zawsze podnosi SIL o jeden poziom.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Maszyny i turbiny wiatrowe: PL i SIL" type="info">
+
+- ISO 13849-1:2023 (wyd. 4, 26.04.2023, zastąpiła wydanie z 2015 r.) dotyczy SRP/CS (Safety-Related Parts of Control Systems — części systemów sterowania związane z bezpieczeństwem) w trybie wysokiego zapotrzebowania i ciągłym, niezależnie od technologii. Miarą jest więc średnie prawdopodobieństwo niebezpiecznego uszkodzenia na godzinę (w terminologii ISO 13849-1), a nie PFDavg.
+- **PL** (Performance Level — poziom zapewnienia bezpieczeństwa): dyskretny poziom zdolności SRP/CS do realizacji funkcji bezpieczeństwa w przewidywalnych warunkach (3.1.5). **PLr** — wymagany poziom zapewnienia bezpieczeństwa potrzebny do wymaganego zmniejszenia ryzyka dla danej funkcji (3.1.6). **Kategoria** — klasyfikacja części ze względu na odporność na uszkodzenia i zachowanie po uszkodzeniu (3.1.4). Tłumaczenie własne.
+- Poziomy PL a–e norma definiuje w tabl. 2 przez prawdopodobieństwo niebezpiecznego uszkodzenia na godzinę; wartości trzeba sprawdzić w tekście normy. Informacyjny zał. A podaje metodę szacowania ryzyka do wyznaczenia PLr (IFA, instytut niemieckiego ustawowego ubezpieczenia wypadkowego DGUV, opisuje tę metodę dla wydania z 2015 r. jako graf ryzyka), a rozdz. 6.1.2 dotyczy korelacji PL i SIL.
+- IEC 62061:2021+AMD1:2024+AMD2:2026 to norma sektorowa dla maszyn w ramach IEC 61508, od 2021 r. także dla technologii nieelektrycznych; ISO 13849-1 deklaruje zgodność swoich wymagań dla systemów programowalnych z jej metodyką.
+- Turbiny wiatrowe: IEC 61400-1:2019+AMD1:2025 obejmuje m.in. funkcje sterowania i ochrony; DNV-ST-0438 (wyd. 2016-04, zm. 2021-11) podaje zasady i wymagania techniczne dla systemów sterowania i ochrony turbin lądowych i morskich. Czy i jak IEC 61400-1 powołuje ISO 13849-1 lub IEC 62061 — do sprawdzenia w tekście normy (W7).
+- Rozporządzenie (UE) 2023/1230 w sprawie maszyn jest przyjęte i będzie stosowane od 20.01.2027 ([W1, część 3](../wyklad-01-zagrozenia-ramy-prawne/03-ramy-prawne-ue-i-polska.mdx)). Stan prawny: wrzesień 2026.
+
+Źródło: [ISO 13849-1:2023](https://www.iso.org/standard/73481.html); [ISO 13849-1:2023, próbka normy](https://cdn.standards.iteh.ai/samples/73481/53161c0051c842dfa32a139fd0729a4c/ISO-13849-1-2023.pdf); [IFA Report 2/2017e](https://www.dguv.de/medien/ifa/en/pub/rep/pdf/reports-2019/report0217e/rep0217e.pdf); [IEC 62061:2021](https://webstore.iec.ch/en/publication/59927); [IEC 62061 AMD2:2026](https://webstore.iec.ch/en/publication/92835); [IEC 61400-1:2019](https://webstore.iec.ch/en/publication/26423); [IEC 61400-1 AMD1:2025](https://webstore.iec.ch/en/publication/86420); [DNV-ST-0438](https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/); [EUR-Lex, 2023/1230](https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32023R1230)
+
+<InstructorNotes>
+
+Czas: ~2 min
+
+Bezpieczeństwo maszyn ma własny język: ISO 13849-1 posługuje się poziomami zapewnienia bezpieczeństwa, a nie SIL. Wspólne jest to, że normy maszynowe dotyczą trybu wysokiego zapotrzebowania i ciągłego, więc liczy się częstość niebezpiecznych uszkodzeń na godzinę, a nie PFD na żądanie. Liczb dla poziomów a–e celowo nie podaję, bo nie sprawdziłem ich w tekście normy.
+
+Dla turbin wiemy na pewno tyle, że IEC 61400-1 obejmuje funkcje sterowania i ochrony, a DNV wydaje osobny standard dla systemów sterowania i ochrony. Które normy bezpieczeństwa funkcjonalnego stosuje konkretny producent, trzeba sprawdzić w jego dokumentacji; wrócimy do tego w W7. Pytanie do sali: w jakim trybie pracuje funkcja zatrzymania turbiny przy nadmiernej prędkości obrotowej? To zależy od tego, jak często jest wzywana, i to trzeba wykazać, a nie założyć.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Źródła
+
+1. Willey R.J. (2014). Layer of Protection Analysis. *Procedia Engineering* 84: 12–22. [https://doi.org/10.1016/j.proeng.2014.10.405](https://doi.org/10.1016/j.proeng.2014.10.405)
+2. CCPS (2001). *Layer of Protection Analysis: Simplified Process Risk Assessment*. AIChE. [https://ccps.aiche.org/publications/books/layer-protection-analysis-simplified-process-risk-assessment](https://ccps.aiche.org/publications/books/layer-protection-analysis-simplified-process-risk-assessment)
+3. CCPS (2015). *Guidelines for Initiating Events and Independent Protection Layers in Layer of Protection Analysis*. Wiley/AIChE. [https://doi.org/10.1002/9781118948743](https://doi.org/10.1002/9781118948743)
+4. IEC/ISO (2019). *IEC 31010:2019 Risk management — Risk assessment techniques*, wyd. 2.0, podgląd (ASSP). [https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2](https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2)
+5. ANSI/ISA (2018). *ANSI/ISA-61511-3-2018 (IEC 61511-3:2016 IDT) Functional Safety — Safety Instrumented Systems for the Process Industry Sector — Part 3*, podgląd. [https://webstore.ansi.org/preview-pages/ISA/preview_ANSI+ISA+61511.3-2018+(IEC+61511-3-2016).pdf](https://webstore.ansi.org/preview-pages/ISA/preview_ANSI+ISA+61511.3-2018+(IEC+61511-3-2016).pdf)
+6. Chambers C., Wilday J., Turner S. (2009). *A review of Layers of Protection Analysis (LOPA) analyses of overfill of fuel storage tanks* (RR716). Health and Safety Laboratory dla HSE. [https://www.hse.gov.uk/research/rrpdf/rr716.pdf](https://www.hse.gov.uk/research/rrpdf/rr716.pdf)
+7. Chambers C., Pearson J. (2011). A discussion of some common pitfalls in the application of layer of protection analysis (LOPA) to the overfill of fuel storage tanks at Buncefield type sites. IChemE Symposium Series 156 (Hazards XXII). [https://www.icheme.org/media/9286/xxii-paper-75.pdf](https://www.icheme.org/media/9286/xxii-paper-75.pdf)
+8. University of Michigan, SAFEChE (b.d.). *LOPA tutorial* (wartości za Crowl D.A., Louvar J.F., *Chemical Process Safety*, Pearson 2019). [https://safeche.engin.umich.edu/tutorials/lopa-tutorial](https://safeche.engin.umich.edu/tutorials/lopa-tutorial)
+9. Stanley A., Nicholls C., Burnup B., Smith J. (2018). Risk tolerability targets; misconceived, misunderstood and misapplied. IChemE Symposium Series 163 (Hazards 28). [https://www.icheme.org/media/16956/hazards-28-paper-50.pdf](https://www.icheme.org/media/16956/hazards-28-paper-50.pdf)
+10. Kommission für Anlagensicherheit (2019). *TRAS 120 — Sicherheitstechnische Anforderungen an Biogasanlagen* (Lesefassung). [https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf](https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf)
+11. King A.G. (2014). SIL determination and high demand mode. IChemE Symposium Series 159 (Hazards 24). [https://www.icheme.org/media/8914/xxiv-paper-18.pdf](https://www.icheme.org/media/8914/xxiv-paper-18.pdf)
+12. IEC (2010). *IEC 61508-1:2010 Functional safety of electrical/electronic/programmable electronic safety-related systems — Part 1: General requirements*, wyd. 2.0. [https://webstore.iec.ch/en/publication/5515](https://webstore.iec.ch/en/publication/5515)
+13. IEC (2016). *IEC 61511-1:2016 Functional safety — Safety instrumented systems for the process industry sector — Part 1*, próbka normy (iTeh). [https://cdn.standards.iteh.ai/samples/20175/f68c8f8865b14e3c8f453f4e8bc8070d/IEC-61511-1-2016.pdf](https://cdn.standards.iteh.ai/samples/20175/f68c8f8865b14e3c8f453f4e8bc8070d/IEC-61511-1-2016.pdf)
+14. IEC (2026). *IEC 61511:2026 SER Functional safety — Safety instrumented systems for the process industry sector* (pakiet z 10.07.2026, zawiera wyd. 2016+AMD1:2017). [https://webstore.iec.ch/en/publication/5527](https://webstore.iec.ch/en/publication/5527)
+15. VDE Verlag (2025). *E DIN EN IEC 61508-1 (VDE 0803-1):2025-12* (projekt, na podstawie IEC 65A/1164/CDV:2025). [https://www.vde-verlag.de/standards/1800749/e-din-en-iec-61508-1-vde-0803-1-2025-12.html](https://www.vde-verlag.de/standards/1800749/e-din-en-iec-61508-1-vde-0803-1-2025-12.html)
+16. 61508 Association (2025). *Standards Development* (stan z 17.12.2025). [https://61508.org/knowledge/standards-development/](https://61508.org/knowledge/standards-development/)
+17. Lundteigen M.A., Rausand M. (b.d.). *Chapter 8. PFD formulas in IEC 61508* — slajdy do książki *Reliability of Safety-Critical Systems* (Wiley 2014). NTNU. [https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac)
+18. Rausand M., Lundteigen M.A. (b.d.). *Chapter 10. Common Cause Failures (CCFs)* — slajdy do książki *Reliability of Safety-Critical Systems* (Wiley 2014). NTNU. [https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+10+-+CCF+definition+and+classification/b6b58f95-3d5a-4860-9b6f-a54493786bdd](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+10+-+CCF+definition+and+classification/b6b58f95-3d5a-4860-9b6f-a54493786bdd)
+19. Brissaud F., Oliveira L.F. (2015). Average probability of a dangerous failure on demand: Different modelling methods, similar results. arXiv:1501.06487. [https://arxiv.org/abs/1501.06487](https://arxiv.org/abs/1501.06487)
+20. ISO (2023). *ISO 13849-1:2023 Safety of machinery — Safety-related parts of control systems — Part 1: General principles for design*, wyd. 4. [https://www.iso.org/standard/73481.html](https://www.iso.org/standard/73481.html); próbka normy (iTeh): [https://cdn.standards.iteh.ai/samples/73481/53161c0051c842dfa32a139fd0729a4c/ISO-13849-1-2023.pdf](https://cdn.standards.iteh.ai/samples/73481/53161c0051c842dfa32a139fd0729a4c/ISO-13849-1-2023.pdf)
+21. IFA (2019). *IFA Report 2/2017e: Functional safety of machine controls — Application of EN ISO 13849*. DGUV (wersja angielska, oparta na wydaniu normy z 2015 r.). [https://www.dguv.de/medien/ifa/en/pub/rep/pdf/reports-2019/report0217e/rep0217e.pdf](https://www.dguv.de/medien/ifa/en/pub/rep/pdf/reports-2019/report0217e/rep0217e.pdf)
+22. IEC (2021). *IEC 62061:2021 Safety of machinery — Functional safety of safety-related control systems*, wyd. 2. [https://webstore.iec.ch/en/publication/59927](https://webstore.iec.ch/en/publication/59927); zmiana 2 (2026): [https://webstore.iec.ch/en/publication/92835](https://webstore.iec.ch/en/publication/92835)
+23. IEC (2019). *IEC 61400-1:2019 Wind energy generation systems — Part 1: Design requirements*, wyd. 4.0. [https://webstore.iec.ch/en/publication/26423](https://webstore.iec.ch/en/publication/26423); zmiana 1 (2025): [https://webstore.iec.ch/en/publication/86420](https://webstore.iec.ch/en/publication/86420)
+24. DNV (2021). *DNV-ST-0438 Control and protection systems for wind turbines*, wyd. 2016-04, zm. 2021-11. [https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/](https://www.dnv.com/energy/standards-guidelines/dnv-st-0438-control-and-protection-systems-for-wind-turbines/)
+25. Parlament Europejski i Rada UE (2023). *Rozporządzenie (UE) 2023/1230 w sprawie maszyn*. EUR-Lex. [https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32023R1230](https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32023R1230)

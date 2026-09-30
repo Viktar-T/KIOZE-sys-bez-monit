@@ -1,0 +1,153 @@
+---
+title: "Podsumowanie i quiz"
+sidebar_position: 6
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { InteractiveQuiz } from '@site/src/components/InteractiveQuiz';
+
+<LearningObjective>
+
+Student dobiera metodę analizy ryzyka do pytania i wskazuje, jak wynik analizy staje się wymaganiem dla monitoringu i zabezpieczeń.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Która metoda do jakiego pytania" type="success">
+
+| Metoda | Pytanie | Wynik | Co dalej |
+|---|---|---|---|
+| HAZID, SWIFT | Jakie zagrożenia dotyczą obiektu? | rejestr zagrożeń | wybór węzłów do HAZOP i urządzeń do FMEA |
+| HAZOP | Jakie odchylenia od zamierzenia projektowego są możliwe i co je zatrzyma? | arkusz z zaleceniami | scenariusze do LOPA, lista alarmów i blokad |
+| FMEA, FMECA | Jak zawodzi element i co z tego wynika? | ranking rodzajów uszkodzeń | plan utrzymania ruchu, monitorowanie stanu, testy |
+| FTA, ETA | Jak często dochodzi do zdarzenia i jakie są jego skutki? | częstości, minimalne przekroje | usunięcie pojedynczych punktów uszkodzeń, ograniczenie β |
+| bow-tie | Jakie bariery chronią i co je osłabia? | mapa barier i czynników degradacji | nadzór nad barierami |
+| LOPA, SIL | Czy warstwy ochrony wystarczą? | wymagany RRF i SIL | specyfikacja SIF, interwały testów sprawdzających |
+
+- Skróty: HAZID (Hazard Identification — identyfikacja zagrożeń); SWIFT (Structured What-If Technique — ustrukturyzowana technika „co, jeśli”); HAZOP (Hazard and Operability Study — badanie zagrożeń i zdolności do działania); FMEA (Failure Modes and Effects Analysis — analiza rodzajów i skutków uszkodzeń); FMECA (Failure Modes, Effects and Criticality Analysis — analiza rodzajów, skutków i krytyczności uszkodzeń); FTA (Fault Tree Analysis — analiza drzewa niezdatności); ETA (Event Tree Analysis — analiza drzewa zdarzeń); LOPA (Layer of Protection Analysis — analiza warstw ochrony); SIL (Safety Integrity Level — poziom nienaruszalności bezpieczeństwa); RRF (Risk Reduction Factor — współczynnik zmniejszenia ryzyka); SIF (Safety Instrumented Function — przyrządowa funkcja bezpieczeństwa).
+- Tabela to zestawienie dydaktyczne (ocena własna) na podstawie części 1–5.
+
+Źródło: [część 1](./01-proces-zarzadzania-ryzykiem.mdx); [część 2](./02-hazid-i-hazop.mdx); [część 3](./03-fmea-i-fmeca.mdx); [część 4](./04-fta-eta-i-bow-tie.mdx); [część 5](./05-lopa-i-sil.mdx)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+Ta tabela zbiera cały wykład. Proszę czytać ją wierszami: każda metoda odpowiada na inne pytanie i daje inny wynik. Metody nie konkurują ze sobą, tylko tworzą łańcuch. HAZID wskazuje, gdzie patrzeć. HAZOP i FMEA znajdują scenariusze i rodzaje uszkodzeń. Drzewa liczą częstości i pokazują słabe punkty, bow-tie porządkuje bariery, a LOPA rozstrzyga, czy ochrony jest dość i jaki SIL musi mieć nowa funkcja.
+
+W pracach dyplomowych częstym błędem jest wybór metody dlatego, że jest znana, bez sprawdzenia, czy odpowiada na postawione pytanie. Pytanie do sali: którą metodą sprawdzicie, czy dwa detektory gazu w kontenerze naprawdę się uzupełniają? Drzewem niezdatności z uszkodzeniami spowodowanymi wspólną przyczyną. Typowe nieporozumienie: im bardziej ilościowo, tym lepiej. Liczby są tak dobre jak dane i założenia.
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Od analizy do projektu monitoringu i zabezpieczeń" type="info">
+
+- **Lista alarmów i racjonalizacja**: dla każdego alarmu z HAZOP lub LOPA dokumentuje się skutek braku reakcji, działanie operatora i czas na reakcję (za Dunnem i Sandsem, 2020; definicja alarmu: [W1, część 5](../wyklad-01-zagrozenia-ramy-prawne/05-monitoring-a-warstwy-ochrony.mdx); ISA-18.2). Racjonalizację alarmów opisuje IEC 62682:2022 (rozdz. 9) — W5.
+- **Macierz przyczynowo-skutkowa**: zapis, który sygnał (gaz, temperatura, dym) uruchamia które działanie (wentylacja, odłączenie, gaszenie) — W8, magazyny energii.
+- **Specyfikacja SIF** z LOPA: funkcja, nastawy, czas zadziałania, wymagane PFDavg i interwał testów sprawdzających $T_1$ ([część 5](./05-lopa-i-sil.mdx)).
+- **Testy sprawdzające** wykrywają uszkodzenia ukryte; wydanie 2 IEC 61511 wymaga m.in. testu sprawdzającego po naprawie (wg Derbyshire'a, 2016).
+- **Wymagania dla monitorowania stanu** z FMEA i RCM (Reliability Centred Maintenance — obsługa ukierunkowana na niezawodność): łożysko główne, przekładnia i generator to obowiązkowy zakres CMS (Condition Monitoring System — system monitorowania stanu) turbiny w certyfikacji według DNVGL-SE-0439:2016 — W7. CMS nie zastępuje niezależnych systemów bezpieczeństwa.
+- **Tor pomiarowy**: co mierzyć, gdzie i z jaką dokładnością, żeby alarmy i funkcje działały zgodnie z założeniami analiz — W3.
+
+Źródło: [Dunn i Sands, ISA InTech 2020](https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks); [ISA-18](https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards); [IEC 62682:2022, próbka normy](https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf); [Derbyshire, IChemE 2016](https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf); [DNV-SE-0439](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/)
+
+<InstructorNotes>
+
+Czas: ~2,5 min
+
+To zapowiedź reszty semestru. Analizy ryzyka nie są celem samym w sobie: produkują wymagania. Z HAZOP i LOPA wynika lista alarmów, którą w W5 będziemy racjonalizować, oraz funkcje bezpieczeństwa, które trzeba wyspecyfikować i regularnie testować. Z FMEA wynikają wymagania dla monitorowania stanu, na przykład zakres czujników drgań w turbinie, o czym w W7. W magazynach energii zależności między sygnałami a działaniami zapiszemy w macierzy przyczynowo-skutkowej.
+
+Pod slajdami jest quiz z dziesięcioma pytaniami, w tym czterema wymagającymi obliczeń; proszę go rozwiązać samodzielnie przed kolejnym wykładem. Pytanie na koniec: który wynik dzisiejszych analiz najbardziej wpływa na projekt toru pomiarowego? Moim zdaniem wymagane PFDavg i czas zadziałania funkcji, bo określają jakość i niezależność czujników. Typowe nieporozumienie: analizę robi się raz, dla urzędu.
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>
+
+## Sprawdź się
+
+<InteractiveQuiz questions={[
+  { question: "Do której grupy technik IEC 31010:2019 należy HAZOP, a zatem w którym kroku procesu ISO 31000 stosuje się go przede wszystkim?", options: ["Ewaluacja ryzyka", "Identyfikacja ryzyka", "Postępowanie z ryzykiem", "Rejestrowanie i raportowanie"], correctAnswer: 1, explanation: "IEC 31010:2019 zalicza HAZOP (B.2.4) do technik identyfikacji ryzyka, podobnie jak FMEA (B.2.3) i SWIFT (B.2.6). HAZOP wskazuje scenariusze, ale nie daje liczb; częstości i potrzebną ochronę ocenia się dalej, np. drzewem niezdatności i LOPA. Do grupy technik rejestrowania i raportowania (B.10) IEC 31010 zalicza natomiast matrycę ryzyka (B.10.3)." },
+  { question: "Co według art. 226 Kodeksu pracy (t.j. Dz.U. 2026 poz. 1245) musi zrobić pracodawca w sprawie ryzyka zawodowego?", options: ["Ocenić i udokumentować ryzyko zawodowe związane z wykonywaną pracą, stosować niezbędne środki profilaktyczne zmniejszające ryzyko i informować pracowników o tym ryzyku", "Zlecić ocenę ryzyka jednostce notyfikowanej i uzyskać certyfikat", "Przeprowadzić badanie HAZOP każdej instalacji", "Stosować metodę z PN-N-18002:2011, bo jest obowiązkowa"], correctAnswer: 0, explanation: "Według art. 226 pracodawca „ocenia i dokumentuje ryzyko zawodowe związane z wykonywaną pracą oraz stosuje niezbędne środki profilaktyczne zmniejszające ryzyko” i informuje pracowników o tym ryzyku. Ani Kodeks pracy, ani rozporządzenie w sprawie ogólnych przepisów BHP nie wskazują metody oceny; art. 226 i § 39a nie podają też liczbowych kryteriów ryzyka. PN-N-18002:2011 to Polska Norma stosowana dobrowolnie. Stan prawny: wrzesień 2026." },
+  { question: "Jaką rolę pełni w dokumencie HSE R2P2 (2001) indywidualne ryzyko śmierci 10⁻⁶ na rok?", options: ["Górnej granicy ryzyka tolerowanego dla pracowników", "Wiążącego limitu prawnego obowiązującego w Polsce", "Wytycznej dla granicy między obszarem powszechnie akceptowanym a obszarem tolerowanym, dla pracowników i dla osób postronnych", "Kryterium dla wypadków z co najmniej 50 ofiarami śmiertelnymi"], correctAnswer: 2, explanation: "W pkt 130 HSE stosuje ryzyko 10⁻⁶ na rok, zarówno dla pracowników, jak i dla osób postronnych, jako wytyczną dla granicy między obszarem powszechnie akceptowanym a tolerowanym. Górne granice, 10⁻³ na rok dla pracowników i 10⁻⁴ na rok dla osób postronnych, HSE przywołuje z dokumentu o elektrowniach jądrowych (pkt 132) i pisze, że rzadko rozstrzygają (pkt 133). Wypadek z co najmniej 50 ofiarami HSE proponuje uznać za nietolerowany, jeśli jego szacowana częstość przekracza 1/5000 na rok (pkt 136)." },
+  { question: "Które słowo przewodnie IEC 61882:2016 oznacza „logiczne przeciwieństwo zamierzenia projektowego”?", options: ["INNY NIŻ", "BRAK, NIE", "ODWROTNIE", "MNIEJ"], correctAnswer: 2, explanation: "ODWROTNIE (ang. REVERSE) to logiczne przeciwieństwo zamierzenia projektowego, np. przepływ wsteczny w przewodzie gazowym. INNY NIŻ oznacza całkowite zastąpienie, BRAK, NIE — całkowite zaprzeczenie zamierzenia projektowego, a MNIEJ — ilościowy spadek. Odchylenie tworzy się jako słowo przewodnie + cecha, np. ODWROTNIE + przepływ." },
+  { question: "Dwa rodzaje uszkodzeń mają oceny S = 10, O = 3, D = 4 oraz S = 2, O = 10, D = 6. Co wynika z porównania ich RPN?", options: ["Pierwszy ma RPN wyższy o rząd wielkości", "Oba mają RPN = 120, choć skutki są zupełnie różne", "Drugi ma wyższy RPN, więc jest groźniejszy", "Dla skal 1–10 RPN nie jest zdefiniowany"], correctAnswer: 1, explanation: "10 × 3 × 4 = 120 i 2 × 10 × 6 = 120: ten sam RPN, a skutki zupełnie różne — w przykładzie z części 3 czujnik H₂ w kontenerze BESS, który nie wykrywa gazu, i zabrudzenie modułów PV. S, O i D to stopnie na skalach porządkowych, a ich iloczyn gubi informację o ciężkości. Dlatego stosuje się macierz krytyczności albo priorytet działania (AP), w którym największą wagę ma ciężkość, potem występowanie, a na końcu wykrywalność." },
+  { question: "Bramka OR drzewa niezdatności ma trzy niezależne wejścia o prawdopodobieństwach 0,01; 0,02 i 0,05. Ile wynosi dokładne prawdopodobieństwo zdarzenia na wyjściu?", options: ["0,08", "0,00001", "0,05", "0,07831"], correctAnswer: 3, explanation: "P = 1 − 0,99 × 0,98 × 0,95 = 0,07831, jak dla bramki G1 w drzewie z części 4. Suma 0,08 to przybliżenie rzadkich zdarzeń, które zawyża wynik o 2,2%, czyli zachowawczo; podręcznik NASA uzasadnia takie przybliżenia tym, że większość prawdopodobieństw uszkodzeń jest mniejsza niż 0,1. Iloczyn 0,00001 byłby wynikiem bramki AND, a 0,05 to tylko największe z wejść." },
+  { question: "Dlaczego para identycznych detektorów gazu w układzie 1oo2 zawodzi zwykle częściej, niż wynika z iloczynu q × q?", options: ["Bo uszkodzenia spowodowane wspólną przyczyną (model współczynnika β) naruszają założenie niezależności kanałów", "Bo bramkę AND oblicza się jako sumę prawdopodobieństw", "Bo w układzie 1oo2 muszą zadziałać oba detektory", "Bo przybliżenie rzadkich zdarzeń zaniża wynik"], correctAnswer: 0, explanation: "Mnożenie w bramce AND zakłada niezależność, a oba kanały mogą zawieść jednocześnie z jednej przyczyny, np. przez wspólne zasilanie albo tę samą błędną kalibrację. Część niezależna zależy od kwadratu, a część wspólna rośnie liniowo z β, więc szybko dominuje: w części 4 przy β = 0,10 para zawodzi 5,8 razy częściej niż przy pełnej niezależności, a w części 5 część wspólna to 91% PFDavg funkcji 1oo2. W układzie 1oo2 wystarczy, że zadziała jeden detektor, a przybliżenie rzadkich zdarzeń wynik zawyża, a nie zaniża." },
+  { question: "LOPA: IEF = 0,2 na rok, jedna niezależna warstwa ochrony o PFD = 0,01, docelowa częstość scenariusza 10⁻⁵ na rok. W jakim przedziale SIL musi być dodatkowa funkcja bezpieczeństwa?", options: ["SIL 1", "SIL 2", "SIL 3", "Dodatkowa funkcja nie jest potrzebna"], correctAnswer: 1, explanation: "f = 0,2 × 0,01 = 2 × 10⁻³ na rok. Wymagany RRF = 2 × 10⁻³ / 10⁻⁵ = 200, czyli PFDavg ≤ 5 × 10⁻³, a ta wartość leży w przedziale SIL 2 (PFDavg ≥ 10⁻³ i poniżej 10⁻²). Funkcja musi jednak osiągnąć właśnie PFDavg ≤ 5 × 10⁻³: jak pokazało sprawdzenie przykładu ze zbiornikiem biogazu, przedział SIL to za mało — liczy się wymagane PFDavg." },
+  { question: "Funkcja 1oo1 ma λDU = 10⁻⁶ na godzinę i test sprawdzający raz w roku (8760 h). Ile wynosi w przybliżeniu PFDavg?", options: ["8,76 × 10⁻³", "4,38 × 10⁻²", "10⁻⁶", "4,38 × 10⁻³"], correctAnswer: 3, explanation: "PFDavg ≈ λDU × T₁ / 2 = 10⁻⁶ × 8760 / 2 = 4,38 × 10⁻³, czyli wartość w przedziale SIL 2. Uszkodzenie, którego diagnostyka nie wykrywa, czeka ukryte do najbliższego testu sprawdzającego, średnio połowę interwału, stąd dzielenie przez dwa; 8,76 × 10⁻³ to wynik bez tego dzielenia. Wydłużenie interwału do dwóch lat podwoiłoby PFDavg. Poza PFDavg trzeba też spełnić ograniczenia architektury i wymagania zdolności systematycznej." },
+  { question: "Który element nie jest barierą w rozumieniu metody bow-tie (CCPS i Energy Institute, 2018)?", options: ["Automatyczny start pochodni przy wysokim napełnieniu zbiornika gazu", "Zabezpieczenie nadciśnieniowe zbiornika gazu", "Program szkoleń operatorów", "Detekcja gazu z automatyczną wentylacją"], correctAnswer: 2, explanation: "Szkolenia, kompetencje, zarządzanie zmianą, audyty oraz programy przeglądów i konserwacji wpływają na wiele barier, ale same nie są barierami. Bariera musi być skuteczna, niezależna i audytowalna, a bariera aktywna ma trzy elementy: wykryj, zdecyduj, działaj. Start pochodni, zabezpieczenie nadciśnieniowe i detekcja gazu z wentylacją same zatrzymują rozwój scenariusza." },
+]} />
+
+## Źródła
+
+Wybór najważniejszych źródeł wykładu, pogrupowany tematycznie. Pełne listy źródeł znajdują się na końcu każdej części.
+
+### Proces zarządzania ryzykiem i kryteria
+
+1. ISO (2018). *ISO 31000:2018 Risk management — Guidelines* — karta normy (status: do rewizji). [https://www.iso.org/standard/65694.html](https://www.iso.org/standard/65694.html)
+2. IEC/ISO (2019). *IEC 31010:2019 Risk management — Risk assessment techniques*, wyd. 2.0. [https://webstore.iec.ch/en/publication/59809](https://webstore.iec.ch/en/publication/59809); podgląd (ASSP): [https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2](https://www.assp.org/docs/default-source/standards-documents/preview/31010_2019_wms_preview.pdf?sfvrsn=75159747_2)
+3. Health and Safety Executive (2001). *Reducing risks, protecting people: HSE's decision-making process* (R2P2). HSE Books; kopia dokumentu HSE udostępniona na GOV.UK. [https://assets.publishing.service.gov.uk/media/6634988fcf3b5081b14f30cd/IQ8.10.J_Document_9_Health_and_Safety_Executive__Reducing_risks__protecting_people__HSE_s_decision-making_process__2001.pdf](https://assets.publishing.service.gov.uk/media/6634988fcf3b5081b14f30cd/IQ8.10.J_Document_9_Health_and_Safety_Executive__Reducing_risks__protecting_people__HSE_s_decision-making_process__2001.pdf)
+4. RIVM (b.d.). *Handboek Omgevingsveiligheid — Afstanden en gebieden*. [https://www.rivm.nl/omgevingsveiligheid/handboek/toelichtingen-kernbegrippen/afstanden-en-gebieden](https://www.rivm.nl/omgevingsveiligheid/handboek/toelichtingen-kernbegrippen/afstanden-en-gebieden)
+5. Stanley A., Nicholls C., Burnup B., Smith J. (2018). Risk tolerability targets; misconceived, misunderstood and misapplied. IChemE Symposium Series 163 (Hazards 28). [https://www.icheme.org/media/16956/hazards-28-paper-50.pdf](https://www.icheme.org/media/16956/hazards-28-paper-50.pdf)
+6. Cox L.A. Jr. (2008). What's wrong with risk matrices? *Risk Analysis* 28(2): 497–512. [https://doi.org/10.1111/j.1539-6924.2008.01030.x](https://doi.org/10.1111/j.1539-6924.2008.01030.x); streszczenie (PubMed): [https://pubmed.ncbi.nlm.nih.gov/18419665/](https://pubmed.ncbi.nlm.nih.gov/18419665/)
+7. Baybutt P. (2018). Guidelines for designing risk matrices. *Process Safety Progress* 37(1): 49–55. [https://doi.org/10.1002/prs.11905](https://doi.org/10.1002/prs.11905)
+
+### Prawo polskie
+
+1. Marszałek Sejmu RP (2026). *Obwieszczenie z 1.09.2026 w sprawie ogłoszenia jednolitego tekstu ustawy — Kodeks pracy*, Dz.U. 2026 poz. 1245. ISAP. [https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245)
+2. Minister Pracy i Polityki Socjalnej (1997). *Rozporządzenie z 26.09.1997 w sprawie ogólnych przepisów bezpieczeństwa i higieny pracy*, t.j. Dz.U. 2003 nr 169 poz. 1650 ze zm. ISAP. [https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20031691650](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20031691650); akt podstawowy: [https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19971290844](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19971290844)
+3. Minister Gospodarki (2010). *Rozporządzenie z 8.07.2010 w sprawie minimalnych wymagań, dotyczących bezpieczeństwa i higieny pracy, związanych z możliwością wystąpienia w miejscu pracy atmosfery wybuchowej*, Dz.U. 2010 nr 138 poz. 931. ISAP. [https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20101380931](https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20101380931)
+4. PKN (2011). *PN-N-18002:2011 Systemy zarządzania bezpieczeństwem i higieną pracy — Ogólne wytyczne do oceny ryzyka zawodowego*. Sklep PKN. [https://sklep.pkn.pl/pn-n-18002-2011p.html](https://sklep.pkn.pl/pn-n-18002-2011p.html)
+
+### HAZID i HAZOP
+
+1. ISO (2016). *ISO 17776:2016 Petroleum and natural gas industries — Offshore production installations — Major accident hazard management during the design of new installations*, wyd. 2. [https://www.iso.org/standard/63062.html](https://www.iso.org/standard/63062.html); próbka: [https://cdn.standards.iteh.ai/samples/63062/31506ec1697048de9e86ca03644d2790/ISO-17776-2016.pdf](https://cdn.standards.iteh.ai/samples/63062/31506ec1697048de9e86ca03644d2790/ISO-17776-2016.pdf)
+2. IEC (2016). *IEC 61882:2016 Hazard and operability studies (HAZOP studies) — Application guide*, wyd. 2.0. [https://webstore.iec.ch/en/publication/24321](https://webstore.iec.ch/en/publication/24321); próbka: [https://cdn.standards.iteh.ai/samples/20730/64bc0f1bde424e8083959f2d3c4567a2/IEC-61882-2016.pdf](https://cdn.standards.iteh.ai/samples/20730/64bc0f1bde424e8083959f2d3c4567a2/IEC-61882-2016.pdf); wersja z oznaczonymi zmianami: [https://cdn.standards.iteh.ai/sist-preview/20730/be46905d6bdf4c07b6a71f332961ca9e/IEC-61882-2016.pdf](https://cdn.standards.iteh.ai/sist-preview/20730/be46905d6bdf4c07b6a71f332961ca9e/IEC-61882-2016.pdf); podgląd ANSI: [https://webstore.ansi.org/preview-pages/iec/preview_iec61882%7Bed2.0%7Db.pdf](https://webstore.ansi.org/preview-pages/iec/preview_iec61882%7Bed2.0%7Db.pdf); podgląd: [https://www.en-standard.eu/publicdoc/iec_previews/121973.pdf](https://www.en-standard.eu/publicdoc/iec_previews/121973.pdf)
+3. PKN (2016). *PN-EN 61882:2016-07 Badania zagrożeń i zdolności do działania (badania HAZOP) — Przewodnik zastosowań* (wersja angielska). Sklep PKN. [https://sklep.pkn.pl/pn-en-61882-2016-07e.html](https://sklep.pkn.pl/pn-en-61882-2016-07e.html); PN-IEC 61882:2005 (wersja polska, wycofana): [https://sklep.pkn.pl/pn-iec-61882-2005p.html](https://sklep.pkn.pl/pn-iec-61882-2005p.html)
+4. BMU, Kommission für Anlagensicherheit (2018, korekta 2019). *TRAS 120 Sicherheitstechnische Anforderungen an Biogasanlagen* (BAnz AT 21.01.2019 B4; tekst ujednolicony KAS). [https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf](https://www.kas-bmu.de/files/publikationen/TRAS/TRAS%20(endgueltige%20Fassung)/LesefassTRAS120.pdf); wykaz ogłoszonych TRAS: [https://www.kas-bmu.de/tras-endgueltige-version.html](https://www.kas-bmu.de/tras-endgueltige-version.html)
+5. Jenkins A., Gornall L., Cripps H. (2012). Lessons for safe design and operation of anaerobic digesters. IChemE Symposium Series 158 (Hazards XXIII). [https://www.icheme.org/media/9063/xxiii-paper-67.pdf](https://www.icheme.org/media/9063/xxiii-paper-67.pdf)
+6. SVLFG (2015). *Technische Information 4 — Sicherheitsregeln für Biogasanlagen* (stan: listopad 2015, wg pobranego pliku). [https://cdn.svlfg.de/fiona8-blobs/public/svlfgonpremiseproduction/45b79757c1f38081/ce7f71d90169/ti04-sicherheitsregeln-biogasanlagen.pdf](https://cdn.svlfg.de/fiona8-blobs/public/svlfgonpremiseproduction/45b79757c1f38081/ce7f71d90169/ti04-sicherheitsregeln-biogasanlagen.pdf)
+
+### FMEA i FMECA
+
+1. IEC (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*, wyd. 3.0. [https://webstore.iec.ch/en/publication/26359](https://webstore.iec.ch/en/publication/26359); próbka normy: [https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf](https://cdn.standards.iteh.ai/samples/21903/331059ef02794b548d049d58b18e456f/IEC-60812-2018.pdf)
+2. Tavner P.J., Higgins A., Arabian H., Long H., Feng Y. (2010). Using an FMEA method to compare prospective wind turbine design reliabilities. European Wind Energy Conference EWEC 2010. [https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf](https://eprints.whiterose.ac.uk/id/eprint/83340/9/2010%20Tavner%2C%20Higgins%2C%20Arabian%2C%20Long%2C%20Feng-FMEA%20%28EWEC2010%29.pdf)
+3. Shafiee M., Dinmohammadi F. (2014). An FMEA-based risk assessment approach for wind turbine systems: a comparative study of onshore and offshore. *Energies* 7(2): 619–642. [https://doi.org/10.3390/en7020619](https://doi.org/10.3390/en7020619)
+4. Barsalou M. (2020). DFMEAs with the new AIAG/VDA FMEA Handbook. Proc. 4th ICQEM, University of Minho. [https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf](https://publicacoes.riqual.org/wp-content/uploads/2021/06/icqem_20_514_525.pdf)
+5. Carroll J., McDonald A., McMillan D. (2016). Failure rate, repair time and unscheduled O&M cost analysis of offshore wind turbines. *Wind Energy* 19(6): 1107–1119. [https://doi.org/10.1002/we.1887](https://doi.org/10.1002/we.1887); wersja autorska: [https://strathprints.strath.ac.uk/54141/1/Carroll_etal_WE_2015_Failure_rate_repair_time_and_unscheduled_O_and_M_cost_analysis_of_offshore.pdf](https://strathprints.strath.ac.uk/54141/1/Carroll_etal_WE_2015_Failure_rate_repair_time_and_unscheduled_O_and_M_cost_analysis_of_offshore.pdf)
+6. IEC (2009). *IEC 60300-3-11:2009 Dependability management — Part 3-11: Application guide — Reliability centred maintenance*, wyd. 2.0. [https://webstore.iec.ch/en/publication/1296](https://webstore.iec.ch/en/publication/1296); próbka normy: [https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf](https://cdn.standards.iteh.ai/samples/13917/a068ea0b967b4739b60443231bc9329b/IEC-60300-3-11-2009.pdf)
+
+### FTA, ETA i bow-tie
+
+1. IEC (2006). *IEC 61025:2006 Fault tree analysis (FTA)*, wyd. 2.0. [https://webstore.iec.ch/en/publication/4311](https://webstore.iec.ch/en/publication/4311); próbka normy: [https://cdn.standards.iteh.ai/samples/12812/5a2b487cba2344309309a9d4fc72b2b9/IEC-61025-2006.pdf](https://cdn.standards.iteh.ai/samples/12812/5a2b487cba2344309309a9d4fc72b2b9/IEC-61025-2006.pdf)
+2. Vesely W.E., Goldberg F.F., Roberts N.H., Haasl D.F. (1981). *Fault Tree Handbook* (NUREG-0492). U.S. Nuclear Regulatory Commission. [https://www.nrc.gov/docs/ML1007/ML100780465.pdf](https://www.nrc.gov/docs/ML1007/ML100780465.pdf)
+3. Stamatelatos M., Vesely W. i in. (2002). *Fault Tree Handbook with Aerospace Applications*, wersja 1.1. NASA Office of Safety and Mission Assurance. [https://extapps.ksc.nasa.gov/Reliability/Documents/Fault_Tree_Handbook_with_Aerospace_Applications_August_2002.pdf](https://extapps.ksc.nasa.gov/Reliability/Documents/Fault_Tree_Handbook_with_Aerospace_Applications_August_2002.pdf)
+4. Rausand M., Lundteigen M.A. (b.d.). *Chapter 10. Common Cause Failures (CCFs)* — slajdy do książki *Reliability of Safety-Critical Systems: Theory and Applications* (Wiley 2014). NTNU. [https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+10+-+CCF+definition+and+classification/b6b58f95-3d5a-4860-9b6f-a54493786bdd](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+10+-+CCF+definition+and+classification/b6b58f95-3d5a-4860-9b6f-a54493786bdd)
+5. IEC (2010). *IEC 62502:2010 Analysis techniques for dependability — Event tree analysis (ETA)*, wyd. 1.0. [https://webstore.iec.ch/en/publication/7131](https://webstore.iec.ch/en/publication/7131)
+6. Hill D.M. (DNV GL) (2020). *McMicken Battery Energy Storage System Event — Technical Analysis and Recommendations*, dok. 10209302-HOU-R-01. APS. [https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23](https://www.aps.com/-/media/APS/APSCOM-PDFs/About/Our-Company/Newsroom/McMickenFinalTechnicalReport.pdf?la=en&sc_lang=en&hash=5447FA391CD988DD24226FA485F81F23)
+7. CCPS, Energy Institute (2018). *Bow Ties in Risk Management: A Concept Book for Process Safety*. Wiley. [https://www.aiche.org/ccps/resources/publications/books/bow-ties-risk-management-concept-book-process-safety](https://www.aiche.org/ccps/resources/publications/books/bow-ties-risk-management-concept-book-process-safety); [https://www.energyinst.org/technical/publications/topics/human-and-organisational-factors/bow-ties-in-risk-management-a-concept-book-for-process-safety](https://www.energyinst.org/technical/publications/topics/human-and-organisational-factors/bow-ties-in-risk-management-a-concept-book-for-process-safety)
+8. Johnson M., Manton M., Cowley C., Scanlon M. (2018). Bow Ties in Risk Management; using the new CCPS-EI book to avoid pitfalls. IChemE Symposium Series 163 (Hazards 28). [https://www.icheme.org/media/16937/hazards-28-paper-31.pdf](https://www.icheme.org/media/16937/hazards-28-paper-31.pdf)
+
+### LOPA i SIL
+
+1. Willey R.J. (2014). Layer of Protection Analysis. *Procedia Engineering* 84: 12–22. [https://doi.org/10.1016/j.proeng.2014.10.405](https://doi.org/10.1016/j.proeng.2014.10.405)
+2. CCPS (2015). *Guidelines for Initiating Events and Independent Protection Layers in Layer of Protection Analysis*. Wiley/AIChE. [https://doi.org/10.1002/9781118948743](https://doi.org/10.1002/9781118948743)
+3. Chambers C., Wilday J., Turner S. (2009). *A review of Layers of Protection Analysis (LOPA) analyses of overfill of fuel storage tanks* (RR716). Health and Safety Laboratory dla HSE. [https://www.hse.gov.uk/research/rrpdf/rr716.pdf](https://www.hse.gov.uk/research/rrpdf/rr716.pdf)
+4. University of Michigan, SAFEChE (b.d.). *LOPA tutorial* (wartości za Crowl D.A., Louvar J.F., *Chemical Process Safety*, Pearson 2019). [https://safeche.engin.umich.edu/tutorials/lopa-tutorial](https://safeche.engin.umich.edu/tutorials/lopa-tutorial)
+5. King A.G. (2014). SIL determination and high demand mode. IChemE Symposium Series 159 (Hazards 24). [https://www.icheme.org/media/8914/xxiv-paper-18.pdf](https://www.icheme.org/media/8914/xxiv-paper-18.pdf)
+6. IEC (2010). *IEC 61508-1:2010 Functional safety of electrical/electronic/programmable electronic safety-related systems — Part 1: General requirements*, wyd. 2.0. [https://webstore.iec.ch/en/publication/5515](https://webstore.iec.ch/en/publication/5515)
+7. IEC (2026). *IEC 61511:2026 SER Functional safety — Safety instrumented systems for the process industry sector* (pakiet z 10.07.2026, zawiera wyd. 2016+AMD1:2017). [https://webstore.iec.ch/en/publication/5527](https://webstore.iec.ch/en/publication/5527)
+8. Lundteigen M.A., Rausand M. (b.d.). *Chapter 8. PFD formulas in IEC 61508* — slajdy do książki *Reliability of Safety-Critical Systems* (Wiley 2014). NTNU. [https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac](https://www.ntnu.edu/documents/624876/1277046207/SIS+book+-+chapter+08+-+PFDavg+with+IEC+61508+formulas/0be9ac0d-7e57-4641-9043-7d2554c16cac)
+9. ISO (2023). *ISO 13849-1:2023 Safety of machinery — Safety-related parts of control systems — Part 1: General principles for design*, wyd. 4. [https://www.iso.org/standard/73481.html](https://www.iso.org/standard/73481.html); próbka normy (iTeh): [https://cdn.standards.iteh.ai/samples/73481/53161c0051c842dfa32a139fd0729a4c/ISO-13849-1-2023.pdf](https://cdn.standards.iteh.ai/samples/73481/53161c0051c842dfa32a139fd0729a4c/ISO-13849-1-2023.pdf)
+
+### Alarmy i monitoring
+
+1. Dunn D.G., Sands N.P. (2020). Alarm management questions that everyone asks. *ISA InTech*. [https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks](https://www.isa.org/intech-home/2020/march-april/features/alarm-management-questions-that-everyone-asks)
+2. ISA (b.d.). *ISA-18 Series of Standards* (ANSI/ISA-18.2-2016). [https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards](https://www.isa.org/standards-and-publications/isa-standards/isa-18-series-of-standards)
+3. IEC (2022). *IEC 62682:2022 Management of alarm systems for the process industries*, wyd. 2.0. [https://webstore.iec.ch/en/publication/65543](https://webstore.iec.ch/en/publication/65543); próbka: [https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf](https://cdn.standards.iteh.ai/samples/103485/6f7b44e368fc4f4d93216f716a51771a/IEC-62682-2022.pdf)
+4. Derbyshire A.W. (2016). The long awaited IEC 61511 edition 2 and what it means for the process industry. IChemE Symposium Series 161 (Hazards 26). [https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf](https://www.icheme.org/media/11752/hazards-26-paper-15-iec-61511-functional-safety-in-the-process-industry-the-long-awaited-iec-61511-edition-2-and-what-it-means-for-the-process-industry.pdf)
+5. DNV (2016, zm. 2021). *DNV-SE-0439 Certification of condition monitoring*, wyd. 2016-06, zm. 2021-10 (tekst sprawdzony w wydaniu DNVGL-SE-0439:2016). [https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/](https://www.dnv.com/energy/standards-guidelines/dnv-se-0439-certification-of-condition-monitoring/)

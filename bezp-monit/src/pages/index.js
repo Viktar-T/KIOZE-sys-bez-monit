@@ -17,7 +17,6 @@ const exerciseLinks = [
 const resourceLinks = [
   {to: '/docs/intro', label: 'Wprowadzenie do kursu'},
   {to: '/docs/literatura', label: 'Literatura'},
-  {to: '/docs/wyklady', label: 'Archiwum: wykłady o monitoringu'},
 ];
 
 // Polish plural: 1 temat, 2–4 tematy, 5+ tematów (12–14 tematów)

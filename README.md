@@ -1,4 +1,4 @@
-# Systemy bezpieczeństwa i monitorowania instalacji OZE
+m# Systemy bezpieczeństwa i monitorowania instalacji OZE
 
 Course website for *Odnawialne źródła energii*, semester 5. Content is in Polish.
 

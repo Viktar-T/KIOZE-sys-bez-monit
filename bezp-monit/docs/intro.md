@@ -5,100 +5,88 @@ title: Wprowadzenie do kursu
 
 # Systemy bezpieczeństwa i monitorowania instalacji OZE
 
-## Witamy
+## O kursie
 
-Witamy na kursie **Systemy bezpieczeństwa i monitorowania instalacji OZE**! 
+Kurs dotyczy bezpieczeństwa i monitorowania instalacji odnawialnych źródeł energii: fotowoltaiki, energetyki wiatrowej, bateryjnych magazynów energii (BESS) i biogazowni. Pokazuje, skąd biorą się zagrożenia, jak ocenia się ryzyko, jak zbudować monitoring, któremu można ufać, i czym różni się on od funkcji ochronnych, które automatycznie zapobiegają awariom i wypadkom.
 
-Ten kurs obejmuje kompleksowe zagadnienia związane z projektowaniem, wdrażaniem i utrzymaniem systemów monitorowania oraz bezpieczeństwa dla instalacji odnawialnych źródeł energii. Poznasz nowoczesne technologie SCADA, IIoT, metody analityki danych oraz praktyczne zastosowania dla różnych typów instalacji OZE.
+Materiał opiera się na normach, przepisach UE i Polski oraz raportach z dochodzeń po rzeczywistych awariach. Stan prawny i wydania norm podajemy według stanu z września 2026 r.; przepisy i normy się zmieniają, dlatego przy każdej informacji podajemy źródło.
+
+Kurs jest przeznaczony dla studentów 5. semestru kierunku Odnawialne źródła energii. Nie wymaga umiejętności programowania.
 
 ## Struktura kursu
 
-### Wykłady
-- **Liczba godzin**: 20 godzin
-- **Format**: Cotygodniowy (10 wykładów × 2h)
-- **Tematy**: 
-  - Architektura systemów monitoringu
-  - Czujniki i akwizycja danych
-  - Protokoły komunikacyjne (OPC UA, MQTT, Modbus)
-  - Bazy danych czasowych i wizualizacja
-  - Analityka danych i wykrywanie anomalii
-  - Systemy bezpieczeństwa dla OZE
+| Forma | Liczba godzin | Organizacja |
+|---|---|---|
+| Wykład | 20 h | 10 wykładów po 90 min |
+| Ćwiczenia | 10 h | 5 zajęć po 90 min: analiza danych z instalacji OZE w arkuszu kalkulacyjnym |
 
-### Zajęcia audytoryjne
-- **Liczba godzin**: 10 godzin
-- **Format**: Ćwiczenia praktyczne i laboratoria (5 sesji × 2h)
-- **Zakres**: 
-  - Konfiguracja systemów SCADA
-  - Implementacja komunikacji przemysłowej
-  - Analiza danych z instalacji OZE
-  - Projektowanie architektury monitoringu
-  - Zabezpieczenia i systemy alarmowe
+## Plan wykładów
 
-### Projekty
-- **Format**: Projekt zespołowy
-- **Zakres**: Zaprojektowanie kompleksowego systemu monitoringu dla wybranej instalacji OZE
-- **Produkty**: Dokumentacja techniczna, schemat architektury, implementacja POC
+| Nr | Wykład | Najważniejsze zagadnienia | Status |
+|---|---|---|---|
+| W1 | [Zagrożenia w instalacjach OZE, ramy prawne i warstwy ochrony](./wyklady-bezp/wyklad-01-zagrozenia-ramy-prawne/index.md) | zagrożenia w PV, energetyce wiatrowej, BESS i biogazowniach; zagrożenie i ryzyko; prawo UE i Polski; normy; monitoring a warstwy ochrony | dostępny |
+| W2 | [Analiza ryzyka — HAZID, HAZOP, FMEA, FTA, LOPA i SIL](./wyklady-bezp/wyklad-02-analiza-ryzyka/index.md) | proces zarządzania ryzykiem; HAZID i HAZOP; FMEA; drzewa niezdatności i zdarzeń; bow-tie; LOPA; poziomy SIL | dostępny |
+| W3 | [Architektura monitoringu i tor pomiarowy](./wyklady-bezp/wyklad-03-architektura-monitoringu/index.md) | cele i poziomy architektury monitoringu; czas i synchronizacja; tor pomiarowy od czujnika do zapisu; niepewność pomiaru i wzorcowanie; czujniki OZE i klasy monitoringu PV; uszkodzenia toru i przykład biogazowy | dostępny |
+| W4 | Komunikacja w instalacjach OZE — Modbus, SunSpec, OPC UA, MQTT, IEC 61850 i IEC 60870-5-104 | protokoły komunikacyjne; telemetria dla operatora sieci; typowe błędy integracji | w przygotowaniu |
+| W5 | Jakość danych, wskaźniki KPI, zarządzanie alarmami i wykrywanie anomalii | jakość danych; wskaźniki eksploatacyjne (np. PR, dostępność); zarządzanie alarmami; wykrywanie anomalii | w przygotowaniu |
+| W6 | Fotowoltaika — bezpieczeństwo elektryczne i pożarowe, monitoring wydajności | bezpieczeństwo po stronie DC; łuk elektryczny; wyłączanie dla ratowników; pożary; badania okresowe; monitoring wydajności | w przygotowaniu |
+| W7 | Energetyka wiatrowa — system bezpieczeństwa, hamulce, oblodzenie i monitorowanie stanu | system sterowania i ochrony turbiny; hamowanie; pożar gondoli; oblodzenie; monitorowanie stanu (CMS); praca na wysokości | w przygotowaniu |
+| W8 | Magazyny energii (BESS) — BMS, niekontrolowany wzrost temperatury i detekcja gazów | system zarządzania baterią (BMS); niekontrolowany wzrost temperatury; detekcja gazów i wentylacja; macierz przyczynowo-skutkowa | w przygotowaniu |
+| W9 | Biogazownie — ochrona przeciwwybuchowa, detekcja gazów i bezpieczeństwo procesowe | strefy zagrożenia wybuchem i dokument zabezpieczenia przed wybuchem; detektory gazów; bezpieczeństwo procesowe | w przygotowaniu |
+| W10 | Cyberbezpieczeństwo OT i bezpieczna eksploatacja | cyberbezpieczeństwo systemów sterowania (IEC 62443); obowiązki NIS2/KSC; blokowanie i oznaczanie źródeł energii (LOTO); pozwolenia na pracę; plany awaryjne | w przygotowaniu |
+
+Wykłady W3–W10 są w przygotowaniu; ich zakres może się jeszcze nieznacznie zmienić.
 
 ## Cele kształcenia
 
-Po ukończeniu kursu studenci będą potrafili:
+Po ukończeniu kursu student potrafi:
 
-1. **Projektować** architektury systemów monitoringu dla instalacji OZE uwzględniając warstwy edge-fog-cloud
-2. **Implementować** rozwiązania komunikacji przemysłowej (OPC UA, MQTT, Modbus) w systemach energetycznych
-3. **Analizować** dane z systemów monitoringu wykorzystując techniki wykrywania anomalii i utrzymania predykcyjnego
-4. **Wybierać** i konfigurować systemy SCADA oraz bazy danych czasowych (InfluxDB, TimescaleDB)
-5. **Projektować** systemy bezpieczeństwa i alarmowania dla instalacji fotowoltaicznych, wiatrowych i magazynów energii
+1. rozpoznać i sklasyfikować zagrożenia w instalacjach fotowoltaicznych, wiatrowych, magazynach energii i biogazowniach oraz wskazać przepisy i normy, które ich dotyczą;
+2. przeprowadzić podstawową analizę ryzyka (HAZOP, FMEA, analiza drzewa niezdatności, LOPA) i wyznaczyć wymagany poziom nienaruszalności bezpieczeństwa (SIL);
+3. zaprojektować architekturę monitoringu i tor pomiarowy instalacji OZE oraz dobrać sposób komunikacji;
+4. ocenić jakość danych, obliczyć wskaźniki eksploatacyjne i zaproponować racjonalny zestaw alarmów;
+5. rozróżnić funkcje monitoringu i funkcje ochronne oraz wskazać zabezpieczenia wymagane w instalacjach PV, turbinach wiatrowych, magazynach energii i biogazowniach;
+6. stosować zasady bezpiecznej eksploatacji (LOTO, pozwolenia na pracę, plany awaryjne) i podstawowe zasady cyberbezpieczeństwa systemów sterowania.
 
 ## Wymagania wstępne
 
-- Podstawowa znajomość systemów elektrycznych
-- Umiejętność programowania (Python, JavaScript)
-- Znajomość podstaw baz danych
-- Podstawowa wiedza o instalacjach OZE (fotowoltaika, energia wiatrowa)
+- Podstawy elektrotechniki: obwody prądu stałego i przemiennego, moc, sprawność.
+- Podstawowa wiedza o technologiach OZE: fotowoltaika, energetyka wiatrowa, magazyny energii, biogaz.
+- Podstawy rachunku prawdopodobieństwa i statystyki: prawdopodobieństwo zdarzeń, średnia, odchylenie standardowe.
+- Obsługa arkusza kalkulacyjnego (Microsoft Excel lub LibreOffice Calc): formuły i wykresy.
 
-## Ocenianie
+## Ćwiczenia
 
-- Obecność i aktywność na zajęciach: 20%
-- Ćwiczenia laboratoryjne: 30%
-- Projekt końcowy: 50%
+Na każdych zajęciach analizujesz syntetyczny zbiór danych (plik CSV) z jednej instalacji: liczysz wskaźniki, wykrywasz stany alarmowe i proponujesz działania z uwzględnieniem zasad BHP. Wynikiem jest sprawozdanie (PDF) i arkusz z obliczeniami. Harmonogram i zasady oceny: [Plan semestru](./cwiczenia/plan/01-plan-semestru.md); opis materiałów: [Ćwiczenia — wprowadzenie](./cwiczenia/index.md).
+
+| Zadanie | Instalacja | Powiązane wykłady |
+|---|---|---|
+| [Zadanie 1](./cwiczenia/karty/zadanie-01-pv-stacja-hulajnog.md) | Monitoring instalacji PV (stacja ładowania hulajnóg) | W3, W5, W6 |
+| [Zadanie 2](./cwiczenia/karty/zadanie-02-vawt-magazyn.md) | Turbina wiatrowa VAWT z magazynem energii | W5, W7, W8 |
+| [Zadanie 3](./cwiczenia/karty/zadanie-03-biogazownia-mala.md) | Mała biogazownia: monitoring i bezpieczeństwo | W2, W9 |
+| [Zadanie 4](./cwiczenia/karty/zadanie-04-pompa-ciepla.md) | Pompa ciepła: monitoring i bezpieczeństwo | W5 |
+| [Zadanie 5](./cwiczenia/karty/zadanie-05-bess.md) | BESS: SOC/SOH, cykle i bezpieczeństwo | W5, W8 |
+
+## Zaliczenie
+
+- **Ćwiczenia**: pięć zadań, łącznie 56 pkt; zaliczenie od 34 pkt (60%). Szczegóły w [Planie semestru](./cwiczenia/plan/01-plan-semestru.md).
+- **Wykład**: zasady zaliczenia poda prowadzący.
+
+:::note[Do uzupełnienia]
+Zasady zaliczenia wykładu i sposób wyznaczania oceny końcowej z przedmiotu zostaną podane przez prowadzącego.
+:::
+
+## Jak korzystać z materiałów
+
+- Każdy wykład składa się z kilku części. Na stronie części można czytać slajdy po kolei albo uruchomić tryb prezentacji przyciskiem „▶ Prezentacja”.
+- Przy każdym slajdzie można rozwinąć notatki prowadzącego z dodatkowymi wyjaśnieniami.
+- Przy slajdach podano źródło liczb, przepisów i norm, a każda część kończy się sekcją „Źródła” z odnośnikami.
+- Przykłady oznaczone „Przykład ilustracyjny — dane umowne” służą do ćwiczenia obliczeń i nie opisują rzeczywistych instalacji.
+- Każdy wykład kończy się quizem „Sprawdź się”.
 
 ## Rozpoczęcie nauki
 
-Zacznij od [Wykład 1: Architektura systemów monitoringu](./wyklady/wyklad-01-architektura-w1/index.md) (dostępny wkrótce), aby rozpocząć swoją podróż edukacyjną w świecie systemów monitorowania OZE.
-
-## Organizacja zajęć
-
-| Tydzień | Temat | Typ zajęć |
-|---------|-------|-----------|
-| 1 | Architektura systemów monitoringu OZE | Wykład |
-| 2 | Czujniki i akwizycja danych | Wykład |
-| 3 | Komunikacja przemysłowa - SCADA, OPC UA | Wykład + Laboratorium |
-| 4 | Protokoły IIoT - MQTT, REST API | Wykład |
-| 5 | Bazy danych czasowych | Wykład + Laboratorium |
-| 6 | Jakość danych i przetwarzanie strumieniowe | Wykład |
-| 7 | Analityka i wykrywanie anomalii | Wykład + Laboratorium |
-| 8 | Monitoring instalacji fotowoltaicznych | Wykład |
-| 9 | Monitoring elektrowni wiatrowych i biogazowni | Wykład + Laboratorium |
-| 10 | Edge AI i bliźniaki cyfrowe | Wykład |
-| 11 | Systemy bezpieczeństwa dla OZE | Wykład + Laboratorium |
-| 12-15 | Prezentacje projektów | Projekt |
-
-## Materiały i narzędzia
-
-### Wymagane oprogramowanie
-- **Node-RED**: Narzędzie do prototypowania przepływów IoT
-- **InfluxDB**: Baza danych czasowych
-- **Grafana**: Platform wizualizacji danych
-- **Python 3.x**: Środowisko programistyczne (z bibliotekami pandas, numpy, scikit-learn)
-- **Visual Studio Code**: Edytor kodu
-
-### Opcjonalne narzędzia
-- **Docker**: Do konteneryzacji aplikacji
-- **MQTT Broker** (Mosquitto): Do testowania komunikacji IIoT
-- **PLC Simulator**: Do symulacji urządzeń przemysłowych
-
-### Zalecana literatura
-Zobacz sekcję [Literatura](./literatura/index.md) dla pełnej listy zasobów, standardów przemysłowych i referencji.
+Zacznij od [W1: Zagrożenia w instalacjach OZE, ramy prawne i warstwy ochrony](./wyklady-bezp/wyklad-01-zagrozenia-ramy-prawne/index.md), a następnie przejdź do [W2: Analiza ryzyka — HAZID, HAZOP, FMEA, FTA, LOPA i SIL](./wyklady-bezp/wyklad-02-analiza-ryzyka/index.md).
 
 ## Kontakt
 
@@ -106,17 +94,3 @@ Zobacz sekcję [Literatura](./literatura/index.md) dla pełnej listy zasobów, s
 - **Email**: [adres email]
 - **Konsultacje**: [Dni i godziny konsultacji]
 - **Platforma**: Materiały dostępne na tej stronie oraz [inna platforma jeśli używana]
-
----
-
-## 🎯 Struktura kursu w skrócie
-
-:::tip Przygotowanie
-Upewnij się, że zainstalowałeś wymagane oprogramowanie przed pierwszymi zajęciami laboratoryjnymi.
-:::
-
-**Kolejność nauki:**
-1. 📚 Przeczytaj materiały z wykładów
-2. 🔧 Wykonaj ćwiczenia laboratoryjne
-3. 💡 Pracuj nad projektem zespołowym
-4. 📖 Pogłębiaj wiedzę z literatury dodatkowej

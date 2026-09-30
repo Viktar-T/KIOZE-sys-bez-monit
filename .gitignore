@@ -3,3 +3,13 @@ _promts/**/*.pdf
 
 # Build caches (e.g. when a dev server is started from the repository root)
 node_modules/
+
+# Lecture kit: staging tarball and research notes (they quote third-party texts; keep them local)
+/_tmp/
+/_lecture-kit/research/
+
+# Visualisation step: review pages with hotlinked candidates (drafts, see _wizualizacje/README.md)
+bezp-monit/docs/propozycje/
+# Check build of /wizualizacje-zastosuj (kept apart from the dev server's .docusaurus)
+bezp-monit/.docusaurus-check/
+bezp-monit/build-check/

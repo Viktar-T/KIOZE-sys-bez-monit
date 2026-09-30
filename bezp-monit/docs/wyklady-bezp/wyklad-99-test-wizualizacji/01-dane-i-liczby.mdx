@@ -1,0 +1,196 @@
+---
+title: "Dane i liczby"
+sidebar_position: 1
+draft: true
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { Claim, Replaces, StatTiles, HazardHeatmap, Waffle, ThermalRunaway, GasScales, RateToggle, RpnHistogram } from '@site/src/components/viz';
+
+<LearningObjective>
+
+Część testowa: slajdy z liczbami z W1 i W2 pokazane jako wykresy, kafelki i skale zamiast tabel. Dane są te same co na oryginalnych slajdach.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Skala OZE w Polsce w liczbach" type="info">
+
+<Claim>Ponad 1,6 mln mikroinstalacji: zagrożenia OZE są na zwykłych dachach, nie tylko w elektrowniach.</Claim>
+
+<StatTiles
+  items={[
+    { label: 'Moc zainstalowana w KSE', value: 77.3, decimals: 1, unit: 'GW', note: '31.12.2025 · PSE' },
+    { label: 'Wiatr i inne OZE (kategoria PSE)', value: 37.1, decimals: 1, unit: 'GW', delta: '+5,3 GW w 2025 r.', note: '31.12.2025 · PSE' },
+    { label: 'Mikroinstalacje OZE (99,9% to PV)', value: 1.64, decimals: 2, unit: 'mln', note: 'ok. 13,9 GW · URE, koniec 2025' },
+    { label: 'Biogazownie rolnicze', value: 209, unit: '', note: '188,8 MWe · KOWR, 28.05.2026' },
+    { label: 'Baltic Power: pierwsza energia z morza', value: 1.2, decimals: 1, unit: 'GW', note: '10.07.2026 · inwestor' },
+  ]}
+  share={{ label: 'Udział kategorii „wiatr i inne OZE” w mocy zainstalowanej KSE', value: 48, note: '37 106 MW z 77 331 MW' }}
+  source="PSE, Raport 2025 KSE; URE, 19.03.2026; KOWR, 2026; Baltic Power, 10.07.2026"
+/>
+
+<Replaces>Zastępuje tabelę ze slajdu „Skala OZE w Polsce” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** gdy historią jest jedna liczba, najlepszą grafiką jest sama liczba (kafelek), a nie wykres. Liczby „odliczają się” przy pokazaniu slajdu; użytkownicy z ograniczeniem ruchu (`prefers-reduced-motion`) widzą od razu wartości końcowe.
+
+**Zasada:** twierdzenie w jednym zdaniu nad grafiką (slajd typu *assertion–evidence*, Garner i Alley 2013), a pod nim dowód. Tabela z oryginału nadal ma sens na stronie do samodzielnej nauki.
+
+```jsx
+<StatTiles items={[{ label: '…', value: 1.64, decimals: 2, unit: 'mln', note: '…' }]}
+  share={{ label: '…', value: 48 }} source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Mapa zagrożeń jako mapa ciepła" type="warning">
+
+<Claim>Każda technologia ma swoje zagrożenie dominujące. Tabelę czytamy wierszami.</Claim>
+
+<HazardHeatmap source="Fraunhofer ISE 2013; EU-OSHA 2013; IEC 62485-5:2020; DNV GL 2020; ILO ICSC 0165; Casson Moreno i in. 2016" />
+
+<Replaces>Zastępuje dwie tabele ze slajdów „Mapa zagrożeń: energia, ogień, gazy” oraz „…ludzie, otoczenie, cyber” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** tabela zostaje, ale komórki mają kolor według znaczenia: ciemne pole to zagrożenie dominujące (zgodnie z notatkami wykładowcy do W1), jasne to zagrożenie występujące, przerywana ramka to „nie jest charakterystyczne”. Kliknięcie nagłówka wiersza lub kolumny przygasza resztę, co pozwala prowadzić salę wiersz po wierszu.
+
+**Zasada:** sygnalizacja (Mayer, efekt *signaling*): wyróżniamy to, o czym właśnie mówimy.
+
+```jsx
+<HazardHeatmap source="…" />   {/* dane domyślne z W1; można podać własne: groups={[…]} */}
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Pożary PV w Polsce: przyczyny" type="info">
+
+<Claim>Tam, gdzie przyczynę ustalono, najczęściej zawinił montaż. Co trzeci przypadek pozostał bez przyczyny.</Claim>
+
+<Waffle
+  funnel={[
+    { label: 'zdarzeń z udziałem instalacji PV (PSP, 2018–2021)', value: 411 },
+    { label: 'zdarzeń spowodowanych przez instalację PV', value: 128 },
+  ]}
+  categories={[
+    { label: 'błędy montażu', value: 28.9 },
+    { label: 'wady wyrobu', value: 21.1 },
+    { label: 'pozostałe przyczyny', value: 15.7 },
+    { label: 'przyczyna nieznana', value: 34.3, unknown: true },
+  ]}
+  note="Jeden kwadrat = 1%. Udziały przyczyn wg Bednarczyka (2022)."
+  source="Bednarczyk, Przegląd Pożarniczy, 2022 (analiza raportów PSP)"
+/>
+
+<Replaces>Zastępuje wiersz „Polska” z tabeli na slajdzie „PV: co mówią dane o pożarach” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** wykres „gofrowy” (10 × 10 kwadratów) dobrze pokazuje część całości, gdy kategorii jest kilka. Kategoria „nieznana” jest szara, bo to brak informacji, a nie kolejna przyczyna. Nad wykresem dwa paski: ile zdarzeń z udziałem PV, a ile spowodowanych przez PV, czyli od razu widać mianownik.
+
+Przycisk „Tabela” pokazuje te same dane w tabeli (dostępność, druk).
+
+```jsx
+<Waffle categories={[{ label: 'błędy montażu', value: 28.9 }, …, { label: 'nieznana', value: 34.3, unknown: true }]} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="BESS: niekontrolowany wzrost temperatury krok po kroku" type="danger">
+
+<Claim>Po przekroczeniu ok. 250 °C ogniwo samo podnosi temperaturę ponad 800 °C, a gazy i ciepło przechodzą dalej.</Claim>
+
+<ThermalRunaway source="Feng i in., 2018; DNV GL, 2020" />
+
+<Replaces>Zastępuje diagram przepływu ze slajdu „BESS: przebieg niekontrolowanego wzrostu temperatury” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** zamiast pionowego schematu blokowego krzywa temperatury z progami. Oś pionowa ma prawdziwą skalę, więc widać, że pierwsze 250 °C narasta powoli, a potem następuje skok. Kolor linii przechodzi od żółtego do ciemnoczerwonego wraz z temperaturą.
+
+**Na wykładzie:** „Od początku”, a potem „Dalej” przy każdym zdaniu komentarza. Budowanie rysunku w tempie narracji (segmentacja, efekt *temporal contiguity*) pomaga bardziej niż gotowy rysunek. Lista po prawej jest jednocześnie legendą i ściągą do komentarza.
+
+```jsx
+<ThermalRunaway source="Feng i in., 2018" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Metan i siarkowodór na jednej skali" type="danger">
+
+<Claim>Detektor metanu mierzy tylko drogę do dolnej granicy wybuchowości, a siarkowodór zabija przy stężeniach, których nos już nie czuje.</Claim>
+
+<GasScales source="GisChem (BG RCI, BGHM); ILO ICSC 0291 i 0165; SVLFG TI 4; Dz.U. 2026 poz. 447; NIOSH 1994; TRAS 120" />
+
+<Replaces>Zastępuje tabelę ze slajdu „Biogazownia: metan i siarkowodór” (W1, część 1) i wartości z „Przykład HAZOP: skład biogazu” (W2).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** dwie skale liczbowe zamiast tabeli. Dla metanu skala liniowa w % obj. z trzema zakresami z różnych źródeł (widać, skąd biorą się rozbieżności) i „lupą” pokazującą, że 100% DGW to 4,4% obj. Dla H₂S skala logarytmiczna, bo wartości progowe różnią się o trzy rzędy wielkości.
+
+**Pytanie do sali:** gdzie na górnej skali jest 20% DGW? (0,88% obj.)
+
+```jsx
+<GasScales source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Mianownik zmienia wniosek" type="tip">
+
+<Claim>Liczba zdarzeń może rosnąć, gdy ryzyko jednej instalacji maleje.</Claim>
+
+<RateToggle source="przykład ilustracyjny, dane umowne ze slajdu W1" />
+
+<Replaces>Zastępuje ramkę „Przykład ilustracyjny” ze slajdu „Jak czytać statystyki wypadków” (W1, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** te same dane w dwóch miarach, przełączane jednym przyciskiem. Słupki płynnie zmieniają wysokość, więc sala widzi odwrócenie trendu. Pod wykresem mianownik (liczba instalacji) jako cienkie paski.
+
+**Na wykładzie:** najpierw „Liczba zdarzeń” i pytanie „czy jest gorzej?”, dopiero potem przełączenie.
+
+```jsx
+<RateToggle data={[{ label: 'Rok 1', events: 100, exposure: 200000 }, { label: 'Rok 2', events: 400, exposure: 1000000 }]} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Ile różnych wartości ma RPN" type="warning">
+
+<Claim>Tysiąc kombinacji ocen daje tylko 120 wartości RPN, a próg „RPN ponad 100” obejmuje połowę z nich.</Claim>
+
+<RpnHistogram source="obliczenia własne; skale: Tavner i in., 2010" />
+
+<Replaces>Zastępuje punkty o liczbie kombinacji ze slajdów „RPN i jego wady” oraz „Skale S, O, D…” (W2, część 3).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** wykres liczy wszystkie kombinacje S × O × D w przeglądarce, więc liczby na slajdzie są zawsze zgodne z rachunkiem. Pomarańczowe kropki to wartości osiągane na 24 sposoby (60, 72, 120). Przełącznik „Skale Tavner i in.” pokazuje to samo dla skal z FMEA turbin: 64 kombinacje, 39 wartości.
+
+**Na wykładzie:** najedź na kropkę 120: podpowiedź pokazuje kombinacje, w tym S10·O3·D4 i S2·O10·D6 z przykładu na slajdzie.
+
+```jsx
+<RpnHistogram source="obliczenia własne" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

@@ -1,0 +1,149 @@
+---
+title: "Kalkulatory interaktywne"
+sidebar_position: 3
+draft: true
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { Claim, Replaces, RiskMatrix, FaultTree, EventTree, LopaWaterfall, PfdSawtooth, BetaBars } from '@site/src/components/viz';
+
+<LearningObjective>
+
+Część testowa: przykłady liczbowe z W2 jako kalkulatory. Studenci zmieniają jeden parametr (β, interwał testów, uznanie warstwy) i widzą, jak zmienia się wynik.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Matryca ryzyka i pułapki Coxa" type="warning">
+
+<Claim>Ten sam kolor nie znaczy to samo ryzyko: matryca łączy w jednej kategorii ryzyka różniące się dziesięciokrotnie.</Claim>
+
+<RiskMatrix source="matryca umowna z W2; Cox, Risk Analysis 28(2), 2008; Baybutt, 2016" />
+
+<Replaces>Łączy slajdy „Matryca ryzyka: budowa” i „Ograniczenia matrycy ryzyka” (W2, część 1).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** matryca z W2 z regułą sumy indeksów. Tryb „Budowa”: kliknięcie komórki pokazuje przedział częstości, skutek i kategorię. Trzy kolejne tryby pokazują pułapki Coxa na scenariuszach umownych. Położenie kropki w wierszu odpowiada częstości w skali logarytmicznej, więc widać, jak daleko od siebie są scenariusze w tej samej komórce.
+
+```jsx
+<RiskMatrix source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Drzewo niezdatności BESS na żywo" type="tip">
+
+<Claim>Ponad 90% prawdopodobieństwa pochodzi z przekrojów z jednym wentylatorem, a wspólna przyczyna psuje korzyść z dwóch detektorów.</Claim>
+
+<FaultTree source="dane umowne z W2; NASA Fault Tree Handbook 2002; IEC 61025:2006; Lundteigen i Rausand (NTNU)" />
+
+<Replaces>Łączy slajdy „Przykład drzewa: gazy w kontenerze BESS”, „Kwantyfikacja: bramki AND i OR” i „Uszkodzenia spowodowane wspólną przyczyną” (W2, część 4).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** drzewo z symbolami bramek jak w IEC 61025 (AND: płaska podstawa, OR: wklęsła podstawa i ostry wierzchołek) zamiast prostokątów Mermaid. Wszystkie prawdopodobieństwa liczą się na bieżąco.
+
+**Na wykładzie, trzy ruchy:**
+1. β = 0: odczytaj P(T) = 4,23 × 10⁻⁴ i udział przekrojów z V (92,6%).
+2. Zaznacz „Drugi, niezależny wentylator”: przekroje z V stają się trzeciego rzędu, wynik spada wielokrotnie.
+3. Ustaw β = 0,10: bramka G3 zmienia się w OR z uszkodzeniem wspólnym, P(T) rośnie o ok. 35%.
+
+Przełącznik „OR: suma” pokazuje przybliżenie zdarzeń rzadkich (wynik zachowawczy). Najechanie na przekrój (np. \{A, V\}) podświetla jego zdarzenia na drzewie.
+
+```jsx
+<FaultTree source="…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Drzewo zdarzeń po ucieczce termicznej" type="info">
+
+<Claim>Wynik „palna atmosfera bez zapłonu” nie jest bezpieczny: to stan, który czeka na iskrę.</Claim>
+
+<EventTree source="dane umowne z W2; IEC 62502:2010; APS, UL 2021 (McMicken)" />
+
+<Replaces>Zastępuje tabelę ze slajdu „Analiza drzewa zdarzeń” (W2, część 4).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** drzewo zdarzeń narysowane według konwencji: zdarzenie inicjujące po lewej, pytania o bariery u góry, gałąź w górę to „tak”, w dół to „nie”, wyniki po prawej. Pasek przy częstości ma skalę logarytmiczną. Kontrola sumy wyników liczy się sama.
+
+```jsx
+<EventTree fIE={0.08} pFail={0.0054} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="LOPA: schodki na skali logarytmicznej" type="tip">
+
+<Claim>O wymaganym SIL decyduje przede wszystkim to, które warstwy uznamy, a nie precyzja rachunku.</Claim>
+
+<LopaWaterfall source="dane umowne z W2; U. Michigan SAFEChE; HSE RR716; TRAS 120" />
+
+<Replaces>Łączy slajdy „LOPA: scenariusz i równanie”, „Przykład LOPA: nadciśnienie…” i „Przykład LOPA: luka i wymagany SIL” (W2, część 5).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** każdy schodek to jedna warstwa: długość schodka to rząd wielkości redukcji ryzyka. Czerwona linia to kryterium organizacji, czerwony prostokąt to luka, którą musi zamknąć nowa funkcja bezpieczeństwa (SIF).
+
+**Na wykładzie:** Wariant A (RRF 200, SIL 2) → Wariant B (RRF 20, SIL 1). Potem dwie pułapki: „pochodnia jako IPL” i „P(zapłon) = 0,1”. Obie obniżają wymagany SIL i obie są błędem, co pokazuje czerwony komunikat.
+
+```jsx
+<LopaWaterfall ief={0.1} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="PFDavg i interwał testów sprawdzających" type="info">
+
+<Claim>Bez testów PFD rośnie cały czas. Interwał testów to parametr projektu, tak samo jak wybór czujnika.</Claim>
+
+<PfdSawtooth source="IEC 61508-6 w ujęciu Lundteigen i Rausand (NTNU); dane umowne z W2" />
+
+<Replaces>Zastępuje tabelę ze slajdu „PFDavg funkcji 1oo1 i interwał testów” (W2, część 5).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** klasyczny „piłokształtny” wykres PFD(t): rośnie liniowo, spada do zera przy każdym teście. Czarna linia to PFDavg, czerwona przerywana to wymaganie z LOPA (wariant A). Tło pokazuje przedziały SIL.
+
+**Na wykładzie:** 12 miesięcy: przedział SIL 2, ale wymaganie niespełnione. Przesuń na 6 miesięcy: spełnione. Na koniec zmniejsz „pokrycie testu” do 80%: „podłoga” rośnie z każdym rokiem.
+
+```jsx
+<PfdSawtooth required={5e-3} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Redundancja 1oo2 i współczynnik β" type="warning">
+
+<Claim>Przy β = 0,10 uszkodzenia wspólne dają ok. 90% PFDavg układu 1oo2 i zjadają większość korzyści z drugiego kanału.</Claim>
+
+<BetaBars source="IEC 61508-6 w ujęciu Lundteigen i Rausand (NTNU); King, 2014; dane umowne z W2" />
+
+<Replaces>Zastępuje tabelę ze slajdu „Redundancja 1oo2 i współczynnik β” (W2, część 5).</Replaces>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** słupki skumulowane: niebieska część niezależna maleje z kwadratem, pomarańczowa część wspólna rośnie liniowo z β. Wiersz „Twoje β” dochodzi, gdy suwak ma wartość spoza tabeli. Pionowa linia 10⁻³ to granica przedziałów SIL 3 i SIL 2.
+
+```jsx
+<BetaBars lambda={2e-6} hours={8760} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

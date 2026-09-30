@@ -1,0 +1,115 @@
+---
+title: "Zdjęcia, filmy i materiały dla chętnych"
+sidebar_position: 4
+draft: true
+---
+
+import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { Claim } from '@site/src/components/viz';
+import { Figure, MediaLink, Video, Extra } from '@site/src/components/media';
+import procesWizualizacji from './img/proces-wizualizacji.png';
+
+<LearningObjective>
+
+Część testowa: jak na slajdzie wyglądają zdjęcie z podpisem i atrybucją, materiał dostępny tylko przez link, film odtwarzany od wybranego momentu i blok „Dla chętnych”, którego nie widać w trybie prezentacji.
+
+</LearningObjective>
+
+<SlideContainer>
+
+<Slide title="Zdjęcie z podpisem i atrybucją" type="info">
+
+<Claim>Grafika trafia na slajd dopiero po wyborze prowadzącego, a zdjęcie z internetu tylko z wolną licencją i pełną atrybucją.</Claim>
+
+<Figure src={procesWizualizacji} alt="Trzy kroki: propozycje, wybór prowadzącego, zastosowanie na slajdzie" caption="Propozycje powstają na stronie szkicu, prowadzący wybiera, a dopiero potem grafika trafia na slajd." author="własne" />
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** zdjęcie lub rysunek z plikiem w folderze `img/` obok strony, podpisem (co student ma zauważyć) i atrybucją. Dla materiału własnego podpis „Materiał własny”. Dla zdjęcia z Wikimedia Commons atrybucja ma postać: autor, licencja z linkiem, źródło z linkiem.
+
+```jsx
+import zdjecie from './img/biogazownia-pochodnia.jpg';
+
+<Figure src={zdjecie} alt="…" caption="…"
+  author="Jan Kowalski" license="CC BY-SA 4.0"
+  licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"
+  source="Wikimedia Commons" sourceUrl="https://commons.wikimedia.org/wiki/File:…" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Materiał bez wolnej licencji: tylko link" type="warning">
+
+<Claim>Zdjęcia straży pożarnej, producentów i prasy nie mają wolnej licencji. Na slajdzie jest link, a nie kopia.</Claim>
+
+<MediaLink href="https://www.gov.pl/web/kwpsp-poznan/pozar-magazynu-energii-w-czajkowie" title="Pożar magazynu energii w Czajkowie" source="KW PSP w Poznaniu, gov.pl, 7.05.2026" kind="strona" note="komunikat z galerią zdjęć z akcji gaśniczej" />
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** karta z linkiem, która otwiera stronę źródłową w nowej karcie. Nic nie jest kopiowane na serwer kursu, więc licencja nie jest potrzebna. Rodzaj materiału (`kind`): zdjęcie, film, strona, dokument.
+
+```jsx
+<MediaLink href="https://www.gov.pl/web/kwpsp-poznan/pozar-magazynu-energii-w-czajkowie"
+  title="Pożar magazynu energii w Czajkowie" source="KW PSP w Poznaniu, gov.pl, 7.05.2026"
+  kind="strona" note="komunikat z galerią zdjęć z akcji gaśniczej" />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Film odtwarzany od wybranego momentu" type="tip">
+
+<Claim>Film wczytuje się dopiero po kliknięciu i odtwarza tylko wybrany fragment.</Claim>
+
+<Video youtube="0RrqiO3k94k" title="Test shows explosive power of a lithium-ion battery thermal runaway" channel="CBS News" lang="EN" end="0:45" watched={false} />
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** zamiast odtwarzacza jest przycisk z tytułem, kanałem i długością fragmentu. Po kliknięciu wczytuje się odtwarzacz YouTube z domeny youtube-nocookie.com, od `start` do `end`. Film nie jest pobierany ani kopiowany. `watched={false}` pokazuje w `npm start` znacznik „nieobejrzany”; studenci go nie widzą. Po obejrzeniu fragmentu prowadzący usuwa ten atrybut. Fragment 0:00–0:45 jest tu tylko przykładem technicznym.
+
+```jsx
+<Video youtube="0RrqiO3k94k" title="…" channel="CBS News" lang="EN"
+  start="0:00" end="0:45" watched={false} />
+```
+
+</InstructorNotes>
+
+</Slide>
+
+<Slide title="Blok dla chętnych" type="info">
+
+<Claim>Materiał dla chętnych zostaje na stronie do samodzielnej nauki, ale nie pojawia się w trybie prezentacji.</Claim>
+
+- Na slajdzie zostaje tylko to, co prowadzący pokazuje na zajęciach.
+- Tabela lub diagram zastąpione grafiką przechodzą do bloku poniżej, więc studenci nadal mają dane w formie tekstu.
+
+<Extra title="tabela z danymi do wykresu">
+
+| Wariant | Co widzi student | Gdzie |
+|---|---|---|
+| grafika na slajdzie | wniosek i dowód | projekcja i strona |
+| link | strona źródłowa | nowa karta |
+| dla chętnych | materiał dodatkowy | tylko strona |
+
+</Extra>
+
+<InstructorNotes title="Jak zbudowany jest ten slajd">
+
+**Forma:** zwijany blok z przerywaną ramką. W trybie prezentacji jest ukryty, na zwykłej stronie studenci mogą go rozwinąć. Nadaje się na tabelę zastąpioną wykresem, drugi film albo zdjęcie, które nie mieści się na slajdzie.
+
+```jsx
+<Extra title="tabela z danymi do wykresu">
+
+| … | … |
+
+</Extra>
+```
+
+</InstructorNotes>
+
+</Slide>
+
+</SlideContainer>

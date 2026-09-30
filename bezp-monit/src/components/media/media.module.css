@@ -1,0 +1,360 @@
+/*
+ * Pictures, videos and "Dla chętnych" blocks on lecture slides
+ * (src/components/media). Every colour has a dark-mode variant.
+ */
+
+.figure {
+  --m-surface: #fcfcfb;
+  --m-border: rgba(11, 11, 11, 0.12);
+  --m-muted: #6f6d68;
+  margin: 0.75rem auto 0.25rem;
+  padding: 0.6rem;
+  border: 1px solid var(--m-border);
+  border-radius: 10px;
+  background: var(--m-surface);
+  max-width: 100%;
+}
+
+:global([data-theme='dark']) .figure {
+  --m-surface: #1b1f27;
+  --m-border: rgba(255, 255, 255, 0.12);
+  --m-muted: #9d9b93;
+}
+
+.wide {
+  max-width: 100%;
+}
+
+.half {
+  max-width: 50%;
+}
+
+.third {
+  max-width: 34%;
+}
+
+@media (max-width: 768px) {
+  .half,
+  .third {
+    max-width: 100%;
+  }
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  object-fit: contain;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+:global(html[data-pm]) .figure img {
+  max-height: 56vh;
+}
+
+.caption {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.attribution {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  color: var(--m-muted);
+}
+
+.attribution a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border: 1px dashed var(--m-border);
+  border-radius: 6px;
+  color: var(--m-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- link-only card ---------- */
+
+.linkCard {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  margin: 0.6rem 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  text-decoration: none !important;
+  transition: border-color 0.2s ease;
+}
+
+.linkCard:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.linkIcon {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.1rem;
+  color: var(--ifm-color-primary);
+}
+
+.linkTitle {
+  font-weight: 650;
+}
+
+.linkMeta {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ---------- video ---------- */
+
+.video {
+  /* explicit width: the player uses inline-size containment and has no intrinsic width */
+  width: 100%;
+  margin: 0.75rem auto 0.25rem;
+  max-width: 100%;
+}
+
+.player {
+  container: player / inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 62vh;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111317;
+  margin: 0 auto;
+}
+
+:global(html[data-pm]) .player {
+  max-height: 60vh;
+}
+
+.player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.facade {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  color: #f4f4f1;
+  background: radial-gradient(circle at 70% 30%, #2b3342 0%, #111317 70%);
+  cursor: pointer;
+  font: inherit;
+}
+
+.poster {
+  background-size: cover;
+  background-position: center;
+}
+
+/* keep the title readable over a poster image */
+.poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 12, 16, 0.82) 0%, rgba(10, 12, 16, 0.25) 55%, rgba(10, 12, 16, 0.7) 100%);
+}
+
+.poster > * {
+  position: relative;
+}
+
+.poster > .play {
+  position: absolute;
+}
+
+.facade:focus-visible {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: -3px;
+}
+
+.facadeTitle {
+  font-size: 1.15rem;
+  font-weight: 650;
+  line-height: 1.35;
+  max-width: 85%;
+}
+
+.facadeMeta {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 0.3rem;
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: -2.25rem 0 0 -2.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.facade:hover .play {
+  transform: scale(1.07);
+}
+
+.play::after {
+  content: '';
+  margin-left: 0.3rem;
+  border-style: solid;
+  border-width: 0.8rem 0 0.8rem 1.3rem;
+  border-color: transparent transparent transparent #111317;
+}
+
+.facadeNote {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+/* narrow players (review cards, half-width slides): small play button in the corner */
+@container player (max-width: 560px) {
+  .facade {
+    padding: 0.9rem 1rem;
+  }
+
+  .facadeTitle {
+    font-size: 0.98rem;
+    max-width: 100%;
+  }
+
+  .facadeMeta {
+    font-size: 0.78rem;
+  }
+
+  .play {
+    left: auto;
+    top: auto;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+  }
+
+  .play::after {
+    border-width: 0.55rem 0 0.55rem 0.9rem;
+    margin-left: 0.2rem;
+  }
+
+  .facadeNote {
+    display: none;
+  }
+}
+
+.videoFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem 1rem;
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.videoFoot a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Shown only in `npm start`: the lecturer has not watched this video yet */
+.unwatched {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 650;
+  background: #fff1d6;
+  color: #7a4b00;
+  border: 1px solid #e8b04a;
+}
+
+:global([data-theme='dark']) .unwatched {
+  background: #3a2a0c;
+  color: #ffd58a;
+  border-color: #8a6420;
+}
+
+/* ---------- "Dla chętnych" ---------- */
+
+.extra {
+  margin: 0.8rem 0 0.2rem;
+  border: 1px dashed var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  background: transparent;
+}
+
+.extra > summary {
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-800);
+  list-style: none;
+}
+
+.extra > summary::-webkit-details-marker {
+  display: none;
+}
+
+.extra > summary::before {
+  content: '＋ ';
+  color: var(--ifm-color-primary);
+}
+
+.extra[open] > summary::before {
+  content: '− ';
+}
+
+.extraBody {
+  padding: 0 0.9rem 0.7rem;
+}
+
+/* Not projected: extra material stays for self-study */
+:global(html[data-pm]) .extra {
+  display: none !important;
+}
+
+@media print {
+  .player {
+    display: none;
+  }
+}

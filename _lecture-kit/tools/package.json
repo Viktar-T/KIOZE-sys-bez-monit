@@ -1,0 +1,14 @@
+{
+  "name": "lecture-tools",
+  "private": true,
+  "type": "module",
+  "description": "Dependencies of check_mdx.mjs; versions follow the site (bezp-monit/package.json)",
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
+    "jsdom": "^26.0.0",
+    "katex": "^0.16.47",
+    "mermaid": "^11.17.2",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
+  }
+}
