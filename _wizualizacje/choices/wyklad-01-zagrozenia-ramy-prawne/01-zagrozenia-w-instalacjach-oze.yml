@@ -1,0 +1,40 @@
+# zastosowano 2026-10-01 (decyzja tylko dla s1; s2–s7 bez decyzji: „bez zmian” to wartość domyślna przycisku „Kopiuj wybory”)
+czesc: wyklad-01-zagrozenia-ramy-prawne/01-zagrozenia-w-instalacjach-oze
+slajdy:
+  s1:  # Skala OZE w Polsce
+    wizualizacja: A
+    na_slajd: []
+    dla_chetnych: []
+  s2:  # Mapa zagrożeń: energia, ogień, gazy
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+  s3:  # Mapa zagrożeń: ludzie, otoczenie, cyber
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+  s4:  # PV: napięcie DC i łuk elektryczny
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+  s5:  # PV: co mówią dane o pożarach
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+  s6:  # Wiatr: główne zagrożenia
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+  s7:  # Wiatr: skąd brać wiarygodne dane
+    wizualizacja: bez zmian
+    na_slajd: []
+    dla_chetnych: []
+---
+# zastosowano 2026-10-01 (druga zmiana s1)
+czesc: wyklad-01-zagrozenia-ramy-prawne/01-zagrozenia-w-instalacjach-oze
+slajdy:
+  s1:  # Skala OZE w Polsce
+    wizualizacja: A
+    na_slajd: []
+    dla_chetnych: []
+    uwagi: "zachowaj oryginalną treść slajdu w Dla chętnych"

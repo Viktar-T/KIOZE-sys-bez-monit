@@ -4,6 +4,8 @@ sidebar_position: 1
 ---
 
 import { SlideContainer, Slide, InstructorNotes, LearningObjective } from '@site/src/components/SlideComponents';
+import { Claim, StatTiles } from '@site/src/components/viz';
+import { Extra } from '@site/src/components/media';
 
 <LearningObjective>
 
@@ -15,7 +17,28 @@ Student klasyfikuje zagrożenia w instalacjach fotowoltaicznych, wiatrowych, bat
 
 <Slide title="Skala OZE w Polsce" type="info">
 
+<Claim>Ponad 1,6 mln mikroinstalacji: zagrożenia OZE dotyczą zwykłych budynków, a nie tylko elektrowni.</Claim>
+
+<StatTiles
+  items={[
+    { label: 'Moc zainstalowana w KSE ogółem', value: 77331, unit: 'MW', note: '31.12.2025 · PSE' },
+    { label: 'w tym „elektrownie wiatrowe i inne odnawialne”', value: 37106, unit: 'MW', delta: 'ok. 5,3 GW w 2025 r.', note: '31.12.2025 · PSE; bez wydzielenia PV' },
+    { label: 'Mikroinstalacje OZE (99,9% to fotowoltaika, PV)', value: 1636673, unit: 'szt.', note: 'niemal 13,9 GW · URE, koniec 2025' },
+    { label: 'Biogazownie rolnicze', value: 209, unit: 'instalacji', note: '188,8 MWe · KOWR, 28.05.2026' },
+    { label: 'Baltic Power: pierwsza energia z morza', value: 1.2, decimals: 1, unit: 'GW', note: 'moc do 1,2 GW · 10.07.2026 · inwestor' },
+  ]}
+  share={{ label: 'Udział kategorii „wiatr i inne OZE” w mocy zainstalowanej KSE', value: 48, note: '37 106 MW z 77 331 MW' }}
+  source="PSE, Raport 2025 KSE; URE, 19.03.2026; KOWR, 2026; Baltic Power, 10.07.2026"
+/>
+
 Odnawialne źródła energii (OZE) stanowią dużą część mocy krajowego systemu elektroenergetycznego (KSE).
+
+- PSE — Polskie Sieci Elektroenergetyczne; URE — Urząd Regulacji Energetyki; KOWR — Krajowy Ośrodek Wsparcia Rolnictwa.
+- W 2025 r. moc w kategorii PSE „wiatr i inne OZE” wzrosła o ok. 5,3 GW. PSE nie wydziela w tym zestawieniu fotowoltaiki.
+- URE liczy 1 612 450 prosumentów, więc zagrożenia OZE dotyczą także zwykłych budynków, a nie tylko elektrowni (ocena własna).
+- Wniosek (ocena własna): większość tych instalacji pracuje bez stałej obsługi, dlatego podstawą bezpieczeństwa są samoczynne zabezpieczenia, a zdalny monitoring je uzupełnia.
+
+<Extra title="tabela wskaźników">
 
 | Wskaźnik | Wartość | Stan na | Źródło |
 |---|---|---|---|
@@ -25,10 +48,7 @@ Odnawialne źródła energii (OZE) stanowią dużą część mocy krajowego syst
 | Biogazownie rolnicze | 209 instalacji, 188,8 MWe | 28.05.2026 | KOWR |
 | Pierwsza energia z morskiej farmy wiatrowej | Baltic Power, do 1,2 GW | 10.07.2026 | inwestor |
 
-- PSE — Polskie Sieci Elektroenergetyczne; URE — Urząd Regulacji Energetyki; KOWR — Krajowy Ośrodek Wsparcia Rolnictwa.
-- W 2025 r. moc w kategorii PSE „wiatr i inne OZE” wzrosła o ok. 5,3 GW. PSE nie wydziela w tej tabeli fotowoltaiki.
-- URE liczy 1 612 450 prosumentów, więc zagrożenia OZE dotyczą także zwykłych budynków, a nie tylko elektrowni (ocena własna).
-- Wniosek (ocena własna): większość tych instalacji pracuje bez stałej obsługi, dlatego podstawą bezpieczeństwa są samoczynne zabezpieczenia, a zdalny monitoring je uzupełnia.
+</Extra>
 
 Źródło: [PSE, Raport 2025 KSE](https://www.pse.pl/dane-systemowe/funkcjonowanie-kse/raporty-roczne-z-funkcjonowania-kse-za-rok); [URE, 19.03.2026](https://www.ure.gov.pl/pl/urzad/informacje-ogolne/aktualnosci/13173,Raport-URE-w-Polsce-mamy-juz-ponad-16-mln-mikroinstalacji-OZE.html); [KOWR, 2026](https://www.gov.pl/web/kowr/aktualna-sytuacja-na-rynku-biogazu-rolniczego-w-polsce-06-2026); [Baltic Power, 10.07.2026](https://balticpower.pl/aktualnosci/morska-farma-wiatrowa-baltic-power-po-raz-pierwszy-wyprodukowa%C5%82a-i-dostarczy%C5%82a-energi%C4%99-z-morza-dla-polskiej-sieci-energetycznej/)
 
@@ -36,7 +56,7 @@ Odnawialne źródła energii (OZE) stanowią dużą część mocy krajowego syst
 
 Czas: ~2 min
 
-Zaczynamy od skali, bo ona uzasadnia cały przedmiot. Według PSE prawie połowa mocy zainstalowanej w KSE to wiatr i inne źródła odnawialne. Ta kategoria łączy kilka technologii, więc z tej tabeli nie odczytamy mocy samej fotowoltaiki. Dla bezpieczeństwa ważniejsza jest liczba mikroinstalacji: ponad półtora miliona. Nad takim dachem nikt nie czuwa przez całą dobę, więc zabezpieczenia muszą zadziałać same, a zdalny monitoring tylko je wspiera. Do różnicy między monitoringiem a ochroną wrócimy w części piątej.
+Liczby na kafelkach odliczają się same po pokazaniu slajdu; najpierw wskazuję pasek udziału, potem kafelek z mikroinstalacjami. Zaczynamy od skali, bo ona uzasadnia cały przedmiot. Według PSE prawie połowa mocy zainstalowanej w KSE to wiatr i inne źródła odnawialne. Ta kategoria łączy kilka technologii, więc z tych danych nie odczytamy mocy samej fotowoltaiki. Dla bezpieczeństwa ważniejsza jest liczba mikroinstalacji: ponad półtora miliona. Nad takim dachem nikt nie czuwa przez całą dobę, więc zabezpieczenia muszą zadziałać same, a zdalny monitoring tylko je wspiera. Do różnicy między monitoringiem a ochroną wrócimy w części piątej.
 
 Pytanie do sali: kto ma instalację PV w domu rodzinnym i wie, gdzie jest rozłącznik po stronie prądu stałego? Typowe nieporozumienie: „OZE to przede wszystkim duże farmy”. Tymczasem samych mikroinstalacji jest ponad półtora miliona.
 

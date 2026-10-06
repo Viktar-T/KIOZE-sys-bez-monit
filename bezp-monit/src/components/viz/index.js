@@ -19,3 +19,6 @@ export {default as EventTree} from './EventTree';
 export {default as LopaWaterfall} from './LopaWaterfall';
 export {default as PfdSawtooth} from './PfdSawtooth';
 export {default as BetaBars} from './BetaBars';
+export {default as PvStringIsolator} from './PvStringIsolator';
+export {default as WindTurbineHazards} from './WindTurbineHazards';
+export {default as ReportRestatement} from './ReportRestatement';
